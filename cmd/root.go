@@ -51,6 +51,11 @@ func Execute() {
 	}
 }
 
+// GetRootCmd returns the base rootCmd for programmatic testing.
+func GetRootCmd() *cobra.Command {
+	return rootCmd
+}
+
 func init() {
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Enable debug logging (shorthand for --log-level=debug")
 	rootCmd.PersistentFlags().StringVar(&logLevel, "log-level", "", "Log level (debug, info, warn, error)")
