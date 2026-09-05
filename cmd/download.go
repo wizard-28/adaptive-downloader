@@ -13,8 +13,10 @@ import (
 	"adaptive-downloader/pkg/assembler"
 	"adaptive-downloader/pkg/fetcher"
 	"adaptive-downloader/pkg/rangetracker"
+	"adaptive-downloader/pkg/ui"
 
 	"github.com/spf13/cobra"
+	"github.com/vbauerster/mpb/v8"
 )
 
 var (
@@ -23,6 +25,7 @@ var (
 	concurrency int
 	chunkSize   int64
 	sha256sum   string
+	noProgress  bool
 )
 
 // downloadCmd represents the download command
@@ -92,7 +95,13 @@ var downloadCmd = &cobra.Command{
 			return fmt.Errorf("initialize range tracker: %w", err)
 		}
 
-		// 3. Fixed Worker Loop
+		// Optional Progress UI
+		var progressUI *ui.ProgressUI
+		if !noProgress && logFormat != "json" {
+			progressUI = ui.NewProgressUI(probeRes.ContentLength)
+		}
+
+		// 3. Worker Loop
 		startTime := time.Now()
 		var (
 			wg            sync.WaitGroup
@@ -106,6 +115,10 @@ var downloadCmd = &cobra.Command{
 			wg.Add(1)
 			go func(wID int) {
 				defer wg.Done()
+				if progressUI != nil {
+					defer progressUI.RemoveWorkerBar(wID)
+				}
+
 				for {
 					select {
 					case <-workerCtx.Done():
@@ -125,14 +138,27 @@ var downloadCmd = &cobra.Command{
 						return
 					}
 
+					var (
+						chunkWriter fetcher.ChunkWriter = writer
+						workerBar   *mpb.Bar
+					)
+					if progressUI != nil {
+						// Retrieve or dynamically reuse worker bar slot row
+						workerBar = progressUI.GetOrAddWorkerBar(wID, interval.Len())
+						chunkWriter = progressUI.ProxyWriter(writer, workerBar)
+					}
+
 					fetchReq := fetcher.FetchRequest{
 						ReqID:    reqID,
 						URL:      targetURL,
 						Interval: interval,
 					}
 
-					metrics, fetchErr := f.Fetch(workerCtx, fetchReq, writer)
+					metrics, fetchErr := f.Fetch(workerCtx, fetchReq, chunkWriter)
 					if fetchErr != nil {
+						if workerBar != nil {
+							workerBar.SetCurrent(0)
+						}
 						slog.Warn("Chunk fetch failed, requeuing partial range",
 							slog.String("req_id", reqID),
 							slog.Any("interval", interval),
@@ -142,7 +168,6 @@ var downloadCmd = &cobra.Command{
 						_ = tracker.RequeuePartial(reqID, metrics.BytesWritten)
 						totalWritten.Add(metrics.BytesWritten)
 
-						// Back off briefly before retrying
 						select {
 						case <-workerCtx.Done():
 							return
@@ -160,6 +185,10 @@ var downloadCmd = &cobra.Command{
 		}
 
 		wg.Wait()
+
+		if progressUI != nil {
+			progressUI.Wait()
+		}
 
 		if !tracker.IsComplete() {
 			completed, total := tracker.Progress()
@@ -207,7 +236,6 @@ func init() {
 	const defaultN = 2
 	const defaultS = 5 * 1024 * 1024
 
-	// Define help without shorthand 'h' to allow -h for sha256
 	downloadCmd.Flags().Bool("help", false, "help for download")
 
 	downloadCmd.Flags().StringVarP(&outputPath, "output", "o", "", "Path to downloaded file")
@@ -215,8 +243,8 @@ func init() {
 	downloadCmd.Flags().IntVarP(&concurrency, "concurrency", "n", defaultN, "Concurrency limit N")
 	downloadCmd.Flags().Int64VarP(&chunkSize, "chunk-size", "s", defaultS, "Chunk size S in bytes")
 	downloadCmd.Flags().StringVarP(&sha256sum, "sha256", "h", "", "Sha256 checksum to verify against")
+	downloadCmd.Flags().BoolVar(&noProgress, "no-progress", false, "Disable progress bar output")
 
-	// Backward-compatibility aliases for flag names
 	downloadCmd.Flags().IntVar(&concurrency, "initial-concurrency", defaultN, "Initial concurrency limit N")
 	downloadCmd.Flags().Int64Var(&chunkSize, "initial-chunk-size", defaultS, "Initial chunk size in bytes")
 	downloadCmd.Flags().StringVar(&sha256sum, "sha256sum", "", "Sha256 checksum to verify against")
