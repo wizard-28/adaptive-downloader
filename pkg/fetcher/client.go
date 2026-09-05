@@ -39,6 +39,29 @@ type Fetcher struct {
 	client *http.Client
 }
 
+type headerTransport struct {
+	base http.RoundTripper
+}
+
+func (t *headerTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	// Clone request header map to avoid mutation races across goroutines
+	reqClone := req.Clone(req.Context())
+
+	reqClone.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+	reqClone.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8")
+	reqClone.Header.Set("Accept-Language", "en-US,en;q=0.9")
+	reqClone.Header.Set("Sec-Ch-Ua", `"Chromium";v="128", "Not=A?Brand";v="24", "Google Chrome";v="128"`)
+	reqClone.Header.Set("Sec-Ch-Ua-Mobile", "?0")
+	reqClone.Header.Set("Sec-Ch-Ua-Platform", `"Windows"`)
+	reqClone.Header.Set("Sec-Fetch-Dest", "document")
+	reqClone.Header.Set("Sec-Fetch-Mode", "navigate")
+	reqClone.Header.Set("Sec-Fetch-Site", "none")
+	reqClone.Header.Set("Sec-Fetch-User", "?1")
+	reqClone.Header.Set("Upgrade-Insecure-Requests", "1")
+
+	return t.base.RoundTrip(reqClone)
+}
+
 // New creates a Fetcher with an http.Client tuned for concurrent chunk downloads.
 func New(maxWorkers int) *Fetcher {
 	if maxWorkers <= 0 {
@@ -60,12 +83,10 @@ func New(maxWorkers int) *Fetcher {
 
 	return &Fetcher{
 		client: &http.Client{
-			Transport: transport,
+			Transport: &headerTransport{base: transport},
 		},
 	}
 }
-
-const defaultUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AdaptiveDownloader/1.0"
 
 // Fetch downloads a specific byte range, streams data to w, and returns performance metrics.
 func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (Metrics, error) {
@@ -77,7 +98,6 @@ func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (M
 	if err != nil {
 		return Metrics{}, fmt.Errorf("create HTTP request: %w", err)
 	}
-	httpReq.Header.Set("User-Agent", defaultUserAgent)
 	httpReq.Header.Set("Range", req.Interval.String())
 
 	var (
