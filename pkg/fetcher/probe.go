@@ -31,7 +31,9 @@ func (f *Fetcher) Probe(ctx context.Context, url string) (ProbeResult, error) {
 	if err == nil {
 		headResp, headErr := f.client.Do(headReq)
 		if headErr == nil {
-			defer headResp.Body.Close()
+			defer func() {
+				_ = headResp.Body.Close()
+			}()
 
 			if headResp.StatusCode == http.StatusOK {
 				acceptsRanges := strings.Contains(strings.ToLower(headResp.Header.Get("Accept-Ranges")), "bytes")
