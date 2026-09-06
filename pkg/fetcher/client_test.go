@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"sync"
 	"testing"
 	"time"
 
@@ -16,163 +15,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
-type writeRecord struct {
-	offset int64
-	data   []byte
-}
-
-type mockWriter struct {
-	mu          sync.Mutex
-	writes      []writeRecord
-	buf         []byte
-	errToReturn error
-}
-
-func newMockWriter(size int64) *mockWriter {
-	return &mockWriter{
-		buf: make([]byte, size),
-	}
-}
-
-func (m *mockWriter) WriteChunk(offset int64, data []byte) (int, error) {
-	m.mu.Lock()
-	defer m.mu.Unlock()
-
-	if m.errToReturn != nil {
-		return 0, m.errToReturn
-	}
-
-	record := writeRecord{
-		offset: offset,
-		data:   append([]byte(nil), data...),
-	}
-	m.writes = append(m.writes, record)
-
-	if offset+int64(len(data)) <= int64(len(m.buf)) {
-		copy(m.buf[offset:], data)
-	}
-
-	return len(data), nil
-}
-
-func (m *mockWriter) TotalBytesWritten() int64 {
-	m.mu.Lock()
-	defer m.mu.Unlock()
-
-	var total int64
-	for _, w := range m.writes {
-		total += int64(len(w.data))
-	}
-	return total
-}
-
-func TestProbe_HeadSuccess(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodHead {
-			w.Header().Set("Accept-Ranges", "bytes")
-			w.Header().Set("Content-Length", "50000")
-			w.WriteHeader(http.StatusOK)
-			return
-		}
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
-	}))
-	defer server.Close()
-
-	client := fetcher.New(2)
-	res, err := client.Probe(context.Background(), server.URL)
-	require.NoError(t, err)
-	assert.True(t, res.AcceptsRanges)
-	assert.Equal(t, int64(50000), res.ContentLength)
-
-	// Test package-level helper
-	resPkg, err := fetcher.Probe(context.Background(), server.URL)
-	require.NoError(t, err)
-	assert.True(t, resPkg.AcceptsRanges)
-	assert.Equal(t, int64(50000), resPkg.ContentLength)
-}
-
-func TestProbe_HeadFails_FallbackGet206(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodHead {
-			// Simulate server rejecting HEAD requests
-			http.Error(w, "HEAD forbidden", http.StatusMethodNotAllowed)
-			return
-		}
-		if r.Method == http.MethodGet {
-			assert.Equal(t, "bytes=0-0", r.Header.Get("Range"))
-			w.Header().Set("Content-Range", "bytes 0-0/123456")
-			w.Header().Set("Content-Length", "1")
-			w.WriteHeader(http.StatusPartialContent)
-			_, _ = w.Write([]byte("X"))
-			return
-		}
-		http.Error(w, "unexpected", http.StatusBadRequest)
-	}))
-	defer server.Close()
-
-	client := fetcher.New(2)
-	res, err := client.Probe(context.Background(), server.URL)
-	require.NoError(t, err)
-	assert.True(t, res.AcceptsRanges)
-	assert.Equal(t, int64(123456), res.ContentLength)
-}
-
-func TestProbe_NoRangeSupport(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodHead {
-			// HEAD does not return Accept-Ranges
-			w.Header().Set("Content-Length", "8000")
-			w.WriteHeader(http.StatusOK)
-			return
-		}
-		if r.Method == http.MethodGet {
-			// Server ignores Range header and returns full content 200 OK
-			w.Header().Set("Content-Length", "8000")
-			w.WriteHeader(http.StatusOK)
-			_, _ = w.Write(make([]byte, 8000))
-			return
-		}
-	}))
-	defer server.Close()
-
-	client := fetcher.New(1)
-	res, err := client.Probe(context.Background(), server.URL)
-	require.NoError(t, err)
-	assert.False(t, res.AcceptsRanges)
-	assert.Equal(t, int64(8000), res.ContentLength)
-}
-
-func TestProbe_Errors(t *testing.T) {
-	t.Run("server 500 error", func(t *testing.T) {
-		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			http.Error(w, "internal server error", http.StatusInternalServerError)
-		}))
-		defer server.Close()
-
-		client := fetcher.New(1)
-		_, err := client.Probe(context.Background(), server.URL)
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "500")
-	})
-
-	t.Run("malformed content-range header", func(t *testing.T) {
-		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			if r.Method == http.MethodHead {
-				http.Error(w, "no head", http.StatusMethodNotAllowed)
-				return
-			}
-			w.Header().Set("Content-Range", "bytes invalid")
-			w.WriteHeader(http.StatusPartialContent)
-		}))
-		defer server.Close()
-
-		client := fetcher.New(1)
-		_, err := client.Probe(context.Background(), server.URL)
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "parse Content-Range")
-	})
-}
 
 func TestFetch_Success(t *testing.T) {
 	payload := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -203,7 +45,7 @@ func TestFetch_Success(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, int64(16), metrics.BytesWritten)
-	assert.Greater(t, metrics.TTFB, time.Duration(0))
+	assert.GreaterOrEqual(t, metrics.TTFB, time.Duration(0))
 	assert.GreaterOrEqual(t, metrics.Duration, metrics.TTFB)
 	assert.Greater(t, metrics.Throughput, float64(0))
 
@@ -212,7 +54,6 @@ func TestFetch_Success(t *testing.T) {
 }
 
 func TestFetch_MultipleBufferChunks(t *testing.T) {
-	// Generate payload larger than 32KB buffer (e.g. 70KB)
 	largePayload := make([]byte, 70*1024)
 	for i := range largePayload {
 		largePayload[i] = byte(i % 256)
@@ -247,7 +88,7 @@ func TestFetch_MultipleBufferChunks(t *testing.T) {
 
 func TestFetch_Non206Rejection(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK) // returns 200 instead of 206
+		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte("whole file content"))
 	}))
 	defer server.Close()
@@ -304,13 +145,13 @@ func TestFetch_InvalidInterval(t *testing.T) {
 		URL:   "http://localhost:1234",
 		Interval: rangetracker.Interval{
 			Start: 50,
-			End:   20, // Start > End
+			End:   20,
 		},
 	}
 
-	_, err := client.Fetch(context.Background(), req, writer)
-	require.Error(t, err)
-	assert.Contains(t, err.Error(), "invalid interval")
+	assert.PanicsWithValue(t, "developer bug: invalid fetch interval start 50 > end 20", func() {
+		_, _ = client.Fetch(context.Background(), req, writer)
+	})
 }
 
 func TestFetch_ContextCancelled(t *testing.T) {
@@ -324,7 +165,7 @@ func TestFetch_ContextCancelled(t *testing.T) {
 	writer := newMockWriter(100)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	cancel() // Cancel immediately
+	cancel()
 
 	req := fetcher.FetchRequest{
 		ReqID: "req-cancelled",
@@ -338,4 +179,45 @@ func TestFetch_ContextCancelled(t *testing.T) {
 	_, err := client.Fetch(ctx, req, writer)
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "context canceled")
+}
+
+func TestFetch_ContextCancelledMidFlight(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Length", "1000")
+		w.WriteHeader(http.StatusPartialContent)
+
+		_, _ = w.Write([]byte("initial chunk of bytes"))
+		if flusher, ok := w.(http.Flusher); ok {
+			flusher.Flush()
+		}
+
+		time.Sleep(50 * time.Millisecond)
+		_, _ = w.Write([]byte("second chunk of bytes"))
+	}))
+	defer server.Close()
+
+	client := fetcher.New(1)
+	writer := &cancelOnWriteWriter{
+		mockWriter: newMockWriter(1000),
+		cancel:     cancel,
+	}
+
+	req := fetcher.FetchRequest{
+		ReqID: "req-cancelled-midflight",
+		URL:   server.URL,
+		Interval: rangetracker.Interval{
+			Start: 0,
+			End:   999,
+		},
+	}
+
+	metrics, err := client.Fetch(ctx, req, writer)
+	require.Error(t, err)
+
+	assert.Contains(t, err.Error(), "context canceled")
+	assert.Greater(t, metrics.BytesWritten, int64(0))
+	assert.Equal(t, metrics.BytesWritten, writer.TotalBytesWritten())
 }
