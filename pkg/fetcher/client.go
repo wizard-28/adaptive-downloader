@@ -34,8 +34,8 @@ type Metrics struct {
 	Throughput   float64 // bytes per second
 }
 
-// Fetcher handles HTTP byte-range requests and client connection pooling.
-type Fetcher struct {
+// Client handles HTTP byte-range requests and client connection pooling.
+type Client struct {
 	client *http.Client
 }
 
@@ -63,7 +63,7 @@ func (t *headerTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 }
 
 // New creates a Fetcher with an http.Client tuned for concurrent chunk downloads.
-func New(maxWorkers int) *Fetcher {
+func New(maxWorkers int) *Client {
 	if maxWorkers <= 0 {
 		panic("maxWorkers cannot be less than or equal to 0")
 	}
@@ -81,7 +81,7 @@ func New(maxWorkers int) *Fetcher {
 		IdleConnTimeout:     90 * time.Second,
 	}
 
-	return &Fetcher{
+	return &Client{
 		client: &http.Client{
 			Transport: &headerTransport{base: transport},
 		},
@@ -89,7 +89,7 @@ func New(maxWorkers int) *Fetcher {
 }
 
 // Fetch downloads a specific byte range, streams data to w, and returns performance metrics.
-func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (Metrics, error) {
+func (c *Client) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (Metrics, error) {
 	if req.Interval.End < req.Interval.Start {
 		panic(fmt.Sprintf("developer bug: invalid fetch interval start %d > end %d", req.Interval.Start, req.Interval.End))
 	}
@@ -112,7 +112,7 @@ func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (M
 	}
 	httpReq = httpReq.WithContext(httptrace.WithClientTrace(httpReq.Context(), trace))
 
-	resp, err := f.client.Do(httpReq)
+	resp, err := c.client.Do(httpReq)
 	if err != nil {
 		return Metrics{
 			Duration: time.Since(start),

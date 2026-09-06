@@ -16,20 +16,20 @@ type ProbeResult struct {
 	AcceptsRanges bool
 }
 
-// DefaultFetcher is a global single-worker fetcher instance used for package-level Probe calls.
-var DefaultFetcher = New(1)
+// DefaultClient is a global single-worker fetcher instance used for package-level Probe calls.
+var DefaultClient = New(1)
 
 // Probe inspects the remote URL using the default fetcher to determine file size and range capabilities.
 func Probe(ctx context.Context, url string) (ProbeResult, error) {
-	return DefaultFetcher.Probe(ctx, url)
+	return DefaultClient.Probe(ctx, url)
 }
 
 // Probe inspects the remote URL using this fetcher's HTTP client.
-func (f *Fetcher) Probe(ctx context.Context, url string) (ProbeResult, error) {
+func (c *Client) Probe(ctx context.Context, url string) (ProbeResult, error) {
 	// Step 1: Attempt HEAD request.
 	headReq, err := http.NewRequestWithContext(ctx, http.MethodHead, url, nil)
 	if err == nil {
-		headResp, headErr := f.client.Do(headReq)
+		headResp, headErr := c.client.Do(headReq)
 		if headErr == nil {
 			defer func() {
 				_ = headResp.Body.Close()
@@ -54,7 +54,7 @@ func (f *Fetcher) Probe(ctx context.Context, url string) (ProbeResult, error) {
 	}
 	getReq.Header.Set("Range", "bytes=0-0")
 
-	getResp, err := f.client.Do(getReq)
+	getResp, err := c.client.Do(getReq)
 	if err != nil {
 		return ProbeResult{}, fmt.Errorf("execute fallback GET request: %w", err)
 	}
