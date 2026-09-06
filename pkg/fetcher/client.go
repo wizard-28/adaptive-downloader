@@ -65,7 +65,7 @@ func (t *headerTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 // New creates a Fetcher with an http.Client tuned for concurrent chunk downloads.
 func New(maxWorkers int) *Fetcher {
 	if maxWorkers <= 0 {
-		maxWorkers = 1
+		panic("maxWorkers cannot be less than or equal to 0")
 	}
 
 	transport := &http.Transport{
@@ -91,7 +91,7 @@ func New(maxWorkers int) *Fetcher {
 // Fetch downloads a specific byte range, streams data to w, and returns performance metrics.
 func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (Metrics, error) {
 	if req.Interval.End < req.Interval.Start {
-		return Metrics{}, fmt.Errorf("invalid interval: start %d > end %d", req.Interval.Start, req.Interval.End)
+		panic(fmt.Sprintf("developer bug: invalid fetch interval start %d > end %d", req.Interval.Start, req.Interval.End))
 	}
 
 	httpReq, err := http.NewRequestWithContext(ctx, http.MethodGet, req.URL, nil)
@@ -119,16 +119,22 @@ func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (M
 		}, fmt.Errorf("execute HTTP request: %w", err)
 	}
 
+	// We are doing this as Go's http.client requires two conditions to be met to
+	// *reuse* an existing connection via HTTP Keep-Alives
+	// to avoid the performance penalty of creating a *new* connection
+	// - Response body should be fully drained
+	// - Response body should be closed
 	defer func() {
 		_, _ = io.Copy(io.Discard, resp.Body)
 		_ = resp.Body.Close()
 	}()
 
 	var ttfb time.Duration
-	if !firstByteTime.IsZero() {
-		ttfb = firstByteTime.Sub(start)
-	} else {
+	// Fallback in case firstByteTime is zero
+	if firstByteTime.IsZero() {
 		ttfb = time.Since(start)
+	} else {
+		ttfb = firstByteTime.Sub(start)
 	}
 
 	if resp.StatusCode != http.StatusPartialContent {
@@ -138,6 +144,7 @@ func (f *Fetcher) Fetch(ctx context.Context, req FetchRequest, w ChunkWriter) (M
 		}, fmt.Errorf("unexpected status code: %d (expected 206 Partial Content)", resp.StatusCode)
 	}
 
+	// Stream data off the network in 32 KB buffers
 	buf := make([]byte, 32*1024)
 	var (
 		bytesWritten int64
