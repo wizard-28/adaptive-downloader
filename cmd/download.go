@@ -3,6 +3,8 @@ package cmd
 import (
 	"fmt"
 
+	"adaptive-downloader/pkg/downloader"
+
 	"github.com/spf13/cobra"
 )
 
@@ -36,7 +38,19 @@ var downloadCmd = &cobra.Command{
 			)
 		}
 
-		return runDownload(cmd.Context(), args[0])
+		return downloader.Run(
+			cmd.Context(),
+			args[0],
+			downloader.Config{
+				OutputPath:  outputPath,
+				PolicyType:  policyType,
+				Concurrency: concurrency,
+				ChunkSize:   chunkSize,
+				SHA256Sum:   sha256sum,
+				NoProgress:  noProgress,
+				JSONLogs:    logFormat == "json",
+			},
+		)
 	},
 }
 
