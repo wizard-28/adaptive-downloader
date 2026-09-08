@@ -35,16 +35,20 @@ func TestProgressUI_Lifecycle(t *testing.T) {
 	buf := &bytes.Buffer{}
 	totalBytes := int64(1000)
 
-	progressUI := ui.NewProgressUI(totalBytes, mpb.WithOutput(buf), mpb.WithAutoRefresh())
+	progressUI := ui.NewProgressUI(
+		totalBytes,
+		mpb.WithOutput(buf),
+		mpb.WithAutoRefresh(),
+	)
 	require.NotNil(t, progressUI)
 
 	// Dynamically acquire/allocate worker bar
 	workerBar := progressUI.GetOrAddWorkerBar(1, 500)
 	require.NotNil(t, workerBar)
 
-	// Proxy writer setup
+	// Writer setup with progress tracking
 	storage := &dummyWriter{}
-	pw := progressUI.ProxyWriter(storage, workerBar)
+	pw := progressUI.Writer(storage, 1, 500)
 	require.NotNil(t, pw)
 
 	n, err := pw.WriteChunk(0, make([]byte, 250))
@@ -53,6 +57,9 @@ func TestProgressUI_Lifecycle(t *testing.T) {
 
 	// Test overall progress update
 	progressUI.UpdateOverall(250)
+
+	// Test worker progress reset
+	progressUI.ResetWorker(1)
 
 	// Test scale-down cleanup
 	progressUI.RemoveWorkerBar(1)
@@ -78,14 +85,22 @@ func TestProgressUI_ConcurrentProxyWrites(t *testing.T) {
 			defer wg.Done()
 			defer progressUI.RemoveWorkerBar(workerID)
 
-			wBar := progressUI.GetOrAddWorkerBar(workerID, int64(writesPerWorker*chunkSize))
-			pw := progressUI.ProxyWriter(storage, wBar)
+			pw := progressUI.Writer(
+				storage,
+				workerID,
+				int64(writesPerWorker*chunkSize),
+			)
 
 			for j := 0; j < writesPerWorker; j++ {
 				offset := int64(workerID*writesPerWorker*chunkSize + j*chunkSize)
 				data := make([]byte, chunkSize)
 				_, _ = pw.WriteChunk(offset, data)
 			}
+
+			wBar := progressUI.GetOrAddWorkerBar(
+				workerID,
+				int64(writesPerWorker*chunkSize),
+			)
 			wBar.SetTotal(int64(writesPerWorker*chunkSize), true)
 		}(i)
 	}
@@ -119,5 +134,25 @@ func TestProgressUI_DynamicScaling(t *testing.T) {
 	progressUI.RemoveWorkerBar(1)
 	progressUI.RemoveWorkerBar(0)
 
+	progressUI.Wait()
+}
+
+func TestProgressUI_ResetWorker(t *testing.T) {
+	progressUI := ui.NewProgressUI(
+		1000,
+		mpb.WithOutput(io.Discard),
+	)
+
+	bar := progressUI.GetOrAddWorkerBar(1, 500)
+	require.NotNil(t, bar)
+
+	bar.IncrBy(250)
+
+	// Reset the worker progress after a failed request
+	progressUI.ResetWorker(1)
+
+	assert.Equal(t, int64(0), bar.Current())
+
+	progressUI.RemoveWorkerBar(1)
 	progressUI.Wait()
 }
