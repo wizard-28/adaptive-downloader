@@ -2,6 +2,7 @@ package fetcher
 
 import (
 	"context"
+	"crypto/tls"
 	"errors"
 	"fmt"
 	"io"
@@ -79,6 +80,10 @@ func New(maxWorkers int) *Client {
 		MaxIdleConns:        maxWorkers,
 		MaxIdleConnsPerHost: maxWorkers,
 		IdleConnTimeout:     90 * time.Second,
+
+		// Disables HTTP/2 TLS ALPN negotiation completely
+		TLSNextProto:      make(map[string]func(string, *tls.Conn) http.RoundTripper),
+		ForceAttemptHTTP2: false,
 	}
 
 	return &Client{
