@@ -6,8 +6,8 @@ import (
 )
 
 type Interval struct {
-	Start int64
-	End   int64
+	Start int64 `json:"start"`
+	End   int64 `json:"end"`
 }
 
 func (i Interval) Len() int64 {

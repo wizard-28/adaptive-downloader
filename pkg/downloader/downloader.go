@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"net/url"
 	"path"
+	"sync"
 	"time"
 
 	"adaptive-downloader/pkg/assembler"
@@ -18,15 +19,10 @@ import (
 
 const retryDelay = 100 * time.Millisecond
 
-// Downloader coordinates the download lifecycle.
-//
-// It owns the orchestration between probing, policy selection, range tracking,
-// HTTP fetching, file assembly, verification, and worker execution.
 type Downloader struct {
 	config Config
 }
 
-// New creates a Downloader from the supplied configuration.
 func New(config Config) (*Downloader, error) {
 	if err := config.Validate(); err != nil {
 		return nil, err
@@ -37,7 +33,6 @@ func New(config Config) (*Downloader, error) {
 	}, nil
 }
 
-// Download downloads targetURL to the configured output path.
 func (d *Downloader) Download(
 	ctx context.Context,
 	targetURL string,
@@ -76,20 +71,53 @@ func (d *Downloader) Download(
 		return err
 	}
 
-	writer, err := assembler.NewWriter(
+	if err := ensureResumeDirectory(outputPath); err != nil {
+		return err
+	}
+
+	completedRanges, resuming, err := loadResumeState(
 		outputPath,
+		targetURL,
 		probeResult.ContentLength,
 	)
+	if err != nil {
+		return err
+	}
+
+	if resuming {
+		slog.Info(
+			"Resuming existing download",
+			slog.String("path", outputPath),
+			slog.Int("completed_ranges", len(completedRanges)),
+		)
+	}
+
+	var writer *assembler.Writer
+
+	if resuming {
+		writer, err = assembler.NewResumableWriter(
+			outputPath,
+			probeResult.ContentLength,
+		)
+	} else {
+		writer, err = assembler.NewWriter(
+			outputPath,
+			probeResult.ContentLength,
+		)
+	}
+
 	if err != nil {
 		return fmt.Errorf(
 			"initialize storage writer: %w",
 			err,
 		)
 	}
+
 	defer closeWriter(writer, outputPath)
 
-	tracker, err := rangetracker.New(
+	tracker, err := rangetracker.NewWithCompleted(
 		probeResult.ContentLength,
+		completedRanges,
 	)
 	if err != nil {
 		return fmt.Errorf(
@@ -97,6 +125,36 @@ func (d *Downloader) Download(
 			err,
 		)
 	}
+
+	if !resuming {
+		if err := saveResumeState(
+			outputPath,
+			targetURL,
+			probeResult.ContentLength,
+			nil,
+		); err != nil {
+			return fmt.Errorf(
+				"initialize resume state: %w",
+				err,
+			)
+		}
+	}
+
+	var resumeMu sync.Mutex
+
+	tracker.SetCompletionCallback(
+		func(completed []rangetracker.Interval) error {
+			resumeMu.Lock()
+			defer resumeMu.Unlock()
+
+			return saveResumeState(
+				outputPath,
+				targetURL,
+				probeResult.ContentLength,
+				completed,
+			)
+		},
+	)
 
 	progressUI := newProgressUI(
 		probeResult.ContentLength,
@@ -136,10 +194,11 @@ func (d *Downloader) Download(
 		return err
 	}
 
-	logDownloadSummary(start, tracker)
+	if err := removeResumeState(outputPath); err != nil {
+		return err
+	}
 
-	// FixedPolicy ignores observations. Adaptive policies will consume
-	// observations as the monitoring/control loop is introduced.
+	logDownloadSummary(start, tracker)
 
 	return nil
 }
@@ -155,6 +214,7 @@ func probeTarget(
 	)
 
 	result, err := client.Probe(ctx, targetURL)
+
 	if err != nil {
 		return fetcher.ProbeResult{}, fmt.Errorf(
 			"probe failed: %w",
@@ -242,7 +302,9 @@ func verifyChecksum(
 		)
 	}
 
-	slog.Info("SHA-256 checksum verification passed")
+	slog.Info(
+		"SHA-256 checksum verification passed",
+	)
 
 	return nil
 }
@@ -265,9 +327,18 @@ func logDownloadSummary(
 
 	slog.Info(
 		"Download finished successfully",
-		slog.Int64("bytes_downloaded", completedBytes),
-		slog.Int64("total_size", totalBytes),
-		slog.Duration("elapsed_time", elapsed),
+		slog.Int64(
+			"bytes_downloaded",
+			completedBytes,
+		),
+		slog.Int64(
+			"total_size",
+			totalBytes,
+		),
+		slog.Duration(
+			"elapsed_time",
+			elapsed,
+		),
 		slog.Float64(
 			"avg_throughput_mb_s",
 			averageThroughput,

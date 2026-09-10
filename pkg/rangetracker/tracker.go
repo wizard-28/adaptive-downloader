@@ -12,20 +12,39 @@ type Tracker struct {
 	pending        []Interval
 	inFlight       map[string]Interval
 	completedBytes int64
+
+	completionCallback func([]Interval) error
 }
 
-// New creates a Tracker for a file containing totalSize bytes.
-// totalSize must be positive.
 func New(totalSize int64) (*Tracker, error) {
+	return NewWithCompleted(totalSize, nil)
+}
+
+func NewWithCompleted(
+	totalSize int64,
+	completed []Interval,
+) (*Tracker, error) {
 	if totalSize <= 0 {
 		return nil, errors.New("total size must be positive")
 	}
 
-	return &Tracker{
+	if err := validateCompletedRanges(completed, totalSize); err != nil {
+		return nil, err
+	}
+
+	pending := complementRanges(completed, totalSize)
+
+	tracker := &Tracker{
 		totalSize: totalSize,
-		pending:   []Interval{{Start: 0, End: totalSize - 1}},
+		pending:   pending,
 		inFlight:  make(map[string]Interval),
-	}, nil
+	}
+
+	for _, interval := range completed {
+		tracker.completedBytes += interval.Len()
+	}
+
+	return tracker, nil
 }
 
 var (
@@ -33,14 +52,19 @@ var (
 	ErrInvalidBytesDownloaded = errors.New("bytes downloaded cannot be negative")
 )
 
-// NextRange allocates up to chunkSize bytes from the front of the pending queue,
-// assigns the interval to reqID in inFlight, and updates the pending set.
-//
-// If no pending intervals remain, it returns an empty Interval and false. If the
-// available contiguous range is smaller than chunkSize, it allocates the full
-// available range rather than bridging across non-contiguous pending intervals.
-// Each request ID is associated with exactly one contiguous interval.
-func (t *Tracker) NextRange(reqID string, chunkSize int64) (Interval, bool) {
+func (t *Tracker) SetCompletionCallback(
+	callback func([]Interval) error,
+) {
+	t.mu.Lock()
+	defer t.mu.Unlock()
+
+	t.completionCallback = callback
+}
+
+func (t *Tracker) NextRange(
+	reqID string,
+	chunkSize int64,
+) (Interval, bool) {
 	t.mu.Lock()
 	defer t.mu.Unlock()
 
@@ -55,6 +79,7 @@ func (t *Tracker) NextRange(reqID string, chunkSize int64) (Interval, bool) {
 	if len(t.pending) == 0 {
 		return Interval{}, false
 	}
+
 	first := &t.pending[0]
 
 	if first.Len() <= chunkSize {
@@ -74,30 +99,56 @@ func (t *Tracker) NextRange(reqID string, chunkSize int64) (Interval, bool) {
 	return allocated, true
 }
 
-// MarkComplete marks a reqID as completed.
 func (t *Tracker) MarkComplete(reqID string) error {
 	t.mu.Lock()
-	defer t.mu.Unlock()
 
 	interval, exists := t.inFlight[reqID]
 	if !exists {
-		return fmt.Errorf("%w: %s", ErrRequestNotFound, reqID)
+		t.mu.Unlock()
+
+		return fmt.Errorf(
+			"%w: %s",
+			ErrRequestNotFound,
+			reqID,
+		)
 	}
 
 	delete(t.inFlight, reqID)
 	t.completedBytes += interval.Len()
 
+	callback := t.completionCallback
+
+	var completed []Interval
+
+	if callback != nil {
+		completed = t.completedRangesLocked()
+	}
+
+	t.mu.Unlock()
+
+	if callback != nil {
+		if err := callback(completed); err != nil {
+			return fmt.Errorf(
+				"persist completed ranges: %w",
+				err,
+			)
+		}
+	}
+
 	return nil
 }
 
-// Requeue inserts a completely failed request back into the pending queue.
 func (t *Tracker) Requeue(reqID string) error {
 	t.mu.Lock()
 	defer t.mu.Unlock()
 
 	interval, exists := t.inFlight[reqID]
 	if !exists {
-		return fmt.Errorf("%w: %s", ErrRequestNotFound, reqID)
+		return fmt.Errorf(
+			"%w: %s",
+			ErrRequestNotFound,
+			reqID,
+		)
 	}
 
 	delete(t.inFlight, reqID)
@@ -106,15 +157,20 @@ func (t *Tracker) Requeue(reqID string) error {
 	return nil
 }
 
-// RequeuePartial records bytesDownloaded from the beginning of the
-// in-flight interval as completed and requeues the remaining suffix.
-func (t *Tracker) RequeuePartial(reqID string, bytesDownloaded int64) error {
+func (t *Tracker) RequeuePartial(
+	reqID string,
+	bytesDownloaded int64,
+) error {
 	t.mu.Lock()
 	defer t.mu.Unlock()
 
 	interval, exists := t.inFlight[reqID]
 	if !exists {
-		return fmt.Errorf("%w: %s", ErrRequestNotFound, reqID)
+		return fmt.Errorf(
+			"%w: %s",
+			ErrRequestNotFound,
+			reqID,
+		)
 	}
 
 	if bytesDownloaded < 0 {
@@ -145,10 +201,9 @@ func (t *Tracker) RequeuePartial(reqID string, bytesDownloaded int64) error {
 	return nil
 }
 
-// addPendingAndCoalesce inserts an interval into pending and merges adjacent ranges.
-// MUST be called with t.mu held by the caller.
-func (t *Tracker) addPendingAndCoalesce(interval Interval) {
-	// Insert into t.pending sorted by Start byte.
+func (t *Tracker) addPendingAndCoalesce(
+	interval Interval,
+) {
 	inserted := false
 
 	for i, p := range t.pending {
@@ -165,7 +220,6 @@ func (t *Tracker) addPendingAndCoalesce(interval Interval) {
 		t.pending = append(t.pending, interval)
 	}
 
-	// Single-pass merge.
 	merged := make([]Interval, 0, len(t.pending))
 
 	for _, current := range t.pending {
@@ -176,13 +230,11 @@ func (t *Tracker) addPendingAndCoalesce(interval Interval) {
 
 		last := &merged[len(merged)-1]
 
-		// Merge overlapping or directly adjacent intervals.
 		if current.Start <= last.End+1 {
 			if current.End > last.End {
 				last.End = current.End
 			}
 		} else {
-			// Keep disjoint intervals separate.
 			merged = append(merged, current)
 		}
 	}
@@ -190,7 +242,6 @@ func (t *Tracker) addPendingAndCoalesce(interval Interval) {
 	t.pending = merged
 }
 
-// IsComplete returns true if all file bytes have been marked complete.
 func (t *Tracker) IsComplete() bool {
 	t.mu.Lock()
 	defer t.mu.Unlock()
@@ -198,10 +249,150 @@ func (t *Tracker) IsComplete() bool {
 	return t.completedBytes == t.totalSize
 }
 
-// Progress returns completed bytes and total file size for progress reporting.
 func (t *Tracker) Progress() (int64, int64) {
 	t.mu.Lock()
 	defer t.mu.Unlock()
 
 	return t.completedBytes, t.totalSize
+}
+
+func (t *Tracker) CompletedRanges() []Interval {
+	t.mu.Lock()
+	defer t.mu.Unlock()
+
+	return t.completedRangesLocked()
+}
+
+func (t *Tracker) completedRangesLocked() []Interval {
+	ranges := make([]Interval, 0)
+
+	// Anything not pending or in-flight is considered completed.
+	//
+	// We reconstruct the completed ranges from the current state rather than
+	// maintaining another mutable interval structure.
+	covered := make([]Interval, 0, len(t.pending)+len(t.inFlight))
+
+	covered = append(covered, t.pending...)
+
+	for _, interval := range t.inFlight {
+		covered = append(covered, interval)
+	}
+
+	sortIntervals(covered)
+
+	cursor := int64(0)
+
+	for _, interval := range covered {
+		if cursor < interval.Start {
+			ranges = append(ranges, Interval{
+				Start: cursor,
+				End:   interval.Start - 1,
+			})
+		}
+
+		if interval.End >= cursor {
+			cursor = interval.End + 1
+		}
+	}
+
+	if cursor < t.totalSize {
+		ranges = append(ranges, Interval{
+			Start: cursor,
+			End:   t.totalSize - 1,
+		})
+	}
+
+	return ranges
+}
+
+func validateCompletedRanges(
+	completed []Interval,
+	totalSize int64,
+) error {
+	var previousEnd int64 = -1
+
+	for _, interval := range completed {
+		if interval.Start < 0 {
+			return fmt.Errorf(
+				"completed range starts before zero: %s",
+				interval,
+			)
+		}
+
+		if interval.End < interval.Start {
+			return fmt.Errorf(
+				"invalid completed range: %s",
+				interval,
+			)
+		}
+
+		if interval.End >= totalSize {
+			return fmt.Errorf(
+				"completed range %s exceeds total size %d",
+				interval,
+				totalSize,
+			)
+		}
+
+		if interval.Start <= previousEnd {
+			return fmt.Errorf(
+				"completed ranges overlap or are not sorted",
+			)
+		}
+
+		previousEnd = interval.End
+	}
+
+	return nil
+}
+
+func complementRanges(
+	completed []Interval,
+	totalSize int64,
+) []Interval {
+	if len(completed) == 0 {
+		return []Interval{
+			{
+				Start: 0,
+				End:   totalSize - 1,
+			},
+		}
+	}
+
+	pending := make([]Interval, 0)
+	cursor := int64(0)
+
+	for _, completedRange := range completed {
+		if cursor < completedRange.Start {
+			pending = append(pending, Interval{
+				Start: cursor,
+				End:   completedRange.Start - 1,
+			})
+		}
+
+		cursor = completedRange.End + 1
+	}
+
+	if cursor < totalSize {
+		pending = append(pending, Interval{
+			Start: cursor,
+			End:   totalSize - 1,
+		})
+	}
+
+	return pending
+}
+
+func sortIntervals(intervals []Interval) {
+	for i := 1; i < len(intervals); i++ {
+		current := intervals[i]
+		j := i - 1
+
+		for j >= 0 && intervals[j].Start > current.Start {
+			intervals[j+1] = intervals[j]
+			j--
+		}
+
+		intervals[j+1] = current
+	}
 }
