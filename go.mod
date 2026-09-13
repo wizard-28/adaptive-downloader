@@ -3,8 +3,10 @@ module adaptive-downloader
 go 1.26.5
 
 require (
+	github.com/dustin/go-humanize v1.0.1
 	github.com/stretchr/testify v1.12.1
 	github.com/vbauerster/mpb/v8 v8.16.1
+	golang.org/x/time v0.16.0
 )
 
 require (
