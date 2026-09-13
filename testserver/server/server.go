@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"net/http"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"adaptive-downloader/testserver/readseeker"
@@ -21,6 +22,9 @@ type Server struct {
 	server  http.Server
 	config  Config
 	limiter rate.Limiter
+	logger  *slog.Logger
+
+	requestSeq atomic.Uint64
 
 	activeMu          sync.Mutex
 	activeGetRequests int
@@ -30,6 +34,7 @@ func New(config Config) Server {
 	return Server{
 		config:  config,
 		limiter: *rate.NewLimiter(rate.Limit(config.BelowThresholdBandwidth), limiterBucketSize),
+		logger:  slog.Default(),
 	}
 }
 
@@ -38,7 +43,7 @@ func (s *Server) requestStarted() {
 	defer s.activeMu.Unlock()
 
 	s.activeGetRequests++
-	slog.Debug("Increased active get requests count", "activeGetRequests", s.activeGetRequests)
+	s.logger.Debug("Increased active get requests count", "activeGetRequests", s.activeGetRequests)
 
 	if s.activeGetRequests > s.config.ConcurrencyThreshold {
 		s.limiter.SetLimit(rate.Limit(s.config.AboveThresholdBandwidth))
@@ -52,7 +57,7 @@ func (s *Server) requestFinished() {
 	defer s.activeMu.Unlock()
 
 	s.activeGetRequests--
-	slog.Debug("Decreased active get requests count", "activeGetRequests", s.activeGetRequests)
+	s.logger.Debug("Decreased active get requests count", "activeGetRequests", s.activeGetRequests)
 
 	if s.activeGetRequests > s.config.ConcurrencyThreshold {
 		s.limiter.SetLimit(rate.Limit(s.config.AboveThresholdBandwidth))
@@ -62,8 +67,6 @@ func (s *Server) requestFinished() {
 }
 
 func (s *Server) homeHandler(w http.ResponseWriter, r *http.Request) {
-	slog.Info("handled request", "method", r.Method, "path", r.URL.Path)
-
 	if r.Method != http.MethodGet && r.Method != http.MethodHead {
 		w.Header().Set("Allow", "GET, HEAD")
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -85,7 +88,7 @@ func (s *Server) homeHandler(w http.ResponseWriter, r *http.Request) {
 		&s.limiter,
 	)
 
-	slog.Info("Generating dynamic virtual file",
+	s.logger.Info("Generating dynamic virtual file",
 		"size_bytes", configuredSize,
 		"range_header", r.Header.Get("Range"),
 	)
@@ -102,8 +105,10 @@ func (s *Server) ListenAndServe(ctx context.Context) error {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", s.homeHandler)
 
+	wrappedMux := s.loggingMiddleware(mux)
+
 	s.server.Addr = fmt.Sprintf(":%d", s.config.Port)
-	s.server.Handler = mux
+	s.server.Handler = wrappedMux
 
 	shutdownDone := make(chan struct{})
 
@@ -112,7 +117,7 @@ func (s *Server) ListenAndServe(ctx context.Context) error {
 
 		<-ctx.Done()
 
-		slog.Info("Shutdown signal received, closing server...")
+		s.logger.Info("Shutdown signal received, closing server...")
 
 		shutdownCtx, cancel := context.WithTimeout(
 			context.Background(),
@@ -121,14 +126,14 @@ func (s *Server) ListenAndServe(ctx context.Context) error {
 		defer cancel()
 
 		if err := s.server.Shutdown(shutdownCtx); err != nil {
-			slog.Error(
+			s.logger.Error(
 				"failed to shut down server gracefully",
 				"error", err,
 			)
 		}
 	}()
 
-	slog.Info("Server is starting", "port", s.config.Port)
+	s.logger.Info("Server is starting", "port", s.config.Port)
 
 	err := s.server.ListenAndServe()
 

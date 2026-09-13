@@ -12,19 +12,15 @@ import (
 )
 
 func testServer() *Server {
-	return &Server{
-		config: Config{
-			Port:                    8080,
-			FileSize:                1024,
-			ConcurrencyThreshold:    4,
-			BelowThresholdBandwidth: 30 * 1024 * 1024,
-			AboveThresholdBandwidth: 10 * 1024 * 1024,
-		},
-		limiter: *rate.NewLimiter(
-			rate.Limit(30*1024*1024),
-			limiterBucketSize,
-		),
-	}
+	s := New(Config{
+		Port:                    8080,
+		FileSize:                1024,
+		ConcurrencyThreshold:    4,
+		BelowThresholdBandwidth: 30 * 1024 * 1024,
+		AboveThresholdBandwidth: 10 * 1024 * 1024,
+	})
+
+	return &s
 }
 
 func TestServer_RequestConcurrency(t *testing.T) {
