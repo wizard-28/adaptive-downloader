@@ -1,0 +1,25 @@
+{
+  "A_ge5_traces": {
+    "passed": true,
+    "count": 23
+  },
+  "B_provenance_license": {
+    "passed": true,
+    "detail": "NYU-METS explicit ODbL/DbCL; UGent citation documented but license not explicit (flagged; use NYU for license-explicit work)"
+  },
+  "C_temporal_throughput_complete": {
+    "passed": true
+  },
+  "D_genuine_mobility": {
+    "passed": true,
+    "detail": "train, tram, car, subway/rail, bus"
+  },
+  "E_no_fabrication": {
+    "passed": true,
+    "detail": "unavailable fields recorded as unavailable; no interpolation"
+  },
+  "F_long_enough": {
+    "passed": true,
+    "detail": "NYU up to ~82 min; UGent 2-13 min"
+  }
+}

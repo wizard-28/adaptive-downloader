@@ -1,0 +1,21 @@
+{
+  "models": {
+    "shared": "aggregate capacity shared equally among active transfers; in-flight tracking",
+    "lockin_full": "per-request rate fixed at request start and held (server scheduled-rate semantics)",
+    "serialized": "one request served at a time at the current rate",
+    "constant": "fixed per-request rate (closed v7 control)"
+  },
+  "mechanism_reference": {
+    "R_bytes_per_s": 500000,
+    "D_seconds": 0.04,
+    "N": 4
+  },
+  "chunk_arms_bytes": {
+    "256KiB": 262144,
+    "1MiB": 1048576,
+    "4MiB": 4194304,
+    "16MiB": 16777216
+  },
+  "trace_binning": "1 s aggregate capacity bins; zero bins at the documented 8000 bps M3 outage floor",
+  "determinism": "no RNG; pseudo-random alternation uses a fixed LCG seed 12345"
+}

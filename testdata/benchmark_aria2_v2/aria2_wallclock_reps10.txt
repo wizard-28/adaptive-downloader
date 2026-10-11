@@ -1,0 +1,23 @@
+aria2 wall-clock throttle baseline (descriptive only; no ranking)
+generated_utc: 2026-09-25T03:59:09Z
+aria2 version 1.37.0
+scenario=server-throttle-wallclock file=4194304 initial=524288 transition=1.0s subsequent=4194304 reps=10
+command: aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --max-connection-per-server=4 --split=4 --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false <url>
+
+completion: mean=2129.7 ms median=2120.9 sd=35.7 ci95=25.6 wallclock=1969873 B/s
+requests: 4 per run (1 initial full-body probe + 3 x 1 MiB range); max in-flight 4; retries 0
+no request began at/after 1s in any run: every request started within ~0.07s and was paced at the rate selected
+at its start (512 KiB/s) for its whole ~2.06s duration; the 1s transition occurred while all 4 were in flight.
+valid=10/10
+
+per-run:
+  rep 0 dur=2229.3ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 1 dur=2124.1ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 2 dur=2113.6ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 3 dur=2129.7ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 4 dur=2118.6ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 5 dur=2113.5ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 6 dur=2123.6ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 7 dur=2119.9ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 8 dur=2121.9ms size=4194304 match=True reqs=4 maxInflight=4
+  rep 9 dur=2103.3ms size=4194304 match=True reqs=4 maxInflight=4

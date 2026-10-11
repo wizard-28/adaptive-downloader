@@ -1,0 +1,1296 @@
+{
+  "cells": [
+    {
+      "config": "A",
+      "profile": "V1",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 0,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 1,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 2,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 3,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 4,
+          "total_requests": 1
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V2",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 0,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 1,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 2,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 3,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 4,
+          "total_requests": 1
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V3",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 0,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 1,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 2,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 3,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 4,
+          "total_requests": 1
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V4",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 0,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 1,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 2,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 3,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 4,
+          "total_requests": 1
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V5",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 0,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 1,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 2,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 3,
+          "total_requests": 1
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 1,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 1,
+          "range_max": 0,
+          "range_min": 0,
+          "ranges": null,
+          "rep": 4,
+          "total_requests": 1
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V1",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 0,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 1,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 2,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 3,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 4,
+          "total_requests": 2
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V2",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 0,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 1,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 2,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 3,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 4,
+          "total_requests": 2
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V3",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 0,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 1,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 2,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 3,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 4,
+          "total_requests": 2
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V4",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 0,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 3,
+          "range_max": 2097152,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-4194303(2097152)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 3
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 2,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 3,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 4,
+          "total_requests": 2
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V5",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 0,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 1,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 2,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 3,
+          "total_requests": 2
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 2,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 2,
+          "range_max": 2097152,
+          "range_min": 2097152,
+          "ranges": [
+            "2097152-4194303(2097152)"
+          ],
+          "rep": 4,
+          "total_requests": 2
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V1",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "1048576-2097151(1048576)",
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 0,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 2,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 3,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 4,
+          "total_requests": 4
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V2",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)",
+            "2097152-3145727(1048576)"
+          ],
+          "rep": 0,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 2,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 3,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 4,
+          "total_requests": 4
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V3",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 0,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)"
+          ],
+          "rep": 2,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 3,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 4,
+          "total_requests": 4
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V4",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 0,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 2,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)",
+            "2097152-3145727(1048576)"
+          ],
+          "rep": 3,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 4,
+          "total_requests": 4
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V5",
+      "runs": [
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 0,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 1,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "3145728-4194303(1048576)",
+            "1048576-2097151(1048576)"
+          ],
+          "rep": 2,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)",
+            "2097152-3145727(1048576)"
+          ],
+          "rep": 3,
+          "total_requests": 4
+        },
+        {
+          "exit_ok": true,
+          "first_post_elapsed_s": 0,
+          "max_in_flight": 4,
+          "non_range_requests": 1,
+          "output_matches": true,
+          "post_transition": 0,
+          "pre_transition": 4,
+          "range_max": 1048576,
+          "range_min": 1048576,
+          "ranges": [
+            "2097152-3145727(1048576)",
+            "1048576-2097151(1048576)",
+            "3145728-4194303(1048576)"
+          ],
+          "rep": 4,
+          "total_requests": 4
+        }
+      ]
+    }
+  ],
+  "source": "testdata/diagnostics/aria2_calibration/validation_results.json"
+}

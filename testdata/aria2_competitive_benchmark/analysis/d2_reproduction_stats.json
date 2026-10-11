@@ -1,0 +1,13 @@
+{
+  "n": 20,
+  "v6_mean_ms": 27956.4859,
+  "aria2_mean_ms": 53450.51885,
+  "geo_ratio": 0.5230470825508537,
+  "ratio_ci95": [
+    0.5199929974239208,
+    0.5261191052961945
+  ],
+  "v6_faster": 20,
+  "invalid_pairs": [],
+  "note": "coverage_no_missing is a false negative for aria2 (its initial non-range probe delivers the first bytes); content_verified is the integrity gate"
+}

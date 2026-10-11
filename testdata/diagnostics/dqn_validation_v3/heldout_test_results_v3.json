@@ -1,0 +1,562 @@
+{
+  "chunk-size-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.5,
+        "mean_completion_s": 34.0171875,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0625,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 24.125,
+        "median_completion_s": 34.08699999999999,
+        "n": 4,
+        "sd_completion_s": 7.709154118998314
+      },
+      "unseen-high-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.434666666666664,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.434666666666664,
+        "n": 4,
+        "sd_completion_s": 0.0
+      },
+      "unseen-latency": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 21.053999999999984,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 20.803999999999984,
+        "n": 4,
+        "sd_completion_s": 0.82915619758885
+      },
+      "unseen-latency+loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.02295833333332,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.38174999999999,
+        "n": 4,
+        "sd_completion_s": 1.3664141388899358
+      },
+      "unseen-loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.4170000000000003,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.13575,
+        "n": 4,
+        "sd_completion_s": 0.9580712232135988
+      },
+      "unseen-low-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 27.050666666666675,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 27.05066666666668,
+        "n": 4,
+        "sd_completion_s": 11.925695879998884
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.46462500000002,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.983375000000024,
+        "n": 4,
+        "sd_completion_s": 16.800767334131645
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.75,
+        "mean_completion_s": 33.36100000000001,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.09375,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 20.25,
+        "median_completion_s": 33.39300000000001,
+        "n": 4,
+        "sd_completion_s": 0.39798115533275663
+      }
+    },
+    "overall": {
+      "mean_avg_concurrency": 2.5,
+      "mean_chunk_changes": 0.15625,
+      "mean_completion_s": 24.602763020833333,
+      "mean_conc_changes": 0.0,
+      "mean_effective_actions_per_mib": 0.01953125,
+      "mean_max_concurrency": 2.5,
+      "mean_requests_per_mib": 29.546875,
+      "median_completion_s": 26.30975,
+      "n": 32,
+      "sd_completion_s": 15.362647872504317
+    }
+  },
+  "concurrency-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_avg_concurrency": 2.74609375,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 42.11856249999998,
+        "mean_conc_changes": 0.25,
+        "mean_effective_actions_per_mib": 0.03125,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 42.14149999999998,
+        "n": 4,
+        "sd_completion_s": 0.3983078808770215
+      },
+      "unseen-high-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.434666666666664,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.434666666666664,
+        "n": 4,
+        "sd_completion_s": 0.0
+      },
+      "unseen-latency": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 21.053999999999984,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 20.803999999999984,
+        "n": 4,
+        "sd_completion_s": 0.82915619758885
+      },
+      "unseen-latency+loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.02295833333332,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.38174999999999,
+        "n": 4,
+        "sd_completion_s": 1.3664141388899358
+      },
+      "unseen-loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.4170000000000003,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.13575,
+        "n": 4,
+        "sd_completion_s": 0.9580712232135988
+      },
+      "unseen-low-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 27.050666666666675,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 27.05066666666668,
+        "n": 4,
+        "sd_completion_s": 11.925695879998884
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_avg_concurrency": 1.82421875,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 26.55837500000002,
+        "mean_conc_changes": 0.75,
+        "mean_effective_actions_per_mib": 0.09375,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 22.64112500000002,
+        "n": 4,
+        "sd_completion_s": 12.526431812496527
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_avg_concurrency": 3.2265625,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 33.64300000000002,
+        "mean_conc_changes": 0.75,
+        "mean_effective_actions_per_mib": 0.09375,
+        "mean_max_concurrency": 3.25,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 33.76800000000002,
+        "n": 4,
+        "sd_completion_s": 0.5448623679425842
+      }
+    },
+    "overall": {
+      "mean_avg_concurrency": 2.537109375,
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 24.287403645833333,
+      "mean_conc_changes": 0.21875,
+      "mean_effective_actions_per_mib": 0.02734375,
+      "mean_max_concurrency": 2.625,
+      "mean_requests_per_mib": 32.0,
+      "median_completion_s": 26.109250000000003,
+      "n": 32,
+      "sd_completion_s": 14.85089101387063
+    }
+  },
+  "dqn": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_avg_concurrency": 1.9866071428571428,
+        "mean_chunk_changes": 5.5,
+        "mean_completion_s": 12.2515,
+        "mean_conc_changes": 2.0,
+        "mean_effective_actions_per_mib": 0.9375,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 3.625,
+        "median_completion_s": 12.219249999999999,
+        "n": 4,
+        "sd_completion_s": 0.5510459372865391
+      },
+      "unseen-high-bandwidth": {
+        "mean_avg_concurrency": 1.0286679025423728,
+        "mean_chunk_changes": 2.0,
+        "mean_completion_s": 3.3536666666666646,
+        "mean_conc_changes": 1.5,
+        "mean_effective_actions_per_mib": 0.4375,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 28.625,
+        "median_completion_s": 3.3746666666666645,
+        "n": 4,
+        "sd_completion_s": 0.07511990415329343
+      },
+      "unseen-latency": {
+        "mean_avg_concurrency": 2.1083333333333334,
+        "mean_chunk_changes": 4.25,
+        "mean_completion_s": 5.0505625,
+        "mean_conc_changes": 1.0,
+        "mean_effective_actions_per_mib": 1.3125,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 4.5,
+        "median_completion_s": 4.89975,
+        "n": 4,
+        "sd_completion_s": 0.6552453828290208
+      },
+      "unseen-latency+loss": {
+        "mean_avg_concurrency": 1.7265234765234765,
+        "mean_chunk_changes": 6.5,
+        "mean_completion_s": 12.32025,
+        "mean_conc_changes": 2.0,
+        "mean_effective_actions_per_mib": 1.0625,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 4.5,
+        "median_completion_s": 12.35325,
+        "n": 4,
+        "sd_completion_s": 1.2611504916147012
+      },
+      "unseen-loss": {
+        "mean_avg_concurrency": 1.2206439393939394,
+        "mean_chunk_changes": 3.75,
+        "mean_completion_s": 2.43490625,
+        "mean_conc_changes": 1.5,
+        "mean_effective_actions_per_mib": 1.3125,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 16.1875,
+        "median_completion_s": 2.4296875,
+        "n": 4,
+        "sd_completion_s": 0.11585137889635784
+      },
+      "unseen-low-bandwidth": {
+        "mean_avg_concurrency": 1.40625,
+        "mean_chunk_changes": 8.0,
+        "mean_completion_s": 13.691999999999997,
+        "mean_conc_changes": 4.5,
+        "mean_effective_actions_per_mib": 3.125,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 16.0,
+        "median_completion_s": 14.025333333333329,
+        "n": 4,
+        "sd_completion_s": 0.687184270936277
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_avg_concurrency": 1.4223165227629513,
+        "mean_chunk_changes": 8.0,
+        "mean_completion_s": 19.24681250000001,
+        "mean_conc_changes": 13.25,
+        "mean_effective_actions_per_mib": 2.65625,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 21.0,
+        "median_completion_s": 20.345125000000014,
+        "n": 4,
+        "sd_completion_s": 2.736036877121498
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_avg_concurrency": 1.434942639684019,
+        "mean_chunk_changes": 18.0,
+        "mean_completion_s": 33.26500000000001,
+        "mean_conc_changes": 6.0,
+        "mean_effective_actions_per_mib": 3.0,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 16.25,
+        "median_completion_s": 33.18800000000001,
+        "n": 4,
+        "sd_completion_s": 0.3971334788204081
+      }
+    },
+    "overall": {
+      "mean_avg_concurrency": 1.5417856196371544,
+      "mean_chunk_changes": 7.0,
+      "mean_completion_s": 12.701837239583336,
+      "mean_conc_changes": 3.96875,
+      "mean_effective_actions_per_mib": 1.73046875,
+      "mean_max_concurrency": 2.65625,
+      "mean_requests_per_mib": 13.8359375,
+      "median_completion_s": 12.219249999999999,
+      "n": 32,
+      "sd_completion_s": 9.544682858900666
+    }
+  },
+  "fixed": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 42.11856249999998,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 42.14149999999998,
+        "n": 4,
+        "sd_completion_s": 0.3983078808770215
+      },
+      "unseen-high-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.434666666666664,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.434666666666664,
+        "n": 4,
+        "sd_completion_s": 0.0
+      },
+      "unseen-latency": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 21.053999999999984,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 20.803999999999984,
+        "n": 4,
+        "sd_completion_s": 0.82915619758885
+      },
+      "unseen-latency+loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.02295833333332,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.38174999999999,
+        "n": 4,
+        "sd_completion_s": 1.3664141388899358
+      },
+      "unseen-loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.4170000000000003,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.13575,
+        "n": 4,
+        "sd_completion_s": 0.9580712232135988
+      },
+      "unseen-low-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 27.050666666666675,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 27.05066666666668,
+        "n": 4,
+        "sd_completion_s": 11.925695879998884
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.46462500000002,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.983375000000024,
+        "n": 4,
+        "sd_completion_s": 16.800767334131645
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 33.64300000000002,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 33.76800000000002,
+        "n": 4,
+        "sd_completion_s": 0.5448623679425842
+      }
+    },
+    "overall": {
+      "mean_avg_concurrency": 2.5,
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 25.650684895833333,
+      "mean_conc_changes": 0.0,
+      "mean_effective_actions_per_mib": 0.0,
+      "mean_max_concurrency": 2.5,
+      "mean_requests_per_mib": 32.0,
+      "median_completion_s": 30.999375000000015,
+      "n": 32,
+      "sd_completion_s": 15.981863024620502
+    }
+  },
+  "joint-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_avg_concurrency": 2.742424242424242,
+        "mean_chunk_changes": 0.25,
+        "mean_completion_s": 38.08299999999999,
+        "mean_conc_changes": 0.25,
+        "mean_effective_actions_per_mib": 0.0625,
+        "mean_max_concurrency": 2.75,
+        "mean_requests_per_mib": 28.125,
+        "median_completion_s": 41.72462499999999,
+        "n": 4,
+        "sd_completion_s": 6.78886198812068
+      },
+      "unseen-high-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.434666666666664,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.434666666666664,
+        "n": 4,
+        "sd_completion_s": 0.0
+      },
+      "unseen-latency": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 21.053999999999984,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 20.803999999999984,
+        "n": 4,
+        "sd_completion_s": 0.82915619758885
+      },
+      "unseen-latency+loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 37.02295833333332,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 36.38174999999999,
+        "n": 4,
+        "sd_completion_s": 1.3664141388899358
+      },
+      "unseen-loss": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 3.4170000000000003,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 3.13575,
+        "n": 4,
+        "sd_completion_s": 0.9580712232135988
+      },
+      "unseen-low-bandwidth": {
+        "mean_avg_concurrency": 2.5,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 27.050666666666675,
+        "mean_conc_changes": 0.0,
+        "mean_effective_actions_per_mib": 0.0,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 27.05066666666668,
+        "n": 4,
+        "sd_completion_s": 11.925695879998884
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_avg_concurrency": 1.82421875,
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 26.55837500000002,
+        "mean_conc_changes": 0.75,
+        "mean_effective_actions_per_mib": 0.09375,
+        "mean_max_concurrency": 2.5,
+        "mean_requests_per_mib": 32.0,
+        "median_completion_s": 22.64112500000002,
+        "n": 4,
+        "sd_completion_s": 12.526431812496527
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_avg_concurrency": 2.977718360071301,
+        "mean_chunk_changes": 0.5,
+        "mean_completion_s": 33.458500000000015,
+        "mean_conc_changes": 0.5,
+        "mean_effective_actions_per_mib": 0.125,
+        "mean_max_concurrency": 3.0,
+        "mean_requests_per_mib": 24.3125,
+        "median_completion_s": 33.39900000000001,
+        "n": 4,
+        "sd_completion_s": 0.5336616437406766
+      }
+    },
+    "overall": {
+      "mean_avg_concurrency": 2.505545169061943,
+      "mean_chunk_changes": 0.09375,
+      "mean_completion_s": 23.759895833333335,
+      "mean_conc_changes": 0.1875,
+      "mean_effective_actions_per_mib": 0.03515625,
+      "mean_max_concurrency": 2.59375,
+      "mean_requests_per_mib": 30.5546875,
+      "median_completion_s": 24.321499999999997,
+      "n": 32,
+      "sd_completion_s": 14.478577238736992
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{"run_id": "prec_capped_n4_s1048576_r0", "completion_ms": 90430.286, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s1048576_r1", "completion_ms": 89445.687, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s1048576_r2", "completion_ms": 89297.114, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s1048576_r3", "completion_ms": 89614.256, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s4194304_r0", "completion_ms": 86935.025, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s4194304_r1", "completion_ms": 86343.723, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s4194304_r2", "completion_ms": 86108.483, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s4194304_r3", "completion_ms": 86378.404, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s16777216_r0", "completion_ms": 96977.157, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s16777216_r1", "completion_ms": 97082.28, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s16777216_r2", "completion_ms": 97524.414, "valid": true, "invalid_reasons": []}
+{"run_id": "prec_capped_n4_s16777216_r3", "completion_ms": 96773.417, "valid": true, "invalid_reasons": []}

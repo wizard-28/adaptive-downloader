@@ -1,0 +1,61 @@
+LinUCB Exploration Diagnostic (SEPARATE from the formal benchmark; descriptive only)
+alpha=0.200 reps=5 reward=DefaultRewardConfig (aggregate-throughput based)
+purpose: force each action and measure whether the environment produces distinguishable reward feedback
+
+INITIAL STATE (first decision, concurrency=1) and initial LinUCB score
+  all actions tie at alpha*||x|| at initialization (A=I, b=0); lowest index (none) wins the tie-break
+  baseline         netem=none        throughput=3587513 agg=3587513 dur=9.133903ms bytes=32768 ||x||=1.030788 initial_score=0.206158
+  server-throttle  netem=none        throughput=514689 agg=514689 dur=63.665642ms bytes=32768 ||x||=1.030776 initial_score=0.206155
+  latency          netem=none        throughput=1112424 agg=1112424 dur=29.456386ms bytes=32768 ||x||=1.030777 initial_score=0.206155
+  loss             netem=applied     throughput=3637184 agg=3637184 dur=9.009167ms bytes=32768 ||x||=1.030789 initial_score=0.206158
+  combined         netem=applied     throughput=615617 agg=615617 dur=53.227862ms bytes=32768 ||x||=1.030776 initial_score=0.206155
+
+FORCED-ACTION FEEDBACK (mean over decisions; per-request Throughput vs wall-clock AggregateThroughput)
+
+== baseline (netem=none) ==
+  action                   reward    first      thrΔ      aggΔ   latency      impr    retry     fail   action  overlap  finalC     chg
+  none                     3.5156   3.5211     19704     17344   0.00883   0.01654  0.00000  0.00000  0.00000        0    1.00       0
+  increase-concurrency     6.9594   3.3038     -9692    513439   0.00938   0.48965  0.00000  0.00000  0.02143       30    4.00      15
+  decrease-concurrency     3.4671   3.4928     14090     10960   0.00895   0.01045  0.00000  0.00000  0.00000        0    1.00       0
+  increase-chunk-size      3.4827   3.5088     64803     59985   0.02056   0.05721  0.00000  0.00000  0.05000        0    1.00      15
+  decrease-chunk-size      3.4527   3.4304     19561     16579   0.00897   0.01581  0.00000  0.00000  0.00000        0    1.00       0
+  recon_mismatches=0 (reward reconstruction vs runner; must be 0)
+
+== server-throttle (netem=none) ==
+  action                   reward    first      thrΔ      aggΔ   latency      impr    retry     fail   action  overlap  finalC     chg
+  none                     1.5215   0.4506    453730    450750   0.03286   0.42987  0.00000  0.00000  0.00000        0    1.00       0
+  increase-concurrency     2.2037   0.4066    129655    217266   0.03284   0.20720  0.00000  0.00000  0.02143       30    4.00      15
+  decrease-concurrency     1.5165   0.4501    451302    447990   0.03283   0.42724  0.00000  0.00000  0.00000        0    1.00       0
+  increase-chunk-size      0.3571   0.3682       359       263   0.15101   0.00025  0.00000  0.00000  0.05000        0    1.00      15
+  decrease-chunk-size      1.5325   0.4499    458235    455531   0.03283   0.43443  0.00000  0.00000  0.00000        0    1.00       0
+  recon_mismatches=0 (reward reconstruction vs runner; must be 0)
+
+== latency (netem=none) ==
+  action                   reward    first      thrΔ      aggΔ   latency      impr    retry     fail   action  overlap  finalC     chg
+  none                     1.0469   1.0480      1032       699   0.02938   0.00067  0.00000  0.00000  0.00000        0    1.00       0
+  increase-concurrency     2.1867   0.9990     -1113    157429   0.02970   0.15014  0.00000  0.00000  0.02143       30    4.00      15
+  decrease-concurrency     1.0553   1.0543      1153       833   0.02915   0.00079  0.00000  0.00000  0.00000        0    1.00       0
+  increase-chunk-size      1.6874   1.6550    205619    204608   0.04067   0.19513  0.00000  0.00000  0.05000        0    1.00      15
+  decrease-chunk-size      1.0511   1.0519       928       625   0.02927   0.00060  0.00000  0.00000  0.00000        0    1.00       0
+  recon_mismatches=0 (reward reconstruction vs runner; must be 0)
+
+== loss (netem=applied) ==
+  action                   reward    first      thrΔ      aggΔ   latency      impr    retry     fail   action  overlap  finalC     chg
+  none                     3.1144   2.1651      3308       -27   0.01477  -0.00003  0.00000  0.00000  0.00000        0    1.00       0
+  increase-concurrency     6.3705   3.3238   -118121    303168   0.01548   0.28912  0.00000  0.00000  0.02143       29    4.00      15
+  decrease-concurrency     2.5378   3.4860   -247470   -248839   0.02649  -0.23731  0.00000  0.00000  0.00000        0    1.00       0
+  increase-chunk-size      3.4400   3.5010     28719     24552   0.02101   0.02341  0.00000  0.00000  0.05000        0    1.00      15
+  decrease-chunk-size      3.4767   3.4644     12695      9917   0.00892   0.00946  0.00000  0.00000  0.00000        0    1.00       0
+  recon_mismatches=0 (reward reconstruction vs runner; must be 0)
+
+== combined (netem=applied) ==
+  action                   reward    first      thrΔ      aggΔ   latency      impr    retry     fail   action  overlap  finalC     chg
+  none                     0.5140   0.5583     -8304     -8389   0.05919  -0.00800  0.00000  0.00000  0.00000        0    1.00       0
+  increase-concurrency     1.1797   0.5040        68     87361   0.05382   0.08331  0.00000  0.00000  0.02143       30    4.00      15
+  decrease-concurrency     0.5573   0.5559       510       410   0.05342   0.00039  0.00000  0.00000  0.00000        0    1.00       0
+  increase-chunk-size      0.5586   0.5983     44031     43879   0.11132   0.04185  0.00000  0.00000  0.05000        0    1.00      15
+  decrease-chunk-size      0.5598   0.5582       408       316   0.05323   0.00030  0.00000  0.00000  0.00000        0    1.00       0
+  recon_mismatches=0 (reward reconstruction vs runner; must be 0)
+
+Notes: reward mean includes the absolute aggregate-throughput benefit; 'first' is the decision-0 reward
+(immediate credit); thrΔ/aggΔ are mean per-decision changes; action=mean ActionCost. No ranking.

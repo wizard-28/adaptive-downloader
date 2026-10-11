@@ -1,0 +1,60 @@
+{
+  "aria2_comparison_run": false,
+  "best_fixed_c_on_validation": 12,
+  "candidate_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887",
+  "gates": {
+    "GATE_A_environment_validity": {
+      "detail": "see static_concurrency_sweep_v6.json (run python/v6_static_sweep.py first)",
+      "passed": true,
+      "rule": "static C=1..16 sweep shows multiple meaningful concurrency optima"
+    },
+    "GATE_B_training_validity": {
+      "best_fixed_c_on_validation": 12,
+      "best_fixed_test_mean_completion_s": 4.8674708994708995,
+      "passed": true,
+      "rule": "v6 held-out mean completion < best globally-fixed C (chosen on validation)",
+      "v6_mean_completion_s": 4.476051640951641
+    },
+    "GATE_C_condition_dependent": {
+      "constant_fraction": 0.0,
+      "passed": true,
+      "phase_responsive_conditions_fraction": 0.6,
+      "ramp_to_max_fraction": 0.0,
+      "rule": "not constant (<0.9), not ramp-to-max (<0.9), and >=50% of held-out conditions show a phase-to-phase time-weighted concurrency spread >= 2.0"
+    }
+  },
+  "label": "Candidate v6 training/held-out validation (simulator only; no aria2)",
+  "live_transfer_run": false,
+  "selected_seed": 2,
+  "v6_overall": {
+    "constant_fraction": 0.0,
+    "final_concurrency_counts": {
+      "1": 2,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 1,
+      "16": 2,
+      "2": 0,
+      "3": 0,
+      "4": 2,
+      "5": 3,
+      "6": 2,
+      "7": 2,
+      "8": 1,
+      "9": 0
+    },
+    "max_completion_s": 5.9067690920190925,
+    "mean_completion_s": 4.476051640951641,
+    "mean_effective_changes": 12.4,
+    "mean_requests": 16.0,
+    "median_completion_s": 4.226508658008658,
+    "min_completion_s": 2.4431868131868137,
+    "n": 15,
+    "ramp_to_max_fraction": 0.0,
+    "sd_completion_s": 1.2159172064372663
+  },
+  "verdict": "READY_FOR_LIVE"
+}

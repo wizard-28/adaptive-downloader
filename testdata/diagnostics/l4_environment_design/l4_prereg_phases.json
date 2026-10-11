@@ -1,0 +1,65 @@
+{
+  "action_space": "none,+1,-1,+4,-4",
+  "durations_s": [
+    20.0,
+    55.0,
+    20.0,
+    20.0,
+    55.0,
+    20.0,
+    null
+  ],
+  "file_bytes": 536870912,
+  "headroom_threshold": 0.1,
+  "phases": [
+    {
+      "congestion": 0.002,
+      "latency_s": 0.02,
+      "link_bandwidth": 0,
+      "loss_percent": 0.3,
+      "rate": 524288
+    },
+    {
+      "congestion": 0.05,
+      "latency_s": 0.12,
+      "link_bandwidth": 4194304,
+      "loss_percent": 3.0,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.008,
+      "latency_s": 0.04,
+      "link_bandwidth": 6291456,
+      "loss_percent": 0.6,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.03,
+      "link_bandwidth": 0,
+      "loss_percent": 0.5,
+      "rate": 131072
+    },
+    {
+      "congestion": 0.06,
+      "latency_s": 0.1,
+      "link_bandwidth": 4194304,
+      "loss_percent": 2.5,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.03,
+      "link_bandwidth": 6291456,
+      "loss_percent": 0.4,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.002,
+      "latency_s": 0.02,
+      "link_bandwidth": 0,
+      "loss_percent": 0.3,
+      "rate": 1048576
+    }
+  ]
+}

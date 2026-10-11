@@ -1,0 +1,1277 @@
+{
+  "file_sizes": {
+    "67108864": {
+      "good_optimum": {
+        "key": "16/4194304",
+        "N": 16,
+        "S": 4194304,
+        "completion": 1.9200000000000002,
+        "abort_rate": 0.0,
+        "second_key": "16/5242880",
+        "second_completion": 2.24,
+        "second_N": 16,
+        "second_S": 5242880,
+        "second_success_fraction": 1.0,
+        "gap": 0.14285714285714288,
+        "N_margin": 0.4678492239467849,
+        "S_margin": 0.14285714285714288,
+        "viable_cells": 82
+      },
+      "candidates": {
+        "D_r0.4_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/4194304",
+            "N": 16,
+            "S": 4194304,
+            "completion": 20.46001907350452,
+            "abort_rate": 0.0,
+            "second_key": "16/3145728",
+            "second_completion": 23.088021457692584,
+            "second_N": 16,
+            "second_S": 3145728,
+            "second_success_fraction": 0.8,
+            "gap": 0.11382536130277433,
+            "N_margin": 0.3266636013566361,
+            "S_margin": 0.11382536130277433,
+            "viable_cells": 41
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.02_c0.04": {
+          "optimum": {
+            "key": "8/11534336",
+            "N": 8,
+            "S": 11534336,
+            "completion": 27.600026226068714,
+            "abort_rate": 0.0,
+            "second_key": "16/11534336",
+            "second_completion": 27.600026226068714,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 1.0,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.009687827266823807,
+            "viable_cells": 40
+          },
+          "penalty_good": 1.34375,
+          "penalty_degraded": 0.10724636128759499,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.02_c0.06": {
+          "optimum": {
+            "key": "16/6291456",
+            "N": 16,
+            "S": 6291456,
+            "completion": 30.530028610256778,
+            "abort_rate": 0.19999999999999996,
+            "second_key": "16/4194304",
+            "second_completion": 30.640028610256778,
+            "second_N": 16,
+            "second_S": 4194304,
+            "second_success_fraction": 0.9,
+            "gap": 0.0035900749767308255,
+            "N_margin": 0.3269400413221029,
+            "S_margin": 0.0035900749767308255,
+            "viable_cells": 37
+          },
+          "penalty_good": 0.35416666666666663,
+          "penalty_degraded": 0.0036030100529628774,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/4194304",
+            "N": 16,
+            "S": 4194304,
+            "completion": 20.46001907350452,
+            "abort_rate": 0.0,
+            "second_key": "16/3145728",
+            "second_completion": 23.084021457692582,
+            "second_N": 16,
+            "second_S": 3145728,
+            "second_success_fraction": 0.8,
+            "gap": 0.11367180493213559,
+            "N_margin": 0.32759301183883494,
+            "S_margin": 0.11367180493213559,
+            "viable_cells": 40
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.03_c0.04": {
+          "optimum": {
+            "key": "16/6291456",
+            "N": 16,
+            "S": 6291456,
+            "completion": 30.350028610256775,
+            "abort_rate": 0.0,
+            "second_key": "8/6291456",
+            "second_completion": 30.360028610256776,
+            "second_N": 8,
+            "second_S": 6291456,
+            "second_success_fraction": 0.95,
+            "gap": 0.00032938045376621226,
+            "N_margin": 0.00032938045376621226,
+            "S_margin": 0.00687172131538917,
+            "viable_cells": 38
+          },
+          "penalty_good": 0.35416666666666663,
+          "penalty_degraded": 0.006919268600921022,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.03_c0.06": {
+          "optimum": {
+            "key": "16/6291456",
+            "N": 16,
+            "S": 6291456,
+            "completion": 30.380028610256776,
+            "abort_rate": 0.25,
+            "second_key": "16/4194304",
+            "second_completion": 30.680028610256777,
+            "second_N": 16,
+            "second_S": 4194304,
+            "second_success_fraction": 0.95,
+            "gap": 0.00977834811730607,
+            "N_margin": 0.33024691650032556,
+            "S_margin": 0.00977834811730607,
+            "viable_cells": 36
+          },
+          "penalty_good": 0.35416666666666663,
+          "penalty_degraded": 0.009874908409359298,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/4194304",
+            "N": 16,
+            "S": 4194304,
+            "completion": 16.46,
+            "abort_rate": 0.0,
+            "second_key": "16/3145728",
+            "second_completion": 18.588,
+            "second_N": 16,
+            "second_S": 3145728,
+            "second_success_fraction": 0.8,
+            "gap": 0.11448246180331396,
+            "N_margin": 0.3250225539243828,
+            "S_margin": 0.11448246180331396,
+            "viable_cells": 56
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.02_c0.04": {
+          "optimum": {
+            "key": "8/11534336",
+            "N": 8,
+            "S": 11534336,
+            "completion": 22.1,
+            "abort_rate": 0.0,
+            "second_key": "16/11534336",
+            "second_completion": 22.1,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 1.0,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.012069736253911625,
+            "viable_cells": 55
+          },
+          "penalty_good": 1.34375,
+          "penalty_degraded": 0.11131221719457,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.02_c0.06": {
+          "optimum": {
+            "key": "16/6291456",
+            "N": 16,
+            "S": 6291456,
+            "completion": 24.53,
+            "abort_rate": 0.19999999999999996,
+            "second_key": "16/4194304",
+            "second_completion": 24.64,
+            "second_N": 16,
+            "second_S": 4194304,
+            "second_success_fraction": 0.9,
+            "gap": 0.0044642857142856915,
+            "N_margin": 0.3253575357535753,
+            "S_margin": 0.0044642857142856915,
+            "viable_cells": 52
+          },
+          "penalty_good": 0.35416666666666663,
+          "penalty_degraded": 0.0044843049327354025,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/4194304",
+            "N": 16,
+            "S": 4194304,
+            "completion": 16.46,
+            "abort_rate": 0.0,
+            "second_key": "16/3145728",
+            "second_completion": 18.584,
+            "second_N": 16,
+            "second_S": 3145728,
+            "second_success_fraction": 0.8,
+            "gap": 0.11429186396900554,
+            "N_margin": 0.3261830686097919,
+            "S_margin": 0.11429186396900554,
+            "viable_cells": 55
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.03_c0.04": {
+          "optimum": {
+            "key": "8/12582912",
+            "N": 8,
+            "S": 12582912,
+            "completion": 24.33,
+            "abort_rate": 0.0,
+            "second_key": "16/12582912",
+            "second_completion": 24.33,
+            "second_N": 16,
+            "second_S": 12582912,
+            "second_success_fraction": 1.0,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.0012315270935961057,
+            "viable_cells": 53
+          },
+          "penalty_good": 1.552083333333333,
+          "penalty_degraded": 0.0094533497739418,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.03_c0.06": {
+          "optimum": {
+            "key": "16/6291456",
+            "N": 16,
+            "S": 6291456,
+            "completion": 24.38,
+            "abort_rate": 0.25,
+            "second_key": "16/4194304",
+            "second_completion": 24.68,
+            "second_N": 16,
+            "second_S": 4194304,
+            "second_success_fraction": 0.95,
+            "gap": 0.012155591572123205,
+            "N_margin": 0.3294829482948295,
+            "S_margin": 0.012155591572123205,
+            "viable_cells": 51
+          },
+          "penalty_good": 0.35416666666666663,
+          "penalty_degraded": 0.012305168170631695,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link2.0_c0.04": {
+          "optimum": {
+            "key": "4/14680064",
+            "N": 4,
+            "S": 14680064,
+            "completion": 28.08,
+            "abort_rate": 0.0,
+            "second_key": "8/14680064",
+            "second_completion": 28.08,
+            "second_N": 8,
+            "second_S": 14680064,
+            "second_success_fraction": 1.0,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.03861955628594906,
+            "viable_cells": 61
+          },
+          "penalty_good": 3.6499999999999995,
+          "penalty_degraded": 0.7336182336182338,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_link2.0_c0.06": {
+          "optimum": {
+            "key": "4/14680064",
+            "N": 4,
+            "S": 14680064,
+            "completion": 31.194,
+            "abort_rate": 0.0,
+            "second_key": "2/16777216",
+            "second_completion": 32.168,
+            "second_N": 2,
+            "second_S": 16777216,
+            "second_success_fraction": 1.0,
+            "gap": 0.030278537677194736,
+            "N_margin": 0.03304401735895864,
+            "S_margin": 0.06025185274447199,
+            "viable_cells": 58
+          },
+          "penalty_good": 3.6499999999999995,
+          "penalty_degraded": 0.6253125601077132,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_link3.0_c0.04": {
+          "optimum": {
+            "key": "8/14680064",
+            "N": 8,
+            "S": 14680064,
+            "completion": 18.746666666666666,
+            "abort_rate": 0.0,
+            "second_key": "16/14680064",
+            "second_completion": 18.746666666666666,
+            "second_N": 16,
+            "second_S": 14680064,
+            "second_success_fraction": 1.0,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.06640106241699861,
+            "viable_cells": 61
+          },
+          "penalty_good": 1.958333333333333,
+          "penalty_degraded": 0.7432432432432433,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_link3.0_c0.06": {
+          "optimum": {
+            "key": "8/15728640",
+            "N": 8,
+            "S": 15728640,
+            "completion": 20.08,
+            "abort_rate": 0.050000000000000044,
+            "second_key": "16/15728640",
+            "second_completion": 20.08,
+            "second_N": 16,
+            "second_S": 15728640,
+            "second_success_fraction": 0.95,
+            "gap": 0.0,
+            "N_margin": 0.0,
+            "S_margin": 0.06226650062266496,
+            "viable_cells": 58
+          },
+          "penalty_good": 2.1666666666666665,
+          "penalty_degraded": 0.7622841965471451,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        }
+      }
+    },
+    "134217728": {
+      "good_optimum": {
+        "key": "16/8388608",
+        "N": 16,
+        "S": 8388608,
+        "completion": 3.52,
+        "abort_rate": 0.0,
+        "second_key": "16/9437184",
+        "second_completion": 3.88,
+        "second_N": 16,
+        "second_S": 9437184,
+        "second_success_fraction": 1.0,
+        "gap": 0.09278350515463915,
+        "N_margin": 0.4829612220916569,
+        "S_margin": 0.09278350515463915,
+        "viable_cells": 80
+      },
+      "candidates": {
+        "D_r0.4_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/5242880",
+            "N": 16,
+            "S": 5242880,
+            "completion": 38.19803576282097,
+            "abort_rate": 0.30000000000000004,
+            "second_key": "16/8388608",
+            "second_completion": 40.46003814700904,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 1.0,
+            "gap": 0.05590707492586191,
+            "N_margin": null,
+            "S_margin": 0.05590707492586191,
+            "viable_cells": 26
+          },
+          "penalty_good": 0.2806818181818184,
+          "penalty_degraded": 0.05921776706617266,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.4_l0.02_c0.04": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 45.48004291538517,
+            "abort_rate": 0.15000000000000002,
+            "second_key": "16/11534336",
+            "second_completion": 55.360052452137424,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 0.85,
+            "gap": 0.17846821126649406,
+            "N_margin": 0.33046755659637944,
+            "S_margin": 0.17846821126649406,
+            "viable_cells": 21
+          },
+          "penalty_good": 0.10227272727272724,
+          "penalty_degraded": 0.3311345667185776,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.02_c0.06": {
+          "optimum": {
+            "key": "16/8388608",
+            "N": 16,
+            "S": 8388608,
+            "completion": 60.640057220513555,
+            "abort_rate": 0.09999999999999998,
+            "second_key": "8/9437184",
+            "second_completion": 67.96806437307775,
+            "second_N": 8,
+            "second_S": 9437184,
+            "second_success_fraction": 0.55,
+            "gap": 0.10781544568255841,
+            "N_margin": 0.623204256810216,
+            "S_margin": 0.19660837629289965,
+            "viable_cells": 16
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.4_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/5242880",
+            "N": 16,
+            "S": 5242880,
+            "completion": 38.19803576282097,
+            "abort_rate": 0.4,
+            "second_key": "16/8388608",
+            "second_completion": 40.46003814700904,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 1.0,
+            "gap": 0.05590707492586191,
+            "N_margin": null,
+            "S_margin": 0.05590707492586191,
+            "viable_cells": 22
+          },
+          "penalty_good": 0.2806818181818184,
+          "penalty_degraded": 0.05921776706617266,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.4_l0.03_c0.04": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 45.48004291538517,
+            "abort_rate": 0.25,
+            "second_key": "16/11534336",
+            "second_completion": 55.38005245213742,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 0.9,
+            "gap": 0.17876489996661524,
+            "N_margin": 0.33046755659637944,
+            "S_margin": 0.17876489996661524,
+            "viable_cells": 16
+          },
+          "penalty_good": 0.10227272727272724,
+          "penalty_degraded": 0.3315743200415288,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": true,
+            "reachable": false
+          }
+        },
+        "D_r0.4_l0.03_c0.06": {
+          "optimum": {
+            "key": "16/8388608",
+            "N": 16,
+            "S": 8388608,
+            "completion": 60.68005722051356,
+            "abort_rate": 0.050000000000000044,
+            "second_key": "8/9437184",
+            "second_completion": 67.96806437307775,
+            "second_N": 8,
+            "second_S": 9437184,
+            "second_success_fraction": 0.5,
+            "gap": 0.10722693399888818,
+            "N_margin": 0.8113418740002248,
+            "S_margin": 0.19629139424185962,
+            "viable_cells": 13
+          },
+          "penalty_good": 0.0,
+          "penalty_degraded": 0.0,
+          "checks": {
+            "N_moves": false,
+            "S_moves": false,
+            "material": false,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/5242880",
+            "N": 16,
+            "S": 5242880,
+            "completion": 30.698,
+            "abort_rate": 0.30000000000000004,
+            "second_key": "16/8388608",
+            "second_completion": 32.46,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 1.0,
+            "gap": 0.05428219346888479,
+            "N_margin": null,
+            "S_margin": 0.05428219346888479,
+            "viable_cells": 41
+          },
+          "penalty_good": 0.2806818181818184,
+          "penalty_degraded": 0.05739787608313247,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.02_c0.04": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 36.480000000000004,
+            "abort_rate": 0.15000000000000002,
+            "second_key": "16/11534336",
+            "second_completion": 44.36,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 0.85,
+            "gap": 0.17763751127141558,
+            "N_margin": 0.3297567428529433,
+            "S_margin": 0.17763751127141558,
+            "viable_cells": 36
+          },
+          "penalty_good": 0.10227272727272724,
+          "penalty_degraded": 0.33059210526315774,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": true,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.02_c0.06": {
+          "optimum": {
+            "key": "16/12582912",
+            "N": 16,
+            "S": 12582912,
+            "completion": 48.53,
+            "abort_rate": 0.19999999999999996,
+            "second_key": "16/8388608",
+            "second_completion": 48.64,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 0.9,
+            "gap": 0.0022615131578947252,
+            "N_margin": 0.32932559425096736,
+            "S_margin": 0.0022615131578947252,
+            "viable_cells": 31
+          },
+          "penalty_good": 0.42045454545454547,
+          "penalty_degraded": 0.0022666391922522033,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": true
+          }
+        },
+        "D_r0.5_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/5242880",
+            "N": 16,
+            "S": 5242880,
+            "completion": 30.698,
+            "abort_rate": 0.4,
+            "second_key": "16/8388608",
+            "second_completion": 32.46,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 1.0,
+            "gap": 0.05428219346888479,
+            "N_margin": null,
+            "S_margin": 0.05428219346888479,
+            "viable_cells": 37
+          },
+          "penalty_good": 0.2806818181818184,
+          "penalty_degraded": 0.05739787608313247,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.03_c0.04": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 36.480000000000004,
+            "abort_rate": 0.25,
+            "second_key": "16/11534336",
+            "second_completion": 44.379999999999995,
+            "second_N": 16,
+            "second_S": 11534336,
+            "second_success_fraction": 0.9,
+            "gap": 0.1780081117620548,
+            "N_margin": 0.3297567428529433,
+            "S_margin": 0.1780081117620548,
+            "viable_cells": 31
+          },
+          "penalty_good": 0.10227272727272724,
+          "penalty_degraded": 0.3311403508771929,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": true,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.03_c0.06": {
+          "optimum": {
+            "key": "16/12582912",
+            "N": 16,
+            "S": 12582912,
+            "completion": 48.379999999999995,
+            "abort_rate": 0.25,
+            "second_key": "16/8388608",
+            "second_completion": 48.68000000000001,
+            "second_N": 16,
+            "second_S": 8388608,
+            "second_success_fraction": 0.95,
+            "gap": 0.0061626951520133795,
+            "N_margin": 0.33139856274184637,
+            "S_margin": 0.0061626951520133795,
+            "viable_cells": 28
+          },
+          "penalty_good": 0.42045454545454547,
+          "penalty_degraded": 0.006200909466722021,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link2.0_c0.04": {
+          "optimum": {
+            "key": "2/16777216",
+            "N": 2,
+            "S": 16777216,
+            "completion": 64.424,
+            "abort_rate": 0.30000000000000004,
+            "second_key": "2/13631488",
+            "second_completion": 65.45200000000001,
+            "second_N": 2,
+            "second_S": 13631488,
+            "second_success_fraction": 0.55,
+            "gap": 0.015706166350913733,
+            "N_margin": 0.15498426023084996,
+            "S_margin": 0.015706166350913733,
+            "viable_cells": 28
+          },
+          "penalty_good": 6.3931818181818185,
+          "penalty_degraded": 0.18403079597665456,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link2.0_c0.06": {
+          "optimum": {
+            "key": "2/16777216",
+            "N": 2,
+            "S": 16777216,
+            "completion": 64.424,
+            "abort_rate": 0.35,
+            "second_key": "2/13631488",
+            "second_completion": 65.45200000000001,
+            "second_N": 2,
+            "second_S": 13631488,
+            "second_success_fraction": 0.5,
+            "gap": 0.015706166350913733,
+            "N_margin": 0.15498426023084996,
+            "S_margin": 0.015706166350913733,
+            "viable_cells": 20
+          },
+          "penalty_good": 6.3931818181818185,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link3.0_c0.04": {
+          "optimum": {
+            "key": "4/11534336",
+            "N": 4,
+            "S": 11534336,
+            "completion": 42.57266666666666,
+            "abort_rate": 0.5,
+            "second_key": "4/12582912",
+            "second_completion": 44.396,
+            "second_N": 4,
+            "second_S": 12582912,
+            "second_success_fraction": 0.55,
+            "gap": 0.04106976604498914,
+            "N_margin": 0.1778375733855187,
+            "S_margin": 0.04106976604498914,
+            "viable_cells": 38
+          },
+          "penalty_good": 2.851136363636363,
+          "penalty_degraded": 0.3299613210354064,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link3.0_c0.06": {
+          "optimum": {
+            "key": "4/13631488",
+            "N": 4,
+            "S": 13631488,
+            "completion": 48.91199999999999,
+            "abort_rate": 0.5,
+            "second_key": "4/15728640",
+            "second_completion": 50.372,
+            "second_N": 4,
+            "second_S": 15728640,
+            "second_success_fraction": 0.7,
+            "gap": 0.028984356388469943,
+            "N_margin": 0.16356381462691696,
+            "S_margin": 0.028984356388469943,
+            "viable_cells": 32
+          },
+          "penalty_good": 3.504545454545454,
+          "penalty_degraded": 0.11138370951913658,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        }
+      }
+    },
+    "268435456": {
+      "good_optimum": {
+        "key": "16/16777216",
+        "N": 16,
+        "S": 16777216,
+        "completion": 6.720000000000001,
+        "abort_rate": 0.0,
+        "second_key": "16/8388608",
+        "second_completion": 7.128,
+        "second_N": 16,
+        "second_S": 8388608,
+        "second_success_fraction": 1.0,
+        "gap": 0.057239057239057166,
+        "N_margin": 0.4912174439733495,
+        "S_margin": 0.057239057239057166,
+        "viable_cells": 77
+      },
+      "candidates": {
+        "D_r0.4_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 68.26806437307775,
+            "abort_rate": 0.30000000000000004,
+            "second_key": "16/10485760",
+            "second_completion": 75.69807152564195,
+            "second_N": 16,
+            "second_S": 10485760,
+            "second_success_fraction": 0.7,
+            "gap": 0.09815318941179844,
+            "N_margin": null,
+            "S_margin": 0.09815318941179844,
+            "viable_cells": 3
+          },
+          "penalty_good": 0.15595238095238081,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.4_l0.02_c0.04": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_r0.4_l0.02_c0.06": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_r0.4_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 68.26806437307775,
+            "abort_rate": 0.35,
+            "second_key": "16/10485760",
+            "second_completion": 75.69807152564195,
+            "second_N": 16,
+            "second_S": 10485760,
+            "second_success_fraction": 0.6,
+            "gap": 0.09815318941179844,
+            "N_margin": null,
+            "S_margin": 0.09815318941179844,
+            "viable_cells": 3
+          },
+          "penalty_good": 0.15595238095238081,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.4_l0.03_c0.04": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_r0.4_l0.03_c0.06": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_r0.5_l0.02_c0.02": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 54.768,
+            "abort_rate": 0.30000000000000004,
+            "second_key": "16/10485760",
+            "second_completion": 60.698,
+            "second_N": 16,
+            "second_S": 10485760,
+            "second_success_fraction": 0.7,
+            "gap": 0.09769679396355728,
+            "N_margin": null,
+            "S_margin": 0.09769679396355728,
+            "viable_cells": 11
+          },
+          "penalty_good": 0.15595238095238081,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.02_c0.04": {
+          "optimum": {
+            "key": "1/14680064",
+            "N": 1,
+            "S": 14680064,
+            "completion": 513.964,
+            "abort_rate": 0.5,
+            "second_key": "1/13631488",
+            "second_completion": 514.0720000000001,
+            "second_N": 1,
+            "second_S": 13631488,
+            "second_success_fraction": 0.5,
+            "gap": 0.00021008730294600934,
+            "N_margin": null,
+            "S_margin": 0.00021008730294600934,
+            "viable_cells": 2
+          },
+          "penalty_good": 14.530357142857138,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.02_c0.06": {
+          "optimum": {
+            "key": "1/14680064",
+            "N": 1,
+            "S": 14680064,
+            "completion": 513.964,
+            "abort_rate": 0.5,
+            "second_key": "1/13631488",
+            "second_completion": 514.0720000000001,
+            "second_N": 1,
+            "second_S": 13631488,
+            "second_success_fraction": 0.5,
+            "gap": 0.00021008730294600934,
+            "N_margin": null,
+            "S_margin": 0.00021008730294600934,
+            "viable_cells": 2
+          },
+          "penalty_good": 14.530357142857138,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.03_c0.02": {
+          "optimum": {
+            "key": "16/9437184",
+            "N": 16,
+            "S": 9437184,
+            "completion": 54.768,
+            "abort_rate": 0.35,
+            "second_key": "16/10485760",
+            "second_completion": 60.698,
+            "second_N": 16,
+            "second_S": 10485760,
+            "second_success_fraction": 0.6,
+            "gap": 0.09769679396355728,
+            "N_margin": null,
+            "S_margin": 0.09769679396355728,
+            "viable_cells": 6
+          },
+          "penalty_good": 0.15595238095238081,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": false,
+            "S_moves": true,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_r0.5_l0.03_c0.04": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_r0.5_l0.03_c0.06": {
+          "optimum": null,
+          "penalty_good": null,
+          "penalty_degraded": null,
+          "checks": null
+        },
+        "D_link2.0_c0.04": {
+          "optimum": {
+            "key": "1/16777216",
+            "N": 1,
+            "S": 16777216,
+            "completion": 257.64,
+            "abort_rate": 0.44999999999999996,
+            "second_key": null,
+            "second_completion": null,
+            "second_N": null,
+            "second_S": null,
+            "second_success_fraction": null,
+            "gap": null,
+            "N_margin": null,
+            "S_margin": null,
+            "viable_cells": 1
+          },
+          "penalty_good": 14.482142857142854,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": false,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link2.0_c0.06": {
+          "optimum": {
+            "key": "1/16777216",
+            "N": 1,
+            "S": 16777216,
+            "completion": 257.64,
+            "abort_rate": 0.44999999999999996,
+            "second_key": null,
+            "second_completion": null,
+            "second_N": null,
+            "second_S": null,
+            "second_success_fraction": null,
+            "gap": null,
+            "N_margin": null,
+            "S_margin": null,
+            "viable_cells": 1
+          },
+          "penalty_good": 14.482142857142854,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": false,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link3.0_c0.04": {
+          "optimum": {
+            "key": "1/16777216",
+            "N": 1,
+            "S": 16777216,
+            "completion": 257.64,
+            "abort_rate": 0.44999999999999996,
+            "second_key": null,
+            "second_completion": null,
+            "second_N": null,
+            "second_S": null,
+            "second_success_fraction": null,
+            "gap": null,
+            "N_margin": null,
+            "S_margin": null,
+            "viable_cells": 1
+          },
+          "penalty_good": 14.482142857142854,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": false,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        },
+        "D_link3.0_c0.06": {
+          "optimum": {
+            "key": "1/16777216",
+            "N": 1,
+            "S": 16777216,
+            "completion": 257.64,
+            "abort_rate": 0.44999999999999996,
+            "second_key": null,
+            "second_completion": null,
+            "second_N": null,
+            "second_S": null,
+            "second_success_fraction": null,
+            "gap": null,
+            "N_margin": null,
+            "S_margin": null,
+            "viable_cells": 1
+          },
+          "penalty_good": 14.482142857142854,
+          "penalty_degraded": Infinity,
+          "checks": {
+            "N_moves": true,
+            "S_moves": false,
+            "material": true,
+            "separated": false,
+            "reachable": false
+          }
+        }
+      }
+    }
+  },
+  "structural": {
+    "strongest_candidate": {
+      "file_bytes": 67108864,
+      "state": {
+        "name": "D_r0.4_l0.02_c0.04",
+        "rate": 419430.0,
+        "link": 0.0,
+        "loss": 0.02,
+        "congestion": 0.04,
+        "overhead": 0.02,
+        "latency": 0.02
+      }
+    },
+    "degraded_timeout_cliff": {
+      "per_response_rate_MiBps": 0.39999961853027344,
+      "max_S_before_timeout_MiB": 11.999988555908203,
+      "note": "svc(S) = latency + overhead*(k-1) + S/per; the 30 s client timeout aborts larger S"
+    },
+    "degraded_optimum_N_plateau": {
+      "optimum_key": "8/11534336",
+      "completions_at_optimum_S": {
+        "1": 160.56015258803615,
+        "2": 82.73607867820614,
+        "4": 55.128052452137425,
+        "8": 27.600026226068714,
+        "16": 27.600026226068714
+      },
+      "note": "N beyond the request count ties; the N* movement is degenerate"
+    },
+    "abort_cliff": {
+      "p_eff_at_k16": 0.62,
+      "p_3_failures_at_k16": 0.23832799999999998,
+      "note": "P(range aborts) = p_eff^3; with many ranges the high-k cells abort"
+    },
+    "single_best_fixed_across_states": {
+      "N": 16,
+      "S": 4194304,
+      "good_completion": 1.9200000000000002,
+      "degraded_completion": 30.560028610256776,
+      "worst_relative_penalty": 1.107246361287595,
+      "note": "even the best single fixed config pays a large worst-case penalty"
+    }
+  }
+}

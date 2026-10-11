@@ -1,0 +1,14 @@
+{
+  "claim_assessment.json": "1a90902ed63ca07d67f0c8816e1d7232b08490362ad63f8b72b7a437eacd312b",
+  "execution_schedule.json": "f341491d4dfeabeb7dc913637975c4ab8115fb17dbcae979532a768dd05949bc",
+  "final_test_matrix_v6.json": "246fb97397d2a2b0f90e98cb1df9d42a5e95b0cd622d53f3ebc0612402adec48",
+  "final_test_matrix_v6.sha256": "6d476d29fc4dac56de160b2bd261f7765ee686a71f02ef092181a209e489708b",
+  "manifest_v6.json": "ca4336664050811fbcec6d0e0abc30b14a8c68581e196895df2af8af6acfbb58",
+  "per_condition_table.txt": "a997d313722b782aed6a54e8ef640556655fce0066099a23a7e45fa66ff25cd8",
+  "raw_results.json": "ab822645ba1d6f5ce9d31bec7235750496d1e2fbd620520432edac39f65f9861",
+  "raw_results_all.json": "0fbc6a43a9cca5c29e0eeec35fae0c404702f6a5dc29cd6aeb169442a553098e",
+  "report.txt": "71b0657919f73fe052a5b37b1c9ec172a7bbd26eeb957d5e7335ef19e310d937",
+  "statistical_analysis.json": "a1fe970e115b482053f81e06961ea5229a70fc164a94fb5d366f50f8b15f72f1",
+  "summary.txt": "f0596c6165f82b21e2f1b9bec38e8a5301bf6791b6a28f8847a09ab63ea513cb",
+  "validity_report.json": "82b20d06796a584686220a57db7f01559e13c62e94f8b5808805ed7cbbaa4da6"
+}

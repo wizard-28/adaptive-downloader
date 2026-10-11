@@ -1,0 +1,65 @@
+Wall-clock throttle diagnostic (server-throttle-wallclock; descriptive only)
+source: testdata/benchmark_v6/matrix_wallclock_throttle_6mode_reps10.json
+schedule: 512 KiB/s -> 4 MiB/s after 1.0s elapsed (SetRateScheduleAt anchored to download start)
+
+TRANSITION TIMING (first request that begins at >=1s elapsed; per mode over 10 runs)
+  mode                  reqs_mean   firstPostIdx  elapsed_med_s
+  fixed                     128.0             16         1.0398
+  concurrency-adaptive      128.0             16         1.0405
+  joint-adaptive             57.0             16         1.0402
+  linucb-standard           127.0             16         1.0398
+  linucb-periodic            69.1             16         1.0400
+
+The elapsed transition is ~1.04s in every mode; request counts differ (128 vs 46 vs 69).
+This demonstrates a time trigger independent of request count/granularity.
+
+REPRESENTATIVE REQUEST TIMELINE (fixed, rep 0, first 12 requests; t=seconds since first request)
+  req   1 t= 0.0000 dur=   63.97ms rate=   524288 range=[0, 32767]
+  req   2 t= 0.0645 dur=   63.71ms rate=   524288 range=[32768, 65535]
+  req   3 t= 0.1287 dur=   64.78ms rate=   524288 range=[65536, 98303]
+  req   4 t= 0.1942 dur=   64.87ms rate=   524288 range=[98304, 131071]
+  req   5 t= 0.2594 dur=   64.84ms rate=   524288 range=[131072, 163839]
+  req   6 t= 0.3247 dur=   64.67ms rate=   524288 range=[163840, 196607]
+  req   7 t= 0.3897 dur=   63.82ms rate=   524288 range=[196608, 229375]
+  req   8 t= 0.4538 dur=   64.74ms rate=   524288 range=[229376, 262143]
+  req   9 t= 0.5189 dur=   64.58ms rate=   524288 range=[262144, 294911]
+  req  10 t= 0.5838 dur=   64.68ms rate=   524288 range=[294912, 327679]
+  req  11 t= 0.6490 dur=   64.75ms rate=   524288 range=[327680, 360447]
+  req  12 t= 0.7142 dur=   64.61ms rate=   524288 range=[360448, 393215]
+
+PERIODIC LinUCB ACTION TIMELINE (rep 0, first 20 decisions)
+  d0   none                 C 1->1  chunk 32768->32768  reward=0.448 agg=510026
+  d1   increase-concurrency C 1->2  chunk 32768->32768  reward=0.401 agg=506761
+  d2   decrease-concurrency C 2->1  chunk 32768->32768  reward=0.723 agg=506760
+  d3   increase-chunk-size  C 1->1  chunk 32768->65536  reward=0.442 agg=675504
+  d4   decrease-chunk-size  C 1->1  chunk 65536->32768  reward=0.518 agg=629626
+  d5   decrease-concurrency C 1->1  chunk 32768->32768  reward=0.330 agg=629549
+  d6   decrease-concurrency C 1->1  chunk 32768->32768  reward=0.448 agg=504725
+  d7   decrease-concurrency C 1->1  chunk 32768->32768  reward=0.450 agg=504148
+  d8   decrease-concurrency C 1->1  chunk 32768->32768  reward=0.450 agg=504972
+  d9   decrease-concurrency C 1->1  chunk 32768->32768  reward=0.447 agg=505399
+  d10  none                 C 1->1  chunk 32768->32768  reward=0.448 agg=504181
+  d11  decrease-concurrency C 1->1  chunk 32768->32768  reward=0.447 agg=503914
+  d12  decrease-concurrency C 1->1  chunk 32768->32768  reward=0.447 agg=503237
+  d13  decrease-concurrency C 1->1  chunk 32768->32768  reward=0.450 agg=502859
+  d14  decrease-concurrency C 1->1  chunk 32768->32768  reward=0.449 agg=504135
+  d15  decrease-concurrency C 1->1  chunk 32768->32768  reward=0.743 agg=504391
+  d16  increase-concurrency C 1->2  chunk 32768->32768  reward=1.027 agg=643839
+  d17  increase-concurrency C 2->3  chunk 32768->32768  reward=2.098 agg=888711
+  d18  increase-concurrency C 3->4  chunk 32768->32768  reward=7.469 agg=1572653
+  d19  increase-concurrency C 4->4  chunk 32768->32768  reward=8.683 agg=4730726
+
+LINUCB BEHAVIOR (post-warm-up, pooled over 10 runs)
+  linucb-standard: unique arms 1.00, dominant=decrease-concurrency (1220 selections, all no-op),
+                   forced=0, conc changes 0, chunk changes 0, finalC 1.00, maxC 2, finalChunk 32768
+  linucb-periodic: unique arms 5.00, dominant=increase-concurrency (380/641),
+                   forced=101, effective conc changes 69, chunk changes 67, finalC 3.90, maxC 4, finalChunk 95027
+                   counts: none=23 increase-concurrency=380 decrease-concurrency=120 increase-chunk-size=93 decrease-chunk-size=25
+                   effective: none=23 increase-concurrency=49 decrease-concurrency=20 increase-chunk-size=43 decrease-chunk-size=24
+
+BEHAVIORAL CHANGE vs OLD THROTTLE (v5 server-throttle, request 4 trigger)
+  - standard LinUCB: unchanged lock-in (dominant decrease-concurrency no-op, unique 1.0).
+  - periodic LinUCB: CHANGED. In v5 its dominant arm was decrease-chunk-size; here it is
+    increase-concurrency and it raises concurrency to ~3.9, closing most of the gap to
+    concurrency-adaptive (new 1323ms vs 1325ms). Under the old request-count throttle,
+    increasing concurrency did not help because the 4-request trigger had already fired.

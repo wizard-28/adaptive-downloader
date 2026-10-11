@@ -1,0 +1,71 @@
+{
+  "action_space": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "calibration_reference": "real server paces each response at `rate`; 1MiB@512KiB/s ~2.05s (frozen)",
+  "decision_interval": 4,
+  "dynamics": {
+    "loss": "per-request failure probability rising with concurrency (congestion); one retransmission modeled",
+    "per_request": "latency + per-extra-connection overhead + chunk/(effective per-response rate)",
+    "phases": "1-3 within-episode phases with randomized wall-clock transition times",
+    "shared_cap": "optional link_bandwidth caps the aggregate; extra concurrency then stops helping",
+    "step": "one RL step completes decision_interval requests; reward=-interval wall-clock seconds",
+    "workers": "concurrency workers run continuously; interval elapsed = sum(service_times)/active_workers"
+  },
+  "feature_names": [
+    "concurrency_norm",
+    "remaining_bytes_frac",
+    "aggregate_throughput_norm",
+    "aggregate_throughput_ewma_norm",
+    "aggregate_throughput_slope",
+    "aggregate_throughput_volatility",
+    "request_duration_norm",
+    "request_duration_slope",
+    "recent_failure_rate",
+    "recent_retry_rate",
+    "since_concurrency_change_norm",
+    "recent_completed_norm",
+    "throughput_improvement"
+  ],
+  "fixed_chunk_bytes": 1048576,
+  "label": "concurrency-focused training simulator v5 (training-only; state spec v2)",
+  "num_actions": 3,
+  "state_spec_version": 2,
+  "static_sweep": "static_concurrency_sweep_v5.json",
+  "train_ranges": {
+    "rand_congestion": [
+      0.0,
+      0.06
+    ],
+    "rand_file_size": [
+      4194304,
+      33554432
+    ],
+    "rand_latency_s": [
+      0.0,
+      0.08
+    ],
+    "rand_link_mult": [
+      0.0,
+      4.0
+    ],
+    "rand_loss_percent": [
+      0.0,
+      4.0
+    ],
+    "rand_phase_count": [
+      1,
+      3
+    ],
+    "rand_phase_seconds": [
+      0.3,
+      2.0
+    ],
+    "rand_rate": [
+      262144,
+      8388608
+    ]
+  }
+}

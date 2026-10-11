@@ -1,0 +1,323 @@
+{
+  "run_id": "const-aria2",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+    "constant_rate": 2560000,
+    "file_size_bytes": 536870912,
+    "schedule": "constant",
+    "system": "aria2"
+  },
+  "completion_ms": 24807.788,
+  "wallclock_bytes_per_second": 21641224.602532074,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": false,
+  "netem_status": "applied",
+  "schedule_events": null,
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 187,
+      "end_ms": 17265,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 1312,
+      "end_ms": 20777,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 268435456,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 1312,
+      "end_ms": 19660,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 134217728,
+      "range_end": 167772159,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 1312,
+      "end_ms": 16033,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 201326592,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 5,
+      "start_ms": 1312,
+      "end_ms": 17525,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 402653184,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 6,
+      "start_ms": 1312,
+      "end_ms": 21280,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 469762048,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 7,
+      "start_ms": 1312,
+      "end_ms": 18964,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 67108864,
+      "range_end": 100663295,
+      "has_range": true
+    },
+    {
+      "index": 8,
+      "start_ms": 1312,
+      "end_ms": 17998,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 33554432,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 9,
+      "start_ms": 1312,
+      "end_ms": 20740,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 436207616,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 10,
+      "start_ms": 1312,
+      "end_ms": 19741,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 167772160,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 11,
+      "start_ms": 1313,
+      "end_ms": 20042,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 100663296,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 12,
+      "start_ms": 1313,
+      "end_ms": 21100,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 234881024,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 13,
+      "start_ms": 1313,
+      "end_ms": 19770,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 369098752,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 14,
+      "start_ms": 1313,
+      "end_ms": 20245,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 301989888,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 15,
+      "start_ms": 1313,
+      "end_ms": 20924,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 503316480,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 16,
+      "start_ms": 1313,
+      "end_ms": 17552,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 335544320,
+      "range_end": 369098751,
+      "has_range": true
+    },
+    {
+      "index": 17,
+      "start_ms": 16114,
+      "end_ms": 20223,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 258998272,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 18,
+      "start_ms": 17346,
+      "end_ms": 20721,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 528482304,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 19,
+      "start_ms": 17608,
+      "end_ms": 20786,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 294649856,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 20,
+      "start_ms": 17634,
+      "end_ms": 20813,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 495976448,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 21,
+      "start_ms": 18080,
+      "end_ms": 20806,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 463470592,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 22,
+      "start_ms": 19046,
+      "end_ms": 20420,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 131072000,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 23,
+      "start_ms": 19741,
+      "end_ms": 21135,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 533725184,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 24,
+      "start_ms": 19822,
+      "end_ms": 20751,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 256901120,
+      "range_end": 258998271,
+      "has_range": true
+    },
+    {
+      "index": 25,
+      "start_ms": 19851,
+      "end_ms": 20778,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 461373440,
+      "range_end": 463470591,
+      "has_range": true
+    },
+    {
+      "index": 26,
+      "start_ms": 20123,
+      "end_ms": 21046,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 493879296,
+      "range_end": 495976447,
+      "has_range": true
+    },
+    {
+      "index": 27,
+      "start_ms": 20304,
+      "end_ms": 21230,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 526385152,
+      "range_end": 528482303,
+      "has_range": true
+    },
+    {
+      "index": 28,
+      "start_ms": 20371,
+      "end_ms": 20827,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 255852544,
+      "range_end": 256901119,
+      "has_range": true
+    },
+    {
+      "index": 29,
+      "start_ms": 20501,
+      "end_ms": 20959,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 460324864,
+      "range_end": 461373439,
+      "has_range": true
+    },
+    {
+      "index": 30,
+      "start_ms": 20802,
+      "end_ms": 21267,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 494927872,
+      "range_end": 495976447,
+      "has_range": true
+    },
+    {
+      "index": 31,
+      "start_ms": 20820,
+      "end_ms": 21289,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 525336576,
+      "range_end": 526385151,
+      "has_range": true
+    },
+    {
+      "index": 32,
+      "start_ms": 21280,
+      "end_ms": 21297,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 493842757,
+      "range_end": 493879295,
+      "has_range": true
+    }
+  ],
+  "total_requests": 32,
+  "successful_requests": 24,
+  "failed_requests": 8,
+  "server_bytes": 351309499,
+  "range_count": 31,
+  "aria2_exit": 0,
+  "aria2_output_tail": "========================================\n[#44656c 424MiB/512MiB(82%) CN:16 DL:29MiB ETA:2s]\nFILE: /tmp/aria2-comp-49081664/out.bin\n-------------------------------------------------------------------------------\n\n[#44656c 424MiB/512MiB(82%) CN:16 DL:29MiB ETA:2s]\n *** Download Progress Summary as of Mon Sep 28 21:23:57 2026 *** \n===============================================================================\n[#44656c 452MiB/512MiB(88%) CN:16 DL:29MiB ETA:1s]\nFILE: /tmp/aria2-comp-49081664/out.bin\n-------------------------------------------------------------------------------\n\n[#44656c 452MiB/512MiB(88%) CN:16 DL:29MiB ETA:1s]\n *** Download Progress Summary as of Mon Sep 28 21:23:58 2026 *** \n===============================================================================\n[#44656c 484MiB/512MiB(94%) CN:16 DL:30MiB]\nFILE: /tmp/aria2-comp-49081664/out.bin\n-------------------------------------------------------------------------------\n\n[#44656c 484MiB/512MiB(94%) CN:16 DL:30MiB]\n *** Download Progress Summary as of Mon Sep 28 21:23:59 2026 *** \n===============================================================================\n[#44656c 508MiB/512MiB(99%) CN:7 DL:29MiB]\nFILE: /tmp/aria2-comp-49081664/out.bin\n-------------------------------------------------------------------------------\n\n[#44656c 508MiB/512MiB(99%) CN:7 DL:29MiB]\n *** Download Progress Summary as of Mon Sep 28 21:24:00 2026 *** \n===============================================================================\n[#44656c 511MiB/512MiB(99%) CN:1 DL:26MiB]\nFILE: /tmp/aria2-comp-49081664/out.bin\n-------------------------------------------------------------------------------\n\n[#44656c 511MiB/512MiB(99%) CN:1 DL:26MiB]\n\n09/28 21:24:02 [NOTICE] Download complete: /tmp/aria2-comp-49081664/out.bin\n\nDownload Results:\ngid   |stat|avg speed  |path/URI\n======+====+===========+=======================================================\n44656c|OK  |    23MiB/s|/tmp/aria2-comp-49081664/out.bin\n\nStatus Legend:\n(OK):download completed.\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": ""
+}

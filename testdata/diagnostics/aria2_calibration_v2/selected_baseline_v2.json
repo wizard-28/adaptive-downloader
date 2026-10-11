@@ -1,0 +1,69 @@
+{
+  "aria2_version": "aria2 version 1.37.0",
+  "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 \u003curl\u003e",
+  "label": "FINAL ARIA2 BASELINE CONFIG v2 (16 MiB evaluation)",
+  "pooled_validation": {
+    "A": {
+      "count": 25,
+      "mean_ms": 13136.698400000003,
+      "median_ms": 13187.363,
+      "sd_ms": 3301.0974606879813,
+      "mean_wallclock_bps": 1367931.8092071423,
+      "retries": 0,
+      "failures": 0
+    },
+    "B": {
+      "count": 25,
+      "mean_ms": 6769.795760000001,
+      "median_ms": 6772.231,
+      "sd_ms": 1595.7800749007056,
+      "mean_wallclock_bps": 2638971.7990519344,
+      "retries": 0,
+      "failures": 0
+    },
+    "C": {
+      "count": 25,
+      "mean_ms": 3502.7656000000006,
+      "median_ms": 3519.023,
+      "sd_ms": 748.8392331171224,
+      "mean_wallclock_bps": 5055983.939063692,
+      "retries": 0,
+      "failures": 0
+    },
+    "D": {
+      "count": 25,
+      "mean_ms": 3540.3952400000007,
+      "median_ms": 3516.186,
+      "sd_ms": 754.6635302902761,
+      "mean_wallclock_bps": 5010058.171170429,
+      "retries": 0,
+      "failures": 0
+    },
+    "E": {
+      "count": 25,
+      "mean_ms": 3463.159160000001,
+      "median_ms": 3511.888,
+      "sd_ms": 768.9466558293198,
+      "mean_wallclock_bps": 5126655.44515916,
+      "retries": 0,
+      "failures": 0
+    },
+    "F": {
+      "count": 25,
+      "mean_ms": 1101.8953999999999,
+      "median_ms": 1121.583,
+      "sd_ms": 273.86660100537995,
+      "mean_wallclock_bps": 16242523.389969137,
+      "retries": 0,
+      "failures": 0
+    }
+  },
+  "selected_config": {
+    "name": "F",
+    "max_connection_per_server": 16,
+    "split": 16,
+    "min_split_size": 1048576
+  },
+  "selection_criterion": "lowest pooled mean completion time; tie-break lower pooled median, then lower pooled retries",
+  "validation_dataset": "testdata/diagnostics/aria2_calibration_v2/validation_results_v2.json"
+}

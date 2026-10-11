@@ -1,0 +1,14 @@
+static concurrency sweep v5 (simulator only; NO performance claim)
+decision_interval=1 seeds=[300, 301, 302]
+
+regime                          C=1      C=2      C=3      C=4  best
+stable-no-cap                 2.160    1.305    1.033    0.907  C=4
+low-bandwidth                 8.080    5.100    4.120    3.640  C=4
+latency-dominant              2.600    1.552    1.217    1.059  C=4
+shared-cap-hard               4.000    4.590    5.133    5.665  C=1
+shared-cap-moderate           8.160    4.680    4.200    4.620  C=3
+combined-mild                 2.480    1.860    2.000    2.163  C=2
+throttle-up-wallclock         3.327    1.847    1.978    1.595  C=4
+throttle-down-wallclock      10.660    4.597    2.589    0.678  C=4
+
+distinct best fixed C across regimes: [1, 2, 3, 4] (varies=True)

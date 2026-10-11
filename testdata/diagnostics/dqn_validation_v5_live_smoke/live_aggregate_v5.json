@@ -1,0 +1,181 @@
+{
+  "by_scenario": {
+    "baseline": {
+      "pairs": {
+        "rep-0": {
+          "fixed-1": 4425.266,
+          "v5": 1726.084
+        }
+      },
+      "policies": {
+        "fixed-1": {
+          "n": 1,
+          "valid_n": 1,
+          "invalid_n": 0,
+          "completion_ms": {
+            "n": 1,
+            "mean": 4425.266,
+            "median": 4425.266,
+            "sd": 0,
+            "min": 4425.266,
+            "max": 4425.266
+          },
+          "wallclock_bps": {
+            "n": 1,
+            "mean": 3791233.3405494723,
+            "median": 3791233.3405494723,
+            "sd": 0,
+            "min": 3791233.3405494723,
+            "max": 3791233.3405494723
+          },
+          "mean_requests": 16,
+          "mean_successful_requests": 16,
+          "mean_failed_requests": 0,
+          "mean_retries": 0,
+          "mean_success_bytes": 16777216,
+          "mean_final_concurrency": 1,
+          "mean_time_weighted_concurrency": 1,
+          "mean_max_in_flight": 1,
+          "mean_effective_concurrency_changes": 0,
+          "constant_run_fraction": 1,
+          "ramp_to_max_fraction": 0,
+          "monotone_decrease_fraction": 0,
+          "dominant_concurrency_worst_fraction": 1,
+          "dominant_concurrency_by_scenario": {
+            "baseline": "C1"
+          }
+        },
+        "v5": {
+          "n": 1,
+          "valid_n": 1,
+          "invalid_n": 0,
+          "completion_ms": {
+            "n": 1,
+            "mean": 1726.084,
+            "median": 1726.084,
+            "sd": 0,
+            "min": 1726.084,
+            "max": 1726.084
+          },
+          "wallclock_bps": {
+            "n": 1,
+            "mean": 9719814.331168124,
+            "median": 9719814.331168124,
+            "sd": 0,
+            "min": 9719814.331168124,
+            "max": 9719814.331168124
+          },
+          "mean_requests": 16,
+          "mean_successful_requests": 16,
+          "mean_failed_requests": 0,
+          "mean_retries": 0,
+          "mean_success_bytes": 16777216,
+          "mean_final_concurrency": 3,
+          "mean_time_weighted_concurrency": 3.18967790675309,
+          "mean_max_in_flight": 4,
+          "mean_effective_concurrency_changes": 12,
+          "constant_run_fraction": 0,
+          "ramp_to_max_fraction": 0,
+          "monotone_decrease_fraction": 0,
+          "dominant_concurrency_worst_fraction": 0.6742794672796922,
+          "dominant_concurrency_by_scenario": {
+            "baseline": "C4"
+          }
+        }
+      }
+    },
+    "server-throttle-wallclock": {
+      "pairs": {
+        "rep-0": {
+          "fixed-1": 6245.067,
+          "v5": 3500.631
+        }
+      },
+      "policies": {
+        "fixed-1": {
+          "n": 1,
+          "valid_n": 1,
+          "invalid_n": 0,
+          "completion_ms": {
+            "n": 1,
+            "mean": 6245.067,
+            "median": 6245.067,
+            "sd": 0,
+            "min": 6245.067,
+            "max": 6245.067
+          },
+          "wallclock_bps": {
+            "n": 1,
+            "mean": 2686474.9409413864,
+            "median": 2686474.9409413864,
+            "sd": 0,
+            "min": 2686474.9409413864,
+            "max": 2686474.9409413864
+          },
+          "mean_requests": 16,
+          "mean_successful_requests": 16,
+          "mean_failed_requests": 0,
+          "mean_retries": 0,
+          "mean_success_bytes": 16777216,
+          "mean_final_concurrency": 1,
+          "mean_time_weighted_concurrency": 1,
+          "mean_max_in_flight": 1,
+          "mean_effective_concurrency_changes": 0,
+          "constant_run_fraction": 1,
+          "ramp_to_max_fraction": 0,
+          "monotone_decrease_fraction": 0,
+          "dominant_concurrency_worst_fraction": 1,
+          "dominant_concurrency_by_scenario": {
+            "server-throttle-wallclock": "C1"
+          }
+        },
+        "v5": {
+          "n": 1,
+          "valid_n": 1,
+          "invalid_n": 0,
+          "completion_ms": {
+            "n": 1,
+            "mean": 3500.631,
+            "median": 3500.631,
+            "sd": 0,
+            "min": 3500.631,
+            "max": 3500.631
+          },
+          "wallclock_bps": {
+            "n": 1,
+            "mean": 4792626.243668642,
+            "median": 4792626.243668642,
+            "sd": 0,
+            "min": 4792626.243668642,
+            "max": 4792626.243668642
+          },
+          "mean_requests": 16,
+          "mean_successful_requests": 16,
+          "mean_failed_requests": 0,
+          "mean_retries": 0,
+          "mean_success_bytes": 16777216,
+          "mean_final_concurrency": 3,
+          "mean_time_weighted_concurrency": 2.068114577057679,
+          "mean_max_in_flight": 4,
+          "mean_effective_concurrency_changes": 12,
+          "constant_run_fraction": 0,
+          "ramp_to_max_fraction": 0,
+          "monotone_decrease_fraction": 0,
+          "dominant_concurrency_worst_fraction": 0.5902752960823349,
+          "dominant_concurrency_by_scenario": {
+            "server-throttle-wallclock": "C1"
+          }
+        }
+      }
+    }
+  },
+  "policies": [
+    "fixed-1",
+    "v5"
+  ],
+  "reps": 1,
+  "scenarios": [
+    "baseline",
+    "server-throttle-wallclock"
+  ]
+}

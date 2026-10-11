@@ -1,0 +1,38 @@
+{
+  "corrupted_state": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.25440625,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 7.944444444444445,
+    "median_completion_s": 1.2721666666666667,
+    "n": 36,
+    "sd_completion_s": 0.908277240021476
+  },
+  "dqn": {
+    "mean_chunk_changes": 2.1944444444444446,
+    "mean_completion_s": 1.233421875,
+    "mean_conc_changes": 1.5277777777777777,
+    "mean_steps": 5.638888888888889,
+    "median_completion_s": 0.957875,
+    "n": 36,
+    "sd_completion_s": 0.9810608899901291
+  },
+  "random_policy": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.4680237268518517,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 7.694444444444445,
+    "median_completion_s": 1.2632499999999998,
+    "n": 36,
+    "sd_completion_s": 1.1272207987979497
+  },
+  "shuffled_actions": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.5813697916666665,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 9.777777777777779,
+    "median_completion_s": 1.5888437499999999,
+    "n": 36,
+    "sd_completion_s": 1.181025120048815
+  }
+}

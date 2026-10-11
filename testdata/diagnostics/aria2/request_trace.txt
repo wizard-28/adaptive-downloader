@@ -1,0 +1,33 @@
+aria2 request-trace (server-observed ranges; arrival order)
+Source: controlled experiment server; ranges as recorded by server.Stats().RequestedRanges
+
+== baseline (rep 0) ==
+  aria2 exit_ok=true dur=327.7ms size=4194304 matches=true
+  server requests=4 failed=1 max_in_flight=4 non_range_requests=1; range requests=3 min=1048576 max=1048576 mean=1048576
+  ranges (arrival order): 2097152-3145727(1048576), 1048576-2097151(1048576), 3145728-4194303(1048576)
+  aria2 console max connections (CN)=0; retry lines=0
+
+== server-throttle (rep 0) ==
+  aria2 exit_ok=true dur=2115.4ms size=4194304 matches=true
+  server requests=4 failed=1 max_in_flight=4 non_range_requests=1; range requests=3 min=1048576 max=1048576 mean=1048576
+  ranges (arrival order): 2097152-3145727(1048576), 1048576-2097151(1048576), 3145728-4194303(1048576)
+  aria2 console max connections (CN)=4; retry lines=0
+
+== latency (rep 0) ==
+  aria2 exit_ok=true dur=852.0ms size=4194304 matches=true
+  server requests=4 failed=1 max_in_flight=4 non_range_requests=1; range requests=3 min=1048576 max=1048576 mean=1048576
+  ranges (arrival order): 1048576-2097151(1048576), 2097152-3145727(1048576), 3145728-4194303(1048576)
+  aria2 console max connections (CN)=0; retry lines=0
+
+== loss (rep 0) ==
+  aria2 exit_ok=true dur=314.3ms size=4194304 matches=true
+  server requests=4 failed=1 max_in_flight=4 non_range_requests=1; range requests=3 min=1048576 max=1048576 mean=1048576
+  ranges (arrival order): 2097152-3145727(1048576), 1048576-2097151(1048576), 3145728-4194303(1048576)
+  aria2 console max connections (CN)=0; retry lines=0
+
+== combined (rep 0) ==
+  aria2 exit_ok=true dur=1274.7ms size=4194304 matches=true
+  server requests=4 failed=1 max_in_flight=4 non_range_requests=1; range requests=3 min=1048576 max=1048576 mean=1048576
+  ranges (arrival order): 3145728-4194303(1048576), 2097152-3145727(1048576), 1048576-2097151(1048576)
+  aria2 console max connections (CN)=4; retry lines=0
+

@@ -1,0 +1,14 @@
+aria2 external baseline (descriptive only; no ranking)
+aria2 version 1.37.0
+file size=4194304 reps=10 host=c085667429c9 kernel=7.2.6-1-cachyos
+command: aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --max-connection-per-server=4 --split=4 --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false <url>
+
+scenario            mean_ms  median_ms      sd_ms   ci95_ms    wallclock   ranges nonRange maxInFlight   retr  netem
+baseline              320.9      320.4        3.4       2.4     13071157      3.0      1.0        4      0   none
+server-throttle      2117.9     2118.3        9.8       7.0      1980494      3.0      1.0        4      0   none
+latency               853.2      852.4        2.8       2.0      4916115      3.0      1.0        4      0 applied
+loss                  362.4      322.7       82.8      59.2     12042156      3.0      1.0        4      0 applied
+combined             1282.5     1275.9       15.2      10.8      3270934      3.0      1.0        4      0 applied
+
+per-run validity:
+  valid=50/50

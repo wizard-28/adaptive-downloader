@@ -1,0 +1,49 @@
+FINAL PRE-REGISTERED HEAD-TO-HEAD: DQN Candidate v6 vs frozen aria2-F
+Controlled server; pre-registered v6 trajectories A-E (wall-clock phases); matched pairs.
+NO real-network/mobile generalization; NO claim of general superiority over aria2.
+
+1. FROZEN ARTIFACTS
+   v6 model SHA-256        : daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887
+   aria2 baseline SHA-256  : b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02
+   aria2 version/config    : aria2 version 1.37.0 | aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 <url>
+   matrix SHA-256          : cd59d84a40919d2b44c675220e710067b160432f5967b11b97cdc65f1b088bfa
+
+2. MATRIX
+   trajectories : A2, B2, C2, D2, E2
+   pairs/traj   : 30; matched pairs 150; downloads 300
+   file/chunk   : 16777216 / 1048576; v6 bounds [1, 16]; aria2 max connections 16
+   order seed   : 20260925
+
+3. VALIDITY
+   valid runs 300/300, invalid 0; valid pairs 150/150
+
+4. PER-TRAJECTORY MATCHED-PAIR RESULTS (ms; analyzer key 'dqn' = v6)
+   traj   n   v6 mean  aria2 mean    v6 med  aria2 med   ratio             CI95   p_holm
+   A2    30    8313.5      7855.4    8354.2     7558.6   1.065 [1.017,1.116]        1
+   B2    30    4932.6      4802.7    4843.7     4714.1   1.027 [0.995,1.061]        1
+   C2    30    5569.0      4828.4    5448.7     4743.4   1.153 [1.118,1.190]        1
+   D2    30   12043.9      2221.5   12181.9     2047.3   5.471 [5.205,5.751]        1
+   E2    30    6648.2      7055.1    6510.3     6731.4   0.948 [0.897,1.002]   0.1276
+
+5. POOLED MATCHED-PAIR ANALYSIS
+   pairs 150; v6 mean 7501.5 ms; aria2 mean 5352.6 ms
+   geometric ratio 1.4560 (95% CI [1.3004,1.6303])
+   relative reduction -45.60% (negative = v6 slower)
+   paired permutation p 1; v6 faster 37/150 pairs (24.7%); conditions v6 faster 1/5
+   pre-specified claim criteria: {'1_ratio_below_1': False, '2_ci_excludes_zero_dqn_faster': False, '3_perm_test_supports_dqn_faster': False, '4_majority_conditions_dqn_faster': False} -> claim_supported=False
+
+6. V6 BEHAVIOR (authoritative controller state)
+   mean changes/run 12.35; mean time-weighted concurrency 3.29; constant 0.000; ramp-to-max 0.000
+   A2: phase mean C 1.20->1.94->3.17; reaction latencies [4, 4, 5, 6, 6, 6] ms
+   B2: phase mean C 1.84->6.15->6.37; reaction latencies [5, 7, 25, 37, 52, 54] ms
+   C2: phase mean C 1.25->3.16->4.78; reaction latencies [1, 6, 8, 9, 26, 52] ms
+   D2: phase mean C 1.10->2.40->3.93; reaction latencies [1114, 1164, 1515, 1516, 1518, 1521] ms
+   E2: phase mean C 1.79->4.93->4.80; reaction latencies [1, 13, 27, 82, 99, 99] ms
+
+7. ARIA2 BEHAVIOR
+   max in-flight mean 15.85 (max 16); range requests/run mean 15.01 (1 MiB); non-range probes mean 1.00; retries 0; failed server requests 146
+
+8. EVIDENCE-SUPPORTED CONCLUSION
+   The pooled matched-pair result (ratio 1.456, CI [1.300,1.630]) shows no measurable v6 advantage across the pre-registered unstable trajectories; per-trajectory results are reported above. v6 did change concurrency with the environment, but the adaptation did not translate into lower completion time than aria2-F under these controlled conditions. No general-superiority, mobile-network, or real-world claim is made.
+
+Limitations: controlled synthetic server; five pre-registered trajectories; 30 pairs each; aria2's 1 MiB minimum split and initial non-range probe; v6 was previously found slower than the best fixed concurrency on every live trajectory (PROJECT_CONTEXT 22.34).

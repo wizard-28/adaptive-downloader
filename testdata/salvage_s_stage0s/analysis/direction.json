@@ -1,0 +1,15 @@
+{
+  "order": [
+    "256KiB",
+    "1MiB",
+    "4MiB",
+    "16MiB"
+  ],
+  "medians_seconds": [
+    0.5777166945,
+    2.1905264195,
+    8.6409296585,
+    34.4278713685
+  ],
+  "strictly_increasing": true
+}

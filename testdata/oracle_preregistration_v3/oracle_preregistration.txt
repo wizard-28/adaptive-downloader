@@ -1,0 +1,62 @@
+ORACLE / TAU PRE-REGISTRATION (Stage 0, protocol v2)
+=====================================================
+oracle_protocol_version: 2  (supersedes version 1: signed tau; v1 retained as historical)
+fixed_c_protocol_version: 2
+selected epoch: 120 s | B_e = 5 MiB (same for every C)
+t[c,e] = B_e / R[c,e]
+T_fixed(C) = sum over retained shared-valid epochs of t[C,e]
+T_best_fixed = min_C T_fixed(C)
+T_instantaneous = sum_e B_e / max_C R[C,e] (diagnostic only)
+Constrained oracle: minimize sum_e t[C_e,e] + sum changes tau(from,to)
+H_j = (T_best_fixed,j - T_constrained,j) / T_best_fixed,j; statistical unit = trace.
+
+ACTION SPACE
+  ladder 1 <-> 2 <-> 4 <-> 8 <-> 16; stay or exactly one ladder step per
+  boundary; no direct jumps. Dwell: after a change at boundary e, C_{e+1} = C_e.
+  A static C is feasible.
+
+TAU
+  units: seconds of equivalent B_e = 5 MiB completion time
+  directions: 1->2, 2->1, 2->4, 4->2, 4->8, 8->4, 8->16, 16->8
+  window: one complete 120 s epoch from the preselected boundary
+  tau = (control_bytes - switched_bytes) / (control_bytes / 120 s)
+  negative values preserved; control_bytes == 0 => invalid observation
+  control: matched fixed-C target run over the identical trace-time window
+  (protocol-v2 fixed-C pilot artifacts, read-only)
+  forbidden: launch time, shutdown wall time, any headroom-derived value
+  validity: run reached the watchdog window, switch applied, control_bytes > 0,
+  switched_bytes > 0 (zero-byte windows are not switch measurements)
+  FORMAL COST RULE (version 2): tau_formal = max(0, estimated_tau), applied
+  ONLY after the estimator (pooled median / regime-specific). Raw signed
+  observations are never clamped; no absolute values; no means. This
+  guarantees tau_formal >= 0, so the oracle sanity bound
+  T_instantaneous <= T_constrained <= T_best_fixed holds.
+  The formal tau dataset is the fresh /home/vscode/tau_campaign_v3 campaign;
+  /home/vscode/tau_campaign_v2 remains signed-tau historical/exploratory
+  evidence. The fixed-C pilot /home/vscode/epoch_pilot_v2 is valid and is not
+  rerun.
+
+REGIME CLASSIFIER (native downlink trace only)
+  full 120 s epochs; final partial epoch excluded
+  rate = opportunities * 1500 B / 120 s
+  k = max(1, floor(n/3))
+  degraded = k lowest rates (ties: lower index)
+  good = k highest rates not already degraded (ties: lower index)
+  recovering = rate[e] >= 1.25 * rate[e-1] and e not degraded
+  precedence: degraded, then recovering, then good, else middle
+  injections: per regime (degraded, good, recovering): earliest epoch and,
+  if available, the next distinct one; absent regimes contribute nothing
+  frozen injections:
+    EVDO: degraded e3 (360 s), degraded e4 (480 s), recovering e1 (120 s),
+          recovering e5 (600 s)
+    LTE:  degraded e2 (240 s), degraded e4 (480 s), good e1 (120 s),
+          recovering e3 (360 s), recovering e6 (720 s)
+
+TAU AGGREGATION
+  pooled = median of valid observations per direction
+  regime-specific iff >= 2 regimes with valid observations, all regime
+  medians > 0, and max/min >= 2.0 (frozen threshold)
+  otherwise pooled; non-positive minimum median => ratio undefined, reported
+  median = average of the two middle values for an even count
+
+FROZEN BEFORE HEADROOM. No headroom was computed in this stage.

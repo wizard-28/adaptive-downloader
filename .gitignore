@@ -1,0 +1,35 @@
+# ---- Go ----
+*.test
+*.out
+/cmd/*/*.exe
+
+# Compiled tool binaries (rebuild from the adjacent main.go / *.go source)
+/aria2-calibration-v2
+/testdata/aria2_competitive_benchmark/tools/bench_run
+/testdata/joint_ns_d2/tools/bench_ns
+/testdata/live_joint_ns_queueing/tools/gate_run
+/testdata/n_dependent_server_joint_ns/tools/ns_bench
+/testdata/salvage_s_stage0s/tools/stage0s_run
+/testdata/salvage_s_stage0s/tools/preflight/preflight_smoke
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# ---- Editors / OS ----
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# ---- Local-only / third-party / unidentified ----
+# Third-party mahimahi clone with build artifacts (not vendored)
+/mahimahi-clone-dir/
+# Unidentified archive and scratch text; add back if they are needed in the repo
+/Archive.zip
+/Untitled
+# Agent session transcript (local working log)
+/transcript.txt

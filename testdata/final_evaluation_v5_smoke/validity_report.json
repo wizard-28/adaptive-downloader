@@ -1,0 +1,11 @@
+{
+  "excluded_pairs": 0,
+  "exclusions": null,
+  "expected_pairs": 2,
+  "expected_runs": 4,
+  "invalid_runs": 0,
+  "recorded_runs": 4,
+  "rule": "a run is valid only if it has no error, the output is exactly 16 MiB and SHA-256 matches the served content, v5 accounting checks pass, and any requested netem condition was applied",
+  "valid_pairs": 2,
+  "valid_runs": 4
+}

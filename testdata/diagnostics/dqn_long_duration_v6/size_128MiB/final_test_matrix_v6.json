@@ -1,0 +1,84 @@
+{
+  "label": "FINAL pre-registered head-to-head (DQN Candidate v6 vs aria2-F) on v6 trajectories A-E",
+  "conditions": [
+    {
+      "id": "A2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 5242880,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 921600,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4194304,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "phases": [
+        {
+          "rate": 655360,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 163840,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 2560000,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 20,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 1843200,
+          "latency_ms": 110,
+          "loss_percent": 3.8
+        },
+        {
+          "rate": 8388608,
+          "link": 3584000,
+          "latency_ms": 60,
+          "loss_percent": 1.7
+        }
+      ]
+    }
+  ],
+  "repetitions": 5,
+  "pairs": 15,
+  "total_downloads": 30,
+  "file_size": 134217728,
+  "chunk_size": 1048576,
+  "v6_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887",
+  "aria2_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "seed": 20260925,
+  "note": "pre-registered §22.33 trajectories; wall-clock phases; matched pairs; 30 pairs/trajectory per the established final-evaluation methodology"
+}

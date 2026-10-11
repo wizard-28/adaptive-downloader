@@ -1,0 +1,14 @@
+T2 live adaptive range-size diagnostic
+
+schedule: 512 MiB; C=16 fixed; 1..16 MiB ladder; normal 180 KiB/s -> throttle 64 KiB/s at 30/105s; recovery at 75/150s
+
+  chunk=1048576  245697ms  started={'p1': 96, 'p2': 48, 'p3': 64, 'p4': 48, 'p5': 256} bytes={'p1': 100663296, 'p2': 50331648, 'p3': 67108864, 'p4': 50331648, 'p5': 268435456} maxfl=16 sha=True
+  chunk=16777216  184194ms  started={'p1': 16, 'p3': 16} bytes={'p1': 268435456, 'p3': 268435456} maxfl=16 sha=True
+  chunk=2097152  266398ms  started={'p1': 48, 'p2': 32, 'p3': 16, 'p4': 32, 'p5': 128} bytes={'p1': 100663296, 'p2': 67108864, 'p3': 33554432, 'p4': 67108864, 'p5': 268435456} maxfl=16 sha=True
+  chunk= 262144  245771ms  started={'p1': 336, 'p2': 192, 'p3': 304, 'p4': 192, 'p5': 1024} bytes={'p1': 88080384, 'p2': 50331648, 'p3': 79691776, 'p4': 50331648, 'p5': 268435456} maxfl=16 sha=True
+  chunk=4194304  266663ms  started={'p1': 32, 'p2': 16, 'p4': 16, 'p5': 64} bytes={'p1': 134217728, 'p2': 67108864, 'p4': 67108864, 'p5': 268435456} maxfl=16 sha=True
+  chunk= 524288  245832ms  started={'p1': 176, 'p2': 96, 'p3': 144, 'p4': 96, 'p5': 512} bytes={'p1': 92274688, 'p2': 50331648, 'p3': 75497472, 'p4': 50331648, 'p5': 268435456} maxfl=16 sha=True
+  chunk=8388608  267029ms  started={'p1': 16, 'p2': 16, 'p5': 32} bytes={'p1': 134217728, 'p2': 134217728, 'p5': 268435456} maxfl=16 sha=True
+phase best chunk by throughput: {'p1': 16777216, 'p2': 8388608, 'p3': 16777216, 'p4': 4194304, 'p5': 1048576}
+best fixed chunk=16777216 (184194ms); larger ever better=False
+outcome=NOT_READY_NON_RL_GRANULARITY_EFFECT

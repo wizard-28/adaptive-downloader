@@ -1,0 +1,69 @@
+{
+  "aria2_version": "aria2 version 1.37.0",
+  "candidates": [
+    {
+      "name": "A",
+      "max_connection_per_server": 1,
+      "split": 1,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "B",
+      "max_connection_per_server": 2,
+      "split": 2,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "C",
+      "max_connection_per_server": 4,
+      "split": 4,
+      "min_split_size": 1048576
+    }
+  ],
+  "file_size": 4194304,
+  "label": "aria2 baseline calibration validation set (NOT the final test set)",
+  "note": "wall-clock transitions only; no request-count switching",
+  "profiles": [
+    {
+      "Name": "V1",
+      "InitialRate": 524288,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 750000000,
+      "Latency": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V2",
+      "InitialRate": 1048576,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 1250000000,
+      "Latency": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V3",
+      "InitialRate": 4194304,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 0,
+      "Latency": 20000000,
+      "LossPercent": 1
+    },
+    {
+      "Name": "V4",
+      "InitialRate": 2097152,
+      "SubsequentRate": 2097152,
+      "TransitionAfter": 0,
+      "Latency": 40000000,
+      "LossPercent": 1
+    },
+    {
+      "Name": "V5",
+      "InitialRate": 786432,
+      "SubsequentRate": 3145728,
+      "TransitionAfter": 1500000000,
+      "Latency": 20000000,
+      "LossPercent": 1
+    }
+  ],
+  "repetitions": 5
+}

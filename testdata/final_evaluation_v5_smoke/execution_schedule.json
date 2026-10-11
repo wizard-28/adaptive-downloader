@@ -1,0 +1,19 @@
+{
+  "pairs": [
+    {
+      "pair_id": "U1-p00",
+      "condition": "U1",
+      "first": "aria2",
+      "v5_run_id": "U1-p00-v5",
+      "aria2_run_id": "U1-p00-aria2"
+    },
+    {
+      "pair_id": "U8-p00",
+      "condition": "U8",
+      "first": "aria2",
+      "v5_run_id": "U8-p00-v5",
+      "aria2_run_id": "U8-p00-aria2"
+    }
+  ],
+  "seed": 20260925
+}

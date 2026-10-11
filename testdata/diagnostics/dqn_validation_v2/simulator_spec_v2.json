@@ -1,0 +1,67 @@
+{
+  "calibration": {
+    "1MiB@512KiB/s": {
+      "real_measured": 2.05,
+      "sim": 2.0
+    },
+    "1pct_loss": {
+      "note": "single retry on failure; real fetcher retries"
+    },
+    "20ms_latency": {
+      "note": "added per request; real netem 20ms"
+    },
+    "32KiB@4MiB/s": {
+      "real_measured": 0.008,
+      "sim": 0.0078
+    },
+    "32KiB@512KiB/s": {
+      "real_measured": 0.064,
+      "sim": 0.064
+    }
+  },
+  "dynamics": {
+    "clock": "continuous simulated elapsed time; wall-clock rate selected from elapsed",
+    "request_overhead": "latency_s + overhead_s per request; larger chunks amortize overhead",
+    "shared_bandwidth": "per-request rate = min(link_bandwidth/concurrency, per_connection_rate); wave wall-clock = slowest concurrent request",
+    "throttle_models": [
+      "none",
+      "request-count",
+      "wall-clock"
+    ]
+  },
+  "label": "corrected training simulator v2 (training-only; not the real server)",
+  "train_ranges": {
+    "rand_file_size": [
+      262144,
+      4194304
+    ],
+    "rand_latency_s": [
+      0.0,
+      0.08
+    ],
+    "rand_link_bandwidth": [
+      524288,
+      8388608
+    ],
+    "rand_loss_percent": [
+      0.0,
+      4.0
+    ],
+    "rand_per_connection": [
+      524288,
+      8388608
+    ],
+    "rand_rate_after": [
+      262144,
+      4194304
+    ],
+    "rand_switch_after_requests": [
+      0,
+      12
+    ],
+    "rand_switch_after_seconds": [
+      0.2,
+      2.0
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+=== RUN   TestExplorationCorrectionBeforeAndAfter
+LinUCB exploration correction diagnostic (public API; no download)
+state: concurrency=1 chunk=32768 reward=3.4 per step, alpha=0.2
+BEFORE (InitialExplorationRounds=0): [none none none none none none none none]
+AFTER  (InitialExplorationRounds=1): [none increase-concurrency decrease-concurrency increase-chunk-size decrease-chunk-size none none none]
+--- PASS: TestExplorationCorrectionBeforeAndAfter (0.00s)
+PASS
+ok  	adaptivedl/internal/diagnostics	0.004s

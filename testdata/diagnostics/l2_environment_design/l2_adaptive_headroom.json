@@ -1,0 +1,43 @@
+{
+  "adaptive_headroom_instant_upper_bound": 0.11397504026206796,
+  "adaptive_headroom_ramp": -0.002803321113111993,
+  "best_static_c": 16,
+  "best_static_s": 132.85354166666664,
+  "dynamic_oracle_ramp_aware_s": 133.2259728049725,
+  "gate": "NOT_READY_ENVIRONMENT_TOO_WEAK",
+  "gate_threshold": 0.1,
+  "marginal_threshold": 0.05,
+  "oracle_instant_upper_bound_s": 117.71155390624999,
+  "oracle_ramp_values_s": [
+    133.3887577838825,
+    132.35645215895175,
+    133.93270847208325
+  ],
+  "phase_best_c": {
+    "1": 16,
+    "2": 2,
+    "3": 4,
+    "4": 16,
+    "5": 2,
+    "6": 6,
+    "7": 16
+  },
+  "phase_bytes_mib_best_static": [
+    137.0,
+    13.0,
+    67.0,
+    37.0,
+    25.0,
+    85.0,
+    148.0
+  ],
+  "phase_time_s_best_static": [
+    20.12,
+    20.39,
+    19.69,
+    20.27,
+    19.56,
+    20.37,
+    12.46
+  ]
+}

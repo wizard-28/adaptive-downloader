@@ -1,0 +1,110 @@
+{
+  "pairs": [
+    {
+      "pair_id": "A2-p00",
+      "condition": "A2",
+      "first": "v6",
+      "v6_run_id": "A2-p00-v6",
+      "aria2_run_id": "A2-p00-aria2"
+    },
+    {
+      "pair_id": "A2-p01",
+      "condition": "A2",
+      "first": "v6",
+      "v6_run_id": "A2-p01-v6",
+      "aria2_run_id": "A2-p01-aria2"
+    },
+    {
+      "pair_id": "A2-p02",
+      "condition": "A2",
+      "first": "aria2",
+      "v6_run_id": "A2-p02-v6",
+      "aria2_run_id": "A2-p02-aria2"
+    },
+    {
+      "pair_id": "A2-p03",
+      "condition": "A2",
+      "first": "aria2",
+      "v6_run_id": "A2-p03-v6",
+      "aria2_run_id": "A2-p03-aria2"
+    },
+    {
+      "pair_id": "A2-p04",
+      "condition": "A2",
+      "first": "aria2",
+      "v6_run_id": "A2-p04-v6",
+      "aria2_run_id": "A2-p04-aria2"
+    },
+    {
+      "pair_id": "D2-p00",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p00-v6",
+      "aria2_run_id": "D2-p00-aria2"
+    },
+    {
+      "pair_id": "D2-p01",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p01-v6",
+      "aria2_run_id": "D2-p01-aria2"
+    },
+    {
+      "pair_id": "D2-p02",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p02-v6",
+      "aria2_run_id": "D2-p02-aria2"
+    },
+    {
+      "pair_id": "D2-p03",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p03-v6",
+      "aria2_run_id": "D2-p03-aria2"
+    },
+    {
+      "pair_id": "D2-p04",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p04-v6",
+      "aria2_run_id": "D2-p04-aria2"
+    },
+    {
+      "pair_id": "E2-p00",
+      "condition": "E2",
+      "first": "aria2",
+      "v6_run_id": "E2-p00-v6",
+      "aria2_run_id": "E2-p00-aria2"
+    },
+    {
+      "pair_id": "E2-p01",
+      "condition": "E2",
+      "first": "aria2",
+      "v6_run_id": "E2-p01-v6",
+      "aria2_run_id": "E2-p01-aria2"
+    },
+    {
+      "pair_id": "E2-p02",
+      "condition": "E2",
+      "first": "v6",
+      "v6_run_id": "E2-p02-v6",
+      "aria2_run_id": "E2-p02-aria2"
+    },
+    {
+      "pair_id": "E2-p03",
+      "condition": "E2",
+      "first": "aria2",
+      "v6_run_id": "E2-p03-v6",
+      "aria2_run_id": "E2-p03-aria2"
+    },
+    {
+      "pair_id": "E2-p04",
+      "condition": "E2",
+      "first": "v6",
+      "v6_run_id": "E2-p04-v6",
+      "aria2_run_id": "E2-p04-aria2"
+    }
+  ],
+  "seed": 20260925
+}

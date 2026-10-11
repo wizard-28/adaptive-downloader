@@ -1,0 +1,59 @@
+=== RUN   TestExplorationDiagnosticInitialScores
+=== INITIAL LINUCB SCORES (alpha=0.2, A=I, b=0) ===
+
+scenario=baseline observed_rate=4194304 B/s  ||x||=1.000507  alpha*||x||=0.200101
+  features: 0.000000, 0.031249, 0.004194, 0.004194, 0.000007, 1.000000, 0.001000, 0.000000, 0.000000, 0.001000
+    none                 score=0.200101343
+    increase-concurrency score=0.200101343
+    decrease-concurrency score=0.200101343
+    increase-chunk-size  score=0.200101343
+    decrease-chunk-size  score=0.200101343
+
+scenario=server-throttle observed_rate=524288 B/s  ||x||=1.000489  alpha*||x||=0.200098
+  features: 0.000000, 0.031249, 0.000524, 0.000524, 0.000057, 1.000000, 0.001000, 0.000000, 0.000000, 0.001000
+    none                 score=0.200097882
+    increase-concurrency score=0.200097882
+    decrease-concurrency score=0.200097882
+    increase-chunk-size  score=0.200097882
+    decrease-chunk-size  score=0.200097882
+
+scenario=latency observed_rate=4194304 B/s  ||x||=1.000507  alpha*||x||=0.200101
+  features: 0.000000, 0.031249, 0.004194, 0.004194, 0.000007, 1.000000, 0.001000, 0.000000, 0.000000, 0.001000
+    none                 score=0.200101343
+    increase-concurrency score=0.200101343
+    decrease-concurrency score=0.200101343
+    increase-chunk-size  score=0.200101343
+    decrease-chunk-size  score=0.200101343
+
+scenario=loss observed_rate=4194304 B/s  ||x||=1.000507  alpha*||x||=0.200101
+  features: 0.000000, 0.031249, 0.004194, 0.004194, 0.000007, 1.000000, 0.001000, 0.000000, 0.000000, 0.001000
+    none                 score=0.200101343
+    increase-concurrency score=0.200101343
+    decrease-concurrency score=0.200101343
+    increase-chunk-size  score=0.200101343
+    decrease-chunk-size  score=0.200101343
+
+scenario=combined observed_rate=1048576 B/s  ||x||=1.000490  alpha*||x||=0.200098
+  features: 0.000000, 0.031249, 0.001049, 0.001049, 0.000028, 1.000000, 0.001000, 0.000000, 0.000000, 0.001000
+    none                 score=0.200098046
+    increase-concurrency score=0.200098046
+    decrease-concurrency score=0.200098046
+    increase-chunk-size  score=0.200098046
+    decrease-chunk-size  score=0.200098046
+--- PASS: TestExplorationDiagnosticInitialScores (0.00s)
+=== RUN   TestExplorationDiagnosticLockIn
+
+=== GREEDY LOCK-IN (baseline x, ActionNone reward=3.4) ===
+step | none       increase-concurrency decrease-concurrency increase-chunk-size decrease-chunk-size
+   0 |   0.200101   0.200101   0.200101   0.200101   0.200101
+   1 |   1.842318   0.200101   0.200101   0.200101   0.200101
+   2 |   2.382922   0.200101   0.200101   0.200101   0.200101
+   3 |   2.650658   0.200101   0.200101   0.200101   0.200101
+   4 |   2.810003   0.200101   0.200101   0.200101   0.200101
+   5 |   2.915468   0.200101   0.200101   0.200101   0.200101
+   6 |   2.990306   0.200101   0.200101   0.200101   0.200101
+   7 |   3.046092   0.200101   0.200101   0.200101   0.200101
+   8 |   3.089233   0.200101   0.200101   0.200101   0.200101
+--- PASS: TestExplorationDiagnosticLockIn (0.00s)
+PASS
+ok  	adaptivedl/internal/rl	0.006s

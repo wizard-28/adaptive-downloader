@@ -1,0 +1,22 @@
+{
+  "runs": 8,
+  "realized_tail_seconds": [
+    34.867289488,
+    35.263453095,
+    35.003049401,
+    34.94249797,
+    35.61814004,
+    34.598966339,
+    35.111472394,
+    34.952128591
+  ],
+  "pooled_median_tail_seconds": 34.977588995999994,
+  "min": 34.598966339,
+  "max": 35.61814004,
+  "T_tail_primary_seconds": 33.594432,
+  "lower_bound_seconds": 26.8755456,
+  "upper_bound_seconds": 41.99303999999999,
+  "ge_20s": true,
+  "within_bounds": true,
+  "pass": true
+}

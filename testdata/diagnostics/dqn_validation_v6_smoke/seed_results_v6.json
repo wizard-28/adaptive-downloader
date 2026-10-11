@@ -1,0 +1,16 @@
+{
+  "seeds": [
+    {
+      "final_loss": 0.04038636013865471,
+      "mean_return": -6.449522733166699,
+      "q_max": 0.04616502299904823,
+      "q_min": -3.024775981903076,
+      "seed": 0,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 3.7111133699633703,
+      "wall_seconds": 3.1004302501678467
+    }
+  ],
+  "selected_seed": 0
+}

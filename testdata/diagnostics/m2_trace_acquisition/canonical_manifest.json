@@ -1,0 +1,20 @@
+{
+  "development": [
+    "ugent_4g/train_0001",
+    "ugent_4g/train_0002",
+    "ugent_4g/tram_0001",
+    "nyu_mets/7Train1",
+    "nyu_mets/bus57",
+    "nyu_mets/bus62"
+  ],
+  "held_out": [
+    "ugent_4g/train_0003",
+    "ugent_4g/tram_0002",
+    "ugent_4g/car_0001",
+    "nyu_mets/7Train2",
+    "nyu_mets/Long_Island_Rail_Road",
+    "nyu_mets/QTrain",
+    "nyu_mets/bus62_2"
+  ],
+  "split_basis": "mobility identity/line separation; no performance consulted"
+}

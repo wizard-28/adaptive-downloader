@@ -1,0 +1,89 @@
+{
+  "candidate_v2_sha256": "59cbc5e6e18f428358b6233ba0e350c35668f2ebad3ba4d23e5e4c85de9b3a0e",
+  "candidate_v3_sha256": "96361535edd3216eabebf2d1fb72791b3551517bbb3a7bbaf44b7a8ee8eb492b",
+  "improved": [
+    "server-throttle-wallclock: attempts fell 75 -> 37 via chunk growth to ~449 KiB (v2: ~102 KiB)",
+    "chunk size now reaches ~160-449 KiB across scenarios (v2 capped near 85-125 KiB)",
+    "request fragmentation substantially reduced under the throttle condition"
+  ],
+  "live_v2": {
+    "baseline": {
+      "mean_attempts": 108.8,
+      "mean_duration_ms": 1170.9325999999999,
+      "mean_final_chunk_size": 32768,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    },
+    "combined": {
+      "mean_attempts": 65.6,
+      "mean_duration_ms": 2572.5674,
+      "mean_final_chunk_size": 85196.8,
+      "mean_final_concurrency": 4,
+      "valid": 5
+    },
+    "latency": {
+      "mean_attempts": 65.6,
+      "mean_duration_ms": 1993.3304,
+      "mean_final_chunk_size": 124518.4,
+      "mean_final_concurrency": 1.6,
+      "valid": 5
+    },
+    "loss": {
+      "mean_attempts": 71,
+      "mean_duration_ms": 1226.6452,
+      "mean_final_chunk_size": 91750.4,
+      "mean_final_concurrency": 2,
+      "valid": 5
+    },
+    "server-throttle-wallclock": {
+      "mean_attempts": 75.4,
+      "mean_duration_ms": 1499.4325999999999,
+      "mean_final_chunk_size": 104857.6,
+      "mean_final_concurrency": 1.4,
+      "valid": 5
+    }
+  },
+  "live_v3": {
+    "baseline": {
+      "mean_attempts": 87.4,
+      "mean_duration_ms": 1159.8338,
+      "mean_final_chunk_size": 32768,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    },
+    "combined": {
+      "mean_attempts": 75.4,
+      "mean_duration_ms": 5997.4592,
+      "mean_final_chunk_size": 91750.4,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    },
+    "latency": {
+      "mean_attempts": 75.8,
+      "mean_duration_ms": 3723.1046,
+      "mean_final_chunk_size": 163840,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    },
+    "loss": {
+      "mean_attempts": 80.6,
+      "mean_duration_ms": 1484.792,
+      "mean_final_chunk_size": 131072,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    },
+    "server-throttle-wallclock": {
+      "mean_attempts": 37,
+      "mean_duration_ms": 1918.4972,
+      "mean_final_chunk_size": 458752,
+      "mean_final_concurrency": 1,
+      "valid": 5
+    }
+  },
+  "net_assessment": "mixed: request efficiency improved, concurrency adaptation regressed; not a clean success on both axes",
+  "regressed": [
+    "concurrency adaptation did not transfer: v3 stays at concurrency 1 in every scenario (v2 used 1.4-4.0)",
+    "completion time is worse under latency (3723 vs 1993 ms) and combined (5997 vs 2573 ms)",
+    "the simulator's per-request-rate model made large chunks strongly dominant, so the learned policy under-used concurrency"
+  ]
+}

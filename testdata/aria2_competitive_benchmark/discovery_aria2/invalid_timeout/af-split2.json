@@ -1,0 +1,54 @@
+{
+  "run_id": "af-split2",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2",
+    "file_size_bytes": 536870912,
+    "system": "aria2"
+  },
+  "completion_ms": 180006.877,
+  "wallclock_bytes_per_second": 2982502.229623149,
+  "output_size_bytes": 382730240,
+  "output_sha256": "",
+  "content_verified": false,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": true,
+  "netem_status": "applied",
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 194,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 383,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 268435456,
+      "range_end": 536870911,
+      "has_range": true
+    }
+  ],
+  "total_requests": 2,
+  "successful_requests": 0,
+  "failed_requests": 0,
+  "server_bytes": 0,
+  "range_count": 1,
+  "aria2_exit": -1,
+  "aria2_output_tail": "4m4s]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n[#b76abc 213MiB/512MiB(41%) CN:2 DL:1.2MiB ETA:4m4s]\n *** Download Progress Summary as of Mon Sep 28 18:36:00 2026 *** \n===============================================================================\n[#b76abc 214MiB/512MiB(41%) CN:2 DL:1.2MiB ETA:4m3s]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n[#b76abc 214MiB/512MiB(41%) CN:2 DL:1.2MiB ETA:4m3s]\n *** Download Progress Summary as of Mon Sep 28 18:36:01 2026 *** \n===============================================================================\n[#b76abc 215MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m3s]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n[#b76abc 215MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m3s]\n *** Download Progress Summary as of Mon Sep 28 18:36:02 2026 *** \n===============================================================================\n[#b76abc 216MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m1s]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n[#b76abc 216MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m1s]\n *** Download Progress Summary as of Mon Sep 28 18:36:03 2026 *** \n===============================================================================\n[#b76abc 218MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n[#b76abc 218MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:4m]\n *** Download Progress Summary as of Mon Sep 28 18:36:04 2026 *** \n===============================================================================\n[#b76abc 219MiB/512MiB(42%) CN:2 DL:1.2MiB ETA:3m59s]\nFILE: /tmp/aria2-comp-2274461248/out.bin\n-------------------------------------------------------------------------------\n\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": "aria2: signal: killed"
+}

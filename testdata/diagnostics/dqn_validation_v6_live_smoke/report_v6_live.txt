@@ -1,0 +1,19 @@
+Candidate v6 live transfer validation (controlled server; NO aria2 comparison)
+authoritative controller concurrency; shared tc/netem bottleneck with mid-run phase changes
+
+v6 model sha256: daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887
+conditions: A2,E2; policies: 2; reps: 1
+GATE D: FAIL
+  constant=0.000 ramp-to-max=0.000 responsive_conditions=1/5
+
+policy   cond    mean_ms     med_ms      sd_ms    meanC   finalC
+v6       A2       8830.9     8830.9        0.0     1.90     1.00
+fixed-1  A2       8676.4     8676.4        0.0     1.00     1.00
+v6       E2       6251.2     6251.2        0.0     4.16     1.00
+fixed-1  E2       7433.7     7433.7        0.0     1.00     1.00
+
+v6 per-condition phase behavior:
+  A2  phase_spread=1.85 mean_changes=12.00 reactions_ms=[440.471 508.1229999999996]
+  E2  phase_spread=3.95 mean_changes=12.00 reactions_ms=[165.78600000000006 835.9650000000001]
+
+Caveats: controlled synthetic server; controlled unstable profiles; no real-network claim.

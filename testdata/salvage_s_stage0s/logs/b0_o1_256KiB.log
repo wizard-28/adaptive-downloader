@@ -1,0 +1,2 @@
+run b0_o1_256KiB block=0 arm=262144 order=1 clean=true duration=296.629s attempts=2048 retries=0
+cmd: /workspaces/mvp/testdata/salvage_s_stage0s/tools/stage0s_run -block 0 -arm 262144 -order 1 -run-id b0_o1_256KiB -out /workspaces/mvp/testdata/salvage_s_stage0s/raw/b0_o1_256KiB.json

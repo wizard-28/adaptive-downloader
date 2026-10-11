@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="260">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="20" font-size="13" font-family="monospace">FIG 2: standard vs periodic LinUCB unique post-warm-up arms</text>
+<text x="20" y="60" font-size="12">standard: 1.0-1.4 unique arms (mostly no-ops)</text>
+<text x="20" y="90" font-size="12">periodic: 5.0 unique arms (all actions exercised)</text>
+<rect x="20" y="110" width="60" height="20" fill="#1f77b4"/><text x="90" y="125" font-size="12">standard 1.0-1.4</text>
+<rect x="20" y="150" width="300" height="20" fill="#ff7f0e"/><text x="330" y="165" font-size="12">periodic 5.0</text>
+</svg>

@@ -1,0 +1,159 @@
+SALVAGE PROTOCOL v7 — FINAL SPECIFICATION FREEZE (DOCUMENTATION ONLY)
+==============================================================================
+status: FINAL_S_PROTOCOL_FROZEN — READY_FOR_STAGE_0S
+ready_for_stage_0s: True
+frozen_at_utc: 2026-09-28T09:30:42Z
+experiments run: NO (no pilot, no network run, no new experiment directory)
+repo path note: task named /workspace/mvp; artifacts created under /workspaces/mvp/testdata/salvage_s_protocol_v7/
+
+FROZEN MECHANISM PACKAGE (Candidate A)
+   R = 4 Mbps = 500000 bytes/s | D = 40 ms | FileSize = 512 MiB = 536870912 bytes | N = 4
+   unselected candidates: B (inadmissible: tail < 20 s), C, D — provenance only
+
+FROZEN QUANTITIES
+   T_ref            = 268.435456 s
+   delta_T          = 13.4217728 s (time-scale: 5% completion-time reduction)
+   T_tail_primary   = 33.594432 s (formula D + C_max/R)
+   delta_tail       = 1.6797216 s
+   delta_log        = log(0.95) = -0.051293294387551 (rounded -0.051293294)
+   tail-window data = 67108864 bytes (64 MiB, 12.5% of the file)
+   tail minimum     = >= 20.0 s
+   ARITHMETIC NOTE: The decision text states 33.594304 s; independent recalculation of the frozen formula D + C_max/R gives 33.594432 s (0.128 ms difference). Per the section-15 independent-recalculation requirement, the formula-derived value is frozen as operative; the human-stated decimal is retained for provenance. Both satisfy T_tail_primary >= 20 s.
+
+REMAINING HUMAN DECISIONS: none — all six were approved on 2026-09-28T09:30:42Z
+BLOCKING ITEMS: none
+
+1. RESEARCH QUESTION
+   When does adaptive HTTP range downloading benefit from changing future chunk size under finite-file, tail-aware conditions?
+   This is not yet an RL study.
+   Do not claim or imply that adaptive chunk sizing is beneficial before the experiment is run.
+
+2. SCOPE
+   single_server_http_downloads: True
+   http_version: HTTP/1.1 only
+   byte_range_requests: True
+   one_request_one_contiguous_range: True
+   forbidden_transports_and_schedulers: ['HTTP/2', 'HTTP/3', 'QUIC', 'multipart/disjoint ranges', 'multi-source downloading', 'CDN-specific scheduling', 'cross-server scheduling']
+   future_chunk_size_affects_new_allocations_only: True
+   in_flight_requests_keep_original_boundaries: True
+   finite_file: True
+   tail_aware: True
+
+3. PRIMARY MECHANISM
+   - per-request server-side rate limiting at rate R
+   - fixed nonzero RTT/delay D
+   forbidden mechanisms: packet loss, dynamic bandwidth schedules, authored time-varying capacity schedules, arbitrary server throttling changes, hidden request penalties
+
+4. HUMAN-OWNED MECHANISM PARAMETERS (HUMAN-APPROVED / FROZEN)
+   - R_server_per_request_rate: value=500000.0 unit=bytes/second [HUMAN-APPROVED / FROZEN]
+   - D_fixed_rtt_delay: value=0.04 unit=seconds [HUMAN-APPROVED / FROZEN]
+   - FileSize: value=536870912 unit=bytes [HUMAN-APPROVED / FROZEN]
+   - N_fixed_concurrency: value=4 unit=concurrent requests [HUMAN-APPROVED / FROZEN]
+
+5. DERIVED QUANTITIES (HUMAN-APPROVED / FROZEN)
+   T_ref = FileSize/(N*R) = 268.435456 s
+   delta_T = 0.05*T_ref = 13.4217728 s
+   delta_log = log(0.95) = -0.051293294387551
+   T_tail_primary = D + C_max/R = 33.594432 s
+   delta_tail = 0.05*T_tail_primary = 1.6797216 s
+   requirement: T_tail_primary >= 20 s (frozen; the tail must not be redefined after this freeze)
+
+6. CHUNK-SIZE ARMS
+   - 256 KiB (262144 bytes)
+   - 1 MiB (1048576 bytes)
+   - 4 MiB (4194304 bytes)
+   - 16 MiB (16777216 bytes)
+   four fixed arms; no additional fixed arms may be introduced for v7
+
+7. SWITCHING STRATEGIES (confirmatory only)
+   16 MiB -> 4 MiB
+   4 MiB -> 1 MiB
+   1 MiB -> 256 KiB
+   exploratory: NONE — the duplicated '1 MiB -> 256 KiB' exploratory case is removed because it is already the third confirmatory member [HUMAN-APPROVED / FROZEN]
+
+8. B_pending AND SWITCH TRIGGERS (HUMAN-APPROVED / FROZEN)
+   B_pending = TotalSize - CompletedBytes - InFlightBytes
+   switch when B_pending <= B_switch with B_switch = N * S0 [HUMAN-APPROVED / FROZEN]
+   thresholds: 16 MiB -> 4 MiB: B_pending <= 64 MiB; 4 MiB -> 1 MiB: B_pending <= 16 MiB; 1 MiB -> 256 KiB: B_pending <= 4 MiB
+   semantics:
+     - evaluate B_pending immediately before allocation
+     - if the condition is false, allocate using the current S
+     - if the condition is true and the run has not switched yet, perform the single allowed switch
+     - the target S governs all subsequently allocated ranges
+     - in-flight ranges are never resized
+     - maximum one switch per run
+     - once switched, S remains fixed for the remainder of the run
+   edge cases:
+     - below_threshold_before_first_allocation: if B_pending is already below the threshold before the first allocation, the switch occurs at that allocation boundary
+     - eof_before_threshold_evaluation: if EOF occurs before the threshold is evaluated, no switch occurs
+     - no_allocation_after_crossing: if no allocation occurs after the threshold is crossed, no artificial switch event is created
+     - in_flight_bytes: InFlightBytes includes currently allocated but incomplete ranges according to tracker state
+     - retries: retries preserve original range boundaries and do not retroactively resize ranges
+     - sampling: CompletedBytes / InFlightBytes must be sampled from tracker-level state immediately before the allocation decision
+
+9. PRIMARY STATISTICAL MODEL (HUMAN-APPROVED / FROZEN)
+   y_cb = mu_c + u_b + eps_cb ; y_cb = log(T_cb / T_ref)
+   primary priors: {'mu_c': 'Normal(0, 1.5)', 'sigma_block': 'HalfNormal(0, 0.5)', 'sigma_resid': 'HalfNormal(0, 0.5)'}
+   prior sensitivity: {'mu_c': 'Normal(0, 3)', 'sigma_block': 'HalfNormal(0, 1)', 'sigma_resid': 'HalfNormal(0, 1)'}
+   best-fixed: mu_fixed* = min(mu_256K, mu_1M, mu_4M, mu_16M)
+   decision: P(Delta_k <= delta_log | data) >= 0.95
+   no ranking/winner/best policy/score/overall superiority claim
+
+10. FIXED-SEQUENCE ORDER (HUMAN-APPROVED / FROZEN)
+   16 MiB -> 4 MiB -> 4 MiB -> 1 MiB -> 1 MiB -> 256 KiB
+   fixed-sequence testing; stop at the first failure; do not reorder based on observed results
+
+11. STAGE 0S GO / NO-GO (HUMAN-APPROVED / FROZEN)
+   GO iff ALL of the following hold; otherwise NO-GO: (1) mechanism presence: for every fixed chunk-size arm, pooled median per-request service time within +/-25% of D + s/R; (2) direction: median_service_time(256 KiB) < median_service_time(1 MiB) < median_service_time(4 MiB) < median_service_time(16 MiB); (3) tail sufficiency: pooled median realized 16 MiB tail >= 20 s AND within [0.8*T_tail_primary, 1.25*T_tail_primary]; (4) feasibility/reliability: >= 28/32 clean runs, <= 30 minutes wall-clock per run, within-block residual SD of log(T/T_ref) <= 0.25
+   designated feasibility quantities: per-request service time by arm; realized 16 MiB tail duration; run reliability events (retries/timeouts/429/503); wall-clock runtime; within-block residual SD of log completion time
+   feasibility/mechanism gate only; NOT a treatment-effect test; not modifiable after pilot results
+
+12. PILOT (HUMAN-APPROVED / FROZEN)
+   8 blocks x 4 arms = 32 runs
+   allowed: mechanism verification; tail verification; feasibility; variance estimation; runtime estimation
+   forbidden: select arms; tune switch thresholds; choose switching strategies; modify the primary endpoint; choose priors; modify delta_T; modify T_tail_primary; modify Stage 0S criteria; tune the confirmatory analysis
+
+13. CONFIRMATORY SAMPLE SIZE (HUMAN-APPROVED / FROZEN)
+   n <= 12 per condition/strategy; no post-hoc increase based on observed effect size
+
+14. SSR SIMULATION (HUMAN-APPROVED / FROZEN)
+   effects: [0.0, -0.05129329438755058, -0.1]
+   sigma_block: [0.05, 0.15] | sigma_resid: [0.05, 0.1, 0.2]
+   18 scenarios x 1000 datasets = 18000 synthetic datasets
+   decision threshold: P(Delta_k <= delta_log | data) >= 0.95
+   outputs: posterior coverage; type-I error behavior; power; posterior-probability distribution; expected sample size; simulation runtime
+
+15. TWO-STAGE SEPARATION (HUMAN-APPROVED / FROZEN)
+   pilot data must NOT be silently pooled into the confirmatory analysis; no pooling rule has been pre-registered, therefore no pooling is permitted
+
+16. TRACE STUDY
+   in scope for v7: False — trace-backed validation is out of scope unless the complete protocol is explicitly frozen here; no half-specified future cellular-trace experiment is created
+
+17. ARTIFACT LOCATION
+   /workspaces/mvp/testdata/salvage_s_protocol_v7/
+
+18. VALIDATION
+   [PASS] every required parameter exists — Candidate A frozen: R=500,000 B/s, D=40 ms, FileSize=536,870,912 B, N=4
+   [PASS] delta_T computed from frozen mechanism parameters — delta_T=0.05*T_ref=13.4217728 s; delta_log=log(0.95)=-0.05129329438755058
+   [PASS] delta_tail explicitly defined — delta_tail=0.05*T_tail_primary=1.6797216 s
+   [PASS] T_tail_primary >= 20 s — T_tail_primary=33.594432 s (formula-derived; decision text stated 33.594304 s, 0.128 ms transcription difference)
+   [PASS] priors are explicit — Normal(0,1.5), HalfNormal(0,0.5), HalfNormal(0,0.5)
+   [PASS] prior sensitivity is explicit — Normal(0,3), HalfNormal(0,1), HalfNormal(0,1)
+   [PASS] pilot/confirmatory separation — strict two-stage; no pooling rule exists, so pilot data are not pooled; fresh confirmatory fit
+   [PASS] one-switch semantics — maximum one switch per run; S fixed afterwards; in-flight ranges never resized
+   [PASS] trigger timing immediately before allocation — B_pending sampled from tracker state immediately before the allocation decision
+   [PASS] fixed switching family — 16->4, 4->1, 1->256K; no exploratory strategy
+   [PASS] fixed-sequence multiplicity — order frozen; stop at first failure; no reordering
+   [PASS] SSR simulation specification — 18 scenarios x 1000 datasets = 18,000; frozen model/priors/threshold
+   [PASS] trace study explicitly out of scope for v7 — no half-specified trace experiment created
+   [PASS] artifact path distinct from the oracle study — testdata/salvage_s_protocol_v7/
+   [PASS] candidate packages evaluated analytically — A selected; B unselected (inadmissible), C/D unselected
+   [PASS] independent recalculation of frozen quantities — T_ref=268.435456 s; T_tail_primary=33.594432 s; delta_tail=1.6797216 s; delta_log=-0.05129329438755058
+   [PASS] no experiments run by this pass — no pilot, no network run, no new experiment directory
+   [PASS] no source code changed — no source file modified
+   [PASS] completed studies untouched — Stage A/B/C and oracle artifacts not modified
+   [PASS] frozen quantities consistent across JSON/TXT/README/MEMO/PROJECT_CONTEXT.md — 35/35 cross-artifact checks pass (T_ref, T_tail_primary, delta_tail, delta_log, READY status, strategies, thresholds, SSR grid, go/no-go)
+19. FINAL STATUS
+   FINAL_S_PROTOCOL_FROZEN — READY_FOR_STAGE_0S
+   ready_for_stage_0s = true
+   No experiment was run. Stage 0S execution is a separate task.

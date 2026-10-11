@@ -1,0 +1,186 @@
+{
+  "order_seed": 20260929,
+  "blocks": 20,
+  "schedule": [
+    {
+      "block": 1,
+      "order": [
+        "fixed",
+        "n-only",
+        "s-only",
+        "joint"
+      ]
+    },
+    {
+      "block": 2,
+      "order": [
+        "s-only",
+        "n-only",
+        "fixed",
+        "joint"
+      ]
+    },
+    {
+      "block": 3,
+      "order": [
+        "fixed",
+        "joint",
+        "s-only",
+        "n-only"
+      ]
+    },
+    {
+      "block": 4,
+      "order": [
+        "n-only",
+        "s-only",
+        "fixed",
+        "joint"
+      ]
+    },
+    {
+      "block": 5,
+      "order": [
+        "fixed",
+        "n-only",
+        "joint",
+        "s-only"
+      ]
+    },
+    {
+      "block": 6,
+      "order": [
+        "fixed",
+        "s-only",
+        "n-only",
+        "joint"
+      ]
+    },
+    {
+      "block": 7,
+      "order": [
+        "joint",
+        "fixed",
+        "s-only",
+        "n-only"
+      ]
+    },
+    {
+      "block": 8,
+      "order": [
+        "fixed",
+        "s-only",
+        "joint",
+        "n-only"
+      ]
+    },
+    {
+      "block": 9,
+      "order": [
+        "s-only",
+        "joint",
+        "fixed",
+        "n-only"
+      ]
+    },
+    {
+      "block": 10,
+      "order": [
+        "joint",
+        "fixed",
+        "n-only",
+        "s-only"
+      ]
+    },
+    {
+      "block": 11,
+      "order": [
+        "s-only",
+        "n-only",
+        "joint",
+        "fixed"
+      ]
+    },
+    {
+      "block": 12,
+      "order": [
+        "fixed",
+        "n-only",
+        "s-only",
+        "joint"
+      ]
+    },
+    {
+      "block": 13,
+      "order": [
+        "joint",
+        "n-only",
+        "fixed",
+        "s-only"
+      ]
+    },
+    {
+      "block": 14,
+      "order": [
+        "n-only",
+        "s-only",
+        "fixed",
+        "joint"
+      ]
+    },
+    {
+      "block": 15,
+      "order": [
+        "joint",
+        "n-only",
+        "fixed",
+        "s-only"
+      ]
+    },
+    {
+      "block": 16,
+      "order": [
+        "n-only",
+        "fixed",
+        "joint",
+        "s-only"
+      ]
+    },
+    {
+      "block": 17,
+      "order": [
+        "fixed",
+        "joint",
+        "n-only",
+        "s-only"
+      ]
+    },
+    {
+      "block": 18,
+      "order": [
+        "n-only",
+        "s-only",
+        "fixed",
+        "joint"
+      ]
+    },
+    {
+      "block": 19,
+      "order": [
+        "joint",
+        "s-only",
+        "fixed",
+        "n-only"
+      ]
+    },
+    {
+      "block": 20,
+      "order": [
+        "joint",
+        "s-only",
+        "fixed",
+        "n-only"
+      ]
+    }
+  ]
+}

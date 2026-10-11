@@ -1,0 +1,149 @@
+{
+  "study": "live-joint-ns-queueing-mechanism-gate",
+  "generated_utc": "2026-09-29T06:27:58Z",
+  "status": "NO_LIVE-GROUNDED_JOINT_N+S_OPPORTUNITY",
+  "evidence_type": "LIVE (real tc tbf bottleneck + real iperf3 background + real downloads + real ping/nstat/qdisc telemetry)",
+  "design": "manifest/gate_design.json",
+  "mechanism": "shared finite-capacity FIFO bottleneck (tc tbf, lo, 40 Mbit/s, 256 kb queue, MTU 1500) + paced TCP background traffic",
+  "gate": {
+    "G-N1_interior_optimum": {
+      "states_with_interior_material_consistent_optimum": [],
+      "contention_cost_measurable_per_state": {
+        "S0_no_background": true,
+        "S1_moderate": true,
+        "S2_heavy": true
+      },
+      "N_star_per_state": {
+        "S0_no_background": 8,
+        "S1_moderate": 16,
+        "S2_heavy": 16
+      },
+      "pass": false
+    },
+    "G-N2_state_dependence": {
+      "material_state_pairs": [],
+      "pass": false
+    },
+    "overall": "FAIL"
+  },
+  "results": {
+    "N_star_per_state": {
+      "S0_no_background": 8,
+      "S1_moderate": 16,
+      "S2_heavy": 16
+    },
+    "median_completion_s": {
+      "S0_no_background": {
+        "1": 7.1660770000000005,
+        "2": 7.157907,
+        "4": 7.096881000000001,
+        "8": 7.053846999999999,
+        "16": 7.071757
+      },
+      "S1_moderate": {
+        "1": 14.856127,
+        "2": 14.99393,
+        "4": 15.061183000000002,
+        "8": 15.125316000000002,
+        "16": 14.283911
+      },
+      "S2_heavy": {
+        "1": 62.49148,
+        "2": 67.893999,
+        "4": 51.958892999999996,
+        "8": 30.297356,
+        "16": 15.88598
+      }
+    },
+    "margin": {
+      "S0_no_background": 0.0025326096470792954,
+      "S1_moderate": 0.03851717207317903,
+      "S2_heavy": 0.4756644771246706
+    },
+    "contention_cost": {
+      "S0_no_background": {
+        "ping_p95_ratio_16_over_1": 1.6352530541012218,
+        "drops_N16": 338,
+        "retrans_N16": 103
+      },
+      "S1_moderate": {
+        "ping_p95_ratio_16_over_1": 1.5460992907801419,
+        "drops_N16": 421,
+        "retrans_N16": 321
+      },
+      "S2_heavy": {
+        "ping_p95_ratio_16_over_1": 1.14625,
+        "drops_N16": 315,
+        "retrans_N16": 201
+      }
+    },
+    "interior_optimum_found": false,
+    "state_dependent_N_star_found": false,
+    "model_calibration": {
+      "rmse_rel": 0.08241067132637722,
+      "max_abs_rel": 0.1865478216430148,
+      "k_loss": 21.8245
+    }
+  },
+  "not_reached": [
+    "fixed-S gate",
+    "joint-optimum gate",
+    "within-download transition",
+    "causal adaptive controller",
+    "aria2 comparison",
+    "confirmatory protocol"
+  ],
+  "infrastructure_fixes_before_gate": [
+    "lo MTU set to 1500 during the study (restored to 65536 afterwards); default 65536 loopback MTU bursts stalled downloads",
+    "iperf3 -b is per stream: total offered load divided by 4 streams",
+    "fresh iperf3 server per cell + client retries + explicit background verification; invalid runs preserved under mechanism_gate/invalid/ and excluded"
+  ],
+  "artifacts": {
+    "runs": 45,
+    "valid_runs": 45,
+    "invalid_runs_preserved": 45,
+    "analysis": [
+      "analysis/gate_analysis.json"
+    ],
+    "calibration": [
+      "calibration/model_calibration.json"
+    ],
+    "figures": [
+      "fig1_completion_vs_N.png",
+      "fig2_rtt_vs_N.png",
+      "fig3_drops_retrans_vs_N.png",
+      "fig4_background.png",
+      "fig5_model_vs_live.png"
+    ],
+    "report": "reports/joint_ns_queueing_mechanism_report.md",
+    "tools": [
+      "analyze_gate.py",
+      "make_figures.py",
+      "make_report.py",
+      "queue_model.py",
+      "run_gate.py",
+      "gate_run.go"
+    ],
+    "tool_sha256": {
+      "analyze_gate.py": "962543e2bf2b9e7b15ea16c9a24372e44fa6a384574ebb98dce290342e51fd92",
+      "make_figures.py": "e031c694d13fa0d4d22a4d0a82a701244c2fa7fda5f0f6cc98b2389c998af98e",
+      "make_report.py": "7d6e3b8bf9d3d787bed498aec28826f2e22231a3098ac0e8029a646d767aa029",
+      "queue_model.py": "e8540e9343eb0405f94fde0efd1f5b231bb2a7f3ea837c6c1d8cb40d0ce8429f",
+      "run_gate.py": "e97d63c5d4e97a380a1748c821583b789e2363dc5722ff30947581cce25188a2",
+      "gate_run.go": "03f8fe1ac6f3fdf300252f3f5cbf3394e45873babc1b0af5b573fa9297f90fe8"
+    }
+  },
+  "immutability": {
+    "previous_benchmark_dirs_modified": false,
+    "historical_evidence_modified": false,
+    "aria2_retuned": false,
+    "all_mechanism_states_reported": true,
+    "cherry_picked_states": false,
+    "environment_restored": {
+      "lo_mtu": "65536",
+      "qdisc": "cleared",
+      "stale_processes": "none"
+    }
+  },
+  "scope": "one live mechanism instantiation (TCP over a single FIFO token-bucket bottleneck on loopback with paced TCP background); no claim beyond the tested mechanism; the fixed 62.4% aria2 benchmark is unchanged and remains the primary competitive result"
+}

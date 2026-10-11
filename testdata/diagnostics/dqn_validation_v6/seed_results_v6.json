@@ -1,0 +1,60 @@
+{
+  "seeds": [
+    {
+      "final_loss": 0.04139992967247963,
+      "mean_return": -7.062746421994231,
+      "q_max": 0.6487013101577759,
+      "q_min": -3.320028066635132,
+      "seed": 0,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 4.893993917656418,
+      "wall_seconds": 59.41130971908569
+    },
+    {
+      "final_loss": 0.0308984387665987,
+      "mean_return": -7.133967302744947,
+      "q_max": 0.5865796208381653,
+      "q_min": -3.303192138671875,
+      "seed": 1,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 4.757846892459393,
+      "wall_seconds": 56.42780804634094
+    },
+    {
+      "final_loss": 0.04010579735040665,
+      "mean_return": -6.978109096360616,
+      "q_max": 1.171610951423645,
+      "q_min": -3.3348658084869385,
+      "seed": 2,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 4.709250942575943,
+      "wall_seconds": 53.65306043624878
+    },
+    {
+      "final_loss": 0.016955118626356125,
+      "mean_return": -7.234040941079465,
+      "q_max": 0.11876737326383591,
+      "q_min": -3.3786487579345703,
+      "seed": 3,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 5.411958813871314,
+      "wall_seconds": 57.42573261260986
+    },
+    {
+      "final_loss": 0.043137919157743454,
+      "mean_return": -7.091670687923018,
+      "q_max": 0.08240076154470444,
+      "q_min": -2.8166520595550537,
+      "seed": 4,
+      "truncated_episodes": 0,
+      "validation_constant_fraction": 0.0,
+      "validation_mean_completion_s": 4.881012290949791,
+      "wall_seconds": 54.99218034744263
+    }
+  ],
+  "selected_seed": 2
+}

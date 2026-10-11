@@ -1,0 +1,85 @@
+{
+  "traces_used": [
+    "nyu_mets/7Train1.csv"
+  ],
+  "concurrencies": [
+    1,
+    4,
+    16
+  ],
+  "completion_ms_by_c": {
+    "1": 95476.303,
+    "4": 96613.258,
+    "16": 107208.154
+  },
+  "max_min_ratio": 1.1228770975767672,
+  "c_sensitivity": "NO_MEANINGFUL_C_SENSITIVITY",
+  "replay_config": {
+    "trace": "nyu_mets/7Train1.csv",
+    "trace_sha256": "0530c6e75b33a19084faee2694dfa376588f2f48affddb0ad0ffcdba4622b487",
+    "replay": "tc/netem aggregate rate envelope on lo, 1 Hz updates at sample boundaries; zero samples -> 8000 bps floor; last sample held after trace end",
+    "interpretation": "empirical throughput-envelope replay; measured end-to-end throughput, NOT path capacity",
+    "server": "controlled server rate unlimited (no synthetic throttling)",
+    "chunk_bytes": 1048576,
+    "workload_bytes": 50331648,
+    "identical_replay_across_c": true,
+    "missing_run": "C8 failed with a tc/harness error (exit 2); conclusion unaffected, anomaly documented"
+  },
+  "replay_fidelity": {
+    "1": {
+      "replay_bps": 527163.7715444805,
+      "trace_mean_bps": 673111.9791666666,
+      "rel_err": 0.21682604401555078,
+      "consumed_fraction": 0.5304239057388889,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    },
+    "4": {
+      "replay_bps": 520960.04920545674,
+      "trace_mean_bps": 685889.1752577319,
+      "rel_err": 0.24046031341769009,
+      "consumed_fraction": 0.5367403260444444,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    },
+    "16": {
+      "replay_bps": 469475.9307540168,
+      "trace_mean_bps": 904108.7962962963,
+      "rel_err": 0.4807307121916783,
+      "consumed_fraction": 0.5956008569333333,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    }
+  },
+  "gates": {
+    "A_replay_fidelity": {
+      "passed": null,
+      "detail": "coarse proxy recorded; full comparison deferred because B failed"
+    },
+    "B_c_sensitivity": {
+      "passed": false,
+      "detail": "completions C1/C4/C16 = {1: 95476.303, 4: 96613.258, 16: 107208.154}; max/min=1.123; higher C gives no gain (C16 slower); the aggregate envelope is a shared ceiling"
+    },
+    "C_temporal_c_shift": {
+      "passed": null,
+      "detail": "not run (B failed)"
+    },
+    "D_wrong_c_cost": {
+      "passed": null,
+      "detail": "not run (B failed)"
+    },
+    "E_adaptive_headroom": {
+      "passed": null,
+      "detail": "not run (B failed)"
+    },
+    "F_heldout": {
+      "passed": null,
+      "detail": "not run (B failed)"
+    }
+  },
+  "outcome": "NOT_READY_ENVELOPE_NO_C_SENSITIVITY",
+  "claim_boundary": "throughput-envelope replay, not physical cellular emulation; no RL; no aria2"
+}

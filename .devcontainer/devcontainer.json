@@ -1,0 +1,45 @@
+{
+  "name": "Adaptive Download Manager",
+
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    },
+
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "latest"
+    },
+
+    "ghcr.io/sliekens/devcontainer-features/opencode:1": {}
+  },
+
+  "mounts": ["source=/run/user/1000/bus,target=/run/user/1000/bus,type=bind"],
+
+  "containerEnv": {
+    "DISPLAY": ":0",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+  },
+
+  "runArgs": [
+    "--device=/dev/net/tun:/dev/net/tun",
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW",
+    "--cap-add=SYS_ADMIN"
+  ],
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+
+  "remoteUser": "vscode"
+}

@@ -1,0 +1,52 @@
+{
+  "gates": {
+    "A_distinct_phase_optima": {
+      "passed": true,
+      "phase_best_c": [
+        16,
+        2,
+        4,
+        16,
+        2,
+        6,
+        16
+      ]
+    },
+    "B_headroom_ge_10pct": {
+      "headroom": 0.08105771883360292,
+      "passed": false,
+      "threshold": 0.1
+    },
+    "C_transitions_with_work": {
+      "passed": true,
+      "remaining_bytes_fraction_at_transitions": [
+        0.732,
+        0.584,
+        0.396,
+        0.311,
+        0.18,
+        0.0
+      ],
+      "transitions": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "D_sim_live_parity": {
+      "detail": "selected A semantics: atomic step <=4, clamp [1,16]; live policyRunner honors Action.Value as step (Go test policy_runner_v7_test.go); simulator oracle applies the identical rule",
+      "passed": true
+    },
+    "E_live_shared_cap_tradeoff": {
+      "detail": "frozen live v6 A2 fixed-C data (shared cap): best C4=6588ms vs C16=9756ms",
+      "passed": true
+    },
+    "F_control_authority": {
+      "detail": "16->2 in 4 decisions; 14/4<=4; phases 20-35 s at ~1 decision per completed request",
+      "passed": true
+    }
+  },
+  "outcome": "STOP"
+}

@@ -1,0 +1,77 @@
+{
+  "label": "FINAL head-to-head test matrix (DQN Candidate v2 vs aria2 baseline v1)",
+  "conditions": [
+    {
+      "id": "U1",
+      "initial_rate": 786432,
+      "subsequent_rate": 3145728,
+      "transition_after_s": 0.8,
+      "latency_ms": 0,
+      "loss_percent": 0
+    },
+    {
+      "id": "U2",
+      "initial_rate": 1572864,
+      "subsequent_rate": 6291456,
+      "transition_after_s": 1.3,
+      "latency_ms": 0,
+      "loss_percent": 0
+    },
+    {
+      "id": "U3",
+      "initial_rate": 4194304,
+      "subsequent_rate": 4194304,
+      "transition_after_s": 0,
+      "latency_ms": 15,
+      "loss_percent": 0.5
+    },
+    {
+      "id": "U4",
+      "initial_rate": 2097152,
+      "subsequent_rate": 2097152,
+      "transition_after_s": 0,
+      "latency_ms": 35,
+      "loss_percent": 1.5
+    },
+    {
+      "id": "U5",
+      "initial_rate": 3145728,
+      "subsequent_rate": 3145728,
+      "transition_after_s": 0,
+      "latency_ms": 60,
+      "loss_percent": 0.75
+    },
+    {
+      "id": "U6",
+      "initial_rate": 1310720,
+      "subsequent_rate": 5242880,
+      "transition_after_s": 1.1,
+      "latency_ms": 25,
+      "loss_percent": 0
+    },
+    {
+      "id": "U7",
+      "initial_rate": 2097152,
+      "subsequent_rate": 6291456,
+      "transition_after_s": 1.4,
+      "latency_ms": 0,
+      "loss_percent": 1
+    },
+    {
+      "id": "U8",
+      "initial_rate": 1048576,
+      "subsequent_rate": 4194304,
+      "transition_after_s": 0.9,
+      "latency_ms": 40,
+      "loss_percent": 1.25
+    }
+  ],
+  "repetitions": 30,
+  "pairs": 240,
+  "total_downloads": 480,
+  "file_size": 4194304,
+  "dqn_sha256": "59cbc5e6e18f428358b6233ba0e350c35668f2ebad3ba4d23e5e4c85de9b3a0e",
+  "aria2_sha256": "6b8cf33eb896ecf7c13de71434250ad9611cdd501043075212fb6bd0b1ffcf72",
+  "seed": 20260925,
+  "note": "wall-clock rate schedules only; paired design; conditions do not duplicate calibration V1-V5, v6, or DQN validation"
+}

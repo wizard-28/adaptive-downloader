@@ -1,0 +1,108 @@
+Final six-mode 4 MiB benchmark (descriptive only; no ranking, no superiority claim)
+generated_utc: 2026-09-24T20:31:17Z
+source_raw: testdata/benchmark_v5/matrix_6mode_4MiB_reps10.json
+reproduce: go run ./cmd/experiment -matrix -sudo -reps 10 -json -file-size 4194304 \
+             -modes fixed,concurrency-adaptive,chunk-size-adaptive,joint-adaptive,linucb,linucb-periodic
+config: 4 MiB; chunk 32768 min/max 32768/131072 step 32768; concurrency 1 (1..4); thresholds 0.2/0.2;
+        window 4; retries 3; timeout 30s; alpha 0.2; DefaultRewardConfig; warm-up 5;
+        linucb=standard(interval 0), linucb-periodic(interval 5). No seeds.
+
+CORRECTNESS: 300/300 valid, 0 invalid, 0 failed (Err=='' AND output/range correctness). SHA-256 not implemented.
+NETWORK: baseline=['none'], server-throttle=['none'], latency=['applied'], loss=['applied'], combined=['applied']
+
+DECISION HORIZON (mean total / learned; fixed has no policy decisions so total=attempts)
+  baseline         fixed=128.0 concurrency-adaptive=128.0 chunk-size-adaptive=128.0 joint-adaptive=128.0 linucb=127.0 linucb-periodic=109.0
+  server-throttle  fixed=128.0 concurrency-adaptive=128.0 chunk-size-adaptive=37.0 joint-adaptive=49.0 linucb=127.0 linucb-periodic=123.0
+  latency          fixed=128.0 concurrency-adaptive=128.0 chunk-size-adaptive=35.0 joint-adaptive=74.9 linucb=37.0 linucb-periodic=38.0
+  loss             fixed=128.0 concurrency-adaptive=128.0 chunk-size-adaptive=79.6 joint-adaptive=119.4 linucb=127.0 linucb-periodic=86.1
+  combined         fixed=128.0 concurrency-adaptive=128.0 chunk-size-adaptive=35.8 joint-adaptive=121.2 linucb=63.5 linucb-periodic=52.2
+
+CONTROLLER BEHAVIOR (mean over 10 runs)
+  scenario         mode                 finalC   maxC finalChunk minChunk maxChunk
+  baseline         fixed                  1.00      1    32768    32768    32768
+  baseline         concurrency-adaptive   1.00      1    32768    32768    32768
+  baseline         chunk-size-adaptive    1.00      1    32768    32768    32768
+  baseline         joint-adaptive         1.10      2    32768    32768    32768
+  baseline         linucb                 1.00      2    32768    32768    65536
+  baseline         linucb-periodic        1.00      2    32768    32768    65536
+  server-throttle  fixed                  1.00      1    32768    32768    32768
+  server-throttle  concurrency-adaptive   4.00      4    32768    32768    32768
+  server-throttle  chunk-size-adaptive    1.00      1   131072    32768   131072
+  server-throttle  joint-adaptive         3.00      3    98304    32768    98304
+  server-throttle  linucb                 1.00      2    32768    32768    65536
+  server-throttle  linucb-periodic        1.00      2    32768    32768    65536
+  latency          fixed                  1.00      1    32768    32768    32768
+  latency          concurrency-adaptive   3.00      3    32768    32768    32768
+  latency          chunk-size-adaptive    1.00      1   131072    32768   131072
+  latency          joint-adaptive         2.00      2    62259    32768    62259
+  latency          linucb                 1.00      2   131072    32768   131072
+  latency          linucb-periodic        1.00      2   131072    32768   131072
+  loss             fixed                  1.00      1    32768    32768    32768
+  loss             concurrency-adaptive   2.20      4    32768    32768    32768
+  loss             chunk-size-adaptive    1.00      1    65536    32768    72090
+  loss             joint-adaptive         1.50      4    49152    32768    52429
+  loss             linucb                 1.30      4    32768    32768    65536
+  loss             linucb-periodic        1.00      2    85197    32768   101581
+  combined         fixed                  1.00      1    32768    32768    32768
+  combined         concurrency-adaptive   2.20      4    32768    32768    32768
+  combined         chunk-size-adaptive    1.00      1   127795    32768   131072
+  combined         joint-adaptive         1.80      2    39322    32768    39322
+  combined         linucb                 1.00      2   101581    32768   114688
+  combined         linucb-periodic        1.10      2   111411    32768   117965
+
+LINUCB STANDARD vs PERIODIC (post-warm-up, pooled)
+  baseline         linucb-standard      total=1220 uniq=1.00 forced=0 dominant=decrease-concurrency counts={'decrease-concurrency': 1220}
+  baseline         linucb-standard      effective={} noop={'decrease-concurrency': 1220} concCh=0 chunkCh=0
+  baseline         linucb-periodic      total=1040 uniq=5.00 forced=170 dominant=decrease-concurrency counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 900, 'increase-chunk-size': 30, 'decrease-chunk-size': 30}
+  baseline         linucb-periodic      effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 30, 'decrease-chunk-size': 30} noop={'decrease-concurrency': 860} concCh=80 chunkCh=60
+  server-throttle  linucb-standard      total=1220 uniq=1.00 forced=0 dominant=decrease-chunk-size  counts={'decrease-chunk-size': 1220}
+  server-throttle  linucb-standard      effective={} noop={'decrease-chunk-size': 1220} concCh=0 chunkCh=0
+  server-throttle  linucb-periodic      total=1180 uniq=5.00 forced=190 dominant=decrease-chunk-size  counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 1020}
+  server-throttle  linucb-periodic      effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 40} noop={'decrease-chunk-size': 980} concCh=80 chunkCh=80
+  latency          linucb-standard      total= 320 uniq=1.00 forced=0 dominant=increase-chunk-size  counts={'increase-chunk-size': 320}
+  latency          linucb-standard      effective={'increase-chunk-size': 30} noop={'increase-chunk-size': 290} concCh=0 chunkCh=30
+  latency          linucb-periodic      total= 330 uniq=5.00 forced=50 dominant=increase-chunk-size  counts={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 290, 'decrease-chunk-size': 10}
+  latency          linucb-periodic      effective={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 40, 'decrease-chunk-size': 10} noop={'increase-chunk-size': 250} concCh=20 chunkCh=50
+  loss             linucb-standard      total=1220 uniq=1.30 forced=0 dominant=decrease-concurrency counts={'none': 1, 'increase-concurrency': 121, 'decrease-concurrency': 888, 'decrease-chunk-size': 210}
+  loss             linucb-standard      effective={'none': 1, 'increase-concurrency': 3} noop={'increase-concurrency': 118, 'decrease-concurrency': 888, 'decrease-chunk-size': 210} concCh=3 chunkCh=0
+  loss             linucb-periodic      total= 811 uniq=5.00 forced=131 dominant=decrease-concurrency counts={'none': 76, 'increase-concurrency': 29, 'decrease-concurrency': 539, 'increase-chunk-size': 77, 'decrease-chunk-size': 90}
+  loss             linucb-periodic      effective={'none': 76, 'increase-concurrency': 29, 'decrease-concurrency': 29, 'increase-chunk-size': 39, 'decrease-chunk-size': 23} noop={'decrease-concurrency': 510, 'increase-chunk-size': 38, 'decrease-chunk-size': 67} concCh=58 chunkCh=62
+  combined         linucb-standard      total= 585 uniq=1.20 forced=0 dominant=increase-chunk-size  counts={'none': 122, 'increase-chunk-size': 227, 'decrease-chunk-size': 236}
+  combined         linucb-standard      effective={'none': 122, 'increase-chunk-size': 24, 'decrease-chunk-size': 3} noop={'increase-chunk-size': 203, 'decrease-chunk-size': 233} concCh=0 chunkCh=27
+  combined         linucb-periodic      total= 472 uniq=5.00 forced=74 dominant=increase-chunk-size  counts={'none': 104, 'increase-concurrency': 16, 'decrease-concurrency': 100, 'increase-chunk-size': 238, 'decrease-chunk-size': 14}
+  combined         linucb-periodic      effective={'none': 104, 'increase-concurrency': 16, 'decrease-concurrency': 15, 'increase-chunk-size': 38, 'decrease-chunk-size': 14} noop={'decrease-concurrency': 85, 'increase-chunk-size': 200} concCh=31 chunkCh=52
+
+PERFORMANCE (mean / median / sd / ci95 completion ms; wallclock B/s; retries; failures; n=10; not ranked)
+  baseline         fixed                dur=  1155.1+/-   4.5 med=  1154.0 sd=    6.3 wall=  3631231 retr=0.0 fail=0.0
+  baseline         concurrency-adaptive dur=  1156.3+/-   5.2 med=  1157.1 sd=    7.3 wall=  3627626 retr=0.0 fail=0.0
+  baseline         chunk-size-adaptive  dur=  1160.7+/-   2.2 med=  1161.2 sd=    3.1 wall=  3613512 retr=0.0 fail=0.0
+  baseline         joint-adaptive       dur=  1147.6+/-  22.2 med=  1156.7 sd=   31.0 wall=  3657319 retr=0.0 fail=0.0
+  baseline         linucb               dur=  1162.5+/-   6.3 med=  1163.2 sd=    8.8 wall=  3608334 retr=0.0 fail=0.0
+  baseline         linucb-periodic      dur=  1113.6+/-   2.4 med=  1113.4 sd=    3.4 wall=  3766635 retr=0.0 fail=0.0
+  server-throttle  fixed                dur=  1382.3+/-   6.0 med=  1380.5 sd=    8.4 wall=  3034298 retr=0.0 fail=0.0
+  server-throttle  concurrency-adaptive dur=   569.7+/-   2.6 med=   570.2 sd=    3.7 wall=  7363212 retr=0.0 fail=0.0
+  server-throttle  chunk-size-adaptive  dur=  1343.3+/-   2.9 med=  1342.6 sd=    4.0 wall=  3122419 retr=0.0 fail=0.0
+  server-throttle  joint-adaptive       dur=   647.6+/-   2.5 med=   647.9 sd=    3.5 wall=  6477127 retr=0.0 fail=0.0
+  server-throttle  linucb               dur=  1328.7+/-   4.0 med=  1328.6 sd=    5.6 wall=  3156701 retr=0.0 fail=0.0
+  server-throttle  linucb-periodic      dur=  1215.7+/-   3.1 med=  1216.3 sd=    4.3 wall=  3450179 retr=0.0 fail=0.0
+  latency          fixed                dur=  6340.1+/-   3.8 med=  6339.6 sd=    5.3 wall=   661556 retr=0.0 fail=0.0
+  latency          concurrency-adaptive dur=  2302.4+/-   1.8 med=  2302.0 sd=    2.5 wall=  1821699 retr=0.0 fail=0.0
+  latency          chunk-size-adaptive  dur=  2559.6+/-   1.7 med=  2559.1 sd=    2.3 wall=  1638671 retr=0.0 fail=0.0
+  latency          joint-adaptive       dur=  2190.5+/- 275.5 med=  2069.4 sd=  385.1 wall=  1952366 retr=0.0 fail=0.0
+  latency          linucb               dur=  2635.0+/-   3.1 med=  2636.5 sd=    4.4 wall=  1591749 retr=0.0 fail=0.0
+  latency          linucb-periodic      dur=  2456.6+/-  12.2 med=  2451.5 sd=   17.1 wall=  1707444 retr=0.0 fail=0.0
+  loss             fixed                dur=  1971.6+/- 386.8 med=  1781.8 sd=  540.7 wall=  2238318 retr=0.0 fail=0.0
+  loss             concurrency-adaptive dur=  1198.2+/- 141.0 med=  1189.1 sd=  197.2 wall=  3585439 retr=0.0 fail=0.0
+  loss             chunk-size-adaptive  dur=  1564.4+/- 221.9 med=  1548.8 sd=  310.3 wall=  2752433 retr=0.0 fail=0.0
+  loss             joint-adaptive       dur=  1263.7+/- 144.3 med=  1367.1 sd=  201.8 wall=  3410141 retr=0.0 fail=0.0
+  loss             linucb               dur=  1537.5+/- 350.1 med=  1592.1 sd=  489.4 wall=  3076155 retr=0.0 fail=0.0
+  loss             linucb-periodic      dur=  1648.5+/- 275.5 med=  1543.1 sd=  385.2 wall=  2673775 retr=0.0 fail=0.0
+  combined         fixed                dur= 10154.9+/- 322.1 med= 10140.6 sd=  450.3 wall=   413764 retr=0.0 fail=0.0
+  combined         concurrency-adaptive dur=  5328.4+/- 398.4 med=  5441.5 sd=  557.0 wall=   796933 retr=0.0 fail=0.0
+  combined         chunk-size-adaptive  dur=  5928.8+/- 217.6 med=  5920.7 sd=  304.3 wall=   709061 retr=0.0 fail=0.0
+  combined         joint-adaptive       dur=  5652.8+/- 249.8 med=  5681.3 sd=  349.2 wall=   744572 retr=0.0 fail=0.0
+  combined         linucb               dur=  7186.8+/-1478.1 med=  6023.7 sd= 2066.3 wall=   620756 retr=0.0 fail=0.0
+  combined         linucb-periodic      dur=  6119.7+/-1099.5 med=  5512.0 sd= 1537.1 wall=   714851 retr=0.0 fail=0.0
+
+LIMITATIONS: deterministic (not learned) periodic exploration; approximate credit assignment under concurrency>1;
+chunk-size performance tradeoff not modelled; n=10; no seeds; descriptive statistics; no ranking or superiority claim.

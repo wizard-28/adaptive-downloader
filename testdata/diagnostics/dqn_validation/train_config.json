@@ -1,0 +1,160 @@
+{
+  "max_episode_steps": 120,
+  "numpy": "2.5.3",
+  "python": "3.14.7",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "selection_criterion": "min mean validation completion time; tie-break lowest seed",
+  "test_conditions": [
+    {
+      "bandwidth": 393216,
+      "bandwidth_2": 393216,
+      "file_size": 1048576,
+      "latency_s": 0.0,
+      "loss_percent": 0.0,
+      "name": "unseen-low-bandwidth",
+      "switch_after": 0
+    },
+    {
+      "bandwidth": 12582912,
+      "bandwidth_2": 12582912,
+      "file_size": 1048576,
+      "latency_s": 0.0,
+      "loss_percent": 0.0,
+      "name": "unseen-high-bandwidth",
+      "switch_after": 0
+    },
+    {
+      "bandwidth": 4194304,
+      "bandwidth_2": 4194304,
+      "file_size": 786432,
+      "latency_s": 0.14,
+      "loss_percent": 0.0,
+      "name": "unseen-latency",
+      "switch_after": 0
+    },
+    {
+      "bandwidth": 4194304,
+      "bandwidth_2": 4194304,
+      "file_size": 786432,
+      "latency_s": 0.0,
+      "loss_percent": 7.0,
+      "name": "unseen-loss",
+      "switch_after": 0
+    },
+    {
+      "bandwidth": 3145728,
+      "bandwidth_2": 3145728,
+      "file_size": 917504,
+      "latency_s": 0.1,
+      "loss_percent": 5.0,
+      "name": "unseen-latency+loss",
+      "switch_after": 0
+    },
+    {
+      "bandwidth": 262144,
+      "bandwidth_2": 10485760,
+      "file_size": 1048576,
+      "latency_s": 0.0,
+      "loss_percent": 0.0,
+      "name": "unseen-throttle-up",
+      "switch_after": 6
+    },
+    {
+      "bandwidth": 10485760,
+      "bandwidth_2": 524288,
+      "file_size": 1048576,
+      "latency_s": 0.0,
+      "loss_percent": 1.0,
+      "name": "unseen-throttle-down",
+      "switch_after": 10
+    },
+    {
+      "bandwidth": 2097152,
+      "bandwidth_2": 8388608,
+      "file_size": 1048576,
+      "latency_s": 0.12,
+      "loss_percent": 6.0,
+      "name": "unseen-combined",
+      "switch_after": 4
+    }
+  ],
+  "torch": "2.9.0+cpu",
+  "train": {
+    "batch_size": 64,
+    "episodes": 800,
+    "epsilon_decay_steps": 5000,
+    "epsilon_end": 0.05,
+    "epsilon_start": 1.0,
+    "gamma": 1.0,
+    "gradient_clip": 10.0,
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "learning_rate": 0.001,
+    "max_episode_steps": 200,
+    "randomize_conditions": true,
+    "replay_capacity": 20000,
+    "seed": 0,
+    "target_update_interval": 200,
+    "train_start": 500
+  },
+  "train_ranges": {
+    "bandwidth": [
+      524288,
+      8388608
+    ],
+    "bandwidth_2": [
+      262144,
+      4194304
+    ],
+    "file_size": [
+      262144,
+      1572864
+    ],
+    "latency_s": [
+      0.0,
+      0.08
+    ],
+    "loss_percent": [
+      0.0,
+      4.0
+    ],
+    "switch_after": [
+      0,
+      12
+    ]
+  },
+  "validation_conditions": [
+    {
+      "bandwidth": 716800,
+      "bandwidth_2": 3145728,
+      "file_size": 655360,
+      "latency_s": 0.09,
+      "loss_percent": 0.0,
+      "switch_after": 3
+    },
+    {
+      "bandwidth": 2097152,
+      "bandwidth_2": 524288,
+      "file_size": 786432,
+      "latency_s": 0.0,
+      "loss_percent": 4.5,
+      "switch_after": 8
+    },
+    {
+      "bandwidth": 5242880,
+      "bandwidth_2": 1048576,
+      "file_size": 524288,
+      "latency_s": 0.05,
+      "loss_percent": 2.5,
+      "switch_after": 2
+    }
+  ]
+}

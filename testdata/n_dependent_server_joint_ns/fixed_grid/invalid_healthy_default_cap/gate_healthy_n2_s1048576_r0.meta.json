@@ -1,0 +1,33 @@
+{
+  "run_id": "gate_healthy_n2_s1048576_r0",
+  "state": "healthy",
+  "N": 2,
+  "S": 1048576,
+  "rep": 0,
+  "cmd": [
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/tools/ns_bench",
+    "-system",
+    "ours",
+    "-policy",
+    "none",
+    "-n",
+    "2",
+    "-chunk",
+    "1048576",
+    "-schedule",
+    "t1",
+    "-run-id",
+    "gate_healthy_n2_s1048576_r0",
+    "-out",
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/fixed_grid/gate_healthy_n2_s1048576_r0.json"
+  ],
+  "exit": 0,
+  "wall_s": 122.75136828422546,
+  "stdout": "run gate_healthy_n2_s1048576_r0 system=ours policy=none completion=121.472s output=536870912 verified=true retries=0 finalN=2 finalS=1048576 err=\"\"",
+  "stderr": "",
+  "completion_ms": 121471.844,
+  "content_verified": true,
+  "err": "",
+  "valid": true,
+  "invalid_reasons": []
+}

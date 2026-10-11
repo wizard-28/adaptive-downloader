@@ -1,0 +1,14 @@
+{
+  "chunk-size-adaptive": {
+    "mean_chunk_changes": 0.2222222222222222,
+    "mean_conc_changes": 0.0
+  },
+  "concurrency-adaptive": {
+    "mean_chunk_changes": 0.0,
+    "mean_conc_changes": 0.19444444444444445
+  },
+  "joint-adaptive": {
+    "mean_chunk_changes": 0.1388888888888889,
+    "mean_conc_changes": 0.1388888888888889
+  }
+}

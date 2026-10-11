@@ -1,0 +1,763 @@
+{
+  "configuration": "internal downloader, fixed policy, chunk=1048576 (min=max=initial), concurrency=4 (min=max), retries=3, timeout=30s",
+  "file_size": 4194304,
+  "chunk_size": 1048576,
+  "concurrency": 4,
+  "repetitions": 10,
+  "scenarios": [
+    {
+      "Name": "server-throttle-wallclock",
+      "Config": {
+        "Name": "server-throttle-wallclock",
+        "InitialRate": 524288,
+        "ChangedRate": 0,
+        "RateChangeAfter": 0,
+        "Network": null,
+        "ScheduleTransitionAfter": 1000000000,
+        "ScheduleSubsequentRate": 4194304
+      },
+      "Runs": [
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 0,
+          "duration_ms": 2046.116,
+          "wallclock_bps": 2049885.7347286274,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:28.44798579Z",
+              "end": "2026-09-25T04:21:30.490250354Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:28.448010513Z",
+              "end": "2026-09-25T04:21:30.49019106Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:28.448125471Z",
+              "end": "2026-09-25T04:21:30.490244697Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:28.448138391Z",
+              "end": "2026-09-25T04:21:30.490100965Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 1,
+          "duration_ms": 2049.667,
+          "wallclock_bps": 2046334.3557758408,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:30.497917807Z",
+              "end": "2026-09-25T04:21:32.541707335Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:30.497933941Z",
+              "end": "2026-09-25T04:21:32.541731221Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:30.49804799Z",
+              "end": "2026-09-25T04:21:32.541678701Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:30.498111894Z",
+              "end": "2026-09-25T04:21:32.541607184Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 2,
+          "duration_ms": 2046.13,
+          "wallclock_bps": 2049871.7090311951,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:32.552077481Z",
+              "end": "2026-09-25T04:21:34.595086254Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:32.552124065Z",
+              "end": "2026-09-25T04:21:34.595017042Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:32.55219181Z",
+              "end": "2026-09-25T04:21:34.595047562Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:32.552414113Z",
+              "end": "2026-09-25T04:21:34.595124527Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 3,
+          "duration_ms": 2055.343,
+          "wallclock_bps": 2040683.2338933214,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:34.603001851Z",
+              "end": "2026-09-25T04:21:36.655636192Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:34.603018403Z",
+              "end": "2026-09-25T04:21:36.655633328Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:34.603048365Z",
+              "end": "2026-09-25T04:21:36.655568307Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:34.603083844Z",
+              "end": "2026-09-25T04:21:36.655564047Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 4,
+          "duration_ms": 2029.561,
+          "wallclock_bps": 2066606.5222971868,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:36.665913799Z",
+              "end": "2026-09-25T04:21:38.69188277Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:36.66593091Z",
+              "end": "2026-09-25T04:21:38.691954846Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:36.665945088Z",
+              "end": "2026-09-25T04:21:38.691887589Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:36.666032878Z",
+              "end": "2026-09-25T04:21:38.691907075Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 5,
+          "duration_ms": 2065.642,
+          "wallclock_bps": 2030508.6747848853,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:38.704061859Z",
+              "end": "2026-09-25T04:21:40.763406055Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:38.70413184Z",
+              "end": "2026-09-25T04:21:40.763396137Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:38.704155236Z",
+              "end": "2026-09-25T04:21:40.763467305Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:38.704186246Z",
+              "end": "2026-09-25T04:21:40.76339055Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 6,
+          "duration_ms": 2087.083,
+          "wallclock_bps": 2009648.873571391,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:40.775299286Z",
+              "end": "2026-09-25T04:21:42.841456569Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:40.77531102Z",
+              "end": "2026-09-25T04:21:42.841393712Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:40.775324429Z",
+              "end": "2026-09-25T04:21:42.841363681Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:40.775338956Z",
+              "end": "2026-09-25T04:21:42.841360887Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 7,
+          "duration_ms": 2064.692,
+          "wallclock_bps": 2031442.946453999,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:42.866753546Z",
+              "end": "2026-09-25T04:21:44.928216344Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:42.866774638Z",
+              "end": "2026-09-25T04:21:44.928196649Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:42.866810326Z",
+              "end": "2026-09-25T04:21:44.92826593Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:42.86687423Z",
+              "end": "2026-09-25T04:21:44.928192388Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 8,
+          "duration_ms": 2074.02,
+          "wallclock_bps": 2022306.4387035805,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:44.937072556Z",
+              "end": "2026-09-25T04:21:46.99548331Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:44.93709267Z",
+              "end": "2026-09-25T04:21:46.995516205Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:44.937106987Z",
+              "end": "2026-09-25T04:21:46.995490573Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:44.937190796Z",
+              "end": "2026-09-25T04:21:46.995553989Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        },
+        {
+          "scenario": "server-throttle-wallclock",
+          "rep": 9,
+          "duration_ms": 2038.978,
+          "wallclock_bps": 2057061.9202365105,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none",
+          "request_log": [
+            {
+              "index": 1,
+              "start": "2026-09-25T04:21:47.018881392Z",
+              "end": "2026-09-25T04:21:49.054333844Z",
+              "rate": 524288,
+              "range": {
+                "Start": 0,
+                "End": 1048575
+              },
+              "has_range": true
+            },
+            {
+              "index": 2,
+              "start": "2026-09-25T04:21:47.018906604Z",
+              "end": "2026-09-25T04:21:49.054297736Z",
+              "rate": 524288,
+              "range": {
+                "Start": 1048576,
+                "End": 2097151
+              },
+              "has_range": true
+            },
+            {
+              "index": 3,
+              "start": "2026-09-25T04:21:47.018939499Z",
+              "end": "2026-09-25T04:21:49.054426732Z",
+              "rate": 524288,
+              "range": {
+                "Start": 2097152,
+                "End": 3145727
+              },
+              "has_range": true
+            },
+            {
+              "index": 4,
+              "start": "2026-09-25T04:21:47.019024914Z",
+              "end": "2026-09-25T04:21:49.056522999Z",
+              "rate": 524288,
+              "range": {
+                "Start": 3145728,
+                "End": 4194303
+              },
+              "has_range": true
+            }
+          ],
+          "requests_started_before_1s": 4,
+          "first_post_transition_request_index": -1
+        }
+      ]
+    }
+  ]
+}

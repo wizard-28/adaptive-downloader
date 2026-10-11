@@ -1,0 +1,32 @@
+Long-duration diagnostic: frozen v6 vs aria2-F (matched pairs; diagnostic only)
+This does NOT modify the v6 final result (PROJECT_CONTEXT 22.35).
+
+v6 SHA-256    : daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887
+aria2 SHA-256 : b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02
+sizes         : [16, 128, 512] MiB; trajectories ['A2', 'D2', 'E2']; 5 pairs per size x trajectory; 2 s phases (unchanged)
+
+Size(MiB)  Traj     v6 ms  aria2 ms   Ratio            CI95 StartupFrac SteadyRatio
+       16    A2    8041.6    8635.1   0.943 [0.773,1.150]       0.148       0.820
+       16    D2   12260.8    2041.0   6.004 [5.835,6.178]       0.147       5.123
+       16    E2    6748.6    6480.4   1.039 [0.949,1.139]       0.080       0.960
+       16   ALL    9017.0    5718.8   1.805 [1.128,2.888]       0.125       2.301
+
+      128    A2   38827.8   39947.7   0.973 [0.892,1.061]       0.026       0.951
+      128    D2   15834.7   13650.2   1.160 [1.139,1.182]       0.114       1.028
+      128    E2   46296.0   43549.1   1.062 [0.989,1.141]       0.013       1.051
+      128   ALL   33652.8   32382.3   1.062 [1.008,1.120]       0.051       1.010
+
+      512    A2  149609.4  137043.1   1.092 [1.065,1.119]       0.009       1.083
+      512    D2   30316.0   53313.7   0.568 [0.554,0.583]       0.060       0.535
+      512    E2  194418.2  160454.1   1.211 [1.188,1.235]       0.004       1.207
+      512   ALL  124781.2  116937.0   0.909 [0.757,1.092]       0.024       0.941
+
+Interpretation (pre-defined): PROMISING = ratio moves toward 1.0 with size and startup
+becomes a small fraction; STRONGLY PROMISING = approaches/crosses 1.0 at long duration;
+NOT SUPPORTED = ratio roughly constant or farther above 1.0; MIXED = only some trajectories.
+Observed overall ratios by size: {'16': 1.8051701121421553, '128': 1.0623280196686526, '512': 0.9092689623073482}
+Verdict: STRONGLY_PROMISING
+Caveat: the pre-registered trajectories use absolute 2 s phases, so the disturbed fraction
+shrinks as the file grows (measured: phases 1-2 are 2 s each at every size; the recovered
+phase dominates long transfers). The diagnostic therefore measures startup/adaptation
+amortization under a fixed disturbance window, not a longer disturbance.

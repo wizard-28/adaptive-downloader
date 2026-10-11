@@ -1,0 +1,90 @@
+{
+  "aria2_baseline_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 \u003curl\u003e",
+  "aria2_version": "aria2 version 1.37.0",
+  "chunk_size": 1048576,
+  "conditions": [
+    {
+      "id": "A2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 5242880,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 921600,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4194304,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "phases": [
+        {
+          "rate": 655360,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 163840,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 2560000,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 20,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 1843200,
+          "latency_ms": 110,
+          "loss_percent": 3.8
+        },
+        {
+          "rate": 8388608,
+          "link": 3584000,
+          "latency_ms": 60,
+          "loss_percent": 1.7
+        }
+      ]
+    }
+  ],
+  "file_size": 16777216,
+  "label": "FINAL pre-registered head-to-head (DQN Candidate v6 vs aria2-F) on v6 trajectories A-E",
+  "matrix_sha256": "871ee9248a8396079032d80ea834f47871618b45ea8b9ebda9b922f85b3f05ef",
+  "pairs": 15,
+  "pairs_per_condition": 5,
+  "schedule_seed": 20260925,
+  "source_methodology": "matched pairs; log-ratio effect; paired permutation test; Holm; via python/analyze_final_evaluation.py",
+  "total_downloads": 30,
+  "v6_concurrency_bounds": [
+    1,
+    16
+  ],
+  "v6_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887"
+}

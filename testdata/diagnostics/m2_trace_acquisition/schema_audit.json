@@ -1,0 +1,28 @@
+{
+  "note": "capacity_ground_truth=unavailable for both sources; recorded values are end-to-end measured throughput; not path capacity",
+  "traces": {
+    "ugent_4g/bicycle_0001": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bicycle_0002": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0001": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0002": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0003": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0004": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0005": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/bus_0006": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/car_0001": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/car_0002": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/train_0001": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/train_0002": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/train_0003": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/tram_0001": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/tram_0002": "REPLAY_PARTIAL (throughput trajectory only)",
+    "ugent_4g/tram_0003": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/7Train1": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/7Train2": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/Long_Island_Rail_Road": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/QTrain": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/bus57": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/bus62": "REPLAY_PARTIAL (throughput trajectory only)",
+    "nyu_mets/bus62_2": "REPLAY_PARTIAL (throughput trajectory only)"
+  }
+}

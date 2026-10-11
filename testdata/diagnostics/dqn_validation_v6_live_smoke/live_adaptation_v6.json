@@ -1,0 +1,24 @@
+{
+  "per_condition": {
+    "A2": {
+      "mean_changes": 12,
+      "phase_mean_concurrency": 1.9951555000000003,
+      "phase_spread": 1.8493970000000004,
+      "reactions_ms": [
+        440.471,
+        508.1229999999996
+      ],
+      "runs": 1
+    },
+    "E2": {
+      "mean_changes": 12,
+      "phase_mean_concurrency": 4.2192595,
+      "phase_spread": 3.949659999999999,
+      "reactions_ms": [
+        165.78600000000006,
+        835.9650000000001
+      ],
+      "runs": 1
+    }
+  }
+}

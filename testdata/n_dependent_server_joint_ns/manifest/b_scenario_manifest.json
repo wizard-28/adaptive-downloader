@@ -1,0 +1,83 @@
+{
+  "family": {
+    "schedules": [
+      "T=1",
+      "T=2",
+      "T=4",
+      "T=8",
+      "D2"
+    ],
+    "caps": [
+      "none",
+      "C=4M_g=0.02",
+      "C=4M_g=0.05",
+      "C=4M_g=0.10",
+      "C=4M_g=0.20",
+      "C=8M_g=0.02",
+      "C=8M_g=0.05",
+      "C=8M_g=0.10",
+      "C=8M_g=0.20",
+      "C=16M_g=0.02",
+      "C=16M_g=0.05",
+      "C=16M_g=0.10",
+      "C=16M_g=0.20",
+      "C=32M_g=0.02",
+      "C=32M_g=0.05",
+      "C=32M_g=0.10",
+      "C=32M_g=0.20"
+    ],
+    "N": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      262144,
+      1048576,
+      4194304,
+      16777216,
+      33554432
+    ],
+    "file_bytes": 536870912
+  },
+  "selection_rule": "both N* and S* move; coordinate margins >=5% both states; cross-state penalties >=10% both ways; no ties; select max min(penalty), tie-break margins then smaller T",
+  "selected": {
+    "schedule": "T=2",
+    "cap": "C=16M_g=0.20",
+    "base_opt": {
+      "N": 16,
+      "S": 1048576,
+      "t": 19.61080000000001,
+      "N_margin": 0.4665585863971193,
+      "S_margin": 0.013521398820901588
+    },
+    "cap_opt": {
+      "N": 4,
+      "S": 4194304,
+      "t": 64.99960000000006,
+      "N_margin": 0.21062960570098863,
+      "S_margin": 0.08537319817411071
+    },
+    "pen_cap": 1.0326709702828902,
+    "pen_base": 2.314479776449713,
+    "checks": {
+      "N_moves": true,
+      "S_moves": true,
+      "N_margin_ge_5pct": true,
+      "S_margin_ge_5pct": true,
+      "material_cap_side": true,
+      "material_base_side": true
+    },
+    "qualifies": true
+  },
+  "n_qualified": 5,
+  "adaptive_design": {
+    "no_cap_s": 8.0,
+    "capped_s": 60.0,
+    "cap": "C=16M_g=0.20",
+    "schedule": "T=2"
+  },
+  "note": "frozen before the live server implementation; the exploratory sweep in \u00a722.95 is disclosed"
+}

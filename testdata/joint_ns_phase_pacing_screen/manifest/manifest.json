@@ -1,0 +1,352 @@
+{
+  "study": "joint-ns-phase-pacing-screen",
+  "generated_utc": "2026-09-29T03:55:08Z",
+  "status": "ANALYTICAL_SCREEN_FAILED_NO_CAUSAL_JOINT_HEADROOM",
+  "evidence_type": "DETERMINISTIC_ANALYTICAL_SIMULATION_CALIBRATED_TO_MEASURED_D2",
+  "empirical_execution": false,
+  "empirical_execution_reason": "predeclared analytical gate failed (G2); the task stop condition forbids empirical runs",
+  "design": {
+    "study": "joint-ns-phase-pacing-screen",
+    "status": "ANALYTICAL_SCREEN_FAILED_NO_CAUSAL_JOINT_HEADROOM",
+    "evidence_type": "DETERMINISTIC_ANALYTICAL_SIMULATION (calibrated to measured D2 evidence; no network I/O)",
+    "file_size_bytes": 536870912,
+    "regime_family": {
+      "type": "two-phase slow->fast (anchored to the measured D2 mechanism)",
+      "slow_rate_bytes_per_second": 655360,
+      "fast_rate_bytes_per_second": 2560000,
+      "transition_seconds": [
+        1.0,
+        2.0,
+        4.0,
+        8.0
+      ],
+      "hidden_from_controller": true,
+      "note": "The exact D2 3-phase schedule (640/160/2500 KiB/s at 2 s/4 s) is a validation anchor only, not part of the adaptation-value family."
+    },
+    "fixed_frontier": {
+      "concurrency": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "chunk_bytes": [
+        262144,
+        1048576,
+        4194304,
+        16777216,
+        33554432
+      ]
+    },
+    "frozen_action_space": [
+      [
+        1,
+        262144
+      ],
+      [
+        2,
+        1048576
+      ],
+      [
+        4,
+        1048576
+      ],
+      [
+        4,
+        4194304
+      ],
+      [
+        8,
+        4194304
+      ],
+      [
+        8,
+        16777216
+      ],
+      [
+        16,
+        4194304
+      ],
+      [
+        16,
+        16777216
+      ]
+    ],
+    "starting_configuration": {
+      "N": 4,
+      "S": 4194304
+    },
+    "controllers": {
+      "primary_one_switch": {
+        "signal": "median of the last 3 observed completed-request throughput samples",
+        "baseline": "median of the first 3 observed samples (established before any transition information exists)",
+        "trigger": "recent median >= threshold * baseline",
+        "thresholds": [
+          1.25,
+          1.5,
+          2.0
+        ],
+        "targets": [
+          [
+            16,
+            16777216
+          ],
+          [
+            16,
+            4194304
+          ],
+          [
+            4,
+            16777216
+          ]
+        ],
+        "switches_per_download": 1
+      },
+      "diagnostic_probe_two_switch": {
+        "rule": "at the first completion switch to (16, 256 KiB); once the recent throughput rises above the pre-switch baseline, switch to the joint target",
+        "targets": [
+          [
+            16,
+            16777216
+          ],
+          [
+            16,
+            4194304
+          ],
+          [
+            8,
+            16777216
+          ]
+        ],
+        "labelled": "diagnostic extension, not the primary design"
+      },
+      "blind_ramp": {
+        "rule": "one predeclared time-based switch at t in {1..8 s} to any action-space target (no performance signal)",
+        "labelled": "diagnostic; the full scan is an oracle over the ramp parameters (an upper bound for the time-based class)"
+      },
+      "optimistic_causal_bound": {
+        "rule": "start (4,4M) until the first completion (the earliest observation-triggered action point); from there allow clairvoyant exact-time switches (first completion and, if later, the true transition T) over the action space + frontier",
+        "labelled": "diagnostic upper bound for observation-triggered controllers"
+      },
+      "oracle": {
+        "rule": "clairvoyant exact-time single switch over start actions/times/targets",
+        "labelled": "diagnostic only; never deployable"
+      }
+    },
+    "stationary_controls": [
+      "constant 640 KiB/s",
+      "constant 2500 KiB/s"
+    ],
+    "aria2_reference": {
+      "version": "1.37.0",
+      "flags": "--split=16 --max-connection-per-server=16 --min-split-size=1M",
+      "model": "16 pieces of 32 MiB issued at ~0.405 s, each held at its start rate (no client abort; --timeout is a connection timeout)"
+    },
+    "predeclared_gate": {
+      "G1_fixed_optimum_varies": "per-regime argmin differs and the max wrong-config penalty >= 5%",
+      "G2_positive_causal_headroom": "some predeclared causal controller beats the per-regime best fixed by >= 5% in >= 2 regimes",
+      "G3_beats_aria2": "the same causal controller beats aria2 in the same regimes",
+      "G4_no_stationary_gain": "no causal gain (>= 2%) in the stationary controls",
+      "overall": "PASS iff G1 and G2 and G3 and G4; otherwise STOP and no empirical execution"
+    }
+  },
+  "calibration": {
+    "params": {
+      "h": 0.088,
+      "c": 0.0006,
+      "init": 0.15,
+      "down": 0.06,
+      "retry_gap": 0.1
+    },
+    "rmse_rel": 0.014046096807955688,
+    "max_abs_rel": 0.029858211435009486,
+    "n_points": 40,
+    "aria2_anchor_rel_err": -0.008066229485778733
+  },
+  "measured_evidence_used": {
+    "fixed_frontier": "testdata/aria2_competitive_benchmark/discovery_ours/ (40 configs, immutable)",
+    "aria2_anchor": "testdata/aria2_competitive_benchmark/final_reproduction/pairs.json (immutable)",
+    "d2_mechanism": "testdata/diagnostics/long_duration_d2_diagnostic/d2_mechanism.json (immutable)"
+  },
+  "results": {
+    "fixed_optimum_per_regime": {
+      "T=1s": {
+        "N": 16,
+        "S": 1048576,
+        "completion": 18.4644
+      },
+      "T=2s": {
+        "N": 16,
+        "S": 1048576,
+        "completion": 19.654800000000005
+      },
+      "T=4s": {
+        "N": 16,
+        "S": 4194304,
+        "completion": 19.9236
+      },
+      "T=8s": {
+        "N": 16,
+        "S": 1048576,
+        "completion": 23.22600000000001
+      }
+    },
+    "max_wrong_config_penalty": 0.07902775069864167,
+    "best_causal_gain_per_regime": {
+      "T=1s": -0.16308138905136363,
+      "T=2s": -0.09263894824673842,
+      "T=4s": -0.07789756871248166,
+      "T=8s": 0.01109101868595585
+    },
+    "optimistic_causal_bound_gain_per_regime": {
+      "T=1s": -0.1474838066766317,
+      "T=2s": -0.07798603903372175,
+      "T=4s": -0.06344234977614484,
+      "T=8s": 0.033841384655128225
+    },
+    "best_blind_ramp_gain_per_regime": {
+      "T=1s": 0.02861723099586257,
+      "T=2s": 0.03657121924415436,
+      "T=4s": 0.0,
+      "T=8s": -0.020304830793076507
+    },
+    "oracle_unconstrained_gain_per_regime": {
+      "T=1s": 0.14395785319942073,
+      "T=2s": 0.14545751986987746,
+      "T=4s": 0.06312220374136915,
+      "T=8s": 0.07577714630155878
+    },
+    "aria2_per_regime_s": {
+      "T=1s": 52.893800000000006,
+      "T=2s": 52.893800000000006,
+      "T=4s": 52.893800000000006,
+      "T=8s": 52.893800000000006
+    },
+    "stationary_no_spurious_gain": true
+  },
+  "gate": {
+    "G1_fixed_optimum_varies": {
+      "distinct_argmins": 2,
+      "argmins": {
+        "T=1s": [
+          16,
+          1048576
+        ],
+        "T=2s": [
+          16,
+          1048576
+        ],
+        "T=4s": [
+          16,
+          4194304
+        ],
+        "T=8s": [
+          16,
+          1048576
+        ]
+      },
+      "max_wrong_config_penalty": 0.07902775069864167,
+      "pass": true
+    },
+    "G2_positive_causal_headroom": {
+      "best_causal_gain_per_regime": {
+        "T=1s": -0.16308138905136363,
+        "T=2s": -0.09263894824673842,
+        "T=4s": -0.07789756871248166,
+        "T=8s": 0.01109101868595585
+      },
+      "optimistic_causal_bound_gain_per_regime": {
+        "T=1s": -0.1474838066766317,
+        "T=2s": -0.07798603903372175,
+        "T=4s": -0.06344234977614484,
+        "T=8s": 0.033841384655128225
+      },
+      "best_blind_ramp_gain_per_regime": {
+        "T=1s": 0.02861723099586257,
+        "T=2s": 0.03657121924415436,
+        "T=4s": 0.0,
+        "T=8s": -0.020304830793076507
+      },
+      "n_regimes_gain_ge_5pct": 0,
+      "family_median_gain": -0.08526825847961003,
+      "pass": false
+    },
+    "G3_beats_aria2": {
+      "aria2_per_regime": {
+        "T=1s": 52.893800000000006,
+        "T=2s": 52.893800000000006,
+        "T=4s": 52.893800000000006,
+        "T=8s": 52.893800000000006
+      },
+      "causal_best_per_regime": {
+        "T=1s": 23.1556,
+        "T=2s": 23.1556,
+        "T=4s": 23.1556,
+        "T=8s": 29.7532
+      },
+      "regimes_beaten": [
+        "T=1s",
+        "T=2s",
+        "T=4s",
+        "T=8s"
+      ],
+      "pass": true
+    },
+    "G4_no_stationary_gain": {
+      "stationary": {
+        "constant_640KiB": {
+          "max_causal_gain": -3.0331140899883886,
+          "switches": 0
+        },
+        "constant_2500KiB": {
+          "max_causal_gain": -3.1442320912965798,
+          "switches": 0
+        }
+      },
+      "pass": true
+    },
+    "overall": "FAIL"
+  },
+  "artifacts": {
+    "model": "model/model_definition.json",
+    "simulation": "simulation/simulation_assumptions.md",
+    "tools": [
+      "calibrate.py",
+      "jns_sim.py",
+      "make_figures.py",
+      "make_report.py",
+      "run_screen.py"
+    ],
+    "analysis": [
+      "analysis/calibration.json",
+      "analysis/screen.json"
+    ],
+    "figures": [
+      "fig1_fixed_surface.png",
+      "fig2_fixed_optimum.png",
+      "fig3_adaptive_trajectory.png",
+      "fig4_throughput_pacing.png",
+      "fig5_fixed_vs_adaptive_vs_aria2.png",
+      "fig6_headroom.png",
+      "fig7_causal_vs_oracle.png",
+      "fig8_stationary_control.png"
+    ],
+    "report": "reports/joint_ns_phase_pacing_screen.md",
+    "tool_sha256": {
+      "calibrate.py": "b7452fcc5e125946b6edf881f2d5405098064d340c90cbe17555ce1501558062",
+      "jns_sim.py": "3abf3b7aab88b0ac075f81d7e1123fe9a954413081aa66781966a265a3b25ff4",
+      "make_figures.py": "07f02c0938ef35ca02a95637d6bcc9911a0afc98b8e7d4e6d0084e314aafe0c4",
+      "make_report.py": "6cc4e8a570d79873e0df8850093d176f449b10011aef4474d7862a3f6a22f8d8",
+      "run_screen.py": "762ffb17f999f4306df286eb5a52375e730e321efb126dc318e0e8471c98b949"
+    }
+  },
+  "immutability": {
+    "aria2_benchmark_modified": false,
+    "salvage_s_studies_modified": false,
+    "adaptive_n_screen_modified": false,
+    "historical_evidence_modified": false,
+    "netem_qdisc_applied": false
+  },
+  "scope": "within the calibrated deterministic model and the frozen design (2-phase regime family, frozen action space, frozen (4,4M) start): no causal joint N+S controller reaches a >=5% materiality margin vs the per-regime best fixed in >=2 regimes; the fixed 62.4% aria2 benchmark result is unaffected"
+}

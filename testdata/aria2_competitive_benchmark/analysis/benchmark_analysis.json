@@ -1,0 +1,186 @@
+{
+  "frozen": {
+    "aria2_final": {
+      "max_connection_per_server": 16,
+      "split": 16,
+      "min_split": "1M",
+      "args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+      "median_ms": 53334.261,
+      "mean_ms": 53267.324,
+      "runs": 3
+    },
+    "our_final": {
+      "concurrency": 16,
+      "chunk_bytes": 4194304,
+      "median_ms": 20300.475,
+      "mean_ms": 20300.475,
+      "runs": 2
+    }
+  },
+  "d2_reproduction": {
+    "stats": {
+      "n": 20,
+      "a_mean_ms": 27956.4859,
+      "b_mean_ms": 53450.51885,
+      "a_median_ms": 28002.2265,
+      "b_median_ms": 53302.533,
+      "geo_ratio": 0.5230470825508537,
+      "mean_ratio": 0.5230936050542061,
+      "median_ratio": 0.5226264902947859,
+      "ratio_ci95": [
+        0.5199929974239208,
+        0.5261191052961945
+      ],
+      "relative_improvement": 0.47695291744914625,
+      "wins": 20,
+      "losses": 0,
+      "p_one_sided": 4.999750012499375e-05
+    },
+    "historical": {
+      "n": 20,
+      "v6_mean_ms": 27956.4859,
+      "aria2_mean_ms": 53450.51885,
+      "geo_ratio": 0.5230470825508537,
+      "ratio_ci95": [
+        0.5199929974239208,
+        0.5261191052961945
+      ],
+      "v6_faster": 20,
+      "invalid_pairs": [],
+      "note": "coverage_no_missing is a false negative for aria2 (its initial non-range probe delivers the first bytes); content_verified is the integrity gate"
+    }
+  },
+  "aria2_frontier": {
+    "medians": {
+      "1": 833157.92,
+      "2": 419234.075,
+      "4": 210415.28600000002,
+      "8": 105617.082,
+      "16": 53341.479999999996
+    },
+    "runs_per_split": {
+      "1": 1,
+      "2": 1,
+      "4": 2,
+      "8": 1,
+      "16": 4
+    }
+  },
+  "ours_frontier": {
+    "medians": {
+      "16/4194304": 19994.678,
+      "16/8388608": 24523.394,
+      "16/524288": 24531.453,
+      "16/1048576": 25596.277,
+      "16/262144": 29422.729,
+      "16/2097152": 30026.298,
+      "16/16777216": 34550.052,
+      "8/4194304": 34777.592,
+      "8/8388608": 38897.581,
+      "8/1048576": 42468.604,
+      "8/524288": 44323.629,
+      "16/33554432": 45974.723,
+      "8/2097152": 46163.038,
+      "8/16777216": 48653.09,
+      "8/262144": 54672.998,
+      "8/33554432": 58933.205,
+      "4/4194304": 65270.846,
+      "4/8388608": 68651.452,
+      "4/1048576": 76887.713,
+      "4/2097152": 77296.186,
+      "4/16777216": 78017.263,
+      "4/524288": 84430.609,
+      "4/33554432": 88260.376,
+      "4/262144": 106651.214,
+      "2/4194304": 126934.512,
+      "2/8388608": 129271.922,
+      "2/16777216": 137055.047,
+      "2/2097152": 142001.83,
+      "2/1048576": 146851.345,
+      "2/33554432": 147530.419,
+      "2/524288": 167083.464,
+      "2/262144": 211984.822,
+      "1/4194304": 250788.625,
+      "1/8388608": 250980.429,
+      "1/16777216": 257525.982,
+      "1/33554432": 267231.063,
+      "1/2097152": 274342.674,
+      "1/1048576": 289266.729,
+      "1/524288": 331848.376,
+      "1/262144": 419043.704
+    }
+  },
+  "final": {
+    "n": 30,
+    "a_mean_ms": 20119.907666666666,
+    "b_mean_ms": 53559.5613,
+    "a_median_ms": 20022.2355,
+    "b_median_ms": 53315.9525,
+    "geo_ratio": 0.3756370278940139,
+    "mean_ratio": 0.3757222404247373,
+    "median_ratio": 0.3759222737687403,
+    "ratio_ci95": [
+      0.3727790802326555,
+      0.37851688629357666
+    ],
+    "relative_improvement": 0.6243629721059861,
+    "wins": 30,
+    "losses": 0,
+    "p_one_sided": 4.999750012499375e-05
+  },
+  "mechanism": {
+    "ours": {
+      "range_count": 3840,
+      "mean_range_bytes": 4194304,
+      "median_range_bytes": 4194304.0,
+      "max_inflight": 16,
+      "mean_inflight": 16,
+      "phase_counts": {
+        "<2s": 480,
+        ">=4s": 3360
+      }
+    },
+    "aria2": {
+      "range_count": 450,
+      "mean_range_bytes": 33554432,
+      "median_range_bytes": 33554432.0,
+      "max_inflight": 15,
+      "mean_inflight": 15,
+      "phase_counts": {
+        "<2s": 450
+      }
+    }
+  },
+  "selection_corrected_top3": {
+    "16/4194304": {
+      "median_ms": 19994.678,
+      "runs": [
+        19994.678,
+        19905.752,
+        20695.198
+      ]
+    },
+    "16/8388608": {
+      "median_ms": 24523.394,
+      "runs": [
+        24523.394,
+        24604.241,
+        24240.798
+      ]
+    },
+    "16/524288": {
+      "median_ms": 24531.453,
+      "runs": [
+        24438.18,
+        24531.453,
+        24615.712
+      ]
+    }
+  },
+  "constant_rate_controls_ms": {
+    "const-ours-4M": 15331.707,
+    "const-ours-32M": 16719.229,
+    "const-aria2": 24807.788
+  },
+  "note_selection": "the driver recorded the top-3 medians over 2 re-runs; the corrected 3-run medians (grid run + 2 re-runs) are reported here; the frozen config (C=16, 4MiB) is the top-1 under both"
+}

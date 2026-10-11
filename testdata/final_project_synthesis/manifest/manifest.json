@@ -1,0 +1,125 @@
+{
+  "study": "final_project_synthesis (paper-viability audit)",
+  "kind": "evidence synthesis only; zero new experiments",
+  "created_utc": "2026-09-28T17:24:06Z",
+  "repository": {
+    "path": "/workspaces/mvp",
+    "git_repository": false,
+    "note": "no git repository; AGENTS.md and docs/PROJECT_CONTEXT.md are the state documents"
+  },
+  "source_evidence_directories": [
+    "/workspaces/mvp/testdata/oracle_preregistration_v2 (historical)",
+    "/workspaces/mvp/testdata/oracle_preregistration_v3 (oracle protocol v2)",
+    "/workspaces/mvp/testdata/oracle_preregistration_v4 (final trace protocol v1 + amendment 1)",
+    "/workspaces/mvp/testdata/final_fixed_c_stage_a (Stage A, 15/15)",
+    "/workspaces/mvp/testdata/final_tau_stage_b (Stage B, 88/88)",
+    "/workspaces/mvp/testdata/final_oracle_analysis (Stage C; gate FAIL)",
+    "/workspaces/mvp/testdata/salvage_s_protocol_v7 (frozen S protocol)",
+    "/workspaces/mvp/testdata/salvage_s_stage0s (Stage 0S; GO)",
+    "/workspaces/mvp/testdata/salvage_s_scaling_analysis (analytical)",
+    "/workspaces/mvp/testdata/salvage_s_mechanism_pivot (analytical)",
+    "/workspaces/mvp/testdata/adaptive_n_mechanism_screen (analytical)",
+    "/workspaces/mvp/testdata/diagnostics/t1_server_throttle (live)",
+    "/workspaces/mvp/testdata/diagnostics/l4_environment_design (sim + live probe)",
+    "/workspaces/mvp/testdata/diagnostics/v7_design (L3)",
+    "/workspaces/mvp/testdata/diagnostics/m3_mobile_replay (live replay)",
+    "/workspaces/mvp/testdata/diagnostics/aria2_calibration, aria2_calibration_v2 (live)",
+    "/workspaces/mvp/testdata/benchmark_aria2, benchmark_aria2_v2 (live)",
+    "/workspaces/mvp/testdata/final_evaluation (live DQN head-to-head)",
+    "/workspaces/mvp/testdata/final_research_audit (synthesis)"
+  ],
+  "protocol_versions": {
+    "oracle_protocol_version": 2,
+    "final_trace_protocol_version": 1,
+    "final_trace_amendment": 1,
+    "salvage_s_protocol_version": 7,
+    "epoch_protocol_version": 2
+  },
+  "analysis_versions": {
+    "stage_a": "STAGE_A_COMPLETE \u2014 15/15 FIXED-C REPLAYS VALID",
+    "stage_b": "STAGE_B_COMPLETE \u2014 88/88 VALID",
+    "stage_c": "FINAL_ORACLE_ANALYSIS_COMPLETE \u2014 FINAL STATISTICAL GATE FAIL",
+    "stage_0s": "STAGE_0S_COMPLETE \u2014 GO",
+    "s_scaling": "STAGE1_SCALING_ANALYSIS_COMPLETE \u2014 ANALYTICALLY INSUFFICIENT UNDER FROZEN MECHANISM",
+    "s_pivot": "MECHANISM_PIVOT_SCREENING_COMPLETE \u2014 NO PLAUSIBLE MECHANISM",
+    "n_screen": "ADAPTIVE_N_SCREEN_COMPLETE \u2014 NO ROBUST MECHANISM (NO PROTOCOL JUSTIFIED)",
+    "synthesis": "PAPER-READY \u2014 MECHANISTIC / NEGATIVE-RESULT STORY"
+  },
+  "final_figures": {
+    "fig1_system_methodology.png": {
+      "type": "SCHEMATIC",
+      "source": "architecture"
+    },
+    "fig2_stage0s_mechanism_validation.png": {
+      "type": "LIVE EXPERIMENTAL",
+      "source": "salvage_s_stage0s/analysis/per_arm.json"
+    },
+    "fig3_s_headroom_closure.png": {
+      "type": "DETERMINISTIC ANALYTICAL MODEL",
+      "source": "salvage_s_scaling_analysis/analysis/scaling_analysis.json"
+    },
+    "fig4_absolute_vs_relative.png": {
+      "type": "DETERMINISTIC ANALYTICAL MODEL",
+      "source": "salvage_s_scaling_analysis/analysis/scaling_analysis.json"
+    },
+    "fig5_s_mechanism_screening.png": {
+      "type": "DETERMINISTIC ANALYTICAL MODEL",
+      "source": "salvage_s_mechanism_pivot/analysis/screening.json"
+    },
+    "fig6_n_mechanism_screening.png": {
+      "type": "DETERMINISTIC ANALYTICAL MODEL (NOT LIVE-GROUNDED)",
+      "source": "adaptive_n_mechanism_screen/analysis/screening.json"
+    },
+    "fig7_practical_baseline_evidence.png": {
+      "type": "LIVE EXPERIMENTAL",
+      "source": "PROJECT_CONTEXT \u00a722.20; final_evaluation/statistical_analysis.json"
+    }
+  },
+  "evidence_classification": {
+    "LIVE_EXPERIMENTAL": [
+      "Stage 0S",
+      "T1",
+      "L4 live probe",
+      "M3 replay",
+      "aria2 baselines",
+      "DQN head-to-heads"
+    ],
+    "TRACE_REPLAY": [
+      "Stage A",
+      "Stage B",
+      "Stage C",
+      "oracle_stage_v3 descriptive"
+    ],
+    "DETERMINISTIC_ANALYTICAL_MODEL": [
+      "S scaling",
+      "S pivot",
+      "N screen"
+    ],
+    "SIMULATION": [
+      "L3/L4 simulator",
+      "DQN training simulators"
+    ],
+    "DIAGNOSTIC_EXPLORATORY": [
+      "oracles/upper envelopes",
+      "sensitivity analyses"
+    ]
+  },
+  "reports": [
+    "claims_we_can_make.md",
+    "figure_selection.md",
+    "final_evidence_matrix.md",
+    "future_work_boundary.md",
+    "paper_viability_audit.md",
+    "proposal_alignment.md"
+  ],
+  "figure_files": [
+    "fig1_system_methodology.png",
+    "fig2_stage0s_mechanism_validation.png",
+    "fig3_s_headroom_closure.png",
+    "fig4_absolute_vs_relative.png",
+    "fig5_s_mechanism_screening.png",
+    "fig6_n_mechanism_screening.png",
+    "fig7_practical_baseline_evidence.png"
+  ],
+  "zero_new_experiments": true
+}

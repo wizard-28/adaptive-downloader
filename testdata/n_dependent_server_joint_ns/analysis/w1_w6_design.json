@@ -1,0 +1,37 @@
+{
+  "manifest": "manifest/w1_w6_manifest.json",
+  "n_qualified": 13,
+  "selection_note": "relaxed: >= 2 distinct transitions, >= 2 distinct caps",
+  "selected": [
+    {
+      "T": 1,
+      "C": 4,
+      "gamma": 0.1,
+      "t": 4
+    },
+    {
+      "T": 2,
+      "C": 4,
+      "gamma": 0.1,
+      "t": 4
+    },
+    {
+      "T": 2,
+      "C": 4,
+      "gamma": 0.1,
+      "t": 8
+    },
+    {
+      "T": 2,
+      "C": 8,
+      "gamma": 0.1,
+      "t": 4
+    },
+    {
+      "T": 2,
+      "C": 12,
+      "gamma": 0.1,
+      "t": 4
+    }
+  ]
+}

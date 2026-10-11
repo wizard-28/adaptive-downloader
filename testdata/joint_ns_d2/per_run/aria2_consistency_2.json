@@ -1,0 +1,193 @@
+{
+  "run_id": "aria2_consistency_2",
+  "mode": "aria2",
+  "config": {
+    "chunk_step_bytes": 1048576,
+    "degrade_threshold": 0.1,
+    "file_size_bytes": 536870912,
+    "improve_threshold": 0.1,
+    "initial_chunk_bytes": 4194304,
+    "initial_n": 4,
+    "max_chunk_bytes": 16777216,
+    "max_n": 16,
+    "max_retries": 3,
+    "min_chunk_bytes": 262144,
+    "min_n": 1,
+    "mode": "aria2",
+    "netem": "lo 40ms + 0.4%",
+    "policy_window": 4,
+    "schedule": "d2 (640K -\u003e 160K @2s -\u003e 2500K @4s)",
+    "timeout_ms": 30000
+  },
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "netem_status": "applied",
+  "completion_ms": 53110.468,
+  "wallclock_bytes_per_second": 10108570.53641478,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "attempts": null,
+  "decisions": null,
+  "updates": null,
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 137,
+      "end_ms": 52834,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 335,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 134217728,
+      "range_end": 167772159,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 335,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 268435456,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 335,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 67108864,
+      "range_end": 100663295,
+      "has_range": true
+    },
+    {
+      "index": 5,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 402653184,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 6,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 335544320,
+      "range_end": 369098751,
+      "has_range": true
+    },
+    {
+      "index": 7,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 469762048,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 8,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 33554432,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 9,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 201326592,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 10,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 100663296,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 11,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 503316480,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 12,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 369098752,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 13,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 301989888,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 14,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 436207616,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 15,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 167772160,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 16,
+      "start_ms": 336,
+      "end_ms": 52958,
+      "rate_bytes_per_second": 655360,
+      "range_start": 234881024,
+      "range_end": 268435455,
+      "has_range": true
+    }
+  ],
+  "total_requests": 16,
+  "successful_requests": 15,
+  "failed_requests": 1,
+  "server_bytes": 503316480,
+  "aria2_exit": 0,
+  "aria2_output_tail": "============\n[#a48814 464MiB/512MiB(90%) CN:16 DL:9.7MiB ETA:4s]\nFILE: /tmp/jns-d2-2018159671/out.bin\n-------------------------------------------------------------------------------\n\n[#a48814 464MiB/512MiB(90%) CN:16 DL:9.7MiB ETA:4s]\n *** Download Progress Summary as of Tue Sep 29 11:46:11 2026 *** \n===============================================================================\n[#a48814 474MiB/512MiB(92%) CN:16 DL:9.7MiB ETA:3s]\nFILE: /tmp/jns-d2-2018159671/out.bin\n-------------------------------------------------------------------------------\n\n[#a48814 474MiB/512MiB(92%) CN:16 DL:9.7MiB ETA:3s]\n *** Download Progress Summary as of Tue Sep 29 11:46:12 2026 *** \n===============================================================================\n[#a48814 483MiB/512MiB(94%) CN:16 DL:9.7MiB ETA:2s]\nFILE: /tmp/jns-d2-2018159671/out.bin\n-------------------------------------------------------------------------------\n\n[#a48814 483MiB/512MiB(94%) CN:16 DL:9.7MiB ETA:2s]\n *** Download Progress Summary as of Tue Sep 29 11:46:13 2026 *** \n===============================================================================\n[#a48814 493MiB/512MiB(96%) CN:16 DL:9.7MiB ETA:1s]\nFILE: /tmp/jns-d2-2018159671/out.bin\n-------------------------------------------------------------------------------\n\n[#a48814 493MiB/512MiB(96%) CN:16 DL:9.7MiB ETA:1s]\n *** Download Progress Summary as of Tue Sep 29 11:46:14 2026 *** \n===============================================================================\n[#a48814 503MiB/512MiB(98%) CN:16 DL:9.7MiB]\nFILE: /tmp/jns-d2-2018159671/out.bin\n-------------------------------------------------------------------------------\n\n[#a48814 503MiB/512MiB(98%) CN:16 DL:9.7MiB]\n\n09/29 11:46:15 [NOTICE] Download complete: /tmp/jns-d2-2018159671/out.bin\n\nDownload Results:\ngid   |stat|avg speed  |path/URI\n======+====+===========+=======================================================\na48814|OK  |   9.6MiB/s|/tmp/jns-d2-2018159671/out.bin\n\nStatus Legend:\n(OK):download completed.\n",
+  "err": ""
+}

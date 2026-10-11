@@ -1,0 +1,22 @@
+{
+  "action_constrained_oracle_s": 140.53524699837192,
+  "action_space": "A_steps (none,+1,-1,+4,-4), atomic, clamp [1,16]",
+  "adaptive_headroom": 0.08105771883360292,
+  "best_static_c": 16,
+  "best_static_s": 152.93152777777624,
+  "oracle_values_s": [
+    140.4472321428571,
+    139.52264880952373,
+    141.63586004273495
+  ],
+  "phase_best_c": {
+    "1": 16,
+    "2": 2,
+    "3": 4,
+    "4": 16,
+    "5": 2,
+    "6": 6,
+    "7": 16
+  },
+  "threshold": 0.1
+}

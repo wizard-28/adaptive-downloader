@@ -1,0 +1,117 @@
+Formal Benchmark v2 - post-exploration correction (descriptive only; no ranking, no performance claim)
+generated_utc: 2026-09-24T18:12:39Z
+source_raw: testdata/benchmark_v2/matrix_5mode_reps10_corrected.json
+reproduce: go run ./cmd/experiment -matrix -sudo -reps 10 -json \
+             -modes fixed,concurrency-adaptive,chunk-size-adaptive,joint-adaptive,linucb
+             > testdata/benchmark_v2/matrix_5mode_reps10_corrected.json
+
+CONFIGURATION (locked DefaultMatrixConfig, reps=10; identical to the frozen pre-correction benchmark)
+  modes: fixed, concurrency-adaptive, chunk-size-adaptive, joint-adaptive, linucb
+  base: file=262144 chunk=32768 min/max chunk=32768/131072 initial chunk=32768 step=32768
+        concurrency=1 min/max=1/4 thresholds=0.2/0.2 window=4 retries=3 timeout=30s
+        LinUCB alpha=0.2 DefaultRewardConfig InitialExplorationRounds=1 (5-action warm-up)
+  scenarios: baseline (4MiB/s); server-throttle (512KiB/s->4MiB/s after 4 req); latency (4MiB/s+20ms);
+             loss (4MiB/s+1%); combined (1MiB/s+20ms+1%)
+  no random seeds exist in the framework: runs are independent fresh runs.
+
+CORRECTNESS
+  total runs=250 invalid=0 failed_downloads=0 (Err=='' AND OutputMatches AND NoDuplicateRanges AND NoMissingRanges)
+  network status: baseline=['none'], server-throttle=['none'], latency=['applied'], loss=['applied'], combined=['applied']
+  SHA-256: not implemented in the framework (byte-for-byte output compare used instead)
+
+PERFORMANCE (completion time ms; wallclock=FileSize/Duration B/s; n=10/cell; +/- descriptive 95% t-CI df=9)
+  == baseline ==
+    fixed                dur=72.9+/-0.6 (med 72.9 sd 0.8) wallclock=3597102 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=72.8+/-0.9 (med 73.0 sd 1.2) wallclock=3601331 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    chunk-size-adaptive  dur=72.9+/-1.0 (med 73.1 sd 1.4) wallclock=3598605 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    joint-adaptive       dur=72.9+/-1.0 (med 73.1 sd 1.4) wallclock=3598009 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    linucb               dur=63.7+/-0.8 (med 63.8 sd 1.2) wallclock=4114173 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  == server-throttle ==
+    fixed                dur=296.4+/-0.9 (med 296.0 sd 1.2) wallclock=884577 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=287.8+/-0.4 (med 287.9 sd 0.6) wallclock=910774 retr=0.0 fail=0.0 finalC=4.00 finalChunk=32768
+    chunk-size-adaptive  dur=295.7+/-0.6 (med 295.9 sd 0.8) wallclock=886381 retr=0.0 fail=0.0 finalC=1.00 finalChunk=131072
+    joint-adaptive       dur=287.8+/-1.2 (med 287.6 sd 1.7) wallclock=910736 retr=0.0 fail=0.0 finalC=3.00 finalChunk=98304
+    linucb               dur=231.0+/-0.9 (med 230.9 sd 1.3) wallclock=1134865 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  == latency ==
+    fixed                dur=434.8+/-0.6 (med 434.8 sd 0.9) wallclock=602881 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=327.2+/-0.6 (med 327.1 sd 0.9) wallclock=801283 retr=0.0 fail=0.0 finalC=3.00 finalChunk=32768
+    chunk-size-adaptive  dur=313.3+/-1.0 (med 313.1 sd 1.3) wallclock=836694 retr=0.0 fail=0.0 finalC=1.00 finalChunk=131072
+    joint-adaptive       dur=327.1+/-0.4 (med 327.0 sd 0.5) wallclock=801433 retr=0.0 fail=0.0 finalC=2.00 finalChunk=65536
+    linucb               dur=386.6+/-2.5 (med 385.6 sd 3.5) wallclock=678198 retr=0.0 fail=0.0 finalC=1.00 finalChunk=98304
+  == loss ==
+    fixed                dur=113.6+/-61.9 (med 72.8 sd 86.6) wallclock=3081338 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=171.0+/-222.0 (med 72.9 sd 310.3) wallclock=3263822 retr=0.0 fail=0.0 finalC=1.20 finalChunk=32768
+    chunk-size-adaptive  dur=92.7+/-45.5 (med 72.6 sd 63.6) wallclock=3348213 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    joint-adaptive       dur=94.2+/-46.6 (med 72.9 sd 65.2) wallclock=3304076 retr=0.0 fail=0.0 finalC=1.10 finalChunk=32768
+    linucb               dur=64.6+/-0.6 (med 64.6 sd 0.8) wallclock=4060959 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  == combined ==
+    fixed                dur=638.8+/-13.3 (med 627.8 sd 18.6) wallclock=410644 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=489.0+/-66.1 (med 454.1 sd 92.4) wallclock=548331 retr=0.0 fail=0.0 finalC=2.20 finalChunk=32768
+    chunk-size-adaptive  dur=542.2+/-73.2 (med 504.6 sd 102.3) wallclock=494455 retr=0.0 fail=0.0 finalC=1.00 finalChunk=95027
+    joint-adaptive       dur=475.2+/-60.6 (med 446.8 sd 84.7) wallclock=562823 retr=0.0 fail=0.0 finalC=1.90 finalChunk=32768
+    linucb               dur=557.0+/-8.7 (med 553.2 sd 12.2) wallclock=470861 retr=0.0 fail=0.0 finalC=1.00 finalChunk=91750
+
+LINUCB WARM-UP (first 5 selections): expected order none -> increase-concurrency -> decrease-concurrency -> increase-chunk-size -> decrease-chunk-size
+  == baseline == expected_order_in 10/10 runs; no-op(effective pp)={'increase-concurrency': '0/10', 'decrease-concurrency': '0/10', 'increase-chunk-size': '0/10', 'decrease-chunk-size': '0/10'}
+     warm-up mean rewards: none=3.461 increase-concurrency=3.341 decrease-concurrency=5.602 increase-chunk-size=4.122 decrease-chunk-size=4.300
+  == server-throttle == expected_order_in 10/10 runs; no-op(effective pp)={'increase-concurrency': '0/10', 'decrease-concurrency': '0/10', 'increase-chunk-size': '0/10', 'decrease-chunk-size': '0/10'}
+     warm-up mean rewards: none=0.448 increase-concurrency=0.402 decrease-concurrency=0.720 increase-chunk-size=1.422 decrease-chunk-size=2.311
+  == latency == expected_order_in 10/10 runs; no-op(effective pp)={'increase-concurrency': '0/10', 'decrease-concurrency': '0/10', 'increase-chunk-size': '0/10', 'decrease-chunk-size': '0/10'}
+     warm-up mean rewards: none=0.527 increase-concurrency=0.467 decrease-concurrency=0.498 increase-chunk-size=0.957 decrease-chunk-size=0.724
+  == loss == expected_order_in 10/10 runs; no-op(effective pp)={'increase-concurrency': '0/10', 'decrease-concurrency': '0/10', 'increase-chunk-size': '0/10', 'decrease-chunk-size': '0/10'}
+     warm-up mean rewards: none=3.437 increase-concurrency=3.279 decrease-concurrency=5.528 increase-chunk-size=4.059 decrease-chunk-size=4.232
+  == combined == expected_order_in 10/10 runs; no-op(effective pp)={'increase-concurrency': '0/10', 'decrease-concurrency': '0/10', 'increase-chunk-size': '0/10', 'decrease-chunk-size': '0/10'}
+     warm-up mean rewards: none=0.345 increase-concurrency=0.296 decrease-concurrency=0.360 increase-chunk-size=0.542 decrease-chunk-size=0.453
+
+LINUCB POST-WARM-UP (decisions after the first 5; benchmark file yields 2 per run)
+  == baseline == decisions=20 (per-run 2..2) unique=1 conc_changes=0 chunk_changes=0 maxConc=1 chunkRange=32768..32768 finalC=1.00 finalChunk=32768
+     none=0(0%) increase-concurrency=0(0%) decrease-concurrency=20(100%) increase-chunk-size=0(0%) decrease-chunk-size=0(0%)
+  == server-throttle == decisions=20 (per-run 2..2) unique=1 conc_changes=0 chunk_changes=0 maxConc=1 chunkRange=32768..32768 finalC=1.00 finalChunk=32768
+     none=0(0%) increase-concurrency=0(0%) decrease-concurrency=0(0%) increase-chunk-size=0(0%) decrease-chunk-size=20(100%)
+  == latency == decisions=20 (per-run 2..2) unique=1 conc_changes=0 chunk_changes=20 maxConc=1 chunkRange=32768..98304 finalC=1.00 finalChunk=98304
+     none=0(0%) increase-concurrency=0(0%) decrease-concurrency=0(0%) increase-chunk-size=20(100%) decrease-chunk-size=0(0%)
+  == loss == decisions=20 (per-run 2..2) unique=1 conc_changes=0 chunk_changes=0 maxConc=1 chunkRange=32768..32768 finalC=1.00 finalChunk=32768
+     none=0(0%) increase-concurrency=0(0%) decrease-concurrency=20(100%) increase-chunk-size=0(0%) decrease-chunk-size=0(0%)
+  == combined == decisions=20 (per-run 2..2) unique=2 conc_changes=0 chunk_changes=18 maxConc=1 chunkRange=32768..98304 finalC=1.00 finalChunk=91750
+     none=0(0%) increase-concurrency=0(0%) decrease-concurrency=0(0%) increase-chunk-size=18(90%) decrease-chunk-size=2(10%)
+
+PRE vs POST EXPLORATION CORRECTION (LinUCB, behavioral; not a superiority claim)
+  scenario         v1 frozen              v2 corrected          
+  baseline         dec/run=8.0 None=100% changes=0 | dec/run=7.0 warmup=5 post=2.0 pre-inc-actions=0
+  server-throttle  dec/run=8.0 None=100% changes=0 | dec/run=7.0 warmup=5 post=2.0 pre-inc-actions=0
+  latency          dec/run=8.0 None=100% changes=0 | dec/run=7.0 warmup=5 post=2.0 pre-inc-actions=0
+  loss             dec/run=8.0 None=100% changes=0 | dec/run=7.0 warmup=5 post=2.0 pre-inc-actions=0
+  combined         dec/run=8.0 None=100% changes=0 | dec/run=7.0 warmup=5 post=2.0 pre-inc-actions=0
+  NOTE: v2 warm-up forces 5 controller-effecting selections (all effective here); post-warm-up has only
+        ~2 learned decisions per run, so it does not characterize sustained learning.
+
+AGGREGATE-THROUGHPUT VALIDATION (benchmark)
+  wall-clock run rate vs framework per-request AverageThroughput for runs with maxC>1:
+    baseline         linucb               maxC=2 wallclock=4114173 perreq=3643218 ratio=1.13
+    server-throttle  concurrency-adaptive maxC=4 wallclock=910774 perreq=884633 ratio=1.03
+    server-throttle  joint-adaptive       maxC=3 wallclock=910736 perreq=883575 ratio=1.03
+    server-throttle  linucb               maxC=2 wallclock=1134865 perreq=890776 ratio=1.27
+    latency          concurrency-adaptive maxC=3 wallclock=801283 perreq=553175 ratio=1.45
+    latency          joint-adaptive       maxC=2 wallclock=801433 perreq=553391 ratio=1.45
+    latency          linucb               maxC=2 wallclock=678198 perreq=604521 ratio=1.12
+    loss             concurrency-adaptive maxC=4 wallclock=3263822 perreq=3298253 ratio=0.99
+    loss             joint-adaptive       maxC=2 wallclock=3304076 perreq=3341800 ratio=0.99
+    loss             linucb               maxC=2 wallclock=4060959 perreq=3601625 ratio=1.13
+    combined         concurrency-adaptive maxC=3 wallclock=548331 perreq=361846 ratio=1.52
+    combined         joint-adaptive       maxC=2 wallclock=562823 perreq=379642 ratio=1.48
+    combined         linucb               maxC=2 wallclock=470861 perreq=416790 ratio=1.13
+  (windowed Context.AggregateThroughput vs Throughput itself is covered by the deterministic fake-clock
+   runner test TestPolicyRunnerAggregateThroughput.)
+
+STATISTICAL ANALYSIS
+  Independent fresh runs, no shared seed -> unpaired design, n=10/cell.
+  Reported: mean, median, SD, descriptive 95% t-CI (df=9, t=2.262). No significance tests, no ranking.
+
+LIMITATIONS
+  - Warm-up (5 selections) dominates the 7-decision run: only ~2 post-warm-up decisions remain.
+  - Chunk-size performance tradeoff not modelled; chunk actions may be uninformative.
+  - Credit assignment approximate under concurrency>1.
+  - n=10; no seeds in framework; loss scenario high wall-clock variance.
+  - LinUCB v2 completion times differ from v1; this is a behavioral observation (warm-up side effects
+    and small post-warm-up actions), NOT an established performance improvement.
+  - Fairness not implemented; no aria2/IDM comparison.

@@ -1,0 +1,114 @@
+{"run_id": "W1_n4_s1048576_r0", "completion_ms": 69892.41, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n4_s1048576_r1", "completion_ms": 69959.584, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n4_s4194304_r0", "completion_ms": 65405.58, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n4_s4194304_r1", "completion_ms": 65178.73, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n4_s16777216_r0", "completion_ms": 77593.059, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n4_s16777216_r1", "completion_ms": 78021.394, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s1048576_r0", "completion_ms": 35398.412, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s1048576_r1", "completion_ms": 35375.956, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s4194304_r0", "completion_ms": 34766.846, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s4194304_r1", "completion_ms": 35363.481, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s16777216_r0", "completion_ms": 48800.2, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n8_s16777216_r1", "completion_ms": 48242.506, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s1048576_r0", "completion_ms": 18470.052, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s1048576_r1", "completion_ms": 18451.153, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s4194304_r0", "completion_ms": 19735.901, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s4194304_r1", "completion_ms": 24187.095, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s16777216_r0", "completion_ms": 34315.226, "valid": true, "invalid_reasons": []}
+{"run_id": "W1_n16_s16777216_r1", "completion_ms": 34009.073, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n2_s4194304_r0", "completion_ms": 162810.465, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n2_s4194304_r1", "completion_ms": 163515.449, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s1048576_r0", "completion_ms": 177485.411, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s1048576_r1", "completion_ms": 178005.602, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s4194304_r0", "completion_ms": 174777.306, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s4194304_r1", "completion_ms": 175088.355, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s16777216_r0", "completion_ms": 177416.169, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n4_s16777216_r1", "completion_ms": 176792.158, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n8_s1048576_r0", "completion_ms": 208504.582, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n8_s1048576_r1", "completion_ms": 209620.504, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n8_s4194304_r0", "completion_ms": 214625.324, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n8_s4194304_r1", "completion_ms": 214491.869, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n8_s16777216_r0", "completion_ms": 146854.263, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W2_n8_s16777216_r1", "completion_ms": 146679.784, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W2_n16_s1048576_r0", "completion_ms": 267667.706, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n16_s1048576_r1", "completion_ms": 267353.653, "valid": true, "invalid_reasons": []}
+{"run_id": "W2_n16_s4194304_r0", "completion_ms": 126831.118, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [130023424,134217727] after 4 attempts", "content verification failed"]}
+{"run_id": "W2_n16_s4194304_r1", "completion_ms": 127165.434, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [121634816,125829119] after 4 attempts", "content verification failed"]}
+{"run_id": "W2_n16_s16777216_r0", "completion_ms": 146814.113, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [385875968,402653183] after 4 attempts", "content verification failed"]}
+{"run_id": "W2_n16_s16777216_r1", "completion_ms": 146985.837, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n2_s4194304_r0", "completion_ms": 162452.259, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n2_s4194304_r1", "completion_ms": 163521.737, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s1048576_r0", "completion_ms": 180798.105, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s1048576_r1", "completion_ms": 180862.262, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s4194304_r0", "completion_ms": 174916.03, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s4194304_r1", "completion_ms": 175215.276, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s16777216_r0", "completion_ms": 177876.211, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n4_s16777216_r1", "completion_ms": 176925.596, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n8_s1048576_r0", "completion_ms": 218589.805, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n8_s1048576_r1", "completion_ms": 218323.52, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n8_s4194304_r0", "completion_ms": 214561.088, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n8_s4194304_r1", "completion_ms": 214306.458, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n8_s16777216_r0", "completion_ms": 146619.686, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n8_s16777216_r1", "completion_ms": 148317.677, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n16_s1048576_r0", "completion_ms": 295872.145, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n16_s1048576_r1", "completion_ms": 296790.644, "valid": true, "invalid_reasons": []}
+{"run_id": "W3_n16_s4194304_r0", "completion_ms": 126800.951, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [121634816,125829119] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n16_s4194304_r1", "completion_ms": 126916.612, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [125829120,130023423] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n16_s16777216_r0", "completion_ms": 147098.185, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts", "content verification failed"]}
+{"run_id": "W3_n16_s16777216_r1", "completion_ms": 147203.04, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n2_s4194304_r0", "completion_ms": 162160.029, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n2_s4194304_r1", "completion_ms": 162486.618, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s1048576_r0", "completion_ms": 174059.603, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s1048576_r1", "completion_ms": 173494.888, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s4194304_r0", "completion_ms": 171205.791, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s4194304_r1", "completion_ms": 171631.338, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s16777216_r0", "completion_ms": 177010.542, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n4_s16777216_r1", "completion_ms": 176718.998, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n8_s1048576_r0", "completion_ms": 194286.07, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n8_s1048576_r1", "completion_ms": 194977.744, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n8_s4194304_r0", "completion_ms": 202435.201, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n8_s4194304_r1", "completion_ms": 202438.92, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n8_s16777216_r0", "completion_ms": 146600.532, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n8_s16777216_r1", "completion_ms": 146628.908, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n16_s1048576_r0", "completion_ms": 221051.911, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n16_s1048576_r1", "completion_ms": 221075.305, "valid": true, "invalid_reasons": []}
+{"run_id": "W4_n16_s4194304_r0", "completion_ms": 128651.186, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [192937984,197132287] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n16_s4194304_r1", "completion_ms": 128725.915, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [188743680,192937983] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n16_s16777216_r0", "completion_ms": 147437.394, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts", "content verification failed"]}
+{"run_id": "W4_n16_s16777216_r1", "completion_ms": 146741.022, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts", "content verification failed"]}
+{"run_id": "W5_n4_s1048576_r0", "completion_ms": 98652.952, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n4_s1048576_r1", "completion_ms": 99337.457, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n4_s4194304_r0", "completion_ms": 95744.288, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n4_s4194304_r1", "completion_ms": 96049.366, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n4_s16777216_r0", "completion_ms": 104879.751, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n4_s16777216_r1", "completion_ms": 105275.432, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s1048576_r0", "completion_ms": 112496.644, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s1048576_r1", "completion_ms": 114490.286, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s4194304_r0", "completion_ms": 112503.24, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s4194304_r1", "completion_ms": 112522.112, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s16777216_r0", "completion_ms": 110310.293, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n8_s16777216_r1", "completion_ms": 110396.068, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s1048576_r0", "completion_ms": 152178.118, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s1048576_r1", "completion_ms": 151741.291, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s4194304_r0", "completion_ms": 148451.645, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s4194304_r1", "completion_ms": 148469.863, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s16777216_r0", "completion_ms": 86170.363, "valid": true, "invalid_reasons": []}
+{"run_id": "W5_n16_s16777216_r1", "completion_ms": 84702.242, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s1048576_r0", "completion_ms": 73767.108, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s1048576_r1", "completion_ms": 73906.916, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s4194304_r0", "completion_ms": 68732.953, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s4194304_r1", "completion_ms": 68448.799, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s16777216_r0", "completion_ms": 80791.209, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n4_s16777216_r1", "completion_ms": 80302.97, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s1048576_r0", "completion_ms": 77055.25, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s1048576_r1", "completion_ms": 78571.617, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s4194304_r0", "completion_ms": 78831.487, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s4194304_r1", "completion_ms": 78713.257, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s16777216_r0", "completion_ms": 83947.47, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n8_s16777216_r1", "completion_ms": 83707.848, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s1048576_r0", "completion_ms": 103442.482, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s1048576_r1", "completion_ms": 103706.197, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s4194304_r0", "completion_ms": 101038.43, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s4194304_r1", "completion_ms": 100569.043, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s16777216_r0", "completion_ms": 70779.823, "valid": true, "invalid_reasons": []}
+{"run_id": "W6_n16_s16777216_r1", "completion_ms": 69413.703, "valid": true, "invalid_reasons": []}

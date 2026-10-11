@@ -1,0 +1,49 @@
+{
+  "models": {
+    "direct": "rate = R (fixed per-request throttle; T1 control)",
+    "fair": "rate = C/k (aggregate capacity shared among k flows)",
+    "fair_bg": "rate = C/(k+B) (fair sharing with B background flows)",
+    "cap": "served=min(k,K); rate=min(R,C/served) for the K oldest requests, 0 otherwise",
+    "degrade": "aggregate = C/(1+gamma*(k-1)); rate = aggregate/k"
+  },
+  "baseline": {
+    "F_bytes": 536870912,
+    "S_bytes": 1048576,
+    "D0_seconds": 0.04,
+    "N_grid": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ]
+  },
+  "state_grids": {
+    "C_bytes_per_s": [
+      524288,
+      2097152,
+      8388608,
+      33554432
+    ],
+    "K": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "B": [
+      0,
+      4,
+      16
+    ],
+    "gamma": [
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2
+    ]
+  },
+  "determinism": "no RNG; deterministic event-driven simulation"
+}

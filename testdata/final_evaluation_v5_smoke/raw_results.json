@@ -1,0 +1,52 @@
+{
+  "aria2_baseline_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "matrix_sha256": "f734da98c0526b57bc3f3e0110d5d0db9a9c13123bd3209b51c54b7a18caafda",
+  "results": [
+    {
+      "condition": "U1",
+      "duration_ms": 3263.603,
+      "ok": true,
+      "pair_id": "U1-p00",
+      "policy": "v5",
+      "run_id": "U1-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 5140703.69465894
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1455.057,
+      "ok": true,
+      "pair_id": "U1-p00",
+      "policy": "aria2-f",
+      "run_id": "U1-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11530280.944320394
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3390.304,
+      "ok": true,
+      "pair_id": "U8-p00",
+      "policy": "v5",
+      "run_id": "U8-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 4948587.5012978185
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1430.704,
+      "ok": true,
+      "pair_id": "U8-p00",
+      "policy": "aria2-f",
+      "run_id": "U8-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11726545.812411232
+    }
+  ],
+  "systems": {
+    "aria2": "FINAL ARIA2 BASELINE CONFIG v2 (candidate F: 16 connections, split 16, min-split 1 MiB)",
+    "dqn": "Candidate v5 (state spec v2, 1 MiB fixed chunk, concurrency 1-4)"
+  },
+  "v5_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75"
+}

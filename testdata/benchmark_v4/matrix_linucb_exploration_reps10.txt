@@ -1,0 +1,95 @@
+Live LinUCB periodic-exploration benchmark (standard vs periodic; descriptive only; no ranking)
+generated_utc: 2026-09-24T19:53:33Z
+raw: testdata/benchmark_v4/matrix_linucb_standard_reps10.json, matrix_linucb_periodic_reps10.json
+reproduce (each): go run ./cmd/experiment -matrix -sudo -reps 10 -json -file-size 4194304 -modes linucb -linucb-exploration-interval {0|5}
+config: 4 MiB, chunk 32768 min/max 32768/131072 step 32768, concurrency 1 (1/4), thr 0.2/0.2, window 4, retries 3, timeout 30s, alpha 0.2, DefaultRewardConfig, warm-up 5
+standard: InitialExplorationRounds=1, ExplorationInterval=0; periodic: InitialExplorationRounds=1, ExplorationInterval=5
+
+CORRECTNESS: standard 50/50 valid, periodic 50/50 valid, 0 failed; SHA-256 not implemented.
+
+DECISION HORIZON (mean total / warm-up=5 / normal / forced / learned)
+  baseline         standard total=127.0 learned=122.0 | periodic total=109.0 normal=87.0 forced=17.0 learned=104.0
+  server-throttle  standard total=127.0 learned=122.0 | periodic total=123.0 normal=99.0 forced=19.0 learned=118.0
+  latency          standard total=37.0 learned=32.0 | periodic total=38.0 normal=28.0 forced=5.0 learned=33.0
+  loss             standard total=103.1 learned=98.1 | periodic total=90.3 normal=71.6 forced=13.7 learned=85.3
+  combined         standard total=64.5 learned=59.5 | periodic total=45.0 normal=33.8 forced=6.2 learned=40.0
+
+ACTION COVERAGE (post-warm-up; pooled over 10 runs)
+  baseline         standard uniq=1.00 counts={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 1220, 'increase-chunk-size': 0, 'decrease-chunk-size': 0}
+  baseline         periodic uniq=5.00 counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 900, 'increase-chunk-size': 30, 'decrease-chunk-size': 30}
+  baseline         periodic forced counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 30, 'increase-chunk-size': 30, 'decrease-chunk-size': 30}
+  server-throttle  standard uniq=1.00 counts={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 1220}
+  server-throttle  periodic uniq=5.00 counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 1020}
+  server-throttle  periodic forced counts={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 30}
+  latency          standard uniq=1.00 counts={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 320, 'decrease-chunk-size': 0}
+  latency          periodic uniq=5.00 counts={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 290, 'decrease-chunk-size': 10}
+  latency          periodic forced counts={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 10, 'decrease-chunk-size': 10}
+  loss             standard uniq=1.40 counts={'none': 1, 'increase-concurrency': 58, 'decrease-concurrency': 856, 'increase-chunk-size': 65, 'decrease-chunk-size': 1}
+  loss             periodic uniq=5.00 counts={'none': 164, 'increase-concurrency': 227, 'decrease-concurrency': 388, 'increase-chunk-size': 41, 'decrease-chunk-size': 33}
+  loss             periodic forced counts={'none': 32, 'increase-concurrency': 31, 'decrease-concurrency': 26, 'increase-chunk-size': 26, 'decrease-chunk-size': 22}
+  combined         standard uniq=1.40 counts={'none': 117, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 225, 'decrease-chunk-size': 253}
+  combined         periodic uniq=5.00 counts={'none': 95, 'increase-concurrency': 13, 'decrease-concurrency': 25, 'increase-chunk-size': 252, 'decrease-chunk-size': 15}
+  combined         periodic forced counts={'none': 13, 'increase-concurrency': 13, 'decrease-concurrency': 12, 'increase-chunk-size': 12, 'decrease-chunk-size': 12}
+
+EFFECTIVE vs NO-OP (post-warm-up)
+  baseline         standard effective={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 0} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 1220, 'increase-chunk-size': 0, 'decrease-chunk-size': 0}
+  baseline         periodic effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 30, 'decrease-chunk-size': 30} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 860, 'increase-chunk-size': 0, 'decrease-chunk-size': 0}
+  baseline         periodic forced effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 0, 'increase-chunk-size': 30, 'decrease-chunk-size': 30} forced noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 30, 'increase-chunk-size': 0, 'decrease-chunk-size': 0}
+  server-throttle  standard effective={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 0} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 1220}
+  server-throttle  periodic effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 40} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 980}
+  server-throttle  periodic forced effective={'none': 40, 'increase-concurrency': 40, 'decrease-concurrency': 40, 'increase-chunk-size': 40, 'decrease-chunk-size': 0} forced noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 0, 'decrease-chunk-size': 30}
+  latency          standard effective={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 30, 'decrease-chunk-size': 0} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 290, 'decrease-chunk-size': 0}
+  latency          periodic effective={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 40, 'decrease-chunk-size': 10} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 250, 'decrease-chunk-size': 0}
+  latency          periodic forced effective={'none': 10, 'increase-concurrency': 10, 'decrease-concurrency': 10, 'increase-chunk-size': 0, 'decrease-chunk-size': 10} forced noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 10, 'decrease-chunk-size': 0}
+  loss             standard effective={'none': 1, 'increase-concurrency': 3, 'decrease-concurrency': 0, 'increase-chunk-size': 7, 'decrease-chunk-size': 0} noop={'none': 0, 'increase-concurrency': 55, 'decrease-concurrency': 856, 'increase-chunk-size': 58, 'decrease-chunk-size': 1}
+  loss             periodic effective={'none': 164, 'increase-concurrency': 42, 'decrease-concurrency': 29, 'increase-chunk-size': 33, 'decrease-chunk-size': 23} noop={'none': 0, 'increase-concurrency': 185, 'decrease-concurrency': 359, 'increase-chunk-size': 8, 'decrease-chunk-size': 10}
+  loss             periodic forced effective={'none': 32, 'increase-concurrency': 23, 'decrease-concurrency': 14, 'increase-chunk-size': 26, 'decrease-chunk-size': 22} forced noop={'none': 0, 'increase-concurrency': 8, 'decrease-concurrency': 12, 'increase-chunk-size': 0, 'decrease-chunk-size': 0}
+  combined         standard effective={'none': 117, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 24, 'decrease-chunk-size': 3} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 201, 'decrease-chunk-size': 250}
+  combined         periodic effective={'none': 95, 'increase-concurrency': 13, 'decrease-concurrency': 12, 'increase-chunk-size': 39, 'decrease-chunk-size': 13} noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 13, 'increase-chunk-size': 213, 'decrease-chunk-size': 2}
+  combined         periodic forced effective={'none': 13, 'increase-concurrency': 13, 'decrease-concurrency': 12, 'increase-chunk-size': 3, 'decrease-chunk-size': 12} forced noop={'none': 0, 'increase-concurrency': 0, 'decrease-concurrency': 0, 'increase-chunk-size': 9, 'decrease-chunk-size': 0}
+
+CONCURRENCY
+  baseline         standard inc=0 dec=1220 concEff=0 maxC=1 finalC=1.00 | periodic inc=40 dec=900 concEff=80 maxC=2 finalC=1.00
+  baseline         periodic agg throughput around effective conc changes: before=3638663 after=4230356
+  server-throttle  standard inc=0 dec=0 concEff=0 maxC=1 finalC=1.00 | periodic inc=40 dec=40 concEff=80 maxC=2 finalC=1.00
+  server-throttle  periodic agg throughput around effective conc changes: before=5392857 after=4237317
+  latency          standard inc=0 dec=0 concEff=0 maxC=1 finalC=1.00 | periodic inc=10 dec=10 concEff=20 maxC=2 finalC=1.00
+  latency          periodic agg throughput around effective conc changes: before=2372874 after=2114358
+  loss             standard inc=58 dec=856 concEff=3 maxC=4 finalC=1.30 | periodic inc=227 dec=388 concEff=71 maxC=4 finalC=2.30
+  loss             periodic agg throughput around effective conc changes: before=4639890 after=4839051
+  combined         standard inc=0 dec=0 concEff=0 maxC=1 finalC=1.00 | periodic inc=13 dec=25 concEff=25 maxC=2 finalC=1.10
+  combined         periodic agg throughput around effective conc changes: before=932778 after=771676
+
+CHUNK SIZE
+  baseline         standard inc=0 dec=0 chunkEff=0 finalChunk=32768 range=32768..32768
+  baseline         periodic inc=30 dec=30 chunkEff=60 finalChunk=32768 range=32768..65536
+  server-throttle  standard inc=0 dec=1220 chunkEff=0 finalChunk=32768 range=32768..32768
+  server-throttle  periodic inc=40 dec=1020 chunkEff=80 finalChunk=32768 range=32768..65536
+  latency          standard inc=320 dec=0 chunkEff=30 finalChunk=131072 range=32768..131072
+  latency          periodic inc=290 dec=10 chunkEff=50 finalChunk=131072 range=32768..131072
+  loss             standard inc=65 dec=1 chunkEff=7 finalChunk=55706 range=32768..131072
+  loss             periodic inc=41 dec=33 chunkEff=56 finalChunk=65536 range=32768..131072
+  combined         standard inc=225 dec=253 chunkEff=27 finalChunk=101581 range=32768..131072
+  combined         periodic inc=252 dec=15 chunkEff=52 finalChunk=117965 range=32768..131072
+
+LOCK-IN / DOMINANT ARM
+  baseline         standard dominant=decrease-concurrency domFractionMean=1.000 uniq=1.00 | periodic dominant=decrease-concurrency domFractionMean=0.865 uniq=5.00
+  server-throttle  standard dominant=decrease-chunk-size  domFractionMean=1.000 uniq=1.00 | periodic dominant=decrease-chunk-size  domFractionMean=0.864 uniq=5.00
+  latency          standard dominant=increase-chunk-size  domFractionMean=1.000 uniq=1.00 | periodic dominant=increase-chunk-size  domFractionMean=0.879 uniq=5.00
+  loss             standard dominant=decrease-concurrency domFractionMean=0.992 uniq=1.40 | periodic dominant=decrease-concurrency domFractionMean=0.776 uniq=5.00
+  combined         standard dominant=increase-chunk-size  domFractionMean=0.975 uniq=1.40 | periodic dominant=increase-chunk-size  domFractionMean=0.835 uniq=5.00
+
+PERFORMANCE (mean / median / sd / ci95 completion ms; wallclock B/s; n=10; not ranked)
+  baseline         standard  dur=1158.0+/-5.2 med=1156.0 sd=7.2 wallclock=3622294 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  baseline         periodic  dur=1108.4+/-5.3 med=1109.3 sd=7.5 wallclock=3784421 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  server-throttle  standard  dur=1324.8+/-3.2 med=1326.1 sd=4.5 wallclock=3165991 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  server-throttle  periodic  dur=1209.0+/-3.2 med=1209.6 sd=4.5 wallclock=3469285 retr=0.0 fail=0.0 finalC=1.00 finalChunk=32768
+  latency          standard  dur=2645.2+/-4.9 med=2644.7 sd=6.8 wallclock=1585663 retr=0.0 fail=0.0 finalC=1.00 finalChunk=131072
+  latency          periodic  dur=2453.0+/-3.1 med=2452.9 sd=4.3 wallclock=1709843 retr=0.0 fail=0.0 finalC=1.00 finalChunk=131072
+  loss             standard  dur=1543.0+/-336.9 med=1552.2 sd=471.0 wallclock=3049485 retr=0.0 fail=0.0 finalC=1.30 finalChunk=55706
+  loss             periodic  dur=1175.6+/-238.7 med=1250.1 sd=333.7 wallclock=3909590 retr=0.0 fail=0.0 finalC=2.30 finalChunk=65536
+  combined         standard  dur=7243.4+/-1353.7 med=6324.1 sd=1892.5 wallclock=610470 retr=0.0 fail=0.0 finalC=1.00 finalChunk=101581
+  combined         periodic  dur=5688.6+/-717.2 med=5364.0 sd=1002.6 wallclock=752156 retr=0.0 fail=0.0 finalC=1.10 finalChunk=117965
+
+LIMITATIONS: deterministic (not learned) exploration; approximate credit assignment; chunk-size tradeoff not modelled;
+n=10; no seeds; descriptive statistics; do not rank. Coverage != meaningful adaptation.

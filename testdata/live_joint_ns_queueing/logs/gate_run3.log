@@ -1,0 +1,35 @@
+=== state S1_moderate (offered 2500000 bps)
+  background-only achieved 20119605 bits/s (offered 20000000 bits/s, rel +0.6%)
+  gate_S1_moderate_n1_r1 comp=14.850s ping_med=35.0 p95=55.9 drops=523 retrans=269 bg_ok=True
+  gate_S1_moderate_n2_r1 comp=14.996s ping_med=32.5 p95=57.7 drops=238 retrans=156 bg_ok=True
+  gate_S1_moderate_n4_r1 comp=15.045s ping_med=32.3 p95=60.1 drops=240 retrans=165 bg_ok=True
+  gate_S1_moderate_n8_r1 comp=15.073s ping_med=48.75 p95=62.2 drops=226 retrans=211 bg_ok=True
+  gate_S1_moderate_n16_r1 comp=14.284s ping_med=77.75 p95=87.3 drops=421 retrans=334 bg_ok=True
+  gate_S1_moderate_n1_r2 comp=14.860s ping_med=45.6 p95=60.6 drops=381 retrans=317 bg_ok=True
+  gate_S1_moderate_n2_r2 comp=14.990s ping_med=38.150000000000006 p95=56.8 drops=463 retrans=296 bg_ok=True
+  gate_S1_moderate_n4_r2 comp=15.061s ping_med=29.95 p95=58.0 drops=429 retrans=185 bg_ok=True
+  gate_S1_moderate_n8_r2 comp=15.125s ping_med=49.25 p95=62.4 drops=501 retrans=252 bg_ok=True
+  gate_S1_moderate_n16_r2 comp=13.666s ping_med=76.2 p95=83.9 drops=450 retrans=256 bg_ok=True
+  gate_S1_moderate_n1_r3 comp=14.856s ping_med=36.7 p95=56.4 drops=367 retrans=264 bg_ok=True
+  gate_S1_moderate_n2_r3 comp=14.994s ping_med=38.1 p95=57.2 drops=349 retrans=289 bg_ok=True
+  gate_S1_moderate_n4_r3 comp=15.068s ping_med=32.85 p95=58.7 drops=461 retrans=267 bg_ok=True
+  gate_S1_moderate_n8_r3 comp=15.197s ping_med=46.0 p95=62.4 drops=305 retrans=243 bg_ok=True
+  gate_S1_moderate_n16_r3 comp=14.288s ping_med=78.5 p95=87.2 drops=370 retrans=321 bg_ok=True
+=== state S2_heavy (offered 4250000 bps)
+  background-only achieved 33825520 bits/s (offered 34000000 bits/s, rel -0.5%)
+  gate_S2_heavy_n1_r1 comp=62.491s ping_med=63.95 p95=80.9 drops=812 retrans=627 bg_ok=True
+  gate_S2_heavy_n2_r1 comp=67.894s ping_med=52.1 p95=73.3 drops=628 retrans=458 bg_ok=True
+  gate_S2_heavy_n4_r1 comp=53.339s ping_med=75.0 p95=86.1 drops=612 retrans=445 bg_ok=True
+  gate_S2_heavy_n8_r1 comp=30.318s ping_med=82.7 p95=88.2 drops=350 retrans=248 bg_ok=True
+  gate_S2_heavy_n16_r1 comp=15.661s ping_med=83.7 p95=89.3 drops=485 retrans=293 bg_ok=True
+  gate_S2_heavy_n1_r2 comp=59.535s ping_med=59.0 p95=80.0 drops=830 retrans=576 bg_ok=True
+  gate_S2_heavy_n2_r2 comp=65.861s ping_med=50.9 p95=75.2 drops=1163 retrans=698 bg_ok=True
+  gate_S2_heavy_n4_r2 comp=51.959s ping_med=74.95 p95=84.7 drops=542 retrans=462 bg_ok=True
+  gate_S2_heavy_n8_r2 comp=30.097s ping_med=80.7 p95=89.1 drops=421 retrans=272 bg_ok=True
+  gate_S2_heavy_n16_r2 comp=15.886s ping_med=85.2 p95=91.7 drops=265 retrans=181 bg_ok=True
+  gate_S2_heavy_n1_r3 comp=67.830s ping_med=44.7 p95=57.8 drops=700 retrans=554 bg_ok=True
+  gate_S2_heavy_n2_r3 comp=68.084s ping_med=51.25 p95=73.3 drops=859 retrans=551 bg_ok=True
+  gate_S2_heavy_n4_r3 comp=50.879s ping_med=72.55 p95=84.0 drops=633 retrans=493 bg_ok=True
+  gate_S2_heavy_n8_r3 comp=30.297s ping_med=81.7 p95=87.8 drops=472 retrans=232 bg_ok=True
+  gate_S2_heavy_n16_r3 comp=16.329s ping_med=87.6 p95=93.3 drops=315 retrans=201 bg_ok=True
+driver done

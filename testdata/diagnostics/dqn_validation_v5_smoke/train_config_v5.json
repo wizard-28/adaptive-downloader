@@ -1,0 +1,305 @@
+{
+  "action_space": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "decision_intervals": [
+    2
+  ],
+  "fixed_chunk_bytes": 1048576,
+  "num_actions": 3,
+  "numpy": "2.5.3",
+  "python": "3.14.7",
+  "seed_separation": {
+    "randomized_eval": [
+      400,
+      401,
+      402,
+      403,
+      404
+    ],
+    "sweep": [
+      300
+    ],
+    "test": [
+      200
+    ],
+    "train": [
+      0
+    ],
+    "validation": [
+      100
+    ]
+  },
+  "seeds": [
+    0
+  ],
+  "selected_decision_interval": 2,
+  "selected_seed": 0,
+  "selection_criterion": "min mean validation completion time; tie-break lowest seed (validation only; test never used)",
+  "state_spec_version": 2,
+  "test_conditions": [
+    {
+      "file_size": 4194304,
+      "name": "unseen-low-bandwidth",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 196608
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "unseen-high-bandwidth",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 12582912
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "unseen-latency",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.12,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 4194304
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "unseen-loss",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.02,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 6.0,
+          "rate": 4194304
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "unseen-latency+loss",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.03,
+          "latency_s": 0.1,
+          "link_bandwidth": 0,
+          "loss_percent": 5.0,
+          "rate": 3145728
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "unseen-throttle-up",
+      "phase_seconds": 1.2,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 262144
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 10485760
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "unseen-throttle-down",
+      "phase_seconds": 0.5,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 10485760
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.0,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 524288
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "unseen-three-phase",
+      "phase_seconds": 0.6,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 1.0,
+          "rate": 1048576
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 1.0,
+          "rate": 4194304
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 1.0,
+          "rate": 786432
+        }
+      ]
+    }
+  ],
+  "torch": "2.9.0+cpu",
+  "train": {
+    "batch_size": 64,
+    "episodes": 30,
+    "epsilon_decay_steps": 5000,
+    "epsilon_end": 0.05,
+    "epsilon_start": 1.0,
+    "gamma": 1.0,
+    "gradient_clip": 10.0,
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "learning_rate": 0.001,
+    "max_episode_steps": 200,
+    "num_actions": 3,
+    "randomize_conditions": true,
+    "replay_capacity": 20000,
+    "seed": 0,
+    "target_update_interval": 200,
+    "train_start": 500
+  },
+  "train_ranges": {
+    "rand_congestion": [
+      0.0,
+      0.06
+    ],
+    "rand_file_size": [
+      4194304,
+      33554432
+    ],
+    "rand_latency_s": [
+      0.0,
+      0.08
+    ],
+    "rand_link_mult": [
+      0.0,
+      4.0
+    ],
+    "rand_loss_percent": [
+      0.0,
+      4.0
+    ],
+    "rand_phase_count": [
+      1,
+      3
+    ],
+    "rand_phase_seconds": [
+      0.3,
+      2.0
+    ],
+    "rand_rate": [
+      262144,
+      8388608
+    ]
+  },
+  "validation_conditions": [
+    {
+      "file_size": 8388608,
+      "name": "val-steady-shared-cap",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.04,
+          "link_bandwidth": 1572864,
+          "loss_percent": 0.0,
+          "rate": 3145728
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "val-latency-high",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.075,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 5242880
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "val-loss-congestion",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.04,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 2.5,
+          "rate": 4194304
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "val-multiphase-up",
+      "phase_seconds": 0.9,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.02,
+          "link_bandwidth": 0,
+          "loss_percent": 0.5,
+          "rate": 786432
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.02,
+          "link_bandwidth": 0,
+          "loss_percent": 0.5,
+          "rate": 5242880
+        }
+      ]
+    }
+  ]
+}

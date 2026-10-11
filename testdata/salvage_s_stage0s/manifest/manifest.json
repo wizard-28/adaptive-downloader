@@ -1,0 +1,362 @@
+{
+  "protocol_id": "salvage_s_protocol_v7",
+  "protocol_version": 7,
+  "protocol_status": "FINAL_S_PROTOCOL_FROZEN \u2014 READY_FOR_STAGE_0S",
+  "protocol_json_sha256": "db1b3cf05db3a624ea2996081fd267649ba6360c8fbf181f0456fda7752b2ac0",
+  "frozen_mechanism": {
+    "package": "A",
+    "R_mbps": 4,
+    "R_bytes_per_second": 500000.0,
+    "D_seconds": 0.04,
+    "FileSize_bytes": 536870912,
+    "FileSize_label": "512 MiB",
+    "N": 4
+  },
+  "frozen_quantities": {
+    "T_ref_seconds": 268.435456,
+    "delta_T_seconds": 13.4217728,
+    "T_tail_primary_seconds": 33.594432,
+    "delta_tail_seconds": 1.6797216,
+    "delta_log": -0.05129329438755058,
+    "delta_log_rounded": "-0.051293294",
+    "tail_window_bytes": 67108864,
+    "tail_window_fraction_of_file": 0.125,
+    "tail_minimum_seconds": 20.0
+  },
+  "chunk_size_arms": [
+    {
+      "label": "256KiB",
+      "bytes": 262144
+    },
+    {
+      "label": "1MiB",
+      "bytes": 1048576
+    },
+    {
+      "label": "4MiB",
+      "bytes": 4194304
+    },
+    {
+      "label": "16MiB",
+      "bytes": 16777216
+    }
+  ],
+  "replicate_blocks": 8,
+  "planned_runs": 32,
+  "randomization": {
+    "method": "python random.Random(seed).shuffle of the four arms within each block",
+    "seed": 20260928,
+    "blocks": [
+      {
+        "block": 0,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b0_o0_1MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b0_o1_256KiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b0_o2_16MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b0_o3_4MiB"
+          }
+        ]
+      },
+      {
+        "block": 1,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b1_o0_4MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b1_o1_16MiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b1_o2_256KiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b1_o3_1MiB"
+          }
+        ]
+      },
+      {
+        "block": 2,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b2_o0_1MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b2_o1_256KiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b2_o2_16MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b2_o3_4MiB"
+          }
+        ]
+      },
+      {
+        "block": 3,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b3_o0_1MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b3_o1_256KiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b3_o2_16MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b3_o3_4MiB"
+          }
+        ]
+      },
+      {
+        "block": 4,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b4_o0_4MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b4_o1_1MiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b4_o2_256KiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b4_o3_16MiB"
+          }
+        ]
+      },
+      {
+        "block": 5,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b5_o0_1MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b5_o1_256KiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b5_o2_4MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b5_o3_16MiB"
+          }
+        ]
+      },
+      {
+        "block": 6,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b6_o0_4MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b6_o1_1MiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b6_o2_16MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b6_o3_256KiB"
+          }
+        ]
+      },
+      {
+        "block": 7,
+        "order": [
+          {
+            "order": 0,
+            "arm_label": "4MiB",
+            "arm_bytes": 4194304,
+            "run_id": "b7_o0_4MiB"
+          },
+          {
+            "order": 1,
+            "arm_label": "1MiB",
+            "arm_bytes": 1048576,
+            "run_id": "b7_o1_1MiB"
+          },
+          {
+            "order": 2,
+            "arm_label": "16MiB",
+            "arm_bytes": 16777216,
+            "run_id": "b7_o2_16MiB"
+          },
+          {
+            "order": 3,
+            "arm_label": "256KiB",
+            "arm_bytes": 262144,
+            "run_id": "b7_o3_256KiB"
+          }
+        ]
+      }
+    ]
+  },
+  "planned_run_ids": [
+    "b0_o0_1MiB",
+    "b0_o1_256KiB",
+    "b0_o2_16MiB",
+    "b0_o3_4MiB",
+    "b1_o0_4MiB",
+    "b1_o1_16MiB",
+    "b1_o2_256KiB",
+    "b1_o3_1MiB",
+    "b2_o0_1MiB",
+    "b2_o1_256KiB",
+    "b2_o2_16MiB",
+    "b2_o3_4MiB",
+    "b3_o0_1MiB",
+    "b3_o1_256KiB",
+    "b3_o2_16MiB",
+    "b3_o3_4MiB",
+    "b4_o0_4MiB",
+    "b4_o1_1MiB",
+    "b4_o2_256KiB",
+    "b4_o3_16MiB",
+    "b5_o0_1MiB",
+    "b5_o1_256KiB",
+    "b5_o2_4MiB",
+    "b5_o3_16MiB",
+    "b6_o0_4MiB",
+    "b6_o1_1MiB",
+    "b6_o2_16MiB",
+    "b6_o3_256KiB",
+    "b7_o0_4MiB",
+    "b7_o1_1MiB",
+    "b7_o2_16MiB",
+    "b7_o3_256KiB"
+  ],
+  "runner": {
+    "path": "/workspaces/mvp/testdata/salvage_s_stage0s/tools/stage0s_run",
+    "sha256": "a3b88078ac4d2f7b88ad785fc9ab25c4e6811fa047262692b909f848c88e5888",
+    "source": "tools/stage0s_run.go",
+    "constants": {
+      "file_size_bytes": 536870912,
+      "rate_bytes_per_second": 500000,
+      "delay_ms": 40,
+      "concurrency": 4,
+      "timeout_ms": 600000,
+      "dial_timeout_ms": 30000,
+      "max_retries": 3
+    }
+  },
+  "server_config": {
+    "implementation": "internal/experiment/server.NewLogical",
+    "content_source": "deterministic generated logical object (never materialized; bounded memory)",
+    "rate_bytes_per_second": 500000,
+    "delay_ms": 40,
+    "request_log": true,
+    "http": "HTTP/1.1 only (project fetcher transport)"
+  },
+  "client_config": {
+    "implementation": "internal/downloader (fixed mode; no policy)",
+    "concurrency": 4,
+    "chunk_size": "fixed per run (one of the four arms)",
+    "timeout_ms": 600000,
+    "dial_timeout_ms": 30000,
+    "max_retries": 3
+  },
+  "environment": {
+    "hostname": "9ae18f995012",
+    "platform": "Linux-7.2.7-1-cachyos-x86_64-with-glibc2.39",
+    "python": "3.14.7",
+    "cpus": 12,
+    "date_utc": "2026-09-28T10:14:21Z",
+    "go_version": "go version go1.27.1 linux/amd64"
+  },
+  "preflight": {
+    "smoke_tool": "tools/preflight/preflight_smoke (8 MiB, non-frozen; excluded from the ledger)",
+    "smoke_result": "OK (mechanism present)"
+  },
+  "technical_rerun_policy": "the frozen protocol contains no technical-rerun authorization; failed runs are recorded and not rerun",
+  "experiment_start_timestamp_utc": "2026-09-28T10:14:21Z"
+}

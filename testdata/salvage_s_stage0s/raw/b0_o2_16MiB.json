@@ -1,0 +1,680 @@
+{
+  "run_id": "b0_o2_16MiB",
+  "block": 0,
+  "arm_bytes": 16777216,
+  "order_in_block": 2,
+  "protocol": "salvage_s_protocol_v7",
+  "config": {
+    "chunk_bytes": 16777216,
+    "concurrency": 4,
+    "content_source": "server.NewLogical (deterministic generated, bounded memory)",
+    "delay_ms": 40,
+    "dial_timeout_ms": 30000,
+    "file_size_bytes": 536870912,
+    "http": "HTTP/1.1 (fetcher transport)",
+    "max_retries": 3,
+    "rate_bytes_per_sec": 500000,
+    "timeout_ms": 600000
+  },
+  "start_wall_unix_nano": 1790591039231867097,
+  "end_wall_unix_nano": 1790591315785291619,
+  "duration_ns": 276553424592,
+  "run_err": "",
+  "transferred_bytes": 536870912,
+  "total_attempts": 32,
+  "successful_attempts": 32,
+  "failed_attempts": 0,
+  "retry_attempts": 0,
+  "output_size_bytes": 536870912,
+  "coverage_no_missing": true,
+  "coverage_no_duplicates": true,
+  "eof_reached": true,
+  "workload_exhausted": false,
+  "clean": true,
+  "failure_reason": "",
+  "client_records": [
+    {
+      "request_id": "a1-r1",
+      "range_start": 0,
+      "range_end": 16777215,
+      "bytes": 16777216,
+      "duration_ns": 34415139859,
+      "throughput_bytes_per_second": 487495.21485999547,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r3",
+      "range_start": 33554432,
+      "range_end": 50331647,
+      "bytes": 16777216,
+      "duration_ns": 34441213547,
+      "throughput_bytes_per_second": 487126.15707065817,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r2",
+      "range_start": 16777216,
+      "range_end": 33554431,
+      "bytes": 16777216,
+      "duration_ns": 34445076636,
+      "throughput_bytes_per_second": 487071.5248305014,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r4",
+      "range_start": 50331648,
+      "range_end": 67108863,
+      "bytes": 16777216,
+      "duration_ns": 34448315410,
+      "throughput_bytes_per_second": 487025.7311662254,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r5",
+      "range_start": 67108864,
+      "range_end": 83886079,
+      "bytes": 16777216,
+      "duration_ns": 34577435078,
+      "throughput_bytes_per_second": 485207.0710899709,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r6",
+      "range_start": 83886080,
+      "range_end": 100663295,
+      "bytes": 16777216,
+      "duration_ns": 34547005147,
+      "throughput_bytes_per_second": 485634.45452396624,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r7",
+      "range_start": 100663296,
+      "range_end": 117440511,
+      "bytes": 16777216,
+      "duration_ns": 34543389438,
+      "throughput_bytes_per_second": 485685.2866193831,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r8",
+      "range_start": 117440512,
+      "range_end": 134217727,
+      "bytes": 16777216,
+      "duration_ns": 34557557893,
+      "throughput_bytes_per_second": 485486.15767199226,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r9",
+      "range_start": 134217728,
+      "range_end": 150994943,
+      "bytes": 16777216,
+      "duration_ns": 34503829439,
+      "throughput_bytes_per_second": 486242.14392378594,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r10",
+      "range_start": 150994944,
+      "range_end": 167772159,
+      "bytes": 16777216,
+      "duration_ns": 34501042821,
+      "throughput_bytes_per_second": 486281.41726162814,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r11",
+      "range_start": 167772160,
+      "range_end": 184549375,
+      "bytes": 16777216,
+      "duration_ns": 34500830153,
+      "throughput_bytes_per_second": 486284.41476910794,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r12",
+      "range_start": 184549376,
+      "range_end": 201326591,
+      "bytes": 16777216,
+      "duration_ns": 34515451462,
+      "throughput_bytes_per_second": 486078.4167482491,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r13",
+      "range_start": 201326592,
+      "range_end": 218103807,
+      "bytes": 16777216,
+      "duration_ns": 34614404224,
+      "throughput_bytes_per_second": 484688.85644917353,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r14",
+      "range_start": 218103808,
+      "range_end": 234881023,
+      "bytes": 16777216,
+      "duration_ns": 34607537868,
+      "throughput_bytes_per_second": 484785.0218062788,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r15",
+      "range_start": 234881024,
+      "range_end": 251658239,
+      "bytes": 16777216,
+      "duration_ns": 34634080753,
+      "throughput_bytes_per_second": 484413.4920066201,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r16",
+      "range_start": 251658240,
+      "range_end": 268435455,
+      "bytes": 16777216,
+      "duration_ns": 34588447172,
+      "throughput_bytes_per_second": 485052.59332895034,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r17",
+      "range_start": 268435456,
+      "range_end": 285212671,
+      "bytes": 16777216,
+      "duration_ns": 34557496640,
+      "throughput_bytes_per_second": 485487.0181939198,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r18",
+      "range_start": 285212672,
+      "range_end": 301989887,
+      "bytes": 16777216,
+      "duration_ns": 34564962519,
+      "throughput_bytes_per_second": 485382.1551456259,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r19",
+      "range_start": 301989888,
+      "range_end": 318767103,
+      "bytes": 16777216,
+      "duration_ns": 34566266186,
+      "throughput_bytes_per_second": 485363.848953842,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r20",
+      "range_start": 318767104,
+      "range_end": 335544319,
+      "bytes": 16777216,
+      "duration_ns": 34565499951,
+      "throughput_bytes_per_second": 485374.6083170605,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r21",
+      "range_start": 335544320,
+      "range_end": 352321535,
+      "bytes": 16777216,
+      "duration_ns": 34496987106,
+      "throughput_bytes_per_second": 486338.5880177915,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r22",
+      "range_start": 352321536,
+      "range_end": 369098751,
+      "bytes": 16777216,
+      "duration_ns": 34500615876,
+      "throughput_bytes_per_second": 486287.4349924547,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r24",
+      "range_start": 385875968,
+      "range_end": 402653183,
+      "bytes": 16777216,
+      "duration_ns": 34492813640,
+      "throughput_bytes_per_second": 486397.4326682385,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r23",
+      "range_start": 369098752,
+      "range_end": 385875967,
+      "bytes": 16777216,
+      "duration_ns": 34509226182,
+      "throughput_bytes_per_second": 486166.10269722564,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r25",
+      "range_start": 402653184,
+      "range_end": 419430399,
+      "bytes": 16777216,
+      "duration_ns": 34448981418,
+      "throughput_bytes_per_second": 487016.31541516946,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r26",
+      "range_start": 419430400,
+      "range_end": 436207615,
+      "bytes": 16777216,
+      "duration_ns": 34475357660,
+      "throughput_bytes_per_second": 486643.7112983384,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r27",
+      "range_start": 436207616,
+      "range_end": 452984831,
+      "bytes": 16777216,
+      "duration_ns": 34440608784,
+      "throughput_bytes_per_second": 487134.71080668457,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r28",
+      "range_start": 452984832,
+      "range_end": 469762047,
+      "bytes": 16777216,
+      "duration_ns": 34469255583,
+      "throughput_bytes_per_second": 486729.8616183173,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r29",
+      "range_start": 469762048,
+      "range_end": 486539263,
+      "bytes": 16777216,
+      "duration_ns": 34492936909,
+      "throughput_bytes_per_second": 486395.69440729293,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r30",
+      "range_start": 486539264,
+      "range_end": 503316479,
+      "bytes": 16777216,
+      "duration_ns": 34488130257,
+      "throughput_bytes_per_second": 486463.4839574916,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r31",
+      "range_start": 503316480,
+      "range_end": 520093695,
+      "bytes": 16777216,
+      "duration_ns": 34491824190,
+      "throughput_bytes_per_second": 486411.38571221504,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    },
+    {
+      "request_id": "a1-r32",
+      "range_start": 520093696,
+      "range_end": 536870911,
+      "bytes": 16777216,
+      "duration_ns": 34478228576,
+      "throughput_bytes_per_second": 486603.18969166756,
+      "success": true,
+      "status_code": 206,
+      "attempt": 1
+    }
+  ],
+  "server_request_log": [
+    {
+      "index": 1,
+      "start_unix_nano": 1790591039232472276,
+      "end_unix_nano": 1790591073630544058,
+      "rate_bytes_per_second": 500000,
+      "range_start": 16777216,
+      "range_end": 33554431,
+      "has_range": true
+    },
+    {
+      "index": 2,
+      "start_unix_nano": 1790591039232500423,
+      "end_unix_nano": 1790591073630418203,
+      "rate_bytes_per_second": 500000,
+      "range_start": 50331648,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_unix_nano": 1790591039232515019,
+      "end_unix_nano": 1790591073630378742,
+      "rate_bytes_per_second": 500000,
+      "range_start": 0,
+      "range_end": 16777215,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_unix_nano": 1790591039232590030,
+      "end_unix_nano": 1790591073630412057,
+      "rate_bytes_per_second": 500000,
+      "range_start": 33554432,
+      "range_end": 50331647,
+      "has_range": true
+    },
+    {
+      "index": 5,
+      "start_unix_nano": 1790591073655376587,
+      "end_unix_nano": 1790591108193946802,
+      "rate_bytes_per_second": 500000,
+      "range_start": 67108864,
+      "range_end": 83886079,
+      "has_range": true
+    },
+    {
+      "index": 6,
+      "start_unix_nano": 1790591073719545622,
+      "end_unix_nano": 1790591108260748174,
+      "rate_bytes_per_second": 500000,
+      "range_start": 83886080,
+      "range_end": 100663295,
+      "has_range": true
+    },
+    {
+      "index": 7,
+      "start_unix_nano": 1790591073731419356,
+      "end_unix_nano": 1790591108269294365,
+      "rate_bytes_per_second": 500000,
+      "range_start": 100663296,
+      "range_end": 117440511,
+      "has_range": true
+    },
+    {
+      "index": 8,
+      "start_unix_nano": 1790591073744058974,
+      "end_unix_nano": 1790591108294219924,
+      "rate_bytes_per_second": 500000,
+      "range_start": 117440512,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 9,
+      "start_unix_nano": 1790591108238668249,
+      "end_unix_nano": 1790591142737118403,
+      "rate_bytes_per_second": 500000,
+      "range_start": 134217728,
+      "range_end": 150994943,
+      "has_range": true
+    },
+    {
+      "index": 10,
+      "start_unix_nano": 1790591108307178720,
+      "end_unix_nano": 1790591142803841552,
+      "rate_bytes_per_second": 500000,
+      "range_start": 150994944,
+      "range_end": 167772159,
+      "has_range": true
+    },
+    {
+      "index": 11,
+      "start_unix_nano": 1790591108349442434,
+      "end_unix_nano": 1790591142837582751,
+      "rate_bytes_per_second": 500000,
+      "range_start": 167772160,
+      "range_end": 184549375,
+      "has_range": true
+    },
+    {
+      "index": 12,
+      "start_unix_nano": 1790591108396537385,
+      "end_unix_nano": 1790591142905065360,
+      "rate_bytes_per_second": 500000,
+      "range_start": 184549376,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 13,
+      "start_unix_nano": 1790591142748117787,
+      "end_unix_nano": 1790591177344516517,
+      "rate_bytes_per_second": 500000,
+      "range_start": 201326592,
+      "range_end": 218103807,
+      "has_range": true
+    },
+    {
+      "index": 14,
+      "start_unix_nano": 1790591142812713485,
+      "end_unix_nano": 1790591177412215286,
+      "rate_bytes_per_second": 500000,
+      "range_start": 218103808,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 15,
+      "start_unix_nano": 1790591142912305021,
+      "end_unix_nano": 1790591177513485400,
+      "rate_bytes_per_second": 500000,
+      "range_start": 234881024,
+      "range_end": 251658239,
+      "has_range": true
+    },
+    {
+      "index": 16,
+      "start_unix_nano": 1790591142966957832,
+      "end_unix_nano": 1790591177549972500,
+      "rate_bytes_per_second": 500000,
+      "range_start": 251658240,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 17,
+      "start_unix_nano": 1790591177403036748,
+      "end_unix_nano": 1790591211952032873,
+      "rate_bytes_per_second": 500000,
+      "range_start": 268435456,
+      "range_end": 285212671,
+      "has_range": true
+    },
+    {
+      "index": 18,
+      "start_unix_nano": 1790591177464787859,
+      "end_unix_nano": 1790591212019715020,
+      "rate_bytes_per_second": 500000,
+      "range_start": 285212672,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 19,
+      "start_unix_nano": 1790591177560235053,
+      "end_unix_nano": 1790591212118525795,
+      "rate_bytes_per_second": 500000,
+      "range_start": 301989888,
+      "range_end": 318767103,
+      "has_range": true
+    },
+    {
+      "index": 20,
+      "start_unix_nano": 1790591177565642973,
+      "end_unix_nano": 1790591212119879538,
+      "rate_bytes_per_second": 500000,
+      "range_start": 318767104,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 21,
+      "start_unix_nano": 1790591211964189955,
+      "end_unix_nano": 1790591246450325602,
+      "rate_bytes_per_second": 500000,
+      "range_start": 335544320,
+      "range_end": 352321535,
+      "has_range": true
+    },
+    {
+      "index": 22,
+      "start_unix_nano": 1790591212034595653,
+      "end_unix_nano": 1790591246517851862,
+      "rate_bytes_per_second": 500000,
+      "range_start": 352321536,
+      "range_end": 369098751,
+      "has_range": true
+    },
+    {
+      "index": 23,
+      "start_unix_nano": 1790591212133427729,
+      "end_unix_nano": 1790591246619347355,
+      "rate_bytes_per_second": 500000,
+      "range_start": 369098752,
+      "range_end": 385875967,
+      "has_range": true
+    },
+    {
+      "index": 24,
+      "start_unix_nano": 1790591212138603425,
+      "end_unix_nano": 1790591246619356853,
+      "rate_bytes_per_second": 500000,
+      "range_start": 385875968,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 25,
+      "start_unix_nano": 1790591246464816936,
+      "end_unix_nano": 1790591280904156903,
+      "rate_bytes_per_second": 500000,
+      "range_start": 402653184,
+      "range_end": 419430399,
+      "has_range": true
+    },
+    {
+      "index": 26,
+      "start_unix_nano": 1790591246540570210,
+      "end_unix_nano": 1790591281005170348,
+      "rate_bytes_per_second": 500000,
+      "range_start": 419430400,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 27,
+      "start_unix_nano": 1790591246637296137,
+      "end_unix_nano": 1790591281072316040,
+      "rate_bytes_per_second": 500000,
+      "range_start": 436207616,
+      "range_end": 452984831,
+      "has_range": true
+    },
+    {
+      "index": 28,
+      "start_unix_nano": 1790591246646550454,
+      "end_unix_nano": 1790591281106082523,
+      "rate_bytes_per_second": 500000,
+      "range_start": 452984832,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 29,
+      "start_unix_nano": 1790591280918002131,
+      "end_unix_nano": 1790591315393109897,
+      "rate_bytes_per_second": 500000,
+      "range_start": 469762048,
+      "range_end": 486539263,
+      "has_range": true
+    },
+    {
+      "index": 30,
+      "start_unix_nano": 1790591281053729951,
+      "end_unix_nano": 1790591315526921258,
+      "rate_bytes_per_second": 500000,
+      "range_start": 486539264,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 31,
+      "start_unix_nano": 1790591281145030847,
+      "end_unix_nano": 1790591315627495119,
+      "rate_bytes_per_second": 500000,
+      "range_start": 503316480,
+      "range_end": 520093695,
+      "has_range": true
+    },
+    {
+      "index": 32,
+      "start_unix_nano": 1790591281220350893,
+      "end_unix_nano": 1790591315693843846,
+      "rate_bytes_per_second": 500000,
+      "range_start": 520093696,
+      "range_end": 536870911,
+      "has_range": true
+    }
+  ],
+  "go_version": "go1.27.1"
+}

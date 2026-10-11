@@ -1,0 +1,53 @@
+DQN Candidate v5 (concurrency-only, 1 MiB fixed chunk, state spec v2)
+EXPERIMENTAL. NO live transfer; NO aria2 comparison; NO performance claim.
+
+candidate sha256 : bcbe6945f10719ffb04de0ce976c6f024fc94a5f11b09bdce240a0fb94cbbb8d
+selected seed    : 0
+decision interval: 2
+episodes/seed    : 30
+gate verdict     : READY_FOR_NEXT_STAGE
+
+training episode completion-time distribution (s):
+  n=30 mean=9.679 median=4.260 sd=23.210 min=0.540 p25=2.125 p75=9.573 max=132.670
+
+validation (selection only):
+  mean completion = 2.7381s over 4 conditions x 1 seeds
+
+static concurrency sweep (best fixed C per regime):
+  stable-no-cap              best=C4
+  low-bandwidth              best=C4
+  latency-dominant           best=C4
+  shared-cap-hard            best=C1
+  shared-cap-moderate        best=C3
+  combined-mild              best=C2
+  throttle-up-wallclock      best=C4
+  throttle-down-wallclock    best=C4
+  distinct best C = [1, 2, 3, 4] (varies=True)
+
+held-out TEST (never used for selection): mean completion ms (DQN vs fixed C=1..4)
+  condition                      DQN       C=1       C=2       C=3       C=4  best  DQN-best
+  unseen-low-bandwidth       10726.7   21333.3   10706.7    8955.6    8090.0 C   4   +2636.7
+  unseen-high-bandwidth        687.2    1333.3     826.7     698.9     645.0 C   4     +42.2
+  unseen-latency              1308.3    2960.0    1560.0    1230.0    1075.0 C   4    +233.3
+  unseen-loss                 1136.7    2500.0    1330.0    1078.3     962.5 C   4    +174.2
+  unseen-latency+loss         1870.0    4333.3    2246.7    1781.1    1558.3 C   4    +311.7
+  unseen-throttle-up          2723.3    5500.0    2910.0    2093.3    2670.0 C   3    +630.0
+  unseen-throttle-down        3623.3   22500.0    7610.0    4593.3    3095.0 C   4    +528.3
+  unseen-three-phase          4800.8   20396.7   10191.7    5924.4    4800.8 C   4      +0.0
+
+DQN held-out behavior (all test conditions):
+  mean effective concurrency changes/episode = 2.62
+  constant-episode fraction = 0.000
+  action fraction      = none=0.000, increase-concurrency=1.000, decrease-concurrency=0.000
+  concurrency time fraction = C1=0.000, C2=0.326, C3=0.248, C4=0.427
+  final concurrency distribution = C3:1, C4:7
+  changes before/after first transition = 19/2 (transition reactions within 3 decisions: 1)
+  dominant concurrency by condition = {'unseen-low-bandwidth': '3', 'unseen-high-bandwidth': '4', 'unseen-latency': '4', 'unseen-loss': '4', 'unseen-latency+loss': '4', 'unseen-throttle-up': '2', 'unseen-throttle-down': '4', 'unseen-three-phase': '4'} (distinct=3)
+
+NOT-READY gate:
+  rule: NOT READY if constant_episode_fraction >= 0.9 OR max single-concurrency time fraction >= 0.9 OR ramp_to_max_fraction >= 0.9 OR total effective concurrency changes == 0; a constant-concurrency policy (including a ramp-to-max-then-hold policy) is not adaptation, regardless of completion time.
+  constant_episode_fraction=0.000 ramp_to_max_fraction=0.875 dominant_time_fraction=0.427 total_changes=21
+  verdict: READY_FOR_NEXT_STAGE
+
+Caveats: simulator-only; no live transfer; no aria2 comparison; constant
+behavior is NOT counted as adaptation; completion times are not a claim.

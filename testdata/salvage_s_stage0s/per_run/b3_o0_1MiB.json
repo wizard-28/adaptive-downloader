@@ -1,0 +1,21 @@
+{
+  "run_id": "b3_o0_1MiB",
+  "block": 3,
+  "order_in_block": 0,
+  "arm_label": "1MiB",
+  "arm_bytes": 1048576,
+  "duration_seconds": 280.908743154,
+  "clean": true,
+  "run_err": "",
+  "total_attempts": 512,
+  "failed_attempts": 0,
+  "retry_attempts": 0,
+  "server_requests": 512,
+  "server_service_median_seconds": 2.1899460685000003,
+  "client_service_median_seconds": 2.192169657,
+  "realized_tail_seconds": 35.273270498,
+  "eof_reached": true,
+  "coverage_no_missing": true,
+  "coverage_no_duplicates": true,
+  "output_size_bytes": 536870912
+}

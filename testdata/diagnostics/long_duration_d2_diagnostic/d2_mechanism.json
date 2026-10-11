@@ -1,0 +1,1502 @@
+{
+  "mechanism": "At 512 MiB aria2 splits into 16 pieces of 32 MiB (--split=16); each piece is one HTTP range request whose pacing rate is selected at request start and held for the whole request. All aria2 requests start before the 2 s transition at the 640 KiB/s initial rate, so ~32 MiB/request at 640 KiB/s takes ~51 s. v6 allocates 1 MiB ranges dynamically, so its requests complete in ~1.6 s and 505/512 are issued after recovery at 2.5 MiB/s. The reversal is therefore a request-granularity x phase-locked-pacing interaction, not evidence of generic adaptive superiority.",
+  "previous_16": {
+    "aria2_mean_ms": 2040.954,
+    "aria2_range_sizes": [
+      1048576
+    ],
+    "aria2_requests_started_phase": {
+      "2-4s": 0,
+      "<2s": 15,
+      ">=4s": 0
+    },
+    "geometric_ratio": 6.004116417670971,
+    "pairs": 5,
+    "per_pair": [
+      {
+        "aria2_ms": 2057.138,
+        "aria2_profile": {
+          "duration_ms": 2057.138,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p00",
+        "ratio": 6.032443618269654,
+        "v6_final_concurrency": 1,
+        "v6_ms": 12409.569,
+        "v6_phase_mean_concurrency": [
+          1.0978899999999998,
+          2.4285465000000004,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 12409.569,
+          "max_in_flight": 4,
+          "range_count": 16,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 9,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 9
+          }
+        }
+      },
+      {
+        "aria2_ms": 2060.007,
+        "aria2_profile": {
+          "duration_ms": 2060.007,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p01",
+        "ratio": 6.2909203706589345,
+        "v6_final_concurrency": 1,
+        "v6_ms": 12959.34,
+        "v6_phase_mean_concurrency": [
+          1.1019065000000001,
+          2.435044,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 12959.34,
+          "max_in_flight": 4,
+          "range_count": 16,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 9,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 9
+          }
+        }
+      },
+      {
+        "aria2_ms": 2031.758,
+        "aria2_profile": {
+          "duration_ms": 2031.758,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p02",
+        "ratio": 5.835503539299464,
+        "v6_final_concurrency": 3,
+        "v6_ms": 11856.331,
+        "v6_phase_mean_concurrency": [
+          1.0976219999999999,
+          2.4314915,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 11856.331,
+          "max_in_flight": 4,
+          "range_count": 16,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 9,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 9
+          }
+        }
+      },
+      {
+        "aria2_ms": 2027.884,
+        "aria2_profile": {
+          "duration_ms": 2027.884,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p03",
+        "ratio": 5.8300755861775135,
+        "v6_final_concurrency": 3,
+        "v6_ms": 11822.717,
+        "v6_phase_mean_concurrency": [
+          1.098031,
+          2.430475,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 11822.717,
+          "max_in_flight": 4,
+          "range_count": 16,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 9,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 9
+          }
+        }
+      },
+      {
+        "aria2_ms": 2027.983,
+        "aria2_profile": {
+          "duration_ms": 2027.983,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p04",
+        "ratio": 6.043458451081691,
+        "v6_final_concurrency": 1,
+        "v6_ms": 12256.031,
+        "v6_phase_mean_concurrency": [
+          1.098473,
+          2.42959,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 12256.031,
+          "max_in_flight": 4,
+          "range_count": 16,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 9,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 9
+          }
+        }
+      }
+    ],
+    "ratio_max": 6.2909203706589345,
+    "ratio_min": 5.8300755861775135,
+    "v6_faster_pairs": 0,
+    "v6_mean_ms": 12260.7976,
+    "v6_range_sizes": [
+      1048576
+    ],
+    "v6_requests_started_phase": {
+      "2-4s": 4,
+      "<2s": 3,
+      ">=4s": 9
+    }
+  },
+  "previous_512": {
+    "aria2_mean_ms": 53313.700600000004,
+    "aria2_range_sizes": [
+      33554432
+    ],
+    "aria2_requests_started_phase": {
+      "2-4s": 0,
+      "<2s": 15,
+      ">=4s": 0
+    },
+    "geometric_ratio": 0.5684575682218009,
+    "pairs": 5,
+    "per_pair": [
+      {
+        "aria2_ms": 53151.937,
+        "aria2_profile": {
+          "duration_ms": 53151.937,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p00",
+        "ratio": 0.5606531517374428,
+        "v6_final_concurrency": 8,
+        "v6_ms": 29799.801,
+        "v6_phase_mean_concurrency": [
+          1.096545,
+          2.422238,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 29799.801,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53308.453,
+        "aria2_profile": {
+          "duration_ms": 53308.453,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p01",
+        "ratio": 0.594207057556144,
+        "v6_final_concurrency": 6,
+        "v6_ms": 31676.259,
+        "v6_phase_mean_concurrency": [
+          1.0981705,
+          2.429629,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31676.259,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53209.864,
+        "aria2_profile": {
+          "duration_ms": 53209.864,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p02",
+        "ratio": 0.5752792376992356,
+        "v6_final_concurrency": 11,
+        "v6_ms": 30610.53,
+        "v6_phase_mean_concurrency": [
+          1.095078,
+          2.4169755,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30610.53,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53383.214,
+        "aria2_profile": {
+          "duration_ms": 53383.214,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p03",
+        "ratio": 0.5538814129849882,
+        "v6_final_concurrency": 7,
+        "v6_ms": 29567.97,
+        "v6_phase_mean_concurrency": [
+          1.1020155,
+          2.435667,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 29567.97,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53515.035,
+        "aria2_profile": {
+          "duration_ms": 53515.035,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p04",
+        "ratio": 0.5591942526058331,
+        "v6_final_concurrency": 14,
+        "v6_ms": 29925.3,
+        "v6_phase_mean_concurrency": [
+          1.0981325000000002,
+          2.4257535,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 29925.3,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      }
+    ],
+    "ratio_max": 0.594207057556144,
+    "ratio_min": 0.5538814129849882,
+    "v6_faster_pairs": 5,
+    "v6_mean_ms": 30315.971999999998,
+    "v6_range_sizes": [
+      1048576
+    ],
+    "v6_requests_started_phase": {
+      "2-4s": 4,
+      "<2s": 3,
+      ">=4s": 505
+    }
+  },
+  "replication": {
+    "aria2_mean_ms": 53452.0845,
+    "aria2_range_sizes": [
+      33554432
+    ],
+    "aria2_requests_started_phase": {
+      "2-4s": 0,
+      "<2s": 15,
+      ">=4s": 0
+    },
+    "geometric_ratio": 0.5815739043550995,
+    "pairs": 20,
+    "per_pair": [
+      {
+        "aria2_ms": 53107.819,
+        "aria2_profile": {
+          "duration_ms": 53107.819,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p00",
+        "ratio": 0.563429633591242,
+        "v6_final_concurrency": 11,
+        "v6_ms": 29922.519,
+        "v6_phase_mean_concurrency": [
+          1.0983665,
+          2.196774,
+          3
+        ],
+        "v6_profile": {
+          "duration_ms": 29922.519,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 3,
+            "2560000": 507,
+            "655360": 2
+          },
+          "requests_started_phase": {
+            "2-4s": 3,
+            "<2s": 2,
+            ">=4s": 507
+          }
+        }
+      },
+      {
+        "aria2_ms": 54327.878,
+        "aria2_profile": {
+          "duration_ms": 54327.878,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p01",
+        "ratio": 0.5524220548426354,
+        "v6_final_concurrency": 15,
+        "v6_ms": 30011.918,
+        "v6_phase_mean_concurrency": [
+          1.0738200000000002,
+          2.3771670000000005,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30011.918,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53140.896,
+        "aria2_profile": {
+          "duration_ms": 53140.896,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p02",
+        "ratio": 0.6595932631621416,
+        "v6_final_concurrency": 3,
+        "v6_ms": 35051.377,
+        "v6_phase_mean_concurrency": [
+          1.09855,
+          2.431715,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 35051.377,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53238.858,
+        "aria2_profile": {
+          "duration_ms": 53238.858,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p03",
+        "ratio": 0.5668920246185597,
+        "v6_final_concurrency": 12,
+        "v6_ms": 30180.684,
+        "v6_phase_mean_concurrency": [
+          1.094697,
+          2.4164315,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30180.684,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 54356.113,
+        "aria2_profile": {
+          "duration_ms": 54356.113,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p04",
+        "ratio": 0.5864691796486625,
+        "v6_final_concurrency": 10,
+        "v6_ms": 31878.185,
+        "v6_phase_mean_concurrency": [
+          1.09694,
+          2.4244185,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31878.185,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53215.34,
+        "aria2_profile": {
+          "duration_ms": 53215.34,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p05",
+        "ratio": 0.5703734487085866,
+        "v6_final_concurrency": 14,
+        "v6_ms": 30352.617,
+        "v6_phase_mean_concurrency": [
+          1.1000615,
+          2.43173,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30352.617,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53055.388,
+        "aria2_profile": {
+          "duration_ms": 53055.388,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p06",
+        "ratio": 0.5676122470351174,
+        "v6_final_concurrency": 11,
+        "v6_ms": 30114.888,
+        "v6_phase_mean_concurrency": [
+          1.0959625000000002,
+          2.427864,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30114.888,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53294.891,
+        "aria2_profile": {
+          "duration_ms": 53294.891,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p07",
+        "ratio": 0.6752561516637683,
+        "v6_final_concurrency": 5,
+        "v6_ms": 35987.703,
+        "v6_phase_mean_concurrency": [
+          1.094771,
+          2.421157,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 35987.703,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53436.268,
+        "aria2_profile": {
+          "duration_ms": 53436.268,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p08",
+        "ratio": 0.5801370896635222,
+        "v6_final_concurrency": 11,
+        "v6_ms": 31000.361,
+        "v6_phase_mean_concurrency": [
+          1.0957195000000002,
+          2.419459,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31000.361,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53264.964,
+        "aria2_profile": {
+          "duration_ms": 53264.964,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p09",
+        "ratio": 0.5706041967849635,
+        "v6_final_concurrency": 8,
+        "v6_ms": 30393.212,
+        "v6_phase_mean_concurrency": [
+          1.0988,
+          2.428491,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30393.212,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53151.532,
+        "aria2_profile": {
+          "duration_ms": 53151.532,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p10",
+        "ratio": 0.5850004850283526,
+        "v6_final_concurrency": 5,
+        "v6_ms": 31093.672,
+        "v6_phase_mean_concurrency": [
+          1.0978020000000002,
+          2.4246865,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31093.672,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 54144.075,
+        "aria2_profile": {
+          "duration_ms": 54144.075,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p11",
+        "ratio": 0.5539729693415207,
+        "v6_final_concurrency": 5,
+        "v6_ms": 29994.354,
+        "v6_phase_mean_concurrency": [
+          1.0977365,
+          2.4269724999999998,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 29994.354,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53429.734,
+        "aria2_profile": {
+          "duration_ms": 53429.734,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p12",
+        "ratio": 0.5709100479519513,
+        "v6_final_concurrency": 12,
+        "v6_ms": 30503.572,
+        "v6_phase_mean_concurrency": [
+          1.095981,
+          2.4215370000000003,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 30503.572,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53274.34,
+        "aria2_profile": {
+          "duration_ms": 53274.34,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p13",
+        "ratio": 0.5822925821324113,
+        "v6_final_concurrency": 13,
+        "v6_ms": 31021.253,
+        "v6_phase_mean_concurrency": [
+          1.09646,
+          2.4231005,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31021.253,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53174.243,
+        "aria2_profile": {
+          "duration_ms": 53174.243,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p14",
+        "ratio": 0.5592295502918584,
+        "v6_final_concurrency": 11,
+        "v6_ms": 29736.608,
+        "v6_phase_mean_concurrency": [
+          1.1005019999999999,
+          2.4265974999999997,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 29736.608,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53390.057,
+        "aria2_profile": {
+          "duration_ms": 53390.057,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p15",
+        "ratio": 0.5716466270114676,
+        "v6_final_concurrency": 15,
+        "v6_ms": 30520.246,
+        "v6_phase_mean_concurrency": [
+          1.0059635,
+          2,
+          2
+        ],
+        "v6_profile": {
+          "duration_ms": 30520.246,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 2,
+            "2560000": 509,
+            "655360": 1
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 3,
+            ">=4s": 509
+          }
+        }
+      },
+      {
+        "aria2_ms": 54391.719,
+        "aria2_profile": {
+          "duration_ms": 54391.719,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p16",
+        "ratio": 0.6203179936269343,
+        "v6_final_concurrency": 5,
+        "v6_ms": 33740.162,
+        "v6_phase_mean_concurrency": [
+          1.098389,
+          2.4279425,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 33740.162,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 52978.258,
+        "aria2_profile": {
+          "duration_ms": 52978.258,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p17",
+        "ratio": 0.5946629842000467,
+        "v6_final_concurrency": 8,
+        "v6_ms": 31504.209,
+        "v6_phase_mean_concurrency": [
+          1.0997865000000002,
+          2.4305415000000004,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31504.209,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53473.587,
+        "aria2_profile": {
+          "duration_ms": 53473.587,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p18",
+        "ratio": 0.52003674262585,
+        "v6_final_concurrency": 13,
+        "v6_ms": 27808.23,
+        "v6_phase_mean_concurrency": [
+          1.0976445,
+          2.2557655,
+          4.294016
+        ],
+        "v6_profile": {
+          "duration_ms": 27808.23,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 3,
+            "2560000": 506,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      },
+      {
+        "aria2_ms": 53195.73,
+        "aria2_profile": {
+          "duration_ms": 53195.73,
+          "max_in_flight": 16,
+          "range_count": 15,
+          "range_size_bytes": [
+            33554432
+          ],
+          "rate_histogram": {
+            "655360": 15
+          },
+          "requests_started_phase": {
+            "2-4s": 0,
+            "<2s": 15,
+            ">=4s": 0
+          }
+        },
+        "pair_id": "D2-p19",
+        "ratio": 0.6003848993142871,
+        "v6_final_concurrency": 5,
+        "v6_ms": 31937.913,
+        "v6_phase_mean_concurrency": [
+          1.098569,
+          2.428297,
+          4
+        ],
+        "v6_profile": {
+          "duration_ms": 31937.913,
+          "max_in_flight": 16,
+          "range_count": 512,
+          "range_size_bytes": [
+            1048576
+          ],
+          "rate_histogram": {
+            "163840": 4,
+            "2560000": 505,
+            "655360": 3
+          },
+          "requests_started_phase": {
+            "2-4s": 4,
+            "<2s": 3,
+            ">=4s": 505
+          }
+        }
+      }
+    ],
+    "ratio_max": 0.6752561516637683,
+    "ratio_min": 0.52003674262585,
+    "v6_faster_pairs": 20,
+    "v6_mean_ms": 31137.68415,
+    "v6_range_sizes": [
+      1048576
+    ],
+    "v6_requests_started_phase": {
+      "2-4s": 3.75,
+      "<2s": 2.95,
+      ">=4s": 505.3
+    }
+  },
+  "replication_established_stats": {
+    "aria2_mean_ms": 53452.0845,
+    "ci95_log_ratio": [
+      -0.569093293392554,
+      -0.514941151577245
+    ],
+    "dqn_mean_ms": 31137.68415,
+    "geometric_ratio": 0.5815739043550995,
+    "mean_log_ratio": -0.5420172224848995,
+    "p_one_sided": 4.9999750001249995e-06,
+    "pairs": 20,
+    "ratio_ci95": [
+      0.5660384368857619,
+      0.5975357576204594
+    ],
+    "relative_reduction": 0.4184260956449005
+  },
+  "replication_per_condition": {
+    "D2": {
+      "aria2_mean_ms": 53452.0845,
+      "aria2_median_ms": 53269.652,
+      "aria2_sd_ms": 445.78120216261794,
+      "ci95_log_ratio": [
+        -0.569093293392554,
+        -0.514941151577245
+      ],
+      "dqn_mean_ms": 31137.68415,
+      "dqn_median_ms": 30511.909,
+      "dqn_sd_ms": 1843.7093332524591,
+      "geometric_ratio": 0.5815739043550995,
+      "mean_log_ratio": -0.5420172224848995,
+      "n": 20,
+      "p_holm": 4.9999750001249995e-06,
+      "p_one_sided": 4.9999750001249995e-06,
+      "paired_mean_delta_ms": -22314.40035,
+      "reduction": 0.4184260956449005
+    }
+  }
+}

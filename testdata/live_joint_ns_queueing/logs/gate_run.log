@@ -1,0 +1,26 @@
+=== state S0_no_background (offered 0 bps)
+  background-only achieved 0 bps (offered 0, rel +0.0%)
+  gate_S0_no_background_n1_r1 comp=7.173s ping_med=47.0 p95=57.3 drops=0 retrans=0 bg_ok=True
+  gate_S0_no_background_n2_r1 comp=7.159s ping_med=60.25 p95=77.0 drops=44 retrans=44 bg_ok=True
+  gate_S0_no_background_n4_r1 comp=7.097s ping_med=64.5 p95=78.9 drops=232 retrans=191 bg_ok=True
+  gate_S0_no_background_n8_r1 comp=7.054s ping_med=73.94999999999999 p95=84.5 drops=172 retrans=58 bg_ok=True
+  gate_S0_no_background_n16_r1 comp=7.088s ping_med=81.65 p95=92.4 drops=337 retrans=139 bg_ok=True
+  gate_S0_no_background_n1_r2 comp=7.166s ping_med=47.4 p95=56.4 drops=0 retrans=0 bg_ok=True
+  gate_S0_no_background_n2_r2 comp=7.158s ping_med=61.5 p95=75.5 drops=25 retrans=25 bg_ok=True
+  gate_S0_no_background_n4_r2 comp=7.097s ping_med=65.4 p95=78.2 drops=111 retrans=103 bg_ok=True
+  gate_S0_no_background_n8_r2 comp=7.053s ping_med=74.25 p95=84.1 drops=233 retrans=49 bg_ok=True
+  gate_S0_no_background_n16_r2 comp=7.072s ping_med=85.85 p95=93.7 drops=339 retrans=103 bg_ok=True
+  gate_S0_no_background_n1_r3 comp=7.162s ping_med=48.25 p95=57.9 drops=0 retrans=0 bg_ok=True
+  gate_S0_no_background_n2_r3 comp=7.150s ping_med=62.6 p95=77.7 drops=61 retrans=61 bg_ok=True
+  gate_S0_no_background_n4_r3 comp=7.101s ping_med=64.5 p95=80.7 drops=83 retrans=68 bg_ok=True
+  gate_S0_no_background_n8_r3 comp=7.054s ping_med=78.45 p95=89.3 drops=204 retrans=53 bg_ok=True
+  gate_S0_no_background_n16_r3 comp=7.067s ping_med=88.3 p95=94.9 drops=338 retrans=75 bg_ok=True
+=== state S1_moderate (offered 2500000 bps)
+Traceback (most recent call last):
+  File "/workspaces/mvp/testdata/live_joint_ns_queueing/tools/run_gate.py", line 332, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/workspaces/mvp/testdata/live_joint_ns_queueing/tools/run_gate.py", line 297, in main
+    bo["achieved_bps"], bo["offered_bps"], 100 * bo["rel_err"]), flush=True)
+    ~~^^^^^^^^^^^^^^^^
+KeyError: 'achieved_bps'

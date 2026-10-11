@@ -1,0 +1,2202 @@
+{
+  "e1_stationary": [
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2068.479999999987,
+      "T_1MiB": 2053.1199999999967,
+      "T_4MiB": 2049.2799999999993,
+      "T_16MiB": 2048.3199999999997,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1044.4799999999927,
+      "T_1MiB": 1029.1199999999983,
+      "T_4MiB": 1025.2799999999995,
+      "T_16MiB": 1024.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 532.4800000000037,
+      "T_1MiB": 517.120000000001,
+      "T_4MiB": 513.2800000000003,
+      "T_16MiB": 512.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 276.4799999999995,
+      "T_1MiB": 261.11999999999966,
+      "T_4MiB": 257.2799999999999,
+      "T_16MiB": 256.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 148.48000000000064,
+      "T_1MiB": 133.12000000000032,
+      "T_4MiB": 129.2800000000001,
+      "T_16MiB": 128.32000000000002,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 84.48000000000049,
+      "T_1MiB": 69.11999999999996,
+      "T_4MiB": 65.27999999999997,
+      "T_16MiB": 64.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2100.7999999999865,
+      "T_1MiB": 2085.1999999999966,
+      "T_4MiB": 2081.3199999999993,
+      "T_16MiB": 2080.3599999999997,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1060.7999999999925,
+      "T_1MiB": 1045.1999999999982,
+      "T_4MiB": 1041.3199999999995,
+      "T_16MiB": 1040.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 540.8000000000034,
+      "T_1MiB": 525.200000000001,
+      "T_4MiB": 521.3200000000003,
+      "T_16MiB": 520.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 280.79999999999967,
+      "T_1MiB": 265.1999999999997,
+      "T_4MiB": 261.31999999999994,
+      "T_16MiB": 260.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 150.80000000000058,
+      "T_1MiB": 135.2000000000003,
+      "T_4MiB": 131.32000000000008,
+      "T_16MiB": 130.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 85.80000000000054,
+      "T_1MiB": 70.19999999999997,
+      "T_4MiB": 66.31999999999998,
+      "T_16MiB": 65.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2197.7599999999857,
+      "T_1MiB": 2181.4399999999964,
+      "T_4MiB": 2177.359999999999,
+      "T_16MiB": 2176.3599999999997,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1109.7599999999916,
+      "T_1MiB": 1093.439999999998,
+      "T_4MiB": 1089.3599999999994,
+      "T_16MiB": 1088.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 565.7600000000025,
+      "T_1MiB": 549.4400000000007,
+      "T_4MiB": 545.3600000000002,
+      "T_16MiB": 544.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 293.76000000000016,
+      "T_1MiB": 277.4399999999998,
+      "T_4MiB": 273.35999999999996,
+      "T_16MiB": 272.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 157.7600000000004,
+      "T_1MiB": 141.44000000000025,
+      "T_4MiB": 137.36000000000007,
+      "T_16MiB": 136.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "shared",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 89.76000000000069,
+      "T_1MiB": 73.44000000000001,
+      "T_4MiB": 69.35999999999999,
+      "T_16MiB": 68.36,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2068.479999999987,
+      "T_1MiB": 2053.1199999999967,
+      "T_4MiB": 2049.2799999999993,
+      "T_16MiB": 2048.3199999999997,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1044.4799999999927,
+      "T_1MiB": 1029.1199999999983,
+      "T_4MiB": 1025.2799999999995,
+      "T_16MiB": 1024.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 532.4800000000037,
+      "T_1MiB": 517.120000000001,
+      "T_4MiB": 513.2800000000003,
+      "T_16MiB": 512.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 276.4799999999995,
+      "T_1MiB": 261.11999999999966,
+      "T_4MiB": 257.2799999999999,
+      "T_16MiB": 256.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 148.48000000000064,
+      "T_1MiB": 133.12000000000032,
+      "T_4MiB": 129.2800000000001,
+      "T_16MiB": 128.32000000000002,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 84.48000000000049,
+      "T_1MiB": 69.11999999999996,
+      "T_4MiB": 65.27999999999997,
+      "T_16MiB": 64.32,
+      "argmin": "16MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2100.7999999999865,
+      "T_1MiB": 2085.1999999999966,
+      "T_4MiB": 2113.3199999999993,
+      "T_16MiB": 2176.3599999999997,
+      "argmin": "1MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1060.7999999999925,
+      "T_1MiB": 1045.1999999999982,
+      "T_4MiB": 1057.3199999999995,
+      "T_16MiB": 1088.36,
+      "argmin": "1MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 540.8000000000034,
+      "T_1MiB": 525.200000000001,
+      "T_4MiB": 529.3200000000003,
+      "T_16MiB": 544.36,
+      "argmin": "1MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 280.79999999999967,
+      "T_1MiB": 265.1999999999997,
+      "T_4MiB": 265.31999999999994,
+      "T_16MiB": 272.36,
+      "argmin": "1MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 150.80000000000058,
+      "T_1MiB": 135.2000000000003,
+      "T_4MiB": 133.32000000000008,
+      "T_16MiB": 136.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 85.80000000000054,
+      "T_1MiB": 70.19999999999997,
+      "T_4MiB": 67.31999999999998,
+      "T_16MiB": 68.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2197.7599999999857,
+      "T_1MiB": 2181.4399999999964,
+      "T_4MiB": 2177.359999999999,
+      "T_16MiB": 2304.3599999999997,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1109.7599999999916,
+      "T_1MiB": 1093.439999999998,
+      "T_4MiB": 1089.3599999999994,
+      "T_16MiB": 1152.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 565.7600000000025,
+      "T_1MiB": 549.4400000000007,
+      "T_4MiB": 545.3600000000002,
+      "T_16MiB": 576.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 293.76000000000016,
+      "T_1MiB": 277.4399999999998,
+      "T_4MiB": 273.35999999999996,
+      "T_16MiB": 288.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 157.7600000000004,
+      "T_1MiB": 141.44000000000025,
+      "T_4MiB": 137.36000000000007,
+      "T_16MiB": 144.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "lockin_full",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 89.76000000000069,
+      "T_1MiB": 73.44000000000001,
+      "T_4MiB": 69.35999999999999,
+      "T_16MiB": 72.36,
+      "argmin": "4MiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2048.04,
+      "T_1MiB": 2048.04,
+      "T_4MiB": 2048.04,
+      "T_16MiB": 2048.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1024.04,
+      "T_1MiB": 1024.04,
+      "T_4MiB": 1024.04,
+      "T_16MiB": 1024.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 512.04,
+      "T_1MiB": 512.04,
+      "T_4MiB": 512.04,
+      "T_16MiB": 512.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 256.03999999999996,
+      "T_1MiB": 256.03999999999996,
+      "T_4MiB": 256.03999999999996,
+      "T_16MiB": 256.03999999999996,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 128.04,
+      "T_1MiB": 128.04,
+      "T_4MiB": 128.04,
+      "T_16MiB": 128.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "512MiB",
+      "file_bytes": 536870912,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 64.03999999999999,
+      "T_1MiB": 64.03999999999999,
+      "T_4MiB": 64.03999999999999,
+      "T_16MiB": 64.03999999999999,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2080.04,
+      "T_1MiB": 2080.04,
+      "T_4MiB": 2080.04,
+      "T_16MiB": 2080.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1040.04,
+      "T_1MiB": 1040.04,
+      "T_4MiB": 1040.04,
+      "T_16MiB": 1040.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 520.04,
+      "T_1MiB": 520.04,
+      "T_4MiB": 520.04,
+      "T_16MiB": 520.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 260.03999999999996,
+      "T_1MiB": 260.03999999999996,
+      "T_4MiB": 260.03999999999996,
+      "T_16MiB": 260.03999999999996,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 130.04,
+      "T_1MiB": 130.04,
+      "T_4MiB": 130.04,
+      "T_16MiB": 130.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "520MiB",
+      "file_bytes": 545259520,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 65.03999999999999,
+      "T_1MiB": 65.03999999999999,
+      "T_4MiB": 65.03999999999999,
+      "T_16MiB": 65.03999999999999,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 262144.0,
+      "T_256KiB": 2176.04,
+      "T_1MiB": 2176.04,
+      "T_4MiB": 2176.04,
+      "T_16MiB": 2176.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 524288.0,
+      "T_256KiB": 1088.04,
+      "T_1MiB": 1088.04,
+      "T_4MiB": 1088.04,
+      "T_16MiB": 1088.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 1048576.0,
+      "T_256KiB": 544.04,
+      "T_1MiB": 544.04,
+      "T_4MiB": 544.04,
+      "T_16MiB": 544.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 2097152.0,
+      "T_256KiB": 272.03999999999996,
+      "T_1MiB": 272.03999999999996,
+      "T_4MiB": 272.03999999999996,
+      "T_16MiB": 272.03999999999996,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 4194304.0,
+      "T_256KiB": 136.04,
+      "T_1MiB": 136.04,
+      "T_4MiB": 136.04,
+      "T_16MiB": 136.04,
+      "argmin": "256KiB"
+    },
+    {
+      "model": "serialized",
+      "file_size": "544MiB",
+      "file_bytes": 570425344,
+      "aggregate_rate_bytes_per_s": 8388608.0,
+      "T_256KiB": 68.03999999999999,
+      "T_1MiB": 68.03999999999999,
+      "T_4MiB": 68.03999999999999,
+      "T_16MiB": 68.03999999999999,
+      "argmin": "256KiB"
+    }
+  ],
+  "e1_argmin_summary": {
+    "shared": {
+      "512MiB": {
+        "262144.0": "16MiB",
+        "524288.0": "16MiB",
+        "1048576.0": "16MiB",
+        "2097152.0": "16MiB",
+        "4194304.0": "16MiB",
+        "8388608.0": "16MiB"
+      },
+      "520MiB": {
+        "262144.0": "16MiB",
+        "524288.0": "16MiB",
+        "1048576.0": "16MiB",
+        "2097152.0": "16MiB",
+        "4194304.0": "16MiB",
+        "8388608.0": "16MiB"
+      },
+      "544MiB": {
+        "262144.0": "16MiB",
+        "524288.0": "16MiB",
+        "1048576.0": "16MiB",
+        "2097152.0": "16MiB",
+        "4194304.0": "16MiB",
+        "8388608.0": "16MiB"
+      }
+    },
+    "lockin_full": {
+      "512MiB": {
+        "262144.0": "16MiB",
+        "524288.0": "16MiB",
+        "1048576.0": "16MiB",
+        "2097152.0": "16MiB",
+        "4194304.0": "16MiB",
+        "8388608.0": "16MiB"
+      },
+      "520MiB": {
+        "262144.0": "1MiB",
+        "524288.0": "1MiB",
+        "1048576.0": "1MiB",
+        "2097152.0": "1MiB",
+        "4194304.0": "4MiB",
+        "8388608.0": "4MiB"
+      },
+      "544MiB": {
+        "262144.0": "4MiB",
+        "524288.0": "4MiB",
+        "1048576.0": "4MiB",
+        "2097152.0": "4MiB",
+        "4194304.0": "4MiB",
+        "8388608.0": "4MiB"
+      }
+    },
+    "serialized": {
+      "512MiB": {
+        "262144.0": "256KiB",
+        "524288.0": "256KiB",
+        "1048576.0": "256KiB",
+        "2097152.0": "256KiB",
+        "4194304.0": "256KiB",
+        "8388608.0": "256KiB"
+      },
+      "520MiB": {
+        "262144.0": "256KiB",
+        "524288.0": "256KiB",
+        "1048576.0": "256KiB",
+        "2097152.0": "256KiB",
+        "4194304.0": "256KiB",
+        "8388608.0": "256KiB"
+      },
+      "544MiB": {
+        "262144.0": "256KiB",
+        "524288.0": "256KiB",
+        "1048576.0": "256KiB",
+        "2097152.0": "256KiB",
+        "4194304.0": "256KiB",
+        "8388608.0": "256KiB"
+      }
+    }
+  },
+  "e2c_volatility_robustness": [
+    {
+      "stable_frac": 0.25,
+      "period_s": 5.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 185.72999999999982,
+      "fixed_seconds": {
+        "256KiB": 185.72999999999982,
+        "1MiB": 249.11999999999972,
+        "4MiB": 485.28000000000014,
+        "16MiB": 304.32000000000005
+      },
+      "oracle_gain": 0.3167501211435896,
+      "oracle_seconds": 126.90000000000099,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 27.514880952380953,
+      "causal_from_16MiB_gain": -0.2552091746082953,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.061379421741236145,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.25,
+      "period_s": 5.0,
+      "mode": "random",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 168.85499999999942,
+      "fixed_seconds": {
+        "256KiB": 168.85499999999942,
+        "1MiB": 181.61999999999972,
+        "4MiB": 335.2800000000002,
+        "16MiB": 544.32
+      },
+      "oracle_gain": 0.1251665630274424,
+      "oracle_seconds": 147.7200000000007,
+      "oracle_start": "256KiB",
+      "oracle_target": "16MiB",
+      "oracle_switch_time": 123.45238095238095,
+      "causal_from_16MiB_gain": -0.5326463533801119,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.06040685795504966,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.25,
+      "period_s": 17.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 151.9800000000006,
+      "fixed_seconds": {
+        "256KiB": 151.9800000000006,
+        "1MiB": 181.62,
+        "4MiB": 395.28000000000014,
+        "16MiB": 424.32000000000005
+      },
+      "oracle_gain": 0.12376628503750073,
+      "oracle_seconds": 133.17000000000115,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 21.297619047619047,
+      "causal_from_16MiB_gain": -0.6122187129885315,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.10067114093959588,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.25,
+      "period_s": 17.0,
+      "mode": "random",
+      "reference_fixed_arm": "1MiB",
+      "reference_fixed_seconds": 144.11999999999986,
+      "fixed_seconds": {
+        "256KiB": 148.22999999999948,
+        "1MiB": 144.11999999999986,
+        "4MiB": 155.27999999999994,
+        "16MiB": 304.32
+      },
+      "oracle_gain": 0.07285595337218873,
+      "oracle_seconds": 133.62000000000003,
+      "oracle_start": "16MiB",
+      "oracle_target": "1MiB",
+      "oracle_switch_time": 36.5,
+      "causal_from_16MiB_gain": -0.4700249791840077,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.03632389675270266,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.25,
+      "period_s": 60.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 64.32,
+      "fixed_seconds": {
+        "256KiB": 140.7299999999994,
+        "1MiB": 129.11999999999995,
+        "4MiB": 65.27999999999997,
+        "16MiB": 64.32
+      },
+      "oracle_gain": 0.0,
+      "oracle_seconds": 64.32,
+      "oracle_start": null,
+      "oracle_target": null,
+      "oracle_switch_time": null,
+      "causal_from_16MiB_gain": 0.0,
+      "causal_16_fired": false,
+      "causal_from_4MiB_gain": -0.014925373134328042,
+      "causal_4_fired": false,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.25,
+      "period_s": 60.0,
+      "mode": "random",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 64.32,
+      "fixed_seconds": {
+        "256KiB": 84.48000000000049,
+        "1MiB": 69.11999999999996,
+        "4MiB": 65.27999999999997,
+        "16MiB": 64.32
+      },
+      "oracle_gain": 0.0,
+      "oracle_seconds": 64.32,
+      "oracle_start": null,
+      "oracle_target": null,
+      "oracle_switch_time": null,
+      "causal_from_16MiB_gain": 0.0,
+      "causal_16_fired": false,
+      "causal_from_4MiB_gain": -0.014925373134328042,
+      "causal_4_fired": false,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 5.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 180.1049999999995,
+      "fixed_seconds": {
+        "256KiB": 180.1049999999995,
+        "1MiB": 241.6199999999996,
+        "4MiB": 425.28000000000014,
+        "16MiB": 424.32000000000005
+      },
+      "oracle_gain": 0.11126842675105836,
+      "oracle_seconds": 160.0650000000002,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 10.55952380952381,
+      "causal_from_16MiB_gain": -0.457732989089691,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.05663363038227773,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 5.0,
+      "mode": "random",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 168.8549999999996,
+      "fixed_seconds": {
+        "256KiB": 168.8549999999996,
+        "1MiB": 181.61999999999972,
+        "4MiB": 335.28000000000014,
+        "16MiB": 304.32000000000005
+      },
+      "oracle_gain": 0.18184240916762348,
+      "oracle_seconds": 138.1500000000006,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 29.74702380952381,
+      "causal_from_16MiB_gain": -0.33623523141156025,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.019987563293950142,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 17.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 151.9800000000007,
+      "fixed_seconds": {
+        "256KiB": 151.9800000000007,
+        "1MiB": 159.12000000000012,
+        "4MiB": 365.2800000000001,
+        "16MiB": 304.32
+      },
+      "oracle_gain": 0.22670746150809137,
+      "oracle_seconds": 117.52500000000082,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 26.62202380952381,
+      "causal_from_16MiB_gain": -0.4846032372680446,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.031089617054875087,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 17.0,
+      "mode": "random",
+      "reference_fixed_arm": "1MiB",
+      "reference_fixed_seconds": 144.11999999999995,
+      "fixed_seconds": {
+        "256KiB": 148.22999999999948,
+        "1MiB": 144.11999999999995,
+        "4MiB": 155.27999999999994,
+        "16MiB": 304.32
+      },
+      "oracle_gain": 0.11542464612822202,
+      "oracle_seconds": 127.4850000000006,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 42.583333333333336,
+      "causal_from_16MiB_gain": -0.3094296419650261,
+      "causal_16_fired": true,
+      "causal_from_4MiB_gain": -0.027997502081593725,
+      "causal_4_fired": true,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 60.0,
+      "mode": "alternating",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 64.32,
+      "fixed_seconds": {
+        "256KiB": 140.7299999999995,
+        "1MiB": 84.11999999999996,
+        "4MiB": 65.27999999999997,
+        "16MiB": 64.32
+      },
+      "oracle_gain": 0.0,
+      "oracle_seconds": 64.32,
+      "oracle_start": null,
+      "oracle_target": null,
+      "oracle_switch_time": null,
+      "causal_from_16MiB_gain": 0.0,
+      "causal_16_fired": false,
+      "causal_from_4MiB_gain": -0.014925373134328042,
+      "causal_4_fired": false,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    },
+    {
+      "stable_frac": 0.5,
+      "period_s": 60.0,
+      "mode": "random",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 64.32,
+      "fixed_seconds": {
+        "256KiB": 84.48000000000049,
+        "1MiB": 69.11999999999996,
+        "4MiB": 65.27999999999997,
+        "16MiB": 64.32
+      },
+      "oracle_gain": 0.0,
+      "oracle_seconds": 64.32,
+      "oracle_start": null,
+      "oracle_target": null,
+      "oracle_switch_time": null,
+      "causal_from_16MiB_gain": 0.0,
+      "causal_16_fired": false,
+      "causal_from_4MiB_gain": -0.014925373134328042,
+      "causal_4_fired": false,
+      "stationary_causal_gain": 0.0,
+      "stationary_best_fixed_arm": "16MiB"
+    }
+  ],
+  "e2c_summary": {
+    "lockin_full": {
+      "sf0.25_p5.0_alternating": {
+        "oracle_gain": 0.3167501211435896,
+        "causal16": -0.2552091746082953,
+        "causal4": -0.061379421741236145,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.25_p5.0_random": {
+        "oracle_gain": 0.1251665630274424,
+        "causal16": -0.5326463533801119,
+        "causal4": -0.06040685795504966,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.25_p17.0_alternating": {
+        "oracle_gain": 0.12376628503750073,
+        "causal16": -0.6122187129885315,
+        "causal4": -0.10067114093959588,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.25_p17.0_random": {
+        "oracle_gain": 0.07285595337218873,
+        "causal16": -0.4700249791840077,
+        "causal4": -0.03632389675270266,
+        "reference_fixed_arm": "1MiB"
+      },
+      "sf0.25_p60.0_alternating": {
+        "oracle_gain": 0.0,
+        "causal16": 0.0,
+        "causal4": -0.014925373134328042,
+        "reference_fixed_arm": "16MiB"
+      },
+      "sf0.25_p60.0_random": {
+        "oracle_gain": 0.0,
+        "causal16": 0.0,
+        "causal4": -0.014925373134328042,
+        "reference_fixed_arm": "16MiB"
+      },
+      "sf0.5_p5.0_alternating": {
+        "oracle_gain": 0.11126842675105836,
+        "causal16": -0.457732989089691,
+        "causal4": -0.05663363038227773,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.5_p5.0_random": {
+        "oracle_gain": 0.18184240916762348,
+        "causal16": -0.33623523141156025,
+        "causal4": -0.019987563293950142,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.5_p17.0_alternating": {
+        "oracle_gain": 0.22670746150809137,
+        "causal16": -0.4846032372680446,
+        "causal4": -0.031089617054875087,
+        "reference_fixed_arm": "256KiB"
+      },
+      "sf0.5_p17.0_random": {
+        "oracle_gain": 0.11542464612822202,
+        "causal16": -0.3094296419650261,
+        "causal4": -0.027997502081593725,
+        "reference_fixed_arm": "1MiB"
+      },
+      "sf0.5_p60.0_alternating": {
+        "oracle_gain": 0.0,
+        "causal16": 0.0,
+        "causal4": -0.014925373134328042,
+        "reference_fixed_arm": "16MiB"
+      },
+      "sf0.5_p60.0_random": {
+        "oracle_gain": 0.0,
+        "causal16": 0.0,
+        "causal4": -0.014925373134328042,
+        "reference_fixed_arm": "16MiB"
+      }
+    }
+  },
+  "e2_transitions": [
+    {
+      "model": "shared",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 124.28250000000004,
+      "fixed_seconds": {
+        "256KiB": 143.28000000000168,
+        "1MiB": 128.82000000000073,
+        "4MiB": 125.20500000000018,
+        "16MiB": 124.28250000000004
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 124.28250000000004,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 124.28250000000004,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 1766022.7368421052,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 304.32,
+      "stationary_causal_seconds": 304.32,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 184.28249999999994,
+      "fixed_seconds": {
+        "256KiB": 202.11749999999643,
+        "1MiB": 188.5199999999991,
+        "4MiB": 185.12999999999977,
+        "16MiB": 184.28249999999994
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 184.28249999999994,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 184.28249999999994,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 986895.0588235294,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 544.32,
+      "stationary_causal_seconds": 544.32,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 964.92,
+      "fixed_seconds": {
+        "256KiB": 999.4799999999935,
+        "1MiB": 973.9199999999985,
+        "4MiB": 966.4799999999996,
+        "16MiB": 964.92
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 964.92,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 964.92,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 684784.3265306122,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 784.32,
+      "stationary_causal_seconds": 784.32,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 904.92,
+      "fixed_seconds": {
+        "256KiB": 953.8799999999944,
+        "1MiB": 918.1199999999988,
+        "4MiB": 907.6799999999997,
+        "16MiB": 904.92
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 904.92,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 904.92,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 986895.0588235294,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 544.32,
+      "stationary_causal_seconds": 544.32,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "case": "mild_low_to_high",
+      "r1": 1048576,
+      "r2": 4194304,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 152.29000000000002,
+      "fixed_seconds": {
+        "256KiB": 171.55000000000007,
+        "1MiB": 156.88000000000014,
+        "4MiB": 153.22000000000003,
+        "16MiB": 152.29000000000002
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 152.29000000000002,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 152.29000000000002,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 2396745.1428571427,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 224.32,
+      "stationary_causal_seconds": 224.32,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "4MiB",
+      "reference_fixed_seconds": 125.28000000000019,
+      "fixed_seconds": {
+        "256KiB": 144.48000000000155,
+        "1MiB": 129.12000000000072,
+        "4MiB": 125.28000000000019,
+        "16MiB": 184.31999999999994
+      },
+      "causal_start_arm": "4MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 128.44000000000005,
+      "causal_fired": true,
+      "causal_gain": -0.02522349936142931,
+      "oracle_seconds": 125.16000000000017,
+      "oracle_gain": 0.0009578544061304165,
+      "oracle_switch_time": 116.70588235294117,
+      "oracle_target": "16MiB",
+      "stationary_rate_bytes_per_s": 1082401.0322580645,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 496.32000000000005,
+      "stationary_causal_seconds": 496.32000000000005,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 184.31999999999996,
+      "fixed_seconds": {
+        "256KiB": 202.60499999999658,
+        "1MiB": 189.11999999999915,
+        "4MiB": 185.2799999999998,
+        "16MiB": 184.31999999999996
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 184.31999999999996,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 184.31999999999996,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 729444.1739130435,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 736.3199999999999,
+      "stationary_causal_seconds": 736.3199999999999,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 904.3199999999999,
+      "fixed_seconds": {
+        "256KiB": 999.4799999999935,
+        "1MiB": 969.1199999999985,
+        "4MiB": 965.2799999999996,
+        "16MiB": 904.3199999999999
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 904.3199999999999,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 904.3199999999999,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 139230.0082987552,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 3856.3199999999997,
+      "stationary_causal_seconds": 3856.3199999999997,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 904.3199999999999,
+      "fixed_seconds": {
+        "256KiB": 952.6049999999944,
+        "1MiB": 916.6199999999988,
+        "4MiB": 905.2799999999997,
+        "16MiB": 904.3199999999999
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 904.3199999999999,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 904.3199999999999,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 148470.93805309734,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 3616.3199999999997,
+      "stationary_causal_seconds": 3616.3199999999997,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "mild_low_to_high",
+      "r1": 1048576,
+      "r2": 4194304,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "4MiB",
+      "reference_fixed_seconds": 153.28000000000003,
+      "fixed_seconds": {
+        "256KiB": 171.73000000000008,
+        "1MiB": 157.12000000000012,
+        "4MiB": 153.28000000000003,
+        "16MiB": 176.32
+      },
+      "causal_start_arm": "4MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 160.44,
+      "causal_fired": true,
+      "causal_gain": -0.04671189979123152,
+      "oracle_seconds": 152.56,
+      "oracle_gain": 0.004697286012526273,
+      "oracle_switch_time": 53.64705882352941,
+      "oracle_target": "16MiB",
+      "stationary_rate_bytes_per_s": 883011.3684210526,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_best_fixed_seconds": 608.3199999999999,
+      "stationary_causal_seconds": 608.3199999999999,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 124.0025,
+      "fixed_seconds": {
+        "256KiB": 124.0025,
+        "1MiB": 124.0025,
+        "4MiB": 124.0025,
+        "16MiB": 124.0025
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 124.0025,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 124.0025,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 1766022.7368421052,
+      "stationary_best_fixed_arm": "1MiB",
+      "stationary_best_fixed_seconds": 304.03999999999996,
+      "stationary_causal_seconds": 304.04,
+      "stationary_causal_gain": -1.86960330419708e-16
+    },
+    {
+      "model": "serialized",
+      "case": "low_to_high",
+      "r1": 524288.0,
+      "r2": 8388608,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 184.0025,
+      "fixed_seconds": {
+        "256KiB": 184.0025,
+        "1MiB": 184.0025,
+        "4MiB": 184.0025,
+        "16MiB": 184.0025
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 184.0025,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 184.0025,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 986895.0588235294,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_best_fixed_seconds": 544.04,
+      "stationary_causal_seconds": 544.04,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 964.64,
+      "fixed_seconds": {
+        "256KiB": 964.64,
+        "1MiB": 964.64,
+        "4MiB": 964.64,
+        "16MiB": 964.64
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 964.64,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 964.64,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 684784.3265306122,
+      "stationary_best_fixed_arm": "1MiB",
+      "stationary_best_fixed_seconds": 784.04,
+      "stationary_causal_seconds": 784.0400000000001,
+      "stationary_causal_gain": -1.4500132355698183e-16
+    },
+    {
+      "model": "serialized",
+      "case": "high_to_low",
+      "r1": 8388608,
+      "r2": 524288.0,
+      "transition_frac": 0.5,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 904.64,
+      "fixed_seconds": {
+        "256KiB": 904.64,
+        "1MiB": 904.64,
+        "4MiB": 904.64,
+        "16MiB": 904.64
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 904.64,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 904.64,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 986895.0588235294,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_best_fixed_seconds": 544.04,
+      "stationary_causal_seconds": 544.04,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "case": "mild_low_to_high",
+      "r1": 1048576,
+      "r2": 4194304,
+      "transition_frac": 0.25,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 152.01,
+      "fixed_seconds": {
+        "256KiB": 152.01,
+        "1MiB": 152.01,
+        "4MiB": 152.01,
+        "16MiB": 152.01
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 152.01,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 152.01,
+      "oracle_gain": 0.0,
+      "oracle_switch_time": null,
+      "oracle_target": null,
+      "stationary_rate_bytes_per_s": 2396745.1428571427,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_best_fixed_seconds": 224.04000000000002,
+      "stationary_causal_seconds": 224.04000000000002,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "case": "stable_to_volatile",
+      "r_stable": 8388608,
+      "r_lo": 524288.0,
+      "r_hi": 8388608,
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 115.88250000000001,
+      "fixed_seconds": {
+        "256KiB": 148.78502929687485,
+        "1MiB": 125.02781250000032,
+        "4MiB": 116.79796875000007,
+        "16MiB": 115.88250000000001
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 115.88250000000001,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 115.88250000000001,
+      "oracle_gain": 0.0,
+      "oracle_start": null,
+      "oracle_target": null,
+      "oracle_switch_time": null,
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "case": "stable_to_volatile",
+      "r_stable": 8388608,
+      "r_lo": 524288.0,
+      "r_hi": 8388608,
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 185.72999999999982,
+      "fixed_seconds": {
+        "256KiB": 185.72999999999982,
+        "1MiB": 249.11999999999972,
+        "4MiB": 485.28000000000014,
+        "16MiB": 304.32000000000005
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 185.72999999999982,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "oracle_seconds": 126.90000000000099,
+      "oracle_gain": 0.3167501211435896,
+      "oracle_start": "16MiB",
+      "oracle_target": "256KiB",
+      "oracle_switch_time": 27.191176470588236,
+      "stationary_causal_gain": 0.0
+    }
+  ],
+  "e2_summary": {
+    "shared": {
+      "low_to_high_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "low_to_high_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "high_to_low_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "high_to_low_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "mild_low_to_high_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "stable_to_volatile": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      }
+    },
+    "lockin_full": {
+      "low_to_high_0.25": {
+        "causal_gain": -0.02522349936142931,
+        "oracle_gain": 0.0009578544061304165,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "4MiB"
+      },
+      "low_to_high_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "high_to_low_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "high_to_low_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "mild_low_to_high_0.25": {
+        "causal_gain": -0.04671189979123152,
+        "oracle_gain": 0.004697286012526273,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "4MiB"
+      },
+      "stable_to_volatile": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.3167501211435896,
+        "reference_fixed_arm": "256KiB"
+      }
+    },
+    "serialized": {
+      "low_to_high_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": -1.86960330419708e-16,
+        "reference_fixed_arm": "256KiB"
+      },
+      "low_to_high_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      },
+      "high_to_low_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": -1.4500132355698183e-16,
+        "reference_fixed_arm": "256KiB"
+      },
+      "high_to_low_0.5": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      },
+      "mild_low_to_high_0.25": {
+        "causal_gain": 0.0,
+        "oracle_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      }
+    }
+  },
+  "e3_traces": [
+    {
+      "model": "shared",
+      "trace": "Verizon-EVDO-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 65042.80338664158,
+      "low_regime_rate": 13500.0,
+      "high_regime_rate": 112500.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 1034.676,
+      "fixed_seconds": {
+        "256KiB": 1038.7961016212541,
+        "1MiB": 1036.1263735810112,
+        "4MiB": 1035.1410285714283,
+        "16MiB": 1034.676
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 1034.676,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 74203.47596377597,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "trace": "Verizon-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1213753.6656891496,
+      "low_regime_rate": 327000.0,
+      "high_regime_rate": 2268000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 28.809430934656742,
+      "fixed_seconds": {
+        "256KiB": 31.784796024268914,
+        "1MiB": 29.448696357301227,
+        "4MiB": 28.92684632603077,
+        "16MiB": 28.809430934656742
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 28.809430934656742,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 2116242.7881351192,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "trace": "ATT-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 645924.3964421855,
+      "low_regime_rate": 250500.0,
+      "high_regime_rate": 981000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 83.55294379084967,
+      "fixed_seconds": {
+        "256KiB": 85.3296427649117,
+        "1MiB": 83.96269694073032,
+        "4MiB": 83.63815947712419,
+        "16MiB": 83.55294379084967
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 83.55294379084967,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 845062.8965089254,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "trace": "TMobile-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1594983.1578947369,
+      "low_regime_rate": 562500.0,
+      "high_regime_rate": 2664000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 70.60436971484759,
+      "fixed_seconds": {
+        "256KiB": 72.50432616855598,
+        "1MiB": 71.182217816162,
+        "4MiB": 70.71003343166174,
+        "16MiB": 70.60436971484759
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 70.60436971484759,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 1343446.7374229955,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "shared",
+      "trace": "TMobile-UMTS-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 252341.22712594186,
+      "low_regime_rate": 51000.0,
+      "high_regime_rate": 402000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 363.9544980842912,
+      "fixed_seconds": {
+        "256KiB": 370.7448514997413,
+        "1MiB": 364.9706281756612,
+        "4MiB": 364.1173333333334,
+        "16MiB": 363.9544980842912
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 363.9544980842912,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 158409.02099465753,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "trace": "Verizon-EVDO-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 65042.80338664158,
+      "low_regime_rate": 13500.0,
+      "high_regime_rate": 112500.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "4MiB",
+      "reference_fixed_seconds": 880.4241350827816,
+      "fixed_seconds": {
+        "256KiB": 2817.3063001076584,
+        "1MiB": 9509.66229993712,
+        "4MiB": 880.4241350827816,
+        "16MiB": 1443.2413763440861
+      },
+      "causal_start_arm": "4MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 1255.6651974193549,
+      "causal_fired": true,
+      "causal_gain": -0.4262048794258591,
+      "stationary_rate_bytes_per_s": 16216.161148503501,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "trace": "Verizon-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1213753.6656891496,
+      "low_regime_rate": 327000.0,
+      "high_regime_rate": 2268000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "1MiB",
+      "reference_fixed_seconds": 30.008433346385498,
+      "fixed_seconds": {
+        "256KiB": 32.10793208241774,
+        "1MiB": 30.008433346385498,
+        "4MiB": 31.852606839426556,
+        "16MiB": 35.43497046413502
+      },
+      "causal_start_arm": "1MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 34.501863599772776,
+      "causal_fired": true,
+      "causal_gain": -0.14973891510829268,
+      "stationary_rate_bytes_per_s": 582986.2194584482,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "trace": "ATT-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 645924.3964421855,
+      "low_regime_rate": 250500.0,
+      "high_regime_rate": 981000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 92.43256492253163,
+      "fixed_seconds": {
+        "256KiB": 92.43256492253163,
+        "1MiB": 2922.61570892741,
+        "4MiB": 94.9552116356023,
+        "16MiB": 204.32877929984778
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 97.84267642389824,
+      "causal_fired": true,
+      "causal_gain": -0.058530362171609826,
+      "stationary_rate_bytes_per_s": 200818.06710261162,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "trace": "TMobile-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1594983.1578947369,
+      "low_regime_rate": 562500.0,
+      "high_regime_rate": 2664000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 15.012972780008925,
+      "fixed_seconds": {
+        "256KiB": 77.18636536346267,
+        "1MiB": 84.68981019072491,
+        "4MiB": 59.063218028250446,
+        "16MiB": 15.012972780008925
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 15.012972780008925,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 238217.68880644016,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "lockin_full",
+      "trace": "TMobile-UMTS-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 252341.22712594186,
+      "low_regime_rate": 51000.0,
+      "high_regime_rate": 402000.0,
+      "regime_argmin_low": "16MiB",
+      "regime_argmin_high": "16MiB",
+      "reference_fixed_arm": "16MiB",
+      "reference_fixed_seconds": 202.48001206636502,
+      "fixed_seconds": {
+        "256KiB": 1384.359826920353,
+        "1MiB": 4432.860588593428,
+        "4MiB": 17042.590489024944,
+        "16MiB": 202.48001206636502
+      },
+      "causal_start_arm": "16MiB",
+      "causal_target_arm": "16MiB",
+      "causal_seconds": 202.48001206636502,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 46103.45072141524,
+      "stationary_best_fixed_arm": "16MiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "trace": "Verizon-EVDO-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 65042.80338664158,
+      "low_regime_rate": 13500.0,
+      "high_regime_rate": 112500.0,
+      "regime_argmin_low": "256KiB",
+      "regime_argmin_high": "256KiB",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 1034.6759999999992,
+      "fixed_seconds": {
+        "256KiB": 1034.6759999999992,
+        "1MiB": 1034.6760000000015,
+        "4MiB": 1034.6760000000006,
+        "16MiB": 1034.6760000000002
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 1034.6759999999992,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 74203.47596377597,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "trace": "Verizon-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1213753.6656891496,
+      "low_regime_rate": 327000.0,
+      "high_regime_rate": 2268000.0,
+      "regime_argmin_low": "256KiB",
+      "regime_argmin_high": "1MiB",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 28.809430934656707,
+      "fixed_seconds": {
+        "256KiB": 28.809430934656707,
+        "1MiB": 28.809430934656735,
+        "4MiB": 28.809430934656742,
+        "16MiB": 28.809430934656742
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "1MiB",
+      "causal_seconds": 28.809430934656728,
+      "causal_fired": true,
+      "causal_gain": -7.399063911102905e-16,
+      "stationary_rate_bytes_per_s": 2116242.7881351192,
+      "stationary_best_fixed_arm": "4MiB",
+      "stationary_causal_gain": -1.3427018685193627e-15
+    },
+    {
+      "model": "serialized",
+      "trace": "ATT-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 645924.3964421855,
+      "low_regime_rate": 250500.0,
+      "high_regime_rate": 981000.0,
+      "regime_argmin_low": "256KiB",
+      "regime_argmin_high": "256KiB",
+      "reference_fixed_arm": "256KiB",
+      "reference_fixed_seconds": 83.55294379084961,
+      "fixed_seconds": {
+        "256KiB": 83.55294379084961,
+        "1MiB": 83.55294379084964,
+        "4MiB": 83.55294379084968,
+        "16MiB": 83.55294379084967
+      },
+      "causal_start_arm": "256KiB",
+      "causal_target_arm": "256KiB",
+      "causal_seconds": 83.55294379084961,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 845062.8965089254,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_causal_gain": 0.0
+    },
+    {
+      "model": "serialized",
+      "trace": "TMobile-LTE-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 1594983.1578947369,
+      "low_regime_rate": 562500.0,
+      "high_regime_rate": 2664000.0,
+      "regime_argmin_low": "1MiB",
+      "regime_argmin_high": "1MiB",
+      "reference_fixed_arm": "1MiB",
+      "reference_fixed_seconds": 70.60436971484758,
+      "fixed_seconds": {
+        "256KiB": 70.60436971484775,
+        "1MiB": 70.60436971484758,
+        "4MiB": 70.60436971484759,
+        "16MiB": 70.60436971484759
+      },
+      "causal_start_arm": "1MiB",
+      "causal_target_arm": "1MiB",
+      "causal_seconds": 70.60436971484758,
+      "causal_fired": false,
+      "causal_gain": 0.0,
+      "stationary_rate_bytes_per_s": 1343446.7374229955,
+      "stationary_best_fixed_arm": "4MiB",
+      "stationary_causal_gain": -4.2638743597724753e-16
+    },
+    {
+      "model": "serialized",
+      "trace": "TMobile-UMTS-driving",
+      "file_bytes": 67108864,
+      "trace_mean_aggregate_bytes_per_s": 252341.22712594186,
+      "low_regime_rate": 51000.0,
+      "high_regime_rate": 402000.0,
+      "regime_argmin_low": "4MiB",
+      "regime_argmin_high": "1MiB",
+      "reference_fixed_arm": "4MiB",
+      "reference_fixed_seconds": 363.9544980842911,
+      "fixed_seconds": {
+        "256KiB": 363.95449808429123,
+        "1MiB": 363.95449808429134,
+        "4MiB": 363.9544980842911,
+        "16MiB": 363.95449808429123
+      },
+      "causal_start_arm": "4MiB",
+      "causal_target_arm": "1MiB",
+      "causal_seconds": 363.95449808429134,
+      "causal_fired": true,
+      "causal_gain": -6.247310491834416e-16,
+      "stationary_rate_bytes_per_s": 158409.02099465753,
+      "stationary_best_fixed_arm": "256KiB",
+      "stationary_causal_gain": -2.280804867100191e-15
+    }
+  ],
+  "e3_summary": {
+    "shared": {
+      "Verizon-EVDO-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "Verizon-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "ATT-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "TMobile-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "TMobile-UMTS-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      }
+    },
+    "lockin_full": {
+      "Verizon-EVDO-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": -0.4262048794258591,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "4MiB"
+      },
+      "Verizon-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": -0.14973891510829268,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "1MiB"
+      },
+      "ATT-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": -0.058530362171609826,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      },
+      "TMobile-LTE-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      },
+      "TMobile-UMTS-driving": {
+        "regime_low": "16MiB",
+        "regime_high": "16MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "16MiB"
+      }
+    },
+    "serialized": {
+      "Verizon-EVDO-driving": {
+        "regime_low": "256KiB",
+        "regime_high": "256KiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      },
+      "Verizon-LTE-driving": {
+        "regime_low": "256KiB",
+        "regime_high": "1MiB",
+        "causal_gain": -7.399063911102905e-16,
+        "stationary_causal_gain": -1.3427018685193627e-15,
+        "reference_fixed_arm": "256KiB"
+      },
+      "ATT-LTE-driving": {
+        "regime_low": "256KiB",
+        "regime_high": "256KiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": 0.0,
+        "reference_fixed_arm": "256KiB"
+      },
+      "TMobile-LTE-driving": {
+        "regime_low": "1MiB",
+        "regime_high": "1MiB",
+        "causal_gain": 0.0,
+        "stationary_causal_gain": -4.2638743597724753e-16,
+        "reference_fixed_arm": "1MiB"
+      },
+      "TMobile-UMTS-driving": {
+        "regime_low": "4MiB",
+        "regime_high": "1MiB",
+        "causal_gain": -6.247310491834416e-16,
+        "stationary_causal_gain": -2.280804867100191e-15,
+        "reference_fixed_arm": "4MiB"
+      }
+    }
+  },
+  "mechanism_inventory": [
+    {
+      "id": "A",
+      "name": "time-varying downstream capacity (shared link, in-flight tracking)",
+      "physical_motivation": "mobile/cellular capacity varies on second scales; mm-link delivery-opportunity traces are the natural replay vehicle",
+      "required_parameters": "trace/profile r(t), N, RTT D, file size",
+      "screened_model": "shared",
+      "supported_by_infrastructure": "yes (mm-link + native traces)",
+      "risk": "none (natural mechanism)"
+    },
+    {
+      "id": "B",
+      "name": "time-varying capacity + fixed RTT",
+      "physical_motivation": "same as A with a non-zero latency per request",
+      "required_parameters": "A + D",
+      "screened_model": "shared (D=40ms)",
+      "supported_by_infrastructure": "yes",
+      "risk": "none"
+    },
+    {
+      "id": "C",
+      "name": "time-varying capacity + per-request setup overhead",
+      "physical_motivation": "per-request setup cost (handshake/queueing) on top of capacity variation",
+      "required_parameters": "A + setup cost",
+      "screened_model": "shared with D representing the setup cost",
+      "supported_by_infrastructure": "yes",
+      "risk": "low"
+    },
+    {
+      "id": "D",
+      "name": "capacity transitions during in-flight range requests",
+      "physical_motivation": "requests are not resized; a request experiences every capacity change while in flight",
+      "required_parameters": "A",
+      "screened_model": "shared (in-flight integration)",
+      "supported_by_infrastructure": "yes",
+      "risk": "none"
+    },
+    {
+      "id": "E",
+      "name": "server-side request serialization / concurrency-dependent service rate",
+      "physical_motivation": "a server that serializes range requests or degrades per-request rate with load",
+      "required_parameters": "serialization policy, rate",
+      "screened_model": "serialized",
+      "supported_by_infrastructure": "partially (controlled server can throttle per request; serialization would need a change)",
+      "risk": "medium (can be engineered to favor a chunk size)"
+    },
+    {
+      "id": "F",
+      "name": "documented HTTP request-level behavior (per-request pacing fixed at request start)",
+      "physical_motivation": "server-side per-request rate limiting whose rate is sampled when the response starts (the existing project server semantics for scheduled rates); a response keeps its start rate",
+      "required_parameters": "rate schedule/profile, per-request pacing semantics",
+      "screened_model": "lockin_full",
+      "supported_by_infrastructure": "yes (server.SetRateScheduleAt + per-request pacing fixed at request start)",
+      "risk": "medium (the schedule must be externally grounded, not authored to win)"
+    }
+  ]
+}

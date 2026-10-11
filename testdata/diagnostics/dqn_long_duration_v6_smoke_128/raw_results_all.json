@@ -1,0 +1,3222 @@
+{
+  "aria2_args": [
+    "--no-conf",
+    "--file-allocation=none",
+    "--allow-overwrite=true",
+    "--auto-file-renaming=false",
+    "--enable-color=false",
+    "--summary-interval=1",
+    "--console-log-level=notice",
+    "--min-split-size=1048576",
+    "--max-tries=3",
+    "--retry-wait=1",
+    "--timeout=30",
+    "--connect-timeout=30",
+    "--http-accept-gzip=false",
+    "--check-certificate=false",
+    "--disable-ipv6=true",
+    "--conditional-get=false",
+    "--max-connection-per-server=16",
+    "--split=16"
+  ],
+  "aria2_command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 \u003curl\u003e",
+  "expected_content_sha256": "e6c6c52c24cfd829d5e3c78668fcd4fa00c4232f9edf162279308f936b06b148",
+  "matrix_sha256": "e8d10c2dc6d31d3a900d2ed0d6d5277ce929fd641873026ce4fb6c3e3d7d17eb",
+  "results": [
+    {
+      "run_id": "A2-p00-v6",
+      "pair_id": "A2-p00",
+      "condition": "A2",
+      "system": "dqn",
+      "policy": "v6",
+      "rep": 0,
+      "order_index": 1,
+      "pair_first_system": "v6",
+      "duration_ms": 41901.66,
+      "wallclock_bps": 3203160.1611964772,
+      "valid": true,
+      "output_size": 134217728,
+      "output_sha256": "e6c6c52c24cfd829d5e3c78668fcd4fa00c4232f9edf162279308f936b06b148",
+      "expected_sha256": "e6c6c52c24cfd829d5e3c78668fcd4fa00c4232f9edf162279308f936b06b148",
+      "netem_status": "applied",
+      "total_requests": 128,
+      "successful_requests": 128,
+      "failed_requests": 0,
+      "retries": 0,
+      "success_bytes": 134217728,
+      "server_bytes_served": 134217728,
+      "max_in_flight": 4,
+      "mean_in_flight": 0.4745832805411433,
+      "non_range_requests": 0,
+      "range_count": 0,
+      "range_min_bytes": 0,
+      "range_max_bytes": 0,
+      "initial_concurrency": 1,
+      "final_concurrency": 1,
+      "max_concurrency": 10,
+      "time_weighted_concurrency": 4.741189012559406,
+      "effective_concurrency_changes": 48,
+      "constant_run": false,
+      "ramp_to_max": false,
+      "actions": [
+        {
+          "decision_index": 0,
+          "time_since_start_ms": 1078.751,
+          "requested_action_index": 1,
+          "concurrency_before": 1,
+          "concurrency_after": 2,
+          "changed": true,
+          "remaining_bytes": 133169152
+        },
+        {
+          "decision_index": 1,
+          "time_since_start_ms": 1446.642,
+          "requested_action_index": 1,
+          "concurrency_before": 2,
+          "concurrency_after": 3,
+          "changed": true,
+          "remaining_bytes": 132120576
+        },
+        {
+          "decision_index": 2,
+          "time_since_start_ms": 1829.975,
+          "requested_action_index": 1,
+          "concurrency_before": 3,
+          "concurrency_after": 4,
+          "changed": true,
+          "remaining_bytes": 131072000
+        },
+        {
+          "decision_index": 3,
+          "time_since_start_ms": 3160.466,
+          "requested_action_index": 1,
+          "concurrency_before": 4,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 130023424
+        },
+        {
+          "decision_index": 4,
+          "time_since_start_ms": 3864.404,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 128974848
+        },
+        {
+          "decision_index": 5,
+          "time_since_start_ms": 4698.983,
+          "requested_action_index": 1,
+          "concurrency_before": 5,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 127926272
+        },
+        {
+          "decision_index": 6,
+          "time_since_start_ms": 5061.755,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 126877696
+        },
+        {
+          "decision_index": 7,
+          "time_since_start_ms": 5216.383,
+          "requested_action_index": 1,
+          "concurrency_before": 6,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 125829120
+        },
+        {
+          "decision_index": 8,
+          "time_since_start_ms": 5550.889,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 124780544
+        },
+        {
+          "decision_index": 9,
+          "time_since_start_ms": 6131.43,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 123731968
+        },
+        {
+          "decision_index": 10,
+          "time_since_start_ms": 6300.469,
+          "requested_action_index": 1,
+          "concurrency_before": 7,
+          "concurrency_after": 8,
+          "changed": true,
+          "remaining_bytes": 122683392
+        },
+        {
+          "decision_index": 11,
+          "time_since_start_ms": 6343.902,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 121634816
+        },
+        {
+          "decision_index": 12,
+          "time_since_start_ms": 6608.86,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 120586240
+        },
+        {
+          "decision_index": 13,
+          "time_since_start_ms": 7532.27,
+          "requested_action_index": 1,
+          "concurrency_before": 8,
+          "concurrency_after": 9,
+          "changed": true,
+          "remaining_bytes": 119537664
+        },
+        {
+          "decision_index": 14,
+          "time_since_start_ms": 7562.797,
+          "requested_action_index": 1,
+          "concurrency_before": 9,
+          "concurrency_after": 10,
+          "changed": true,
+          "remaining_bytes": 118489088
+        },
+        {
+          "decision_index": 15,
+          "time_since_start_ms": 7678.417,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 117440512
+        },
+        {
+          "decision_index": 16,
+          "time_since_start_ms": 7724.524,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 116391936
+        },
+        {
+          "decision_index": 17,
+          "time_since_start_ms": 7851.509,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 115343360
+        },
+        {
+          "decision_index": 18,
+          "time_since_start_ms": 8803.878,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 114294784
+        },
+        {
+          "decision_index": 19,
+          "time_since_start_ms": 8901.367,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 113246208
+        },
+        {
+          "decision_index": 20,
+          "time_since_start_ms": 8913.391,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 112197632
+        },
+        {
+          "decision_index": 21,
+          "time_since_start_ms": 9073.985,
+          "requested_action_index": 2,
+          "concurrency_before": 10,
+          "concurrency_after": 9,
+          "changed": true,
+          "remaining_bytes": 111149056
+        },
+        {
+          "decision_index": 22,
+          "time_since_start_ms": 9337.712,
+          "requested_action_index": 0,
+          "concurrency_before": 9,
+          "concurrency_after": 9,
+          "changed": false,
+          "remaining_bytes": 110100480
+        },
+        {
+          "decision_index": 23,
+          "time_since_start_ms": 9449.364,
+          "requested_action_index": 1,
+          "concurrency_before": 9,
+          "concurrency_after": 10,
+          "changed": true,
+          "remaining_bytes": 109051904
+        },
+        {
+          "decision_index": 24,
+          "time_since_start_ms": 9823.776,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 108003328
+        },
+        {
+          "decision_index": 25,
+          "time_since_start_ms": 9921.96,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 106954752
+        },
+        {
+          "decision_index": 26,
+          "time_since_start_ms": 10225.444,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 105906176
+        },
+        {
+          "decision_index": 27,
+          "time_since_start_ms": 10677.315,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 104857600
+        },
+        {
+          "decision_index": 28,
+          "time_since_start_ms": 11012.064,
+          "requested_action_index": 2,
+          "concurrency_before": 10,
+          "concurrency_after": 9,
+          "changed": true,
+          "remaining_bytes": 103809024
+        },
+        {
+          "decision_index": 29,
+          "time_since_start_ms": 11221.395,
+          "requested_action_index": 1,
+          "concurrency_before": 9,
+          "concurrency_after": 10,
+          "changed": true,
+          "remaining_bytes": 102760448
+        },
+        {
+          "decision_index": 30,
+          "time_since_start_ms": 11597.771,
+          "requested_action_index": 0,
+          "concurrency_before": 10,
+          "concurrency_after": 10,
+          "changed": false,
+          "remaining_bytes": 101711872
+        },
+        {
+          "decision_index": 31,
+          "time_since_start_ms": 11622.014,
+          "requested_action_index": 2,
+          "concurrency_before": 10,
+          "concurrency_after": 9,
+          "changed": true,
+          "remaining_bytes": 100663296
+        },
+        {
+          "decision_index": 32,
+          "time_since_start_ms": 11732.725,
+          "requested_action_index": 0,
+          "concurrency_before": 9,
+          "concurrency_after": 9,
+          "changed": false,
+          "remaining_bytes": 99614720
+        },
+        {
+          "decision_index": 33,
+          "time_since_start_ms": 11930.217,
+          "requested_action_index": 0,
+          "concurrency_before": 9,
+          "concurrency_after": 9,
+          "changed": false,
+          "remaining_bytes": 98566144
+        },
+        {
+          "decision_index": 34,
+          "time_since_start_ms": 12761.536,
+          "requested_action_index": 2,
+          "concurrency_before": 9,
+          "concurrency_after": 8,
+          "changed": true,
+          "remaining_bytes": 97517568
+        },
+        {
+          "decision_index": 35,
+          "time_since_start_ms": 13027.869,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 96468992
+        },
+        {
+          "decision_index": 36,
+          "time_since_start_ms": 13031.308,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 95420416
+        },
+        {
+          "decision_index": 37,
+          "time_since_start_ms": 13152.743,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 94371840
+        },
+        {
+          "decision_index": 38,
+          "time_since_start_ms": 13380.679,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 93323264
+        },
+        {
+          "decision_index": 39,
+          "time_since_start_ms": 13539.077,
+          "requested_action_index": 2,
+          "concurrency_before": 8,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 92274688
+        },
+        {
+          "decision_index": 40,
+          "time_since_start_ms": 13662.601,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 91226112
+        },
+        {
+          "decision_index": 41,
+          "time_since_start_ms": 14212.887,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 90177536
+        },
+        {
+          "decision_index": 42,
+          "time_since_start_ms": 14624.782,
+          "requested_action_index": 2,
+          "concurrency_before": 7,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 89128960
+        },
+        {
+          "decision_index": 43,
+          "time_since_start_ms": 14675.824,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 88080384
+        },
+        {
+          "decision_index": 44,
+          "time_since_start_ms": 14773.464,
+          "requested_action_index": 2,
+          "concurrency_before": 6,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 87031808
+        },
+        {
+          "decision_index": 45,
+          "time_since_start_ms": 14913.857,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 85983232
+        },
+        {
+          "decision_index": 46,
+          "time_since_start_ms": 15243.569,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 84934656
+        },
+        {
+          "decision_index": 47,
+          "time_since_start_ms": 15311.113,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 83886080
+        },
+        {
+          "decision_index": 48,
+          "time_since_start_ms": 15482.998,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 82837504
+        },
+        {
+          "decision_index": 49,
+          "time_since_start_ms": 16009.865,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 81788928
+        },
+        {
+          "decision_index": 50,
+          "time_since_start_ms": 16249.615,
+          "requested_action_index": 2,
+          "concurrency_before": 5,
+          "concurrency_after": 4,
+          "changed": true,
+          "remaining_bytes": 80740352
+        },
+        {
+          "decision_index": 51,
+          "time_since_start_ms": 16391.021,
+          "requested_action_index": 1,
+          "concurrency_before": 4,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 79691776
+        },
+        {
+          "decision_index": 52,
+          "time_since_start_ms": 16649.034,
+          "requested_action_index": 1,
+          "concurrency_before": 5,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 78643200
+        },
+        {
+          "decision_index": 53,
+          "time_since_start_ms": 16789.838,
+          "requested_action_index": 1,
+          "concurrency_before": 6,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 77594624
+        },
+        {
+          "decision_index": 54,
+          "time_since_start_ms": 17040.065,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 76546048
+        },
+        {
+          "decision_index": 55,
+          "time_since_start_ms": 17952.006,
+          "requested_action_index": 2,
+          "concurrency_before": 7,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 75497472
+        },
+        {
+          "decision_index": 56,
+          "time_since_start_ms": 17975.019,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 74448896
+        },
+        {
+          "decision_index": 57,
+          "time_since_start_ms": 17979.068,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 73400320
+        },
+        {
+          "decision_index": 58,
+          "time_since_start_ms": 18233.49,
+          "requested_action_index": 2,
+          "concurrency_before": 6,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 72351744
+        },
+        {
+          "decision_index": 59,
+          "time_since_start_ms": 18319.917,
+          "requested_action_index": 1,
+          "concurrency_before": 5,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 71303168
+        },
+        {
+          "decision_index": 60,
+          "time_since_start_ms": 18955.639,
+          "requested_action_index": 2,
+          "concurrency_before": 6,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 70254592
+        },
+        {
+          "decision_index": 61,
+          "time_since_start_ms": 19152.633,
+          "requested_action_index": 1,
+          "concurrency_before": 5,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 69206016
+        },
+        {
+          "decision_index": 62,
+          "time_since_start_ms": 19599.47,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 68157440
+        },
+        {
+          "decision_index": 63,
+          "time_since_start_ms": 19756.262,
+          "requested_action_index": 2,
+          "concurrency_before": 6,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 67108864
+        },
+        {
+          "decision_index": 64,
+          "time_since_start_ms": 20236.024,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 66060288
+        },
+        {
+          "decision_index": 65,
+          "time_since_start_ms": 20432.265,
+          "requested_action_index": 2,
+          "concurrency_before": 5,
+          "concurrency_after": 4,
+          "changed": true,
+          "remaining_bytes": 65011712
+        },
+        {
+          "decision_index": 66,
+          "time_since_start_ms": 20530.256,
+          "requested_action_index": 1,
+          "concurrency_before": 4,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 63963136
+        },
+        {
+          "decision_index": 67,
+          "time_since_start_ms": 20732.865,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 62914560
+        },
+        {
+          "decision_index": 68,
+          "time_since_start_ms": 21286.611,
+          "requested_action_index": 2,
+          "concurrency_before": 5,
+          "concurrency_after": 4,
+          "changed": true,
+          "remaining_bytes": 61865984
+        },
+        {
+          "decision_index": 69,
+          "time_since_start_ms": 21529.415,
+          "requested_action_index": 1,
+          "concurrency_before": 4,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 60817408
+        },
+        {
+          "decision_index": 70,
+          "time_since_start_ms": 21588.217,
+          "requested_action_index": 1,
+          "concurrency_before": 5,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 59768832
+        },
+        {
+          "decision_index": 71,
+          "time_since_start_ms": 21737.185,
+          "requested_action_index": 1,
+          "concurrency_before": 6,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 58720256
+        },
+        {
+          "decision_index": 72,
+          "time_since_start_ms": 21771.722,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 57671680
+        },
+        {
+          "decision_index": 73,
+          "time_since_start_ms": 22735.595,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 56623104
+        },
+        {
+          "decision_index": 74,
+          "time_since_start_ms": 22743.452,
+          "requested_action_index": 2,
+          "concurrency_before": 7,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 55574528
+        },
+        {
+          "decision_index": 75,
+          "time_since_start_ms": 22747.505,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 54525952
+        },
+        {
+          "decision_index": 76,
+          "time_since_start_ms": 22900.039,
+          "requested_action_index": 1,
+          "concurrency_before": 6,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 53477376
+        },
+        {
+          "decision_index": 77,
+          "time_since_start_ms": 23072.433,
+          "requested_action_index": 1,
+          "concurrency_before": 7,
+          "concurrency_after": 8,
+          "changed": true,
+          "remaining_bytes": 52428800
+        },
+        {
+          "decision_index": 78,
+          "time_since_start_ms": 23767.838,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 51380224
+        },
+        {
+          "decision_index": 79,
+          "time_since_start_ms": 23795.253,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 50331648
+        },
+        {
+          "decision_index": 80,
+          "time_since_start_ms": 24025.801,
+          "requested_action_index": 2,
+          "concurrency_before": 8,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 49283072
+        },
+        {
+          "decision_index": 81,
+          "time_since_start_ms": 24748.459,
+          "requested_action_index": 1,
+          "concurrency_before": 7,
+          "concurrency_after": 8,
+          "changed": true,
+          "remaining_bytes": 48234496
+        },
+        {
+          "decision_index": 82,
+          "time_since_start_ms": 24768.19,
+          "requested_action_index": 1,
+          "concurrency_before": 8,
+          "concurrency_after": 9,
+          "changed": true,
+          "remaining_bytes": 47185920
+        },
+        {
+          "decision_index": 83,
+          "time_since_start_ms": 25029.817,
+          "requested_action_index": 0,
+          "concurrency_before": 9,
+          "concurrency_after": 9,
+          "changed": false,
+          "remaining_bytes": 46137344
+        },
+        {
+          "decision_index": 84,
+          "time_since_start_ms": 25523.89,
+          "requested_action_index": 2,
+          "concurrency_before": 9,
+          "concurrency_after": 8,
+          "changed": true,
+          "remaining_bytes": 45088768
+        },
+        {
+          "decision_index": 85,
+          "time_since_start_ms": 25916.021,
+          "requested_action_index": 0,
+          "concurrency_before": 8,
+          "concurrency_after": 8,
+          "changed": false,
+          "remaining_bytes": 44040192
+        },
+        {
+          "decision_index": 86,
+          "time_since_start_ms": 26037.293,
+          "requested_action_index": 2,
+          "concurrency_before": 8,
+          "concurrency_after": 7,
+          "changed": true,
+          "remaining_bytes": 42991616
+        },
+        {
+          "decision_index": 87,
+          "time_since_start_ms": 26262.454,
+          "requested_action_index": 0,
+          "concurrency_before": 7,
+          "concurrency_after": 7,
+          "changed": false,
+          "remaining_bytes": 41943040
+        },
+        {
+          "decision_index": 88,
+          "time_since_start_ms": 26410.347,
+          "requested_action_index": 2,
+          "concurrency_before": 7,
+          "concurrency_after": 6,
+          "changed": true,
+          "remaining_bytes": 40894464
+        },
+        {
+          "decision_index": 89,
+          "time_since_start_ms": 26655.77,
+          "requested_action_index": 0,
+          "concurrency_before": 6,
+          "concurrency_after": 6,
+          "changed": false,
+          "remaining_bytes": 39845888
+        },
+        {
+          "decision_index": 90,
+          "time_since_start_ms": 26683.179,
+          "requested_action_index": 2,
+          "concurrency_before": 6,
+          "concurrency_after": 5,
+          "changed": true,
+          "remaining_bytes": 38797312
+        },
+        {
+          "decision_index": 91,
+          "time_since_start_ms": 26849.118,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 37748736
+        },
+        {
+          "decision_index": 92,
+          "time_since_start_ms": 27186.497,
+          "requested_action_index": 0,
+          "concurrency_before": 5,
+          "concurrency_after": 5,
+          "changed": false,
+          "remaining_bytes": 36700160
+        },
+        {
+          "decision_index": 93,
+          "time_since_start_ms": 27410.12,
+          "requested_action_index": 2,
+          "concurrency_before": 5,
+          "concurrency_after": 4,
+          "changed": true,
+          "remaining_bytes": 35651584
+        },
+        {
+          "decision_index": 94,
+          "time_since_start_ms": 27907.058,
+          "requested_action_index": 0,
+          "concurrency_before": 4,
+          "concurrency_after": 4,
+          "changed": false,
+          "remaining_bytes": 34603008
+        },
+        {
+          "decision_index": 95,
+          "time_since_start_ms": 28008.782,
+          "requested_action_index": 2,
+          "concurrency_before": 4,
+          "concurrency_after": 3,
+          "changed": true,
+          "remaining_bytes": 33554432
+        },
+        {
+          "decision_index": 96,
+          "time_since_start_ms": 28454.403,
+          "requested_action_index": 2,
+          "concurrency_before": 3,
+          "concurrency_after": 2,
+          "changed": true,
+          "remaining_bytes": 32505856
+        },
+        {
+          "decision_index": 97,
+          "time_since_start_ms": 28710.383,
+          "requested_action_index": 0,
+          "concurrency_before": 2,
+          "concurrency_after": 2,
+          "changed": false,
+          "remaining_bytes": 31457280
+        },
+        {
+          "decision_index": 98,
+          "time_since_start_ms": 28866.085,
+          "requested_action_index": 2,
+          "concurrency_before": 2,
+          "concurrency_after": 1,
+          "changed": true,
+          "remaining_bytes": 30408704
+        },
+        {
+          "decision_index": 99,
+          "time_since_start_ms": 29166.831,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 29360128
+        },
+        {
+          "decision_index": 100,
+          "time_since_start_ms": 29621.39,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 28311552
+        },
+        {
+          "decision_index": 101,
+          "time_since_start_ms": 30013.916,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 27262976
+        },
+        {
+          "decision_index": 102,
+          "time_since_start_ms": 30395.022,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 26214400
+        },
+        {
+          "decision_index": 103,
+          "time_since_start_ms": 30799.334,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 25165824
+        },
+        {
+          "decision_index": 104,
+          "time_since_start_ms": 31204.429,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 24117248
+        },
+        {
+          "decision_index": 105,
+          "time_since_start_ms": 31604.788,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 23068672
+        },
+        {
+          "decision_index": 106,
+          "time_since_start_ms": 32006.231,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 22020096
+        },
+        {
+          "decision_index": 107,
+          "time_since_start_ms": 32503.544,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 20971520
+        },
+        {
+          "decision_index": 108,
+          "time_since_start_ms": 32907.577,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 19922944
+        },
+        {
+          "decision_index": 109,
+          "time_since_start_ms": 33312.121,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 18874368
+        },
+        {
+          "decision_index": 110,
+          "time_since_start_ms": 33716.595,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 17825792
+        },
+        {
+          "decision_index": 111,
+          "time_since_start_ms": 34120.823,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 16777216
+        },
+        {
+          "decision_index": 112,
+          "time_since_start_ms": 34525.045,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 15728640
+        },
+        {
+          "decision_index": 113,
+          "time_since_start_ms": 34925.393,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 14680064
+        },
+        {
+          "decision_index": 114,
+          "time_since_start_ms": 35325.804,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 13631488
+        },
+        {
+          "decision_index": 115,
+          "time_since_start_ms": 35726.11,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 12582912
+        },
+        {
+          "decision_index": 116,
+          "time_since_start_ms": 36122.357,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 11534336
+        },
+        {
+          "decision_index": 117,
+          "time_since_start_ms": 36576.592,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 10485760
+        },
+        {
+          "decision_index": 118,
+          "time_since_start_ms": 37118.369,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 9437184
+        },
+        {
+          "decision_index": 119,
+          "time_since_start_ms": 37525.729,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 8388608
+        },
+        {
+          "decision_index": 120,
+          "time_since_start_ms": 37929.824,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 7340032
+        },
+        {
+          "decision_index": 121,
+          "time_since_start_ms": 38334.031,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 6291456
+        },
+        {
+          "decision_index": 122,
+          "time_since_start_ms": 38738.325,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 5242880
+        },
+        {
+          "decision_index": 123,
+          "time_since_start_ms": 39142.353,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 4194304
+        },
+        {
+          "decision_index": 124,
+          "time_since_start_ms": 40491.342,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 3145728
+        },
+        {
+          "decision_index": 125,
+          "time_since_start_ms": 41064.409,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 2097152
+        },
+        {
+          "decision_index": 126,
+          "time_since_start_ms": 41494.231,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 1048576
+        },
+        {
+          "decision_index": 127,
+          "time_since_start_ms": 41901.264,
+          "requested_action_index": 2,
+          "concurrency_before": 1,
+          "concurrency_after": 1,
+          "changed": false,
+          "remaining_bytes": 0
+        }
+      ],
+      "phase_mean_concurrency": [
+        1.822316,
+        4.419767,
+        6.042316999999999
+      ],
+      "phase_change_counts": [
+        3,
+        1,
+        2
+      ],
+      "transition_reaction_ms": [
+        1160.466,
+        698.9830000000002
+      ],
+      "phase_events": [
+        {
+          "index": 1,
+          "at_ms": 2000.08
+        },
+        {
+          "index": 2,
+          "at_ms": 4000.099
+        }
+      ],
+      "requests_before_transition": 7,
+      "requests_at_or_after_transition": 121,
+      "model_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887",
+      "err": "",
+      "server_requests": [
+        {
+          "index": 1,
+          "start": "2026-09-25T15:18:31.869165612Z",
+          "end": "2026-09-25T15:18:32.013556218Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 0,
+            "End": 1048575
+          },
+          "has_range": true
+        },
+        {
+          "index": 2,
+          "start": "2026-09-25T15:18:32.847575957Z",
+          "end": "2026-09-25T15:18:32.993357807Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 1048576,
+            "End": 2097151
+          },
+          "has_range": true
+        },
+        {
+          "index": 3,
+          "start": "2026-09-25T15:18:32.950627377Z",
+          "end": "2026-09-25T15:18:33.097468095Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 2097152,
+            "End": 3145727
+          },
+          "has_range": true
+        },
+        {
+          "index": 4,
+          "start": "2026-09-25T15:18:33.220822023Z",
+          "end": "2026-09-25T15:18:33.367525573Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 3145728,
+            "End": 4194303
+          },
+          "has_range": true
+        },
+        {
+          "index": 5,
+          "start": "2026-09-25T15:18:33.353297741Z",
+          "end": "2026-09-25T15:18:33.498333825Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 4194304,
+            "End": 5242879
+          },
+          "has_range": true
+        },
+        {
+          "index": 6,
+          "start": "2026-09-25T15:18:33.598749218Z",
+          "end": "2026-09-25T15:18:33.747706344Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 5242880,
+            "End": 6291455
+          },
+          "has_range": true
+        },
+        {
+          "index": 7,
+          "start": "2026-09-25T15:18:33.734196901Z",
+          "end": "2026-09-25T15:18:33.880819505Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 6291456,
+            "End": 7340031
+          },
+          "has_range": true
+        },
+        {
+          "index": 8,
+          "start": "2026-09-25T15:18:35.135755021Z",
+          "end": "2026-09-25T15:18:35.280238102Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 7340032,
+            "End": 8388607
+          },
+          "has_range": true
+        },
+        {
+          "index": 9,
+          "start": "2026-09-25T15:18:36.221314279Z",
+          "end": "2026-09-25T15:18:36.368113097Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 8388608,
+            "End": 9437183
+          },
+          "has_range": true
+        },
+        {
+          "index": 10,
+          "start": "2026-09-25T15:18:36.221331041Z",
+          "end": "2026-09-25T15:18:36.36816031Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 9437184,
+            "End": 10485759
+          },
+          "has_range": true
+        },
+        {
+          "index": 11,
+          "start": "2026-09-25T15:18:36.630968735Z",
+          "end": "2026-09-25T15:18:36.777284319Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 10485760,
+            "End": 11534335
+          },
+          "has_range": true
+        },
+        {
+          "index": 12,
+          "start": "2026-09-25T15:18:37.036278561Z",
+          "end": "2026-09-25T15:18:37.191506342Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 11534336,
+            "End": 12582911
+          },
+          "has_range": true
+        },
+        {
+          "index": 13,
+          "start": "2026-09-25T15:18:37.072410017Z",
+          "end": "2026-09-25T15:18:37.222765096Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 12582912,
+            "End": 13631487
+          },
+          "has_range": true
+        },
+        {
+          "index": 14,
+          "start": "2026-09-25T15:18:37.072548583Z",
+          "end": "2026-09-25T15:18:37.222781369Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 13631488,
+            "End": 14680063
+          },
+          "has_range": true
+        },
+        {
+          "index": 15,
+          "start": "2026-09-25T15:18:37.564031379Z",
+          "end": "2026-09-25T15:18:37.712691683Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 14680064,
+            "End": 15728639
+          },
+          "has_range": true
+        },
+        {
+          "index": 16,
+          "start": "2026-09-25T15:18:37.701175377Z",
+          "end": "2026-09-25T15:18:37.851285801Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 15728640,
+            "End": 16777215
+          },
+          "has_range": true
+        },
+        {
+          "index": 17,
+          "start": "2026-09-25T15:18:38.127538581Z",
+          "end": "2026-09-25T15:18:38.277753838Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 16777216,
+            "End": 17825791
+          },
+          "has_range": true
+        },
+        {
+          "index": 18,
+          "start": "2026-09-25T15:18:38.144962012Z",
+          "end": "2026-09-25T15:18:38.295995951Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 17825792,
+            "End": 18874367
+          },
+          "has_range": true
+        },
+        {
+          "index": 19,
+          "start": "2026-09-25T15:18:38.17595928Z",
+          "end": "2026-09-25T15:18:38.327461437Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 18874368,
+            "End": 19922943
+          },
+          "has_range": true
+        },
+        {
+          "index": 20,
+          "start": "2026-09-25T15:18:38.744887653Z",
+          "end": "2026-09-25T15:18:38.890250113Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 19922944,
+            "End": 20971519
+          },
+          "has_range": true
+        },
+        {
+          "index": 21,
+          "start": "2026-09-25T15:18:38.744942409Z",
+          "end": "2026-09-25T15:18:38.890271694Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 20971520,
+            "End": 22020095
+          },
+          "has_range": true
+        },
+        {
+          "index": 22,
+          "start": "2026-09-25T15:18:39.396158052Z",
+          "end": "2026-09-25T15:18:39.541109076Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 23068672,
+            "End": 24117247
+          },
+          "has_range": true
+        },
+        {
+          "index": 23,
+          "start": "2026-09-25T15:18:39.396183753Z",
+          "end": "2026-09-25T15:18:39.541186461Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 22020096,
+            "End": 23068671
+          },
+          "has_range": true
+        },
+        {
+          "index": 24,
+          "start": "2026-09-25T15:18:39.442231658Z",
+          "end": "2026-09-25T15:18:39.590594859Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 24117248,
+            "End": 25165823
+          },
+          "has_range": true
+        },
+        {
+          "index": 25,
+          "start": "2026-09-25T15:18:39.568685857Z",
+          "end": "2026-09-25T15:18:39.725138521Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 25165824,
+            "End": 26214399
+          },
+          "has_range": true
+        },
+        {
+          "index": 26,
+          "start": "2026-09-25T15:18:39.738307068Z",
+          "end": "2026-09-25T15:18:39.905497584Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 26214400,
+            "End": 27262975
+          },
+          "has_range": true
+        },
+        {
+          "index": 27,
+          "start": "2026-09-25T15:18:39.993381181Z",
+          "end": "2026-09-25T15:18:40.15558732Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 27262976,
+            "End": 28311551
+          },
+          "has_range": true
+        },
+        {
+          "index": 28,
+          "start": "2026-09-25T15:18:40.136574506Z",
+          "end": "2026-09-25T15:18:40.292613919Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 28311552,
+            "End": 29360127
+          },
+          "has_range": true
+        },
+        {
+          "index": 29,
+          "start": "2026-09-25T15:18:40.870743572Z",
+          "end": "2026-09-25T15:18:41.013929563Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 29360128,
+            "End": 30408703
+          },
+          "has_range": true
+        },
+        {
+          "index": 30,
+          "start": "2026-09-25T15:18:40.870924951Z",
+          "end": "2026-09-25T15:18:41.013952751Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 30408704,
+            "End": 31457279
+          },
+          "has_range": true
+        },
+        {
+          "index": 31,
+          "start": "2026-09-25T15:18:40.917983741Z",
+          "end": "2026-09-25T15:18:41.062794735Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 31457280,
+            "End": 32505855
+          },
+          "has_range": true
+        },
+        {
+          "index": 32,
+          "start": "2026-09-25T15:18:41.52972274Z",
+          "end": "2026-09-25T15:18:41.679389955Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 32505856,
+            "End": 33554431
+          },
+          "has_range": true
+        },
+        {
+          "index": 33,
+          "start": "2026-09-25T15:18:41.639457023Z",
+          "end": "2026-09-25T15:18:41.79938228Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 33554432,
+            "End": 34603007
+          },
+          "has_range": true
+        },
+        {
+          "index": 34,
+          "start": "2026-09-25T15:18:41.639931876Z",
+          "end": "2026-09-25T15:18:41.799366146Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 34603008,
+            "End": 35651583
+          },
+          "has_range": true
+        },
+        {
+          "index": 35,
+          "start": "2026-09-25T15:18:41.673299705Z",
+          "end": "2026-09-25T15:18:41.829505692Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 35651584,
+            "End": 36700159
+          },
+          "has_range": true
+        },
+        {
+          "index": 36,
+          "start": "2026-09-25T15:18:41.943022661Z",
+          "end": "2026-09-25T15:18:42.109101515Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 36700160,
+            "End": 37748735
+          },
+          "has_range": true
+        },
+        {
+          "index": 37,
+          "start": "2026-09-25T15:18:42.394659709Z",
+          "end": "2026-09-25T15:18:42.546965677Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 37748736,
+            "End": 38797311
+          },
+          "has_range": true
+        },
+        {
+          "index": 38,
+          "start": "2026-09-25T15:18:42.760679165Z",
+          "end": "2026-09-25T15:18:42.919928567Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 38797312,
+            "End": 39845887
+          },
+          "has_range": true
+        },
+        {
+          "index": 39,
+          "start": "2026-09-25T15:18:43.481118246Z",
+          "end": "2026-09-25T15:18:43.627273832Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 39845888,
+            "End": 40894463
+          },
+          "has_range": true
+        },
+        {
+          "index": 40,
+          "start": "2026-09-25T15:18:43.481154074Z",
+          "end": "2026-09-25T15:18:43.627233184Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 40894464,
+            "End": 41943039
+          },
+          "has_range": true
+        },
+        {
+          "index": 41,
+          "start": "2026-09-25T15:18:43.647512645Z",
+          "end": "2026-09-25T15:18:43.814837403Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 41943040,
+            "End": 42991615
+          },
+          "has_range": true
+        },
+        {
+          "index": 42,
+          "start": "2026-09-25T15:18:43.647734112Z",
+          "end": "2026-09-25T15:18:43.814767841Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 42991616,
+            "End": 44040191
+          },
+          "has_range": true
+        },
+        {
+          "index": 43,
+          "start": "2026-09-25T15:18:44.125309604Z",
+          "end": "2026-09-25T15:18:44.292453474Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 44040192,
+            "End": 45088767
+          },
+          "has_range": true
+        },
+        {
+          "index": 44,
+          "start": "2026-09-25T15:18:45.115743341Z",
+          "end": "2026-09-25T15:18:45.260327984Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 46137344,
+            "End": 47185919
+          },
+          "has_range": true
+        },
+        {
+          "index": 45,
+          "start": "2026-09-25T15:18:45.11586682Z",
+          "end": "2026-09-25T15:18:45.260325051Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 45088768,
+            "End": 46137343
+          },
+          "has_range": true
+        },
+        {
+          "index": 46,
+          "start": "2026-09-25T15:18:45.115913544Z",
+          "end": "2026-09-25T15:18:45.260383718Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 47185920,
+            "End": 48234495
+          },
+          "has_range": true
+        },
+        {
+          "index": 47,
+          "start": "2026-09-25T15:18:45.256940322Z",
+          "end": "2026-09-25T15:18:45.405932454Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 48234496,
+            "End": 49283071
+          },
+          "has_range": true
+        },
+        {
+          "index": 48,
+          "start": "2026-09-25T15:18:46.036693998Z",
+          "end": "2026-09-25T15:18:46.180917632Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 49283072,
+            "End": 50331647
+          },
+          "has_range": true
+        },
+        {
+          "index": 49,
+          "start": "2026-09-25T15:18:46.03799319Z",
+          "end": "2026-09-25T15:18:46.182077141Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 50331648,
+            "End": 51380223
+          },
+          "has_range": true
+        },
+        {
+          "index": 50,
+          "start": "2026-09-25T15:18:46.961400181Z",
+          "end": "2026-09-25T15:18:47.107336959Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 52428800,
+            "End": 53477375
+          },
+          "has_range": true
+        },
+        {
+          "index": 51,
+          "start": "2026-09-25T15:18:46.961524709Z",
+          "end": "2026-09-25T15:18:47.106205806Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 51380224,
+            "End": 52428799
+          },
+          "has_range": true
+        },
+        {
+          "index": 52,
+          "start": "2026-09-25T15:18:47.200962652Z",
+          "end": "2026-09-25T15:18:47.368992396Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 53477376,
+            "End": 54525951
+          },
+          "has_range": true
+        },
+        {
+          "index": 53,
+          "start": "2026-09-25T15:18:47.416767414Z",
+          "end": "2026-09-25T15:18:47.583078707Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 54525952,
+            "End": 55574527
+          },
+          "has_range": true
+        },
+        {
+          "index": 54,
+          "start": "2026-09-25T15:18:47.475764078Z",
+          "end": "2026-09-25T15:18:47.642054768Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 55574528,
+            "End": 56623103
+          },
+          "has_range": true
+        },
+        {
+          "index": 55,
+          "start": "2026-09-25T15:18:48.108489717Z",
+          "end": "2026-09-25T15:18:48.251888176Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 56623104,
+            "End": 57671679
+          },
+          "has_range": true
+        },
+        {
+          "index": 56,
+          "start": "2026-09-25T15:18:48.50680803Z",
+          "end": "2026-09-25T15:18:48.672463862Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 57671680,
+            "End": 58720255
+          },
+          "has_range": true
+        },
+        {
+          "index": 57,
+          "start": "2026-09-25T15:18:48.514524958Z",
+          "end": "2026-09-25T15:18:48.68029568Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 58720256,
+            "End": 59768831
+          },
+          "has_range": true
+        },
+        {
+          "index": 58,
+          "start": "2026-09-25T15:18:48.757856219Z",
+          "end": "2026-09-25T15:18:48.922235907Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 59768832,
+            "End": 60817407
+          },
+          "has_range": true
+        },
+        {
+          "index": 59,
+          "start": "2026-09-25T15:18:48.757927388Z",
+          "end": "2026-09-25T15:18:48.922216282Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 60817408,
+            "End": 61865983
+          },
+          "has_range": true
+        },
+        {
+          "index": 60,
+          "start": "2026-09-25T15:18:48.974519545Z",
+          "end": "2026-09-25T15:18:49.141657276Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 61865984,
+            "End": 62914559
+          },
+          "has_range": true
+        },
+        {
+          "index": 61,
+          "start": "2026-09-25T15:18:49.17557036Z",
+          "end": "2026-09-25T15:18:49.32804703Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 63963136,
+            "End": 65011711
+          },
+          "has_range": true
+        },
+        {
+          "index": 62,
+          "start": "2026-09-25T15:18:49.175618132Z",
+          "end": "2026-09-25T15:18:49.328032852Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 62914560,
+            "End": 63963135
+          },
+          "has_range": true
+        },
+        {
+          "index": 63,
+          "start": "2026-09-25T15:18:50.038928479Z",
+          "end": "2026-09-25T15:18:50.193476649Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 65011712,
+            "End": 66060287
+          },
+          "has_range": true
+        },
+        {
+          "index": 64,
+          "start": "2026-09-25T15:18:50.039070397Z",
+          "end": "2026-09-25T15:18:50.193482795Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 66060288,
+            "End": 67108863
+          },
+          "has_range": true
+        },
+        {
+          "index": 65,
+          "start": "2026-09-25T15:18:50.088603048Z",
+          "end": "2026-09-25T15:18:50.250483111Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 67108864,
+            "End": 68157439
+          },
+          "has_range": true
+        },
+        {
+          "index": 66,
+          "start": "2026-09-25T15:18:50.116293952Z",
+          "end": "2026-09-25T15:18:50.282000212Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 68157440,
+            "End": 69206015
+          },
+          "has_range": true
+        },
+        {
+          "index": 67,
+          "start": "2026-09-25T15:18:50.984116067Z",
+          "end": "2026-09-25T15:18:51.136351018Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 69206016,
+            "End": 70254591
+          },
+          "has_range": true
+        },
+        {
+          "index": 68,
+          "start": "2026-09-25T15:18:51.063336043Z",
+          "end": "2026-09-25T15:18:51.225106875Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 70254592,
+            "End": 71303167
+          },
+          "has_range": true
+        },
+        {
+          "index": 69,
+          "start": "2026-09-25T15:18:51.664339127Z",
+          "end": "2026-09-25T15:18:51.809530352Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 71303168,
+            "End": 72351743
+          },
+          "has_range": true
+        },
+        {
+          "index": 70,
+          "start": "2026-09-25T15:18:52.248331125Z",
+          "end": "2026-09-25T15:18:52.394203096Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 72351744,
+            "End": 73400319
+          },
+          "has_range": true
+        },
+        {
+          "index": 71,
+          "start": "2026-09-25T15:18:52.450785551Z",
+          "end": "2026-09-25T15:18:52.616862533Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 73400320,
+            "End": 74448895
+          },
+          "has_range": true
+        },
+        {
+          "index": 72,
+          "start": "2026-09-25T15:18:52.45863902Z",
+          "end": "2026-09-25T15:18:52.625944235Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 74448896,
+            "End": 75497471
+          },
+          "has_range": true
+        },
+        {
+          "index": 73,
+          "start": "2026-09-25T15:18:52.584379034Z",
+          "end": "2026-09-25T15:18:52.75131353Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 75497472,
+            "End": 76546047
+          },
+          "has_range": true
+        },
+        {
+          "index": 74,
+          "start": "2026-09-25T15:18:53.455260855Z",
+          "end": "2026-09-25T15:18:53.614927855Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 78643200,
+            "End": 79691775
+          },
+          "has_range": true
+        },
+        {
+          "index": 75,
+          "start": "2026-09-25T15:18:53.455269865Z",
+          "end": "2026-09-25T15:18:53.614919613Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 77594624,
+            "End": 78643199
+          },
+          "has_range": true
+        },
+        {
+          "index": 76,
+          "start": "2026-09-25T15:18:53.455287675Z",
+          "end": "2026-09-25T15:18:53.614895378Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 76546048,
+            "End": 77594623
+          },
+          "has_range": true
+        },
+        {
+          "index": 77,
+          "start": "2026-09-25T15:18:53.505460564Z",
+          "end": "2026-09-25T15:18:53.671952546Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 79691776,
+            "End": 80740351
+          },
+          "has_range": true
+        },
+        {
+          "index": 78,
+          "start": "2026-09-25T15:18:53.684517594Z",
+          "end": "2026-09-25T15:18:53.851606023Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 80740352,
+            "End": 81788927
+          },
+          "has_range": true
+        },
+        {
+          "index": 79,
+          "start": "2026-09-25T15:18:53.755196512Z",
+          "end": "2026-09-25T15:18:53.922275233Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 81788928,
+            "End": 82837503
+          },
+          "has_range": true
+        },
+        {
+          "index": 80,
+          "start": "2026-09-25T15:18:54.038673945Z",
+          "end": "2026-09-25T15:18:54.185155915Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 82837504,
+            "End": 83886079
+          },
+          "has_range": true
+        },
+        {
+          "index": 81,
+          "start": "2026-09-25T15:18:54.622393504Z",
+          "end": "2026-09-25T15:18:54.76762538Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 83886080,
+            "End": 84934655
+          },
+          "has_range": true
+        },
+        {
+          "index": 82,
+          "start": "2026-09-25T15:18:54.804246431Z",
+          "end": "2026-09-25T15:18:54.964550945Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 84934656,
+            "End": 85983231
+          },
+          "has_range": true
+        },
+        {
+          "index": 83,
+          "start": "2026-09-25T15:18:54.804341346Z",
+          "end": "2026-09-25T15:18:54.964595294Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 85983232,
+            "End": 87031807
+          },
+          "has_range": true
+        },
+        {
+          "index": 84,
+          "start": "2026-09-25T15:18:54.804394146Z",
+          "end": "2026-09-25T15:18:54.964531669Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 87031808,
+            "End": 88080383
+          },
+          "has_range": true
+        },
+        {
+          "index": 85,
+          "start": "2026-09-25T15:18:54.841062829Z",
+          "end": "2026-09-25T15:18:55.004919762Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 88080384,
+            "End": 89128959
+          },
+          "has_range": true
+        },
+        {
+          "index": 86,
+          "start": "2026-09-25T15:18:55.205658536Z",
+          "end": "2026-09-25T15:18:55.350883429Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 89128960,
+            "End": 90177535
+          },
+          "has_range": true
+        },
+        {
+          "index": 87,
+          "start": "2026-09-25T15:18:55.743975665Z",
+          "end": "2026-09-25T15:18:55.898057789Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 90177536,
+            "End": 91226111
+          },
+          "has_range": true
+        },
+        {
+          "index": 88,
+          "start": "2026-09-25T15:18:55.744100541Z",
+          "end": "2026-09-25T15:18:55.898037046Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 91226112,
+            "End": 92274687
+          },
+          "has_range": true
+        },
+        {
+          "index": 89,
+          "start": "2026-09-25T15:18:56.520797814Z",
+          "end": "2026-09-25T15:18:56.66683762Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 93323264,
+            "End": 94371839
+          },
+          "has_range": true
+        },
+        {
+          "index": 90,
+          "start": "2026-09-25T15:18:56.520844538Z",
+          "end": "2026-09-25T15:18:56.666918776Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 92274688,
+            "End": 93323263
+          },
+          "has_range": true
+        },
+        {
+          "index": 91,
+          "start": "2026-09-25T15:18:56.536955371Z",
+          "end": "2026-09-25T15:18:56.68234572Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 94371840,
+            "End": 95420415
+          },
+          "has_range": true
+        },
+        {
+          "index": 92,
+          "start": "2026-09-25T15:18:57.143275098Z",
+          "end": "2026-09-25T15:18:57.286453916Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 95420416,
+            "End": 96468991
+          },
+          "has_range": true
+        },
+        {
+          "index": 93,
+          "start": "2026-09-25T15:18:57.143640159Z",
+          "end": "2026-09-25T15:18:57.286478291Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 96468992,
+            "End": 97517567
+          },
+          "has_range": true
+        },
+        {
+          "index": 94,
+          "start": "2026-09-25T15:18:57.980720325Z",
+          "end": "2026-09-25T15:18:58.127772695Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 97517568,
+            "End": 98566143
+          },
+          "has_range": true
+        },
+        {
+          "index": 95,
+          "start": "2026-09-25T15:18:58.373756208Z",
+          "end": "2026-09-25T15:18:58.528576142Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 98566144,
+            "End": 99614719
+          },
+          "has_range": true
+        },
+        {
+          "index": 96,
+          "start": "2026-09-25T15:18:58.424669629Z",
+          "end": "2026-09-25T15:18:58.577314978Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 99614720,
+            "End": 100663295
+          },
+          "has_range": true
+        },
+        {
+          "index": 97,
+          "start": "2026-09-25T15:18:58.794605709Z",
+          "end": "2026-09-25T15:18:58.942184893Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 100663296,
+            "End": 101711871
+          },
+          "has_range": true
+        },
+        {
+          "index": 98,
+          "start": "2026-09-25T15:18:59.123464499Z",
+          "end": "2026-09-25T15:18:59.268417644Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 101711872,
+            "End": 102760447
+          },
+          "has_range": true
+        },
+        {
+          "index": 99,
+          "start": "2026-09-25T15:18:59.72687583Z",
+          "end": "2026-09-25T15:18:59.87895239Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 102760448,
+            "End": 103809023
+          },
+          "has_range": true
+        },
+        {
+          "index": 100,
+          "start": "2026-09-25T15:19:00.506615775Z",
+          "end": "2026-09-25T15:19:00.663465865Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 103809024,
+            "End": 104857599
+          },
+          "has_range": true
+        },
+        {
+          "index": 101,
+          "start": "2026-09-25T15:19:00.935747859Z",
+          "end": "2026-09-25T15:19:01.092311251Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 104857600,
+            "End": 105906175
+          },
+          "has_range": true
+        },
+        {
+          "index": 102,
+          "start": "2026-09-25T15:19:01.390426578Z",
+          "end": "2026-09-25T15:19:01.551233402Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 105906176,
+            "End": 106954751
+          },
+          "has_range": true
+        },
+        {
+          "index": 103,
+          "start": "2026-09-25T15:19:01.782930209Z",
+          "end": "2026-09-25T15:19:01.934906759Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 106954752,
+            "End": 108003327
+          },
+          "has_range": true
+        },
+        {
+          "index": 104,
+          "start": "2026-09-25T15:19:02.164056238Z",
+          "end": "2026-09-25T15:19:02.321971066Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 108003328,
+            "End": 109051903
+          },
+          "has_range": true
+        },
+        {
+          "index": 105,
+          "start": "2026-09-25T15:19:02.56916543Z",
+          "end": "2026-09-25T15:19:02.72736074Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 109051904,
+            "End": 110100479
+          },
+          "has_range": true
+        },
+        {
+          "index": 106,
+          "start": "2026-09-25T15:19:02.973470186Z",
+          "end": "2026-09-25T15:19:03.133137338Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 110100480,
+            "End": 111149055
+          },
+          "has_range": true
+        },
+        {
+          "index": 107,
+          "start": "2026-09-25T15:19:03.375042187Z",
+          "end": "2026-09-25T15:19:03.533288273Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 111149056,
+            "End": 112197631
+          },
+          "has_range": true
+        },
+        {
+          "index": 108,
+          "start": "2026-09-25T15:19:03.775176989Z",
+          "end": "2026-09-25T15:19:03.942493743Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 112197632,
+            "End": 113246207
+          },
+          "has_range": true
+        },
+        {
+          "index": 109,
+          "start": "2026-09-25T15:19:04.272487613Z",
+          "end": "2026-09-25T15:19:04.426122903Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 113246208,
+            "End": 114294783
+          },
+          "has_range": true
+        },
+        {
+          "index": 110,
+          "start": "2026-09-25T15:19:04.676562388Z",
+          "end": "2026-09-25T15:19:04.833246261Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 114294784,
+            "End": 115343359
+          },
+          "has_range": true
+        },
+        {
+          "index": 111,
+          "start": "2026-09-25T15:19:05.081376646Z",
+          "end": "2026-09-25T15:19:05.23767702Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 115343360,
+            "End": 116391935
+          },
+          "has_range": true
+        },
+        {
+          "index": 112,
+          "start": "2026-09-25T15:19:05.485536072Z",
+          "end": "2026-09-25T15:19:05.643246897Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 116391936,
+            "End": 117440511
+          },
+          "has_range": true
+        },
+        {
+          "index": 113,
+          "start": "2026-09-25T15:19:05.889822611Z",
+          "end": "2026-09-25T15:19:06.047794642Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 117440512,
+            "End": 118489087
+          },
+          "has_range": true
+        },
+        {
+          "index": 114,
+          "start": "2026-09-25T15:19:06.294048319Z",
+          "end": "2026-09-25T15:19:06.452372493Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 118489088,
+            "End": 119537663
+          },
+          "has_range": true
+        },
+        {
+          "index": 115,
+          "start": "2026-09-25T15:19:06.694362274Z",
+          "end": "2026-09-25T15:19:06.853868237Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 119537664,
+            "End": 120586239
+          },
+          "has_range": true
+        },
+        {
+          "index": 116,
+          "start": "2026-09-25T15:19:07.09481319Z",
+          "end": "2026-09-25T15:19:07.254350582Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 120586240,
+            "End": 121634815
+          },
+          "has_range": true
+        },
+        {
+          "index": 117,
+          "start": "2026-09-25T15:19:07.495082869Z",
+          "end": "2026-09-25T15:19:07.654980644Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 121634816,
+            "End": 122683391
+          },
+          "has_range": true
+        },
+        {
+          "index": 118,
+          "start": "2026-09-25T15:19:07.891252502Z",
+          "end": "2026-09-25T15:19:08.05017459Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 122683392,
+            "End": 123731967
+          },
+          "has_range": true
+        },
+        {
+          "index": 119,
+          "start": "2026-09-25T15:19:08.34549355Z",
+          "end": "2026-09-25T15:19:08.500611721Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 123731968,
+            "End": 124780543
+          },
+          "has_range": true
+        },
+        {
+          "index": 120,
+          "start": "2026-09-25T15:19:08.887320414Z",
+          "end": "2026-09-25T15:19:09.040377492Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 124780544,
+            "End": 125829119
+          },
+          "has_range": true
+        },
+        {
+          "index": 121,
+          "start": "2026-09-25T15:19:09.294651147Z",
+          "end": "2026-09-25T15:19:09.448066094Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 125829120,
+            "End": 126877695
+          },
+          "has_range": true
+        },
+        {
+          "index": 122,
+          "start": "2026-09-25T15:19:09.698910041Z",
+          "end": "2026-09-25T15:19:09.853269106Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 126877696,
+            "End": 127926271
+          },
+          "has_range": true
+        },
+        {
+          "index": 123,
+          "start": "2026-09-25T15:19:10.103037565Z",
+          "end": "2026-09-25T15:19:10.257730543Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 127926272,
+            "End": 128974847
+          },
+          "has_range": true
+        },
+        {
+          "index": 124,
+          "start": "2026-09-25T15:19:10.507250437Z",
+          "end": "2026-09-25T15:19:10.660510336Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 128974848,
+            "End": 130023423
+          },
+          "has_range": true
+        },
+        {
+          "index": 125,
+          "start": "2026-09-25T15:19:10.911208806Z",
+          "end": "2026-09-25T15:19:11.064580453Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 130023424,
+            "End": 131071999
+          },
+          "has_range": true
+        },
+        {
+          "index": 126,
+          "start": "2026-09-25T15:19:12.260269939Z",
+          "end": "2026-09-25T15:19:12.404771155Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 131072000,
+            "End": 132120575
+          },
+          "has_range": true
+        },
+        {
+          "index": 127,
+          "start": "2026-09-25T15:19:12.83339281Z",
+          "end": "2026-09-25T15:19:12.984800794Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 132120576,
+            "End": 133169151
+          },
+          "has_range": true
+        },
+        {
+          "index": 128,
+          "start": "2026-09-25T15:19:13.263180192Z",
+          "end": "2026-09-25T15:19:13.415130846Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 133169152,
+            "End": 134217727
+          },
+          "has_range": true
+        }
+      ]
+    },
+    {
+      "run_id": "A2-p00-aria2",
+      "pair_id": "A2-p00",
+      "condition": "A2",
+      "system": "aria2",
+      "policy": "aria2-f",
+      "rep": 0,
+      "order_index": 2,
+      "pair_first_system": "v6",
+      "duration_ms": 36687.221,
+      "wallclock_bps": 3658432.67332786,
+      "valid": true,
+      "output_size": 134217728,
+      "output_sha256": "e6c6c52c24cfd829d5e3c78668fcd4fa00c4232f9edf162279308f936b06b148",
+      "expected_sha256": "e6c6c52c24cfd829d5e3c78668fcd4fa00c4232f9edf162279308f936b06b148",
+      "netem_status": "applied",
+      "total_requests": 47,
+      "successful_requests": 38,
+      "failed_requests": 9,
+      "retries": 0,
+      "success_bytes": 134217728,
+      "server_bytes_served": 111459840,
+      "max_in_flight": 16,
+      "mean_in_flight": 12.45182099949073,
+      "non_range_requests": 1,
+      "range_count": 46,
+      "range_min_bytes": 310784,
+      "range_max_bytes": 8388608,
+      "constant_run": false,
+      "ramp_to_max": false,
+      "phase_mean_concurrency": null,
+      "phase_change_counts": null,
+      "transition_reaction_ms": null,
+      "phase_events": [
+        {
+          "index": 1,
+          "at_ms": 2000.044
+        },
+        {
+          "index": 2,
+          "at_ms": 4000.055
+        }
+      ],
+      "requests_before_transition": 16,
+      "requests_at_or_after_transition": 31,
+      "aria2_config_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+      "err": "",
+      "server_requests": [
+        {
+          "index": 1,
+          "start": "2026-09-25T15:19:14.708208153Z",
+          "end": "2026-09-25T15:19:49.381033557Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 0,
+            "End": 0
+          },
+          "has_range": false
+        },
+        {
+          "index": 2,
+          "start": "2026-09-25T15:19:14.920536532Z",
+          "end": "2026-09-25T15:19:51.182531388Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 67108864,
+            "End": 75497471
+          },
+          "has_range": true
+        },
+        {
+          "index": 3,
+          "start": "2026-09-25T15:19:14.920587935Z",
+          "end": "2026-09-25T15:19:29.716135178Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 33554432,
+            "End": 41943039
+          },
+          "has_range": true
+        },
+        {
+          "index": 4,
+          "start": "2026-09-25T15:19:14.920626977Z",
+          "end": "2026-09-25T15:19:50.004561033Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 100663296,
+            "End": 109051903
+          },
+          "has_range": true
+        },
+        {
+          "index": 5,
+          "start": "2026-09-25T15:19:14.920640317Z",
+          "end": "2026-09-25T15:19:51.284704758Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 16777216,
+            "End": 25165823
+          },
+          "has_range": true
+        },
+        {
+          "index": 6,
+          "start": "2026-09-25T15:19:14.920684456Z",
+          "end": "2026-09-25T15:19:51.268136037Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 83886080,
+            "End": 92274687
+          },
+          "has_range": true
+        },
+        {
+          "index": 7,
+          "start": "2026-09-25T15:19:14.920695422Z",
+          "end": "2026-09-25T15:19:48.981782103Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 50331648,
+            "End": 58720255
+          },
+          "has_range": true
+        },
+        {
+          "index": 8,
+          "start": "2026-09-25T15:19:14.920737885Z",
+          "end": "2026-09-25T15:19:36.905067108Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 8388608,
+            "End": 16777215
+          },
+          "has_range": true
+        },
+        {
+          "index": 9,
+          "start": "2026-09-25T15:19:14.920758349Z",
+          "end": "2026-09-25T15:19:34.937076599Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 117440512,
+            "End": 125829119
+          },
+          "has_range": true
+        },
+        {
+          "index": 10,
+          "start": "2026-09-25T15:19:14.920783143Z",
+          "end": "2026-09-25T15:19:50.520086448Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 25165824,
+            "End": 33554431
+          },
+          "has_range": true
+        },
+        {
+          "index": 11,
+          "start": "2026-09-25T15:19:14.920837968Z",
+          "end": "2026-09-25T15:19:28.247143572Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 41943040,
+            "End": 50331647
+          },
+          "has_range": true
+        },
+        {
+          "index": 12,
+          "start": "2026-09-25T15:19:14.920908019Z",
+          "end": "2026-09-25T15:19:49.425181937Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 58720256,
+            "End": 67108863
+          },
+          "has_range": true
+        },
+        {
+          "index": 13,
+          "start": "2026-09-25T15:19:14.92097374Z",
+          "end": "2026-09-25T15:19:35.414012686Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 92274688,
+            "End": 100663295
+          },
+          "has_range": true
+        },
+        {
+          "index": 14,
+          "start": "2026-09-25T15:19:14.921018648Z",
+          "end": "2026-09-25T15:19:30.669512626Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 75497472,
+            "End": 83886079
+          },
+          "has_range": true
+        },
+        {
+          "index": 15,
+          "start": "2026-09-25T15:19:14.921051613Z",
+          "end": "2026-09-25T15:19:50.660677908Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 109051904,
+            "End": 117440511
+          },
+          "has_range": true
+        },
+        {
+          "index": 16,
+          "start": "2026-09-25T15:19:14.921217208Z",
+          "end": "2026-09-25T15:19:28.103419464Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 125829120,
+            "End": 134217727
+          },
+          "has_range": true
+        },
+        {
+          "index": 17,
+          "start": "2026-09-25T15:19:31.409183141Z",
+          "end": "2026-09-25T15:19:31.843891063Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 5242880,
+            "End": 8388607
+          },
+          "has_range": true
+        },
+        {
+          "index": 18,
+          "start": "2026-09-25T15:19:31.805867862Z",
+          "end": "2026-09-25T15:19:32.242702111Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 13631488,
+            "End": 16777215
+          },
+          "has_range": true
+        },
+        {
+          "index": 19,
+          "start": "2026-09-25T15:19:33.335717473Z",
+          "end": "2026-09-25T15:19:36.0882468Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 22020096,
+            "End": 25165823
+          },
+          "has_range": true
+        },
+        {
+          "index": 20,
+          "start": "2026-09-25T15:19:36.496221772Z",
+          "end": "2026-09-25T15:19:36.935931553Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 30408704,
+            "End": 33554431
+          },
+          "has_range": true
+        },
+        {
+          "index": 21,
+          "start": "2026-09-25T15:19:36.786870075Z",
+          "end": "2026-09-25T15:19:37.216534479Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 55574528,
+            "End": 58720255
+          },
+          "has_range": true
+        },
+        {
+          "index": 22,
+          "start": "2026-09-25T15:19:37.132770653Z",
+          "end": "2026-09-25T15:19:37.562533744Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 63963136,
+            "End": 67108863
+          },
+          "has_range": true
+        },
+        {
+          "index": 23,
+          "start": "2026-09-25T15:19:37.544396594Z",
+          "end": "2026-09-25T15:19:37.97237272Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 72351744,
+            "End": 75497471
+          },
+          "has_range": true
+        },
+        {
+          "index": 24,
+          "start": "2026-09-25T15:19:38.858676716Z",
+          "end": "2026-09-25T15:19:39.285404499Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 89128960,
+            "End": 92274687
+          },
+          "has_range": true
+        },
+        {
+          "index": 25,
+          "start": "2026-09-25T15:19:40.972696737Z",
+          "end": "2026-09-25T15:19:41.397452762Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 114294784,
+            "End": 117440511
+          },
+          "has_range": true
+        },
+        {
+          "index": 26,
+          "start": "2026-09-25T15:19:42.026330062Z",
+          "end": "2026-09-25T15:19:50.112909722Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 105906176,
+            "End": 109051903
+          },
+          "has_range": true
+        },
+        {
+          "index": 27,
+          "start": "2026-09-25T15:19:42.046118546Z",
+          "end": "2026-09-25T15:19:42.195979996Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 4194304,
+            "End": 5242879
+          },
+          "has_range": true
+        },
+        {
+          "index": 28,
+          "start": "2026-09-25T15:19:42.106292556Z",
+          "end": "2026-09-25T15:19:42.250513741Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 3145728,
+            "End": 4194303
+          },
+          "has_range": true
+        },
+        {
+          "index": 29,
+          "start": "2026-09-25T15:19:42.258359042Z",
+          "end": "2026-09-25T15:19:42.40216935Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 20971520,
+            "End": 22020095
+          },
+          "has_range": true
+        },
+        {
+          "index": 30,
+          "start": "2026-09-25T15:19:42.623685083Z",
+          "end": "2026-09-25T15:19:42.766410473Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 19922944,
+            "End": 20971519
+          },
+          "has_range": true
+        },
+        {
+          "index": 31,
+          "start": "2026-09-25T15:19:43.446533666Z",
+          "end": "2026-09-25T15:19:43.590198426Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 29360128,
+            "End": 30408703
+          },
+          "has_range": true
+        },
+        {
+          "index": 32,
+          "start": "2026-09-25T15:19:44.167838861Z",
+          "end": "2026-09-25T15:19:44.316594721Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 28311552,
+            "End": 29360127
+          },
+          "has_range": true
+        },
+        {
+          "index": 33,
+          "start": "2026-09-25T15:19:44.200009204Z",
+          "end": "2026-09-25T15:19:44.349104564Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 54525952,
+            "End": 55574527
+          },
+          "has_range": true
+        },
+        {
+          "index": 34,
+          "start": "2026-09-25T15:19:44.240182691Z",
+          "end": "2026-09-25T15:19:44.388902722Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 53477376,
+            "End": 54525951
+          },
+          "has_range": true
+        },
+        {
+          "index": 35,
+          "start": "2026-09-25T15:19:44.531128118Z",
+          "end": "2026-09-25T15:19:44.677293555Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 62914560,
+            "End": 63963135
+          },
+          "has_range": true
+        },
+        {
+          "index": 36,
+          "start": "2026-09-25T15:19:45.434773466Z",
+          "end": "2026-09-25T15:19:45.580085091Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 61865984,
+            "End": 62914559
+          },
+          "has_range": true
+        },
+        {
+          "index": 37,
+          "start": "2026-09-25T15:19:45.915821791Z",
+          "end": "2026-09-25T15:19:46.064612085Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 71303168,
+            "End": 72351743
+          },
+          "has_range": true
+        },
+        {
+          "index": 38,
+          "start": "2026-09-25T15:19:45.916009316Z",
+          "end": "2026-09-25T15:19:46.064591552Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 70254592,
+            "End": 71303167
+          },
+          "has_range": true
+        },
+        {
+          "index": 39,
+          "start": "2026-09-25T15:19:45.953884247Z",
+          "end": "2026-09-25T15:19:46.102104704Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 88080384,
+            "End": 89128959
+          },
+          "has_range": true
+        },
+        {
+          "index": 40,
+          "start": "2026-09-25T15:19:46.225463037Z",
+          "end": "2026-09-25T15:19:46.36969163Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 87031808,
+            "End": 88080383
+          },
+          "has_range": true
+        },
+        {
+          "index": 41,
+          "start": "2026-09-25T15:19:46.225562701Z",
+          "end": "2026-09-25T15:19:46.369641484Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 104857600,
+            "End": 105906175
+          },
+          "has_range": true
+        },
+        {
+          "index": 42,
+          "start": "2026-09-25T15:19:47.09876357Z",
+          "end": "2026-09-25T15:19:47.247078524Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 103809024,
+            "End": 104857599
+          },
+          "has_range": true
+        },
+        {
+          "index": 43,
+          "start": "2026-09-25T15:19:47.524232697Z",
+          "end": "2026-09-25T15:19:47.672180075Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 106954752,
+            "End": 108003327
+          },
+          "has_range": true
+        },
+        {
+          "index": 44,
+          "start": "2026-09-25T15:19:47.524312386Z",
+          "end": "2026-09-25T15:19:47.672238742Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 112197632,
+            "End": 113246207
+          },
+          "has_range": true
+        },
+        {
+          "index": 45,
+          "start": "2026-09-25T15:19:47.524386279Z",
+          "end": "2026-09-25T15:19:47.672232596Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 113246208,
+            "End": 114294783
+          },
+          "has_range": true
+        },
+        {
+          "index": 46,
+          "start": "2026-09-25T15:19:48.710815331Z",
+          "end": "2026-09-25T15:19:48.852970401Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 108003328,
+            "End": 109051903
+          },
+          "has_range": true
+        },
+        {
+          "index": 47,
+          "start": "2026-09-25T15:19:50.644827647Z",
+          "end": "2026-09-25T15:19:50.688344311Z",
+          "rate": 8388608,
+          "range": {
+            "Start": 28000768,
+            "End": 28311551
+          },
+          "has_range": true
+        }
+      ]
+    }
+  ]
+}

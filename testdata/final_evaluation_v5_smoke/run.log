@@ -1,0 +1,6 @@
+matrix locked: 2 conditions, 2 pairs, 4 downloads, sha256=f734da98c0526b57bc3f3e0110d5d0db9a9c13123bd3209b51c54b7a18caafda
+[  1/4] U1-p00 U1  aria2 dur=  1455.1ms valid=true  netem=none
+[  2/4] U1-p00 U1  v5    dur=  3263.6ms valid=true  netem=none
+[  3/4] U8-p00 U8  aria2 dur=  1430.7ms valid=true  netem=applied
+[  4/4] U8-p00 U8  v5    dur=  3390.3ms valid=true  netem=applied
+wrote 4 runs (2 valid pairs) to testdata/final_evaluation_v5_smoke

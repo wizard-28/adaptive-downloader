@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "bandwidth": 716800,
+      "bandwidth_2": 3145728,
+      "file_size": 655360,
+      "latency_s": 0.09,
+      "loss_percent": 0.0,
+      "switch_after": 3
+    },
+    {
+      "bandwidth": 2097152,
+      "bandwidth_2": 524288,
+      "file_size": 786432,
+      "latency_s": 0.0,
+      "loss_percent": 4.5,
+      "switch_after": 8
+    },
+    {
+      "bandwidth": 5242880,
+      "bandwidth_2": 1048576,
+      "file_size": 524288,
+      "latency_s": 0.05,
+      "loss_percent": 2.5,
+      "switch_after": 2
+    }
+  ],
+  "selected_seed": 4,
+  "validation_mean_completion_s": 0.8227513227513227
+}

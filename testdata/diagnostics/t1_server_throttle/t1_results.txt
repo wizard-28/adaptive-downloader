@@ -1,0 +1,16 @@
+T1 live request-level server-throttle diagnostic
+
+schedule: 512 MiB; 1 MiB requests; normal 8 MiB/s -> throttled 128 KiB/s at 30 s -> recovered 8 MiB/s at 90 s
+
+fixed-C:
+  C1  139583ms  bytes(before/during/after)={'after': 318767104, 'before': 209715200, 'during': 8388608}  sha=True
+  C2  102595ms  bytes(before/during/after)={'after': 108003328, 'before': 412090368, 'during': 16777216}  sha=True
+  C4  20854ms  bytes(before/during/after)={'before': 536870912}  sha=True
+  C8  10313ms  bytes(before/during/after)={'before': 536870912}  sha=True
+  C12 7686ms  bytes(before/during/after)={'before': 536870912}  sha=True
+  C16 5374ms  bytes(before/during/after)={'before': 536870912}  sha=True
+phase best C by throughput: {'before': 16, 'during': 2, 'after': 2}
+pacing persistence evidence: [(1, 8388608, 2964, 3109)]
+oracle targets=[16, 2, 2] time=5656ms
+headroom=-5.3% threshold=10%
+OUTCOME: NOT_READY

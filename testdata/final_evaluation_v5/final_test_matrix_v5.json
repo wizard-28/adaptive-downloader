@@ -1,0 +1,78 @@
+{
+  "label": "FINAL head-to-head test matrix (DQN Candidate v5 vs aria2 baseline v2 / candidate F)",
+  "conditions": [
+    {
+      "id": "U1",
+      "initial_rate": 786432,
+      "subsequent_rate": 3145728,
+      "transition_after_s": 0.8,
+      "latency_ms": 0,
+      "loss_percent": 0
+    },
+    {
+      "id": "U2",
+      "initial_rate": 1572864,
+      "subsequent_rate": 6291456,
+      "transition_after_s": 1.3,
+      "latency_ms": 0,
+      "loss_percent": 0
+    },
+    {
+      "id": "U3",
+      "initial_rate": 4194304,
+      "subsequent_rate": 4194304,
+      "transition_after_s": 0,
+      "latency_ms": 15,
+      "loss_percent": 0.5
+    },
+    {
+      "id": "U4",
+      "initial_rate": 2097152,
+      "subsequent_rate": 2097152,
+      "transition_after_s": 0,
+      "latency_ms": 35,
+      "loss_percent": 1.5
+    },
+    {
+      "id": "U5",
+      "initial_rate": 3145728,
+      "subsequent_rate": 3145728,
+      "transition_after_s": 0,
+      "latency_ms": 60,
+      "loss_percent": 0.75
+    },
+    {
+      "id": "U6",
+      "initial_rate": 1310720,
+      "subsequent_rate": 5242880,
+      "transition_after_s": 1.1,
+      "latency_ms": 25,
+      "loss_percent": 0
+    },
+    {
+      "id": "U7",
+      "initial_rate": 2097152,
+      "subsequent_rate": 6291456,
+      "transition_after_s": 1.4,
+      "latency_ms": 0,
+      "loss_percent": 1
+    },
+    {
+      "id": "U8",
+      "initial_rate": 1048576,
+      "subsequent_rate": 4194304,
+      "transition_after_s": 0.9,
+      "latency_ms": 40,
+      "loss_percent": 1.25
+    }
+  ],
+  "repetitions": 30,
+  "pairs": 240,
+  "total_downloads": 480,
+  "file_size": 16777216,
+  "v5_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "aria2_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "seed": 20260925,
+  "note": "U1-U8 reused verbatim from the established final-evaluation matrix; 16 MiB scale per the frozen v5/aria2-v2 contract, applied identically to both systems; wall-clock schedules only; STRUCTURAL ASYMMETRY: v5 max concurrency 4 vs aria2-F max connections 16 with independent per-response server pacing."
+}

@@ -1,0 +1,49 @@
+{
+  "A_steps": {
+    "actions": [
+      "none",
+      "+1",
+      "-1",
+      "+4",
+      "-4"
+    ],
+    "implementable": true,
+    "max_delta": 4,
+    "n": 5,
+    "reach_16_to_2_decisions": 4,
+    "selected": true,
+    "semantics": "ActionKind inc/dec with Value=step, atomic, clamp [1,16]"
+  },
+  "B_small_large": {
+    "actions": [
+      "none",
+      "small+",
+      "small-",
+      "large+",
+      "large-"
+    ],
+    "implementable": true,
+    "max_delta": 4,
+    "n": 5,
+    "reach_16_to_2_decisions": 4,
+    "reason": "redundant with A",
+    "selected": false,
+    "semantics": "same as A (small=1, large=4)"
+  },
+  "C_targets": {
+    "actions": [
+      "none",
+      "low",
+      "medium",
+      "high",
+      "max"
+    ],
+    "implementable": true,
+    "max_delta": 15,
+    "n": 5,
+    "reach_16_to_2_decisions": 1,
+    "reason": "introduces reserved target-setting actions; discontinuous; oscillation risk",
+    "selected": false,
+    "semantics": "instant target set"
+  }
+}

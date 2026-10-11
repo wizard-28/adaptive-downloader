@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="20" font-size="13" font-family="monospace">FIG 1: v3 baseline selected-arm mean vs exploration bonus (lock-in)</text>
+<line x1="40" y1="260" x2="620" y2="260" stroke="#333"/>
+<line x1="40" y1="30" x2="40" y2="260" stroke="#333"/>
+<polyline points="40.0,103.9 69.5,105.6 98.9,92.8 128.4,86.2 157.9,81.5 187.4,78.3 216.8,76.0 246.3,74.1 275.8,72.7 305.3,71.2 334.7,70.1 364.2,69.2 393.7,68.7 423.2,68.1 452.6,67.9 482.1,67.6 511.6,67.2 541.1,66.9 570.5,66.6 600.0,66.3" fill="none" stroke="#1f77b4" stroke-width="2"/>
+<line x1="40" y1="251.7" x2="620" y2="251.7" stroke="#d62728" stroke-dasharray="4 3"/>
+<line x1="40" y1="251.9" x2="620" y2="251.9" stroke="#2ca02c" stroke-dasharray="2 3"/>
+<text x="490" y="248.7" font-size="11" fill="#d62728">selected bonus</text>
+<text x="490" y="248.9" font-size="11" fill="#2ca02c">max other bonus</text>
+<text x="480" y="60" font-size="11" fill="#1f77b4">selected mean (rises/frozen)</text>
+<text x="45" y="55" font-size="10" fill="#666">score</text>
+<text x="45" y="255" font-size="10" fill="#666">decision 5..24</text>
+</svg>

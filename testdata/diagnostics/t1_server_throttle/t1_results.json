@@ -1,0 +1,69 @@
+{
+  "best_fixed_c": 16,
+  "best_fixed_ms": 5374.117,
+  "file_bytes": 536870912,
+  "gates": {
+    "A_pacing_persistence": {
+      "evidence": [
+        [
+          1,
+          8388608,
+          2964,
+          3109
+        ]
+      ],
+      "passed": true
+    },
+    "B_live_concurrency_reversal": {
+      "passed": false,
+      "phase_best_c_by_throughput": {
+        "after": 2,
+        "before": 16,
+        "during": 2
+      }
+    },
+    "C_throttle_weight": {
+      "bytes_by_start_phase": {
+        "after": 71128405.33333333,
+        "before": 461548202.6666667,
+        "during": 4194304.0
+      },
+      "passed": true,
+      "wall_time_s": {
+        "after": 49583.15200000001,
+        "before": 30000,
+        "during": 60000
+      }
+    },
+    "D_granularity_isolation": {
+      "detail": "all requests exactly 1 MiB fixed chunk",
+      "passed": true
+    },
+    "E_dynamic_headroom": {
+      "best_static_ms": 5374.117,
+      "headroom": -0.05250704441306359,
+      "oracle_ms": 5656.296,
+      "passed": false,
+      "threshold": 0.1
+    },
+    "F_simulator_live": {
+      "detail": "live-first; simulator calibration deferred, not used for training",
+      "passed": null
+    }
+  },
+  "headroom": -0.05250704441306359,
+  "oracle_ms": 5656.296,
+  "oracle_targets": [
+    16,
+    2,
+    2
+  ],
+  "outcome": "NOT_READY",
+  "request_bytes": 1048576,
+  "schedule": {
+    "normal_rate": 8388608,
+    "recover_at_s": 90,
+    "throttle_at_s": 30,
+    "throttle_rate": 131072
+  }
+}

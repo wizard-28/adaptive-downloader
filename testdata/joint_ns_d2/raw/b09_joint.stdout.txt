@@ -1,0 +1,1 @@
+run b09_joint mode=joint completion=46.866s output=536870912 verified=true retries=0 decisions=89 err=""

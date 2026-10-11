@@ -1,0 +1,12 @@
+Final DQN vs aria2 evaluation - paired summary
+pairs=150 aggregate DQN mean=7501.5ms aria2 mean=5352.6ms
+geometric ratio=1.4560 relative reduction=-45.60% ratio 95%CI=[1.3004,1.6303] p(one-sided)=1
+pairs DQN faster=37/150 (24.7%), aria2 faster=113, ties=0; conditions DQN faster=1/5
+claim supported=False
+
+per-condition:
+  A2: DQN 8313.5ms vs aria2 7855.4ms red=-6.5% ratio=1.065 CI=[1.017,1.116] p=0.9849 p_holm=1
+  B2: DQN 4932.6ms vs aria2 4802.7ms red=-2.7% ratio=1.027 CI=[0.995,1.061] p=0.9392 p_holm=1
+  C2: DQN 5569.0ms vs aria2 4828.4ms red=-15.3% ratio=1.153 CI=[1.118,1.190] p=1 p_holm=1
+  D2: DQN 12043.9ms vs aria2 2221.5ms red=-447.1% ratio=5.471 CI=[5.205,5.751] p=1 p_holm=1
+  E2: DQN 6648.2ms vs aria2 7055.1ms red=5.2% ratio=0.948 CI=[0.897,1.002] p=0.02552 p_holm=0.1276

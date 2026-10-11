@@ -1,0 +1,21 @@
+DQN Candidate v4 (concurrency-only, 1 MiB fixed chunk). NO performance claim; NO aria2.
+
+decision interval candidates=[2, 4, 8] selected=8
+seeds=[0, 1, 2, 3, 4] episodes=1500 selected_seed=1
+validation mean completion=2.2992s candidate sha256=227d9845096b5d1382c58cc9080e5907fc0b81cba7dc04546c5eaa5b3ecf4ad5
+
+decision interval results:
+  interval 2: mean=3.6161s req/MiB=1.0 churn/MiB=0.42
+  interval 4: mean=2.8936s req/MiB=1.0 churn/MiB=0.09
+  interval 8: mean=2.2741s req/MiB=1.0 churn/MiB=0.06
+
+held-out TEST (mean completion s / req per MiB / avg concurrency):
+  dqn                    mean=2.9606 req/MiB=1.0 avgC=2.97 maxC=2.97 churn/MiB=0.08
+  fixed                  mean=4.0981 req/MiB=1.0 avgC=2.50 maxC=2.50 churn/MiB=0.00
+  concurrency-adaptive   mean=4.0981 req/MiB=1.0 avgC=2.50 maxC=2.50 churn/MiB=0.00
+
+ablations (mean completion s / req/MiB):
+  dqn_final              mean=2.9606 req/MiB=1.0
+  random_policy          mean=4.8656 req/MiB=1.0
+  shuffled_actions       mean=4.0981 req/MiB=1.0
+  corrupted_state        mean=2.9156 req/MiB=1.0

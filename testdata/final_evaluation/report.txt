@@ -1,0 +1,35 @@
+FINAL DQN vs aria2 EVALUATION - report
+Frozen: DQN Candidate v2 (59cbc5e6...) vs FINAL ARIA2 BASELINE CONFIG v1 (6b8cf33e...)
+Matrix sha256: 01b8567797c0d457f88edffbb3af2c9c9be68a9593085c3f7e204654969e73bc
+Design: 8 conditions x 30 matched pairs = 240 pairs / 480 downloads; randomized order; fresh server per run.
+Primary metric: completion time. Primary unit: matched pair.
+
+TABLE 3 - aggregate paired result:
+  pairs=240 DQN mean=2276.8ms aria2 mean=1309.1ms
+  geometric ratio=1.7571  relative reduction=-75.71%
+  ratio 95% CI=[1.6687,1.8502]  p(one-sided DQN faster)=1
+  pairs DQN faster=31/240 (12.9%), aria2 faster=209, ties=0
+  conditions DQN faster=1/8
+
+TABLE 2 - per condition:
+  cond  DQN_mean  aria2_mean  reduction  geo_ratio  95%CI(ratio)        p_holm
+  U1      1257.4     1439.2      13.0%     0.870  [0.841,0.900]  4e-05
+  U2      1098.1      769.9     -42.3%     1.423  [1.386,1.462]  1
+  U3      1819.1      626.0    -193.5%     2.935  [2.682,3.212]  1
+  U4      3260.9     1674.8     -95.0%     1.950  [1.772,2.145]  1
+  U5      4102.4     2665.4     -54.3%     1.543  [1.424,1.672]  1
+  U6      2143.4     1108.4     -91.4%     1.914  [1.813,2.021]  1
+  U7      1295.4      625.8    -109.8%     2.098  [1.906,2.309]  1
+  U8      3237.5     1563.3    -107.0%     2.070  [1.882,2.277]  1
+
+CLAIM CRITERIA (pre-specified):
+  1_ratio_below_1: False
+  2_ci_excludes_zero_dqn_faster: False
+  3_perm_test_supports_dqn_faster: False
+  4_majority_conditions_dqn_faster: False
+  claim_supported=False
+
+CONCLUSION: The final evaluation does NOT support an outperformance claim against aria2c
+under the tested controlled conditions. DQN is ~75.7% SLOWER on aggregate (geometric ratio 1.757),
+faster in only 1 of 8 conditions (U1) and 31/240 matched pairs. Reported honestly; the experiment
+was not altered to rescue the claim.

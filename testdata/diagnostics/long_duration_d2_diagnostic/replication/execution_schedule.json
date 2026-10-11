@@ -1,0 +1,145 @@
+{
+  "pairs": [
+    {
+      "pair_id": "D2-p00",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p00-v6",
+      "aria2_run_id": "D2-p00-aria2"
+    },
+    {
+      "pair_id": "D2-p01",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p01-v6",
+      "aria2_run_id": "D2-p01-aria2"
+    },
+    {
+      "pair_id": "D2-p02",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p02-v6",
+      "aria2_run_id": "D2-p02-aria2"
+    },
+    {
+      "pair_id": "D2-p03",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p03-v6",
+      "aria2_run_id": "D2-p03-aria2"
+    },
+    {
+      "pair_id": "D2-p04",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p04-v6",
+      "aria2_run_id": "D2-p04-aria2"
+    },
+    {
+      "pair_id": "D2-p05",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p05-v6",
+      "aria2_run_id": "D2-p05-aria2"
+    },
+    {
+      "pair_id": "D2-p06",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p06-v6",
+      "aria2_run_id": "D2-p06-aria2"
+    },
+    {
+      "pair_id": "D2-p07",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p07-v6",
+      "aria2_run_id": "D2-p07-aria2"
+    },
+    {
+      "pair_id": "D2-p08",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p08-v6",
+      "aria2_run_id": "D2-p08-aria2"
+    },
+    {
+      "pair_id": "D2-p09",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p09-v6",
+      "aria2_run_id": "D2-p09-aria2"
+    },
+    {
+      "pair_id": "D2-p10",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p10-v6",
+      "aria2_run_id": "D2-p10-aria2"
+    },
+    {
+      "pair_id": "D2-p11",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p11-v6",
+      "aria2_run_id": "D2-p11-aria2"
+    },
+    {
+      "pair_id": "D2-p12",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p12-v6",
+      "aria2_run_id": "D2-p12-aria2"
+    },
+    {
+      "pair_id": "D2-p13",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p13-v6",
+      "aria2_run_id": "D2-p13-aria2"
+    },
+    {
+      "pair_id": "D2-p14",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p14-v6",
+      "aria2_run_id": "D2-p14-aria2"
+    },
+    {
+      "pair_id": "D2-p15",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p15-v6",
+      "aria2_run_id": "D2-p15-aria2"
+    },
+    {
+      "pair_id": "D2-p16",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p16-v6",
+      "aria2_run_id": "D2-p16-aria2"
+    },
+    {
+      "pair_id": "D2-p17",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p17-v6",
+      "aria2_run_id": "D2-p17-aria2"
+    },
+    {
+      "pair_id": "D2-p18",
+      "condition": "D2",
+      "first": "aria2",
+      "v6_run_id": "D2-p18-v6",
+      "aria2_run_id": "D2-p18-aria2"
+    },
+    {
+      "pair_id": "D2-p19",
+      "condition": "D2",
+      "first": "v6",
+      "v6_run_id": "D2-p19-v6",
+      "aria2_run_id": "D2-p19-aria2"
+    }
+  ],
+  "seed": 20260925
+}

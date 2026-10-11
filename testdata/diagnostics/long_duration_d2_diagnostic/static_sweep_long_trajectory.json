@@ -1,0 +1,512 @@
+{
+  "L1_SPEC": {
+    "label": "long multi-transition trajectory (new family, separate from the frozen A2-E2)",
+    "name": "L1",
+    "note": "phase durations are predetermined bounds [12,18] s; the last phase runs to completion",
+    "phase_count": 7,
+    "phase_seconds_bounds": [
+      12,
+      18
+    ],
+    "phases": [
+      {
+        "congestion": 0.004,
+        "latency_s": 0.02,
+        "link_bandwidth": 6291456,
+        "loss_percent": 0.3,
+        "rate": 8388608
+      },
+      {
+        "congestion": 0.02,
+        "latency_s": 0.12,
+        "link_bandwidth": 1048576,
+        "loss_percent": 3.0,
+        "rate": 8388608
+      },
+      {
+        "congestion": 0.006,
+        "latency_s": 0.04,
+        "link_bandwidth": 4194304,
+        "loss_percent": 0.6,
+        "rate": 8388608
+      },
+      {
+        "congestion": 0.004,
+        "latency_s": 0.03,
+        "link_bandwidth": 0,
+        "loss_percent": 0.5,
+        "rate": 262144
+      },
+      {
+        "congestion": 0.005,
+        "latency_s": 0.03,
+        "link_bandwidth": 5242880,
+        "loss_percent": 0.4,
+        "rate": 8388608
+      },
+      {
+        "congestion": 0.015,
+        "latency_s": 0.09,
+        "link_bandwidth": 1572864.0,
+        "loss_percent": 2.5,
+        "rate": 8388608
+      },
+      {
+        "congestion": 0.004,
+        "latency_s": 0.02,
+        "link_bandwidth": 6291456,
+        "loss_percent": 0.3,
+        "rate": 8388608
+      }
+    ]
+  },
+  "file_size_rationale": {
+    "chosen_live_size_mib": 512,
+    "reasons": [
+      "512 MiB is the largest size already validated end-to-end in this container (RAM ~1 GB available; 1 GiB is unsafe).",
+      "6 predetermined phases of 12-18 s => the trajectory stays dynamic for ~72-108 s; at the shared caps a 512 MiB transfer lasts longer than that at C=1..16 (see full sweep).",
+      "startup cost measured at 16/128/512 MiB was 12.5%/5.1%/2.4% of runtime, so 512 MiB keeps startup small while spanning many transitions."
+    ]
+  },
+  "full_trajectory_sweep": {
+    "best_c": 15,
+    "by_c": {
+      "1": {
+        "mean_completion_s": 143.68500000000023,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.12,
+          15.68,
+          14.21,
+          16.12,
+          14.03,
+          15.512,
+          53.013
+        ]
+      },
+      "10": {
+        "mean_completion_s": 139.64333333333366,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.057,
+          16.417,
+          13.564,
+          15.138,
+          14.983,
+          15.198,
+          49.287
+        ]
+      },
+      "11": {
+        "mean_completion_s": 139.06106060606066,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.047,
+          15.887,
+          14.098,
+          15.162,
+          14.967,
+          15.174,
+          48.725
+        ]
+      },
+      "12": {
+        "mean_completion_s": 138.61791666666664,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.047,
+          15.866,
+          14.226,
+          15.025,
+          14.952,
+          15.162,
+          48.341
+        ]
+      },
+      "13": {
+        "mean_completion_s": 138.83717948717992,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.046,
+          15.855,
+          14.345,
+          15.072,
+          14.718,
+          15.825,
+          47.975
+        ]
+      },
+      "14": {
+        "mean_completion_s": 137.85166666666646,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.036,
+          15.333,
+          14.746,
+          15.131,
+          14.815,
+          15.115,
+          47.676
+        ]
+      },
+      "15": {
+        "mean_completion_s": 137.71100000000064,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.036,
+          15.829,
+          14.334,
+          14.904,
+          15.022,
+          15.107,
+          47.479
+        ]
+      },
+      "16": {
+        "mean_completion_s": 137.78614583333362,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.026,
+          15.309,
+          14.825,
+          14.982,
+          15.019,
+          15.427,
+          47.198
+        ]
+      },
+      "2": {
+        "mean_completion_s": 141.78999999999996,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.115,
+          14.975,
+          15.12,
+          16.2,
+          13.725,
+          15.15,
+          51.505
+        ]
+      },
+      "3": {
+        "mean_completion_s": 141.14666666666653,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.113,
+          15.787,
+          14.242,
+          15.602,
+          14.405,
+          15.245,
+          50.753
+        ]
+      },
+      "4": {
+        "mean_completion_s": 140.70249999999993,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.113,
+          15.66,
+          14.293,
+          15.338,
+          14.678,
+          15.454,
+          50.168
+        ]
+      },
+      "5": {
+        "mean_completion_s": 140.6363333333333,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.104,
+          16.088,
+          14.087,
+          15.207,
+          14.533,
+          15.383,
+          50.235
+        ]
+      },
+      "6": {
+        "mean_completion_s": 140.5533333333334,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.103,
+          16.027,
+          14.052,
+          15.143,
+          14.733,
+          15.663,
+          49.833
+        ]
+      },
+      "7": {
+        "mean_completion_s": 139.68833333333367,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.103,
+          15.471,
+          14.572,
+          15.118,
+          14.819,
+          15.624,
+          48.982
+        ]
+      },
+      "8": {
+        "mean_completion_s": 139.3820833333336,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.094,
+          15.96,
+          14.28,
+          14.856,
+          14.899,
+          15.255,
+          49.038
+        ]
+      },
+      "9": {
+        "mean_completion_s": 139.40222222222263,
+        "mean_final_phase_index": 6,
+        "mean_phase_time_s": [
+          15.067,
+          15.413,
+          14.919,
+          14.898,
+          14.77,
+          15.224,
+          49.111
+        ]
+      }
+    },
+    "c16_completion_s": 137.78614583333362,
+    "c1_completion_s": 143.68500000000023,
+    "file_mib": 512,
+    "phase_seconds": 15.0,
+    "seeds": [
+      300,
+      301
+    ]
+  },
+  "per_phase_sweep": {
+    "distinct_best_c": [
+      1,
+      2,
+      3,
+      5,
+      16
+    ],
+    "file_mib": 128,
+    "has_low_and_high": true,
+    "phases": {
+      "1": {
+        "best_c": 1,
+        "mean_completion_s_by_c": {
+          "1": 23.8933,
+          "10": 24.6523,
+          "11": 24.7358,
+          "12": 24.735,
+          "13": 24.7344,
+          "14": 24.9019,
+          "15": 24.9013,
+          "16": 24.9848,
+          "2": 23.9817,
+          "3": 24.0667,
+          "4": 24.065,
+          "5": 24.1493,
+          "6": 24.1483,
+          "7": 24.1476,
+          "8": 24.3163,
+          "9": 24.5689
+        },
+        "phase": {
+          "congestion": 0.004,
+          "latency_s": 0.02,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.3,
+          "rate": 8388608
+        },
+        "throughput_mibps": 5.357142857142844
+      },
+      "2": {
+        "best_c": 2,
+        "mean_completion_s_by_c": {
+          "1": 145.6,
+          "10": 161.188,
+          "11": 161.5455,
+          "12": 163.9467,
+          "13": 165.3538,
+          "14": 169.2957,
+          "15": 172.7413,
+          "16": 174.6825,
+          "2": 142.26,
+          "3": 142.6267,
+          "4": 143.545,
+          "5": 146.432,
+          "6": 149.5233,
+          "7": 152.7314,
+          "8": 154.9975,
+          "9": 157.3156
+        },
+        "phase": {
+          "congestion": 0.02,
+          "latency_s": 0.12,
+          "link_bandwidth": 1048576,
+          "loss_percent": 3.0,
+          "rate": 8388608
+        },
+        "throughput_mibps": 0.8997610009841165
+      },
+      "3": {
+        "best_c": 5,
+        "mean_completion_s_by_c": {
+          "1": 37.265,
+          "10": 36.467,
+          "11": 36.4414,
+          "12": 36.8,
+          "13": 36.7815,
+          "14": 36.7657,
+          "15": 37.131,
+          "16": 37.6237,
+          "2": 36.11,
+          "3": 35.8083,
+          "4": 35.59,
+          "5": 35.588,
+          "6": 36.0133,
+          "7": 36.2043,
+          "8": 36.155,
+          "9": 36.3711
+        },
+        "phase": {
+          "congestion": 0.006,
+          "latency_s": 0.04,
+          "link_bandwidth": 4194304,
+          "loss_percent": 0.6,
+          "rate": 8388608
+        },
+        "throughput_mibps": 3.5967179948297083
+      },
+      "4": {
+        "best_c": 16,
+        "mean_completion_s_by_c": {
+          "1": 515.84,
+          "10": 55.903,
+          "11": 51.0536,
+          "12": 47.0125,
+          "13": 43.9031,
+          "14": 40.95,
+          "15": 38.525,
+          "16": 36.2772,
+          "2": 261.215,
+          "3": 174.9967,
+          "4": 132.3912,
+          "5": 106.425,
+          "6": 89.1142,
+          "7": 77.0371,
+          "8": 67.9794,
+          "9": 61.3822
+        },
+        "phase": {
+          "congestion": 0.004,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 0.5,
+          "rate": 262144
+        },
+        "throughput_mibps": 3.5283881916149085
+      },
+      "5": {
+        "best_c": 5,
+        "mean_completion_s_by_c": {
+          "1": 29.44,
+          "10": 29.303,
+          "11": 29.4927,
+          "12": 29.4817,
+          "13": 29.5735,
+          "14": 29.7675,
+          "15": 29.8613,
+          "16": 29.855,
+          "2": 29.015,
+          "3": 28.7967,
+          "4": 28.7913,
+          "5": 28.725,
+          "6": 28.7833,
+          "7": 28.8536,
+          "8": 29.2369,
+          "9": 29.3189
+        },
+        "phase": {
+          "congestion": 0.005,
+          "latency_s": 0.03,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        "throughput_mibps": 4.456048738033062
+      },
+      "6": {
+        "best_c": 3,
+        "mean_completion_s_by_c": {
+          "1": 97.9883,
+          "10": 103.3162,
+          "11": 103.892,
+          "12": 105.4942,
+          "13": 107.4431,
+          "14": 108.0531,
+          "15": 108.3343,
+          "16": 109.9667,
+          "2": 95.5758,
+          "3": 95.06,
+          "4": 95.3021,
+          "5": 95.1627,
+          "6": 97.2258,
+          "7": 98.6867,
+          "8": 100.199,
+          "9": 102.4222
+        },
+        "phase": {
+          "congestion": 0.015,
+          "latency_s": 0.09,
+          "link_bandwidth": 1572864.0,
+          "loss_percent": 2.5,
+          "rate": 8388608
+        },
+        "throughput_mibps": 1.3465179886387573
+      },
+      "7": {
+        "best_c": 1,
+        "mean_completion_s_by_c": {
+          "1": 23.8933,
+          "10": 24.6523,
+          "11": 24.7358,
+          "12": 24.735,
+          "13": 24.7344,
+          "14": 24.9019,
+          "15": 24.9013,
+          "16": 24.9848,
+          "2": 23.9817,
+          "3": 24.0667,
+          "4": 24.065,
+          "5": 24.1493,
+          "6": 24.1483,
+          "7": 24.1476,
+          "8": 24.3163,
+          "9": 24.5689
+        },
+        "phase": {
+          "congestion": 0.004,
+          "latency_s": 0.02,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.3,
+          "rate": 8388608
+        },
+        "throughput_mibps": 5.357142857142844
+      }
+    },
+    "seeds": [
+      300,
+      301
+    ]
+  }
+}

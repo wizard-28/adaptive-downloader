@@ -1,0 +1,49 @@
+{
+  "design": {
+    "N": 4,
+    "S": [
+      1048576,
+      4194304,
+      16777216
+    ],
+    "state": "capped from start C=8MiB/s gamma=0.05",
+    "timeout_s": 30,
+    "extra_reps": 4,
+    "netem": "40ms + 0.4%"
+  },
+  "pooled": {
+    "1048576": {
+      "n": 7,
+      "gate_n": 3,
+      "precision_n": 4,
+      "median_s": 89.73768799999999,
+      "min_s": 89.29711400000001,
+      "max_s": 90.430286
+    },
+    "4194304": {
+      "n": 7,
+      "gate_n": 3,
+      "precision_n": 4,
+      "median_s": 86.37840399999999,
+      "min_s": 86.10848299999999,
+      "max_s": 86.935025
+    },
+    "16777216": {
+      "n": 5,
+      "gate_n": 1,
+      "precision_n": 4,
+      "median_s": 96.977157,
+      "min_s": 96.773417,
+      "max_s": 97.52441400000001
+    }
+  },
+  "local_S_margin": {
+    "best": "4194304",
+    "second": "1048576",
+    "margin": 0.03743448349148468,
+    "ci95_low": 0.03092594999617008,
+    "ci95_high": 0.04448740758091185,
+    "criterion": 0.05,
+    "criterion_state": "reported, unchanged; not redefined after the fact"
+  }
+}

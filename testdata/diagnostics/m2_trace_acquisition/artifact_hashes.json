@@ -1,0 +1,9 @@
+{
+  "trace_inventory.json": "021dd19328cf897fd4d84cde2772828c210ce7137c7accdb969abfd05b799656",
+  "provenance.json": "d0953e38ab8b2101d9633840d6868b8430f88ca63537ca4c8cd1e34b73e1e3fe",
+  "schema_audit.json": "5ad7524d4bc2b2152263b52008e7330ad5ac9ee88548ea4004cbeb16a4eb6f28",
+  "trace_quality.json": "3a3425c7cc3ee6fb351eaadbd28f20bcb160488eb3ed6fe8dfaa1d6486324fba",
+  "canonical_manifest.json": "3c8a57b66a65e58e258f56744cd690c454784f66a6f6e0c0de0773829ec66b8c",
+  "gates.json": "51579c3dca9bdcc2feaf6f5fe84c76e7a3964aa8e8f798569ca5e23dc4529360",
+  "M2 report.txt": "3ee1ee0bb35e10c39c54845882d915c31f11d7f33693c4e8a7fb4980522447e1"
+}

@@ -1,0 +1,12 @@
+Live periodic-exploration posterior replay (frozen benchmark v4)
+source: testdata/benchmark_v4/matrix_linucb_periodic_reps10.json
+standard replay action match: 4586/4586 (validates reconstruction)
+Forced exploratory actions: does the forced arm's UCB score/rank move?
+  scenario           runs  events    dScore    fracUp  fracRankUp  bestRank    recon
+  baseline             10     170    0.2214     0.835       0.606         1     1090/1090
+  server-throttle      10     190    0.3602     0.795       0.600         1     1230/1230
+  latency              10      50    0.3351     0.880       0.800         1      380/380
+  loss                 10     137    0.5404     0.781       0.409         1      903/903
+  combined             10      62    0.0635     0.774       0.500         1      450/450
+Sample forced events (loss, increase-concurrency):
+  decision 16 arm=increase-concurrency score 1.8030 -> 2.3959 rank 2 -> 2 reward=3.458

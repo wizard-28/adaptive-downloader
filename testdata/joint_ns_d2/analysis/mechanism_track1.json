@@ -1,0 +1,2842 @@
+{
+  "modes": {
+    "fixed": {
+      "n_runs": 20,
+      "median_n_requests": 128.0,
+      "total_retries": 0,
+      "median_decisions": 0.0,
+      "median_first_action_ms": null,
+      "median_last_action_ms": null,
+      "median_final_N": null,
+      "median_final_S_MiB": null,
+      "final_states": [],
+      "phase_counts_median": {
+        "<2s": 16.0,
+        "2-4s": 0.0,
+        ">=4s": 112.0
+      },
+      "runs": [
+        {
+          "run_id": "b01_fixed",
+          "completion_ms": 20883.448,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b02_fixed",
+          "completion_ms": 20368.379,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b03_fixed",
+          "completion_ms": 20169.798,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b04_fixed",
+          "completion_ms": 20040.861,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b05_fixed",
+          "completion_ms": 20664.39,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b06_fixed",
+          "completion_ms": 20464.837,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b07_fixed",
+          "completion_ms": 20098.763,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b08_fixed",
+          "completion_ms": 19943.889,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b09_fixed",
+          "completion_ms": 20562.065,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b10_fixed",
+          "completion_ms": 20192.072,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b11_fixed",
+          "completion_ms": 20360.177,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b12_fixed",
+          "completion_ms": 20205.063,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b13_fixed",
+          "completion_ms": 20191.095,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b14_fixed",
+          "completion_ms": 20508.51,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b15_fixed",
+          "completion_ms": 20062.078,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b16_fixed",
+          "completion_ms": 20196.776,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b17_fixed",
+          "completion_ms": 20112.279,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b18_fixed",
+          "completion_ms": 20124.102,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b19_fixed",
+          "completion_ms": 19882.417,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        },
+        {
+          "run_id": "b20_fixed",
+          "completion_ms": 20042.675,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 16,
+            "2560000": 112
+          },
+          "phase_counts": {
+            "<2s": 16,
+            ">=4s": 112
+          },
+          "n_decisions": 0,
+          "actions": {},
+          "first_action_ms": null,
+          "last_action_ms": null,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 0,
+          "final_state": null,
+          "unique_states": 0,
+          "throughput_saturation_ms": null
+        }
+      ]
+    },
+    "n-only": {
+      "n_runs": 20,
+      "median_n_requests": 128.0,
+      "total_retries": 0,
+      "median_decisions": 128.0,
+      "median_first_action_ms": 8617.739,
+      "median_last_action_ms": 8641.226999999999,
+      "median_final_N": 8.0,
+      "median_final_S_MiB": 4.0,
+      "final_states": [
+        [
+          8,
+          4.0
+        ]
+      ],
+      "phase_counts_median": {
+        "<2s": 4.0,
+        "2-4s": 0.0,
+        ">=4s": 124.0
+      },
+      "runs": [
+        {
+          "run_id": "b01_n-only",
+          "completion_ms": 37743.184,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8609.8,
+          "last_action_ms": 8974.559,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8609.8
+        },
+        {
+          "run_id": "b02_n-only",
+          "completion_ms": 36776.411,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8613.391,
+          "last_action_ms": 8623.751,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8613.391
+        },
+        {
+          "run_id": "b03_n-only",
+          "completion_ms": 36904.017,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8609.971,
+          "last_action_ms": 8631.956,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8609.971
+        },
+        {
+          "run_id": "b04_n-only",
+          "completion_ms": 37103.937,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8624.33,
+          "last_action_ms": 8631.801,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8624.33
+        },
+        {
+          "run_id": "b05_n-only",
+          "completion_ms": 37161.694,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8640.026,
+          "last_action_ms": 8645.863,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8640.026
+        },
+        {
+          "run_id": "b06_n-only",
+          "completion_ms": 36706.806,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8644.27,
+          "last_action_ms": 8714.322,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8644.27
+        },
+        {
+          "run_id": "b07_n-only",
+          "completion_ms": 36811.514,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8615.096,
+          "last_action_ms": 8624.559,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8615.096
+        },
+        {
+          "run_id": "b08_n-only",
+          "completion_ms": 36765.754,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8629.582,
+          "last_action_ms": 8725.46,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8629.582
+        },
+        {
+          "run_id": "b09_n-only",
+          "completion_ms": 37004.757,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8606.882,
+          "last_action_ms": 8650.965,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8606.882
+        },
+        {
+          "run_id": "b10_n-only",
+          "completion_ms": 36746.009,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8642.597,
+          "last_action_ms": 8651.328,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8642.597
+        },
+        {
+          "run_id": "b11_n-only",
+          "completion_ms": 36784.647,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8610.174,
+          "last_action_ms": 8619.064,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8610.174
+        },
+        {
+          "run_id": "b12_n-only",
+          "completion_ms": 36830.004,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8608.137,
+          "last_action_ms": 8637.429,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8608.137
+        },
+        {
+          "run_id": "b13_n-only",
+          "completion_ms": 37009.266,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8641.393,
+          "last_action_ms": 8642.081,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8641.393
+        },
+        {
+          "run_id": "b14_n-only",
+          "completion_ms": 36560.095,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8610.914,
+          "last_action_ms": 8627.331,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8610.914
+        },
+        {
+          "run_id": "b15_n-only",
+          "completion_ms": 36936.403,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8632.863,
+          "last_action_ms": 8640.373,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8632.863
+        },
+        {
+          "run_id": "b16_n-only",
+          "completion_ms": 36967.221,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8608.144,
+          "last_action_ms": 8631.417,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8608.144
+        },
+        {
+          "run_id": "b17_n-only",
+          "completion_ms": 37181.966,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8630.39,
+          "last_action_ms": 8715.378,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8630.39
+        },
+        {
+          "run_id": "b18_n-only",
+          "completion_ms": 36894.727,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8620.382,
+          "last_action_ms": 8650.087,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8620.382
+        },
+        {
+          "run_id": "b19_n-only",
+          "completion_ms": 36947.142,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8632.194,
+          "last_action_ms": 8637.309,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8632.194
+        },
+        {
+          "run_id": "b20_n-only",
+          "completion_ms": 36845.328,
+          "n_requests": 128,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 124
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 124
+          },
+          "n_decisions": 128,
+          "actions": {
+            "none": 124,
+            "increase-concurrency": 4
+          },
+          "first_action_ms": 8614.738,
+          "last_action_ms": 8690.784,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            8,
+            4194304
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8614.738
+        }
+      ]
+    },
+    "s-only": {
+      "n_runs": 20,
+      "median_n_requests": 69.0,
+      "total_retries": 0,
+      "median_decisions": 69.0,
+      "median_first_action_ms": 8631.104,
+      "median_last_action_ms": 8652.046999999999,
+      "median_final_N": 4.0,
+      "median_final_S_MiB": 8.0,
+      "final_states": [
+        [
+          4,
+          8.0
+        ]
+      ],
+      "phase_counts_median": {
+        "<2s": 4.0,
+        "2-4s": 0.0,
+        ">=4s": 65.0
+      },
+      "runs": [
+        {
+          "run_id": "b01_s-only",
+          "completion_ms": 65558.31,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8625.132,
+          "last_action_ms": 8654.953,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8625.132
+        },
+        {
+          "run_id": "b02_s-only",
+          "completion_ms": 64943.275,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            1.0,
+            4.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8660.571,
+          "last_action_ms": 8662.589,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8660.571
+        },
+        {
+          "run_id": "b03_s-only",
+          "completion_ms": 65095.691,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8620.975,
+          "last_action_ms": 8641.897,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8620.975
+        },
+        {
+          "run_id": "b04_s-only",
+          "completion_ms": 64297.792,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            2.0,
+            4.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8583.111,
+          "last_action_ms": 8589.3,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8583.111
+        },
+        {
+          "run_id": "b05_s-only",
+          "completion_ms": 65291.844,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8599.79,
+          "last_action_ms": 8606.812,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8599.79
+        },
+        {
+          "run_id": "b06_s-only",
+          "completion_ms": 65134.987,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8663.269,
+          "last_action_ms": 8695.124,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8663.269
+        },
+        {
+          "run_id": "b07_s-only",
+          "completion_ms": 64662.506,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8637.194,
+          "last_action_ms": 8643.514,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8637.194
+        },
+        {
+          "run_id": "b08_s-only",
+          "completion_ms": 65455.461,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8671.768,
+          "last_action_ms": 8799.25,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8671.768
+        },
+        {
+          "run_id": "b09_s-only",
+          "completion_ms": 65050.249,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8654.107,
+          "last_action_ms": 8711.093,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8654.107
+        },
+        {
+          "run_id": "b10_s-only",
+          "completion_ms": 64991.588,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8668.352,
+          "last_action_ms": 8695.208,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8668.352
+        },
+        {
+          "run_id": "b11_s-only",
+          "completion_ms": 65101.245,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8611.95,
+          "last_action_ms": 8940.5,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8611.95
+        },
+        {
+          "run_id": "b12_s-only",
+          "completion_ms": 64993.855,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8641.99,
+          "last_action_ms": 8677.422,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8641.99
+        },
+        {
+          "run_id": "b13_s-only",
+          "completion_ms": 65142.371,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8636.884,
+          "last_action_ms": 8650.875,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8636.884
+        },
+        {
+          "run_id": "b14_s-only",
+          "completion_ms": 64539.17,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8639.924,
+          "last_action_ms": 8653.219,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8639.924
+        },
+        {
+          "run_id": "b15_s-only",
+          "completion_ms": 65043.095,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8630.732,
+          "last_action_ms": 8644.631,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8630.732
+        },
+        {
+          "run_id": "b16_s-only",
+          "completion_ms": 65306.784,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8607.695,
+          "last_action_ms": 8616.681,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8607.695
+        },
+        {
+          "run_id": "b17_s-only",
+          "completion_ms": 65281.793,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8617.846,
+          "last_action_ms": 8625.307,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8617.846
+        },
+        {
+          "run_id": "b18_s-only",
+          "completion_ms": 64213.93,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8630.917,
+          "last_action_ms": 8642.048,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8630.917
+        },
+        {
+          "run_id": "b19_s-only",
+          "completion_ms": 64499.635,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8631.291,
+          "last_action_ms": 8962.009,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8631.291
+        },
+        {
+          "run_id": "b20_s-only",
+          "completion_ms": 64713.437,
+          "n_requests": 69,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            7.0,
+            8.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 65
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 65
+          },
+          "n_decisions": 69,
+          "actions": {
+            "none": 65,
+            "increase-chunk-size": 4
+          },
+          "first_action_ms": 8593.244,
+          "last_action_ms": 8608.011,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            4,
+            8388608
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8593.244
+        }
+      ]
+    },
+    "joint": {
+      "n_runs": 20,
+      "median_n_requests": 89.0,
+      "total_retries": 0,
+      "median_decisions": 89.0,
+      "median_first_action_ms": 8623.900000000001,
+      "median_last_action_ms": 8636.267,
+      "median_final_N": 6.0,
+      "median_final_S_MiB": 6.0,
+      "final_states": [
+        [
+          6,
+          6.0
+        ]
+      ],
+      "phase_counts_median": {
+        "<2s": 4.0,
+        "2-4s": 0.0,
+        ">=4s": 85.0
+      },
+      "runs": [
+        {
+          "run_id": "b01_joint",
+          "completion_ms": 46885.411,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8629.431,
+          "last_action_ms": 8639.373,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8629.431
+        },
+        {
+          "run_id": "b02_joint",
+          "completion_ms": 46882.672,
+          "n_requests": 90,
+          "retries": 0,
+          "sizes_MiB": [
+            1.0,
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 86
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 86
+          },
+          "n_decisions": 90,
+          "actions": {
+            "none": 86,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8612.304,
+          "last_action_ms": 8622.628,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8612.304
+        },
+        {
+          "run_id": "b03_joint",
+          "completion_ms": 47356.638,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8651.514,
+          "last_action_ms": 8665.371,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8651.514
+        },
+        {
+          "run_id": "b04_joint",
+          "completion_ms": 47161.505,
+          "n_requests": 90,
+          "retries": 0,
+          "sizes_MiB": [
+            1.0,
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 86
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 86
+          },
+          "n_decisions": 90,
+          "actions": {
+            "none": 86,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8613.345,
+          "last_action_ms": 8648.246,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8613.345
+        },
+        {
+          "run_id": "b05_joint",
+          "completion_ms": 46904.931,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8624.173,
+          "last_action_ms": 8633.161,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8624.173
+        },
+        {
+          "run_id": "b06_joint",
+          "completion_ms": 46791.005,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8602.56,
+          "last_action_ms": 8608.386,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8602.56
+        },
+        {
+          "run_id": "b07_joint",
+          "completion_ms": 46742.253,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8638.18,
+          "last_action_ms": 9615.055,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8638.18
+        },
+        {
+          "run_id": "b08_joint",
+          "completion_ms": 46600.463,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8593.052,
+          "last_action_ms": 8601.346,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8593.052
+        },
+        {
+          "run_id": "b09_joint",
+          "completion_ms": 46866.191,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8646.111,
+          "last_action_ms": 8742.494,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8646.111
+        },
+        {
+          "run_id": "b10_joint",
+          "completion_ms": 47400.842,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8610.575,
+          "last_action_ms": 8626.93,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8610.575
+        },
+        {
+          "run_id": "b11_joint",
+          "completion_ms": 46625.331,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8588.113,
+          "last_action_ms": 8597.232,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8588.113
+        },
+        {
+          "run_id": "b12_joint",
+          "completion_ms": 47146.925,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8607.359,
+          "last_action_ms": 8617.459,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8607.359
+        },
+        {
+          "run_id": "b13_joint",
+          "completion_ms": 46647.806,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8638.956,
+          "last_action_ms": 8647.404,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8638.956
+        },
+        {
+          "run_id": "b14_joint",
+          "completion_ms": 47050.768,
+          "n_requests": 90,
+          "retries": 0,
+          "sizes_MiB": [
+            1.0,
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 86
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 86
+          },
+          "n_decisions": 90,
+          "actions": {
+            "none": 86,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8595.947,
+          "last_action_ms": 8614.809,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8595.947
+        },
+        {
+          "run_id": "b15_joint",
+          "completion_ms": 46799.677,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8635.333,
+          "last_action_ms": 8709.093,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8635.333
+        },
+        {
+          "run_id": "b16_joint",
+          "completion_ms": 46828.028,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8608.579,
+          "last_action_ms": 8630.125,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8608.579
+        },
+        {
+          "run_id": "b17_joint",
+          "completion_ms": 46769.174,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8623.627,
+          "last_action_ms": 8631.989,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8623.627
+        },
+        {
+          "run_id": "b18_joint",
+          "completion_ms": 46798.095,
+          "n_requests": 90,
+          "retries": 0,
+          "sizes_MiB": [
+            1.0,
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 86
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 86
+          },
+          "n_decisions": 90,
+          "actions": {
+            "none": 86,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8648.121,
+          "last_action_ms": 8655.464,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8648.121
+        },
+        {
+          "run_id": "b19_joint",
+          "completion_ms": 47044.267,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            3.0,
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8665.436,
+          "last_action_ms": 8667.194,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8665.436
+        },
+        {
+          "run_id": "b20_joint",
+          "completion_ms": 46840.811,
+          "n_requests": 89,
+          "retries": 0,
+          "sizes_MiB": [
+            4.0,
+            5.0,
+            6.0
+          ],
+          "rate_counts": {
+            "655360": 4,
+            "2560000": 85
+          },
+          "phase_counts": {
+            "<2s": 4,
+            ">=4s": 85
+          },
+          "n_decisions": 89,
+          "actions": {
+            "none": 85,
+            "increase-concurrency": 2,
+            "increase-chunk-size": 2
+          },
+          "first_action_ms": 8637.987,
+          "last_action_ms": 8643.793,
+          "actions_before_2s": 0,
+          "actions_2_4s": 0,
+          "actions_after_4s": 4,
+          "final_state": [
+            6,
+            6291456
+          ],
+          "unique_states": 5,
+          "throughput_saturation_ms": 8637.987
+        }
+      ]
+    }
+  },
+  "joint_signal": {
+    "median_throughput_by_decision": {
+      "0": 607.2377375029947,
+      "1": 607.1347390533613,
+      "2": 607.046121770077,
+      "3": 606.9661956859378,
+      "4": 740.4661018822769,
+      "5": 950.0111142931746,
+      "6": 1324.2377652207188,
+      "7": 2183.7506281302776,
+      "8": 2183.3131314364305,
+      "9": 2183.3093853479977,
+      "10": 2193.4276425249436,
+      "11": 2202.416466619743,
+      "12": 2186.1031430683333,
+      "13": 2180.788587461114,
+      "14": 2193.1642172047113,
+      "15": 2203.775978311651,
+      "16": 2226.2397258833435,
+      "17": 2242.6281370963216,
+      "18": 2240.351922482591,
+      "19": 2239.0782996991184,
+      "20": 2237.299113467373,
+      "21": 2240.9861859077664,
+      "22": 2238.841644761763,
+      "23": 2242.2143977334963,
+      "24": 2240.491797675104,
+      "25": 2237.459517990531,
+      "26": 2236.045447078656,
+      "27": 2232.0144275050015,
+      "28": 2235.5807876623994,
+      "29": 2234.2686772879238,
+      "30": 2234.5037398276963,
+      "31": 2231.3014529692227,
+      "32": 2232.8750882814884,
+      "33": 2229.9295057094987,
+      "34": 2227.651980435478,
+      "35": 2225.678570266231,
+      "36": 2223.150136397793,
+      "37": 2224.2530040280035,
+      "38": 2225.9042796950807,
+      "39": 2229.2474238760196,
+      "40": 2230.7352142832688,
+      "41": 2230.011846600257,
+      "42": 2231.4137172210285,
+      "43": 2231.3371000842117,
+      "44": 2228.5993076747345,
+      "45": 2228.708951204093,
+      "46": 2227.144320434135,
+      "47": 2225.042153642732,
+      "48": 2221.5978229419957,
+      "49": 2219.633337490354,
+      "50": 2221.798512541839,
+      "51": 2225.652206349906,
+      "52": 2232.2197197458236,
+      "53": 2236.503633018733,
+      "54": 2238.7922712222203,
+      "55": 2237.2163521466505,
+      "56": 2238.7096625573918,
+      "57": 2233.3411046141086,
+      "58": 2228.4688821559103,
+      "59": 2225.148837141918,
+      "60": 2224.29916523693,
+      "61": 2225.2179068013766,
+      "62": 2229.296075501965,
+      "63": 2233.6135738454827,
+      "64": 2233.5152773927034,
+      "65": 2234.572428988418,
+      "66": 2237.691445642215,
+      "67": 2236.720298373049,
+      "68": 2235.310074205386,
+      "69": 2238.0116463744994,
+      "70": 2238.963424763957,
+      "71": 2233.8641723573,
+      "72": 2238.942943513508,
+      "73": 2234.783418239631,
+      "74": 2231.9021240058955,
+      "75": 2230.3734138386826,
+      "76": 2227.648795707968,
+      "77": 2225.411535385617,
+      "78": 2226.405943018479,
+      "79": 2225.685958837802,
+      "80": 2227.663455773852,
+      "81": 2229.1151642746017,
+      "82": 2227.086878858091,
+      "83": 2227.651011944774,
+      "84": 2229.4864786343105,
+      "85": 2227.0594734535803,
+      "86": 2222.3314174494644,
+      "87": 2216.905391101409,
+      "88": 2212.4663783847736,
+      "89": 2209.4847740488703
+    },
+    "note": "windowed per-request throughput (KiB/s) at each decision index; the +/-10% rule stops firing once this signal stabilizes after the pacing recovery"
+  }
+}

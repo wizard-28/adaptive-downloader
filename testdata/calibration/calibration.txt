@@ -1,0 +1,110 @@
+LinUCB calibration (diagnostic only; no ranking, no performance claim)
+alpha=0.2000
+reward config: throughputScale=1048576 latencyScale=1.000 retryPenalty=0.500 failurePenalty=1.000 actionCost=0.050 weights(wT=1.00 wI=1.00 wL=0.50 wR=0.50 wF=1.00 wA=1.00)
+
+Scenario: calibration-a-stable (reps=2, decisions=32, valid=true, numerically_healthy=true)
+  reconstruction_mismatches=0 cumulative_reward=13.6709
+  action distribution:
+    none                   32  (100.0%)
+    increase-concurrency    0  (0.0%)
+    decrease-concurrency    0  (0.0%)
+    increase-chunk-size     0  (0.0%)
+    decrease-chunk-size     0  (0.0%)
+  unique_actions=1 explored_concurrency=false explored_chunk_size=false
+  reward: count=30 mean=0.4557 median=0.4561 min=0.4485 max=0.4625 sd=0.0032 pos/zero/neg=30/0/0
+  reward components (mean raw / mean weighted):
+    throughput             0.4636 / 0.4636
+    throughput_improvement 0.0004 / 0.0004
+    latency_cost           0.0167 / 0.0084
+    retry_cost             0.0000 / 0.0000
+    failure_cost           0.0000 / 0.0000
+    action_cost            0.0000 / 0.0000
+  churn: transitions=0 changes/decision=0.000 longest_same_run=16 concurrency_changes=0 chunk_size_changes=0
+  early distribution: none=16
+  late distribution:  none=16
+
+Scenario: calibration-b-throttle (reps=2, decisions=32, valid=true, numerically_healthy=true)
+  reconstruction_mismatches=0 cumulative_reward=36.9581
+  action distribution:
+    none                   32  (100.0%)
+    increase-concurrency    0  (0.0%)
+    decrease-concurrency    0  (0.0%)
+    increase-chunk-size     0  (0.0%)
+    decrease-chunk-size     0  (0.0%)
+  unique_actions=1 explored_concurrency=false explored_chunk_size=false
+  reward: count=30 mean=1.2319 median=1.6433 min=0.2216 max=2.6655 sd=0.7253 pos/zero/neg=30/0/0
+  reward components (mean raw / mean weighted):
+    throughput             1.1394 / 1.1394
+    throughput_improvement 0.0977 / 0.0977
+    latency_cost           0.0102 / 0.0051
+    retry_cost             0.0000 / 0.0000
+    failure_cost           0.0000 / 0.0000
+    action_cost            0.0000 / 0.0000
+  churn: transitions=0 changes/decision=0.000 longest_same_run=16 concurrency_changes=0 chunk_size_changes=0
+  early distribution: none=16
+  late distribution:  none=16
+
+Scenario: calibration-c-latency (reps=2, decisions=32, valid=true, numerically_healthy=true)
+  reconstruction_mismatches=0 cumulative_reward=5.7727
+  action distribution:
+    none                   32  (100.0%)
+    increase-concurrency    0  (0.0%)
+    decrease-concurrency    0  (0.0%)
+    increase-chunk-size     0  (0.0%)
+    decrease-chunk-size     0  (0.0%)
+  unique_actions=1 explored_concurrency=false explored_chunk_size=false
+  reward: count=30 mean=0.1924 median=0.1924 min=0.1904 max=0.1940 sd=0.0008 pos/zero/neg=30/0/0
+  reward components (mean raw / mean weighted):
+    throughput             0.2108 / 0.2108
+    throughput_improvement 0.0001 / 0.0001
+    latency_cost           0.0369 / 0.0185
+    retry_cost             0.0000 / 0.0000
+    failure_cost           0.0000 / 0.0000
+    action_cost            0.0000 / 0.0000
+  churn: transitions=0 changes/decision=0.000 longest_same_run=16 concurrency_changes=0 chunk_size_changes=0
+  early distribution: none=16
+  late distribution:  none=16
+
+Scenario: calibration-d-failure (reps=2, decisions=38, valid=true, numerically_healthy=true)
+  reconstruction_mismatches=0 cumulative_reward=11.5728
+  action distribution:
+    none                    2  (5.3%)
+    increase-concurrency    2  (5.3%)
+    decrease-concurrency   34  (89.5%)
+    increase-chunk-size     0  (0.0%)
+    decrease-chunk-size     0  (0.0%)
+  unique_actions=3 explored_concurrency=true explored_chunk_size=false
+  reward: count=36 mean=0.3215 median=0.4589 min=-1.3001 max=1.4193 sd=0.5996 pos/zero/neg=32/0/4
+  reward components (mean raw / mean weighted):
+    throughput             0.4613 / 0.4613
+    throughput_improvement 0.0259 / 0.0259
+    latency_cost           0.0148 / 0.0074
+    retry_cost             0.0833 / 0.0417
+    failure_cost           0.1111 / 0.1111
+    action_cost            0.0056 / 0.0056
+  churn: transitions=4 changes/decision=0.105 longest_same_run=17 concurrency_changes=4 chunk_size_changes=0
+  early distribution: none=2, increase-concurrency=2, decrease-concurrency=14
+  late distribution:  decrease-concurrency=20
+
+Scenario: calibration-e-combined (reps=2, decisions=36, valid=true, numerically_healthy=true)
+  reconstruction_mismatches=0 cumulative_reward=24.9262
+  action distribution:
+    none                    2  (5.6%)
+    increase-concurrency   34  (94.4%)
+    decrease-concurrency    0  (0.0%)
+    increase-chunk-size     0  (0.0%)
+    decrease-chunk-size     0  (0.0%)
+  unique_actions=2 explored_concurrency=true explored_chunk_size=false
+  reward: count=34 mean=0.7331 median=1.0000 min=-1.2501 max=1.5232 sd=0.5937 pos/zero/neg=32/0/2
+  reward components (mean raw / mean weighted):
+    throughput             0.7760 / 0.7760
+    throughput_improvement 0.0601 / 0.0601
+    latency_cost           0.0176 / 0.0088
+    retry_cost             0.0588 / 0.0294
+    failure_cost           0.0588 / 0.0588
+    action_cost            0.0059 / 0.0059
+  churn: transitions=2 changes/decision=0.056 longest_same_run=17 concurrency_changes=4 chunk_size_changes=0
+  early distribution: none=2, increase-concurrency=16
+  late distribution:  increase-concurrency=18
+
+JSON report written to testdata/calibration/calibration.json

@@ -1,0 +1,27 @@
+DQN training + held-out validation + live transfer (FINAL DQN CANDIDATE v1)
+NO performance claim; NO aria2 comparison; simulator + small live transfer only.
+
+candidate sha256: 83427c5345d1863a62902e176398c360c4299b530931a31440563bede4a913db
+selected seed: 4
+selection: min mean validation completion time; tie-break lowest seed (test set not used)
+
+held-out simulator (mean completion s, not ranked):
+  concurrency-adaptive   mean=2.0286 median=2.0365 sd=1.5019
+  dqn                    mean=1.4403 median=1.4370 sd=0.9989
+  fixed                  mean=2.0286 median=2.0365 sd=1.5019
+  joint-adaptive         mean=2.0287 median=2.0365 sd=1.5018
+
+ablations (mean completion s):
+  corrupted_state        mean=1.4997
+  random_policy          mean=1.5191
+  shuffled_actions       mean=1.6590
+
+live transfer: 25/25 valid
+sim-to-real transferred:
+  - raises concurrency under latency (sim and live): live latency finalC mean 3.6
+  - increases chunk under latency/combined (sim and live)
+  - stays at low concurrency under baseline/loss where extra concurrency did not help
+  - avoids out-of-bounds actions
+sim-to-real did not transfer cleanly:
+  - under server-throttle-wallclock the live policy frequently decreased chunk without benefit (simulator did not model the wall-clock switch)
+  - simulator conditions are not the live server; magnitudes differ

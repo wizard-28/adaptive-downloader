@@ -1,0 +1,375 @@
+{
+  "aria2_comparison_run": false,
+  "candidate_path": "testdata/diagnostics/dqn_validation_v5/final_dqn_candidate_v5.json",
+  "candidate_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "episodes_per_seed": 1500,
+  "gate": {
+    "condition_dependent_behavior": true,
+    "constant_episode_fraction": 0.0625,
+    "distinct_dominant_concurrency_by_condition": 2,
+    "distinct_final_concurrency_values": 3,
+    "dominant_concurrency_by_condition": {
+      "unseen-high-bandwidth": "3",
+      "unseen-latency": "3",
+      "unseen-latency+loss": "3",
+      "unseen-loss": "3",
+      "unseen-low-bandwidth": "3",
+      "unseen-three-phase": "4",
+      "unseen-throttle-down": "4",
+      "unseen-throttle-up": "3"
+    },
+    "dominant_concurrency_time_fraction": 0.4536679790890296,
+    "dqn_matches_or_beats_best_fixed_on_conditions": 1,
+    "pre_specified_rule": "NOT READY if constant_episode_fraction >= 0.9 OR max single-concurrency time fraction >= 0.9 OR ramp_to_max_fraction >= 0.9 OR total effective concurrency changes == 0; a constant-concurrency policy (including a ramp-to-max-then-hold policy) is not adaptation, regardless of completion time.",
+    "ramp_to_max_fraction": 0.21875,
+    "total_effective_concurrency_changes": 64,
+    "verdict": "READY_FOR_NEXT_STAGE"
+  },
+  "heldout_overall": {
+    "dqn": {
+      "action_fraction": {
+        "decrease-concurrency": 0.14130434782608695,
+        "increase-concurrency": 0.7065217391304348,
+        "none": 0.15217391304347827
+      },
+      "changes_after_first_transition": 13,
+      "changes_before_first_transition": 51,
+      "completion": {
+        "max": 10.706666666666665,
+        "mean": 2.636840277777778,
+        "median": 1.9933333333333332,
+        "min": 0.6155555555555554,
+        "n": 32,
+        "p25": 0.9516666666666667,
+        "p75": 3.9660416666666674,
+        "sd": 2.2847667799500897
+      },
+      "concurrency_time_fraction": {
+        "1": 0.0,
+        "2": 0.21261242280191192,
+        "3": 0.3337195981090584,
+        "4": 0.4536679790890296
+      },
+      "constant_episode_fraction": 0.0625,
+      "dominant_concurrency": "4",
+      "final_concurrency_distribution": {
+        "2": 4,
+        "3": 12,
+        "4": 16
+      },
+      "max_concurrency": 4,
+      "mean_effective_changes": 2.0,
+      "mean_requests": 11.5,
+      "mean_steps": 2.875,
+      "n": 32,
+      "ramp_to_max_fraction": 0.21875,
+      "time_weighted_mean_concurrency": 3.2968225660067914,
+      "transition_reactions_within_3": 6,
+      "transitions": 16
+    },
+    "fixed": {
+      "C1": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 22.5,
+          "mean": 10.029479166666667,
+          "median": 4.916666666666667,
+          "min": 1.3333333333333333,
+          "n": 32,
+          "p25": 2.615,
+          "p75": 21.09916666666667,
+          "sd": 8.903926689535439
+        },
+        "concurrency_time_fraction": {
+          "1": 0.9999999999999997,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "1",
+        "final_concurrency_distribution": {
+          "1": 32
+        },
+        "max_concurrency": 1,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 1.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 12
+      },
+      "C2": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 10.706666666666665,
+          "mean": 4.640677083333333,
+          "median": 2.5783333333333336,
+          "min": 0.8266666666666667,
+          "n": 32,
+          "p25": 1.3875000000000002,
+          "p75": 9.54625,
+          "sd": 3.899166084708561
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.9999999999999998,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "2",
+        "final_concurrency_distribution": {
+          "2": 32
+        },
+        "max_concurrency": 2,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 2.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 12
+      },
+      "C3": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 7.164444444444444,
+          "mean": 2.8315625,
+          "median": 1.798888888888889,
+          "min": 0.6577777777777777,
+          "n": 32,
+          "p25": 0.9783333333333335,
+          "p75": 5.070833333333334,
+          "sd": 2.262860738913733
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.9999999999999997,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "3": 32
+        },
+        "max_concurrency": 3,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 3.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 16
+      },
+      "C4": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 5.393333333333333,
+          "mean": 2.1738802083333333,
+          "median": 1.6341666666666665,
+          "min": 0.5733333333333333,
+          "n": 32,
+          "p25": 0.77375,
+          "p75": 3.7143750000000004,
+          "sd": 1.6508000691974956
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0000000000000002
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "4",
+        "final_concurrency_distribution": {
+          "4": 32
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 4.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 16
+      }
+    }
+  },
+  "label": "FINAL DQN CANDIDATE v5 (experimental; concurrency-only; no performance claim)",
+  "live_transfer_run": false,
+  "no_performance_claim": true,
+  "randomized_distribution": {
+    "dqn": {
+      "action_fraction": {
+        "decrease-concurrency": 0.25925925925925924,
+        "increase-concurrency": 0.6666666666666666,
+        "none": 0.07407407407407407
+      },
+      "changes_after_first_transition": 6,
+      "changes_before_first_transition": 12,
+      "completion": {
+        "max": 4.898335588479263,
+        "mean": 3.2544164255782175,
+        "median": 3.5107191802338753,
+        "min": 1.0363147565922501,
+        "n": 5,
+        "p25": 1.668768241716199,
+        "p75": 4.711913232112407,
+        "sd": 1.429149867699412
+      },
+      "concurrency_time_fraction": {
+        "1": 0.0,
+        "2": 0.030377863733018276,
+        "3": 0.3236311219186157,
+        "4": 0.6459910143483659
+      },
+      "constant_episode_fraction": 0.2,
+      "dominant_concurrency": "4",
+      "final_concurrency_distribution": {
+        "3": 1,
+        "4": 4
+      },
+      "max_concurrency": 4,
+      "mean_effective_changes": 3.6,
+      "mean_requests": 19.8,
+      "mean_steps": 5.4,
+      "n": 5,
+      "ramp_to_max_fraction": 0.2,
+      "time_weighted_mean_concurrency": 3.7175417013183107,
+      "transition_reactions_within_3": 3,
+      "transitions": 4
+    },
+    "seeds": [
+      400,
+      401,
+      402,
+      403,
+      404
+    ]
+  },
+  "selected_decision_interval": 4,
+  "selected_seed": 0,
+  "static_sweep": {
+    "decision_interval": 1,
+    "different_regimes_have_different_best_c": true,
+    "distinct_best_c": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "label": "static concurrency sweep (simulator only; prerequisite for interpreting adaptive behavior)",
+    "note": "Fixed-concurrency policies C=1..4 start at C and never change it. If all regimes had the same best C, adaptive concurrency would be uninformative in this simulator.",
+    "regimes": {
+      "combined-mild": {
+        "best_c": 2,
+        "mean_completion_s_by_c": {
+          "1": 2.48,
+          "2": 1.8599999999999997,
+          "3": 2.0,
+          "4": 2.163333333333333
+        }
+      },
+      "latency-dominant": {
+        "best_c": 4,
+        "mean_completion_s_by_c": {
+          "1": 2.6,
+          "2": 1.5525,
+          "3": 1.2166666666666668,
+          "4": 1.05875
+        }
+      },
+      "low-bandwidth": {
+        "best_c": 4,
+        "mean_completion_s_by_c": {
+          "1": 8.08,
+          "2": 5.1,
+          "3": 4.12,
+          "4": 3.64
+        }
+      },
+      "shared-cap-hard": {
+        "best_c": 1,
+        "mean_completion_s_by_c": {
+          "1": 4.0,
+          "2": 4.59,
+          "3": 5.133333333333333,
+          "4": 5.665000000000001
+        }
+      },
+      "shared-cap-moderate": {
+        "best_c": 3,
+        "mean_completion_s_by_c": {
+          "1": 8.159999999999998,
+          "2": 4.68,
+          "3": 4.2,
+          "4": 4.62
+        }
+      },
+      "stable-no-cap": {
+        "best_c": 4,
+        "mean_completion_s_by_c": {
+          "1": 2.16,
+          "2": 1.305,
+          "3": 1.0333333333333332,
+          "4": 0.9075
+        }
+      },
+      "throttle-down-wallclock": {
+        "best_c": 4,
+        "mean_completion_s_by_c": {
+          "1": 10.659999999999998,
+          "2": 4.596666666666667,
+          "3": 2.588888888888889,
+          "4": 0.6783333333333332
+        }
+      },
+      "throttle-up-wallclock": {
+        "best_c": 4,
+        "mean_completion_s_by_c": {
+          "1": 3.3266666666666658,
+          "2": 1.8466666666666662,
+          "3": 1.9777777777777779,
+          "4": 1.5950000000000004
+        }
+      }
+    },
+    "seeds": [
+      300,
+      301,
+      302
+    ]
+  },
+  "validation_mean_completion_s": 2.293425925925926
+}

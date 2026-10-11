@@ -1,0 +1,2 @@
+run final-p29-ours system=ours completion=19.623s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system ours -file-size 536870912 -run-id final-p29-ours -out /workspaces/mvp/testdata/aria2_competitive_benchmark/final_reproduction/final-p29-ours.json -c 16 -chunk 4194304

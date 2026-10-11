@@ -1,0 +1,21 @@
+v7 design stage: action authority + L3 environment (simulator only; no training)
+
+Action spaces: A steps {none,+1,-1,+4,-4} (SELECTED), B small/large (redundant), C targets (rejected: reserved actions/oscillation)
+Selected semantics: atomic step <=4, clamp [1,16], one decision per completed request
+
+phase bestC  C16 penalty%  throughput MiB/s (C1,C2,C4,C16)
+    1    16           0.0  C1=0.49 C2=0.98 C4=1.91 C8=3.67 C16=6.77
+    2     2          40.3  C1=2.65 C2=2.92 C4=2.88 C8=2.57 C16=2.08
+    3     4           8.0  C1=4.81 C2=5.05 C4=5.13 C8=5.03 C16=4.75
+    4    16           0.0  C1=0.12 C2=0.25 C4=0.49 C8=0.96 C16=1.82
+    5     2          54.0  C1=2.82 C2=3.01 C4=2.85 C8=2.48 C16=1.96
+    6     6           3.3  C1=5.07 C2=5.18 C4=5.24 C8=5.22 C16=5.08
+    7    16           0.0  C1=0.98 C2=1.92 C4=3.68 C8=6.83 C16=11.93
+
+best static C=16 (152.9s); C16=152.9s; C1=289.1s
+action-constrained oracle (<=4/decision) = 140.5s  ->  headroom = 8.1% (threshold 10%)
+transitions reached: [1, 2, 3, 4, 5]; remaining-bytes fraction at each transition: [0.732, 0.584, 0.396, 0.311, 0.18, 0.0]
+phase bytes at best static (MiB): [137.0, 76.0, 96.0, 44.0, 67.0, 92.0, 0.0]
+
+gates: {"A_distinct_phase_optima": {"passed": true, "phase_best_c": [16, 2, 4, 16, 2, 6, 16]}, "B_headroom_ge_10pct": {"headroom": 0.08105771883360292, "passed": false, "threshold": 0.1}, "C_transitions_with_work": {"passed": true, "remaining_bytes_fraction_at_transitions": [0.732, 0.584, 0.396, 0.311, 0.18, 0.0], "transitions": [1, 2, 3, 4, 5]}, "D_sim_live_parity": {"detail": "selected A semantics: atomic step <=4, clamp [1,16]; live policyRunner honors Action.Value as step (Go test policy_runner_v7_test.go); simulator oracle applies the identical rule", "passed": true}, "E_live_shared_cap_tradeoff": {"detail": "evidence reused from frozen live v6 fixed-C data (A2 shared-cap trajectory); see report", "passed": null}, "F_control_authority": {"detail": "16->2 in 4 decisions; 14/4<=4; phases 20-35 s at ~1 decision per completed request", "passed": true}}
+OUTCOME: STOP

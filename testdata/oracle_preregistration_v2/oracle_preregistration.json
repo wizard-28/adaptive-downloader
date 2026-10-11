@@ -1,0 +1,155 @@
+{
+  "oracle_protocol_version": 1,
+  "fixed_c_protocol_version": 2,
+  "epoch_duration_ns": 120000000000,
+  "byte_floor_B_e": 5242880,
+  "traces": [
+    "Verizon-EVDO-driving",
+    "Verizon-LTE-driving"
+  ],
+  "objective": {
+    "per_epoch_workload": "B_e = 5 MiB (the frozen epoch byte floor), identical for every C",
+    "epoch_transfer_time": "t[c,e] = B_e / R[c,e]",
+    "static_completion": "T_fixed(C) = sum over retained shared-valid epochs of t[C,e]",
+    "best_fixed": "T_best_fixed = min_C T_fixed(C) (descriptive, not a 'winner')",
+    "instantaneous_oracle": "T_instantaneous = sum_e B_e / max_C R[C,e] (diagnostic only)",
+    "constrained_oracle": "minimize sum_e t[C_e,e] + sum over changes tau(from,to)",
+    "headroom": "H_j = (T_best_fixed,j - T_constrained,j) / T_best_fixed,j",
+    "statistical_unit": "trace (n=2 pilot traces; descriptive only; final trace-level gate pending more traces)",
+    "not_computed_in_this_stage": true
+  },
+  "action_space": {
+    "ladder": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "transitions": "stay, or exactly one ladder step per epoch boundary; direct jumps forbidden",
+    "dwell": "after a change at boundary e, C_{e+1} must equal C_e (the new value is held for at least one complete following epoch)",
+    "static_feasible": true,
+    "invalid_state": "non-ladder C or dwell violation is rejected by ValidateSchedule"
+  },
+  "tau": {
+    "units": "seconds of equivalent B_e = 5 MiB completion time",
+    "directions": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        16,
+        8
+      ]
+    ],
+    "injection_window": "one complete 120 s epoch starting at the preselected trace-time boundary",
+    "formula": "tau = (control_bytes - switched_bytes) / (control_bytes / 120 s); negative values preserved; control_bytes == 0 makes the observation invalid and the denominator undefined (reported explicitly)",
+    "control": "matched fixed-C run at the target C over the identical trace-time window; the protocol-v2 fixed-C pilot artifacts are used read-only",
+    "switch_timing": "the child forces the target C at child-elapsed = epoch start (within the frozen 100 ms anchor tolerance); the whole 120 s window is measured",
+    "forbidden_sources": [
+      "process launch time",
+      "wall-clock shutdown time",
+      "any headroom result"
+    ],
+    "observation_validity": "a switched-run observation is valid only if the run reached the watchdog window, the switch applied, control_bytes > 0, and switched_bytes > 0; a zero-byte switched window indicates transfer never established and is not a switch measurement"
+  },
+  "regime_classifier": {
+    "source": "native downlink delivery opportunities only (never downloader throughput)",
+    "epochs": "full 120 s epochs over the downlink trace; the final partial epoch is excluded",
+    "rate": "opportunities * 1500 bytes / 120 s",
+    "k": "max(1, floor(n/3))",
+    "degraded": "the k lowest rates (ties: lower epoch index first)",
+    "good": "the k highest rates not already degraded (ties: lower epoch index first); disjoint from degraded",
+    "recovering": "e > 0 with rate[e] >= 1.25 * rate[e-1] and e not degraded",
+    "precedence": "degraded, then recovering, then good, else middle",
+    "injection_selection": "for regimes in the order degraded, good, recovering: the earliest full epoch of that regime and, when at least one more exists, the next distinct epoch of the same regime; absent regimes contribute nothing",
+    "frozen_injections": {
+      "Verizon-EVDO-driving": [
+        [
+          "degraded",
+          3,
+          360000
+        ],
+        [
+          "degraded",
+          4,
+          480000
+        ],
+        [
+          "recovering",
+          1,
+          120000
+        ],
+        [
+          "recovering",
+          5,
+          600000
+        ]
+      ],
+      "Verizon-LTE-driving": [
+        [
+          "degraded",
+          2,
+          240000
+        ],
+        [
+          "degraded",
+          4,
+          480000
+        ],
+        [
+          "good",
+          1,
+          120000
+        ],
+        [
+          "recovering",
+          3,
+          360000
+        ],
+        [
+          "recovering",
+          6,
+          720000
+        ]
+      ]
+    }
+  },
+  "tau_aggregation": {
+    "per_direction": true,
+    "pooled": "median of all valid observations for the direction",
+    "regime_medians": "median of valid observations per regime",
+    "regime_dependence_threshold": 2.0,
+    "regime_specific_rule": "use regime-specific tau iff at least two regimes have valid observations, all regime medians are > 0, and max(regime_median)/min(regime_median) >= 2.0",
+    "otherwise": "pooled tau",
+    "undefined_ratio": "if the minimum regime median is <= 0 the ratio is undefined; report explicitly and use the pooled tau",
+    "median_definition": "average of the two middle values for an even count"
+  },
+  "frozen_before_headroom": true,
+  "headroom_computed": false
+}

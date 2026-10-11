@@ -1,0 +1,2368 @@
+{
+  "aria2_version": "aria2 version 1.37.0",
+  "file_size": 4194304,
+  "repetitions": 5,
+  "candidates": [
+    {
+      "name": "A",
+      "max_connection_per_server": 1,
+      "split": 1,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "B",
+      "max_connection_per_server": 2,
+      "split": 2,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "C",
+      "max_connection_per_server": 4,
+      "split": 4,
+      "min_split_size": 1048576
+    }
+  ],
+  "profiles": [
+    {
+      "Name": "V1",
+      "InitialRate": 524288,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 750000000,
+      "Latency": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V2",
+      "InitialRate": 1048576,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 1250000000,
+      "Latency": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V3",
+      "InitialRate": 4194304,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 0,
+      "Latency": 20000000,
+      "LossPercent": 1
+    },
+    {
+      "Name": "V4",
+      "InitialRate": 2097152,
+      "SubsequentRate": 2097152,
+      "TransitionAfter": 0,
+      "Latency": 40000000,
+      "LossPercent": 1
+    },
+    {
+      "Name": "V5",
+      "InitialRate": 786432,
+      "SubsequentRate": 3145728,
+      "TransitionAfter": 1500000000,
+      "Latency": 20000000,
+      "LossPercent": 1
+    }
+  ],
+  "cells": [
+    {
+      "config": "A",
+      "profile": "V1",
+      "runs": [
+        {
+          "config": "A",
+          "profile": "V1",
+          "rep": 0,
+          "duration_ms": 8286.899,
+          "wallclock_bps": 506136.7346217204,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-2624446266 -o out.bin --interface=lo http://127.0.0.1:44601"
+        },
+        {
+          "config": "A",
+          "profile": "V1",
+          "rep": 1,
+          "duration_ms": 8315.137,
+          "wallclock_bps": 504417.90676449466,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-7674206 -o out.bin --interface=lo http://127.0.0.1:45409"
+        },
+        {
+          "config": "A",
+          "profile": "V1",
+          "rep": 2,
+          "duration_ms": 8319.64,
+          "wallclock_bps": 504144.89088470174,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3809522057 -o out.bin --interface=lo http://127.0.0.1:37609"
+        },
+        {
+          "config": "A",
+          "profile": "V1",
+          "rep": 3,
+          "duration_ms": 8323.856,
+          "wallclock_bps": 503889.54350003175,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-1492391443 -o out.bin --interface=lo http://127.0.0.1:41657"
+        },
+        {
+          "config": "A",
+          "profile": "V1",
+          "rep": 4,
+          "duration_ms": 8322.053,
+          "wallclock_bps": 503998.7128176184,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3196790728 -o out.bin --interface=lo http://127.0.0.1:34837"
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V2",
+      "runs": [
+        {
+          "config": "A",
+          "profile": "V2",
+          "rep": 0,
+          "duration_ms": 4204.681,
+          "wallclock_bps": 997532.0363185697,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3498121902 -o out.bin --interface=lo http://127.0.0.1:44221"
+        },
+        {
+          "config": "A",
+          "profile": "V2",
+          "rep": 1,
+          "duration_ms": 4208.76,
+          "wallclock_bps": 996565.2591262035,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-4114930405 -o out.bin --interface=lo http://127.0.0.1:41641"
+        },
+        {
+          "config": "A",
+          "profile": "V2",
+          "rep": 2,
+          "duration_ms": 4213.469,
+          "wallclock_bps": 995451.4913958071,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3986496946 -o out.bin --interface=lo http://127.0.0.1:38407"
+        },
+        {
+          "config": "A",
+          "profile": "V2",
+          "rep": 3,
+          "duration_ms": 4201.441,
+          "wallclock_bps": 998301.2971025893,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3121528190 -o out.bin --interface=lo http://127.0.0.1:40503"
+        },
+        {
+          "config": "A",
+          "profile": "V2",
+          "rep": 4,
+          "duration_ms": 4212.959,
+          "wallclock_bps": 995571.9958347566,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-33053838 -o out.bin --interface=lo http://127.0.0.1:37353"
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V3",
+      "runs": [
+        {
+          "config": "A",
+          "profile": "V3",
+          "rep": 0,
+          "duration_ms": 2778.514,
+          "wallclock_bps": 1509549.3490405304,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-2377001591 -o out.bin --interface=lo http://127.0.0.1:36931"
+        },
+        {
+          "config": "A",
+          "profile": "V3",
+          "rep": 1,
+          "duration_ms": 2764.119,
+          "wallclock_bps": 1517410.7916482612,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3148965733 -o out.bin --interface=lo http://127.0.0.1:36839"
+        },
+        {
+          "config": "A",
+          "profile": "V3",
+          "rep": 2,
+          "duration_ms": 2281.025,
+          "wallclock_bps": 1838780.372858693,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-1242291164 -o out.bin --interface=lo http://127.0.0.1:39591"
+        },
+        {
+          "config": "A",
+          "profile": "V3",
+          "rep": 3,
+          "duration_ms": 2172.903,
+          "wallclock_bps": 1930276.6851534562,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-4154263040 -o out.bin --interface=lo http://127.0.0.1:46051"
+        },
+        {
+          "config": "A",
+          "profile": "V3",
+          "rep": 4,
+          "duration_ms": 1213.845,
+          "wallclock_bps": 3455386.8080356224,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-1377210565 -o out.bin --interface=lo http://127.0.0.1:33531"
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V4",
+      "runs": [
+        {
+          "config": "A",
+          "profile": "V4",
+          "rep": 0,
+          "duration_ms": 5401.132,
+          "wallclock_bps": 776560.1729415242,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3644505787 -o out.bin --interface=lo http://127.0.0.1:38297"
+        },
+        {
+          "config": "A",
+          "profile": "V4",
+          "rep": 1,
+          "duration_ms": 3171.923,
+          "wallclock_bps": 1322322.1370758372,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-707435036 -o out.bin --interface=lo http://127.0.0.1:45531"
+        },
+        {
+          "config": "A",
+          "profile": "V4",
+          "rep": 2,
+          "duration_ms": 3598.779,
+          "wallclock_bps": 1165479.7363216802,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3553185929 -o out.bin --interface=lo http://127.0.0.1:44267"
+        },
+        {
+          "config": "A",
+          "profile": "V4",
+          "rep": 3,
+          "duration_ms": 4541.681,
+          "wallclock_bps": 923513.5624893075,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-2487735730 -o out.bin --interface=lo http://127.0.0.1:41307"
+        },
+        {
+          "config": "A",
+          "profile": "V4",
+          "rep": 4,
+          "duration_ms": 3848.543,
+          "wallclock_bps": 1089842.0519141918,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-324092721 -o out.bin --interface=lo http://127.0.0.1:35017"
+        }
+      ]
+    },
+    {
+      "config": "A",
+      "profile": "V5",
+      "runs": [
+        {
+          "config": "A",
+          "profile": "V5",
+          "rep": 0,
+          "duration_ms": 5562.96,
+          "wallclock_bps": 753969.8290118929,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-2521912591 -o out.bin --interface=lo http://127.0.0.1:34363"
+        },
+        {
+          "config": "A",
+          "profile": "V5",
+          "rep": 1,
+          "duration_ms": 5569.488,
+          "wallclock_bps": 753086.1005535875,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-515480102 -o out.bin --interface=lo http://127.0.0.1:32929"
+        },
+        {
+          "config": "A",
+          "profile": "V5",
+          "rep": 2,
+          "duration_ms": 5555.732,
+          "wallclock_bps": 754950.7427644099,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-3407691981 -o out.bin --interface=lo http://127.0.0.1:41343"
+        },
+        {
+          "config": "A",
+          "profile": "V5",
+          "rep": 3,
+          "duration_ms": 5580.354,
+          "wallclock_bps": 751619.700112215,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-2008121133 -o out.bin --interface=lo http://127.0.0.1:45267"
+        },
+        {
+          "config": "A",
+          "profile": "V5",
+          "rep": 4,
+          "duration_ms": 5579.06,
+          "wallclock_bps": 751794.0298186432,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 1,
+          "server_max_in_flight": 1,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 0,
+            "min_bytes": 0,
+            "max_bytes": 0,
+            "mean_bytes": 0,
+            "first_ranges": null
+          },
+          "requests_started_before_transition": 1,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=1 --split=1 -d /tmp/aria2-cal-4224727832 -o out.bin --interface=lo http://127.0.0.1:32961"
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V1",
+      "runs": [
+        {
+          "config": "B",
+          "profile": "V1",
+          "rep": 0,
+          "duration_ms": 4155.854,
+          "wallclock_bps": 1009252.0093343027,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2188683579 -o out.bin --interface=lo http://127.0.0.1:34879"
+        },
+        {
+          "config": "B",
+          "profile": "V1",
+          "rep": 1,
+          "duration_ms": 4187.977,
+          "wallclock_bps": 1001510.7532825514,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-317855669 -o out.bin --interface=lo http://127.0.0.1:39501"
+        },
+        {
+          "config": "B",
+          "profile": "V1",
+          "rep": 2,
+          "duration_ms": 4181.449,
+          "wallclock_bps": 1003074.2931457493,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2922734660 -o out.bin --interface=lo http://127.0.0.1:40189"
+        },
+        {
+          "config": "B",
+          "profile": "V1",
+          "rep": 3,
+          "duration_ms": 4193.683,
+          "wallclock_bps": 1000148.079862021,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-843968117 -o out.bin --interface=lo http://127.0.0.1:38609"
+        },
+        {
+          "config": "B",
+          "profile": "V1",
+          "rep": 4,
+          "duration_ms": 4180.464,
+          "wallclock_bps": 1003310.6372881097,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-388857552 -o out.bin --interface=lo http://127.0.0.1:45243"
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V2",
+      "runs": [
+        {
+          "config": "B",
+          "profile": "V2",
+          "rep": 0,
+          "duration_ms": 2151.142,
+          "wallclock_bps": 1949803.4067486017,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2826580463 -o out.bin --interface=lo http://127.0.0.1:33555"
+        },
+        {
+          "config": "B",
+          "profile": "V2",
+          "rep": 1,
+          "duration_ms": 2158.94,
+          "wallclock_bps": 1942760.799281129,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-313519425 -o out.bin --interface=lo http://127.0.0.1:43251"
+        },
+        {
+          "config": "B",
+          "profile": "V2",
+          "rep": 2,
+          "duration_ms": 2146.045,
+          "wallclock_bps": 1954434.3198767966,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-171474767 -o out.bin --interface=lo http://127.0.0.1:46721"
+        },
+        {
+          "config": "B",
+          "profile": "V2",
+          "rep": 3,
+          "duration_ms": 2148.701,
+          "wallclock_bps": 1952018.452078721,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-785322464 -o out.bin --interface=lo http://127.0.0.1:36409"
+        },
+        {
+          "config": "B",
+          "profile": "V2",
+          "rep": 4,
+          "duration_ms": 2150.909,
+          "wallclock_bps": 1950014.6217250475,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-1195126174 -o out.bin --interface=lo http://127.0.0.1:45201"
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V3",
+      "runs": [
+        {
+          "config": "B",
+          "profile": "V3",
+          "rep": 0,
+          "duration_ms": 1395.117,
+          "wallclock_bps": 3006417.382914838,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-735529685 -o out.bin --interface=lo http://127.0.0.1:43413"
+        },
+        {
+          "config": "B",
+          "profile": "V3",
+          "rep": 1,
+          "duration_ms": 1484.519,
+          "wallclock_bps": 2825362.2890646737,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2007129869 -o out.bin --interface=lo http://127.0.0.1:39759"
+        },
+        {
+          "config": "B",
+          "profile": "V3",
+          "rep": 2,
+          "duration_ms": 1340.433,
+          "wallclock_bps": 3129066.503137419,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-3102269548 -o out.bin --interface=lo http://127.0.0.1:34929"
+        },
+        {
+          "config": "B",
+          "profile": "V3",
+          "rep": 3,
+          "duration_ms": 1266.006,
+          "wallclock_bps": 3313020.6333935224,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-3824237485 -o out.bin --interface=lo http://127.0.0.1:42815"
+        },
+        {
+          "config": "B",
+          "profile": "V3",
+          "rep": 4,
+          "duration_ms": 1482.144,
+          "wallclock_bps": 2829889.6733380836,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-640770258 -o out.bin --interface=lo http://127.0.0.1:36747"
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V4",
+      "runs": [
+        {
+          "config": "B",
+          "profile": "V4",
+          "rep": 0,
+          "duration_ms": 2611.679,
+          "wallclock_bps": 1605979.9079442765,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-4179719346 -o out.bin --interface=lo http://127.0.0.1:35357"
+        },
+        {
+          "config": "B",
+          "profile": "V4",
+          "rep": 1,
+          "duration_ms": 2830.911,
+          "wallclock_bps": 1481609.277013654,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 3,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 2,
+            "min_bytes": 1048576,
+            "max_bytes": 2097152,
+            "mean_bytes": 1572864,
+            "first_ranges": [
+              "2097152-4194303(2097152)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 3,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-4006757900 -o out.bin --interface=lo http://127.0.0.1:33475"
+        },
+        {
+          "config": "B",
+          "profile": "V4",
+          "rep": 2,
+          "duration_ms": 2445.217,
+          "wallclock_bps": 1715309.5205865165,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-423214034 -o out.bin --interface=lo http://127.0.0.1:34167"
+        },
+        {
+          "config": "B",
+          "profile": "V4",
+          "rep": 3,
+          "duration_ms": 2932.802,
+          "wallclock_bps": 1430135.413164612,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-3039263664 -o out.bin --interface=lo http://127.0.0.1:46721"
+        },
+        {
+          "config": "B",
+          "profile": "V4",
+          "rep": 4,
+          "duration_ms": 3190.102,
+          "wallclock_bps": 1314786.7999205042,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-1012533344 -o out.bin --interface=lo http://127.0.0.1:37277"
+        }
+      ]
+    },
+    {
+      "config": "B",
+      "profile": "V5",
+      "runs": [
+        {
+          "config": "B",
+          "profile": "V5",
+          "rep": 0,
+          "duration_ms": 2973.006,
+          "wallclock_bps": 1410795.6727971623,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-3321760473 -o out.bin --interface=lo http://127.0.0.1:46447"
+        },
+        {
+          "config": "B",
+          "profile": "V5",
+          "rep": 1,
+          "duration_ms": 2956.223,
+          "wallclock_bps": 1418805.008959067,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2416164678 -o out.bin --interface=lo http://127.0.0.1:39311"
+        },
+        {
+          "config": "B",
+          "profile": "V5",
+          "rep": 2,
+          "duration_ms": 2961.987,
+          "wallclock_bps": 1416044.02720201,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-3832402899 -o out.bin --interface=lo http://127.0.0.1:39593"
+        },
+        {
+          "config": "B",
+          "profile": "V5",
+          "rep": 3,
+          "duration_ms": 2949.218,
+          "wallclock_bps": 1422174.9629901894,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-2038337618 -o out.bin --interface=lo http://127.0.0.1:42353"
+        },
+        {
+          "config": "B",
+          "profile": "V5",
+          "rep": 4,
+          "duration_ms": 2964.309,
+          "wallclock_bps": 1414934.8128012295,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 2,
+          "server_max_in_flight": 2,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 1,
+            "min_bytes": 2097152,
+            "max_bytes": 2097152,
+            "mean_bytes": 2097152,
+            "first_ranges": [
+              "2097152-4194303(2097152)"
+            ]
+          },
+          "requests_started_before_transition": 2,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=2 --split=2 -d /tmp/aria2-cal-1931419581 -o out.bin --interface=lo http://127.0.0.1:35677"
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V1",
+      "runs": [
+        {
+          "config": "C",
+          "profile": "V1",
+          "rep": 0,
+          "duration_ms": 2126.195,
+          "wallclock_bps": 1972680.7748113414,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-281644013 -o out.bin --interface=lo http://127.0.0.1:38949"
+        },
+        {
+          "config": "C",
+          "profile": "V1",
+          "rep": 1,
+          "duration_ms": 2121.002,
+          "wallclock_bps": 1977510.629410062,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3174038139 -o out.bin --interface=lo http://127.0.0.1:34877"
+        },
+        {
+          "config": "C",
+          "profile": "V1",
+          "rep": 2,
+          "duration_ms": 2106.215,
+          "wallclock_bps": 1991394.0409692267,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2002817920 -o out.bin --interface=lo http://127.0.0.1:46501"
+        },
+        {
+          "config": "C",
+          "profile": "V1",
+          "rep": 3,
+          "duration_ms": 2119.393,
+          "wallclock_bps": 1979011.915204023,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2236128749 -o out.bin --interface=lo http://127.0.0.1:38167"
+        },
+        {
+          "config": "C",
+          "profile": "V1",
+          "rep": 4,
+          "duration_ms": 2109.514,
+          "wallclock_bps": 1988279.7649126763,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-1610292548 -o out.bin --interface=lo http://127.0.0.1:44397"
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V2",
+      "runs": [
+        {
+          "config": "C",
+          "profile": "V2",
+          "rep": 0,
+          "duration_ms": 1108.223,
+          "wallclock_bps": 3784711.1998216966,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3700810000 -o out.bin --interface=lo http://127.0.0.1:44661"
+        },
+        {
+          "config": "C",
+          "profile": "V2",
+          "rep": 1,
+          "duration_ms": 1099.996,
+          "wallclock_bps": 3813017.5018818243,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3560855585 -o out.bin --interface=lo http://127.0.0.1:34003"
+        },
+        {
+          "config": "C",
+          "profile": "V2",
+          "rep": 2,
+          "duration_ms": 1100.55,
+          "wallclock_bps": 3811098.0873199767,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3348946489 -o out.bin --interface=lo http://127.0.0.1:45543"
+        },
+        {
+          "config": "C",
+          "profile": "V2",
+          "rep": 3,
+          "duration_ms": 1098.914,
+          "wallclock_bps": 3816771.831098703,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-1809078865 -o out.bin --interface=lo http://127.0.0.1:44015"
+        },
+        {
+          "config": "C",
+          "profile": "V2",
+          "rep": 4,
+          "duration_ms": 1113.936,
+          "wallclock_bps": 3765300.699501588,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "none",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-962473307 -o out.bin --interface=lo http://127.0.0.1:36809"
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V3",
+      "runs": [
+        {
+          "config": "C",
+          "profile": "V3",
+          "rep": 0,
+          "duration_ms": 863.141,
+          "wallclock_bps": 4859349.7470285855,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-1107091271 -o out.bin --interface=lo http://127.0.0.1:36711"
+        },
+        {
+          "config": "C",
+          "profile": "V3",
+          "rep": 1,
+          "duration_ms": 1053.821,
+          "wallclock_bps": 3980091.495614531,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3863954180 -o out.bin --interface=lo http://127.0.0.1:41031"
+        },
+        {
+          "config": "C",
+          "profile": "V3",
+          "rep": 2,
+          "duration_ms": 846.525,
+          "wallclock_bps": 4954731.4019078,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2568941714 -o out.bin --interface=lo http://127.0.0.1:46621"
+        },
+        {
+          "config": "C",
+          "profile": "V3",
+          "rep": 3,
+          "duration_ms": 1112.941,
+          "wallclock_bps": 3768666.982346773,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3195095785 -o out.bin --interface=lo http://127.0.0.1:44567"
+        },
+        {
+          "config": "C",
+          "profile": "V3",
+          "rep": 4,
+          "duration_ms": 887.202,
+          "wallclock_bps": 4727563.7340763435,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3401331041 -o out.bin --interface=lo http://127.0.0.1:37857"
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V4",
+      "runs": [
+        {
+          "config": "C",
+          "profile": "V4",
+          "rep": 0,
+          "duration_ms": 1899.533,
+          "wallclock_bps": 2208071.1416964065,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2427542757 -o out.bin --interface=lo http://127.0.0.1:38065"
+        },
+        {
+          "config": "C",
+          "profile": "V4",
+          "rep": 1,
+          "duration_ms": 1652.543,
+          "wallclock_bps": 2538090.688109175,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2029304580 -o out.bin --interface=lo http://127.0.0.1:33737"
+        },
+        {
+          "config": "C",
+          "profile": "V4",
+          "rep": 2,
+          "duration_ms": 1647.444,
+          "wallclock_bps": 2545946.3265519193,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3941423846 -o out.bin --interface=lo http://127.0.0.1:42705"
+        },
+        {
+          "config": "C",
+          "profile": "V4",
+          "rep": 3,
+          "duration_ms": 1661.685,
+          "wallclock_bps": 2524127.0156497774,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3062220811 -o out.bin --interface=lo http://127.0.0.1:43683"
+        },
+        {
+          "config": "C",
+          "profile": "V4",
+          "rep": 4,
+          "duration_ms": 1662.36,
+          "wallclock_bps": 2523102.095815588,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3324339559 -o out.bin --interface=lo http://127.0.0.1:34989"
+        }
+      ]
+    },
+    {
+      "config": "C",
+      "profile": "V5",
+      "runs": [
+        {
+          "config": "C",
+          "profile": "V5",
+          "rep": 0,
+          "duration_ms": 1585.372,
+          "wallclock_bps": 2645627.6507974155,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3444182349 -o out.bin --interface=lo http://127.0.0.1:39549"
+        },
+        {
+          "config": "C",
+          "profile": "V5",
+          "rep": 1,
+          "duration_ms": 1625.474,
+          "wallclock_bps": 2580357.483417145,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-393917853 -o out.bin --interface=lo http://127.0.0.1:42655"
+        },
+        {
+          "config": "C",
+          "profile": "V5",
+          "rep": 2,
+          "duration_ms": 1605.928,
+          "wallclock_bps": 2611763.416541713,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-3691314674 -o out.bin --interface=lo http://127.0.0.1:34073"
+        },
+        {
+          "config": "C",
+          "profile": "V5",
+          "rep": 3,
+          "duration_ms": 1597.95,
+          "wallclock_bps": 2624803.0288807536,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-2368982654 -o out.bin --interface=lo http://127.0.0.1:45307"
+        },
+        {
+          "config": "C",
+          "profile": "V5",
+          "rep": 4,
+          "duration_ms": 1602.547,
+          "wallclock_bps": 2617273.627544153,
+          "exit_ok": true,
+          "output_size": 4194304,
+          "output_matches": true,
+          "server_total_requests": 4,
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 1,
+          "range_requests": {
+            "count": 3,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "requests_started_before_transition": 4,
+          "requests_started_at_or_after_transition": 0,
+          "first_post_transition_elapsed_s": 0,
+          "aria2_retry_lines": 0,
+          "netem_status": "applied",
+          "err": "",
+          "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 -d /tmp/aria2-cal-1420782725 -o out.bin --interface=lo http://127.0.0.1:34767"
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "criterion": "lowest pooled mean completion time across all validation profiles; tie-break lower pooled median, then lower pooled retries",
+    "selected_config": "C",
+    "pooled_by_config": {
+      "A": {
+        "count": 25,
+        "mean_ms": 4889.15812,
+        "median_ms": 4213.469,
+        "sd_ms": 2059.1633941798273,
+        "mean_wallclock_bps": 1072022.0775242536,
+        "retries": 0,
+        "failures": 0
+      },
+      "B": {
+        "count": 25,
+        "mean_ms": 2697.5534799999996,
+        "median_ms": 2830.911,
+        "sd_ms": 932.7457378323041,
+        "mean_wallclock_bps": 1780026.3703140316,
+        "retries": 0,
+        "failures": 0
+      },
+      "C": {
+        "count": 25,
+        "mean_ms": 1496.33616,
+        "median_ms": 1602.547,
+        "sd_ms": 426.6886449031126,
+        "mean_wallclock_bps": 3064373.691236368,
+        "retries": 0,
+        "failures": 0
+      }
+    }
+  }
+}

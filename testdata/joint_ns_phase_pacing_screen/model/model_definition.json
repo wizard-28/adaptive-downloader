@@ -1,0 +1,63 @@
+{
+  "study": "joint-ns-phase-pacing-screen",
+  "status": "ANALYTICAL_SCREEN_FAILED_NO_CAUSAL_JOINT_HEADROOM",
+  "evidence_type": "DETERMINISTIC_ANALYTICAL_SIMULATION (calibrated to measured D2 evidence; no network I/O)",
+  "file_size_bytes": 536870912,
+  "regime_family": {
+    "type": "two-phase slow->fast (anchored to the measured D2 mechanism)",
+    "slow_rate_bytes_per_second": 655360,
+    "fast_rate_bytes_per_second": 2560000,
+    "transition_seconds": [1.0, 2.0, 4.0, 8.0],
+    "hidden_from_controller": true,
+    "note": "The exact D2 3-phase schedule (640/160/2500 KiB/s at 2 s/4 s) is a validation anchor only, not part of the adaptation-value family."
+  },
+  "fixed_frontier": {
+    "concurrency": [1, 2, 4, 8, 16],
+    "chunk_bytes": [262144, 1048576, 4194304, 16777216, 33554432]
+  },
+  "frozen_action_space": [
+    [1, 262144], [2, 1048576], [4, 1048576], [4, 4194304],
+    [8, 4194304], [8, 16777216], [16, 4194304], [16, 16777216]
+  ],
+  "starting_configuration": {"N": 4, "S": 4194304},
+  "controllers": {
+    "primary_one_switch": {
+      "signal": "median of the last 3 observed completed-request throughput samples",
+      "baseline": "median of the first 3 observed samples (established before any transition information exists)",
+      "trigger": "recent median >= threshold * baseline",
+      "thresholds": [1.25, 1.5, 2.0],
+      "targets": [[16, 16777216], [16, 4194304], [4, 16777216]],
+      "switches_per_download": 1
+    },
+    "diagnostic_probe_two_switch": {
+      "rule": "at the first completion switch to (16, 256 KiB); once the recent throughput rises above the pre-switch baseline, switch to the joint target",
+      "targets": [[16, 16777216], [16, 4194304], [8, 16777216]],
+      "labelled": "diagnostic extension, not the primary design"
+    },
+    "blind_ramp": {
+      "rule": "one predeclared time-based switch at t in {1..8 s} to any action-space target (no performance signal)",
+      "labelled": "diagnostic; the full scan is an oracle over the ramp parameters (an upper bound for the time-based class)"
+    },
+    "optimistic_causal_bound": {
+      "rule": "start (4,4M) until the first completion (the earliest observation-triggered action point); from there allow clairvoyant exact-time switches (first completion and, if later, the true transition T) over the action space + frontier",
+      "labelled": "diagnostic upper bound for observation-triggered controllers"
+    },
+    "oracle": {
+      "rule": "clairvoyant exact-time single switch over start actions/times/targets",
+      "labelled": "diagnostic only; never deployable"
+    }
+  },
+  "stationary_controls": ["constant 640 KiB/s", "constant 2500 KiB/s"],
+  "aria2_reference": {
+    "version": "1.37.0",
+    "flags": "--split=16 --max-connection-per-server=16 --min-split-size=1M",
+    "model": "16 pieces of 32 MiB issued at ~0.405 s, each held at its start rate (no client abort; --timeout is a connection timeout)"
+  },
+  "predeclared_gate": {
+    "G1_fixed_optimum_varies": "per-regime argmin differs and the max wrong-config penalty >= 5%",
+    "G2_positive_causal_headroom": "some predeclared causal controller beats the per-regime best fixed by >= 5% in >= 2 regimes",
+    "G3_beats_aria2": "the same causal controller beats aria2 in the same regimes",
+    "G4_no_stationary_gain": "no causal gain (>= 2%) in the stationary controls",
+    "overall": "PASS iff G1 and G2 and G3 and G4; otherwise STOP and no empirical execution"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "decision_interval": 4,
+  "numpy": "2.5.3",
+  "python": "3.14.7",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "selection_criterion": "min mean validation completion time; tie-break lowest seed (test never used)",
+  "test_conditions": [
+    {
+      "file_size": 4194304,
+      "latency_s": 0.0,
+      "link_bandwidth": 393216,
+      "loss_percent": 0.0,
+      "name": "unseen-low-bandwidth",
+      "per_connection_rate": 393216,
+      "rate_after": 0,
+      "switch_kind": "none"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.0,
+      "link_bandwidth": 12582912,
+      "loss_percent": 0.0,
+      "name": "unseen-high-bandwidth",
+      "per_connection_rate": 3145728,
+      "rate_after": 0,
+      "switch_kind": "none"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.14,
+      "link_bandwidth": 4194304,
+      "loss_percent": 0.0,
+      "name": "unseen-latency",
+      "per_connection_rate": 2097152,
+      "rate_after": 0,
+      "switch_kind": "none"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.0,
+      "link_bandwidth": 4194304,
+      "loss_percent": 7.0,
+      "name": "unseen-loss",
+      "per_connection_rate": 2097152,
+      "rate_after": 0,
+      "switch_kind": "none"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.1,
+      "link_bandwidth": 3145728,
+      "loss_percent": 5.0,
+      "name": "unseen-latency+loss",
+      "per_connection_rate": 1048576,
+      "rate_after": 0,
+      "switch_kind": "none"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.0,
+      "link_bandwidth": 262144,
+      "loss_percent": 0.0,
+      "name": "unseen-throttle-up-wallclock",
+      "per_connection_rate": 262144,
+      "rate_after": 10485760,
+      "switch_after_seconds": 1.5,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.0,
+      "link_bandwidth": 10485760,
+      "loss_percent": 1.0,
+      "name": "unseen-throttle-down-wallclock",
+      "per_connection_rate": 4194304,
+      "rate_after": 524288,
+      "switch_after_seconds": 0.3,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.12,
+      "link_bandwidth": 2097152,
+      "loss_percent": 6.0,
+      "name": "unseen-combined",
+      "per_connection_rate": 1048576,
+      "rate_after": 8388608,
+      "switch_after_seconds": 0.6,
+      "switch_kind": "wall-clock"
+    }
+  ],
+  "torch": "2.9.0+cpu",
+  "train": {
+    "batch_size": 64,
+    "episodes": 1500,
+    "epsilon_decay_steps": 5000,
+    "epsilon_end": 0.05,
+    "epsilon_start": 1.0,
+    "gamma": 1.0,
+    "gradient_clip": 10.0,
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "learning_rate": 0.001,
+    "max_episode_steps": 200,
+    "randomize_conditions": true,
+    "replay_capacity": 20000,
+    "seed": 0,
+    "target_update_interval": 200,
+    "train_start": 500
+  },
+  "train_ranges": {
+    "rand_file_size": [
+      262144,
+      16777216
+    ],
+    "rand_latency_s": [
+      0.0,
+      0.08
+    ],
+    "rand_link_bandwidth": [
+      262144,
+      8388608
+    ],
+    "rand_loss_percent": [
+      0.0,
+      4.0
+    ],
+    "rand_per_connection": [
+      262144,
+      8388608
+    ],
+    "rand_rate_after": [
+      262144,
+      4194304
+    ],
+    "rand_switch_after_requests": [
+      0,
+      16
+    ],
+    "rand_switch_after_seconds": [
+      0.25,
+      2.5
+    ]
+  },
+  "validation_conditions": [
+    {
+      "file_size": 4194304,
+      "latency_s": 0.09,
+      "link_bandwidth": 716800,
+      "loss_percent": 0.0,
+      "per_connection_rate": 716800,
+      "rate_after": 3145728,
+      "switch_after_seconds": 0.8,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.0,
+      "link_bandwidth": 2097152,
+      "loss_percent": 4.5,
+      "per_connection_rate": 1048576,
+      "rate_after": 524288,
+      "switch_after_requests": 8,
+      "switch_kind": "request-count"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.05,
+      "link_bandwidth": 5242880,
+      "loss_percent": 2.5,
+      "per_connection_rate": 2097152,
+      "rate_after": 1048576,
+      "switch_after_seconds": 0.4,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.02,
+      "link_bandwidth": 3145728,
+      "loss_percent": 0.0,
+      "per_connection_rate": 1048576,
+      "rate_after": 3145728,
+      "switch_kind": "none"
+    }
+  ]
+}

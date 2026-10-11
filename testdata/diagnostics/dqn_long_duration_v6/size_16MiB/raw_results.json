@@ -1,0 +1,312 @@
+{
+  "aria2_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "matrix_sha256": "871ee9248a8396079032d80ea834f47871618b45ea8b9ebda9b922f85b3f05ef",
+  "results": [
+    {
+      "condition": "A2",
+      "duration_ms": 8982.715,
+      "ok": true,
+      "pair_id": "A2-p00",
+      "policy": "v6",
+      "run_id": "A2-p00-v6",
+      "system": "dqn",
+      "wallclock_bps": 1867722.175311139
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7180.511,
+      "ok": true,
+      "pair_id": "A2-p00",
+      "policy": "aria2-f",
+      "run_id": "A2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2336493.321993379
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7887.795,
+      "ok": true,
+      "pair_id": "A2-p01",
+      "policy": "v6",
+      "run_id": "A2-p01-v6",
+      "system": "dqn",
+      "wallclock_bps": 2126984.283947542
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 11553.918,
+      "ok": true,
+      "pair_id": "A2-p01",
+      "policy": "aria2-f",
+      "run_id": "A2-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 1452080.238062967
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7726.659,
+      "ok": true,
+      "pair_id": "A2-p02",
+      "policy": "v6",
+      "run_id": "A2-p02-v6",
+      "system": "dqn",
+      "wallclock_bps": 2171341.5850240057
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 8443.199,
+      "ok": true,
+      "pair_id": "A2-p02",
+      "policy": "aria2-f",
+      "run_id": "A2-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 1987068.6454269288
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7681.725,
+      "ok": true,
+      "pair_id": "A2-p03",
+      "policy": "v6",
+      "run_id": "A2-p03-v6",
+      "system": "dqn",
+      "wallclock_bps": 2184042.7768502515
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 8115.697,
+      "ok": true,
+      "pair_id": "A2-p03",
+      "policy": "aria2-f",
+      "run_id": "A2-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2067255.0983606211
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7929.021,
+      "ok": true,
+      "pair_id": "A2-p04",
+      "policy": "v6",
+      "run_id": "A2-p04-v6",
+      "system": "dqn",
+      "wallclock_bps": 2115925.282579022
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 7882.274,
+      "ok": true,
+      "pair_id": "A2-p04",
+      "policy": "aria2-f",
+      "run_id": "A2-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2128474.092628599
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 12409.569,
+      "ok": true,
+      "pair_id": "D2-p00",
+      "policy": "v6",
+      "run_id": "D2-p00-v6",
+      "system": "dqn",
+      "wallclock_bps": 1351957.9930616447
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2057.138,
+      "ok": true,
+      "pair_id": "D2-p00",
+      "policy": "aria2-f",
+      "run_id": "D2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8155610.367413367
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 12959.34,
+      "ok": true,
+      "pair_id": "D2-p01",
+      "policy": "v6",
+      "run_id": "D2-p01-v6",
+      "system": "dqn",
+      "wallclock_bps": 1294604.2005225574
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2060.007,
+      "ok": true,
+      "pair_id": "D2-p01",
+      "policy": "aria2-f",
+      "run_id": "D2-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8144251.93700798
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 11856.331,
+      "ok": true,
+      "pair_id": "D2-p02",
+      "policy": "v6",
+      "run_id": "D2-p02-v6",
+      "system": "dqn",
+      "wallclock_bps": 1415042.815521935
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2031.758,
+      "ok": true,
+      "pair_id": "D2-p02",
+      "policy": "aria2-f",
+      "run_id": "D2-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8257487.35823853
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 11822.717,
+      "ok": true,
+      "pair_id": "D2-p03",
+      "policy": "v6",
+      "run_id": "D2-p03-v6",
+      "system": "dqn",
+      "wallclock_bps": 1419066.0234868177
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2027.884,
+      "ok": true,
+      "pair_id": "D2-p03",
+      "policy": "aria2-f",
+      "run_id": "D2-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8273262.178704503
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 12256.031,
+      "ok": true,
+      "pair_id": "D2-p04",
+      "policy": "v6",
+      "run_id": "D2-p04-v6",
+      "system": "dqn",
+      "wallclock_bps": 1368894.7098779369
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2027.983,
+      "ok": true,
+      "pair_id": "D2-p04",
+      "policy": "aria2-f",
+      "run_id": "D2-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8272858.303052837
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6449.36,
+      "ok": true,
+      "pair_id": "E2-p00",
+      "policy": "v6",
+      "run_id": "E2-p00-v6",
+      "system": "dqn",
+      "wallclock_bps": 2601376.880806778
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6495.599,
+      "ok": true,
+      "pair_id": "E2-p00",
+      "policy": "aria2-f",
+      "run_id": "E2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2582858.948035431
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 7669.537,
+      "ok": true,
+      "pair_id": "E2-p01",
+      "policy": "v6",
+      "run_id": "E2-p01-v6",
+      "system": "dqn",
+      "wallclock_bps": 2187513.5356932236
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6172.932,
+      "ok": true,
+      "pair_id": "E2-p01",
+      "policy": "aria2-f",
+      "run_id": "E2-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2717868.2674618806
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6526.679,
+      "ok": true,
+      "pair_id": "E2-p02",
+      "policy": "v6",
+      "run_id": "E2-p02-v6",
+      "system": "dqn",
+      "wallclock_bps": 2570559.3916906286
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6610.994,
+      "ok": true,
+      "pair_id": "E2-p02",
+      "policy": "aria2-f",
+      "run_id": "E2-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2537775.106133813
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6443.499,
+      "ok": true,
+      "pair_id": "E2-p03",
+      "policy": "v6",
+      "run_id": "E2-p03-v6",
+      "system": "dqn",
+      "wallclock_bps": 2603743.0905165034
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6493.505,
+      "ok": true,
+      "pair_id": "E2-p03",
+      "policy": "aria2-f",
+      "run_id": "E2-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2583691.8582491274
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6653.734,
+      "ok": true,
+      "pair_id": "E2-p04",
+      "policy": "v6",
+      "run_id": "E2-p04-v6",
+      "system": "dqn",
+      "wallclock_bps": 2521473.8070382737
+    },
+    {
+      "condition": "E2",
+      "duration_ms": 6628.975,
+      "ok": true,
+      "pair_id": "E2-p04",
+      "policy": "aria2-f",
+      "run_id": "E2-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2530891.427407706
+    }
+  ],
+  "systems": {
+    "aria2": "aria2-F",
+    "dqn": "Candidate v6 (state v3, 1 MiB chunk, C 1-16)"
+  },
+  "v6_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887"
+}

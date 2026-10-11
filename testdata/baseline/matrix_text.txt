@@ -1,0 +1,224 @@
+Scenario         Mode                Run  Duration     Attempts  Throughput   FinalC   FinalChunk MaxChunk Correct
+baseline         fixed               0    71.831038ms  8         3682678      1        32768    32768    true   
+baseline         fixed               1    74.021599ms  8         3571127      1        32768    32768    true   
+baseline         fixed               2    72.694343ms  8         3647042      1        32768    32768    true   
+baseline         fixed               3    73.031117ms  8         3626702      1        32768    32768    true   
+baseline         fixed               4    72.18667ms   8         3658745      1        32768    32768    true   
+baseline         fixed               5    73.778694ms  8         3605365      1        32768    32768    true   
+baseline         fixed               6    72.470785ms  8         3655527      1        32768    32768    true   
+baseline         fixed               7    72.887526ms  8         3633361      1        32768    32768    true   
+baseline         fixed               8    73.145099ms  8         3622645      1        32768    32768    true   
+baseline         fixed               9    74.288537ms  8         3572524      1        32768    32768    true   
+baseline         concurrency-adaptive 0    74.372899ms  8         3560166      1        32768    32768    true   
+baseline         concurrency-adaptive 1    71.932099ms  8         3675617      1        32768    32768    true   
+baseline         concurrency-adaptive 2    73.374106ms  8         3614235      1        32768    32768    true   
+baseline         concurrency-adaptive 3    74.006935ms  8         3577772      1        32768    32768    true   
+baseline         concurrency-adaptive 4    73.053536ms  8         3616773      1        32768    32768    true   
+baseline         concurrency-adaptive 5    73.0476ms    8         3625353      1        32768    32768    true   
+baseline         concurrency-adaptive 6    72.393052ms  8         3649570      1        32768    32768    true   
+baseline         concurrency-adaptive 7    73.185118ms  8         3631997      1        32768    32768    true   
+baseline         concurrency-adaptive 8    73.808797ms  8         3595453      1        32768    32768    true   
+baseline         concurrency-adaptive 9    74.440231ms  8         3560838      1        32768    32768    true   
+baseline         chunk-size-adaptive 0    71.937755ms  8         3675001      1        32768    32768    true   
+baseline         chunk-size-adaptive 1    72.442286ms  8         3650674      1        32768    32768    true   
+baseline         chunk-size-adaptive 2    72.566116ms  8         3650830      1        32768    32768    true   
+baseline         chunk-size-adaptive 3    73.82905ms   8         3589879      1        32768    32768    true   
+baseline         chunk-size-adaptive 4    72.647341ms  8         3639375      1        32768    32768    true   
+baseline         chunk-size-adaptive 5    72.60439ms   8         3645278      1        32768    32768    true   
+baseline         chunk-size-adaptive 6    72.68408ms   8         3645274      1        32768    32768    true   
+baseline         chunk-size-adaptive 7    72.732898ms  8         3641836      1        32768    32768    true   
+baseline         chunk-size-adaptive 8    75.003775ms  8         3539152      1        32768    32768    true   
+baseline         chunk-size-adaptive 9    74.259692ms  8         3567584      1        32768    32768    true   
+baseline         joint-adaptive      0    73.029928ms  8         3622701      1        32768    32768    true   
+baseline         joint-adaptive      1    73.355247ms  8         3603928      1        32768    32768    true   
+baseline         joint-adaptive      2    72.608859ms  8         3642193      1        32768    32768    true   
+baseline         joint-adaptive      3    72.469247ms  8         3655502      1        32768    32768    true   
+baseline         joint-adaptive      4    71.649245ms  8         3695386      1        32768    32768    true   
+baseline         joint-adaptive      5    73.830448ms  8         3591957      1        32768    32768    true   
+baseline         joint-adaptive      6    71.916248ms  8         3681468      1        32768    32768    true   
+baseline         joint-adaptive      7    73.548011ms  8         3604264      1        32768    32768    true   
+baseline         joint-adaptive      8    73.670023ms  8         3593508      1        32768    32768    true   
+baseline         joint-adaptive      9    73.453309ms  8         3608876      1        32768    32768    true   
+server-throttle  fixed               0    298.144351ms 8         881859       1        32768    32768    true   
+server-throttle  fixed               1    295.694827ms 8         888801       1        32768    32768    true   
+server-throttle  fixed               2    295.817683ms 8         888469       1        32768    32768    true   
+server-throttle  fixed               3    296.101527ms 8         887773       1        32768    32768    true   
+server-throttle  fixed               4    296.946823ms 8         885006       1        32768    32768    true   
+server-throttle  fixed               5    296.878037ms 8         885201       1        32768    32768    true   
+server-throttle  fixed               6    297.250575ms 8         884039       1        32768    32768    true   
+server-throttle  fixed               7    296.952571ms 8         885034       1        32768    32768    true   
+server-throttle  fixed               8    297.095961ms 8         884926       1        32768    32768    true   
+server-throttle  fixed               9    296.207665ms 8         887601       1        32768    32768    true   
+server-throttle  concurrency-adaptive 0    290.474421ms 8         876091       4        32768    32768    true   
+server-throttle  concurrency-adaptive 1    288.706754ms 8         881818       4        32768    32768    true   
+server-throttle  concurrency-adaptive 2    289.247683ms 8         881238       4        32768    32768    true   
+server-throttle  concurrency-adaptive 3    290.519005ms 8         876136       4        32768    32768    true   
+server-throttle  concurrency-adaptive 4    288.170262ms 8         882589       4        32768    32768    true   
+server-throttle  concurrency-adaptive 5    289.096219ms 8         880412       4        32768    32768    true   
+server-throttle  concurrency-adaptive 6    288.037507ms 8         883827       4        32768    32768    true   
+server-throttle  concurrency-adaptive 7    287.853905ms 8         883651       4        32768    32768    true   
+server-throttle  concurrency-adaptive 8    290.129194ms 8         876093       4        32768    32768    true   
+server-throttle  concurrency-adaptive 9    288.185945ms 8         882867       4        32768    32768    true   
+server-throttle  chunk-size-adaptive 0    296.649271ms 7         885837       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 1    297.569713ms 7         883500       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 2    295.917493ms 7         887675       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 3    297.024549ms 7         884979       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 4    295.959062ms 7         889392       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 5    295.461943ms 7         890882       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 6    296.389233ms 7         886612       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 7    297.497755ms 7         884407       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 8    296.03208ms  7         888075       1        131072   131072   true   
+server-throttle  chunk-size-adaptive 9    295.811179ms 7         888696       1        131072   131072   true   
+server-throttle  joint-adaptive      0    288.077486ms 8         883326       3        98304    98304    true   
+server-throttle  joint-adaptive      1    289.483041ms 8         879926       3        98304    98304    true   
+server-throttle  joint-adaptive      2    287.310297ms 8         885347       3        98304    98304    true   
+server-throttle  joint-adaptive      3    288.842753ms 8         880727       3        98304    98304    true   
+server-throttle  joint-adaptive      4    290.060441ms 8         876755       3        98304    98304    true   
+server-throttle  joint-adaptive      5    288.72586ms  8         880803       3        98304    98304    true   
+server-throttle  joint-adaptive      6    289.658103ms 8         879070       3        98304    98304    true   
+server-throttle  joint-adaptive      7    288.752202ms 8         881302       3        98304    98304    true   
+server-throttle  joint-adaptive      8    287.12282ms  8         887253       3        98304    98304    true   
+server-throttle  joint-adaptive      9    288.287077ms 8         882772       3        98304    98304    true   
+latency          fixed               0    435.059505ms 8         603575       1        32768    32768    true   
+latency          fixed               1    435.278118ms 8         603359       1        32768    32768    true   
+latency          fixed               2    436.024737ms 8         602840       1        32768    32768    true   
+latency          fixed               3    434.759509ms 8         604131       1        32768    32768    true   
+latency          fixed               4    435.604883ms 8         602935       1        32768    32768    true   
+latency          fixed               5    435.509001ms 8         603145       1        32768    32768    true   
+latency          fixed               6    435.028445ms 8         603907       1        32768    32768    true   
+latency          fixed               7    434.970906ms 8         603779       1        32768    32768    true   
+latency          fixed               8    435.17933ms  8         603430       1        32768    32768    true   
+latency          fixed               9    434.426384ms 8         604638       1        32768    32768    true   
+latency          concurrency-adaptive 0    327.515275ms 8         551276       3        32768    32768    true   
+latency          concurrency-adaptive 1    327.969046ms 8         551135       3        32768    32768    true   
+latency          concurrency-adaptive 2    327.873301ms 8         551840       3        32768    32768    true   
+latency          concurrency-adaptive 3    328.255905ms 8         552005       3        32768    32768    true   
+latency          concurrency-adaptive 4    327.859635ms 8         551935       3        32768    32768    true   
+latency          concurrency-adaptive 5    327.424819ms 8         552790       3        32768    32768    true   
+latency          concurrency-adaptive 6    327.518833ms 8         552945       3        32768    32768    true   
+latency          concurrency-adaptive 7    328.026241ms 8         550927       3        32768    32768    true   
+latency          concurrency-adaptive 8    327.918624ms 8         552163       3        32768    32768    true   
+latency          concurrency-adaptive 9    327.303129ms 8         552818       3        32768    32768    true   
+latency          chunk-size-adaptive 0    312.967759ms 5         839464       1        131072   131072   true   
+latency          chunk-size-adaptive 1    313.396802ms 5         838125       1        131072   131072   true   
+latency          chunk-size-adaptive 2    312.867629ms 5         839444       1        131072   131072   true   
+latency          chunk-size-adaptive 3    314.315162ms 5         836054       1        131072   131072   true   
+latency          chunk-size-adaptive 4    313.082968ms 5         838968       1        131072   131072   true   
+latency          chunk-size-adaptive 5    314.078841ms 5         836857       1        131072   131072   true   
+latency          chunk-size-adaptive 6    314.873851ms 5         834385       1        131072   131072   true   
+latency          chunk-size-adaptive 7    312.338216ms 5         840957       1        131072   131072   true   
+latency          chunk-size-adaptive 8    313.146565ms 5         839063       1        131072   131072   true   
+latency          chunk-size-adaptive 9    314.678747ms 5         835168       1        131072   131072   true   
+latency          joint-adaptive      0    327.861414ms 8         552526       2        65536    65536    true   
+latency          joint-adaptive      1    327.285234ms 8         553260       2        65536    65536    true   
+latency          joint-adaptive      2    328.768739ms 8         551194       2        65536    65536    true   
+latency          joint-adaptive      3    327.376608ms 8         552919       2        65536    65536    true   
+latency          joint-adaptive      4    330.493135ms 8         549220       2        65536    65536    true   
+latency          joint-adaptive      5    328.665615ms 8         551462       2        65536    65536    true   
+latency          joint-adaptive      6    328.484601ms 8         551056       2        65536    65536    true   
+latency          joint-adaptive      7    326.924012ms 8         553420       2        65536    65536    true   
+latency          joint-adaptive      8    328.747364ms 8         551729       2        65536    65536    true   
+latency          joint-adaptive      9    328.28286ms  8         551382       2        65536    65536    true   
+loss             fixed               0    75.096362ms  8         3534211      1        32768    32768    true   
+loss             fixed               1    73.20451ms   8         3617102      1        32768    32768    true   
+loss             fixed               2    74.713495ms  8         3549743      1        32768    32768    true   
+loss             fixed               3    485.06887ms  8         541413       1        32768    32768    true   
+loss             fixed               4    75.573029ms  8         3507090      1        32768    32768    true   
+loss             fixed               5    77.332046ms  8         3426852      1        32768    32768    true   
+loss             fixed               6    72.868928ms  8         3634260      1        32768    32768    true   
+loss             fixed               7    73.963058ms  8         3584600      1        32768    32768    true   
+loss             fixed               8    1.11109343s  8         236125       1        32768    32768    true   
+loss             fixed               9    73.850057ms  8         3585692      1        32768    32768    true   
+loss             concurrency-adaptive 0    73.91214ms   8         3589522      1        32768    32768    true   
+loss             concurrency-adaptive 1    72.880797ms  8         3632016      1        32768    32768    true   
+loss             concurrency-adaptive 2    72.693693ms  8         3639338      1        32768    32768    true   
+loss             concurrency-adaptive 3    74.123829ms  8         3577091      1        32768    32768    true   
+loss             concurrency-adaptive 4    74.296197ms  8         3575384      1        32768    32768    true   
+loss             concurrency-adaptive 5    72.667087ms  8         3652714      1        32768    32768    true   
+loss             concurrency-adaptive 6    74.378261ms  8         3565080      1        32768    32768    true   
+loss             concurrency-adaptive 7    74.209806ms  8         3573324      1        32768    32768    true   
+loss             concurrency-adaptive 8    72.588729ms  8         3658150      1        32768    32768    true   
+loss             concurrency-adaptive 9    281.740175ms 8         933118       1        32768    32768    true   
+loss             chunk-size-adaptive 0    74.268887ms  8         3576443      1        32768    32768    true   
+loss             chunk-size-adaptive 1    73.469347ms  8         3610429      1        32768    32768    true   
+loss             chunk-size-adaptive 2    72.793636ms  8         3633788      1        32768    32768    true   
+loss             chunk-size-adaptive 3    71.914479ms  8         3675319      1        32768    32768    true   
+loss             chunk-size-adaptive 4    72.515462ms  8         3645785      1        32768    32768    true   
+loss             chunk-size-adaptive 5    73.063225ms  8         3637362      1        32768    32768    true   
+loss             chunk-size-adaptive 6    73.72867ms   8         3594455      1        32768    32768    true   
+loss             chunk-size-adaptive 7    72.507363ms  8         3652544      1        32768    32768    true   
+loss             chunk-size-adaptive 8    73.016924ms  8         3630122      1        32768    32768    true   
+loss             chunk-size-adaptive 9    72.656686ms  8         3644532      1        32768    32768    true   
+loss             joint-adaptive      0    74.464511ms  8         3557910      1        32768    32768    true   
+loss             joint-adaptive      1    71.962179ms  8         3677155      1        32768    32768    true   
+loss             joint-adaptive      2    72.22129ms   8         3668429      1        32768    32768    true   
+loss             joint-adaptive      3    73.44253ms   8         3602919      1        32768    32768    true   
+loss             joint-adaptive      4    73.826448ms  8         3589824      1        32768    32768    true   
+loss             joint-adaptive      5    73.461528ms  8         3610224      1        32768    32768    true   
+loss             joint-adaptive      6    73.501687ms  8         3612555      1        32768    32768    true   
+loss             joint-adaptive      7    73.138516ms  8         3622202      1        32768    32768    true   
+loss             joint-adaptive      8    72.364539ms  8         3665524      1        32768    32768    true   
+loss             joint-adaptive      9    73.033059ms  8         3625189      1        32768    32768    true   
+combined         fixed               0    627.240488ms 8         418531       1        32768    32768    true   
+combined         fixed               1    627.494809ms 8         418315       1        32768    32768    true   
+combined         fixed               2    627.67887ms  8         418293       1        32768    32768    true   
+combined         fixed               3    627.922085ms 8         418120       1        32768    32768    true   
+combined         fixed               4    627.974845ms 8         418041       1        32768    32768    true   
+combined         fixed               5    628.477869ms 8         417675       1        32768    32768    true   
+combined         fixed               6    664.747025ms 8         394840       1        32768    32768    true   
+combined         fixed               7    627.608626ms 8         418248       1        32768    32768    true   
+combined         fixed               8    627.393137ms 8         418424       1        32768    32768    true   
+combined         fixed               9    679.969405ms 8         386020       1        32768    32768    true   
+combined         concurrency-adaptive 0    448.458911ms 8         393057       2        32768    32768    true   
+combined         concurrency-adaptive 1    447.359912ms 8         393731       2        32768    32768    true   
+combined         concurrency-adaptive 2    448.23916ms  8         392833       2        32768    32768    true   
+combined         concurrency-adaptive 3    447.846464ms 8         393139       2        32768    32768    true   
+combined         concurrency-adaptive 4    448.300659ms 8         372682       2        32768    32768    true   
+combined         concurrency-adaptive 5    595.353898ms 8         286034       1        32768    32768    true   
+combined         concurrency-adaptive 6    554.063093ms 8         285882       1        32768    32768    true   
+combined         concurrency-adaptive 7    1.472767042s 8         142209       4        32768    32768    true   
+combined         concurrency-adaptive 8    448.580893ms 8         392706       2        32768    32768    true   
+combined         concurrency-adaptive 9    446.702262ms 8         394364       2        32768    32768    true   
+combined         chunk-size-adaptive 0    505.58485ms  5         519287       1        98304    98304    true   
+combined         chunk-size-adaptive 1    504.451216ms 5         520358       1        98304    98304    true   
+combined         chunk-size-adaptive 2    505.567369ms 5         519111       1        98304    98304    true   
+combined         chunk-size-adaptive 3    506.863711ms 5         517912       1        98304    98304    true   
+combined         chunk-size-adaptive 4    504.465536ms 5         520233       1        98304    98304    true   
+combined         chunk-size-adaptive 5    504.607615ms 5         520160       1        98304    98304    true   
+combined         chunk-size-adaptive 6    857.617852ms 7         305971       1        65536    65536    true   
+combined         chunk-size-adaptive 7    504.891932ms 5         519984       1        98304    98304    true   
+combined         chunk-size-adaptive 8    503.979271ms 5         520809       1        98304    98304    true   
+combined         chunk-size-adaptive 9    528.354225ms 5         496782       1        65536    65536    true   
+combined         joint-adaptive      0    448.417993ms 8         392852       2        32768    32768    true   
+combined         joint-adaptive      1    447.838961ms 8         393287       2        32768    32768    true   
+combined         joint-adaptive      2    447.519808ms 8         393475       2        32768    32768    true   
+combined         joint-adaptive      3    460.376855ms 8         364420       2        32768    32768    true   
+combined         joint-adaptive      4    448.864006ms 8         391573       2        32768    32768    true   
+combined         joint-adaptive      5    448.888753ms 8         391917       2        32768    32768    true   
+combined         joint-adaptive      6    680.951213ms 8         385425       1        32768    32768    true   
+combined         joint-adaptive      7    476.373341ms 7         395500       2        65536    65536    true   
+combined         joint-adaptive      8    445.933999ms 8         393871       2        32768    32768    true   
+combined         joint-adaptive      9    663.098289ms 8         395718       1        32768    32768    true   
+
+Aggregates (scenario x mode, valid runs only):
+Scenario         Mode                Valid  Failed MeanDur      MedianDur    MeanThrpt   MeanAtt   MeanRetr 
+baseline         fixed               10     0      73.03354ms   72.959321ms  3627572     8.00      0.00     
+baseline         concurrency-adaptive 10     0      73.361437ms  73.279612ms  3610777     8.00      0.00     
+baseline         chunk-size-adaptive 10     0      73.070738ms  72.66571ms   3624488     8.00      0.00     
+baseline         joint-adaptive      10     0      72.953056ms  73.192587ms  3629978     8.00      0.00     
+server-throttle  fixed               10     0      296.709002ms 296.91243ms  885871      8.00      0.00     
+server-throttle  concurrency-adaptive 10     0      289.042089ms 288.901486ms 880472      8.00      0.00     
+server-throttle  chunk-size-adaptive 10     0      296.431227ms 296.210656ms 887006      7.00      0.00     
+server-throttle  joint-adaptive      10     0      288.632008ms 288.739031ms 881728      8.00      0.00     
+latency          fixed               10     0      435.184081ms 435.119417ms 603574      8.00      0.00     
+latency          concurrency-adaptive 10     0      327.76648ms  327.866468ms 551983      8.00      0.00     
+latency          chunk-size-adaptive 10     0      313.574654ms 313.271683ms 837849      5.00      0.00     
+latency          joint-adaptive      10     0      328.288958ms 328.38373ms  551817      8.00      0.00     
+loss             fixed               10     0      219.276378ms 74.904928ms  2921709     8.00      0.00     
+loss             concurrency-adaptive 10     0      94.349071ms  74.017984ms  3339574     8.00      0.00     
+loss             chunk-size-adaptive 10     0      72.993467ms  72.90528ms   3630078     8.00      0.00     
+loss             joint-adaptive      10     0      73.141628ms  73.290523ms  3623193     8.00      0.00     
+combined         fixed               10     0      636.650715ms 627.800477ms 412651      8.00      0.00     
+combined         concurrency-adaptive 10     0      575.767229ms 448.379785ms 344664      8.00      0.00     
+combined         chunk-size-adaptive 10     0      542.638357ms 505.22965ms  496061      5.20      0.00     
+combined         joint-adaptive      10     0      496.826321ms 448.876379ms 389804      7.90      0.00     

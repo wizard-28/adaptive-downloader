@@ -1,0 +1,5 @@
+run smoke_capped_4m system=ours policy=none completion=84.461s output=536870912 verified=true retries=0 finalN=4 finalS=4194304 err=""
+run smoke_sel_healthy system=ours policy=classifier completion=15.892s output=536870912 verified=true retries=0 finalN=16 finalS=1048576 err=""
+run smoke_sel_capped system=ours policy=classifier completion=113.040s output=536870912 verified=true retries=0 finalN=16 finalS=1048576 err=""
+run smoke_drop system=ours policy=drop completion=51.793s output=536870912 verified=true retries=0 finalN=4 finalS=1048576 err=""
+SMOKE2_DONE

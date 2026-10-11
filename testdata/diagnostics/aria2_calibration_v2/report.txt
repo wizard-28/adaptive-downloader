@@ -1,0 +1,31 @@
+aria2 baseline calibration v2 - 16 MiB, 1 MiB min-split (validation only)
+
+aria2 aria2 version 1.37.0  file=16777216 reps=5  valid=150/150  retries=0 failures=0
+
+pooled (lowest mean wins):
+  A: mean=13136.7ms median=13187.4ms bps=1367932
+  B: mean=6769.8ms median=6772.2ms bps=2638972
+  C: mean=3502.8ms median=3519.0ms bps=5055984
+  D: mean=3540.4ms median=3516.2ms bps=5010058
+  E: mean=3463.2ms median=3511.9ms bps=5126655
+  F: mean=1101.9ms median=1121.6ms bps=16242523
+
+selected: F  sha256=b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02
+
+GRANULARITY (observed):
+  A: maxInFlight=[1] rangeMin=[] rangeMax=[] rangeCounts=[0]
+  B: maxInFlight=[2] rangeMin=[1048576, 8388608] rangeMax=[8388608] rangeCounts=[1, 2]
+  C: maxInFlight=[4] rangeMin=[4194304] rangeMax=[4194304] rangeCounts=[3]
+  D: maxInFlight=[4] rangeMin=[1048576, 4194304] rangeMax=[4194304] rangeCounts=[3, 4]
+  E: maxInFlight=[4] rangeMin=[1048576, 4194304] rangeMax=[4194304] rangeCounts=[3, 6]
+  F: maxInFlight=[14, 15, 16] rangeMin=[1048576] rangeMax=[1048576] rangeCounts=[14, 15]
+
+A-E FAIL the 1 MiB granularity check (aria2 caps split by --max-connection-per-server).
+F (maxconn=16, split=16) is the added candidate that PASSES: 14-16 x 1 MiB ranges.
+F was added as a documented deviation from the specified candidate set.
+
+FAIRNESS CAVEAT: F needs up to 16 connections; the frozen server throttles each response
+independently, so F achieves ~16x rate aggregate while a 1-4 concurrency DQN reaches <=4x.
+Any later comparison must state this asymmetry.
+
+Validation-only; no performance claim against DQN. F frozen as the v2 baseline.

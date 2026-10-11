@@ -1,0 +1,57 @@
+{
+  "regime": "recovery",
+  "results": [
+    {
+      "concurrency": 1,
+      "duration_ms": 10356.766,
+      "file_size": 33554432,
+      "label": "recovery",
+      "latency_ms": 40,
+      "link": 6291456,
+      "loss_percent": 0.6,
+      "output_size": 33554432,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 3239856.148145087
+    },
+    {
+      "concurrency": 4,
+      "duration_ms": 6041.118,
+      "file_size": 33554432,
+      "label": "recovery",
+      "latency_ms": 40,
+      "link": 6291456,
+      "loss_percent": 0.6,
+      "output_size": 33554432,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 5554341.431503242
+    },
+    {
+      "concurrency": 8,
+      "duration_ms": 5897.029,
+      "file_size": 33554432,
+      "label": "recovery",
+      "latency_ms": 40,
+      "link": 6291456,
+      "loss_percent": 0.6,
+      "output_size": 33554432,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 5690057.145725414
+    },
+    {
+      "concurrency": 16,
+      "duration_ms": 5797.681,
+      "file_size": 33554432,
+      "label": "recovery",
+      "latency_ms": 40,
+      "link": 6291456,
+      "loss_percent": 0.6,
+      "output_size": 33554432,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 5787560.923065619
+    }
+  ]
+}

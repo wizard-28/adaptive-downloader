@@ -1,0 +1,919 @@
+{
+  "params": {
+    "C_bps": 5000000,
+    "file_bytes": 33554432,
+    "chunk_bytes": 1048576
+  },
+  "states": {
+    "S0_no_background": {
+      "cells": {
+        "1": {
+          "n_valid": 3,
+          "completions_s": [
+            7.16225,
+            7.1660770000000005,
+            7.172846
+          ],
+          "median_s": 7.1660770000000005,
+          "min_s": 7.16225,
+          "max_s": 7.172846,
+          "ping_median_ms": 47.4,
+          "ping_p95_ms": 57.3,
+          "drops": 0,
+          "retrans": 0,
+          "achieved_background_bps": null,
+          "reps": [
+            {
+              "run_id": "gate_S0_no_background_n1_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 7.172846,
+              "ping_median_ms": 47.0,
+              "ping_p95_ms": 57.3,
+              "drops": 0,
+              "retrans": 0,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n1_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 7.1660770000000005,
+              "ping_median_ms": 47.4,
+              "ping_p95_ms": 56.4,
+              "drops": 0,
+              "retrans": 0,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n1_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 7.16225,
+              "ping_median_ms": 48.25,
+              "ping_p95_ms": 57.9,
+              "drops": 0,
+              "retrans": 0,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            }
+          ]
+        },
+        "2": {
+          "n_valid": 3,
+          "completions_s": [
+            7.150482,
+            7.157907,
+            7.159198
+          ],
+          "median_s": 7.157907,
+          "min_s": 7.150482,
+          "max_s": 7.159198,
+          "ping_median_ms": 61.5,
+          "ping_p95_ms": 77.0,
+          "drops": 44,
+          "retrans": 44,
+          "achieved_background_bps": null,
+          "reps": [
+            {
+              "run_id": "gate_S0_no_background_n2_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 7.159198,
+              "ping_median_ms": 60.25,
+              "ping_p95_ms": 77.0,
+              "drops": 44,
+              "retrans": 44,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n2_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 7.157907,
+              "ping_median_ms": 61.5,
+              "ping_p95_ms": 75.5,
+              "drops": 25,
+              "retrans": 25,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n2_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 7.150482,
+              "ping_median_ms": 62.6,
+              "ping_p95_ms": 77.7,
+              "drops": 61,
+              "retrans": 61,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            }
+          ]
+        },
+        "4": {
+          "n_valid": 3,
+          "completions_s": [
+            7.096827,
+            7.096881000000001,
+            7.101355
+          ],
+          "median_s": 7.096881000000001,
+          "min_s": 7.096827,
+          "max_s": 7.101355,
+          "ping_median_ms": 64.5,
+          "ping_p95_ms": 78.9,
+          "drops": 111,
+          "retrans": 103,
+          "achieved_background_bps": null,
+          "reps": [
+            {
+              "run_id": "gate_S0_no_background_n4_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 7.096881000000001,
+              "ping_median_ms": 64.5,
+              "ping_p95_ms": 78.9,
+              "drops": 232,
+              "retrans": 191,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n4_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 7.096827,
+              "ping_median_ms": 65.4,
+              "ping_p95_ms": 78.2,
+              "drops": 111,
+              "retrans": 103,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n4_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 7.101355,
+              "ping_median_ms": 64.5,
+              "ping_p95_ms": 80.7,
+              "drops": 83,
+              "retrans": 68,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            }
+          ]
+        },
+        "8": {
+          "n_valid": 3,
+          "completions_s": [
+            7.0529459999999995,
+            7.053846999999999,
+            7.054158
+          ],
+          "median_s": 7.053846999999999,
+          "min_s": 7.0529459999999995,
+          "max_s": 7.054158,
+          "ping_median_ms": 74.25,
+          "ping_p95_ms": 84.5,
+          "drops": 204,
+          "retrans": 53,
+          "achieved_background_bps": null,
+          "reps": [
+            {
+              "run_id": "gate_S0_no_background_n8_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 7.054158,
+              "ping_median_ms": 73.94999999999999,
+              "ping_p95_ms": 84.5,
+              "drops": 172,
+              "retrans": 58,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n8_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 7.0529459999999995,
+              "ping_median_ms": 74.25,
+              "ping_p95_ms": 84.1,
+              "drops": 233,
+              "retrans": 49,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n8_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 7.053846999999999,
+              "ping_median_ms": 78.45,
+              "ping_p95_ms": 89.3,
+              "drops": 204,
+              "retrans": 53,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            }
+          ]
+        },
+        "16": {
+          "n_valid": 3,
+          "completions_s": [
+            7.066759,
+            7.071757,
+            7.088014
+          ],
+          "median_s": 7.071757,
+          "min_s": 7.066759,
+          "max_s": 7.088014,
+          "ping_median_ms": 85.85,
+          "ping_p95_ms": 93.7,
+          "drops": 338,
+          "retrans": 103,
+          "achieved_background_bps": null,
+          "reps": [
+            {
+              "run_id": "gate_S0_no_background_n16_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 7.088014,
+              "ping_median_ms": 81.65,
+              "ping_p95_ms": 92.4,
+              "drops": 337,
+              "retrans": 139,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n16_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 7.071757,
+              "ping_median_ms": 85.85,
+              "ping_p95_ms": 93.7,
+              "drops": 339,
+              "retrans": 103,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S0_no_background_n16_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 7.066759,
+              "ping_median_ms": 88.3,
+              "ping_p95_ms": 94.9,
+              "drops": 338,
+              "retrans": 75,
+              "achieved_background_bps": null,
+              "client_retries": 0
+            }
+          ]
+        }
+      },
+      "summary": {
+        "median_s": {
+          "1": 7.1660770000000005,
+          "2": 7.157907,
+          "4": 7.096881000000001,
+          "8": 7.053846999999999,
+          "16": 7.071757
+        },
+        "N_star": 8,
+        "second_best": 16,
+        "second_s": 7.071757,
+        "margin": 0.0025326096470792954,
+        "winner_rep_wins": 3,
+        "ping_p95_spearman_vs_N": 1.0,
+        "drops_spearman_vs_N": 1.0,
+        "retrans_spearman_vs_N": 0.9,
+        "ping_p95_ratio_16_over_1": 1.6352530541012218,
+        "achieved_background_bps": null,
+        "interior_optimum": true,
+        "material_margin": false,
+        "consistent_winner": true
+      }
+    },
+    "S1_moderate": {
+      "cells": {
+        "1": {
+          "n_valid": 3,
+          "completions_s": [
+            14.850228999999999,
+            14.856127,
+            14.860101
+          ],
+          "median_s": 14.856127,
+          "min_s": 14.850228999999999,
+          "max_s": 14.860101,
+          "ping_median_ms": 36.7,
+          "ping_p95_ms": 56.4,
+          "drops": 381,
+          "retrans": 269,
+          "achieved_background_bps": 19070000.0,
+          "reps": [
+            {
+              "run_id": "gate_S1_moderate_n1_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 14.850228999999999,
+              "ping_median_ms": 35.0,
+              "ping_p95_ms": 55.9,
+              "drops": 523,
+              "retrans": 269,
+              "achieved_background_bps": 19130000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n1_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 14.860101,
+              "ping_median_ms": 45.6,
+              "ping_p95_ms": 60.6,
+              "drops": 381,
+              "retrans": 317,
+              "achieved_background_bps": 19010000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n1_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 14.856127,
+              "ping_median_ms": 36.7,
+              "ping_p95_ms": 56.4,
+              "drops": 367,
+              "retrans": 264,
+              "achieved_background_bps": 19070000.0,
+              "client_retries": 0
+            }
+          ]
+        },
+        "2": {
+          "n_valid": 3,
+          "completions_s": [
+            14.990407999999999,
+            14.99393,
+            14.996316
+          ],
+          "median_s": 14.99393,
+          "min_s": 14.990407999999999,
+          "max_s": 14.996316,
+          "ping_median_ms": 38.1,
+          "ping_p95_ms": 57.2,
+          "drops": 349,
+          "retrans": 289,
+          "achieved_background_bps": 18785000.0,
+          "reps": [
+            {
+              "run_id": "gate_S1_moderate_n2_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 14.996316,
+              "ping_median_ms": 32.5,
+              "ping_p95_ms": 57.7,
+              "drops": 238,
+              "retrans": 156,
+              "achieved_background_bps": 18785000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n2_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 14.990407999999999,
+              "ping_median_ms": 38.150000000000006,
+              "ping_p95_ms": 56.8,
+              "drops": 463,
+              "retrans": 296,
+              "achieved_background_bps": 18795000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n2_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 14.99393,
+              "ping_median_ms": 38.1,
+              "ping_p95_ms": 57.2,
+              "drops": 349,
+              "retrans": 289,
+              "achieved_background_bps": 18770000.0,
+              "client_retries": 0
+            }
+          ]
+        },
+        "4": {
+          "n_valid": 3,
+          "completions_s": [
+            15.04514,
+            15.061183000000002,
+            15.06799
+          ],
+          "median_s": 15.061183000000002,
+          "min_s": 15.04514,
+          "max_s": 15.06799,
+          "ping_median_ms": 32.3,
+          "ping_p95_ms": 58.7,
+          "drops": 429,
+          "retrans": 185,
+          "achieved_background_bps": 19175000.0,
+          "reps": [
+            {
+              "run_id": "gate_S1_moderate_n4_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 15.04514,
+              "ping_median_ms": 32.3,
+              "ping_p95_ms": 60.1,
+              "drops": 240,
+              "retrans": 165,
+              "achieved_background_bps": 19210000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n4_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 15.061183000000002,
+              "ping_median_ms": 29.95,
+              "ping_p95_ms": 58.0,
+              "drops": 429,
+              "retrans": 185,
+              "achieved_background_bps": 19145000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n4_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 15.06799,
+              "ping_median_ms": 32.85,
+              "ping_p95_ms": 58.7,
+              "drops": 461,
+              "retrans": 267,
+              "achieved_background_bps": 19175000.0,
+              "client_retries": 0
+            }
+          ]
+        },
+        "8": {
+          "n_valid": 3,
+          "completions_s": [
+            15.072932000000002,
+            15.125316000000002,
+            15.196531
+          ],
+          "median_s": 15.125316000000002,
+          "min_s": 15.072932000000002,
+          "max_s": 15.196531,
+          "ping_median_ms": 48.75,
+          "ping_p95_ms": 62.4,
+          "drops": 305,
+          "retrans": 243,
+          "achieved_background_bps": 19055000.0,
+          "reps": [
+            {
+              "run_id": "gate_S1_moderate_n8_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 15.072932000000002,
+              "ping_median_ms": 48.75,
+              "ping_p95_ms": 62.2,
+              "drops": 226,
+              "retrans": 211,
+              "achieved_background_bps": 19140000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n8_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 15.125316000000002,
+              "ping_median_ms": 49.25,
+              "ping_p95_ms": 62.4,
+              "drops": 501,
+              "retrans": 252,
+              "achieved_background_bps": 19055000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n8_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 15.196531,
+              "ping_median_ms": 46.0,
+              "ping_p95_ms": 62.4,
+              "drops": 305,
+              "retrans": 243,
+              "achieved_background_bps": 18920000.0,
+              "client_retries": 0
+            }
+          ]
+        },
+        "16": {
+          "n_valid": 3,
+          "completions_s": [
+            13.665809,
+            14.283911,
+            14.287727
+          ],
+          "median_s": 14.283911,
+          "min_s": 13.665809,
+          "max_s": 14.287727,
+          "ping_median_ms": 77.75,
+          "ping_p95_ms": 87.2,
+          "drops": 421,
+          "retrans": 321,
+          "achieved_background_bps": 19247368.42105263,
+          "reps": [
+            {
+              "run_id": "gate_S1_moderate_n16_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 14.283911,
+              "ping_median_ms": 77.75,
+              "ping_p95_ms": 87.3,
+              "drops": 421,
+              "retrans": 334,
+              "achieved_background_bps": 19247368.42105263,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n16_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 13.665809,
+              "ping_median_ms": 76.2,
+              "ping_p95_ms": 83.9,
+              "drops": 450,
+              "retrans": 256,
+              "achieved_background_bps": 18572222.222222224,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S1_moderate_n16_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 14.287727,
+              "ping_median_ms": 78.5,
+              "ping_p95_ms": 87.2,
+              "drops": 370,
+              "retrans": 321,
+              "achieved_background_bps": 19263157.89473684,
+              "client_retries": 0
+            }
+          ]
+        }
+      },
+      "summary": {
+        "median_s": {
+          "1": 14.856127,
+          "2": 14.99393,
+          "4": 15.061183000000002,
+          "8": 15.125316000000002,
+          "16": 14.283911
+        },
+        "N_star": 16,
+        "second_best": 1,
+        "second_s": 14.856127,
+        "margin": 0.03851717207317903,
+        "winner_rep_wins": 3,
+        "ping_p95_spearman_vs_N": 1.0,
+        "drops_spearman_vs_N": 0.1,
+        "retrans_spearman_vs_N": 0.2,
+        "ping_p95_ratio_16_over_1": 1.5460992907801419,
+        "achieved_background_bps": 19247368.42105263,
+        "interior_optimum": false,
+        "material_margin": false,
+        "consistent_winner": true
+      }
+    },
+    "S2_heavy": {
+      "cells": {
+        "1": {
+          "n_valid": 3,
+          "completions_s": [
+            59.535441,
+            62.49148,
+            67.830134
+          ],
+          "median_s": 62.49148,
+          "min_s": 59.535441,
+          "max_s": 67.830134,
+          "ping_median_ms": 59.0,
+          "ping_p95_ms": 80.0,
+          "drops": 812,
+          "retrans": 576,
+          "achieved_background_bps": 33443283.58208955,
+          "reps": [
+            {
+              "run_id": "gate_S2_heavy_n1_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 62.49148,
+              "ping_median_ms": 63.95,
+              "ping_p95_ms": 80.9,
+              "drops": 812,
+              "retrans": 627,
+              "achieved_background_bps": 33443283.58208955,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n1_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 59.535441,
+              "ping_median_ms": 59.0,
+              "ping_p95_ms": 80.0,
+              "drops": 830,
+              "retrans": 576,
+              "achieved_background_bps": 33120312.5,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n1_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 67.830134,
+              "ping_median_ms": 44.7,
+              "ping_p95_ms": 57.8,
+              "drops": 700,
+              "retrans": 554,
+              "achieved_background_bps": 33687671.23287671,
+              "client_retries": 0
+            }
+          ]
+        },
+        "2": {
+          "n_valid": 3,
+          "completions_s": [
+            65.860776,
+            67.893999,
+            68.083566
+          ],
+          "median_s": 67.893999,
+          "min_s": 65.860776,
+          "max_s": 68.083566,
+          "ping_median_ms": 51.25,
+          "ping_p95_ms": 73.3,
+          "drops": 859,
+          "retrans": 551,
+          "achieved_background_bps": 33543835.616438355,
+          "reps": [
+            {
+              "run_id": "gate_S2_heavy_n2_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 67.893999,
+              "ping_median_ms": 52.1,
+              "ping_p95_ms": 73.3,
+              "drops": 628,
+              "retrans": 458,
+              "achieved_background_bps": 33543835.616438355,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n2_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 65.860776,
+              "ping_median_ms": 50.9,
+              "ping_p95_ms": 75.2,
+              "drops": 1163,
+              "retrans": 698,
+              "achieved_background_bps": 33507042.253521126,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n2_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 68.083566,
+              "ping_median_ms": 51.25,
+              "ping_p95_ms": 73.3,
+              "drops": 859,
+              "retrans": 551,
+              "achieved_background_bps": 33650684.93150685,
+              "client_retries": 0
+            }
+          ]
+        },
+        "4": {
+          "n_valid": 3,
+          "completions_s": [
+            50.878585,
+            51.958892999999996,
+            53.338534
+          ],
+          "median_s": 51.958892999999996,
+          "min_s": 50.878585,
+          "max_s": 53.338534,
+          "ping_median_ms": 74.95,
+          "ping_p95_ms": 84.7,
+          "drops": 612,
+          "retrans": 462,
+          "achieved_background_bps": 32598214.285714287,
+          "reps": [
+            {
+              "run_id": "gate_S2_heavy_n4_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 53.338534,
+              "ping_median_ms": 75.0,
+              "ping_p95_ms": 86.1,
+              "drops": 612,
+              "retrans": 445,
+              "achieved_background_bps": 32622413.79310345,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n4_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 51.958892999999996,
+              "ping_median_ms": 74.95,
+              "ping_p95_ms": 84.7,
+              "drops": 542,
+              "retrans": 462,
+              "achieved_background_bps": 32561403.50877193,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n4_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 50.878585,
+              "ping_median_ms": 72.55,
+              "ping_p95_ms": 84.0,
+              "drops": 633,
+              "retrans": 493,
+              "achieved_background_bps": 32598214.285714287,
+              "client_retries": 0
+            }
+          ]
+        },
+        "8": {
+          "n_valid": 3,
+          "completions_s": [
+            30.097398000000002,
+            30.297356,
+            30.318098999999997
+          ],
+          "median_s": 30.297356,
+          "min_s": 30.097398000000002,
+          "max_s": 30.318098999999997,
+          "ping_median_ms": 81.7,
+          "ping_p95_ms": 88.2,
+          "drops": 421,
+          "retrans": 248,
+          "achieved_background_bps": 29237142.85714286,
+          "reps": [
+            {
+              "run_id": "gate_S2_heavy_n8_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 30.318098999999997,
+              "ping_median_ms": 82.7,
+              "ping_p95_ms": 88.2,
+              "drops": 350,
+              "retrans": 248,
+              "achieved_background_bps": 29222857.14285714,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n8_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 30.097398000000002,
+              "ping_median_ms": 80.7,
+              "ping_p95_ms": 89.1,
+              "drops": 421,
+              "retrans": 272,
+              "achieved_background_bps": 29277142.85714286,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n8_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 30.297356,
+              "ping_median_ms": 81.7,
+              "ping_p95_ms": 87.8,
+              "drops": 472,
+              "retrans": 232,
+              "achieved_background_bps": 29237142.85714286,
+              "client_retries": 0
+            }
+          ]
+        },
+        "16": {
+          "n_valid": 3,
+          "completions_s": [
+            15.661494000000001,
+            15.88598,
+            16.328972
+          ],
+          "median_s": 15.88598,
+          "min_s": 15.661494000000001,
+          "max_s": 16.328972,
+          "ping_median_ms": 85.2,
+          "ping_p95_ms": 91.7,
+          "drops": 315,
+          "retrans": 201,
+          "achieved_background_bps": 22857142.85714286,
+          "reps": [
+            {
+              "run_id": "gate_S2_heavy_n16_r1",
+              "valid": true,
+              "rep": 1,
+              "completion_s": 15.661494000000001,
+              "ping_median_ms": 83.7,
+              "ping_p95_ms": 89.3,
+              "drops": 485,
+              "retrans": 293,
+              "achieved_background_bps": 22015000.0,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n16_r2",
+              "valid": true,
+              "rep": 2,
+              "completion_s": 15.88598,
+              "ping_median_ms": 85.2,
+              "ping_p95_ms": 91.7,
+              "drops": 265,
+              "retrans": 181,
+              "achieved_background_bps": 23023809.523809522,
+              "client_retries": 0
+            },
+            {
+              "run_id": "gate_S2_heavy_n16_r3",
+              "valid": true,
+              "rep": 3,
+              "completion_s": 16.328972,
+              "ping_median_ms": 87.6,
+              "ping_p95_ms": 93.3,
+              "drops": 315,
+              "retrans": 201,
+              "achieved_background_bps": 22857142.85714286,
+              "client_retries": 0
+            }
+          ]
+        }
+      },
+      "summary": {
+        "median_s": {
+          "1": 62.49148,
+          "2": 67.893999,
+          "4": 51.958892999999996,
+          "8": 30.297356,
+          "16": 15.88598
+        },
+        "N_star": 16,
+        "second_best": 8,
+        "second_s": 30.297356,
+        "margin": 0.4756644771246706,
+        "winner_rep_wins": 3,
+        "ping_p95_spearman_vs_N": 0.9,
+        "drops_spearman_vs_N": -0.9,
+        "retrans_spearman_vs_N": -1.0,
+        "ping_p95_ratio_16_over_1": 1.14625,
+        "achieved_background_bps": 22857142.85714286,
+        "interior_optimum": false,
+        "material_margin": true,
+        "consistent_winner": true
+      }
+    }
+  },
+  "gate": {
+    "G-N1_interior_optimum": {
+      "states_with_interior_material_consistent_optimum": [],
+      "contention_cost_measurable_per_state": {
+        "S0_no_background": true,
+        "S1_moderate": true,
+        "S2_heavy": true
+      },
+      "N_star_per_state": {
+        "S0_no_background": 8,
+        "S1_moderate": 16,
+        "S2_heavy": 16
+      },
+      "pass": false
+    },
+    "G-N2_state_dependence": {
+      "material_state_pairs": [],
+      "pass": false
+    },
+    "overall": "FAIL"
+  },
+  "verdict": "NO_LIVE-GROUNDED_JOINT_N+S_OPPORTUNITY"
+}

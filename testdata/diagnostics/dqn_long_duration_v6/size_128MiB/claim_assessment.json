@@ -1,0 +1,12 @@
+{
+  "aggregate_reduction": -0.062328019668652646,
+  "claim_supported": false,
+  "criteria": {
+    "1_ratio_below_1": false,
+    "2_ci_excludes_zero_dqn_faster": false,
+    "3_perm_test_supports_dqn_faster": false,
+    "4_majority_conditions_dqn_faster": false
+  },
+  "geometric_ratio": 1.0623280196686526,
+  "p_one_sided": 0.9187304063479682
+}

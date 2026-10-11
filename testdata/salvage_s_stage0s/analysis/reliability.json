@@ -1,0 +1,16 @@
+{
+  "clean_runs": 32,
+  "planned_runs": 32,
+  "technical_failures": 0,
+  "clean_ge_28": true,
+  "max_wall_seconds": 296.62884115,
+  "max_wall_le_1800": true,
+  "within_block_residual_sd": 0.0007950670366898,
+  "residual_df": 21,
+  "residual_sd_le_0.25": true,
+  "pass": true,
+  "log_scale": {
+    "T_ref_seconds": 268.435456,
+    "grand_mean": 0.05100228798399165
+  }
+}

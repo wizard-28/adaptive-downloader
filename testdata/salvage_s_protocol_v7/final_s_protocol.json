@@ -1,0 +1,764 @@
+{
+  "protocol_id": "salvage_s_protocol_v7",
+  "protocol_version": 7,
+  "status": "FINAL_S_PROTOCOL_FROZEN \u2014 READY_FOR_STAGE_0S",
+  "ready_for_stage_0s": true,
+  "blocked": false,
+  "created_at_utc": "2026-09-28T09:11:30Z",
+  "documentation_only": true,
+  "experiments_run": false,
+  "repo_path_note": "The task named /workspace/mvp; the repository is at /workspaces/mvp. Artifacts were created under /workspaces/mvp/testdata/salvage_s_protocol_v7/.",
+  "supersedes": "earlier salvage drafts (v1-v6). The earlier weighted J objective is REMOVED; the primary endpoint is finite-file completion time.",
+  "research_question": "When does adaptive HTTP range downloading benefit from changing future chunk size under finite-file, tail-aware conditions?",
+  "positioning": {
+    "not_rl": "This is not yet an RL study.",
+    "no_claim_before_run": "Do not claim or imply that adaptive chunk sizing is beneficial before the experiment is run.",
+    "completed_study_immutable": "The completed cellular concurrency/oracle study (Stages A/B/C, oracle_preregistration_v4, oracle_stage_v3, final_oracle_analysis) is unchanged and immutable and is not part of this study."
+  },
+  "scope": {
+    "single_server_http_downloads": true,
+    "http_version": "HTTP/1.1 only",
+    "byte_range_requests": true,
+    "one_request_one_contiguous_range": true,
+    "forbidden_transports_and_schedulers": [
+      "HTTP/2",
+      "HTTP/3",
+      "QUIC",
+      "multipart/disjoint ranges",
+      "multi-source downloading",
+      "CDN-specific scheduling",
+      "cross-server scheduling"
+    ],
+    "future_chunk_size_affects_new_allocations_only": true,
+    "in_flight_requests_keep_original_boundaries": true,
+    "finite_file": true,
+    "tail_aware": true
+  },
+  "mechanism": {
+    "primary_package": [
+      "per-request server-side rate limiting at rate R",
+      "fixed nonzero RTT/delay D"
+    ],
+    "purpose": "create a finite-file completion-time regime in which chunk size can interact with request overhead and the remaining tail",
+    "forbidden_mechanisms": [
+      "packet loss",
+      "dynamic bandwidth schedules",
+      "authored time-varying capacity schedules",
+      "arbitrary server throttling changes",
+      "hidden request penalties"
+    ],
+    "existing_infrastructure_note": "internal/experiment/server already supports a fixed per-request rate (SetRate/writeThrottled) and a base response delay (SetDelay); a fixed, non-transitioning configuration of these is the intended mechanism. No source change is part of this documentation task."
+  },
+  "human_owned_parameters": {
+    "rule": "These values MUST be explicitly supplied/accepted by the human before the protocol can become READY. They must NOT be inferred from the pilot and must be frozen BEFORE pilot execution.",
+    "R_server_per_request_rate": {
+      "value": 500000.0,
+      "unit": "bytes/second",
+      "value_label": "4 Mbps",
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "D_fixed_rtt_delay": {
+      "value": 0.04,
+      "unit": "seconds",
+      "value_label": "40 ms",
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "FileSize": {
+      "value": 536870912,
+      "unit": "bytes",
+      "value_label": "512 MiB",
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "N_fixed_concurrency": {
+      "value": 4,
+      "unit": "concurrent requests",
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "all_supplied": true,
+    "selected_package": "A"
+  },
+  "derived_quantities": {
+    "T_ref": {
+      "formula": "FileSize / (N * R)",
+      "value": 268.435456,
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "delta_T": {
+      "formula": "0.05 * T_ref",
+      "value": 13.4217728,
+      "status": "HUMAN-APPROVED / FROZEN",
+      "meaning": "time-scale statement: a 5% reduction in completion time relative to the fixed-chunk reference",
+      "log_scale_representation": {
+        "definition": "delta_log = log(0.95)",
+        "value": -0.05129329438755058,
+        "rounded": "-0.051293294",
+        "status": "HUMAN-APPROVED / FROZEN",
+        "note": "the primary posterior decision uses delta_log; -0.05 is NOT used as the 5%-completion-time threshold"
+      }
+    },
+    "T_tail_primary": {
+      "formula": "D + C_max / R",
+      "value": 33.594432,
+      "status": "HUMAN-APPROVED / FROZEN",
+      "C_max_bytes": 16777216,
+      "human_stated_value": 33.594304,
+      "arithmetic_note": "the decision text stated 33.594304 s; the frozen formula evaluates to 33.594432 s (0.128 ms transcription difference); the formula-derived value is operative"
+    },
+    "delta_tail": {
+      "formula": "0.05 * T_tail_primary",
+      "value": 1.6797216,
+      "status": "HUMAN-APPROVED / FROZEN",
+      "human_stated_value": 1.6797152
+    },
+    "tail_window": {
+      "bytes": 67108864,
+      "label": "N * C_max = 64 MiB",
+      "fraction_of_file": 0.125,
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "tail_minimum_requirement_seconds": 20.0,
+    "tail_requirement": "T_tail_primary >= 20 s (frozen; the tail must not be redefined after this freeze)"
+  },
+  "chunk_size_arms": [
+    {
+      "label": "256 KiB",
+      "bytes": 262144
+    },
+    {
+      "label": "1 MiB",
+      "bytes": 1048576
+    },
+    {
+      "label": "4 MiB",
+      "bytes": 4194304
+    },
+    {
+      "label": "16 MiB",
+      "bytes": 16777216
+    }
+  ],
+  "pilot": {
+    "when": "only after the protocol is completely frozen",
+    "design": {
+      "replicate_blocks": 8,
+      "chunk_size_arms": 4,
+      "total_runs": 32
+    },
+    "allowed_uses": [
+      "mechanism verification",
+      "tail verification",
+      "feasibility",
+      "variance estimation",
+      "runtime estimation"
+    ],
+    "forbidden_uses": [
+      "select arms",
+      "tune switch thresholds",
+      "choose switching strategies",
+      "modify the primary endpoint",
+      "choose priors",
+      "modify delta_T",
+      "modify T_tail_primary",
+      "modify Stage 0S criteria",
+      "tune the confirmatory analysis"
+    ],
+    "independence": "The confirmatory analysis must be specified independently of pilot outcomes.",
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "primary_endpoint": {
+    "primary_outcome": "finite-file completion time",
+    "no_weighted_composite": true,
+    "removed_formulation": "the earlier weighted J formulation is removed",
+    "secondary_diagnostics": [
+      "last-5%-completion behavior",
+      "retries",
+      "timeouts",
+      "HTTP 429/503 responses",
+      "goodput",
+      "other explicitly logged reliability information"
+    ],
+    "secondary_rule": "Secondary/diagnostic measurements must not replace completion time as the primary endpoint."
+  },
+  "bayesian_model": {
+    "response": "y_cb = log(T_cb / T_ref)",
+    "model": "y_cb = mu_c + u_b + eps_cb",
+    "terms": {
+      "c": "chunk-size condition",
+      "b": "replicate block",
+      "mu_c": "mean condition effect on the log scale",
+      "u_b": "replicate-block effect",
+      "sigma_block": "between-block variation",
+      "sigma_resid": "within-block residual variation"
+    },
+    "hierarchy": [
+      "u_b ~ Normal(0, sigma_block)",
+      "eps_cb ~ Normal(0, sigma_resid)"
+    ],
+    "primary_priors": {
+      "mu_c": "Normal(0, 1.5)",
+      "sigma_block": "HalfNormal(0, 0.5)",
+      "sigma_resid": "HalfNormal(0, 0.5)"
+    },
+    "prior_sensitivity": {
+      "mu_c": "Normal(0, 3)",
+      "sigma_block": "HalfNormal(0, 1)",
+      "sigma_resid": "HalfNormal(0, 1)"
+    },
+    "prior_freeze_rule": "Primary priors MUST be frozen before pilot execution; the sensitivity analysis must be specified before confirmatory analysis and must not be selected after seeing results."
+  },
+  "best_fixed_estimand": {
+    "definition": "mu_fixed* = min(mu_256K, mu_1M, mu_4M, mu_16M)",
+    "model_based": true,
+    "forbidden": "must not be defined using the observed sample minimum"
+  },
+  "primary_switching_decision": {
+    "definition": "Delta_k = mu_k - mu_fixed*",
+    "condition": "P(Delta_k <= delta_log | data) >= 0.95",
+    "no_ranking": true,
+    "no_best_policy": true,
+    "no_overall_score": true,
+    "delta_log": -0.05129329438755058,
+    "delta_log_rounded": "-0.051293294",
+    "time_scale_statement": "delta_T = 0.05*T_ref (a 5% reduction in completion time)",
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "switching_family": {
+    "confirmatory": [
+      {
+        "from": "16 MiB",
+        "from_bytes": 16777216,
+        "to": "4 MiB",
+        "to_bytes": 4194304
+      },
+      {
+        "from": "4 MiB",
+        "from_bytes": 4194304,
+        "to": "1 MiB",
+        "to_bytes": 1048576
+      },
+      {
+        "from": "1 MiB",
+        "from_bytes": 1048576,
+        "to": "256 KiB",
+        "to_bytes": 262144
+      }
+    ],
+    "exploratory": {
+      "present": false,
+      "decision": "the duplicated '1 MiB -> 256 KiB' exploratory case is removed because it is already the third confirmatory member",
+      "rule": "there is NO exploratory switching strategy in v7; any future exploratory strategy requires a separately frozen amendment",
+      "status": "HUMAN-APPROVED / FROZEN"
+    },
+    "freeze_rule": "Do not introduce additional switching families after pilot results.",
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "trigger": {
+    "variable": "B_pending = TotalSize - CompletedBytes - InFlightBytes",
+    "source": "must be computed from tracker-level state",
+    "firing_rule": {
+      "condition": "switch when B_pending <= B_switch with B_switch = N * S0",
+      "thresholds_bytes": {
+        "16 MiB -> 4 MiB": 67108864,
+        "4 MiB -> 1 MiB": 16777216,
+        "1 MiB -> 256 KiB": 4194304
+      },
+      "thresholds_labels": {
+        "16 MiB -> 4 MiB": "64 MiB",
+        "4 MiB -> 1 MiB": "16 MiB",
+        "1 MiB -> 256 KiB": "4 MiB"
+      },
+      "status": "HUMAN-APPROVED / FROZEN",
+      "semantics": [
+        "evaluate B_pending immediately before allocation",
+        "if the condition is false, allocate using the current S",
+        "if the condition is true and the run has not switched yet, perform the single allowed switch",
+        "the target S governs all subsequently allocated ranges",
+        "in-flight ranges are never resized",
+        "maximum one switch per run",
+        "once switched, S remains fixed for the remainder of the run"
+      ],
+      "edge_cases": {
+        "below_threshold_before_first_allocation": "if B_pending is already below the threshold before the first allocation, the switch occurs at that allocation boundary",
+        "eof_before_threshold_evaluation": "if EOF occurs before the threshold is evaluated, no switch occurs",
+        "no_allocation_after_crossing": "if no allocation occurs after the threshold is crossed, no artificial switch event is created",
+        "in_flight_bytes": "InFlightBytes includes currently allocated but incomplete ranges according to tracker state",
+        "retries": "retries preserve original range boundaries and do not retroactively resize ranges",
+        "sampling": "CompletedBytes / InFlightBytes must be sampled from tracker-level state immediately before the allocation decision"
+      }
+    },
+    "evaluation_semantics": {
+      "evaluation_point": "evaluated exactly once per allocation decision on the downloader's serialized allocation path, immediately before the RangeTracker is asked to allocate a new range and before any tracker state mutation for that allocation",
+      "completed_bytes_sampling": "sampled at the evaluation point from the tracker-level completed-bytes counter; a range contributes only after its completion is recorded (assembler write acknowledged and tracker marked complete); the counter is monotone non-decreasing within a run",
+      "in_flight_bytes_sampling": "sampled at the same evaluation instant as the sum of the original byte lengths of all ranges in the tracker's in-flight set (allocated to the worker pool, not yet complete); in-flight ranges are never resized",
+      "retry_treatment": "a failed range leaves the in-flight set with its original boundaries preserved; its bytes are neither completed nor in-flight and re-enter B_pending until reallocated; a retry re-enters the in-flight set with the original boundaries and never re-splits the range",
+      "allocation_completion_ordering": "allocation, completion, and failure transitions are serialized on the tracker path; the two samples are taken at the same evaluation instant and are consistent; the candidate new range is not counted in either sample before allocation",
+      "relative_to_allocation": "the trigger is evaluated immediately before new range allocation; a fired switch changes the chunk-size target for the allocation that follows (future allocations only) and never touches in-flight requests",
+      "one_switch_per_run": true,
+      "post_switch_rule": "after the switch, the chunk size remains fixed for the remainder of the run",
+      "no_switch_case": "if the trigger never fires, the run completes at the starting chunk size"
+    }
+  },
+  "randomization_blocking": {
+    "randomize_within_blocks": true,
+    "fresh_client_server_state_per_run": true,
+    "same_mechanism_within_block": true,
+    "no_ordering_confound": true
+  },
+  "multiplicity": {
+    "procedure": "fixed-sequence testing; stop at the first failure; do not reorder based on observed results",
+    "sequence": [
+      "16 MiB -> 4 MiB",
+      "4 MiB -> 1 MiB",
+      "1 MiB -> 256 KiB"
+    ],
+    "sequence_basis": "FROZEN (task-directed): the confirmatory family listing order",
+    "rule": "document the sequence before execution; do not reorder hypotheses after observing results",
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "confirmatory_sample_size": {
+    "maximum_n_per_condition_or_strategy": 12,
+    "reassessment": "any sample-size reassessment must follow a pre-specified operating-characteristic procedure and must not be based on inspecting the observed confirmatory effect",
+    "exact_planned_n": "up to 12 replicate blocks per confirmatory condition/strategy as specified by the v7 protocol; no post-hoc increase based on observed effect size",
+    "post_hoc_increase_allowed": false,
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "ssr_simulation": {
+    "required_simulations": [
+      "bootstrap / posterior coverage sanity checks",
+      "SSR operating-characteristic simulation"
+    ],
+    "synthetic_datasets_per_frozen_scenario": 1000,
+    "inputs": "only the frozen model, priors, effect thresholds, and sampling design",
+    "no_retroactive_tuning": "the simulation cannot be used to retroactively tune the real experiment",
+    "scenario_grid": {
+      "effects_log_scale": [
+        0.0,
+        -0.05129329438755058,
+        -0.1
+      ],
+      "effect_labels": [
+        "null",
+        "minimum relevant (log(0.95) = -0.051293294)",
+        "larger favorable (-0.10)"
+      ],
+      "sigma_block": [
+        0.05,
+        0.15
+      ],
+      "sigma_resid": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "scenarios": 18,
+      "datasets_per_scenario": 1000,
+      "total_datasets": 18000,
+      "design": "each dataset follows the frozen hierarchical model and sampling design (up to 12 blocks x 4 arms, randomized within blocks)",
+      "decision_threshold": "P(Delta_k <= delta_log | data) >= 0.95",
+      "outputs": [
+        "posterior coverage",
+        "type-I error behavior",
+        "power",
+        "posterior-probability distribution",
+        "expected sample size",
+        "simulation runtime"
+      ],
+      "status": "HUMAN-APPROVED / FROZEN"
+    }
+  },
+  "stage_0s_go_no_go": {
+    "rule": {
+      "text": "GO iff ALL of the following hold; otherwise NO-GO: (1) mechanism presence: for every fixed chunk-size arm, pooled median per-request service time within +/-25% of D + s/R; (2) direction: median_service_time(256 KiB) < median_service_time(1 MiB) < median_service_time(4 MiB) < median_service_time(16 MiB); (3) tail sufficiency: pooled median realized 16 MiB tail >= 20 s AND within [0.8*T_tail_primary, 1.25*T_tail_primary]; (4) feasibility/reliability: >= 28/32 clean runs, <= 30 minutes wall-clock per run, within-block residual SD of log(T/T_ref) <= 0.25",
+      "status": "HUMAN-APPROVED / FROZEN",
+      "no_treatment_test": true,
+      "frozen_before_pilot": true
+    },
+    "constraints": [
+      "determine whether the intended finite-file chunk-size mechanism is actually observable under the frozen conditions",
+      "may use only quantities explicitly designated as Stage-0 feasibility/mechanism checks",
+      "must not use confirmatory treatment-effect significance",
+      "must not be changed after viewing pilot results"
+    ],
+    "designated_feasibility_quantities": {
+      "list": [
+        "per-request service time by arm",
+        "realized 16 MiB tail duration",
+        "run reliability events (retries/timeouts/429/503)",
+        "wall-clock runtime",
+        "within-block residual SD of log completion time"
+      ],
+      "status": "HUMAN-APPROVED / FROZEN"
+    }
+  },
+  "pilot_confirmatory_separation": {
+    "strict_two_stage": true,
+    "stage_0s_pilot": [
+      "mechanism validation",
+      "feasibility",
+      "variance/runtime estimation",
+      "tail sufficiency"
+    ],
+    "confirmatory_stage": [
+      "fresh data",
+      "frozen chunk-size arms",
+      "frozen switching strategies",
+      "frozen trigger",
+      "frozen priors",
+      "frozen effect threshold",
+      "frozen analysis"
+    ],
+    "pooling_rule": "pilot data must NOT be silently pooled into the confirmatory analysis; no pooling rule has been pre-registered, therefore no pooling is permitted",
+    "fresh_fit": "the confirmatory hierarchical fit must be fresh",
+    "status": "HUMAN-APPROVED / FROZEN"
+  },
+  "trace_backed_validation": {
+    "in_scope_for_v7": false,
+    "rule": "trace-backed validation is out of scope unless the complete protocol is explicitly frozen here; no half-specified future cellular-trace experiment is created",
+    "completed_cellular_result": "remains immutable and separate",
+    "status": "HUMAN-APPROVED / FROZEN (out of scope for v7)"
+  },
+  "artifact_location": {
+    "directory": "/workspaces/mvp/testdata/salvage_s_protocol_v7/",
+    "task_named_path": "/workspace/mvp/testdata/salvage_s_protocol_v7/ (path does not exist; corrected to /workspaces/mvp)",
+    "distinct_from_oracle_preregistration_family": true,
+    "artifacts": [
+      "final_s_protocol.json",
+      "final_s_protocol.txt",
+      "README.md"
+    ]
+  },
+  "immutability": {
+    "do_not_modify": [
+      "completed Stage A/B/C cellular concurrency artifacts",
+      "existing oracle preregistration artifacts",
+      "existing final oracle analysis",
+      "historical experiment outputs",
+      "source code related to the completed concurrency result"
+    ],
+    "no_evidence_deleted": true
+  },
+  "open_items_blocking_ready": [],
+  "no_invention_statement": "No missing scientific parameter, trigger rule, tail-window definition, go/no-go rule, or simulation scenario was chosen or inferred. Missing items are recorded as PENDING and block the protocol.",
+  "validation": [
+    {
+      "check": "every required parameter exists",
+      "status": "PASS",
+      "note": "Candidate A frozen: R=500,000 B/s, D=40 ms, FileSize=536,870,912 B, N=4"
+    },
+    {
+      "check": "delta_T computed from frozen mechanism parameters",
+      "status": "PASS",
+      "note": "delta_T=0.05*T_ref=13.4217728 s; delta_log=log(0.95)=-0.05129329438755058"
+    },
+    {
+      "check": "delta_tail explicitly defined",
+      "status": "PASS",
+      "note": "delta_tail=0.05*T_tail_primary=1.6797216 s"
+    },
+    {
+      "check": "T_tail_primary >= 20 s",
+      "status": "PASS",
+      "note": "T_tail_primary=33.594432 s (formula-derived; decision text stated 33.594304 s, 0.128 ms transcription difference)"
+    },
+    {
+      "check": "priors are explicit",
+      "status": "PASS",
+      "note": "Normal(0,1.5), HalfNormal(0,0.5), HalfNormal(0,0.5)"
+    },
+    {
+      "check": "prior sensitivity is explicit",
+      "status": "PASS",
+      "note": "Normal(0,3), HalfNormal(0,1), HalfNormal(0,1)"
+    },
+    {
+      "check": "pilot/confirmatory separation",
+      "status": "PASS",
+      "note": "strict two-stage; no pooling rule exists, so pilot data are not pooled; fresh confirmatory fit"
+    },
+    {
+      "check": "one-switch semantics",
+      "status": "PASS",
+      "note": "maximum one switch per run; S fixed afterwards; in-flight ranges never resized"
+    },
+    {
+      "check": "trigger timing immediately before allocation",
+      "status": "PASS",
+      "note": "B_pending sampled from tracker state immediately before the allocation decision"
+    },
+    {
+      "check": "fixed switching family",
+      "status": "PASS",
+      "note": "16->4, 4->1, 1->256K; no exploratory strategy"
+    },
+    {
+      "check": "fixed-sequence multiplicity",
+      "status": "PASS",
+      "note": "order frozen; stop at first failure; no reordering"
+    },
+    {
+      "check": "SSR simulation specification",
+      "status": "PASS",
+      "note": "18 scenarios x 1000 datasets = 18,000; frozen model/priors/threshold"
+    },
+    {
+      "check": "trace study explicitly out of scope for v7",
+      "status": "PASS",
+      "note": "no half-specified trace experiment created"
+    },
+    {
+      "check": "artifact path distinct from the oracle study",
+      "status": "PASS",
+      "note": "testdata/salvage_s_protocol_v7/"
+    },
+    {
+      "check": "candidate packages evaluated analytically",
+      "status": "PASS",
+      "note": "A selected; B unselected (inadmissible), C/D unselected"
+    },
+    {
+      "check": "independent recalculation of frozen quantities",
+      "status": "PASS",
+      "note": "T_ref=268.435456 s; T_tail_primary=33.594432 s; delta_tail=1.6797216 s; delta_log=-0.05129329438755058"
+    },
+    {
+      "check": "no experiments run by this pass",
+      "status": "PASS",
+      "note": "no pilot, no network run, no new experiment directory"
+    },
+    {
+      "check": "no source code changed",
+      "status": "PASS",
+      "note": "no source file modified"
+    },
+    {
+      "check": "completed studies untouched",
+      "status": "PASS",
+      "note": "Stage A/B/C and oracle artifacts not modified"
+    },
+    {
+      "check": "frozen quantities consistent across JSON/TXT/README/MEMO/PROJECT_CONTEXT.md",
+      "status": "PASS",
+      "note": "35/35 cross-artifact checks pass (T_ref, T_tail_primary, delta_tail, delta_log, READY status, strategies, thresholds, SSR grid, go/no-go)"
+    }
+  ],
+  "validation_summary": {
+    "pass": 20,
+    "proposed_pending_approval": 0,
+    "blocked": 0,
+    "result": "FINAL_S_PROTOCOL_FROZEN \u2014 READY_FOR_STAGE_0S"
+  },
+  "parameter_resolution_pass": {
+    "timestamp_utc": "2026-09-28T09:23:52Z",
+    "memo": "PARAMETER_DECISION_MEMO.md",
+    "experiments_run": false,
+    "candidate_packages": [
+      {
+        "package": "A",
+        "R_mbps": 4.0,
+        "R_bytes_per_second": 500000.0,
+        "D_seconds": 0.04,
+        "FileSize_bytes": 536870912,
+        "N": 4,
+        "T_ref_seconds": 268.435456,
+        "delta_T_seconds": 13.4217728,
+        "T_tail_primary_seconds": 33.594432,
+        "delta_tail_seconds": 1.6797216,
+        "tail_ge_20s": true,
+        "idealized_completion_seconds": 268.475456,
+        "tail_window_bytes": 67108864,
+        "tail_window_fraction_of_file": 0.125,
+        "basis": "task candidate A",
+        "status": "CANDIDATE \u2014 NOT APPROVED"
+      },
+      {
+        "package": "B",
+        "R_mbps": 8.0,
+        "R_bytes_per_second": 1000000.0,
+        "D_seconds": 0.04,
+        "FileSize_bytes": 536870912,
+        "N": 4,
+        "T_ref_seconds": 134.217728,
+        "delta_T_seconds": 6.7108864,
+        "T_tail_primary_seconds": 16.817216,
+        "delta_tail_seconds": 0.8408608,
+        "tail_ge_20s": false,
+        "idealized_completion_seconds": 134.257728,
+        "tail_window_bytes": 67108864,
+        "tail_window_fraction_of_file": 0.125,
+        "basis": "task candidate B",
+        "status": "CANDIDATE \u2014 NOT APPROVED"
+      },
+      {
+        "package": "C",
+        "R_mbps": 4.0,
+        "R_bytes_per_second": 500000.0,
+        "D_seconds": 0.08,
+        "FileSize_bytes": 536870912,
+        "N": 4,
+        "T_ref_seconds": 268.435456,
+        "delta_T_seconds": 13.4217728,
+        "T_tail_primary_seconds": 33.634432,
+        "delta_tail_seconds": 1.6817216,
+        "tail_ge_20s": true,
+        "idealized_completion_seconds": 268.515456,
+        "tail_window_bytes": 67108864,
+        "tail_window_fraction_of_file": 0.125,
+        "basis": "task candidate C",
+        "status": "CANDIDATE \u2014 NOT APPROVED"
+      },
+      {
+        "package": "D",
+        "R_mbps": 4.194304,
+        "R_bytes_per_second": 524288.0,
+        "D_seconds": 0.02,
+        "FileSize_bytes": 536870912,
+        "N": 4,
+        "T_ref_seconds": 256.0,
+        "delta_T_seconds": 12.8,
+        "T_tail_primary_seconds": 32.02,
+        "delta_tail_seconds": 1.6010000000000002,
+        "tail_ge_20s": true,
+        "idealized_completion_seconds": 256.02,
+        "tail_window_bytes": 67108864,
+        "tail_window_fraction_of_file": 0.125,
+        "basis": "project precedent: internal/experiment/matrix.go DefaultMatrixConfig: serverThrottle.InitialRate=512 KiB/s, latency 20 ms",
+        "status": "CANDIDATE \u2014 NOT APPROVED"
+      }
+    ],
+    "analytic_admissibility": {
+      "admissible": [
+        "A",
+        "C",
+        "D"
+      ],
+      "inadmissible": {
+        "B": "T_tail_primary = 16.8172 s < 20 s"
+      },
+      "note": "analytic admissibility is not approval"
+    },
+    "recommendations": {
+      "delta_T_interpretation": {
+        "recommended": "log-scale threshold delta_log = log(0.95) = -0.051293294 (preserves the intended statement 'a 5% reduction in completion time')",
+        "kept_time_scale_statement": "delta_T = 0.05 * T_ref remains the time-scale minimum relevant effect",
+        "literal_alternative": "Delta_k <= -0.05 (literal 0.05 log-unit threshold; not numerically identical)",
+        "status": "RECOMMENDED \u2014 NOT APPROVED"
+      },
+      "T_tail_primary_definition": {
+        "definition": "T_tail_primary = D + (N * C_max) / (N * R) = D + C_max / R",
+        "status": "PROPOSED \u2014 PENDING APPROVAL"
+      },
+      "trigger_firing_rule": {
+        "rule": "switch when B_pending <= B_switch with B_switch = N * S0 per strategy",
+        "thresholds_bytes": {
+          "16 MiB -> 4 MiB": 67108864,
+          "4 MiB -> 1 MiB": 16777216,
+          "1 MiB -> 256 KiB": 4194304
+        },
+        "status": "PROPOSED \u2014 PENDING APPROVAL"
+      },
+      "stage_0s_go_no_go": {
+        "rule": "see stage_0s_go_no_go.rule",
+        "status": "PROPOSED \u2014 PENDING APPROVAL"
+      },
+      "ssr_scenario_grid": {
+        "rule": "see ssr_simulation.scenario_grid",
+        "status": "PROPOSED \u2014 PENDING APPROVAL"
+      }
+    },
+    "resolved_task_directed": {
+      "exploratory_switch": {
+        "decision": "Option A \u2014 the duplicated '1 MiB -> 256 KiB' exploratory case is removed because it is already the third confirmatory family member; v7 defines no exploratory switching condition",
+        "status": "FROZEN (task-directed)"
+      },
+      "fixed_sequence_order": {
+        "order": [
+          "16 MiB -> 4 MiB",
+          "4 MiB -> 1 MiB",
+          "1 MiB -> 256 KiB"
+        ],
+        "procedure": "fixed-sequence testing at P(Delta_k <= delta_log | data) >= 0.95, stopping at the first failure; no ranking, no best-policy conclusion",
+        "status": "FROZEN (task-directed)"
+      }
+    },
+    "remaining_human_decisions": [
+      "Approve one mechanism package (R, D, FileSize, N) or supply different values.",
+      "Approve or replace the delta_T interpretation (recommended: delta_log = log(0.95) = -0.051293294).",
+      "Approve or replace the T_tail_primary definition (recommended: D + C_max/R).",
+      "Approve or replace the B_pending trigger (recommended: B_switch = N*S0).",
+      "Approve or replace the Stage 0S go/no-go rule.",
+      "Approve or replace the SSR scenario grid."
+    ],
+    "outcome": {
+      "selected_package": "A",
+      "unselected": [
+        "B",
+        "C",
+        "D"
+      ],
+      "approved_proposals": [
+        "T_tail_primary = D + C_max/R",
+        "B_switch = N*S0",
+        "Stage 0S go/no-go rule",
+        "SSR scenario grid",
+        "delta_T log-scale interpretation"
+      ],
+      "resolved_task_directed": [
+        "exploratory duplicate removed",
+        "fixed-sequence order frozen"
+      ],
+      "status": "RESOLVED \u2014 HUMAN-APPROVED / FROZEN"
+    }
+  },
+  "clarifications_status": [
+    {
+      "item": "delta_T scale",
+      "status": "RESOLVED \u2014 HUMAN-APPROVED / FROZEN"
+    },
+    {
+      "item": "exploratory switching case",
+      "status": "RESOLVED \u2014 HUMAN-APPROVED / FROZEN"
+    },
+    {
+      "item": "fixed-sequence order",
+      "status": "RESOLVED \u2014 HUMAN-APPROVED / FROZEN"
+    }
+  ],
+  "frozen_at_utc": "2026-09-28T09:30:42Z",
+  "human_decision_record": {
+    "timestamp_utc": "2026-09-28T09:30:42Z",
+    "decision": "final human decision / freeze; Candidate A selected and frozen; no alternatives remain live",
+    "frozen_mechanism_package": {
+      "package": "A",
+      "R_mbps": 4,
+      "R_bytes_per_second": 500000.0,
+      "D_seconds": 0.04,
+      "FileSize_bytes": 536870912,
+      "FileSize_label": "512 MiB",
+      "N": 4
+    },
+    "unselected_candidates": {
+      "B": "UNSELECTED (provenance only; analytically inadmissible: tail < 20 s)",
+      "C": "UNSELECTED (provenance only)",
+      "D": "UNSELECTED (provenance only)"
+    },
+    "frozen_quantities": {
+      "T_ref_seconds": 268.435456,
+      "delta_T_seconds": 13.4217728,
+      "T_tail_primary_seconds": 33.594432,
+      "delta_tail_seconds": 1.6797216,
+      "delta_log": -0.05129329438755058,
+      "delta_log_rounded": "-0.051293294",
+      "tail_window_bytes": 67108864,
+      "tail_window_fraction_of_file": 0.125,
+      "tail_minimum_seconds": 20.0
+    },
+    "arithmetic_note": {
+      "human_stated_T_tail_primary_seconds": 33.594304,
+      "formula_derived_T_tail_primary_seconds": 33.594432,
+      "difference_seconds": 0.0001279999999965753,
+      "note": "The decision text states 33.594304 s; independent recalculation of the frozen formula D + C_max/R gives 33.594432 s (0.128 ms difference). Per the section-15 independent-recalculation requirement, the formula-derived value is frozen as operative; the human-stated decimal is retained for provenance. Both satisfy T_tail_primary >= 20 s."
+    },
+    "delta_T_rule": "delta_T = 0.05*T_ref is the time-scale statement; the primary posterior decision uses the exact log-scale threshold delta_log = log(0.95); -0.05 is NOT used"
+  },
+  "chunk_size_arms_note": "four fixed arms; no additional fixed arms may be introduced for v7"
+}

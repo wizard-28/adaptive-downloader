@@ -1,0 +1,2 @@
+run b5_o2_4MiB block=5 arm=4194304 order=2 clean=true duration=276.859s attempts=128 retries=0
+cmd: /workspaces/mvp/testdata/salvage_s_stage0s/tools/stage0s_run -block 5 -arm 4194304 -order 2 -run-id b5_o2_4MiB -out /workspaces/mvp/testdata/salvage_s_stage0s/raw/b5_o2_4MiB.json
