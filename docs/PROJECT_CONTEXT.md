@@ -7372,6 +7372,123 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.103 Research verification audit (executed 2026-10-11; no live experiments re-run)
+
+**Status: headline results reproduce from raw data; three defects fixed.** Scope:
+independent recomputation from raw run files (not via the repo's analysis
+scripts), re-execution of the offline analysis scripts, a code/test pass, and a
+documentation-consistency pass. No live experiment was re-run.
+
+- **Independently recomputed from raw runs, all match the documented numbers:**
+  - Track 2-B adaptive (`adaptive/`, 133 indexed runs, 0 invalid, one distinct
+    output SHA-256 across all runs): P1 healthy selector/fixed geo 1.006
+    (6/10), capped 0.730 (10/10), vs aria2 0.353 / 1.232; P2 joint vs best
+    fixed 0.766 (10/10), joint vs N-only 0.947 (10/10), joint vs S-only 0.715,
+    vs aria2 1.096 (0/10).
+  - W1-W6 adaptive (`w1_w6_adaptive/`, 240 runs, 0 invalid, one output SHA-256):
+    pooled selector / per-workload best fixed 0.999 [0.969, 1.029], 24/60;
+    selector / family-best fixed 0.770 [0.684, 0.859], 40/60, six-cluster t-CI
+    [0.455, 1.304]; vs aria2 1.660, 10/60; per-workload medians and live
+    argmin configs as in §22.101; W2-W6 geometric mean vs family fixed 0.938.
+  - `analyze_adaptive_b.py`, `analyze_gate_b.py`, `analyze_track2.py`,
+    `robustness_w1_w6.py` re-run: committed analysis JSONs unchanged.
+  - aria2 mechanism: per-request server logs of a capped aria2 run show the
+    first nine pieces start at k <= 9 where the cap rate (>= 665 KB/s) exceeds
+    the 640 KiB/s base rate and then hold 640 KiB/s for ~52 s, as documented.
+  - aria2 fairness probe (local, unthrottled, 64 MiB): `-x16 -s16/64/256 -k1M`
+    produce the same 1/2/4 MiB range-size mix, so split > 16 does not give
+    aria2 finer pieces; the aria2-F frontier is not under-tuned on that axis.
+  - `ns_bench` binary SHA-256 equals the manifest value; the unit tests in
+    `tools/band_policy_test.go` pass. A fresh rebuild is not bit-identical
+    (build path/VCS stamping), so the binary-to-source link rests on the
+    manifest hash and mtimes only.
+- **Defects found and fixed:**
+  1. `reports/paper_draft.md` §6 still claimed the selector "beats any single
+     fixed configuration ... by 23 %" (withdrawn in §22.101) and labelled
+     per-workload ratios that are against the per-workload best fixed as
+     "family single fixed" (self-contradictory: "beats ... on W1-W4 ... loses
+     W3"). Replaced by a table with both baselines per workload and the
+     non-robustness caveat.
+  2. Section-number collision: a second `### 22.99` (v5 simulator audit) is now
+     §22.102.
+  3. `internal/experiment/replay` `TestAnchorCalibration` failed
+     deterministically under a parallel `go test ./...` because the first
+     replay in the process paid a 450-700 ms cold-start offset (passes alone).
+     A discarded warm-up replay was added; tolerances and assertions are
+     unchanged. Three consecutive full `go test -count=1 ./...` runs and
+     `-race` on `replay` and `rl` pass.
+- **Remaining limits (not fixed; stated, not hidden):**
+  - P2's "best fixed" is the best of three fixed configurations run under the
+    P2 schedule ((16,1M), (4,1M), (4,4M)); there is no fixed grid under the
+    P2 (cap-at-8 s) schedule, so "best fixed" there is "best of those tried".
+  - W2, W3, W4 share one target by construction (same classifier level), so
+    they are not three independent confirmations of selection.
+  - The soft cap fixes a request's rate at request start (server model);
+    aria2's "cap escape" is a property of that server model, as §22.98 states.
+  - Pooled CIs treat blocks as independent; the cluster-level interval is the
+    appropriate one for any cross-workload claim.
+  - The pre-live W1-W6 manifest amendments (§22.100 amendment log) are
+    post-hoc design refinements, not prospective pre-registration.
+
+### 22.102 v5 simulator correctness audit follow-up (executed 2026-10-11; simulator only)
+
+**Status: audit complete; one accounting bug fixed; the exported Candidate v5
+artifact is now STALE with respect to the corrected simulator.** No training,
+no new candidate, no live run, no aria2 comparison. Frozen candidates v1-v5,
+the aria2-F baseline, benchmarks and `final_evaluation` are byte-identical
+(`git diff HEAD -- testdata` shows no tracked change; all `.sha256` files match).
+
+- **Bug found/fixed (`python/rl/sim_env_v5.py`):** a failed range was logged as
+  ONE window sample (failure=1, retry=1, completed=0). The live runner
+  (`policy_runner.observe`) records two attempts: the failed attempt
+  (failure) and the successful retry attempt (`Attempt>1` -> retry, success ->
+  completed). The simulator now pushes both samples, so `window_attempts`,
+  `recent_failure_rate`, `recent_retry_rate` and `recent_completed_norm` follow
+  the live definition. Bytes (credited exactly once), elapsed time (includes one
+  retransmission), reward, RNG draw order and the static sweep are unchanged.
+- **Consequence:** `final_dqn_candidate_v5.json` was trained before this fix on
+  the old window semantic. It is not modified; it must not be described as
+  trained on the corrected state distribution. Any further use of the v5
+  simulator for learning requires retraining (not done here).
+- **Semantics verified by tests** (`python/tests/test_sim_env_v5_audit.py`, 22
+  parametrized cases + the existing file): fixed 1 MiB chunk and partial final
+  range; concurrency in [1,4]; invalid action raises with no state mutation;
+  boundary actions are no-ops; a step is exactly `decision_interval` requests
+  except the final one; C=4 runs 4 requests in parallel; reward == -elapsed and
+  sum(step elapsed) == episode elapsed; wall-clock (not request-count) phase
+  transitions, and the transition request index depends on per-request timing;
+  failed range -> bytes once + retransmission time + per-attempt windows;
+  terminal iff all bytes done, truncation only from `max_episode_steps`;
+  seeded determinism including `randomize()`; stationary episodes never
+  transition; >=50 % of multi-phase episodes transition.
+- **Python<->Go parity:** `python/gen_state_parity_v5.py` writes
+  `testdata/diagnostics/dqn_validation_v5/state_parity_v5.json` (6 observations
+  incl. clamping/unknown-total edge cases, tolerance 1e-12, spec + feature order
+  pinned). `TestV5StateParityFixture` (Go) recomputes every vector with
+  `ObservationV5.FeaturesV5`; `test_parity_fixture_is_current` fails if the
+  fixture is stale. Result: all 13 features match on all cases.
+- **Static sweep:** recomputed by `python/audit_simulator_v5.py` and identical to
+  the existing `static_concurrency_sweep_v5.*` (not overwritten): best fixed C
+  takes all of {1,2,3,4} across regimes. Single-mechanism attribution (16 MiB,
+  rate 4 MiB/s): no shared cap -> C=4; shared cap = 1x/2x/3x rate -> C=1/2/3;
+  loss/congestion alone never lowers best C (needs a shared cap); latency
+  keeps C=4. Modelled mechanics only; dedicated real-server C=1..4 measurements
+  are UNAVAILABLE.
+- **Calibration:** 1 MiB @ 512 KiB/s, C=1: simulator 2.000 s vs real-server
+  reference ~2.053 s (gap 52.9 ms, 2.6 %, fixed per-request HTTP overhead not
+  modelled). Recorded, not fitted; full fidelity is not claimed.
+- **Artifacts:** `simulator_correctness_report.{json,txt}` (new),
+  `state_parity_v5.json` (new). Reproduce: `python3 python/audit_simulator_v5.py`.
+- **Validation:** `go vet`, `go build`, `go test -race ./...` pass;
+  `go test ./...` passed except a load-dependent failure in
+  `internal/experiment/replay` `TestAnchorCalibration` on the first replay of a
+  process (fixed in §22.103). `pytest python/tests`: 70 passed. `gofmt -l` lists only three pre-existing `testdata/**/tools/*.go`
+  files; `black --check python` fails on 17 pre-existing files (HEAD already
+  fails, including `sim_env_v5.py`), left untouched for scope.
+- **READY TO TRAIN (simulator correctness gate): yes** - correctness gate only;
+  not a training run or candidate. Immediate next step: decide whether to
+  retrain v5 under the corrected windows before any further v5 use.
+
 ### 22.101 W1-W6 adaptive comparisons (executed 2026-10-09, LIVE): selector matches per-workload clairvoyant on average; family-single-config comparison not robust across workloads
 
 **Status: `SIX_WORKLOAD_SELECTION_DEMONSTRATED`.** 10 fresh paired blocks per
@@ -7640,6 +7757,7 @@ implemented in the controlled server and validated live.
   20 blocks of P1 + P2 with aria2/curl/wget baselines); the paper.
 - **Not modified:** Track 1, the aria2 competitive benchmark, and all prior
   screens are untouched. The only source change is the additive server cap.
+
 
 ---
 

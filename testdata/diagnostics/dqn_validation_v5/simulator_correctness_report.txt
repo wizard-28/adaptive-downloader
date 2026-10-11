@@ -1,0 +1,40 @@
+v5 simulator correctness audit (simulator only; NO training, NO performance claim)
+
+audit tests: 32 run, 0 not passed
+
+BUG FIXED: retry-attempt-accounting
+  A failed range was logged as ONE window sample (failure=1, retry=1, completed=0), while the live runner (policy_runner.observe) records two attempts: a failed attempt and a successful retry attempt (retry=1, completed=1). The simulator now pushes both samples. Bytes were already credited exactly once and elapsed already included the retransmission; those were unchanged.
+  Existing candidate: final_dqn_candidate_v5.json was trained BEFORE this fix, on the old window semantic. It is not modified and must not be treated as trained on the corrected state distribution; any further use requires retraining (not done in this task).
+
+CALIBRATION (1 MiB @ 512 KiB/s, C=1, no latency/loss)
+  sim=2.0000s real~2.0529s gap=52.9ms (2.6%)
+  The simulator is an ideal pacing model (bytes/rate); the real server adds fixed per-request HTTP/pacing overhead of ~50 ms. The gap is recorded, not fitted; full simulator fidelity is NOT claimed.
+
+STATIC SWEEP reproduction: identical=True distinct best C=[1, 2, 3, 4]
+  stable-no-cap                best C=4
+  low-bandwidth                best C=4
+  latency-dominant             best C=4
+  shared-cap-hard              best C=1
+  shared-cap-moderate          best C=3
+  combined-mild                best C=2
+  throttle-up-wallclock        best C=4
+  throttle-down-wallclock      best C=4
+
+BEST-C ATTRIBUTION (single mechanism, 16 MiB, rate 4 MiB/s, seeds 300-302; mean s)
+  no_shared_cap (per-response throttle only)       C1= 4.000 C2= 2.295 C3= 1.740 C4= 1.472  best C=4
+  shared_cap link=1.0x rate                        C1= 4.000 C2= 4.420 C3= 4.740 C4= 5.035  best C=1
+  shared_cap link=2.0x rate                        C1= 4.000 C2= 2.295 C3= 2.490 C4= 2.660  best C=2
+  shared_cap link=3.0x rate                        C1= 4.000 C2= 2.295 C3= 1.740 C4= 1.868  best C=3
+  shared_cap link=2.0x rate + loss 1% cong 0.03    C1= 4.000 C2= 2.337 C3= 2.573 C4= 2.827  best C=2
+  no_cap + loss 2% cong 0.06                       C1= 4.000 C2= 2.420 C3= 1.934 C4= 1.660  best C=4
+  no_cap + latency 75 ms                           C1= 5.200 C2= 2.932 C3= 2.190 C4= 1.829  best C=4
+
+MODELLED LIMITATIONS
+  - a failed request is retransmitted exactly once and the retransmission cannot fail
+  - effective loss is capped at 0.9; loss/congestion are an expected-cost model, not a TCP model
+  - per-extra-connection overhead (0.02 s) and congestion increments are MODELLED, not measured
+  - dedicated real-server C=1..4 completion measurements are UNAVAILABLE; the concurrency relationship is qualitative
+  - no max-retries exhaustion: a request never permanently fails
+  - loss/congestion alone never lowers best C in this model (see attribution: no_cap + loss -> C=4); a lower best C needs a shared bottleneck, so 'loss => fewer connections' is NOT a modelled rule
+
+READY TO TRAIN (simulator correctness gate): True

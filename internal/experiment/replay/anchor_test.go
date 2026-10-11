@@ -236,6 +236,37 @@ func TestAnchorCalibration(t *testing.T) {
 	}
 	var samples []sample
 
+	// The very first replay in a process pays one-time costs (child binary and
+	// shaping-process cold start, page cache) that are not the startup offset
+	// being calibrated, and under a parallel `go test ./...` they inflate it by
+	// several hundred ms. Run one discarded warm-up replay first; every measured
+	// replay below is still checked against the unchanged tolerance.
+	{
+		dir := t.TempDir()
+		up := filepath.Join(dir, "up.link")
+		writeTrace(t, up, trace)
+		events := filepath.Join(dir, "events.jsonl")
+		summary := filepath.Join(dir, "summary.json")
+		res, err := Run(context.Background(), Config{
+			UpTrace:          up,
+			DownTrace:        up,
+			WorkloadSize:     64 << 20,
+			ChunkSize:        1 << 20,
+			Concurrency:      1,
+			Timeout:          10 * time.Second,
+			MaxRuntime:       30 * time.Second,
+			TerminationGrace: 2 * time.Second,
+			Child:            childBuilderEvents(t, 1, events, filepath.Join(dir, "out.bin"), summary),
+			SummaryPath:      summary,
+			ServerAddr:       "0.0.0.0:0",
+			UplinkLogPath:    filepath.Join(dir, "up.log"),
+			DownlinkLogPath:  filepath.Join(dir, "down.log"),
+		})
+		if res.Outcome != OutcomeSuccessTraceEOF {
+			t.Fatalf("warm-up replay: outcome=%s err=%v", res.Outcome, err)
+		}
+	}
+
 	for _, c := range []int{1, 4, 16} {
 		for rep := 0; rep < 3; rep++ {
 			dir := t.TempDir()
