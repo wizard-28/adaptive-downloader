@@ -1,0 +1,199 @@
+{
+ "label": "NGINX limit_rate / limit_rate_after stock-server check (SCREENING; frozen before execution)",
+ "frozen_at_utc": "2026-10-11T21:03:25.733541+00:00",
+ "status": "screening, 5 pairs per configuration; descriptive only; this is NOT a shared N-dependent cap",
+ "mechanism_scope": "NGINX 1.24.0 per-response rate control: limit_rate (bytes/s per response) and limit_rate_after (response bytes sent unthrottled first). No concurrency-dependent behaviour and no connection limit exist in this configuration; the check asks only whether the aria2 comparison direction survives on a stock server.",
+ "server": {
+  "software": "nginx 1.24.0 (Ubuntu)",
+  "config_template": "testdata/nginx_limit_rate/conf/nginx.conf.tmpl",
+  "config_sha256": "e73d0869d2627128b92c76f87e0f103b82dce690a55c83122e79692b12240552",
+  "listen": "127.0.0.1:18080",
+  "locations": {
+   "/constant/": "limit_rate 640k",
+   "/burst/": "limit_rate_after 1m; limit_rate 640k"
+  }
+ },
+ "object": {
+  "size_bytes": 536870912,
+  "generation": "openssl enc -aes-128-ctr -K 000102030405060708090a0b0c0d0e0f -iv 0 < /dev/zero | head -c 536870912",
+  "sha256": "8bd575172a18217564e55d63b083a05f682d990372e9c7b0e2d70be1cae4ed77"
+ },
+ "netem": "40 ms latency + 0.4 % loss on lo (same as D2)",
+ "systems": {
+  "ours": {
+   "concurrency": 16,
+   "chunk_bytes": 4194304,
+   "timeout_s": 30,
+   "max_retries": 3
+  },
+  "aria2": {
+   "args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16"
+  }
+ },
+ "configs": {
+  "N1_constant": "/constant/big.bin",
+  "N2_burst_then_pace": "/burst/big.bin"
+ },
+ "pairs_per_config": 5,
+ "order_seed": 20261012,
+ "order": [
+  {
+   "pair": 0,
+   "config": "N1_constant",
+   "system": "aria2",
+   "seq": 0,
+   "run_id": "ng-N1-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "config": "N2_burst_then_pace",
+   "system": "ours",
+   "seq": 1,
+   "run_id": "ng-N2-p00-ours"
+  },
+  {
+   "pair": 0,
+   "config": "N1_constant",
+   "system": "ours",
+   "seq": 2,
+   "run_id": "ng-N1-p00-ours"
+  },
+  {
+   "pair": 0,
+   "config": "N2_burst_then_pace",
+   "system": "aria2",
+   "seq": 3,
+   "run_id": "ng-N2-p00-aria2"
+  },
+  {
+   "pair": 1,
+   "config": "N1_constant",
+   "system": "aria2",
+   "seq": 4,
+   "run_id": "ng-N1-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "config": "N2_burst_then_pace",
+   "system": "ours",
+   "seq": 5,
+   "run_id": "ng-N2-p01-ours"
+  },
+  {
+   "pair": 1,
+   "config": "N2_burst_then_pace",
+   "system": "aria2",
+   "seq": 6,
+   "run_id": "ng-N2-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "config": "N1_constant",
+   "system": "ours",
+   "seq": 7,
+   "run_id": "ng-N1-p01-ours"
+  },
+  {
+   "pair": 2,
+   "config": "N2_burst_then_pace",
+   "system": "ours",
+   "seq": 8,
+   "run_id": "ng-N2-p02-ours"
+  },
+  {
+   "pair": 2,
+   "config": "N1_constant",
+   "system": "ours",
+   "seq": 9,
+   "run_id": "ng-N1-p02-ours"
+  },
+  {
+   "pair": 2,
+   "config": "N2_burst_then_pace",
+   "system": "aria2",
+   "seq": 10,
+   "run_id": "ng-N2-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "config": "N1_constant",
+   "system": "aria2",
+   "seq": 11,
+   "run_id": "ng-N1-p02-aria2"
+  },
+  {
+   "pair": 3,
+   "config": "N2_burst_then_pace",
+   "system": "aria2",
+   "seq": 12,
+   "run_id": "ng-N2-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "config": "N2_burst_then_pace",
+   "system": "ours",
+   "seq": 13,
+   "run_id": "ng-N2-p03-ours"
+  },
+  {
+   "pair": 3,
+   "config": "N1_constant",
+   "system": "ours",
+   "seq": 14,
+   "run_id": "ng-N1-p03-ours"
+  },
+  {
+   "pair": 3,
+   "config": "N1_constant",
+   "system": "aria2",
+   "seq": 15,
+   "run_id": "ng-N1-p03-aria2"
+  },
+  {
+   "pair": 4,
+   "config": "N2_burst_then_pace",
+   "system": "aria2",
+   "seq": 16,
+   "run_id": "ng-N2-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "config": "N1_constant",
+   "system": "aria2",
+   "seq": 17,
+   "run_id": "ng-N1-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "config": "N2_burst_then_pace",
+   "system": "ours",
+   "seq": 18,
+   "run_id": "ng-N2-p04-ours"
+  },
+  {
+   "pair": 4,
+   "config": "N1_constant",
+   "system": "ours",
+   "seq": 19,
+   "run_id": "ng-N1-p04-ours"
+  }
+ ],
+ "exclusions": {
+  "invalid_run": "content_verified false, err non-empty, or netem_status != applied; invalid runs preserved; the pair is excluded from that configuration's ratio; no reruns"
+ },
+ "analysis": "per-pair ratio ours/aria2; per-configuration geometric mean, min, max, count ours faster; no inference",
+ "expectations_not_claims": {
+  "N1_constant": "parity expected (both systems 16 connections at one per-response rate; same as sweep S5)",
+  "N2_burst_then_pace": "no directional expectation"
+ },
+ "tool": {
+  "source": "testdata/nginx_limit_rate/tools/nginx_run.go",
+  "source_sha256": "acb63541a0b8c823c161e720ed8e63d85353ac0c69b6e2fa329e740ece0b6f37",
+  "binary_sha256": "adca3494aafd39dce1ef3ffde657f611c7a3f200930e65e57ea40b3e3d618915"
+ },
+ "limits": [
+  "single machine, loopback, one nginx version",
+  "object served by nginx with sendfile; limit_rate burst behaviour measured only by a curl probe (2 MiB range: ~0.7 MB/s constant, ~2.1 MB/s burst config)",
+  "n=5 screening"
+ ]
+}
