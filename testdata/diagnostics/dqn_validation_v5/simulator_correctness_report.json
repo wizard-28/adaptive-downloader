@@ -1,0 +1,169 @@
+{
+  "label": "v5 simulator correctness audit (simulator only; NO training, NO performance claim)",
+  "bug_fixed_this_audit": {
+    "id": "retry-attempt-accounting",
+    "summary": "A failed range was logged as ONE window sample (failure=1, retry=1, completed=0), while the live runner (policy_runner.observe) records two attempts: a failed attempt and a successful retry attempt (retry=1, completed=1). The simulator now pushes both samples. Bytes were already credited exactly once and elapsed already included the retransmission; those were unchanged.",
+    "effect": "recent_failure_rate/recent_retry_rate/recent_completed_norm and window attempts now follow the live definition. Elapsed time, bytes, rewards, RNG draw order and the static sweep are unchanged.",
+    "consequence_for_existing_candidate": "final_dqn_candidate_v5.json was trained BEFORE this fix, on the old window semantic. It is not modified and must not be treated as trained on the corrected state distribution; any further use requires retraining (not done in this task)."
+  },
+  "verified_semantics": [
+    "fixed 1 MiB chunk; partial final range credited once",
+    "concurrency always within [1,4]; invalid action raises with no state mutation; boundary actions are no-ops",
+    "one step = decision_interval requests except the final partial step",
+    "C=4 runs 4 requests in parallel (pipeline time = sum(service)/active)",
+    "reward == -step elapsed exactly; sum(step elapsed) == episode elapsed",
+    "phase selected by elapsed wall-clock time at each request start; transition affects later work in the same step/episode",
+    "transition request index depends on per-request timing (time-based, not count-based)",
+    "failed range: bytes credited once, elapsed includes one retransmission, windows record failed attempt + successful retry",
+    "terminal exactly when done_bytes == total; truncation only from max_episode_steps; finishing on the last allowed step is terminal",
+    "randomize()/reset()/step() deterministic for a fixed seed",
+    "single-phase episodes never transition; multi-phase episodes transition in >= 50% of sampled episodes"
+  ],
+  "modelled_limitations": [
+    "a failed request is retransmitted exactly once and the retransmission cannot fail",
+    "effective loss is capped at 0.9; loss/congestion are an expected-cost model, not a TCP model",
+    "per-extra-connection overhead (0.02 s) and congestion increments are MODELLED, not measured",
+    "dedicated real-server C=1..4 completion measurements are UNAVAILABLE; the concurrency relationship is qualitative",
+    "no max-retries exhaustion: a request never permanently fails",
+    "loss/congestion alone never lowers best C in this model (see attribution: no_cap + loss -> C=4); a lower best C needs a shared bottleneck, so 'loss => fewer connections' is NOT a modelled rule"
+  ],
+  "tests": {
+    "pytest_exit_code": 0,
+    "total": 32,
+    "not_passed": 0,
+    "results": {
+      "test_action_space_and_fixed_chunk": "passed",
+      "test_interval_does_not_suppress_concurrency": "passed",
+      "test_pipeline_accounting_matches_service_over_concurrency": "passed",
+      "test_decision_interval_sets_requests_per_step": "passed",
+      "test_wall_clock_transition_applies_mid_step": "passed",
+      "test_phase_transitions_are_reached_during_episode": "passed",
+      "test_windows_are_per_attempt": "passed",
+      "test_completed_window_counts_successes": "passed",
+      "test_duration_slope_uses_distinct_observations": "passed",
+      "test_determinism_termination_truncation": "passed",
+      "test_exact_byte_accounting_and_time_sum[1-1]": "passed",
+      "test_exact_byte_accounting_and_time_sum[1-4]": "passed",
+      "test_exact_byte_accounting_and_time_sum[2-1]": "passed",
+      "test_exact_byte_accounting_and_time_sum[2-4]": "passed",
+      "test_exact_byte_accounting_and_time_sum[4-1]": "passed",
+      "test_exact_byte_accounting_and_time_sum[4-4]": "passed",
+      "test_partial_final_chunk_counted_once": "passed",
+      "test_c4_transfers_four_requests_in_parallel": "passed",
+      "test_failed_attempt_costs_time_but_bytes_complete_once": "passed",
+      "test_failure_retry_completed_accounting_per_attempt": "passed",
+      "test_window_is_bounded": "passed",
+      "test_wall_clock_transition_at_configured_elapsed_time": "passed",
+      "test_transition_request_index_depends_on_request_timing": "passed",
+      "test_seed_determinism_including_randomize": "passed",
+      "test_actions_respect_bounds_and_noop_does_not_mutate": "passed",
+      "test_invalid_action_raises_without_mutation[-1]": "passed",
+      "test_invalid_action_raises_without_mutation[3]": "passed",
+      "test_invalid_action_raises_without_mutation[99]": "passed",
+      "test_terminal_vs_truncation": "passed",
+      "test_stationary_episode_never_transitions": "passed",
+      "test_multi_phase_episodes_transition_meaningfully": "passed",
+      "test_concurrency_never_leaves_bounds_in_randomized_rollout": "passed"
+    }
+  },
+  "calibration": {
+    "scenario": "1 MiB @ 512 KiB/s, C=1, no latency/loss",
+    "sim_seconds": 2.0,
+    "real_server_seconds_reference": 2.0529,
+    "absolute_gap_seconds": 0.05290000000000017,
+    "relative_gap": 0.025768425154659342,
+    "interpretation": "The simulator is an ideal pacing model (bytes/rate); the real server adds fixed per-request HTTP/pacing overhead of ~50 ms. The gap is recorded, not fitted; full simulator fidelity is NOT claimed."
+  },
+  "static_sweep_reproduction": {
+    "seeds": [
+      300,
+      301,
+      302
+    ],
+    "decision_interval": 1,
+    "identical_to_existing_artifact": true,
+    "distinct_best_c": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "best_c_by_regime": {
+      "stable-no-cap": 4,
+      "low-bandwidth": 4,
+      "latency-dominant": 4,
+      "shared-cap-hard": 1,
+      "shared-cap-moderate": 3,
+      "combined-mild": 2,
+      "throttle-up-wallclock": 4,
+      "throttle-down-wallclock": 4
+    }
+  },
+  "best_c_attribution_single_mechanism": {
+    "no_shared_cap (per-response throttle only)": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 2.2950000000000004,
+        "3": 1.74,
+        "4": 1.4725
+      },
+      "best_c": 4
+    },
+    "shared_cap link=1.0x rate": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 4.419999999999998,
+        "3": 4.739999999999999,
+        "4": 5.035000000000002
+      },
+      "best_c": 1
+    },
+    "shared_cap link=2.0x rate": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 2.2950000000000004,
+        "3": 2.4900000000000007,
+        "4": 2.660000000000001
+      },
+      "best_c": 2
+    },
+    "shared_cap link=3.0x rate": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 2.2950000000000004,
+        "3": 1.74,
+        "4": 1.8683333333333334
+      },
+      "best_c": 3
+    },
+    "shared_cap link=2.0x rate + loss 1% cong 0.03": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 2.3366666666666673,
+        "3": 2.5733333333333337,
+        "4": 2.826666666666668
+      },
+      "best_c": 2
+    },
+    "no_cap + loss 2% cong 0.06": {
+      "mean_seconds_by_c": {
+        "1": 4.0,
+        "2": 2.4200000000000004,
+        "3": 1.9344444444444442,
+        "4": 1.66
+      },
+      "best_c": 4
+    },
+    "no_cap + latency 75 ms": {
+      "mean_seconds_by_c": {
+        "1": 5.200000000000001,
+        "2": 2.932499999999999,
+        "3": 2.1899999999999995,
+        "4": 1.8287499999999997
+      },
+      "best_c": 4
+    }
+  },
+  "static_sweep_note": "Variation in best fixed C comes from the simulator mechanics: shared bottleneck vs per-response throttle (link_bandwidth/rate), latency overlap, and loss/congestion + per-connection overhead. No optimal-C rule is hard-coded. These are modelled behaviors, not real-server evidence.",
+  "ready_to_train": true
+}

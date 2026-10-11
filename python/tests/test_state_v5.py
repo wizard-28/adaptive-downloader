@@ -122,3 +122,14 @@ def test_v5_model_export_contract():
     assert art["feature_names"] == list(FEATURE_NAMES)
     assert art["layers"][0]["in"] == len(FEATURE_NAMES)
     assert art["layers"][-1]["out"] == 3
+
+
+def test_parity_fixture_is_current():
+    import subprocess
+
+    here = os.path.dirname(__file__)
+    script = os.path.join(here, "..", "gen_state_parity_v5.py")
+    r = subprocess.run(
+        [sys.executable, script, "--check"], capture_output=True, text=True
+    )
+    assert r.returncode == 0, r.stderr + r.stdout

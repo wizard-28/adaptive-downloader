@@ -124,10 +124,12 @@ def test_windows_are_per_attempt():
     r = e.step(0)
     assert r["requests"] == 2
     o = e._obs()
-    assert o["window_attempts"] == 2
+    # Each failed range is a failed attempt plus a successful retry attempt
+    # (live policy_runner.observe semantics): 2 ranges -> 4 attempts.
+    assert o["window_attempts"] == 4
     assert o["window_failures"] == 2
     assert o["window_retries"] == 2
-    assert o["window_completed"] == 0
+    assert o["window_completed"] == 2
 
 
 def test_completed_window_counts_successes():

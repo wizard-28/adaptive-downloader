@@ -130,18 +130,30 @@ aria2. Pooled paired geometric ratios (95 % bootstrap):
 | selector vs family-best single fixed | **0.770** | stratified [0.768, 0.772]; six-cluster [0.455, 1.304] | 40/60 |
 | selector vs aria2 | 1.660 | [1.363, 1.988] | 10/60 |
 
-Per workload: selector beats the family single fixed on W1-W4 (up to 0.286 on
-healthy), ties/edges W2 (+6.6 %), W4 (+19.2 %; probe-phase timing), loses W3
-(-1.9 %), W5 (-17.2 %, frozen-target mismatch) and W6 (-8.8 %). aria2 wins all
-degraded workloads (cap escape). Interpretation (concept B, not C): a frozen
-workload-classifying selector recovers essentially all of the per-workload
-clairvoyant benefit on average without being told the workload, and beats any
-single fixed configuration across the six-workload family by 23 % on the pooled
-ratio. This pooled figure is not robust across workloads: a six-cluster interval
-is [0.455, 1.304] (`analysis/w1_w6_robustness.json`), and the figure is driven
-by W1 (healthy). Over W2-W6 the geometric mean is about 0.94, with losses on W5
-and W6. The honest summary is a selector that is not significantly different
-from the per-workload clairvoyant on average, with mixed per-workload results.
+Per workload (paired geometric ratio, selector / baseline; < 1 favors the
+selector):
+
+| workload | vs per-workload best fixed | vs family-best single fixed (4, 4 MiB) |
+|---|---|---|
+| W1 | 1.013 | 0.286 |
+| W2 | 0.934 | 0.869 |
+| W3 | 1.019 | 0.949 |
+| W4 | 0.808 (probe-phase timing: the selector runs the fast (16, 1 MiB) config until the cap appears) | 0.765 |
+| W5 | 1.172 (frozen-target mismatch) | 1.058 |
+| W6 | 1.088 | 1.090 |
+
+aria2 wins all degraded workloads (cap escape). Interpretation (concept B, not
+C): pooled over 60 workload-blocks the selector is not distinguishable from the
+per-workload clairvoyant (0.999) while not being told the workload, but this
+average hides offsetting per-workload effects (a +19 % timing win on W4 against
+losses of 9-17 % on W5/W6), and the pooled CI treats blocks as independent. The
+pooled ratio against the family single fixed configuration (0.770) is **not** a
+robust speed-up claim: a six-cluster interval is [0.455, 1.304]
+(`analysis/w1_w6_robustness.json`), it is driven by W1 (a healthy workload vs a
+degraded-state fixed config), over W2-W6 the geometric mean is about 0.94, and
+the selector loses on W5 and W6. The honest summary is a selector that is not
+significantly different from the per-workload clairvoyant on average, with mixed
+per-workload results.
 
 ## 7. Within-download joint adaptation under server degradation [DONE]
 

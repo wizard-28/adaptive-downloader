@@ -302,9 +302,22 @@ class SimEnv:
             bytes_interval += n
             accrued += svc / active
             last_svc = svc
-            self._push(self.fail_window, 1 if failed else 0)
-            self._push(self.retry_window, 1 if failed else 0)
-            self._push(self.done_window, 0 if failed else 1)
+            # Window samples are per ATTEMPT, matching the live runner
+            # (policy_runner.observe): a failed range is one failed attempt
+            # (failure=1, retry=0, completed=0) followed by one successful
+            # retry attempt (failure=0, retry=1, completed=1). The bytes are
+            # credited exactly once, by the successful retry attempt.
+            if failed:
+                self._push(self.fail_window, 1)
+                self._push(self.retry_window, 0)
+                self._push(self.done_window, 0)
+                self._push(self.fail_window, 0)
+                self._push(self.retry_window, 1)
+                self._push(self.done_window, 1)
+            else:
+                self._push(self.fail_window, 0)
+                self._push(self.retry_window, 0)
+                self._push(self.done_window, 1)
         interval_elapsed = accrued
 
         # Advance the phase index to the end-of-step elapsed time; this counts
