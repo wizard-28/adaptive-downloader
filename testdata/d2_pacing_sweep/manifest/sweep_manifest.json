@@ -1,0 +1,481 @@
+{
+ "label": "D2 pacing-schedule sensitivity sweep (SCREENING; frozen before execution)",
+ "frozen_at_utc": "2026-10-11T20:18:39.881036+00:00",
+ "status": "screening experiment, 5 pairs per schedule; no inferential claim",
+ "workload": {
+  "file_size_bytes": 536870912,
+  "netem": "40 ms latency + 0.4 % loss on the loopback interface",
+  "server": "logical deterministic range server, per-response pacing sampled at request start (same as D2 benchmark)"
+ },
+ "systems": {
+  "ours": {
+   "concurrency": 16,
+   "chunk_bytes": 4194304,
+   "timeout_ms": 30000,
+   "max_retries": 3,
+   "source": "aria2_competitive_benchmark/manifest/frozen_configs.json our_final"
+  },
+  "aria2": {
+   "args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+   "source": "aria2_competitive_benchmark/manifest/frozen_configs.json aria2_final"
+  }
+ },
+ "schedules_kib_per_s": {
+  "S0_D2_reference": "640,160@2,2500@4",
+  "S1_no_dip": "640,2500@2",
+  "S2_long_dip": "640,160@2,2500@8",
+  "S3_partial_recovery": "640,160@2,1280@4",
+  "S4_constant_fast": "2500",
+  "S5_constant_slow": "640"
+ },
+ "schedule_syntax": "R0,R1@t1,R2@t2 : rate in KiB/s, switch times in seconds",
+ "pairs_per_schedule": 5,
+ "order_seed": 20261011,
+ "order_rule": "per pair index, all schedule x system cells shuffled together (python random.Random(seed).shuffle)",
+ "order": [
+  {
+   "pair": 0,
+   "schedule": "S0_D2_reference",
+   "system": "aria2",
+   "seq": 0,
+   "run_id": "sw-S0-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "schedule": "S4_constant_fast",
+   "system": "aria2",
+   "seq": 1,
+   "run_id": "sw-S4-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "schedule": "S4_constant_fast",
+   "system": "ours",
+   "seq": 2,
+   "run_id": "sw-S4-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S1_no_dip",
+   "system": "aria2",
+   "seq": 3,
+   "run_id": "sw-S1-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "schedule": "S1_no_dip",
+   "system": "ours",
+   "seq": 4,
+   "run_id": "sw-S1-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S3_partial_recovery",
+   "system": "ours",
+   "seq": 5,
+   "run_id": "sw-S3-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S0_D2_reference",
+   "system": "ours",
+   "seq": 6,
+   "run_id": "sw-S0-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S2_long_dip",
+   "system": "ours",
+   "seq": 7,
+   "run_id": "sw-S2-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S5_constant_slow",
+   "system": "ours",
+   "seq": 8,
+   "run_id": "sw-S5-p00-ours"
+  },
+  {
+   "pair": 0,
+   "schedule": "S5_constant_slow",
+   "system": "aria2",
+   "seq": 9,
+   "run_id": "sw-S5-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "schedule": "S2_long_dip",
+   "system": "aria2",
+   "seq": 10,
+   "run_id": "sw-S2-p00-aria2"
+  },
+  {
+   "pair": 0,
+   "schedule": "S3_partial_recovery",
+   "system": "aria2",
+   "seq": 11,
+   "run_id": "sw-S3-p00-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S3_partial_recovery",
+   "system": "ours",
+   "seq": 12,
+   "run_id": "sw-S3-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S3_partial_recovery",
+   "system": "aria2",
+   "seq": 13,
+   "run_id": "sw-S3-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S2_long_dip",
+   "system": "ours",
+   "seq": 14,
+   "run_id": "sw-S2-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S0_D2_reference",
+   "system": "aria2",
+   "seq": 15,
+   "run_id": "sw-S0-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S4_constant_fast",
+   "system": "aria2",
+   "seq": 16,
+   "run_id": "sw-S4-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S0_D2_reference",
+   "system": "ours",
+   "seq": 17,
+   "run_id": "sw-S0-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S4_constant_fast",
+   "system": "ours",
+   "seq": 18,
+   "run_id": "sw-S4-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S1_no_dip",
+   "system": "ours",
+   "seq": 19,
+   "run_id": "sw-S1-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S1_no_dip",
+   "system": "aria2",
+   "seq": 20,
+   "run_id": "sw-S1-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S2_long_dip",
+   "system": "aria2",
+   "seq": 21,
+   "run_id": "sw-S2-p01-aria2"
+  },
+  {
+   "pair": 1,
+   "schedule": "S5_constant_slow",
+   "system": "ours",
+   "seq": 22,
+   "run_id": "sw-S5-p01-ours"
+  },
+  {
+   "pair": 1,
+   "schedule": "S5_constant_slow",
+   "system": "aria2",
+   "seq": 23,
+   "run_id": "sw-S5-p01-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S3_partial_recovery",
+   "system": "ours",
+   "seq": 24,
+   "run_id": "sw-S3-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S4_constant_fast",
+   "system": "aria2",
+   "seq": 25,
+   "run_id": "sw-S4-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S4_constant_fast",
+   "system": "ours",
+   "seq": 26,
+   "run_id": "sw-S4-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S5_constant_slow",
+   "system": "ours",
+   "seq": 27,
+   "run_id": "sw-S5-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S5_constant_slow",
+   "system": "aria2",
+   "seq": 28,
+   "run_id": "sw-S5-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S1_no_dip",
+   "system": "ours",
+   "seq": 29,
+   "run_id": "sw-S1-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S0_D2_reference",
+   "system": "aria2",
+   "seq": 30,
+   "run_id": "sw-S0-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S0_D2_reference",
+   "system": "ours",
+   "seq": 31,
+   "run_id": "sw-S0-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S2_long_dip",
+   "system": "ours",
+   "seq": 32,
+   "run_id": "sw-S2-p02-ours"
+  },
+  {
+   "pair": 2,
+   "schedule": "S3_partial_recovery",
+   "system": "aria2",
+   "seq": 33,
+   "run_id": "sw-S3-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S2_long_dip",
+   "system": "aria2",
+   "seq": 34,
+   "run_id": "sw-S2-p02-aria2"
+  },
+  {
+   "pair": 2,
+   "schedule": "S1_no_dip",
+   "system": "aria2",
+   "seq": 35,
+   "run_id": "sw-S1-p02-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S5_constant_slow",
+   "system": "aria2",
+   "seq": 36,
+   "run_id": "sw-S5-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S1_no_dip",
+   "system": "ours",
+   "seq": 37,
+   "run_id": "sw-S1-p03-ours"
+  },
+  {
+   "pair": 3,
+   "schedule": "S3_partial_recovery",
+   "system": "ours",
+   "seq": 38,
+   "run_id": "sw-S3-p03-ours"
+  },
+  {
+   "pair": 3,
+   "schedule": "S0_D2_reference",
+   "system": "ours",
+   "seq": 39,
+   "run_id": "sw-S0-p03-ours"
+  },
+  {
+   "pair": 3,
+   "schedule": "S5_constant_slow",
+   "system": "ours",
+   "seq": 40,
+   "run_id": "sw-S5-p03-ours"
+  },
+  {
+   "pair": 3,
+   "schedule": "S3_partial_recovery",
+   "system": "aria2",
+   "seq": 41,
+   "run_id": "sw-S3-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S4_constant_fast",
+   "system": "aria2",
+   "seq": 42,
+   "run_id": "sw-S4-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S0_D2_reference",
+   "system": "aria2",
+   "seq": 43,
+   "run_id": "sw-S0-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S4_constant_fast",
+   "system": "ours",
+   "seq": 44,
+   "run_id": "sw-S4-p03-ours"
+  },
+  {
+   "pair": 3,
+   "schedule": "S2_long_dip",
+   "system": "aria2",
+   "seq": 45,
+   "run_id": "sw-S2-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S1_no_dip",
+   "system": "aria2",
+   "seq": 46,
+   "run_id": "sw-S1-p03-aria2"
+  },
+  {
+   "pair": 3,
+   "schedule": "S2_long_dip",
+   "system": "ours",
+   "seq": 47,
+   "run_id": "sw-S2-p03-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S4_constant_fast",
+   "system": "aria2",
+   "seq": 48,
+   "run_id": "sw-S4-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "schedule": "S1_no_dip",
+   "system": "ours",
+   "seq": 49,
+   "run_id": "sw-S1-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S1_no_dip",
+   "system": "aria2",
+   "seq": 50,
+   "run_id": "sw-S1-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "schedule": "S0_D2_reference",
+   "system": "ours",
+   "seq": 51,
+   "run_id": "sw-S0-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S4_constant_fast",
+   "system": "ours",
+   "seq": 52,
+   "run_id": "sw-S4-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S0_D2_reference",
+   "system": "aria2",
+   "seq": 53,
+   "run_id": "sw-S0-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "schedule": "S3_partial_recovery",
+   "system": "ours",
+   "seq": 54,
+   "run_id": "sw-S3-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S3_partial_recovery",
+   "system": "aria2",
+   "seq": 55,
+   "run_id": "sw-S3-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "schedule": "S5_constant_slow",
+   "system": "ours",
+   "seq": 56,
+   "run_id": "sw-S5-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S2_long_dip",
+   "system": "ours",
+   "seq": 57,
+   "run_id": "sw-S2-p04-ours"
+  },
+  {
+   "pair": 4,
+   "schedule": "S5_constant_slow",
+   "system": "aria2",
+   "seq": 58,
+   "run_id": "sw-S5-p04-aria2"
+  },
+  {
+   "pair": 4,
+   "schedule": "S2_long_dip",
+   "system": "aria2",
+   "seq": 59,
+   "run_id": "sw-S2-p04-aria2"
+  }
+ ],
+ "exclusions": {
+  "invalid_run": "content_verified false, or err non-empty, or netem_status != applied, or aria2_exit != 0",
+  "handling": "invalid runs are preserved and listed; the pair is excluded from that schedule's ratio; NO reruns; n_valid_pairs is reported",
+  "no_other_exclusions": true
+ },
+ "analysis": {
+  "primary": "per-pair ratio ours/aria2 completion time; per-schedule geometric mean, min, max, and count of pairs with ratio < 1",
+  "inference": "none (n=5 screening); no confidence-interval or significance claim; S0 is a harness check against the historical D2 ratio 0.3756",
+  "script": "testdata/d2_pacing_sweep/tools/analyze_sweep.py"
+ },
+ "expectations_not_claims": {
+  "S0_D2_reference": "ratio near the historical 0.3756 (harness reproduces)",
+  "S5_constant_slow": "ratio near 1 (both systems use 16 connections at 640 KiB/s; no phase to exploit)",
+  "others": "no directional expectation recorded; results descriptive"
+ },
+ "tool": {
+  "source": "testdata/d2_pacing_sweep/tools/sweep_run.go",
+  "source_sha256": "b7d1ab6848fb4f5cb3964468c3fae1c329431fbe6bb60cb079fabdb198709793",
+  "binary_sha256": "c8e271b61e8c1af02cdeff2734a02957f66bac90060f60eb69806822a55e80a9",
+  "derived_from": "testdata/aria2_competitive_benchmark/tools/bench_run.go (unchanged); only -phases added"
+ },
+ "frozen_evidence_untouched": [
+  "testdata/aria2_competitive_benchmark/**"
+ ]
+}

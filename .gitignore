@@ -33,3 +33,4 @@ venv/
 /Untitled
 # Agent session transcript (local working log)
 /transcript.txt
+/testdata/d2_pacing_sweep/tools/sweep_run
