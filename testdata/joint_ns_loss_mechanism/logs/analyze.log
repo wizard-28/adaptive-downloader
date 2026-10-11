@@ -1,0 +1,11 @@
+=== S-retry exposure (BAD) ===
+  S=256K    reqs=2048  pkt/req=181   fail/attempt=0.0000 retries/dl=0.0 retry_MiB/dl=0.0 abort=0.00
+  S=1024K   reqs=512   pkt/req=724   fail/attempt=0.0000 retries/dl=0.0 retry_MiB/dl=0.0 abort=0.00
+  S=4096K   reqs=128   pkt/req=2896  fail/attempt=0.0006 retries/dl=0.1 retry_MiB/dl=0.3 abort=0.00
+  S=16384K  reqs=32    pkt/req=11586 fail/attempt=0.3274 retries/dl=10.6 retry_MiB/dl=169.0 abort=0.48
+=== materiality ===
+  GOOD at N=16: S*=16M 52.6s vs 4M 53.0s (penalty +0.8%)
+  BAD  at N=16: S*=4M 60.0s vs 16M 81.8s (penalty +36.3%)
+=== robustness ===
+  {'variants': 9, 'N_star_16_in_both_conditions': 9, 'S_star_moves_between_conditions': 4, 'N_monotone_in_both_conditions': 9}
+VERDICT: NO_JOINT_N+S_OPPORTUNITY_UNDER_CORRELATED_LOSS

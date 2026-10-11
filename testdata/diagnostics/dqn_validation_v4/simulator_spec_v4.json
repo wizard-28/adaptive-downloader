@@ -1,0 +1,56 @@
+{
+  "action_space": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "calibration_reference": "real server paces each response at `rate`; 1MiB@512KiB/s ~2.05s, 32KiB@512KiB/s ~0.064s (frozen)",
+  "decision_interval": 8,
+  "dynamics": {
+    "parallel_wave": "wave wall-clock = slowest of `concurrency` parallel requests; aggregate throughput = bytes/elapsed",
+    "per_request": "latency + chunk/current_rate (independent of concurrency)",
+    "shared_cap": "optional link_bandwidth caps current_rate/concurrency, so extra concurrency can stop helping",
+    "step": "one RL step = decision_interval requests; reward=-interval wall-clock seconds",
+    "throttles": [
+      "none",
+      "request-count",
+      "wall-clock"
+    ]
+  },
+  "fixed_chunk_bytes": 1048576,
+  "label": "concurrency-focused training simulator v4 (training-only)",
+  "train_ranges": {
+    "rand_file_size": [
+      262144,
+      16777216
+    ],
+    "rand_latency_s": [
+      0.0,
+      0.08
+    ],
+    "rand_link_bandwidth": [
+      0,
+      8388608
+    ],
+    "rand_loss_percent": [
+      0.0,
+      4.0
+    ],
+    "rand_rate": [
+      262144,
+      8388608
+    ],
+    "rand_rate_after": [
+      262144,
+      4194304
+    ],
+    "rand_switch_after_requests": [
+      0,
+      16
+    ],
+    "rand_switch_after_seconds": [
+      0.25,
+      2.5
+    ]
+  }
+}

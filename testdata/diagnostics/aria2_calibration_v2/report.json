@@ -1,0 +1,181 @@
+{
+  "label": "aria2 baseline calibration v2 (16 MiB; 1 MiB granularity; validation only)",
+  "file_size": 16777216,
+  "min_split_size": 1048576,
+  "aria2_version": "aria2 version 1.37.0",
+  "repetitions": 5,
+  "valid_runs": "150/150",
+  "candidates_specified": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "candidate_added_F": {
+    "name": "F",
+    "max_connection_per_server": 16,
+    "split": 16,
+    "min_split_size": 1048576,
+    "justification": "Specified A-E FAILED the section-4 granularity check: aria2 bounds its split count by --max-connection-per-server, so A/B/C/D/E yield 16 MiB / 8 MiB / 4 MiB pieces, never 1 MiB. Only maxconn>=16 yields ~16 x 1 MiB ranges at min-split-size=1 MiB. F was added explicitly so the selected baseline can actually meet the 1 MiB granularity requirement. This is a documented deviation from the specified candidate set.",
+    "granularity": "14-16 x 1 MiB ranges; max in-flight 14-16"
+  },
+  "selection": {
+    "criterion": "lowest pooled mean completion time; tie-break lower pooled median, then lower pooled retries",
+    "selected": "F",
+    "pooled_by_config": {
+      "A": {
+        "count": 25,
+        "mean_ms": 13136.698400000003,
+        "median_ms": 13187.363,
+        "sd_ms": 3301.0974606879813,
+        "mean_wallclock_bps": 1367931.8092071423,
+        "retries": 0,
+        "failures": 0
+      },
+      "B": {
+        "count": 25,
+        "mean_ms": 6769.795760000001,
+        "median_ms": 6772.231,
+        "sd_ms": 1595.7800749007056,
+        "mean_wallclock_bps": 2638971.7990519344,
+        "retries": 0,
+        "failures": 0
+      },
+      "C": {
+        "count": 25,
+        "mean_ms": 3502.7656000000006,
+        "median_ms": 3519.023,
+        "sd_ms": 748.8392331171224,
+        "mean_wallclock_bps": 5055983.939063692,
+        "retries": 0,
+        "failures": 0
+      },
+      "D": {
+        "count": 25,
+        "mean_ms": 3540.3952400000007,
+        "median_ms": 3516.186,
+        "sd_ms": 754.6635302902761,
+        "mean_wallclock_bps": 5010058.171170429,
+        "retries": 0,
+        "failures": 0
+      },
+      "E": {
+        "count": 25,
+        "mean_ms": 3463.159160000001,
+        "median_ms": 3511.888,
+        "sd_ms": 768.9466558293198,
+        "mean_wallclock_bps": 5126655.44515916,
+        "retries": 0,
+        "failures": 0
+      },
+      "F": {
+        "count": 25,
+        "mean_ms": 1101.8953999999999,
+        "median_ms": 1121.583,
+        "sd_ms": 273.86660100537995,
+        "mean_wallclock_bps": 16242523.389969137,
+        "retries": 0,
+        "failures": 0
+      }
+    }
+  },
+  "selected_baseline_v2_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "granularity_observed": {
+    "A": {
+      "max_in_flight": [
+        1
+      ],
+      "range_min": [],
+      "range_max": [],
+      "range_counts": [
+        0
+      ]
+    },
+    "B": {
+      "max_in_flight": [
+        2
+      ],
+      "range_min": [
+        1048576,
+        8388608
+      ],
+      "range_max": [
+        8388608
+      ],
+      "range_counts": [
+        1,
+        2
+      ]
+    },
+    "C": {
+      "max_in_flight": [
+        4
+      ],
+      "range_min": [
+        4194304
+      ],
+      "range_max": [
+        4194304
+      ],
+      "range_counts": [
+        3
+      ]
+    },
+    "D": {
+      "max_in_flight": [
+        4
+      ],
+      "range_min": [
+        1048576,
+        4194304
+      ],
+      "range_max": [
+        4194304
+      ],
+      "range_counts": [
+        3,
+        4
+      ]
+    },
+    "E": {
+      "max_in_flight": [
+        4
+      ],
+      "range_min": [
+        1048576,
+        4194304
+      ],
+      "range_max": [
+        4194304
+      ],
+      "range_counts": [
+        3,
+        6
+      ]
+    },
+    "F": {
+      "max_in_flight": [
+        14,
+        15,
+        16
+      ],
+      "range_min": [
+        1048576
+      ],
+      "range_max": [
+        1048576
+      ],
+      "range_counts": [
+        14,
+        15
+      ]
+    }
+  },
+  "granularity_check": {
+    "requirement": "selected config produces ~16 x 1 MiB ranges (split=16, min-split-size=1 MiB)",
+    "result": "PASS for F; FAIL for specified A-E"
+  },
+  "fairness_caveat": "F reaches 1 MiB granularity only by using up to 16 concurrent connections. The frozen test server throttles EACH response independently at `rate`, so aria2-F achieves ~16x rate aggregate, whereas a concurrency-capped (1-4) DQN can reach at most ~4x rate on the same server. F's 1102 ms vs C/D/E's ~3.5 s reflects this. Any later head-to-head against Candidate v5 must state this structural asymmetry: 1 MiB granularity for aria2 on this server implies high connection count, which the independent per-response throttle rewards.",
+  "note": "Validation-only; no performance claim against DQN. F is frozen as the v2 baseline."
+}

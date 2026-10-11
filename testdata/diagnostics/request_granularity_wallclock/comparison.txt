@@ -1,0 +1,20 @@
+Wall-clock granularity-matched control vs aria2 vs v6 (mean completion ms; descriptive; no ranking)
+scenario: server-throttle-wallclock (4 MiB; 512KiB/s -> 4MiB/s after 1s elapsed)
+
+PRIMARY controlled comparison (request granularity + parallelism matched)
+  implementation              mean_ms     median       reqs   range_size max_inflight
+  aria2 (frozen)               2129.7     2120.9          4      1048576            4
+  matched internal 1MiB/4C     2055.7     2052.5          4      1048576            4
+  difference: aria2 - matched = 74.0 ms (3.6%)
+
+CONTEXT (v6 wall-clock six-mode, not matched to aria2 granularity)
+  fixed                        2057.9
+  concurrency-adaptive         1324.5
+  chunk-size-adaptive          2029.0
+  joint-adaptive               1404.7
+  linucb-standard              2061.3
+  linucb-periodic              1323.4
+
+request behavior:
+  aria2:           1 non-range probe + 3 x 1MiB range requests; max in-flight 4; all 4 start <1s; none reach 4MiB/s
+  matched internal: 4 x 1MiB range requests (no non-range probe); max in-flight 4; all 4 start <1s; none reach 4MiB/s

@@ -1,0 +1,52 @@
+{
+  "candidates": [
+    2,
+    4,
+    8
+  ],
+  "results": {
+    "2": {
+      "final_loss": 2.066028118133545,
+      "mean_avg_concurrency": 1.96875,
+      "mean_completion_s": 3.6161309523809524,
+      "mean_conc_changes": 2.0,
+      "mean_effective_actions_per_mib": 0.421875,
+      "mean_max_concurrency": 3.5,
+      "mean_requests": 5.0,
+      "mean_requests_per_mib": 1.0,
+      "mean_return": -26.173459125816237,
+      "median_completion_s": 3.6,
+      "n": 8,
+      "sd_completion_s": 2.3572690014045903
+    },
+    "4": {
+      "final_loss": 5.636861324310303,
+      "mean_avg_concurrency": 3.375,
+      "mean_completion_s": 2.8935714285714287,
+      "mean_conc_changes": 0.375,
+      "mean_effective_actions_per_mib": 0.09375,
+      "mean_max_concurrency": 3.625,
+      "mean_requests": 5.0,
+      "mean_requests_per_mib": 1.0,
+      "mean_return": -31.969500975430467,
+      "median_completion_s": 2.0,
+      "n": 8,
+      "sd_completion_s": 2.8561494205436198
+    },
+    "8": {
+      "final_loss": 2.2624940872192383,
+      "mean_avg_concurrency": 3.75,
+      "mean_completion_s": 2.274107142857143,
+      "mean_conc_changes": 0.25,
+      "mean_effective_actions_per_mib": 0.0625,
+      "mean_max_concurrency": 3.75,
+      "mean_requests": 5.0,
+      "mean_requests_per_mib": 1.0,
+      "mean_return": -27.464690755111885,
+      "median_completion_s": 1.375,
+      "n": 8,
+      "sd_completion_s": 2.198447258391895
+    }
+  },
+  "selected": 8
+}

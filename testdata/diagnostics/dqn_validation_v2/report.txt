@@ -1,0 +1,43 @@
+DQN Candidate v2 (corrected simulator) - training + held-out validation + live transfer
+NO performance claim; NO aria2 comparison. Candidate v1 retained as historical.
+
+candidate v2 sha256: 59cbc5e6e18f428358b6233ba0e350c35668f2ebad3ba4d23e5e4c85de9b3a0e
+selected seed: 1
+selection: min mean validation completion time; tie-break lowest seed (test never used)
+validation mean completion: 1.0423s
+
+baseline fidelity (corrected env; must be > 0 and distinct):
+  chunk-size-adaptive    concChg=0.00 chunkChg=0.22
+  concurrency-adaptive   concChg=0.19 chunkChg=0.00
+  joint-adaptive         concChg=0.14 chunkChg=0.14
+
+held-out TEST mean completion (s; not ranked):
+  chunk-size-adaptive    mean=1.7546 median=1.6790 sd=1.3560
+  concurrency-adaptive   mean=1.7061 median=1.6440 sd=1.3348
+  dqn                    mean=1.2334 median=0.9579 sd=0.9811
+  fixed                  mean=1.7640 median=1.8942 sd=1.3508
+  joint-adaptive         mean=1.7101 median=1.7015 sd=1.3377
+
+ablations (mean completion s):
+  corrupted_state        mean=1.2544
+  dqn                    mean=1.2334
+  random_policy          mean=1.4680
+  shuffled_actions       mean=1.5814
+
+live transfer v2: 25/25 valid
+v1 -> v2 live behavior (scenario: finalC / finalChunk / effConc / decrease-chunk):
+  baseline                   v1 C=1.00 chunk=65536 effC=0 dc=5 | v2 C=1.00 chunk=32768 effC=0 dc=174
+  server-throttle-wallclock  v1 C=1.40 chunk=32768 effC=18 dc=260 | v2 C=1.40 chunk=104858 effC=144 dc=46
+  latency                    v1 C=3.60 chunk=85197 effC=37 dc=37 | v2 C=1.60 chunk=124518 effC=183 dc=19
+  loss                       v1 C=1.00 chunk=58982 effC=0 dc=23 | v2 C=2.00 chunk=91750 effC=21 dc=58
+  combined                   v1 C=1.60 chunk=131072 effC=13 dc=19 | v2 C=4.00 chunk=85197 effC=143 dc=18
+
+what improved (sim-to-real):
+  - server-throttle-wallclock: unhelpful decrease-chunk selections fell 260 -> 46; chunk rose to ~105 KiB with 144 effective concurrency changes (v1: 18)
+  - combined: v2 holds concurrency 4 (v1: 1.6) with 143 effective concurrency changes (v1: 13)
+  - latency: v2 favors max chunk (124 KiB) and makes 183 effective concurrency changes (v1: 37)
+  - loss: v2 uses concurrency 2 and larger chunks (v1 stayed at concurrency 1)
+what remains mismatched:
+  - baseline: v2 issues many decrease-chunk selections that are no-ops at the minimum bound (169 no-op vs 5 effective)
+  - simulator magnitudes differ from the real server; validation remains simulator-based
+  - the state still does not expose a throttle classifier; response is behavioral

@@ -1,0 +1,63 @@
+healthy  N=1  S=262144     243.7s valid=True 
+healthy  N=1  S=1048576    242.9s valid=True 
+healthy  N=1  S=4194304    247.2s valid=True 
+healthy  N=1  S=16777216   260.9s valid=True 
+healthy  N=1  S=33554432   273.1s valid=True 
+healthy  N=2  S=262144     120.1s valid=True 
+healthy  N=2  S=1048576    121.5s valid=True 
+healthy  N=2  S=4194304    125.4s valid=True 
+healthy  N=2  S=16777216   139.5s valid=True 
+healthy  N=2  S=33554432   150.9s valid=True 
+healthy  N=4  S=262144      58.8s valid=True 
+healthy  N=4  S=1048576     59.3s valid=True 
+healthy  N=4  S=4194304     64.1s valid=True 
+healthy  N=4  S=16777216    78.9s valid=True 
+healthy  N=4  S=33554432    92.5s valid=True 
+healthy  N=8  S=262144      30.0s valid=True 
+healthy  N=8  S=1048576     30.2s valid=True 
+healthy  N=8  S=4194304     34.0s valid=True 
+healthy  N=8  S=16777216    49.5s valid=True 
+healthy  N=8  S=33554432    60.6s valid=True 
+healthy  N=16 S=262144      15.6s valid=True 
+healthy  N=16 S=1048576     15.7s valid=True 
+healthy  N=16 S=4194304     20.3s valid=True 
+healthy  N=16 S=16777216    35.0s valid=True 
+healthy  N=16 S=33554432    46.7s valid=True 
+healthy  N=16 S=1048576  r1    15.9s valid=True
+healthy  N=16 S=1048576  r2    15.9s valid=True
+healthy  N=16 S=4194304  r1    19.5s valid=True
+healthy  N=16 S=4194304  r2    19.3s valid=True
+healthy  N=8  S=1048576  r1    30.1s valid=True
+healthy  N=8  S=1048576  r2    30.7s valid=True
+capped   N=1  S=262144     243.1s valid=True 
+capped   N=1  S=1048576    242.2s valid=True 
+capped   N=1  S=4194304    246.1s valid=True 
+capped   N=1  S=16777216   261.0s valid=True 
+capped   N=1  S=33554432   272.6s valid=True 
+capped   N=2  S=262144     120.6s valid=True 
+capped   N=2  S=1048576    121.6s valid=True 
+capped   N=2  S=4194304    125.7s valid=True 
+capped   N=2  S=16777216   139.9s valid=True 
+capped   N=2  S=33554432   152.4s valid=True 
+capped   N=4  S=262144      80.4s valid=True 
+capped   N=4  S=1048576     80.6s valid=True 
+capped   N=4  S=4194304     84.2s valid=True 
+capped   N=4  S=16777216    95.6s valid=True 
+capped   N=4  S=33554432   109.8s valid=True 
+capped   N=8  S=262144      89.6s valid=True 
+capped   N=8  S=1048576     90.0s valid=True 
+capped   N=8  S=4194304     90.8s valid=True 
+capped   N=8  S=16777216    93.8s valid=True 
+capped   N=8  S=33554432   120.1s valid=False exit 3,downloader: retry limit exceeded: range [134217728,167772159] after 4 attempts,content verification failed
+capped   N=16 S=262144     113.4s valid=True 
+capped   N=16 S=1048576    113.0s valid=True 
+capped   N=16 S=4194304    112.3s valid=True 
+capped   N=16 S=16777216   120.1s valid=False exit 3,downloader: retry limit exceeded: range [234881024,251658239] after 4 attempts,content verification failed
+capped   N=16 S=33554432   120.2s valid=False exit 3,downloader: retry limit exceeded: range [134217728,167772159] after 4 attempts,content verification failed
+capped   N=4  S=4194304  r1    84.6s valid=True
+capped   N=4  S=4194304  r2    84.3s valid=True
+capped   N=4  S=1048576  r1    81.3s valid=True
+capped   N=4  S=1048576  r2    80.8s valid=True
+capped   N=8  S=4194304  r1    90.6s valid=True
+capped   N=8  S=4194304  r2    90.8s valid=True
+gate driver done

@@ -1,0 +1,61 @@
+{
+  "label": "long multi-transition trajectory (new family, separate from the frozen A2-E2)",
+  "name": "L1",
+  "note": "phase durations are predetermined bounds [12,18] s; the last phase runs to completion",
+  "phase_count": 7,
+  "phase_seconds_bounds": [
+    12,
+    18
+  ],
+  "phases": [
+    {
+      "congestion": 0.004,
+      "latency_s": 0.02,
+      "link_bandwidth": 6291456,
+      "loss_percent": 0.3,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.02,
+      "latency_s": 0.12,
+      "link_bandwidth": 1048576,
+      "loss_percent": 3.0,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.006,
+      "latency_s": 0.04,
+      "link_bandwidth": 4194304,
+      "loss_percent": 0.6,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.03,
+      "link_bandwidth": 0,
+      "loss_percent": 0.5,
+      "rate": 262144
+    },
+    {
+      "congestion": 0.005,
+      "latency_s": 0.03,
+      "link_bandwidth": 5242880,
+      "loss_percent": 0.4,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.015,
+      "latency_s": 0.09,
+      "link_bandwidth": 1572864.0,
+      "loss_percent": 2.5,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.02,
+      "link_bandwidth": 6291456,
+      "loss_percent": 0.3,
+      "rate": 8388608
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+evaluating candidates (T x C x gamma x t)...
+  T=1 C=4  g=0.05 t=4   A=(16,1) B=(2,4) cap_gain= 23.0% base_pen= 579.5% level=   146K peak=2500K q=True
+  T=1 C=4  g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   146K peak=2500K q=False
+  T=1 C=4  g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   146K peak=2500K q=False
+  T=1 C=4  g=0.10 t=4   A=(16,1) B=(2,4) cap_gain= 66.8% base_pen= 579.5% level=   102K peak=2500K q=True
+  T=1 C=4  g=0.10 t=8   A=(16,1) B=(2,4) cap_gain= 25.4% base_pen= 579.5% level=   102K peak=2500K q=True
+  T=1 C=4  g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   102K peak=2500K q=False
+  T=1 C=8  g=0.05 t=4   A=(16,1) B=(4,4) cap_gain= 15.5% base_pen= 252.9% level=   293K peak=2500K q=False
+  T=1 C=8  g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   293K peak=2500K q=False
+  T=1 C=8  g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   293K peak=2500K q=False
+  T=1 C=8  g=0.10 t=4   A=(16,1) B=(4,4) cap_gain= 45.3% base_pen= 252.9% level=   205K peak=2500K q=True
+  T=1 C=8  g=0.10 t=8   A=(16,1) B=(4,4) cap_gain= 12.6% base_pen= 252.9% level=   205K peak=2500K q=False
+  T=1 C=8  g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   205K peak=2500K q=False
+  T=1 C=12 g=0.05 t=4   A=(16,1) B=(8,1) cap_gain=  6.9% base_pen=  93.1% level=   439K peak=2500K q=False
+  T=1 C=12 g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   439K peak=2500K q=False
+  T=1 C=12 g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   439K peak=2500K q=False
+  T=1 C=12 g=0.10 t=4   A=(16,1) B=(4,4) cap_gain= 39.0% base_pen= 252.9% level=   307K peak=2500K q=True
+  T=1 C=12 g=0.10 t=8   A=(16,1) B=(4,4) cap_gain=  9.0% base_pen= 252.9% level=   307K peak=2500K q=False
+  T=1 C=12 g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   307K peak=2500K q=False
+  T=1 C=16 g=0.05 t=4   A=(16,1) B=(8,4) cap_gain=  4.8% base_pen=  89.6% level=   585K peak=2500K q=False
+  T=1 C=16 g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   585K peak=2500K q=False
+  T=1 C=16 g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   585K peak=2500K q=False
+  T=1 C=16 g=0.10 t=4   A=(16,1) B=(8,1) cap_gain= 19.1% base_pen=  93.1% level=   410K peak=2500K q=False
+  T=1 C=16 g=0.10 t=8   A=(16,1) B=(8,1) cap_gain=  0.2% base_pen=  93.1% level=   410K peak=2500K q=False
+  T=1 C=16 g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   410K peak=2500K q=False
+  T=2 C=4  g=0.05 t=4   A=(16,1) B=(2,4) cap_gain= 36.6% base_pen= 538.2% level=   146K peak=2500K q=True
+  T=2 C=4  g=0.05 t=8   A=(16,1) B=(2,4) cap_gain=  2.8% base_pen= 538.2% level=   146K peak=2500K q=False
+  T=2 C=4  g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   146K peak=2500K q=False
+  T=2 C=4  g=0.10 t=4   A=(16,1) B=(2,4) cap_gain= 85.5% base_pen= 538.2% level=   102K peak=2500K q=True
+  T=2 C=4  g=0.10 t=8   A=(16,1) B=(2,4) cap_gain= 38.1% base_pen= 538.2% level=   102K peak=2500K q=True
+  T=2 C=4  g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   102K peak=2500K q=False
+  T=2 C=8  g=0.05 t=4   A=(16,1) B=(4,4) cap_gain= 27.7% base_pen= 231.4% level=   293K peak=2500K q=True
+  T=2 C=8  g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   293K peak=2500K q=False
+  T=2 C=8  g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   293K peak=2500K q=False
+  T=2 C=8  g=0.10 t=4   A=(16,1) B=(4,4) cap_gain= 61.1% base_pen= 231.4% level=   205K peak=2500K q=True
+  T=2 C=8  g=0.10 t=8   A=(16,1) B=(4,4) cap_gain= 23.6% base_pen= 231.4% level=   205K peak=2500K q=True
+  T=2 C=8  g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   205K peak=2500K q=False
+  T=2 C=12 g=0.05 t=4   A=(16,1) B=(8,4) cap_gain= 17.2% base_pen=  78.1% level=   439K peak=2500K q=False
+  T=2 C=12 g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   439K peak=2500K q=False
+  T=2 C=12 g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   439K peak=2500K q=False
+  T=2 C=12 g=0.10 t=4   A=(16,1) B=(4,4) cap_gain= 53.7% base_pen= 231.4% level=   307K peak=2500K q=True
+  T=2 C=12 g=0.10 t=8   A=(16,1) B=(4,4) cap_gain= 19.4% base_pen= 231.4% level=   307K peak=2500K q=False
+  T=2 C=12 g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   307K peak=2500K q=False
+  T=2 C=16 g=0.05 t=4   A=(16,1) B=(8,4) cap_gain= 15.0% base_pen=  78.1% level=   585K peak=2500K q=False
+  T=2 C=16 g=0.05 t=8   A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   585K peak=2500K q=False
+  T=2 C=16 g=0.05 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   585K peak=2500K q=False
+  T=2 C=16 g=0.10 t=4   A=(16,1) B=(8,4) cap_gain= 30.8% base_pen=  78.1% level=   410K peak=2500K q=True
+  T=2 C=16 g=0.10 t=8   A=(16,1) B=(8,4) cap_gain=  6.6% base_pen=  78.1% level=   410K peak=2500K q=False
+  T=2 C=16 g=0.10 t=12  A=(16,1) B=(16,1) cap_gain=  0.0% base_pen=   0.0% level=   410K peak=2500K q=False
+  T=4 C=4  g=0.05 t=4   A=(16,4) B=(2,4) cap_gain= 32.5% base_pen= 529.6% level=   146K peak=640K q=False
+  T=4 C=4  g=0.05 t=8   A=(16,4) B=(2,4) cap_gain= 15.8% base_pen= 529.6% level=   146K peak=2500K q=False
+  T=4 C=4  g=0.05 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   146K peak=2500K q=False
+  T=4 C=4  g=0.10 t=4   A=(16,4) B=(2,4) cap_gain=999.0% base_pen= 529.6% level=   102K peak=640K q=False
+  T=4 C=4  g=0.10 t=8   A=(16,4) B=(2,4) cap_gain=999.0% base_pen= 529.6% level=   102K peak=2500K q=False
+  T=4 C=4  g=0.10 t=12  A=(16,4) B=(2,4) cap_gain=999.0% base_pen= 529.6% level=   102K peak=2500K q=False
+  T=4 C=8  g=0.05 t=4   A=(16,4) B=(4,4) cap_gain= 24.4% base_pen= 227.0% level=   293K peak=640K q=False
+  T=4 C=8  g=0.05 t=8   A=(16,4) B=(4,4) cap_gain= 10.8% base_pen= 227.0% level=   293K peak=2500K q=False
+  T=4 C=8  g=0.05 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   293K peak=2500K q=False
+  T=4 C=8  g=0.10 t=4   A=(16,4) B=(4,4) cap_gain= 56.5% base_pen= 227.0% level=   205K peak=640K q=False
+  T=4 C=8  g=0.10 t=8   A=(16,4) B=(4,4) cap_gain= 38.6% base_pen= 227.0% level=   205K peak=2500K q=False
+  T=4 C=8  g=0.10 t=12  A=(16,4) B=(4,4) cap_gain=  1.5% base_pen= 227.0% level=   205K peak=2500K q=False
+  T=4 C=12 g=0.05 t=4   A=(16,4) B=(8,4) cap_gain= 14.6% base_pen=  75.7% level=   439K peak=640K q=False
+  T=4 C=12 g=0.05 t=8   A=(16,4) B=(8,4) cap_gain=  5.9% base_pen=  75.7% level=   439K peak=2500K q=False
+  T=4 C=12 g=0.05 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   439K peak=2500K q=False
+  T=4 C=12 g=0.10 t=4   A=(16,4) B=(4,4) cap_gain= 49.8% base_pen= 227.0% level=   307K peak=640K q=False
+  T=4 C=12 g=0.10 t=8   A=(16,4) B=(4,4) cap_gain= 32.7% base_pen= 227.0% level=   307K peak=2500K q=False
+  T=4 C=12 g=0.10 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   307K peak=2500K q=False
+  T=4 C=16 g=0.05 t=4   A=(16,4) B=(8,4) cap_gain= 12.9% base_pen=  75.7% level=   585K peak=640K q=False
+  T=4 C=16 g=0.05 t=8   A=(16,4) B=(8,4) cap_gain=  4.6% base_pen=  75.7% level=   585K peak=2500K q=False
+  T=4 C=16 g=0.05 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   585K peak=2500K q=False
+  T=4 C=16 g=0.10 t=4   A=(16,4) B=(8,4) cap_gain= 27.8% base_pen=  75.7% level=   410K peak=640K q=False
+  T=4 C=16 g=0.10 t=8   A=(16,4) B=(8,4) cap_gain= 17.6% base_pen=  75.7% level=   410K peak=2500K q=False
+  T=4 C=16 g=0.10 t=12  A=(16,4) B=(16,4) cap_gain=  0.0% base_pen=   0.0% level=   410K peak=2500K q=False
+qualified: 13 / 72
+selected workloads: [{"T": 1, "C": 4, "gamma": 0.1, "t": 4}, {"T": 2, "C": 4, "gamma": 0.1, "t": 4}, {"T": 2, "C": 4, "gamma": 0.1, "t": 8}, {"T": 2, "C": 8, "gamma": 0.1, "t": 4}, {"T": 2, "C": 12, "gamma": 0.1, "t": 4}]
+selector levels: [104857, 104857, 104857, 209715, 314572] targets: ['2:4194304', '2:4194304', '2:4194304', '4:4194304', '4:4194304']
+written manifest/w1_w6_manifest.json + analysis/w1_w6_design.json

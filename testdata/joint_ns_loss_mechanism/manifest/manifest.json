@@ -1,0 +1,354 @@
+{
+  "study": "joint-ns-loss-mechanism",
+  "generated_utc": "2026-09-29T10:12:18Z",
+  "status": "NO_JOINT_N+S_OPPORTUNITY_UNDER_CORRELATED_LOSS",
+  "evidence_type": "DETERMINISTIC_ANALYTICAL_SIMULATION (seeded two-state Markov loss traces; no network I/O)",
+  "empirical_execution": false,
+  "empirical_execution_reason": "analytical gate failed condition 1 (N* identical across loss states); task stop rule forbids live/adaptive execution",
+  "mechanism": "correlated burst loss (two-state Gilbert-Elliott) + downloader range-retry amplification",
+  "parameter_grounding": "parameter_grounding/parameter_grounding.md",
+  "parameters": {
+    "primary": {
+      "GOOD": {
+        "t_bad": 0.15,
+        "overall_loss": 0.007563441656125436
+      },
+      "BAD": {
+        "t_bad": 2.0,
+        "overall_loss": 0.047913625920339764
+      },
+      "p_good": 0.004,
+      "p_bad": 0.5,
+      "t_good": 20.0,
+      "rate_bytes_per_second": 655360,
+      "timeout_s": 30,
+      "max_attempts": 3,
+      "retry_delay_s": 0.1,
+      "h_s": 0.088,
+      "MSS": 1448,
+      "file_bytes": 536870912,
+      "N_grid": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "S_grid": [
+        262144,
+        1048576,
+        4194304,
+        16777216
+      ],
+      "seeds": 10
+    },
+    "robustness_variants": [
+      "primary",
+      "T_B=1_p_B=1.0",
+      "T_B=5",
+      "T_G=10",
+      "T_G=60",
+      "g=0.25",
+      "g=0.5",
+      "R=1250K",
+      "R=2500K"
+    ]
+  },
+  "results": {
+    "optima": {
+      "GOOD": {
+        "key": "16/16777216",
+        "N": 16,
+        "S": 16777216,
+        "completion": 52.58162248995984,
+        "second_key": "16/4194304",
+        "second_completion": 53.009622489959845,
+        "margin": 0.008074005810568989,
+        "viable_cells": 20
+      },
+      "BAD": {
+        "key": "16/4194304",
+        "N": 16,
+        "S": 4194304,
+        "completion": 60.00962248995985,
+        "second_key": "16/1048576",
+        "second_completion": 62.12162248995983,
+        "margin": 0.03399782419303882,
+        "viable_cells": 18
+      }
+    },
+    "materiality": {
+      "S_star_GOOD": 16777216,
+      "S_star_BAD": 4194304,
+      "N_star_GOOD": 16,
+      "N_star_BAD": 16,
+      "GOOD_at_N16": {
+        "S_star": 52.58162248995984,
+        "other_S": 53.009622489959845,
+        "penalty": 0.008139726005634925
+      },
+      "BAD_at_N16": {
+        "S_star": 60.00962248995985,
+        "other_S": 81.78162248995983,
+        "penalty": 0.3628084813171859
+      },
+      "threshold": 0.05
+    },
+    "S_retry_BAD": {
+      "262144": {
+        "requests_per_download": 2048,
+        "packets_per_request": 181,
+        "per_attempt_failure_rate": 0.0,
+        "retries_per_download": 0.0,
+        "retry_bytes_per_download_MiB": 0.0,
+        "download_abort_rate": 0.0
+      },
+      "1048576": {
+        "requests_per_download": 512,
+        "packets_per_request": 724,
+        "per_attempt_failure_rate": 0.0,
+        "retries_per_download": 0.0,
+        "retry_bytes_per_download_MiB": 0.0,
+        "download_abort_rate": 0.0
+      },
+      "4194304": {
+        "requests_per_download": 128,
+        "packets_per_request": 2896,
+        "per_attempt_failure_rate": 0.0006246096189881324,
+        "retries_per_download": 0.08,
+        "retry_bytes_per_download_MiB": 0.32,
+        "download_abort_rate": 0.0
+      },
+      "16777216": {
+        "requests_per_download": 32,
+        "packets_per_request": 11586,
+        "per_attempt_failure_rate": 0.3274021352313167,
+        "retries_per_download": 10.56,
+        "retry_bytes_per_download_MiB": 168.96,
+        "download_abort_rate": 0.48
+      }
+    },
+    "N_star_per_condition": {
+      "GOOD": true,
+      "BAD": true
+    },
+    "N_monotone_both_conditions": true,
+    "robustness_summary": {
+      "variants": 9,
+      "N_star_16_in_both_conditions": 9,
+      "S_star_moves_between_conditions": 4,
+      "N_monotone_in_both_conditions": 9
+    }
+  },
+  "gate": {
+    "condition_1_N_star_differs": {
+      "GOOD": 16,
+      "BAD": 16,
+      "pass": false
+    },
+    "condition_2_S_star_differs": {
+      "GOOD": 16777216,
+      "BAD": 4194304,
+      "pass": true
+    },
+    "condition_3_joint_differs": {
+      "pass": false
+    },
+    "mechanism_S_retry": {
+      "GOOD": {
+        "262144": {
+          "requests_per_download": 2048,
+          "packets_per_request": 181,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "1048576": {
+          "requests_per_download": 512,
+          "packets_per_request": 724,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "4194304": {
+          "requests_per_download": 128,
+          "packets_per_request": 2896,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "16777216": {
+          "requests_per_download": 32,
+          "packets_per_request": 11586,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "spearman_failure_vs_S": 1.0
+      },
+      "BAD": {
+        "262144": {
+          "requests_per_download": 2048,
+          "packets_per_request": 181,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "1048576": {
+          "requests_per_download": 512,
+          "packets_per_request": 724,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "4194304": {
+          "requests_per_download": 128,
+          "packets_per_request": 2896,
+          "mean_failure_rate_per_request": 0.0,
+          "mean_retries_per_download": 0.0,
+          "mean_retry_bytes_per_download": 0.0
+        },
+        "16777216": {
+          "requests_per_download": 32,
+          "packets_per_request": 11586,
+          "mean_failure_rate_per_request": 0.496875,
+          "mean_retries_per_download": 10.5,
+          "mean_retry_bytes_per_download": 176160768.0
+        },
+        "spearman_failure_vs_S": 1.0
+      }
+    },
+    "mechanism_N": {
+      "GOOD": {
+        "1": {
+          "median_completion_across_S": 864.0499598393588,
+          "min_completion_across_S": 838.3059598393572,
+          "median_goodput_across_S": 621591.5968128529,
+          "median_stall_time": 13.399999999999995,
+          "median_failures": 0.0
+        },
+        "2": {
+          "median_completion_across_S": 431.82497991967927,
+          "min_completion_across_S": 419.1529799196786,
+          "median_goodput_across_S": 1243747.7895714773,
+          "median_stall_time": 13.09999999999999,
+          "median_failures": 0.0
+        },
+        "4": {
+          "median_completion_across_S": 216.01248995983877,
+          "min_completion_across_S": 209.5264899598393,
+          "median_goodput_across_S": 2486343.4079966587,
+          "median_stall_time": 13.399999999999993,
+          "median_failures": 0.0
+        },
+        "8": {
+          "median_completion_across_S": 107.78124497991963,
+          "min_completion_across_S": 104.66324497991965,
+          "median_goodput_across_S": 4982942.330243011,
+          "median_stall_time": 11.99999999999999,
+          "median_failures": 0.0
+        },
+        "16": {
+          "median_completion_across_S": 54.11562248995983,
+          "min_completion_across_S": 52.58162248995984,
+          "median_goodput_across_S": 9924975.58798326,
+          "median_stall_time": 15.999999999999975,
+          "median_failures": 0.0
+        },
+        "monotone_decreasing_in_N": true,
+        "N_star": 16
+      },
+      "BAD": {
+        "1": {
+          "median_completion_across_S": 1011.7459598393618,
+          "min_completion_across_S": 972.5539598393548,
+          "median_goodput_across_S": 496731.7138084034,
+          "median_stall_time": 141.5,
+          "median_failures": 0.0
+        },
+        "2": {
+          "median_completion_across_S": 532.3149799196827,
+          "min_completion_across_S": 475.57697991967973,
+          "median_goodput_across_S": 1014326.7557837885,
+          "median_stall_time": 117.40000000000003,
+          "median_failures": 0.0
+        },
+        "4": {
+          "median_completion_across_S": 264.78248995984,
+          "min_completion_across_S": 236.33848995983908,
+          "median_goodput_across_S": 2037441.2431314047,
+          "median_stall_time": 114.80000000000001,
+          "median_failures": 0.0
+        },
+        "8": {
+          "median_completion_across_S": 132.29124497991933,
+          "min_completion_across_S": 117.61924497991961,
+          "median_goodput_across_S": 4077931.1609403715,
+          "median_stall_time": 120.40000000000008,
+          "median_failures": 0.0
+        },
+        "16": {
+          "median_completion_across_S": 66.74562248995977,
+          "min_completion_across_S": 60.00962248995985,
+          "median_goodput_across_S": 8082613.412812401,
+          "median_stall_time": 126.40000000000003,
+          "median_failures": 0.0
+        },
+        "monotone_decreasing_in_N": true,
+        "N_star": 16
+      }
+    },
+    "note": "conditions 4-8 (transition, causal detection, causal headroom, file-size residue, stationary control) are only evaluated if conditions 1-3 pass",
+    "overall": "FAIL"
+  },
+  "verdict": "NO_JOINT_N+S_OPPORTUNITY_UNDER_CORRELATED_LOSS",
+  "not_reached": [
+    "live mechanism gate",
+    "within-download transition",
+    "causal controller",
+    "aria2 comparison",
+    "confirmatory protocol"
+  ],
+  "artifacts": {
+    "report": "reports/joint_ns_loss_mechanism_report.md",
+    "figures": [
+      "fig1_completion_vs_N.png",
+      "fig2_completion_vs_S.png",
+      "fig3_surface_GOOD.png",
+      "fig4_surface_BAD.png",
+      "fig5_optimum_movement.png",
+      "fig6_failure_vs_S.png",
+      "fig7_retry_cost_vs_S.png",
+      "fig8_robustness.png"
+    ],
+    "analysis": [
+      "analysis/analytical_gate_analysis.json",
+      "analytical_gate/stationary_screen.json",
+      "analytical_gate/robustness_sweep.json"
+    ],
+    "tools": [
+      "analyze_gate.py",
+      "loss_sim.py",
+      "make_figures.py",
+      "make_report.py",
+      "run_robustness.py",
+      "run_screen.py"
+    ],
+    "tool_sha256": {
+      "analyze_gate.py": "ee3e3edc72b86e328e9f506e4d62eea4ed23de22444269071741dbd07fb3c895",
+      "loss_sim.py": "bde9b35b26f56d6229540dc9d3c59fe3a8a72912ebe676f2dbadde922a442c73",
+      "make_figures.py": "e41170d4e9b3276948a65a99afeedef6b7a5801d75fd92cb564ca619ed371b43",
+      "make_report.py": "fee0b6fd6673c652a985fa9165dfd3139c93f9e8fad26bda3a624fa61e4da92d",
+      "run_robustness.py": "023c6a0aebe0ea7ee0ecb5c9e80c83f5328ff9ad2c0d65a3240ddd5b46a587aa",
+      "run_screen.py": "a673ff810e9b04f378f5246473c8504caebc1bf526e635e775553ae4f1b38b86"
+    }
+  },
+  "immutability": {
+    "previous_evidence_modified": false,
+    "environment_changed": false,
+    "live_experiments_run": false,
+    "failed_runs_discarded": false,
+    "parameters_tuned_after_results": false
+  },
+  "scope": "within the frozen analytical model and its predeclared grounded parameter ranges; the S-retry amplification is analytical only; the N dimension is monotone in every condition/variant; the fixed 62.4% aria2 D2 win is unchanged and remains the primary competitive result"
+}

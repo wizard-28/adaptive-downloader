@@ -1,0 +1,51 @@
+=== state S1_moderate (offered 2500000 bps)
+  background-only achieved 20119503 bits/s (offered 20000000 bits/s, rel +0.6%)
+  gate_S1_moderate_n1_r1 background not verified (attempt 1)
+  gate_S1_moderate_n1_r1_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n1_r1_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n1_r1_retry2 comp=14.861s ping_med=32.7 p95=57.6 drops=329 retrans=228 bg_ok=False
+  gate_S1_moderate_n2_r1 background not verified (attempt 1)
+  gate_S1_moderate_n2_r1_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n2_r1_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n2_r1_retry2 comp=14.912s ping_med=43.0 p95=60.8 drops=426 retrans=291 bg_ok=False
+  gate_S1_moderate_n4_r1 background not verified (attempt 1)
+  gate_S1_moderate_n4_r1_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n4_r1_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n4_r1_retry2 comp=15.064s ping_med=32.2 p95=57.5 drops=344 retrans=301 bg_ok=False
+  gate_S1_moderate_n8_r1 background not verified (attempt 1)
+  gate_S1_moderate_n8_r1_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n8_r1_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n8_r1_retry2 comp=15.118s ping_med=50.099999999999994 p95=62.7 drops=335 retrans=304 bg_ok=False
+  gate_S1_moderate_n16_r1 background not verified (attempt 1)
+  gate_S1_moderate_n16_r1_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n16_r1_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n16_r1_retry2 comp=13.495s ping_med=72.80000000000001 p95=82.0 drops=337 retrans=231 bg_ok=False
+  gate_S1_moderate_n1_r2 background not verified (attempt 1)
+  gate_S1_moderate_n1_r2_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n1_r2_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n1_r2_retry2 comp=14.850s ping_med=39.8 p95=57.3 drops=419 retrans=315 bg_ok=False
+  gate_S1_moderate_n2_r2 background not verified (attempt 1)
+  gate_S1_moderate_n2_r2_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n2_r2_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n2_r2_retry2 comp=15.041s ping_med=23.4 p95=53.7 drops=278 retrans=245 bg_ok=False
+  gate_S1_moderate_n4_r2 background not verified (attempt 1)
+  gate_S1_moderate_n4_r2_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n4_r2_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n4_r2_retry2 comp=15.048s ping_med=32.35 p95=59.4 drops=399 retrans=210 bg_ok=False
+  gate_S1_moderate_n8_r2 background not verified (attempt 1)
+  gate_S1_moderate_n8_r2_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n8_r2_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n8_r2_retry2 comp=15.040s ping_med=58.85 p95=73.4 drops=538 retrans=312 bg_ok=False
+  gate_S1_moderate_n16_r2 background not verified (attempt 1)
+  gate_S1_moderate_n16_r2_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n16_r2_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n16_r2_retry2 comp=13.874s ping_med=75.05 p95=86.4 drops=373 retrans=260 bg_ok=False
+  gate_S1_moderate_n1_r3 background not verified (attempt 1)
+  gate_S1_moderate_n1_r3_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n1_r3_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n1_r3_retry2 comp=14.852s ping_med=39.05 p95=56.5 drops=354 retrans=217 bg_ok=False
+  gate_S1_moderate_n2_r3 background not verified (attempt 1)
+  gate_S1_moderate_n2_r3_retry1 background not verified (attempt 2)
+  gate_S1_moderate_n2_r3_retry2 background not verified (attempt 3)
+  gate_S1_moderate_n2_r3_retry2 comp=15.009s ping_med=30.45 p95=56.8 drops=340 retrans=287 bg_ok=False
+  gate_S1_moderate_n4_r3 background not verified (attempt 1)

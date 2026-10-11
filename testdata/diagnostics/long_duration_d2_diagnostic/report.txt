@@ -1,0 +1,33 @@
+D2/512MiB mechanism + long-duration trajectory diagnostic (no training; no new head-to-head)
+
+PART A/B - D2 replication and mechanism
+  replication pairs=20 v6 mean=31137.7ms aria2 mean=53452.1ms geo ratio=0.5816 range=[0.520,0.675] v6 faster=20/20
+  established pooled: ratio=0.5816 CI=[0.5660384368857619, 0.5975357576204594] p=5e-06 claim_supported=True
+  aria2 range sizes=[33554432]; v6 range sizes=[1048576]
+  aria2 requests started <2s/2-4s/>=4s = {'<2s': 15, '2-4s': 0, '>=4s': 0}
+  v6    requests started <2s/2-4s/>=4s = {'<2s': 2.95, '2-4s': 3.75, '>=4s': 505.3}
+  mechanism: At 512 MiB aria2 splits into 16 pieces of 32 MiB (--split=16); each piece is one HTTP range request whose pacing rate is selected at request start and held for the whole request. All aria2 requests start before the 2 s transition at the 640 KiB/s initial rate, so ~32 MiB/request at 640 KiB/s takes ~51 s. v6 allocates 1 MiB ranges dynamically, so its requests complete in ~1.6 s and 505/512 are issued after recovery at 2.5 MiB/s. The reversal is therefore a request-granularity x phase-locked-pacing interaction, not evidence of generic adaptive superiority.
+
+PART C/D/E - long multi-transition trajectory L1
+  phase 1: rate=8388608 link=6291456 lat=0.02 loss=0.3 cong=0.004
+  phase 2: rate=8388608 link=1048576 lat=0.12 loss=3.0 cong=0.02
+  phase 3: rate=8388608 link=4194304 lat=0.04 loss=0.6 cong=0.006
+  phase 4: rate=262144 link=0 lat=0.03 loss=0.5 cong=0.004
+  phase 5: rate=8388608 link=5242880 lat=0.03 loss=0.4 cong=0.005
+  phase 6: rate=8388608 link=1572864.0 lat=0.09 loss=2.5 cong=0.015
+  phase 7: rate=8388608 link=6291456 lat=0.02 loss=0.3 cong=0.004
+  phase durations: [12, 18] s; last phase to completion
+  per-phase steady sweep (128 MiB, C=1..16): distinct best C=[1, 2, 3, 5, 16] has_low_and_high=True
+    phase 1: best C=1 best throughput=5.36 MiB/s
+    phase 2: best C=2 best throughput=0.90 MiB/s
+    phase 3: best C=5 best throughput=3.60 MiB/s
+    phase 4: best C=16 best throughput=3.53 MiB/s
+    phase 5: best C=5 best throughput=4.46 MiB/s
+    phase 6: best C=3 best throughput=1.35 MiB/s
+    phase 7: best C=1 best throughput=5.36 MiB/s
+  full L1 sweep (512 MiB, 15 s phases): best C=15 C1=143.7s C16=137.8s
+    C1: completion=143.7s final_phase_index=6.0 phase_time=[15.12, 15.68, 14.21, 16.12, 14.03, 15.512, 53.013]
+    C4: completion=140.7s final_phase_index=6.0 phase_time=[15.113, 15.66, 14.293, 15.338, 14.678, 15.454, 50.168]
+    C8: completion=139.4s final_phase_index=6.0 phase_time=[15.094, 15.96, 14.28, 14.856, 14.899, 15.255, 49.038]
+    C12: completion=138.6s final_phase_index=6.0 phase_time=[15.047, 15.866, 14.226, 15.025, 14.952, 15.162, 48.341]
+    C16: completion=137.8s final_phase_index=6.0 phase_time=[15.026, 15.309, 14.825, 14.982, 15.019, 15.427, 47.198]

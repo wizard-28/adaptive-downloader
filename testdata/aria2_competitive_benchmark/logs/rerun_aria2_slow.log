@@ -1,0 +1,5 @@
+run af-split1 system=aria2 completion=833.158s output=536870912 verified=true err=""
+run af-split2 system=aria2 completion=419.234s output=536870912 verified=true err=""
+run af-split4 system=aria2 completion=210.222s output=536870912 verified=true err=""
+run af-split4-min32M system=aria2 completion=210.608s output=536870912 verified=true err=""
+=== RERUN DONE

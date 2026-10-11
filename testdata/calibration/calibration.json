@@ -1,0 +1,1348 @@
+{
+  "Alpha": 0.2,
+  "RewardConfig": {
+    "ThroughputScale": 1048576,
+    "LatencyScale": 1,
+    "RetryPenalty": 0.5,
+    "FailurePenalty": 1,
+    "ActionCost": 0.05,
+    "WThroughput": 1,
+    "WImprovement": 1,
+    "WLatency": 0.5,
+    "WRetry": 0.5,
+    "WFailure": 1,
+    "WAction": 1
+  },
+  "Scenarios": [
+    {
+      "Name": "calibration-a-stable",
+      "Config": {
+        "FileSize": 131072,
+        "ChunkSize": 8192,
+        "InitialConcurrency": 1,
+        "MinConcurrency": 1,
+        "MaxConcurrency": 3,
+        "InitialRate": 524288,
+        "ChangedRate": 524288,
+        "RateChangeAfterRequests": 0,
+        "MinChunkSize": 4096,
+        "MaxChunkSize": 32768,
+        "InitialChunkSize": 8192,
+        "ChunkSizeStep": 4096,
+        "ImprovementThreshold": 0.2,
+        "DegradationThreshold": 0.2,
+        "PolicyWindowSize": 4,
+        "MaxRetries": 3,
+        "Timeout": 10000000000,
+        "Repetitions": 2,
+        "NetworkCondition": null,
+        "NetworkInterface": "",
+        "LinUCBAlpha": 0.2,
+        "RewardConfig": {
+          "ThroughputScale": 1048576,
+          "LatencyScale": 1,
+          "RetryPenalty": 0.5,
+          "FailurePenalty": 1,
+          "ActionCost": 0.05,
+          "WThroughput": 1,
+          "WImprovement": 1,
+          "WLatency": 0.5,
+          "WRetry": 0.5,
+          "WFailure": 1,
+          "WAction": 1
+        },
+        "ServerDelay": 0,
+        "ServerFailFirstRequests": 0,
+        "ServerFailStatus": 0
+      },
+      "Runs": [
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-a-stable",
+          "Repetition": 0,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 0.4570980053715098,
+            "Median": 0.4572554071187922,
+            "Min": 0.4536947152046846,
+            "Max": 0.4623106261982586,
+            "StdDev": 0.0019343464720630475,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 0.46505385185340076,
+            "MeanThroughputImprovement": 0.0003792106514423558,
+            "MeanLatencyCost": 0.016670114266666664,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 0.46505385185340076,
+            "MeanWeightedThroughputImprovement": 0.0003792106514423558,
+            "MeanWeightedLatencyCost": 0.008335057133333332,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 6.856470080572647,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        },
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-a-stable",
+          "Repetition": 1,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 0.45429375517406173,
+            "Median": 0.455023394163776,
+            "Min": 0.448501514633209,
+            "Max": 0.4624738378500961,
+            "StdDev": 0.003547937995250739,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 0.4621706541491687,
+            "MeanThroughputImprovement": 0.000495905458226383,
+            "MeanLatencyCost": 0.016745608866666664,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 0.4621706541491687,
+            "MeanWeightedThroughputImprovement": 0.000495905458226383,
+            "MeanWeightedLatencyCost": 0.008372804433333332,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 6.814406327610926,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        }
+      ],
+      "Pooled": {
+        "Mode": "linucb",
+        "Scenario": "pooled",
+        "Repetition": 0,
+        "Valid": true,
+        "Decisions": 32,
+        "Actions": {
+          "Counts": [
+            32,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 32
+        },
+        "Rewards": {
+          "Count": 30,
+          "Mean": 0.45569588027278585,
+          "Median": 0.45614440991866123,
+          "Min": 0.448501514633209,
+          "Max": 0.4624738378500961,
+          "StdDev": 0.0031828815464190986,
+          "Positive": 30,
+          "Zero": 0,
+          "Negative": 0
+        },
+        "Components": {
+          "Count": 30,
+          "MeanThroughput": 0.46361225300128467,
+          "MeanThroughputImprovement": 0.00043755805483436936,
+          "MeanLatencyCost": 0.016707861566666662,
+          "MeanRetryCost": 0,
+          "MeanFailureCost": 0,
+          "MeanActionCost": 0,
+          "MeanWeightedThroughput": 0.46361225300128467,
+          "MeanWeightedThroughputImprovement": 0.00043755805483436936,
+          "MeanWeightedLatencyCost": 0.008353930783333331,
+          "MeanWeightedRetryCost": 0,
+          "MeanWeightedFailureCost": 0,
+          "MeanWeightedActionCost": 0
+        },
+        "Churn": {
+          "Decisions": 32,
+          "ActionTransitions": 0,
+          "ChangesPerDecision": 0,
+          "LongestSameRun": 16,
+          "ConcurrencyChanges": 0,
+          "ChunkSizeChanges": 0
+        },
+        "EarlyActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "LateActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "CumulativeReward": 13.670876408183574,
+        "ReconstructionMismatches": 0,
+        "NumericallyHealthy": true
+      }
+    },
+    {
+      "Name": "calibration-b-throttle",
+      "Config": {
+        "FileSize": 131072,
+        "ChunkSize": 8192,
+        "InitialConcurrency": 1,
+        "MinConcurrency": 1,
+        "MaxConcurrency": 3,
+        "InitialRate": 262144,
+        "ChangedRate": 2097152,
+        "RateChangeAfterRequests": 4,
+        "MinChunkSize": 4096,
+        "MaxChunkSize": 32768,
+        "InitialChunkSize": 8192,
+        "ChunkSizeStep": 4096,
+        "ImprovementThreshold": 0.2,
+        "DegradationThreshold": 0.2,
+        "PolicyWindowSize": 4,
+        "MaxRetries": 3,
+        "Timeout": 10000000000,
+        "Repetitions": 2,
+        "NetworkCondition": null,
+        "NetworkInterface": "",
+        "LinUCBAlpha": 0.2,
+        "RewardConfig": {
+          "ThroughputScale": 1048576,
+          "LatencyScale": 1,
+          "RetryPenalty": 0.5,
+          "FailurePenalty": 1,
+          "ActionCost": 0.05,
+          "WThroughput": 1,
+          "WImprovement": 1,
+          "WLatency": 0.5,
+          "WRetry": 0.5,
+          "WFailure": 1,
+          "WAction": 1
+        },
+        "ServerDelay": 0,
+        "ServerFailFirstRequests": 0,
+        "ServerFailStatus": 0
+      },
+      "Runs": [
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-b-throttle",
+          "Repetition": 0,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 1.2337909696194067,
+            "Median": 1.63839638462201,
+            "Min": 0.2217501906478694,
+            "Max": 2.5860470484638394,
+            "StdDev": 0.7234987159714193,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 1.1398847893346111,
+            "MeanThroughputImprovement": 0.09899274811812904,
+            "MeanLatencyCost": 0.010173135666666668,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 1.1398847893346111,
+            "MeanWeightedThroughputImprovement": 0.09899274811812904,
+            "MeanWeightedLatencyCost": 0.005086567833333334,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 18.5068645442911,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        },
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-b-throttle",
+          "Repetition": 1,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 1.2300804737351247,
+            "Median": 1.648255482214936,
+            "Min": 0.22160461639274995,
+            "Max": 2.665462465940651,
+            "StdDev": 0.7270801352236629,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 1.1388334647403673,
+            "MeanThroughputImprovement": 0.09633057359475757,
+            "MeanLatencyCost": 0.010167129200000001,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 1.1388334647403673,
+            "MeanWeightedThroughputImprovement": 0.09633057359475757,
+            "MeanWeightedLatencyCost": 0.005083564600000001,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 18.45120710602687,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        }
+      ],
+      "Pooled": {
+        "Mode": "linucb",
+        "Scenario": "pooled",
+        "Repetition": 0,
+        "Valid": true,
+        "Decisions": 32,
+        "Actions": {
+          "Counts": [
+            32,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 32
+        },
+        "Rewards": {
+          "Count": 30,
+          "Mean": 1.231935721677266,
+          "Median": 1.643325933418473,
+          "Min": 0.22160461639274995,
+          "Max": 2.665462465940651,
+          "StdDev": 0.7252940089849792,
+          "Positive": 30,
+          "Zero": 0,
+          "Negative": 0
+        },
+        "Components": {
+          "Count": 30,
+          "MeanThroughput": 1.1393591270374892,
+          "MeanThroughputImprovement": 0.09766166085644332,
+          "MeanLatencyCost": 0.010170132433333331,
+          "MeanRetryCost": 0,
+          "MeanFailureCost": 0,
+          "MeanActionCost": 0,
+          "MeanWeightedThroughput": 1.1393591270374892,
+          "MeanWeightedThroughputImprovement": 0.09766166085644332,
+          "MeanWeightedLatencyCost": 0.005085066216666666,
+          "MeanWeightedRetryCost": 0,
+          "MeanWeightedFailureCost": 0,
+          "MeanWeightedActionCost": 0
+        },
+        "Churn": {
+          "Decisions": 32,
+          "ActionTransitions": 0,
+          "ChangesPerDecision": 0,
+          "LongestSameRun": 16,
+          "ConcurrencyChanges": 0,
+          "ChunkSizeChanges": 0
+        },
+        "EarlyActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "LateActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "CumulativeReward": 36.958071650317976,
+        "ReconstructionMismatches": 0,
+        "NumericallyHealthy": true
+      }
+    },
+    {
+      "Name": "calibration-c-latency",
+      "Config": {
+        "FileSize": 131072,
+        "ChunkSize": 8192,
+        "InitialConcurrency": 1,
+        "MinConcurrency": 1,
+        "MaxConcurrency": 3,
+        "InitialRate": 524288,
+        "ChangedRate": 524288,
+        "RateChangeAfterRequests": 0,
+        "MinChunkSize": 4096,
+        "MaxChunkSize": 32768,
+        "InitialChunkSize": 8192,
+        "ChunkSizeStep": 4096,
+        "ImprovementThreshold": 0.2,
+        "DegradationThreshold": 0.2,
+        "PolicyWindowSize": 4,
+        "MaxRetries": 3,
+        "Timeout": 10000000000,
+        "Repetitions": 2,
+        "NetworkCondition": null,
+        "NetworkInterface": "",
+        "LinUCBAlpha": 0.2,
+        "RewardConfig": {
+          "ThroughputScale": 1048576,
+          "LatencyScale": 1,
+          "RetryPenalty": 0.5,
+          "FailurePenalty": 1,
+          "ActionCost": 0.05,
+          "WThroughput": 1,
+          "WImprovement": 1,
+          "WLatency": 0.5,
+          "WRetry": 0.5,
+          "WFailure": 1,
+          "WAction": 1
+        },
+        "ServerDelay": 20000000,
+        "ServerFailFirstRequests": 0,
+        "ServerFailStatus": 0
+      },
+      "Runs": [
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-c-latency",
+          "Repetition": 0,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 0.1929592344361372,
+            "Median": 0.19294077356696998,
+            "Min": 0.19167810060446164,
+            "Max": 0.19396719140290344,
+            "StdDev": 0.0005256888635418762,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 0.2112611054293134,
+            "MeanThroughputImprovement": 0.00012168737349039782,
+            "MeanLatencyCost": 0.03684711673333333,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 0.2112611054293134,
+            "MeanWeightedThroughputImprovement": 0.00012168737349039782,
+            "MeanWeightedLatencyCost": 0.018423558366666665,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 2.8943885165420578,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        },
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-c-latency",
+          "Repetition": 1,
+          "Valid": true,
+          "Decisions": 16,
+          "Actions": {
+            "Counts": [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 16
+          },
+          "Rewards": {
+            "Count": 15,
+            "Mean": 0.19188497765858614,
+            "Median": 0.19198633304476212,
+            "Min": 0.19037903972543987,
+            "Max": 0.1931789538267138,
+            "StdDev": 0.0006980506917559436,
+            "Positive": 15,
+            "Zero": 0,
+            "Negative": 0
+          },
+          "Components": {
+            "Count": 15,
+            "MeanThroughput": 0.2102883548327181,
+            "MeanThroughputImprovement": 0.00010149799253472517,
+            "MeanLatencyCost": 0.03700975033333333,
+            "MeanRetryCost": 0,
+            "MeanFailureCost": 0,
+            "MeanActionCost": 0,
+            "MeanWeightedThroughput": 0.2102883548327181,
+            "MeanWeightedThroughputImprovement": 0.00010149799253472517,
+            "MeanWeightedLatencyCost": 0.018504875166666664,
+            "MeanWeightedRetryCost": 0,
+            "MeanWeightedFailureCost": 0,
+            "MeanWeightedActionCost": 0
+          },
+          "Churn": {
+            "Decisions": 16,
+            "ActionTransitions": 0,
+            "ChangesPerDecision": 0,
+            "LongestSameRun": 16,
+            "ConcurrencyChanges": 0,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "LateActions": {
+            "Counts": [
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Total": 8
+          },
+          "CumulativeReward": 2.8782746648787922,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        }
+      ],
+      "Pooled": {
+        "Mode": "linucb",
+        "Scenario": "pooled",
+        "Repetition": 0,
+        "Valid": true,
+        "Decisions": 32,
+        "Actions": {
+          "Counts": [
+            32,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 32
+        },
+        "Rewards": {
+          "Count": 30,
+          "Mean": 0.19242210604736168,
+          "Median": 0.19242807019118602,
+          "Min": 0.19037903972543987,
+          "Max": 0.19396719140290344,
+          "StdDev": 0.0008187299193171081,
+          "Positive": 30,
+          "Zero": 0,
+          "Negative": 0
+        },
+        "Components": {
+          "Count": 30,
+          "MeanThroughput": 0.21077473013101575,
+          "MeanThroughputImprovement": 0.00011159268301256149,
+          "MeanLatencyCost": 0.036928433533333326,
+          "MeanRetryCost": 0,
+          "MeanFailureCost": 0,
+          "MeanActionCost": 0,
+          "MeanWeightedThroughput": 0.21077473013101575,
+          "MeanWeightedThroughputImprovement": 0.00011159268301256149,
+          "MeanWeightedLatencyCost": 0.018464216766666663,
+          "MeanWeightedRetryCost": 0,
+          "MeanWeightedFailureCost": 0,
+          "MeanWeightedActionCost": 0
+        },
+        "Churn": {
+          "Decisions": 32,
+          "ActionTransitions": 0,
+          "ChangesPerDecision": 0,
+          "LongestSameRun": 16,
+          "ConcurrencyChanges": 0,
+          "ChunkSizeChanges": 0
+        },
+        "EarlyActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "LateActions": {
+          "Counts": [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          "Total": 16
+        },
+        "CumulativeReward": 5.7726631814208496,
+        "ReconstructionMismatches": 0,
+        "NumericallyHealthy": true
+      }
+    },
+    {
+      "Name": "calibration-d-failure",
+      "Config": {
+        "FileSize": 131072,
+        "ChunkSize": 8192,
+        "InitialConcurrency": 1,
+        "MinConcurrency": 1,
+        "MaxConcurrency": 3,
+        "InitialRate": 524288,
+        "ChangedRate": 524288,
+        "RateChangeAfterRequests": 0,
+        "MinChunkSize": 4096,
+        "MaxChunkSize": 32768,
+        "InitialChunkSize": 8192,
+        "ChunkSizeStep": 4096,
+        "ImprovementThreshold": 0.2,
+        "DegradationThreshold": 0.2,
+        "PolicyWindowSize": 4,
+        "MaxRetries": 3,
+        "Timeout": 10000000000,
+        "Repetitions": 2,
+        "NetworkCondition": null,
+        "NetworkInterface": "",
+        "LinUCBAlpha": 0.2,
+        "RewardConfig": {
+          "ThroughputScale": 1048576,
+          "LatencyScale": 1,
+          "RetryPenalty": 0.5,
+          "FailurePenalty": 1,
+          "ActionCost": 0.05,
+          "WThroughput": 1,
+          "WImprovement": 1,
+          "WLatency": 0.5,
+          "WRetry": 0.5,
+          "WFailure": 1,
+          "WAction": 1
+        },
+        "ServerDelay": 0,
+        "ServerFailFirstRequests": 3,
+        "ServerFailStatus": 0
+      },
+      "Runs": [
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-d-failure",
+          "Repetition": 0,
+          "Valid": true,
+          "Decisions": 19,
+          "Actions": {
+            "Counts": [
+              1,
+              1,
+              17,
+              0,
+              0
+            ],
+            "Total": 19
+          },
+          "Rewards": {
+            "Count": 18,
+            "Mean": 0.3196993802963006,
+            "Median": 0.45551357967249717,
+            "Min": -1.300070226,
+            "Max": 1.1260349771293399,
+            "StdDev": 0.5911485497182842,
+            "Positive": 16,
+            "Zero": 0,
+            "Negative": 2
+          },
+          "Components": {
+            "Count": 18,
+            "MeanThroughput": 0.45968015690313685,
+            "MeanThroughputImprovement": 0.025766893920941468,
+            "MeanLatencyCost": 0.014828674388888888,
+            "MeanRetryCost": 0.08333333333333333,
+            "MeanFailureCost": 0.1111111111111111,
+            "MeanActionCost": 0.005555555555555556,
+            "MeanWeightedThroughput": 0.45968015690313685,
+            "MeanWeightedThroughputImprovement": 0.025766893920941468,
+            "MeanWeightedLatencyCost": 0.007414337194444444,
+            "MeanWeightedRetryCost": 0.041666666666666664,
+            "MeanWeightedFailureCost": 0.1111111111111111,
+            "MeanWeightedActionCost": 0.005555555555555556
+          },
+          "Churn": {
+            "Decisions": 19,
+            "ActionTransitions": 2,
+            "ChangesPerDecision": 0.10526315789473684,
+            "LongestSameRun": 17,
+            "ConcurrencyChanges": 2,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              1,
+              1,
+              7,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "LateActions": {
+            "Counts": [
+              0,
+              0,
+              10,
+              0,
+              0
+            ],
+            "Total": 10
+          },
+          "CumulativeReward": 5.75458884533341,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        },
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-d-failure",
+          "Repetition": 1,
+          "Valid": true,
+          "Decisions": 19,
+          "Actions": {
+            "Counts": [
+              1,
+              1,
+              17,
+              0,
+              0
+            ],
+            "Total": 19
+          },
+          "Rewards": {
+            "Count": 18,
+            "Mean": 0.32323251541603987,
+            "Median": 0.45933234623663444,
+            "Min": -1.3000853115,
+            "Max": 1.4192948765698583,
+            "StdDev": 0.6078787497936612,
+            "Positive": 16,
+            "Zero": 0,
+            "Negative": 2
+          },
+          "Components": {
+            "Count": 18,
+            "MeanThroughput": 0.46290494864847137,
+            "MeanThroughputImprovement": 0.02601740829534617,
+            "MeanLatencyCost": 0.014713016388888885,
+            "MeanRetryCost": 0.08333333333333333,
+            "MeanFailureCost": 0.1111111111111111,
+            "MeanActionCost": 0.005555555555555556,
+            "MeanWeightedThroughput": 0.46290494864847137,
+            "MeanWeightedThroughputImprovement": 0.02601740829534617,
+            "MeanWeightedLatencyCost": 0.007356508194444443,
+            "MeanWeightedRetryCost": 0.041666666666666664,
+            "MeanWeightedFailureCost": 0.1111111111111111,
+            "MeanWeightedActionCost": 0.005555555555555556
+          },
+          "Churn": {
+            "Decisions": 19,
+            "ActionTransitions": 2,
+            "ChangesPerDecision": 0.10526315789473684,
+            "LongestSameRun": 17,
+            "ConcurrencyChanges": 2,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              1,
+              1,
+              7,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "LateActions": {
+            "Counts": [
+              0,
+              0,
+              10,
+              0,
+              0
+            ],
+            "Total": 10
+          },
+          "CumulativeReward": 5.818185277488718,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        }
+      ],
+      "Pooled": {
+        "Mode": "linucb",
+        "Scenario": "pooled",
+        "Repetition": 0,
+        "Valid": true,
+        "Decisions": 38,
+        "Actions": {
+          "Counts": [
+            2,
+            2,
+            34,
+            0,
+            0
+          ],
+          "Total": 38
+        },
+        "Rewards": {
+          "Count": 36,
+          "Mean": 0.3214659478561701,
+          "Median": 0.45885756206780065,
+          "Min": -1.3000853115,
+          "Max": 1.4192948765698583,
+          "StdDev": 0.599574609121593,
+          "Positive": 32,
+          "Zero": 0,
+          "Negative": 4
+        },
+        "Components": {
+          "Count": 36,
+          "MeanThroughput": 0.46129255277580417,
+          "MeanThroughputImprovement": 0.025892151108143826,
+          "MeanLatencyCost": 0.01477084538888889,
+          "MeanRetryCost": 0.08333333333333333,
+          "MeanFailureCost": 0.1111111111111111,
+          "MeanActionCost": 0.005555555555555556,
+          "MeanWeightedThroughput": 0.46129255277580417,
+          "MeanWeightedThroughputImprovement": 0.025892151108143826,
+          "MeanWeightedLatencyCost": 0.007385422694444445,
+          "MeanWeightedRetryCost": 0.041666666666666664,
+          "MeanWeightedFailureCost": 0.1111111111111111,
+          "MeanWeightedActionCost": 0.005555555555555556
+        },
+        "Churn": {
+          "Decisions": 38,
+          "ActionTransitions": 4,
+          "ChangesPerDecision": 0.10526315789473684,
+          "LongestSameRun": 17,
+          "ConcurrencyChanges": 4,
+          "ChunkSizeChanges": 0
+        },
+        "EarlyActions": {
+          "Counts": [
+            2,
+            2,
+            14,
+            0,
+            0
+          ],
+          "Total": 18
+        },
+        "LateActions": {
+          "Counts": [
+            0,
+            0,
+            20,
+            0,
+            0
+          ],
+          "Total": 20
+        },
+        "CumulativeReward": 11.572774122822128,
+        "ReconstructionMismatches": 0,
+        "NumericallyHealthy": true
+      }
+    },
+    {
+      "Name": "calibration-e-combined",
+      "Config": {
+        "FileSize": 131072,
+        "ChunkSize": 8192,
+        "InitialConcurrency": 1,
+        "MinConcurrency": 1,
+        "MaxConcurrency": 3,
+        "InitialRate": 262144,
+        "ChangedRate": 2097152,
+        "RateChangeAfterRequests": 4,
+        "MinChunkSize": 4096,
+        "MaxChunkSize": 32768,
+        "InitialChunkSize": 8192,
+        "ChunkSizeStep": 4096,
+        "ImprovementThreshold": 0.2,
+        "DegradationThreshold": 0.2,
+        "PolicyWindowSize": 4,
+        "MaxRetries": 3,
+        "Timeout": 10000000000,
+        "Repetitions": 2,
+        "NetworkCondition": null,
+        "NetworkInterface": "",
+        "LinUCBAlpha": 0.2,
+        "RewardConfig": {
+          "ThroughputScale": 1048576,
+          "LatencyScale": 1,
+          "RetryPenalty": 0.5,
+          "FailurePenalty": 1,
+          "ActionCost": 0.05,
+          "WThroughput": 1,
+          "WImprovement": 1,
+          "WLatency": 0.5,
+          "WRetry": 0.5,
+          "WFailure": 1,
+          "WAction": 1
+        },
+        "ServerDelay": 10000000,
+        "ServerFailFirstRequests": 2,
+        "ServerFailStatus": 0
+      },
+      "Runs": [
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-e-combined",
+          "Repetition": 0,
+          "Valid": true,
+          "Decisions": 18,
+          "Actions": {
+            "Counts": [
+              1,
+              17,
+              0,
+              0,
+              0
+            ],
+            "Total": 18
+          },
+          "Rewards": {
+            "Count": 17,
+            "Mean": 0.7300435434191773,
+            "Median": 0.9750261858717472,
+            "Min": -1.250079829,
+            "Max": 1.5232397127295334,
+            "StdDev": 0.5920054943452397,
+            "Positive": 16,
+            "Zero": 0,
+            "Negative": 1
+          },
+          "Components": {
+            "Count": 17,
+            "MeanThroughput": 0.773405197035484,
+            "MeanThroughputImprovement": 0.05957442838369328,
+            "MeanLatencyCost": 0.017636869882352937,
+            "MeanRetryCost": 0.058823529411764705,
+            "MeanFailureCost": 0.058823529411764705,
+            "MeanActionCost": 0.0058823529411764705,
+            "MeanWeightedThroughput": 0.773405197035484,
+            "MeanWeightedThroughputImprovement": 0.05957442838369328,
+            "MeanWeightedLatencyCost": 0.008818434941176468,
+            "MeanWeightedRetryCost": 0.029411764705882353,
+            "MeanWeightedFailureCost": 0.058823529411764705,
+            "MeanWeightedActionCost": 0.0058823529411764705
+          },
+          "Churn": {
+            "Decisions": 18,
+            "ActionTransitions": 1,
+            "ChangesPerDecision": 0.05555555555555555,
+            "LongestSameRun": 17,
+            "ConcurrencyChanges": 2,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              1,
+              8,
+              0,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "LateActions": {
+            "Counts": [
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "CumulativeReward": 12.410740238126014,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        },
+        {
+          "Mode": "linucb",
+          "Scenario": "calibration-e-combined",
+          "Repetition": 1,
+          "Valid": true,
+          "Decisions": 18,
+          "Actions": {
+            "Counts": [
+              1,
+              17,
+              0,
+              0,
+              0
+            ],
+            "Total": 18
+          },
+          "Rewards": {
+            "Count": 17,
+            "Mean": 0.736203116080172,
+            "Median": 1.0119737157157216,
+            "Min": -1.2501428964999999,
+            "Max": 1.500312994647916,
+            "StdDev": 0.595403003905974,
+            "Positive": 16,
+            "Zero": 0,
+            "Negative": 1
+          },
+          "Components": {
+            "Count": 17,
+            "MeanThroughput": 0.7785636235368587,
+            "MeanThroughputImprovement": 0.060548855984489856,
+            "MeanLatencyCost": 0.017583432764705878,
+            "MeanRetryCost": 0.058823529411764705,
+            "MeanFailureCost": 0.058823529411764705,
+            "MeanActionCost": 0.0058823529411764705,
+            "MeanWeightedThroughput": 0.7785636235368587,
+            "MeanWeightedThroughputImprovement": 0.060548855984489856,
+            "MeanWeightedLatencyCost": 0.008791716382352939,
+            "MeanWeightedRetryCost": 0.029411764705882353,
+            "MeanWeightedFailureCost": 0.058823529411764705,
+            "MeanWeightedActionCost": 0.0058823529411764705
+          },
+          "Churn": {
+            "Decisions": 18,
+            "ActionTransitions": 1,
+            "ChangesPerDecision": 0.05555555555555555,
+            "LongestSameRun": 17,
+            "ConcurrencyChanges": 2,
+            "ChunkSizeChanges": 0
+          },
+          "EarlyActions": {
+            "Counts": [
+              1,
+              8,
+              0,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "LateActions": {
+            "Counts": [
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            "Total": 9
+          },
+          "CumulativeReward": 12.515452973362924,
+          "ReconstructionMismatches": 0,
+          "NumericallyHealthy": true
+        }
+      ],
+      "Pooled": {
+        "Mode": "linucb",
+        "Scenario": "pooled",
+        "Repetition": 0,
+        "Valid": true,
+        "Decisions": 36,
+        "Actions": {
+          "Counts": [
+            2,
+            34,
+            0,
+            0,
+            0
+          ],
+          "Total": 36
+        },
+        "Rewards": {
+          "Count": 34,
+          "Mean": 0.7331233297496746,
+          "Median": 1.0000200794519518,
+          "Min": -1.2501428964999999,
+          "Max": 1.5232397127295334,
+          "StdDev": 0.5937146673962553,
+          "Positive": 32,
+          "Zero": 0,
+          "Negative": 2
+        },
+        "Components": {
+          "Count": 34,
+          "MeanThroughput": 0.7759844102861715,
+          "MeanThroughputImprovement": 0.06006164218409159,
+          "MeanLatencyCost": 0.01761015132352941,
+          "MeanRetryCost": 0.058823529411764705,
+          "MeanFailureCost": 0.058823529411764705,
+          "MeanActionCost": 0.0058823529411764705,
+          "MeanWeightedThroughput": 0.7759844102861715,
+          "MeanWeightedThroughputImprovement": 0.06006164218409159,
+          "MeanWeightedLatencyCost": 0.008805075661764705,
+          "MeanWeightedRetryCost": 0.029411764705882353,
+          "MeanWeightedFailureCost": 0.058823529411764705,
+          "MeanWeightedActionCost": 0.0058823529411764705
+        },
+        "Churn": {
+          "Decisions": 36,
+          "ActionTransitions": 2,
+          "ChangesPerDecision": 0.05555555555555555,
+          "LongestSameRun": 17,
+          "ConcurrencyChanges": 4,
+          "ChunkSizeChanges": 0
+        },
+        "EarlyActions": {
+          "Counts": [
+            2,
+            16,
+            0,
+            0,
+            0
+          ],
+          "Total": 18
+        },
+        "LateActions": {
+          "Counts": [
+            0,
+            18,
+            0,
+            0,
+            0
+          ],
+          "Total": 18
+        },
+        "CumulativeReward": 24.926193211488936,
+        "ReconstructionMismatches": 0,
+        "NumericallyHealthy": true
+      }
+    }
+  ]
+}

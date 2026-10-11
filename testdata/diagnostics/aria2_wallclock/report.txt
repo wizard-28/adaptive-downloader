@@ -1,0 +1,15 @@
+aria2 vs internal v6 under the wall-clock throttle (descriptive only; no ranking)
+aria2: 4 requests (3 x 1 MiB range + 1 full-body probe), max in-flight 4; none start at/after the 1s transition.
+v6 internal: 32 KiB chunks, request counts 46-128; requests continue past 1s and are paced at 4 MiB/s.
+
+  mode                        mean_ms
+  aria2                        2129.7
+  fixed                        2057.9
+  concurrency-adaptive         1324.5
+  chunk-size-adaptive          2029.0
+  joint-adaptive               1404.7
+  linucb-standard              2061.3
+  linucb-periodic              1323.4
+
+Key difference: aria2's 4 large in-flight requests span the 1s transition, so the whole transfer is paced at
+512 KiB/s (mean ~2.1s). The internal downloaders keep issuing requests after 1s and actually reach 4 MiB/s.

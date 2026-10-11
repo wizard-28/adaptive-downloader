@@ -1,0 +1,167 @@
+{
+  "names": [
+    "concurrency",
+    "chunk_size",
+    "throughput",
+    "aggregate_throughput",
+    "request_duration",
+    "bytes_transferred",
+    "successful_requests",
+    "failed_requests",
+    "retries",
+    "total_attempts"
+  ],
+  "stats": [
+    {
+      "name": "concurrency",
+      "min": 0,
+      "max": 0.3333333333333333,
+      "mean": 0.003637421795431398,
+      "sd": 0.034633868984051644,
+      "mean_square": 0.001212473931810465,
+      "share_of_norm2": 0.0011965271815745338,
+      "frac_at_zero": 0.9890877346137058,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "chunk_size",
+      "min": 0.03124907612712491,
+      "max": 0.12499916553417734,
+      "mean": 0.04365496966935017,
+      "sd": 0.03076838722148804,
+      "mean_square": 0.002852243417595946,
+      "share_of_norm2": 0.002814730022710363,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "throughput",
+      "min": 0.000028329776501709014,
+      "max": 0.0038217123599295416,
+      "mean": 0.003071917892249696,
+      "sd": 0.0011447065258934504,
+      "mean_square": 0.000010746746588746483,
+      "share_of_norm2": 0.000010605402779858412,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "aggregate_throughput",
+      "min": 0.000028329776501709014,
+      "max": 0.004881965289000337,
+      "mean": 0.0030508652244646763,
+      "sd": 0.0011309109565911938,
+      "mean_square": 0.000010586459082656227,
+      "share_of_norm2": 0.000010447223413793686,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "request_duration",
+      "min": 0.000007761168490105774,
+      "max": 0.0010519787329030805,
+      "mean": 0.000026306011243946406,
+      "sd": 0.00004491471125542819,
+      "mean_square": 2.708897241637569e-9,
+      "share_of_norm2": 2.673269170308486e-9,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "bytes_transferred",
+      "min": 1,
+      "max": 1,
+      "mean": 1,
+      "sd": 0,
+      "mean_square": 1,
+      "share_of_norm2": 0.9868477582754134,
+      "frac_at_zero": 0,
+      "frac_at_one": 1,
+      "always_one": true
+    },
+    {
+      "name": "successful_requests",
+      "min": 0.001,
+      "max": 0.127,
+      "mean": 0.056659100829332176,
+      "sd": 0.037560509329021996,
+      "mean_square": 0.0046207376691401085,
+      "share_of_norm2": 0.004559964610369675,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "failed_requests",
+      "min": 0,
+      "max": 0,
+      "mean": 0,
+      "sd": 0,
+      "mean_square": 0,
+      "share_of_norm2": 0,
+      "frac_at_zero": 1,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "retries",
+      "min": 0,
+      "max": 0,
+      "mean": 0,
+      "sd": 0,
+      "mean_square": 0,
+      "share_of_norm2": 0,
+      "frac_at_zero": 1,
+      "frac_at_one": 0,
+      "always_one": false
+    },
+    {
+      "name": "total_attempts",
+      "min": 0.001,
+      "max": 0.127,
+      "mean": 0.056659100829332176,
+      "sd": 0.037560509329021996,
+      "mean_square": 0.0046207376691401085,
+      "share_of_norm2": 0.004559964610369675,
+      "frac_at_zero": 0,
+      "frac_at_one": 0,
+      "always_one": false
+    }
+  ],
+  "norm_mean": 1.0066189665427623,
+  "norm_min": 1.0004892209863656,
+  "norm_max": 1.0545769935541398,
+  "norm_sd": 0.006767185022871852,
+  "pearson": [
+    {
+      "a": "throughput",
+      "b": "aggregate_throughput",
+      "corr": 0.993469089054472
+    },
+    {
+      "a": "successful_requests",
+      "b": "total_attempts",
+      "corr": 1
+    },
+    {
+      "a": "retries",
+      "b": "failed_requests",
+      "corr": 0
+    },
+    {
+      "a": "bytes_transferred",
+      "b": "total_attempts",
+      "corr": 0
+    },
+    {
+      "a": "concurrency",
+      "b": "chunk_size",
+      "corr": -0.04235559291887565
+    }
+  ]
+}

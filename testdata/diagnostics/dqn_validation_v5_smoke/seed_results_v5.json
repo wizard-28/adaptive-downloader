@@ -1,0 +1,19 @@
+{
+  "seeds": [
+    {
+      "final_epsilon": 0.95535,
+      "final_loss": null,
+      "mean_return": -9.67913134582727,
+      "q_max": 0.031153760850429535,
+      "q_min": -0.14332526922225952,
+      "seed": 0,
+      "terminal_episodes": 30,
+      "truncated_episodes": 0,
+      "validation_constant_episode_fraction": 0.0,
+      "validation_mean_completion_s": 2.7380555555555555,
+      "validation_mean_effective_changes": 2.0,
+      "wall_seconds": 0.8037371635437012
+    }
+  ],
+  "selected_seed": 0
+}

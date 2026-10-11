@@ -1,0 +1,114 @@
+{
+  "conditions": [
+    {
+      "file_size": 8388608,
+      "name": "val-steady-shared-cap",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.04,
+          "link_bandwidth": 1572864,
+          "loss_percent": 0.0,
+          "rate": 3145728
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "val-latency-high",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.075,
+          "link_bandwidth": 0,
+          "loss_percent": 0.0,
+          "rate": 5242880
+        }
+      ]
+    },
+    {
+      "file_size": 8388608,
+      "name": "val-loss-congestion",
+      "phase_seconds": 1.0,
+      "phases": [
+        {
+          "congestion": 0.04,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 2.5,
+          "rate": 4194304
+        }
+      ]
+    },
+    {
+      "file_size": 16777216,
+      "name": "val-multiphase-up",
+      "phase_seconds": 0.9,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.02,
+          "link_bandwidth": 0,
+          "loss_percent": 0.5,
+          "rate": 786432
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.02,
+          "link_bandwidth": 0,
+          "loss_percent": 0.5,
+          "rate": 5242880
+        }
+      ]
+    }
+  ],
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "selected_seed": 0,
+  "validation_mean_completion_s": 2.293425925925926,
+  "validation_summary": {
+    "action_fraction": {
+      "decrease-concurrency": 0.13333333333333333,
+      "increase-concurrency": 0.8,
+      "none": 0.06666666666666667
+    },
+    "changes_after_first_transition": 7,
+    "changes_before_first_transition": 17,
+    "completion": {
+      "max": 5.54,
+      "mean": 2.293425925925926,
+      "median": 1.5244444444444445,
+      "min": 0.67,
+      "n": 12,
+      "p25": 0.755,
+      "p75": 4.664166666666667,
+      "sd": 1.9409099732724397
+    },
+    "concurrency_time_fraction": {
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.5229117041463119,
+      "4": 0.47708829585368817
+    },
+    "constant_episode_fraction": 0.0,
+    "dominant_concurrency": "3",
+    "final_concurrency_distribution": {
+      "3": 4,
+      "4": 8
+    },
+    "max_concurrency": 4,
+    "mean_effective_changes": 2.0,
+    "mean_requests": 10.0,
+    "mean_steps": 2.5,
+    "n": 12,
+    "ramp_to_max_fraction": 0.5,
+    "time_weighted_mean_concurrency": 3.481076793527315,
+    "transition_reactions_within_3": 3,
+    "transitions": 3
+  }
+}

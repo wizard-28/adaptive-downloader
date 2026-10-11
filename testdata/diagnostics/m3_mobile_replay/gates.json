@@ -1,0 +1,26 @@
+{
+  "A_replay_fidelity": {
+    "passed": null,
+    "detail": "coarse proxy recorded; full comparison deferred because B failed"
+  },
+  "B_c_sensitivity": {
+    "passed": false,
+    "detail": "completions C1/C4/C16 = {1: 95476.303, 4: 96613.258, 16: 107208.154}; max/min=1.123; higher C gives no gain (C16 slower); the aggregate envelope is a shared ceiling"
+  },
+  "C_temporal_c_shift": {
+    "passed": null,
+    "detail": "not run (B failed)"
+  },
+  "D_wrong_c_cost": {
+    "passed": null,
+    "detail": "not run (B failed)"
+  },
+  "E_adaptive_headroom": {
+    "passed": null,
+    "detail": "not run (B failed)"
+  },
+  "F_heldout": {
+    "passed": null,
+    "detail": "not run (B failed)"
+  }
+}

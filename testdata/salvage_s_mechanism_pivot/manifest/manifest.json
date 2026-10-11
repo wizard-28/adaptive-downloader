@@ -1,0 +1,56 @@
+{
+  "study": "salvage_s_mechanism_pivot",
+  "kind": "analytical screening (no empirical experiments)",
+  "created_utc": "2026-09-28T16:08:17Z",
+  "context": {
+    "closed_static_protocol": "salvage_s_protocol_v7 (unmodified)",
+    "stage0s": "testdata/salvage_s_stage0s",
+    "scaling": "testdata/salvage_s_scaling_analysis"
+  },
+  "mechanism_parameters_reference": {
+    "R_bytes_per_s": 500000,
+    "D_seconds": 0.04,
+    "N": 4
+  },
+  "chunk_arms_bytes": {
+    "256KiB": 262144,
+    "1MiB": 1048576,
+    "4MiB": 4194304,
+    "16MiB": 16777216
+  },
+  "models": [
+    "shared",
+    "lockin_full",
+    "serialized",
+    "constant"
+  ],
+  "trace_inventory": {
+    "native_delivery_opportunity": 8,
+    "throughput_trajectory": 23
+  },
+  "experiments": [
+    "E1 stationary argmin",
+    "E2 transitions",
+    "E2b stable->volatile",
+    "E2c volatility robustness",
+    "E3 real traces"
+  ],
+  "rng": {
+    "stochastic": false,
+    "deterministic": true,
+    "pseudo_random_alternation_seed": 12345
+  },
+  "tools": {
+    "trace_inventory": "tools/trace_inventory.py",
+    "simulator": "tools/mechanism_sim.py",
+    "screening": "tools/run_screening.py",
+    "figures": "tools/make_figures.py",
+    "report": "tools/make_report.py"
+  },
+  "classification": {
+    "A/B/C/D": "MECHANISTICALLY INSUFFICIENT",
+    "E": "MECHANISTICALLY INSUFFICIENT",
+    "F": "MECHANISTICALLY INSUFFICIENT"
+  },
+  "new_preregistered_protocol_warranted": false
+}

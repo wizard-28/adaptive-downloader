@@ -1,0 +1,22 @@
+DQN Candidate v3 (request-efficiency correction). NO performance claim; NO aria2.
+
+decision interval candidates=[1, 4, 8] selected=4
+seeds=[0, 1, 2, 3, 4] episodes=1500 selected_seed=0
+validation mean completion=8.9017s candidate sha256=96361535edd3216eabebf2d1fb72791b3551517bbb3a7bbaf44b7a8ee8eb492b
+
+decision interval results:
+  interval 1: mean=11.7306s req/MiB=22.5 churn/MiB=8.39
+  interval 4: mean=10.1226s req/MiB=13.4 churn/MiB=2.95
+  interval 8: mean=11.7876s req/MiB=17.0 churn/MiB=1.89
+
+held-out TEST (mean completion s / requests per MiB):
+  dqn                    mean=12.7018 req/MiB=13.8 concChg=3.97
+  fixed                  mean=25.6507 req/MiB=32.0 concChg=0.00
+  concurrency-adaptive   mean=24.2874 req/MiB=32.0 concChg=0.22
+  chunk-size-adaptive    mean=24.6028 req/MiB=29.5 concChg=0.00
+  joint-adaptive         mean=23.7599 req/MiB=30.6 concChg=0.19
+
+ablations (mean completion s / req/MiB):
+  decision_interval_1    mean=13.6762 req/MiB=21.0
+  decision_interval_8    mean=15.7109 req/MiB=18.0
+  dqn_final              mean=12.7018 req/MiB=13.8

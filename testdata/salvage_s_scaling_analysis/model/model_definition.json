@@ -1,0 +1,51 @@
+{
+  "frozen_mechanism": {
+    "R_bytes_per_second": 500000.0,
+    "D_seconds": 0.04,
+    "N": 4
+  },
+  "models": {
+    "MODEL_A_analytical": {
+      "label": "analytical D + s/R",
+      "params": {
+        "a_seconds": 0.04,
+        "b_seconds_per_byte": 2e-06
+      }
+    },
+    "MODEL_B_stage0s_calibrated": {
+      "label": "Stage 0S calibrated a + b*s",
+      "params": {
+        "a_seconds": 0.04183751538059788,
+        "b_seconds_per_byte": 2.0496006720813352e-06,
+        "r_squared": 0.999999988509317
+      }
+    }
+  },
+  "stage0s_calibrated_service_times_seconds": {
+    "262144": 0.5777166945,
+    "1048576": 2.1905264195,
+    "4194304": 8.6409296585,
+    "16777216": 34.4278713685
+  },
+  "switch_strategies": [
+    {
+      "from": "16MiB",
+      "to": "4MiB",
+      "B_switch_bytes": 67108864
+    },
+    {
+      "from": "4MiB",
+      "to": "1MiB",
+      "B_switch_bytes": 16777216
+    },
+    {
+      "from": "1MiB",
+      "to": "256KiB",
+      "B_switch_bytes": 4194304
+    }
+  ],
+  "model_equations": {
+    "MODEL_A_analytical": "t(s) = D + s/R",
+    "MODEL_B_stage0s_calibrated": "t(s) = a + b*s with a=0.041837515381, b=2.049600672081e-06 (OLS fit to the four pooled medians; R^2=0.999999988509)"
+  }
+}

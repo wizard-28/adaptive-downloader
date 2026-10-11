@@ -1,0 +1,326 @@
+{
+  "note": "Deterministic synthesis of frozen artifacts; no new experiment.",
+  "datasets": {
+    "v1": {
+      "scenarios": 5,
+      "runs": 250,
+      "invalid": 0
+    },
+    "v2": {
+      "scenarios": 5,
+      "runs": 250,
+      "invalid": 0
+    },
+    "v3": {
+      "scenarios": 5,
+      "runs": 250,
+      "invalid": 0
+    },
+    "v5": {
+      "scenarios": 5,
+      "runs": 300,
+      "invalid": 0
+    },
+    "v6": {
+      "scenarios": 1,
+      "runs": 60,
+      "invalid": 0
+    },
+    "v4": {
+      "standard": 50,
+      "periodic": 50,
+      "modes": "linucb-standard + linucb-periodic"
+    },
+    "aria2": {
+      "runs": 50,
+      "version": "aria2 version 1.37.0"
+    },
+    "aria2_wallclock": {
+      "runs": 10,
+      "version": "aria2 version 1.37.0"
+    },
+    "granularity_wallclock": {
+      "runs": 10
+    }
+  },
+  "chain": [
+    {
+      "stage": "v1",
+      "config": "256 KiB, 4 baseline modes + standard LinUCB",
+      "finding": "LinUCB selected ActionNone 100% (250/250 valid)"
+    },
+    {
+      "stage": "v2",
+      "config": "256 KiB + deterministic 5-action warm-up",
+      "finding": "lock-in removed; only ~2 learned decisions/run (250/250 valid)"
+    },
+    {
+      "stage": "v3",
+      "config": "4 MiB, 6 modes incl. standard LinUCB",
+      "finding": "32-122 learned decisions; standard LinUCB still locks onto one arm (250/250 valid)"
+    },
+    {
+      "stage": "lock-in diagnosis",
+      "config": "replay of frozen v3 through production LinUCB",
+      "finding": "4582/4582 actions replayed; posterior dominance + frozen unselected arms + capped bonus"
+    },
+    {
+      "stage": "periodic-exploration diagnostic",
+      "config": "frozen-state replay, interval 0 vs 5",
+      "finding": "unique arms 1.0-1.5 -> 5.0; forced arms receive posterior updates; dominant preference unchanged"
+    },
+    {
+      "stage": "live periodic benchmark (v4)",
+      "config": "live download, standard vs periodic, 100 runs",
+      "finding": "effective controller changes; posterior moves; in loss scenario greedy behavior changed"
+    },
+    {
+      "stage": "v5",
+      "config": "4 MiB six-mode unified benchmark, 300 runs",
+      "finding": "periodic LinUCB coverage in one campaign; scenario-dependent"
+    },
+    {
+      "stage": "wall-clock infrastructure",
+      "config": "server RateSchedule (time-based transition)",
+      "finding": "transition at fixed elapsed time independent of request count"
+    },
+    {
+      "stage": "v6",
+      "config": "wall-clock throttle 512KiB/s -> 4MiB/s after 1 s, 60 runs",
+      "finding": "periodic LinUCB sustains concurrency ~3.9; standard still locks"
+    },
+    {
+      "stage": "aria2 old throttle",
+      "config": "aria2 1.37.0, request-count throttle, 50 runs",
+      "finding": "4 x 1 MiB requests; request-count transition never benefits aria2"
+    },
+    {
+      "stage": "granularity study",
+      "config": "internal 1 MiB/4C vs aria2, old throttle",
+      "finding": "matched internal closely reproduces aria2 in 4/5 scenarios"
+    },
+    {
+      "stage": "aria2 wall-clock",
+      "config": "aria2 under wall-clock throttle, 10 runs",
+      "finding": "all 4 large requests begin before 1 s; none reaches 4 MiB/s"
+    },
+    {
+      "stage": "wall-clock matched control",
+      "config": "internal 1 MiB/4C under wall-clock throttle, 10 runs",
+      "finding": "same request shape; mean 2055.7 ms vs aria2 2129.7 ms (+3.6%)"
+    }
+  ],
+  "tables": {
+    "lockin_diagnosis": {
+      "reconstruction": "4582/4582",
+      "norm_mean": 1.0066,
+      "bytes_transferred_always_one": true,
+      "bytes_share_of_norm2": 0.9868,
+      "baseline_first_greedy_mean": 2.653,
+      "baseline_first_greedy_bonus": 0.145,
+      "baseline_lock_decision": 5
+    },
+    "periodic_exploration": {
+      "snake_case_intervals": [
+        0,
+        5
+      ],
+      "live_standard_replay": "4586/4586",
+      "live_scenarios": [
+        {
+          "scenario": "baseline",
+          "forced_events": 170,
+          "best_rank": 1
+        },
+        {
+          "scenario": "server-throttle",
+          "forced_events": 190,
+          "best_rank": 1
+        },
+        {
+          "scenario": "latency",
+          "forced_events": 50,
+          "best_rank": 1
+        },
+        {
+          "scenario": "loss",
+          "forced_events": 137,
+          "best_rank": 1
+        },
+        {
+          "scenario": "combined",
+          "forced_events": 62,
+          "best_rank": 1
+        }
+      ]
+    },
+    "v5_means_ms": {
+      "Fixed": {
+        "baseline": 1155.1,
+        "server-throttle": 1382.3,
+        "latency": 6340.1,
+        "loss": 1971.6,
+        "combined": 10154.9
+      },
+      "ConcurrencyAdaptive": {
+        "baseline": 1156.3,
+        "server-throttle": 569.7,
+        "latency": 2302.4,
+        "loss": 1198.2,
+        "combined": 5328.4
+      },
+      "ChunkSizeAdaptive": {
+        "baseline": 1160.7,
+        "server-throttle": 1343.3,
+        "latency": 2559.6,
+        "loss": 1564.4,
+        "combined": 5928.8
+      },
+      "JointAdaptive": {
+        "baseline": 1147.6,
+        "server-throttle": 647.6,
+        "latency": 2190.5,
+        "loss": 1263.7,
+        "combined": 5652.8
+      },
+      "LinUCB": {
+        "baseline": 1162.5,
+        "server-throttle": 1328.7,
+        "latency": 2635.0,
+        "loss": 1537.5,
+        "combined": 7186.8
+      },
+      "LinUCBPeriodic": {
+        "baseline": 1113.6,
+        "server-throttle": 1215.7,
+        "latency": 2456.6,
+        "loss": 1648.5,
+        "combined": 6119.7
+      }
+    },
+    "v6_means_ms": {
+      "Fixed": 2057.9,
+      "ConcurrencyAdaptive": 1324.5,
+      "ChunkSizeAdaptive": 2029.0,
+      "JointAdaptive": 1404.7,
+      "LinUCB": 2061.3,
+      "LinUCBPeriodic": 1323.4
+    },
+    "aria2_old_by_scenario_ms": {
+      "baseline": 320.9,
+      "server-throttle": 2117.9,
+      "latency": 853.2,
+      "loss": 362.4,
+      "combined": 1282.5
+    },
+    "aria2_wallclock_ms": 2129.7,
+    "matched_wallclock_ms": 2055.7
+  },
+  "claims": [
+    {
+      "claim": "Joint adaptation of concurrency and chunk size is novel",
+      "evidence": "prior-art review in PROJECT_CONTEXT; no comparative prior-work experiment",
+      "supported": false,
+      "qualification": "broad joint adaptation is established prior work",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "LinUCB learns an optimal concurrency policy",
+      "evidence": "v3/v5/v6 show standard LinUCB locks onto one arm",
+      "supported": false,
+      "qualification": "no optimality or convergence shown",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "Periodic exploration breaks frozen-arm starvation",
+      "evidence": "periodic diagnostic unique arms -> 5.0; live coverage 1.0-1.4 -> 5.0",
+      "supported": true,
+      "qualification": "coverage only; not preference change",
+      "status": "directly demonstrated"
+    },
+    {
+      "claim": "Periodic exploration causes posterior adaptation",
+      "evidence": "live replay 4586/4586 validated; forced arm reaches rank 1",
+      "supported": true,
+      "qualification": "boundary/forced events; deterministic not learned",
+      "status": "directly demonstrated"
+    },
+    {
+      "claim": "Periodic exploration causes effective controller changes",
+      "evidence": "live and v6: effective concurrency/chunk changes counted from state transitions",
+      "supported": true,
+      "qualification": "scenario-dependent; deterministic exploration",
+      "status": "directly demonstrated"
+    },
+    {
+      "claim": "LinUCB consistently improves performance",
+      "evidence": "v5/v6 descriptive completion times vary by scenario; no significance testing",
+      "supported": false,
+      "qualification": "descriptive only; no superiority claim",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "Chunk-size adaptation is successfully learned",
+      "evidence": "chunk changes observed but harness models no chunk-size tradeoff",
+      "supported": false,
+      "qualification": "unmodelled tradeoff; not evidence of optimization",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "The internal downloader outperforms aria2",
+      "evidence": "granularity-matched control within ~4%; configs differ",
+      "supported": false,
+      "qualification": "descriptive; granularity/connection differences remain",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "aria2 is inferior under consumer networks",
+      "evidence": "synthetic single-server scenarios only",
+      "supported": false,
+      "qualification": "no real-network deployment",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "Request granularity explains a substantial portion of the original aria2 difference",
+      "evidence": "matched internal 1 MiB/4C closely reproduces aria2",
+      "supported": true,
+      "qualification": "residual ~74 ms unexplained",
+      "status": "supported but limited"
+    },
+    {
+      "claim": "Wall-clock throttling removes the request-count confound",
+      "evidence": "transition at ~1 s elapsed for all request counts (46-128)",
+      "supported": true,
+      "qualification": "removes the trigger coupling for all granularities; does not equalize downloaders",
+      "status": "supported but limited"
+    },
+    {
+      "claim": "The controller generalizes to real consumer networks",
+      "evidence": "synthetic server; controlled impairments",
+      "supported": false,
+      "qualification": "no external validity established",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "The method is fair to competing downloaders",
+      "evidence": "no fairness objective or signal implemented",
+      "supported": false,
+      "qualification": "fairness explicitly absent",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "The system demonstrates RL-based adaptation",
+      "evidence": "standard LinUCB locks; periodic (deterministic) exploration adapts",
+      "supported": false,
+      "qualification": "adaptation observed with deterministic periodic exploration, not learned exploration",
+      "status": "not demonstrated"
+    },
+    {
+      "claim": "The current evidence establishes causal action effectiveness",
+      "evidence": "one-step credit assignment approximate under concurrency > 1",
+      "supported": false,
+      "qualification": "temporal attribution approximate",
+      "status": "not demonstrated"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+Wall-clock throttle benchmark (server-throttle-wallclock; descriptive only; no ranking)
+generated_utc: 2026-09-25T03:46:50Z
+source_raw: testdata/benchmark_v6/matrix_wallclock_throttle_6mode_reps10.json
+scenario: 4 MiB; server 512 KiB/s -> 4 MiB/s after 1s ELAPSED wall-clock (SetRateScheduleAt; not request-count)
+config otherwise = v5: chunk 32KiB (min/max 32/128KiB), concurrency 1 (1..4), thr 0.2/0.2, window 4, retries 3, timeout 30s,
+        alpha 0.2, DefaultRewardConfig, warm-up 5, linucb-periodic interval 5. No tc/netem. No seeds.
+
+CORRECTNESS: 60/60 valid, 0 invalid, 0 failed. SHA-256 not implemented.
+
+RATE TRANSITION (server request log)
+  mode                     reqs   firstPostIdx  elapsed_med_s  elapsed_range_s
+  fixed                   128.0             16          1.040    1.038-1.041
+  concurrency-adaptive    128.0             16          1.041    1.037-1.042
+  chunk-size-adaptive      46.0             16          1.040    1.038-1.058
+  joint-adaptive           57.0             16          1.040    1.038-1.043
+  linucb-standard         127.0             16          1.040    1.038-1.041
+  linucb-periodic          69.1             16          1.040    1.039-1.041
+  The first post-transition request index is nearly constant here because the 512KiB/s pre-phase admits ~16 32KiB requests
+  in 1s; but the TOTAL request count varies with chunk behavior (Fixed 128 vs ChunkSizeAdaptive 46), and the transition
+  elapsed time is ~1.04s in every mode/run, confirming a time trigger independent of request count.
+
+PERFORMANCE (mean/median/sd/ci95 completion ms; wallclock B/s; retries; failures; n=10; not ranked)
+  fixed                dur=  2057.9+/-   1.7 med=  2058.0 sd=   2.3 wall=  2038190 retr=0.0 fail=0.0
+  concurrency-adaptive dur=  1324.5+/-   2.2 med=  1325.8 sd=   3.0 wall=  3166818 retr=0.0 fail=0.0
+  chunk-size-adaptive  dur=  2029.0+/-  12.0 med=  2024.2 sd=  16.7 wall=  2067314 retr=0.0 fail=0.0
+  joint-adaptive       dur=  1404.7+/-   4.0 med=  1403.9 sd=   5.7 wall=  2985862 retr=0.0 fail=0.0
+  linucb-standard      dur=  2061.3+/-   3.2 med=  2061.3 sd=   4.5 wall=  2034762 retr=0.0 fail=0.0
+  linucb-periodic      dur=  1323.4+/-   3.2 med=  1322.4 sd=   4.5 wall=  3169452 retr=0.0 fail=0.0
+
+CONTROLLER BEHAVIOR (mean over 10 runs)
+  mode                 decisions   finalC     maxC   concChg finalChunk minChunk maxChunk
+  fixed                   128.0     1.00        1       0.0      32768    32768    32768
+  concurrency-adaptive    128.0     4.00        4       3.0      32768    32768    32768
+  chunk-size-adaptive      46.0     1.00        1       0.0     131072    32768   131072
+  joint-adaptive           57.0     3.00        3       2.0      98304    32768    98304
+  linucb-standard         127.0     1.00        2     124.0      32768    32768    65536
+  linucb-periodic          69.1     3.90        4      52.0      95027    32768   131072

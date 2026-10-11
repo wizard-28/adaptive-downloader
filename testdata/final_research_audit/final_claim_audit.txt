@@ -1,0 +1,42 @@
+FINAL CLAIM AUDIT
+====================================================================================================
+Each claim is classified as directly demonstrated, supported but limited, or not demonstrated.
+
+Claim                                                          Status                   Qualification
+--------------------------------------------------------------------------------------------------------------------------------------------
+Joint adaptation of concurrency and chunk size is novel        not demonstrated         broad joint adaptation is established prior work
+LinUCB learns an optimal concurrency policy                    not demonstrated         no optimality or convergence shown
+Periodic exploration breaks frozen-arm starvation              directly demonstrated    coverage only; not preference change
+Periodic exploration causes posterior adaptation               directly demonstrated    boundary/forced events; deterministic not learned
+Periodic exploration causes effective controller changes       directly demonstrated    scenario-dependent; deterministic exploration
+LinUCB consistently improves performance                       not demonstrated         descriptive only; no superiority claim
+Chunk-size adaptation is successfully learned                  not demonstrated         unmodelled tradeoff; not evidence of optimization
+The internal downloader outperforms aria2                      not demonstrated         descriptive; granularity/connection differences remain
+aria2 is inferior under consumer networks                      not demonstrated         no real-network deployment
+Request granularity explains a substantial portion of the original aria2 difference supported but limited    residual ~74 ms unexplained
+Wall-clock throttling removes the request-count confound       supported but limited    removes the trigger coupling for all granularities; does not equalize downloaders
+The controller generalizes to real consumer networks           not demonstrated         no external validity established
+The method is fair to competing downloaders                    not demonstrated         fairness explicitly absent
+The system demonstrates RL-based adaptation                    not demonstrated         adaptation observed with deterministic periodic exploration, not learned exploration
+The current evidence establishes causal action effectiveness   not demonstrated         temporal attribution approximate
+
+SUPPORTED CONCLUSIONS (directly demonstrated):
+  - Periodic exploration breaks frozen-arm starvation
+  - Periodic exploration causes posterior adaptation
+  - Periodic exploration causes effective controller changes
+
+SUPPORTED BUT LIMITED:
+  - Request granularity explains a substantial portion of the original aria2 difference -- residual ~74 ms unexplained
+  - Wall-clock throttling removes the request-count confound -- removes the trigger coupling for all granularities; does not equalize downloaders
+
+NOT SUPPORTED BY CURRENT EVIDENCE:
+  - Joint adaptation of concurrency and chunk size is novel -- broad joint adaptation is established prior work
+  - LinUCB learns an optimal concurrency policy -- no optimality or convergence shown
+  - LinUCB consistently improves performance -- descriptive only; no superiority claim
+  - Chunk-size adaptation is successfully learned -- unmodelled tradeoff; not evidence of optimization
+  - The internal downloader outperforms aria2 -- descriptive; granularity/connection differences remain
+  - aria2 is inferior under consumer networks -- no real-network deployment
+  - The controller generalizes to real consumer networks -- no external validity established
+  - The method is fair to competing downloaders -- fairness explicitly absent
+  - The system demonstrates RL-based adaptation -- adaptation observed with deterministic periodic exploration, not learned exploration
+  - The current evidence establishes causal action effectiveness -- temporal attribution approximate

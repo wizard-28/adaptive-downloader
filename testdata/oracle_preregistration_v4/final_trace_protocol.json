@@ -1,0 +1,187 @@
+{
+  "final_trace_protocol_version": 1,
+  "oracle_protocol_version": 2,
+  "supersedes_audit": "docs/PROJECT_CONTEXT.md \u00a722.75 (BLOCKED audit) \u2014 this artifact freezes every item that was UNFROZEN there",
+  "frozen_before_execution": true,
+  "final_trace_population": {
+    "count": 5,
+    "traces": [
+      "Verizon-EVDO-driving",
+      "Verizon-LTE-driving",
+      "ATT-LTE-driving",
+      "TMobile-LTE-driving",
+      "TMobile-UMTS-driving"
+    ],
+    "diversity": "five full-length native Mahimahi families spanning Verizon EVDO/LTE, ATT LTE and TMobile LTE/UMTS; no further strata are required beyond this frozen population",
+    "excluded": [
+      "ATT-LTE-driving-2016",
+      "TMobile-LTE-short",
+      "Verizon-LTE-short",
+      "all historical datasets",
+      "any other corpus member"
+    ],
+    "duplicate_families": "not allowed; each family is counted once",
+    "current_trace_status": "Verizon-EVDO-driving and Verizon-LTE-driving are retained as population members (their existing evidence is reused); no double counting"
+  },
+  "trace_eligibility": [
+    "full-length trace duration >= 450 s",
+    "valid paired .up/.down trace family",
+    "genuine mm-link EOF/endpoint validation must pass (protocol-v2 endpoint evidence)",
+    "no fatal child error",
+    "no trace contamination according to the existing checks (epoch.ExclusionTraceContamination and anchor_alignment)",
+    "each included family counted once",
+    "technical execution failures may be rerun under the same protocol",
+    "a scientifically ineligible trace is not silently replaced",
+    "no post-hoc trace substitution based on observed H"
+  ],
+  "replay_oracle_rules": {
+    "transport": "protocol-v2 watchdog-only (request deadline none, dial deadline none, parent/child watchdog 45 m)",
+    "http": "HTTP/1.1 only; one request = one contiguous byte range",
+    "concurrency": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "chunk_size_bytes": 1048576,
+    "replay": "full-trace uninterrupted fixed-C replay; continuous backlog; trace time t=0 to EOF",
+    "measurement": "timestamped byte-delivery events mapped through the frozen trace-time anchor (StartupOffset 60 ms, AlignmentTolerance 100 ms)",
+    "epoch_duration_s": 120,
+    "byte_floor_bytes": 5242880,
+    "min_observed_fraction": 0.8,
+    "shared_validity": "any invalid C invalidates the epoch for all C",
+    "final_partial_epoch": "excluded",
+    "regime_classifier": "exact existing classifier (native downlink only; full 120 s epochs; k=max(1,floor(n/3)); degraded=k lowest; good=k highest not degraded; recovering=rate[e]>=1.25*rate[e-1] and not degraded; precedence degraded>recovering>good>middle)",
+    "injection_selection": "exact existing rule: per regime (degraded,good,recovering) earliest full epoch and, if available, the next distinct one",
+    "ladder": "1<->2<->4<->8<->16; at most one step per epoch boundary; no direct jumps",
+    "dwell": "after a change at boundary e, C_{e+1}=C_e (at least one complete following epoch)"
+  },
+  "protocol_amendment": {
+    "amendment_version": 1,
+    "status": "FROZEN_BEFORE_EXECUTION",
+    "frozen_at": "2026-09-28T01:53:15Z",
+    "original_protocol_sha256": "bc4185579321420efe43e13234e23ceb08d44abb731805de2ed75e011a8c4c51",
+    "reason": "the frozen switch-injection harness cannot represent the mathematical boundary t = 0: the child applies a scheduled switch only when SwitchAt > 0 and treats SwitchAt = 0 as 'no switch'",
+    "original_boundary_zero_specification": "injection_selection selects, per regime in the order degraded, good, recovering, the earliest full epoch and, if available, the next distinct one; for ATT-LTE-driving the good regime's earliest full epoch is epoch 0 with start_ms = 0, which is part of the frozen ATT 4 x 8 = 32 matrix",
+    "incompatibility_discovered_before_execution": true,
+    "stage_b_runs_started_before_amendment": 0,
+    "boundary_zero_rule": {
+      "applies_to": "any preregistered injection timestamp of exactly 0 ms (currently only ATT-LTE-driving good epoch 0)",
+      "operational_switch_instant_ms": 1,
+      "operational_switch_instant_is_fixed_protocol_constant": true,
+      "execution": "start at the source C; apply the switch at child-elapsed 1 ms; switch_applied must be recorded true; the target C governs the complete post-switch measurement window [0 ms, 120000 ms)",
+      "is_substitution": false,
+      "matrix_unchanged": "ATT-LTE-driving 4 timestamps x 8 directions = 32 runs; total Stage-B matrix 88 runs",
+      "other_rules_unchanged": "remaining three ATT timestamps, all 8 directions, estimator, classifier, dwell rule, epoch rule, and statistical gate are unchanged"
+    }
+  },
+  "tau_scope": {
+    "scope": "PER_TRACE",
+    "rationale": "tau is a transition-cost property of the replayed trace/environment; the existing two-trace tau measurements are reusable only for those two traces, so each newly added trace requires its own tau measurement rather than assuming pooled cross-trace transferability",
+    "estimator": "retain signed raw observations; aggregate with the frozen median rule (regime-specific iff >=2 regimes with valid observations, all medians >0, max/min >= 2.0); formal tau = max(0, estimated tau)",
+    "estimator_frozen": "must not be altered after seeing new results",
+    "existing_reuse": {
+      "path": "/home/vscode/tau_campaign_v3",
+      "traces": [
+        "Verizon-EVDO-driving",
+        "Verizon-LTE-driving"
+      ]
+    },
+    "excluded_historical": [
+      "/home/vscode/tau_campaign_v2"
+    ]
+  },
+  "reuse_rules": {
+    "fixed_c": {
+      "reuse": {
+        "/home/vscode/epoch_pilot_v2": [
+          "Verizon-EVDO-driving",
+          "Verizon-LTE-driving"
+        ]
+      },
+      "fresh_required": [
+        "ATT-LTE-driving",
+        "TMobile-LTE-driving",
+        "TMobile-UMTS-driving"
+      ]
+    },
+    "tau": {
+      "reuse": {
+        "/home/vscode/tau_campaign_v3": [
+          "Verizon-EVDO-driving",
+          "Verizon-LTE-driving"
+        ]
+      },
+      "fresh_required": [
+        "ATT-LTE-driving",
+        "TMobile-LTE-driving",
+        "TMobile-UMTS-driving"
+      ]
+    },
+    "historical_excluded": [
+      "/home/vscode/epoch_pilot",
+      "/home/vscode/epoch_pilot_corrected",
+      "/home/vscode/evdo_timeout_diag",
+      "/home/vscode/tau_campaign_v2"
+    ]
+  },
+  "headroom_definition": "H_j = (T_best_fixed,j - T_constrained,j) / T_best_fixed,j",
+  "statistical_design": {
+    "unit": "one trace = one statistical observation",
+    "population_estimator": "arithmetic mean of the five trace-level H_j values",
+    "variability_estimator": "ordinary sample standard deviation across the five H_j values",
+    "confidence_bound": "one-sided 95% Student-t lower confidence bound; df = n-1 (n=5, df=4)",
+    "lcb_formula": "LCB_95 = mean(H) - t_(0.95, df=n-1) * s(H)/sqrt(n)",
+    "pass_criterion": "LCB_95 >= 0.10",
+    "criterion_meaning": "predeclared 10% minimum population-level exploitable-headroom requirement",
+    "not_yet_evaluated": true
+  },
+  "invalid_missing_handling": [
+    "a technical run failure may be rerun under the same protocol",
+    "a trace failing a scientific eligibility criterion is not substituted or selectively deleted",
+    "do not evaluate the final statistical gate unless all five predefined trace families yield usable trace-level H values",
+    "if fewer than five usable traces remain, report the study as failing to reach the preregistered final-gate sample rather than changing n or replacing traces post hoc"
+  ],
+  "experiment_matrix": {
+    "new_fixed_c": {
+      "traces": [
+        "ATT-LTE-driving",
+        "TMobile-LTE-driving",
+        "TMobile-UMTS-driving"
+      ],
+      "concurrency": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "runs": 15
+    },
+    "new_tau_per_trace": {
+      "ATT-LTE-driving": {
+        "timestamps": 4,
+        "directions": 8,
+        "runs": 32
+      },
+      "TMobile-LTE-driving": {
+        "timestamps": 2,
+        "directions": 8,
+        "runs": 16
+      },
+      "TMobile-UMTS-driving": {
+        "timestamps": 5,
+        "directions": 8,
+        "runs": 40
+      },
+      "total_runs": 88
+    },
+    "total_new_runs": 103
+  },
+  "notes": [
+    "timestamp counts reuse the already verified classifier outputs (\u00a722.75); no new timestamps are invented",
+    "the existing two-trace descriptive headroom (EVDO 1.6075%, LTE 0.0320%) is unchanged and is not a population estimate",
+    "this artifact contains no measured data"
+  ]
+}

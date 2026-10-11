@@ -1,0 +1,179 @@
+{
+  "ablations": {
+    "corrupted_state": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 1.4997070312500003,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 15.0,
+      "median_completion_s": 1.6505208333333334,
+      "n": 32,
+      "sd_completion_s": 0.9609764558278895
+    },
+    "random_policy": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 1.5191048177083333,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 7.625,
+      "median_completion_s": 1.5624999999999998,
+      "n": 32,
+      "sd_completion_s": 1.0755692043606437
+    },
+    "shuffled_actions": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 1.658955078125,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 9.71875,
+      "median_completion_s": 1.4352083333333334,
+      "n": 32,
+      "sd_completion_s": 1.2170221300983726
+    }
+  },
+  "action_mapping": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency",
+    "increase-chunk-size",
+    "decrease-chunk-size"
+  ],
+  "candidate_sha256": "83427c5345d1863a62902e176398c360c4299b530931a31440563bede4a913db",
+  "distinction": {
+    "sanity_model": "testdata/diagnostics/dqn/ (seed 0, 300 ep)",
+    "validated_candidate": "testdata/diagnostics/dqn_validation/final_dqn_candidate.json"
+  },
+  "heldout_overall": {
+    "concurrency-adaptive": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 2.0285774739583333,
+      "mean_conc_changes": 0.375,
+      "mean_steps": 15.71875,
+      "median_completion_s": 2.036458333333333,
+      "n": 32,
+      "sd_completion_s": 1.5018887723398064
+    },
+    "dqn": {
+      "mean_chunk_changes": 4.1875,
+      "mean_completion_s": 1.4403271484375002,
+      "mean_conc_changes": 2.125,
+      "mean_steps": 16.125,
+      "median_completion_s": 1.4369791666666667,
+      "n": 32,
+      "sd_completion_s": 0.998885868820034
+    },
+    "fixed": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 2.0285774739583338,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 15.4375,
+      "median_completion_s": 2.036458333333333,
+      "n": 32,
+      "sd_completion_s": 1.5018887723398064
+    },
+    "joint-adaptive": {
+      "mean_chunk_changes": 0.09375,
+      "mean_completion_s": 2.0286751302083337,
+      "mean_conc_changes": 0.1875,
+      "mean_steps": 14.9375,
+      "median_completion_s": 2.036458333333333,
+      "n": 32,
+      "sd_completion_s": 1.5018110157730071
+    }
+  },
+  "label": "FINAL DQN CANDIDATE v1 (simulator-validated + live transfer validation; no performance claim)",
+  "live_total_runs": 25,
+  "live_valid_runs": 25,
+  "no_performance_claim": true,
+  "seeds": [
+    {
+      "episodes": 800,
+      "final_epsilon": 0.05,
+      "final_loss": 0.05401964485645294,
+      "mean_return": -1.094577980693368,
+      "model_sha256": "55d131e3df153fd94eaebf7f6e5348cd0abc09f3790b24719def86ffc93340c0",
+      "q_max": 0.19069986045360565,
+      "q_min": -0.6793664693832397,
+      "seed": 0,
+      "terminal_episodes": 800,
+      "total_steps": 7453,
+      "truncated_episodes": 0,
+      "validation_mean_completion_s": 0.8839484126984127,
+      "wall_seconds": 14.932085514068604
+    },
+    {
+      "episodes": 800,
+      "final_epsilon": 0.05,
+      "final_loss": 0.019621161743998528,
+      "mean_return": -1.1235209884559936,
+      "model_sha256": "431784a4ed5a0d04ead98e6d92d6870e4b2aaee1ec716c251d3a44761ea444ac",
+      "q_max": 0.1819511353969574,
+      "q_min": -0.9050639271736145,
+      "seed": 1,
+      "terminal_episodes": 800,
+      "total_steps": 7377,
+      "truncated_episodes": 0,
+      "validation_mean_completion_s": 1.033045634920635,
+      "wall_seconds": 15.162571430206299
+    },
+    {
+      "episodes": 800,
+      "final_epsilon": 0.05,
+      "final_loss": 0.010863423347473145,
+      "mean_return": -1.16390337890113,
+      "model_sha256": "b3cc8ed92220ac557acdf4ff8b333e06646762106b0a45b43a1f2ae13724fc59",
+      "q_max": 0.30302920937538147,
+      "q_min": -0.9689298272132874,
+      "seed": 2,
+      "terminal_episodes": 800,
+      "total_steps": 7845,
+      "truncated_episodes": 0,
+      "validation_mean_completion_s": 1.0529596560846561,
+      "wall_seconds": 15.716071367263794
+    },
+    {
+      "episodes": 800,
+      "final_epsilon": 0.05,
+      "final_loss": 0.006770635023713112,
+      "mean_return": -1.1401859680714954,
+      "model_sha256": "e333a124b12c2ff965172f600d8b9f7da3a91a0e90743ed7eb780a6f78e03aaf",
+      "q_max": 0.18495866656303406,
+      "q_min": -1.5155932903289795,
+      "seed": 3,
+      "terminal_episodes": 800,
+      "total_steps": 7974,
+      "truncated_episodes": 0,
+      "validation_mean_completion_s": 1.1047585978835979,
+      "wall_seconds": 13.924832105636597
+    },
+    {
+      "episodes": 800,
+      "final_epsilon": 0.05,
+      "final_loss": 0.008870193734765053,
+      "mean_return": -1.108034927367236,
+      "model_sha256": "d0fe888dc06dfaaf8dbdeac90ca5b3fa09b53637b62911c10596b3ae3aacf2fa",
+      "q_max": 0.15528807044029236,
+      "q_min": -0.6232271194458008,
+      "seed": 4,
+      "terminal_episodes": 800,
+      "total_steps": 7119,
+      "truncated_episodes": 0,
+      "validation_mean_completion_s": 0.8227513227513227,
+      "wall_seconds": 13.104679584503174
+    }
+  ],
+  "selected_seed": 4,
+  "selection_criterion": "min mean validation completion time; tie-break lowest seed (test set never used)",
+  "sim_to_real": {
+    "behaviorally_sensible": true,
+    "did_not_transfer_cleanly": [
+      "under server-throttle-wallclock the live policy frequently decreased chunk without benefit (simulator did not model the wall-clock switch)",
+      "simulator conditions are not the live server; magnitudes differ"
+    ],
+    "transferred": [
+      "raises concurrency under latency (sim and live): live latency finalC mean 3.6",
+      "increases chunk under latency/combined (sim and live)",
+      "stays at low concurrency under baseline/loss where extra concurrency did not help",
+      "avoids out-of-bounds actions"
+    ]
+  },
+  "state_spec_version": 1,
+  "status": "complete"
+}

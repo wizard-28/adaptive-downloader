@@ -1,0 +1,57 @@
+{
+  "regime": "high_capacity",
+  "results": [
+    {
+      "concurrency": 1,
+      "duration_ms": 66140.576,
+      "file_size": 33554432,
+      "label": "high_capacity",
+      "latency_ms": 0,
+      "link": 0,
+      "loss_percent": 0,
+      "output_size": 33554432,
+      "rate": 524288,
+      "sha_ok": true,
+      "wallclock_bps": 507319.9241566932
+    },
+    {
+      "concurrency": 4,
+      "duration_ms": 16366.838,
+      "file_size": 33554432,
+      "label": "high_capacity",
+      "latency_ms": 0,
+      "link": 0,
+      "loss_percent": 0,
+      "output_size": 33554432,
+      "rate": 524288,
+      "sha_ok": true,
+      "wallclock_bps": 2050147.4994742416
+    },
+    {
+      "concurrency": 8,
+      "duration_ms": 8133.475,
+      "file_size": 33554432,
+      "label": "high_capacity",
+      "latency_ms": 0,
+      "link": 0,
+      "loss_percent": 0,
+      "output_size": 33554432,
+      "rate": 524288,
+      "sha_ok": true,
+      "wallclock_bps": 4125473.060407759
+    },
+    {
+      "concurrency": 16,
+      "duration_ms": 4074.702,
+      "file_size": 33554432,
+      "label": "high_capacity",
+      "latency_ms": 0,
+      "link": 0,
+      "loss_percent": 0,
+      "output_size": 33554432,
+      "rate": 524288,
+      "sha_ok": true,
+      "wallclock_bps": 8234818.644406388
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "study": "n-dependent-server-joint-ns-track2",
+  "phase": "TRACK_2_PRE_SCREEN",
+  "status": "STOPPED_AT_PRE_SCREEN_PER_FROZEN_RULE",
+  "evidence_type": "DETERMINISTIC_ANALYTICAL_SIMULATION of the exact proposed live server semantics (no live execution)",
+  "mechanism": {
+    "source": "python/rl/sim_env_v5.py (exact semantics reproduced)",
+    "failure_probability": "p_eff(k) = min(0.9, loss + congestion * (k - 1)) per request attempt",
+    "per_extra_connection_overhead_s": "overhead * (k - 1), added to the service time",
+    "fair_share": "per = min(rate, link / k)",
+    "service_time": "svc = latency + overhead*(k-1) + size / per",
+    "failure_cost": "a failed attempt consumes the full service time, then fails; the downloader retries the SAME range (existing retry semantics, max 3 attempts, then the download aborts)",
+    "timeout": "30 s per attempt (client); an attempt whose service exceeds the timeout is aborted and retried",
+    "client_cycle_overhead_s": 0.088,
+    "retry_delay_s": 0.1,
+    "not_used": "R_eff = R*(1-loss_eff) rate-reduction substitute (explicitly rejected)"
+  },
+  "predeclared_family": {
+    "GOOD": {"rate_bytes_per_second": 2621440, "link": 0, "loss": 0.004, "congestion": 0.0, "overhead_s": 0.02, "latency_s": 0.02},
+    "DEGRADED_candidates": {
+      "rate_MiBps": [0.4, 0.5],
+      "loss": [0.02, 0.03],
+      "congestion": [0.02, 0.04, 0.06],
+      "link": 0,
+      "overhead_s": 0.02,
+      "latency_s": 0.02,
+      "count": 12
+    },
+    "DEGRADED_link_variants": {
+      "rate_MiBps": 1.0,
+      "link_MiBps": [2.0, 3.0],
+      "congestion": [0.04, 0.06],
+      "loss": 0.03,
+      "count": 4
+    },
+    "N_grid": [1, 2, 4, 8, 16],
+    "S_set": "exact Track-1 frozen action set (256 KiB plus 1..16 MiB, 17 values)",
+    "seeds_per_cell": 20
+  },
+  "predeclared_selection_rule": {
+    "qualifies_iff": [
+      "N*_GOOD != N*_DEGRADED and S*_GOOD != S*_DEGRADED (joint argmins over viable cells)",
+      "material: max(penalty_GOOD, penalty_DEGRADED) >= 0.10, penalty_X = T_X(best_other)/T_X(best_X) - 1",
+      "separated: coordinate-wise margins >= 0.05 in both states (best at the optimum vs the best at any other N at the same S, and any other S at the same N)",
+      "reachable: abort rate at each optimum <= 0.20 and the second-best distinct cell completes in >= 50% of seeds"
+    ],
+    "tie_break": "smallest qualifying file size, then max min(penalty_GOOD, penalty_DEGRADED), then larger congestion, then larger rate",
+    "stop_rule": "if no candidate qualifies at any predeclared file size: STOP TRACK 2; do not tune"
+  },
+  "pre_screen_revisions": [
+    {"rev": 0, "design": "F=32 MiB; separation vs second-best distinct cell",
+     "finding": "N dimension structurally degenerate (F/S < N at large S); exact ties made the separation metric meaningless; no candidate qualified",
+     "action": "evaluation-design correction only (workload scale + coordinate-wise separation); candidate family unchanged"},
+    {"rev": 1, "design": "F=64 MiB; coordinate-wise separation",
+     "finding": "movement present for congestion>=0.04 but optima plateaued/cliff-bound; no candidate qualified",
+     "action": "added the predeclared workload-scale set F in {64,128,256} MiB (the degeneracy is a function of F/S vs N); family and rule unchanged"},
+    {"rev": 2, "design": "F in {64,128,256} MiB; coordinate-wise separation",
+     "finding": "no candidate qualifies at any file size; see results"},
+    {"rev": 2, "action": "STOP TRACK 2 per the frozen rule; no live server extension, no live gate, no adaptive run"}
+  ],
+  "results_summary": {
+    "selected": null,
+    "strongest_candidate": {
+      "file_bytes": 67108864,
+      "state": "D_r0.4_l0.02_c0.04",
+      "good_optimum": {"N": 16, "S": 4194304, "completion_s": 1.92},
+      "degraded_optimum": {"N": 8, "S": 11534336, "completion_s": 27.60},
+      "penalty_good": 1.344,
+      "penalty_degraded": 0.107,
+      "N_margin_good": 0.468, "N_margin_degraded": 0.0,
+      "S_margin_good": 0.143, "S_margin_degraded": 0.010,
+      "degraded_completions_at_optimum_S": {"1": 160.56, "2": 82.74, "4": 55.13, "8": 27.60, "16": 27.60},
+      "failures": [
+        "N* movement is degenerate: N=8 and N=16 tie at the degraded optimum (N plateau)",
+        "S* margin is 1.0 % (the optimum sits on the slope just below the 12 MiB timeout cliff)",
+        "the best single fixed configuration (16,4M) is within 10.7 % of the degraded optimum, so the adaptive value is marginal",
+        "high-congestion cells abort under the 3-attempt retry limit (p_eff(16)=0.62 -> 23.8 % per-range abort)"
+      ]
+    },
+    "structural_reasons": {
+      "abort_cliff": "the failure-based N penalty plus the downloader's 3-attempt retry limit turns high-concurrency cells into aborts rather than smoothly slower cells",
+      "per_request_failure_cost": "the failure probability is size-independent, so the degraded state favours fewer, larger requests, pushing S* to the timeout boundary",
+      "n_degeneracy_at_boundary": "at the timeout-boundary S* the request count is small, so N beyond it is irrelevant (plateau)",
+      "conclusion": "the analytical interior N optimum of sim_env_v5 does not survive the live retry/abort semantics as a genuine state-dependent joint opportunity"
+    }
+  },
+  "not_executed": ["live server extension", "live fixed-grid gate", "adaptive experiment", "aria2 comparison", "confirmatory protocol"],
+  "immutability": {
+    "frozen_track1_modified": false,
+    "frozen_aria2_benchmark_modified": false,
+    "prior_evidence_modified": false,
+    "environment_changed": false
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "run_id": "of-c2-s33554432",
+  "system": "ours",
+  "config": {
+    "chunk_bytes": 33554432,
+    "concurrency": 2,
+    "file_size_bytes": 536870912,
+    "max_retries": 3,
+    "system": "ours",
+    "timeout_ms": 30000
+  },
+  "completion_ms": 147530.419,
+  "wallclock_bytes_per_second": 3639052.3096121624,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": false,
+  "netem_status": "applied",
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 121,
+      "end_ms": 30040,
+      "rate_bytes_per_second": 655360,
+      "range_start": 33554432,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 2,
+      "start_ms": 121,
+      "end_ms": 30041,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 33554431,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 30133,
+      "end_ms": 44516,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 0,
+      "range_end": 33554431,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 30137,
+      "end_ms": 44516,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 33554432,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 5,
+      "start_ms": 44627,
+      "end_ms": 59042,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 67108864,
+      "range_end": 100663295,
+      "has_range": true
+    },
+    {
+      "index": 6,
+      "start_ms": 44639,
+      "end_ms": 59055,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 100663296,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 7,
+      "start_ms": 59170,
+      "end_ms": 73632,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 134217728,
+      "range_end": 167772159,
+      "has_range": true
+    },
+    {
+      "index": 8,
+      "start_ms": 59180,
+      "end_ms": 73647,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 167772160,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 9,
+      "start_ms": 73904,
+      "end_ms": 88378,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 201326592,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 10,
+      "start_ms": 74241,
+      "end_ms": 88724,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 234881024,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 11,
+      "start_ms": 88647,
+      "end_ms": 103227,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 268435456,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 12,
+      "start_ms": 89016,
+      "end_ms": 103599,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 301989888,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 13,
+      "start_ms": 103462,
+      "end_ms": 117939,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 335544320,
+      "range_end": 369098751,
+      "has_range": true
+    },
+    {
+      "index": 14,
+      "start_ms": 103864,
+      "end_ms": 118339,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 369098752,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 15,
+      "start_ms": 118048,
+      "end_ms": 132468,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 402653184,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 16,
+      "start_ms": 118458,
+      "end_ms": 132871,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 436207616,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 17,
+      "start_ms": 132605,
+      "end_ms": 147059,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 469762048,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 18,
+      "start_ms": 132988,
+      "end_ms": 147460,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 503316480,
+      "range_end": 536870911,
+      "has_range": true
+    }
+  ],
+  "total_requests": 18,
+  "successful_requests": 16,
+  "failed_requests": 2,
+  "server_bytes": 536870912,
+  "range_count": 18,
+  "aria2_exit": 0,
+  "aria2_output_tail": "",
+  "client_requests": 18,
+  "client_successful": 16,
+  "client_failed": 2,
+  "client_retries": 2,
+  "client_bytes": 574980096,
+  "err": ""
+}

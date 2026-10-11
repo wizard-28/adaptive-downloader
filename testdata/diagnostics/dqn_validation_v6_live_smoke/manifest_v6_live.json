@@ -1,0 +1,202 @@
+{
+  "chunk_size": 1048576,
+  "concurrency_bounds": [
+    1,
+    16
+  ],
+  "conditions": [
+    {
+      "id": "A2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 5242880,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 921600,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4194304,
+          "latency_ms": 50,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 20,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 110,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 20,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 40,
+          "loss_percent": 3.2
+        },
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "phases": [
+        {
+          "rate": 655360,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 163840,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 2560000,
+          "link": 0,
+          "latency_ms": 40,
+          "loss_percent": 0.4
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "phases": [
+        {
+          "rate": 8388608,
+          "link": 4608000,
+          "latency_ms": 20,
+          "loss_percent": 0.4
+        },
+        {
+          "rate": 8388608,
+          "link": 1843200,
+          "latency_ms": 110,
+          "loss_percent": 3.8
+        },
+        {
+          "rate": 8388608,
+          "link": 3584000,
+          "latency_ms": 60,
+          "loss_percent": 1.7
+        }
+      ]
+    }
+  ],
+  "file_size": 16777216,
+  "gate_d_rule": "v6 live constant fraction \u003c 0.9 AND ramp-to-max fraction \u003c 0.9 AND \u003e=2/5 conditions with phase-to-phase time-weighted concurrency spread \u003e= 2.0",
+  "label": "Candidate v6 live transfer validation (no aria2 comparison)",
+  "model_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887",
+  "note": "shared bandwidth/latency/loss via tc/netem on lo (mid-run qdisc replace); server rate per phase; authoritative controller concurrency",
+  "order_seed": 20260925,
+  "phase_seconds": 2,
+  "policies": [
+    {
+      "Name": "v6",
+      "Fixed": 0
+    },
+    {
+      "Name": "fixed-1",
+      "Fixed": 1
+    },
+    {
+      "Name": "fixed-2",
+      "Fixed": 2
+    },
+    {
+      "Name": "fixed-3",
+      "Fixed": 3
+    },
+    {
+      "Name": "fixed-4",
+      "Fixed": 4
+    },
+    {
+      "Name": "fixed-5",
+      "Fixed": 5
+    },
+    {
+      "Name": "fixed-6",
+      "Fixed": 6
+    },
+    {
+      "Name": "fixed-7",
+      "Fixed": 7
+    },
+    {
+      "Name": "fixed-8",
+      "Fixed": 8
+    },
+    {
+      "Name": "fixed-9",
+      "Fixed": 9
+    },
+    {
+      "Name": "fixed-10",
+      "Fixed": 10
+    },
+    {
+      "Name": "fixed-11",
+      "Fixed": 11
+    },
+    {
+      "Name": "fixed-12",
+      "Fixed": 12
+    },
+    {
+      "Name": "fixed-13",
+      "Fixed": 13
+    },
+    {
+      "Name": "fixed-14",
+      "Fixed": 14
+    },
+    {
+      "Name": "fixed-15",
+      "Fixed": 15
+    },
+    {
+      "Name": "fixed-16",
+      "Fixed": 16
+    }
+  ],
+  "reps": 1
+}

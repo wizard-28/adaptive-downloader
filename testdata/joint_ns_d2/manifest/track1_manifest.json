@@ -1,0 +1,111 @@
+{
+  "study": "joint-ns-d2-track1",
+  "phase": "TRACK_1_FRESH_JOINT_N+S_D2_BENCHMARK",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "generated_utc": "2026-09-29T10:45:00Z",
+  "evidence_type": "LIVE (real D2 workload: per-response pacing + tc/netem + real downloader policies; aria2 reference)",
+  "immutability": {
+    "frozen_aria2_benchmark_modified": false,
+    "historical_evidence_modified": false,
+    "frozen_62_4_percent_result": "testdata/aria2_competitive_benchmark/final_reproduction/ (30 pairs, ratio 0.3756) unchanged",
+    "prior_screens_modified": false
+  },
+  "workload": {
+    "file_size_bytes": 536870912,
+    "schedule": "d2",
+    "per_response_pacing": "rate sampled at request start and held for the whole response",
+    "phases": [
+      {"from_s": 0.0, "rate_bytes_per_second": 655360},
+      {"from_s": 2.0, "rate_bytes_per_second": 163840},
+      {"from_s": 4.0, "rate_bytes_per_second": 2560000}
+    ],
+    "netem": {"interface": "lo", "latency_ms": 40, "loss_percent": 0.4},
+    "http": "HTTP/1.1",
+    "server": "logical deterministic object (memory-safe; no materialization)",
+    "content_verification": "full SHA-256 + byte-exact check against the logical generator",
+    "fresh_server_and_output_per_run": true,
+    "measurement": "completion_ms = wall clock from before the download call to after it returns (same definition as the frozen benchmark)"
+  },
+  "modes": {
+    "fixed": {"policy": "none", "concurrency": 16, "chunk_bytes": 4194304,
+              "note": "the frozen best fixed configuration from the competitive benchmark"},
+    "n-only": {"policy": "policy.NewThroughputPolicy", "adaptive": "concurrency only",
+               "fixed_chunk_bytes": 4194304},
+    "s-only": {"policy": "policy.NewChunkSizePolicy", "adaptive": "chunk size only",
+               "fixed_concurrency": 4},
+    "joint": {"policy": "policy.NewJointPolicy", "adaptive": "concurrency AND chunk size"},
+    "aria2": {"purpose": "environment consistency checks only (not part of the blocked matrix)",
+              "version": "1.37.0",
+              "args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16"}
+  },
+  "frozen_controller_configuration": {
+    "initial_concurrency": 4,
+    "initial_chunk_bytes": 4194304,
+    "concurrency_bounds": [1, 16],
+    "concurrency_transition": "N' = clamp(N +/- 1, 1, 16)",
+    "concurrency_admissible_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "chunk_bounds_bytes": [262144, 16777216],
+    "chunk_step_bytes": 1048576,
+    "chunk_transition": "S' = clamp(S +/- 1048576, 262144, 16777216)",
+    "chunk_admissible_set_bytes": [262144, 1048576, 2097152, 3145728, 4194304, 5242880, 6291456, 7340032, 8388608, 9437184, 10485760, 11534336, 12582912, 13631488, 14680064, 15728640, 16777216],
+    "chunk_admissible_set_note": "starting at 4 MiB with +/- 1 MiB steps clamped to [256 KiB, 16 MiB]: the reachable values are exactly {256 KiB} union {1..16 MiB}",
+    "decision_cadence": "one serialized policy decision per completed attempt (the existing policyRunner path)",
+    "thresholds": {"improvement": 0.10, "degradation": 0.10},
+    "policy_window_attempts": 4,
+    "policy_signal": "ctx.Throughput = windowed PER-REQUEST throughput (bytes / request durations over the last 4 attempts)",
+    "retry_semantics": "same-range retry with original boundaries, max 3 attempts (MaxRetries=3), then the download fails",
+    "timeout_ms": 30000,
+    "policy_rules": {
+      "throughput_policy": "compare ctx.Throughput with the previous decision: relative change >= +10% -> increase concurrency (if < max); <= -10% -> decrease (if > min); else no change; first decision is a no-op baseline",
+      "chunk_policy": "same relative rule applied to chunk size (step +/- 1 MiB, clamped)",
+      "joint_policy": "same relative rule; on each actionable decision, acts on the preferred dimension (concurrency first, alternating after each applied action), falling back to the other dimension at a bound"
+    }
+  },
+  "experimental_design": {
+    "blocks": 20,
+    "modes_per_block": ["fixed", "n-only", "s-only", "joint"],
+    "mode_order": "independently randomized within each block",
+    "planned_runs": 80,
+    "early_stopping": false,
+    "parameter_tuning_after_results": false,
+    "fresh_server_output_per_run": true,
+    "identical_conditions_within_block": true,
+    "aria2_consistency_runs": 3,
+    "aria2_consistency_note": "three fresh aria2 runs with the frozen flags, outside the blocked matrix, to check cross-session environment consistency against the immutable 30-pair reference"
+  },
+  "primary_comparisons": {
+    "A": "joint adaptive vs the best fixed configuration in this study (fixed mode, N=16/S=4 MiB), paired per block",
+    "B": "joint adaptive vs the frozen aria2 configuration: joint runs vs the immutable 30-pair aria2 distribution from testdata/aria2_competitive_benchmark/final_reproduction/pairs.json (unpaired geometric ratio + bootstrap CI); the three fresh aria2 consistency runs are reported separately",
+    "note": "beating aria2 alone is not evidence that adaptation added value; comparison A is the adaptation-value test"
+  },
+  "statistics": {
+    "primary_metric": "completion time (ms)",
+    "paired_ratios": "per-block ratio joint/fixed; geometric mean over blocks",
+    "confidence_interval": "95% bootstrap percentile CI (10000 resamples) on the geometric mean ratio",
+    "win_loss": "per-block joint faster/slower counts",
+    "beats_rule": "mode X beats mode Y iff geometric ratio(X/Y) <= 0.95 (>= 5% faster) AND the 95% CI upper bound < 1.0",
+    "aria2_ratio": "geometric mean(joint completions) / geometric mean(frozen aria2 30 completions) with a bootstrap CI over both samples"
+  },
+  "adaptation_evidence": {
+    "required_per_run": ["decision trajectory", "N-change count", "S-change count", "unique (N,S) states", "final (N,S)", "time in each state"],
+    "joint_adaptation_demonstrated": "at least 50% of valid joint runs changed BOTH N and S at least once; otherwise classification E",
+    "alignment_check": "whether N/S changes align with the observed D2 pacing phases (request rate transitions at 2 s and 4 s)"
+  },
+  "classification_rules": {
+    "A": "BEATS_FIXED_AND_ARIA2: joint beats fixed (rule above) and beats aria2 (rule above)",
+    "B": "BEATS_FIXED_ONLY: joint beats fixed but not aria2",
+    "C": "BEATS_ARIA2_ONLY: joint beats aria2 but not fixed",
+    "D": "NO_CLEAR_ADAPTIVE_GAIN: neither comparison meets the beats rule",
+    "E": "NOT_DEMONSTRATED: joint adaptation not demonstrated (fewer than 50% of valid joint runs changed both N and S); overrides A-D"
+  },
+  "invalid_run_policy": {
+    "preserve": true,
+    "replace": false,
+    "reasons": ["netem unavailable", "runner exit code != 0", "content verification failed", "process killed/OOM", "missing or unparsable result JSON"]
+  },
+  "infrastructure": {
+    "runner": "testdata/joint_ns_d2/tools/bench_ns.go (mode fixed|n-only|s-only|joint|aria2)",
+    "driver": "testdata/joint_ns_d2/tools/run_track1.py",
+    "memory": "logical server; worst-case in-flight response buffers 16 x 16 MiB = 256 MiB; container available memory ~690 MiB"
+  }
+}

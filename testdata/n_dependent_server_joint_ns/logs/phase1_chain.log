@@ -1,0 +1,151 @@
+p2 causal_joint   r00    58.5s valid=True final=(4,4194304)
+p2 causal_n_only  r00    62.0s valid=True final=(4,1048576)
+p2 causal_s_only  r00    81.9s valid=True final=(16,4194304)
+p2 fixed_16_1M    r00    76.8s valid=True final=(16,1048576)
+p2 fixed_4_4M     r00    85.5s valid=True final=(4,4194304)
+p2 fixed_4_1M     r00    87.9s valid=True final=(4,1048576)
+p2 aria2          r00    53.1s valid=True final=(0,0)
+p2 causal_joint   r01    58.8s valid=True final=(4,4194304)
+p2 causal_n_only  r01    62.1s valid=True final=(4,1048576)
+p2 causal_s_only  r01    82.3s valid=True final=(16,4194304)
+p2 fixed_16_1M    r01    76.6s valid=True final=(16,1048576)
+p2 fixed_4_4M     r01    85.6s valid=True final=(4,4194304)
+p2 fixed_4_1M     r01    88.6s valid=True final=(4,1048576)
+p2 aria2          r01    53.4s valid=True final=(0,0)
+p2 causal_joint   r02    58.8s valid=True final=(4,4194304)
+p2 causal_n_only  r02    61.7s valid=True final=(4,1048576)
+p2 causal_s_only  r02    82.3s valid=True final=(16,4194304)
+p2 fixed_16_1M    r02    77.0s valid=True final=(16,1048576)
+p2 fixed_4_4M     r02    85.8s valid=True final=(4,4194304)
+p2 fixed_4_1M     r02    88.0s valid=True final=(4,1048576)
+p2 aria2          r02    53.6s valid=True final=(0,0)
+p2 causal_joint   r03    58.8s valid=True final=(4,4194304)
+p2 causal_n_only  r03    62.3s valid=True final=(4,1048576)
+p2 causal_s_only  r03    82.2s valid=True final=(16,4194304)
+p2 fixed_16_1M    r03    76.8s valid=True final=(16,1048576)
+p2 fixed_4_4M     r03    84.4s valid=True final=(4,4194304)
+p2 fixed_4_1M     r03    87.9s valid=True final=(4,1048576)
+p2 aria2          r03    53.0s valid=True final=(0,0)
+p2 causal_joint   r04    59.1s valid=True final=(4,4194304)
+p2 causal_n_only  r04    62.3s valid=True final=(4,1048576)
+p2 causal_s_only  r04    82.2s valid=True final=(16,4194304)
+p2 fixed_16_1M    r04    76.2s valid=True final=(16,1048576)
+p2 fixed_4_4M     r04    85.6s valid=True final=(4,4194304)
+p2 fixed_4_1M     r04    88.6s valid=True final=(4,1048576)
+p2 aria2          r04    54.8s valid=True final=(0,0)
+p2 causal_joint   r05    58.9s valid=True final=(4,4194304)
+p2 causal_n_only  r05    61.1s valid=True final=(4,1048576)
+p2 causal_s_only  r05    82.2s valid=True final=(16,4194304)
+p2 fixed_16_1M    r05    76.4s valid=True final=(16,1048576)
+p2 fixed_4_4M     r05    85.6s valid=True final=(4,4194304)
+p2 fixed_4_1M     r05    88.0s valid=True final=(4,1048576)
+p2 aria2          r05    53.3s valid=True final=(0,0)
+p2 causal_joint   r06    58.3s valid=True final=(4,4194304)
+p2 causal_n_only  r06    62.1s valid=True final=(4,1048576)
+p2 causal_s_only  r06    82.0s valid=True final=(16,4194304)
+p2 fixed_16_1M    r06    77.0s valid=True final=(16,1048576)
+p2 fixed_4_4M     r06    85.6s valid=True final=(4,4194304)
+p2 fixed_4_1M     r06    89.0s valid=True final=(4,1048576)
+p2 aria2          r06    53.7s valid=True final=(0,0)
+p2 causal_joint   r07    58.8s valid=True final=(4,4194304)
+p2 causal_n_only  r07    62.1s valid=True final=(4,1048576)
+p2 causal_s_only  r07    81.3s valid=True final=(16,4194304)
+p2 fixed_16_1M    r07    76.5s valid=True final=(16,1048576)
+p2 fixed_4_4M     r07    85.6s valid=True final=(4,4194304)
+p2 fixed_4_1M     r07    88.3s valid=True final=(4,1048576)
+p2 aria2          r07    53.1s valid=True final=(0,0)
+p2 causal_joint   r08    58.2s valid=True final=(4,4194304)
+p2 causal_n_only  r08    62.0s valid=True final=(4,1048576)
+p2 causal_s_only  r08    82.1s valid=True final=(16,4194304)
+p2 fixed_16_1M    r08    76.3s valid=True final=(16,1048576)
+p2 fixed_4_4M     r08    85.5s valid=True final=(4,4194304)
+p2 fixed_4_1M     r08    88.6s valid=True final=(4,1048576)
+p2 aria2          r08    54.4s valid=True final=(0,0)
+p2 causal_joint   r09    58.8s valid=True final=(4,4194304)
+p2 causal_n_only  r09    62.1s valid=True final=(4,1048576)
+p2 causal_s_only  r09    82.2s valid=True final=(16,4194304)
+p2 fixed_16_1M    r09    77.3s valid=True final=(16,1048576)
+p2 fixed_4_4M     r09    85.5s valid=True final=(4,4194304)
+p2 fixed_4_1M     r09    88.6s valid=True final=(4,1048576)
+p2 aria2          r09    53.3s valid=True final=(0,0)
+adaptive driver done
+timeout 20s n=4  s=1 MiB r0    90.6s valid=True
+timeout 20s n=4  s=1 MiB r1    88.3s valid=True
+timeout 20s n=4  s=4 MiB r0    86.3s valid=True
+timeout 20s n=4  s=4 MiB r1    86.7s valid=True
+timeout 20s n=4  s=16MiB r0   100.2s valid=True
+timeout 20s n=4  s=16MiB r1   100.8s valid=True
+timeout 20s n=8  s=1 MiB r0    94.5s valid=True
+timeout 20s n=8  s=1 MiB r1    92.1s valid=True
+timeout 20s n=8  s=4 MiB r0    91.6s valid=True
+timeout 20s n=8  s=4 MiB r1    91.5s valid=True
+timeout 20s n=8  s=16MiB r0    80.1s valid=False
+timeout 20s n=8  s=16MiB r1    80.1s valid=False
+timeout 20s n=16 s=1 MiB r0   115.1s valid=True
+timeout 20s n=16 s=1 MiB r1   115.5s valid=True
+timeout 20s n=16 s=4 MiB r0   112.8s valid=True
+timeout 20s n=16 s=4 MiB r1   112.9s valid=True
+timeout 20s n=16 s=16MiB r0    80.1s valid=False
+timeout 20s n=16 s=16MiB r1    80.1s valid=False
+timeout 30s n=4  s=1 MiB r0    90.3s valid=True
+timeout 30s n=4  s=1 MiB r1    90.6s valid=True
+timeout 30s n=4  s=4 MiB r0    86.3s valid=True
+timeout 30s n=4  s=4 MiB r1    86.6s valid=True
+timeout 30s n=4  s=16MiB r0    96.4s valid=True
+timeout 30s n=4  s=16MiB r1    96.9s valid=True
+timeout 30s n=8  s=1 MiB r0    92.8s valid=True
+timeout 30s n=8  s=1 MiB r1    92.8s valid=True
+timeout 30s n=8  s=4 MiB r0    91.8s valid=True
+timeout 30s n=8  s=4 MiB r1    92.0s valid=True
+timeout 30s n=8  s=16MiB r0    93.7s valid=True
+timeout 30s n=8  s=16MiB r1    93.8s valid=True
+timeout 30s n=16 s=1 MiB r0   115.4s valid=True
+timeout 30s n=16 s=1 MiB r1   115.4s valid=True
+timeout 30s n=16 s=4 MiB r0   112.4s valid=True
+timeout 30s n=16 s=4 MiB r1   112.2s valid=True
+timeout 30s n=16 s=16MiB r0   120.1s valid=False
+timeout 30s n=16 s=16MiB r1   120.1s valid=False
+timeout 60s n=4  s=1 MiB r0    89.9s valid=True
+timeout 60s n=4  s=1 MiB r1    89.7s valid=True
+timeout 60s n=4  s=4 MiB r0    86.6s valid=True
+timeout 60s n=4  s=4 MiB r1    86.3s valid=True
+timeout 60s n=4  s=16MiB r0    97.5s valid=True
+timeout 60s n=4  s=16MiB r1    97.0s valid=True
+timeout 60s n=8  s=1 MiB r0    91.1s valid=True
+timeout 60s n=8  s=1 MiB r1    94.7s valid=True
+timeout 60s n=8  s=4 MiB r0    91.7s valid=True
+timeout 60s n=8  s=4 MiB r1    91.6s valid=True
+timeout 60s n=8  s=16MiB r0    93.9s valid=True
+timeout 60s n=8  s=16MiB r1    93.7s valid=True
+timeout 60s n=16 s=1 MiB r0   115.4s valid=True
+timeout 60s n=16 s=1 MiB r1   115.6s valid=True
+timeout 60s n=16 s=4 MiB r0   112.3s valid=True
+timeout 60s n=16 s=4 MiB r1   112.3s valid=True
+timeout 60s n=16 s=16MiB r0   108.8s valid=True
+timeout 60s n=16 s=16MiB r1   108.9s valid=True
+timeout 20s argmin=4/4194304 (86.5s) 4/4M-optimum=True
+timeout 30s argmin=4/4194304 (86.4s) 4/4M-optimum=True
+timeout 60s argmin=4/4194304 (86.5s) 4/4M-optimum=True
+timeout sensitivity done
+precision n=4 s=1 MiB r0    90.4s valid=True
+precision n=4 s=1 MiB r1    89.4s valid=True
+precision n=4 s=1 MiB r2    89.3s valid=True
+precision n=4 s=1 MiB r3    89.6s valid=True
+precision n=4 s=4 MiB r0    86.9s valid=True
+precision n=4 s=4 MiB r1    86.3s valid=True
+precision n=4 s=4 MiB r2    86.1s valid=True
+precision n=4 s=4 MiB r3    86.4s valid=True
+precision n=4 s=16MiB r0    97.0s valid=True
+precision n=4 s=16MiB r1    97.1s valid=True
+precision n=4 s=16MiB r2    97.5s valid=True
+precision n=4 s=16MiB r3    96.8s valid=True
+{
+ "best": "4194304",
+ "second": "1048576",
+ "margin": 0.03743448349148468,
+ "ci95_low": 0.03092594999617008,
+ "ci95_high": 0.04448740758091185,
+ "criterion": 0.05,
+ "criterion_state": "reported, unchanged; not redefined after the fact"
+}
+precision replication done

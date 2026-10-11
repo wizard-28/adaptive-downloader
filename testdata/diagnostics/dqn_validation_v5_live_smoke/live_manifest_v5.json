@@ -1,0 +1,88 @@
+{
+  "action_names": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "chunk_size": 1048576,
+  "concurrency_bounds": [
+    1,
+    4
+  ],
+  "expected_runs": 4,
+  "file_size": 16777216,
+  "gates": {
+    "A": "every required run present and valid; no required cell has unavailable netem",
+    "B": "NOT READY if constant fraction \u003e= 0.9, ramp-to-max fraction \u003e= 0.9, monotone-decrease fraction \u003e= 0.9, worst-scenario dominant single-concurrency time fraction \u003e= 0.9, or \u003c 2 distinct dominant actual concurrency values across scenarios",
+    "C": "for every valid v5 run in a wall-clock transition scenario the logs establish transition concurrency, first subsequent decision, whether concurrency changed, and reaction latency"
+  },
+  "go_version": "go1.27.1",
+  "label": "Candidate v5 live transfer validation (simulator-trained; no aria2 comparison)",
+  "max_retries": 3,
+  "model_path": "testdata/diagnostics/dqn_validation_v5/final_dqn_candidate_v5.json",
+  "model_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "model_sha256_expected": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "num_actions": 3,
+  "order_seed": 20260925,
+  "policies": [
+    {
+      "concurrency": 1,
+      "kind": "fixed",
+      "name": "fixed-1"
+    },
+    {
+      "bounds": [
+        1,
+        4
+      ],
+      "initial_concurrency": 1,
+      "kind": "trained-v5",
+      "name": "v5"
+    }
+  ],
+  "reps": 1,
+  "run_order": [
+    {
+      "order_index": 0,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 1,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 2,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 3,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "baseline"
+    }
+  ],
+  "scenarios": [
+    {
+      "initial_rate": 4194304,
+      "name": "baseline",
+      "subsequent_rate": 4194304,
+      "transition_after": ""
+    },
+    {
+      "initial_rate": 524288,
+      "name": "server-throttle-wallclock",
+      "subsequent_rate": 4194304,
+      "transition_after": "1s"
+    }
+  ],
+  "started_utc": "2026-09-25T12:45:25.012945172Z",
+  "state_spec_version": 2,
+  "sudo": true,
+  "timeout": "30s"
+}

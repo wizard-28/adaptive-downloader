@@ -1,0 +1,8 @@
+Request-granularity sensitivity study (descriptive only; no ranking)
+configuration: internal downloader, fixed policy, chunk=1048576 (min=max=initial), concurrency=4 (min=max), retries=3, timeout=30s
+file=4194304 reps=10
+
+scenario            mean_ms  median_ms      sd_ms   ci95_ms    wallclock attempts   ranges  maxInfl  netem
+server-throttle-wallclock     2055.7     2052.5       16.4      11.7      2040435      4.0      4.0        4   none
+
+valid=10/10 (output byte-match, no duplicate/missing ranges)

@@ -1,0 +1,2 @@
+run b3_o2_16MiB block=3 arm=16777216 order=2 clean=true duration=276.053s attempts=32 retries=0
+cmd: /workspaces/mvp/testdata/salvage_s_stage0s/tools/stage0s_run -block 3 -arm 16777216 -order 2 -run-id b3_o2_16MiB -out /workspaces/mvp/testdata/salvage_s_stage0s/raw/b3_o2_16MiB.json

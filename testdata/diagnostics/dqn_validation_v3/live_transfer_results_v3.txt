@@ -1,0 +1,32 @@
+DQN real-downloader transfer validation (FINAL DQN CANDIDATE v1; no aria2 comparison)
+model_sha256: 96361535edd3216eabebf2d1fb72791b3551517bbb3a7bbaf44b7a8ee8eb492b
+reps/scenario: 5 file=4194304
+
+valid runs: 25/25
+
+scenario                        rep    dur_ms     att  finalC finalChunk retries
+baseline                          0    1164.8      88       1     32768       0
+baseline                          1    1157.6      87       1     32768       0
+baseline                          2    1161.2      88       1     32768       0
+baseline                          3    1154.8      87       1     32768       0
+baseline                          4    1160.8      87       1     32768       0
+server-throttle-wallclock         0    1921.2      37       1    458752       0
+server-throttle-wallclock         1    1919.0      37       1    458752       0
+server-throttle-wallclock         2    1913.1      37       1    458752       0
+server-throttle-wallclock         3    1916.2      37       1    458752       0
+server-throttle-wallclock         4    1922.9      37       1    458752       0
+latency                           0    3692.6      75       1    163840       0
+latency                           1    3727.6      76       1    163840       0
+latency                           2    3732.8      76       1    163840       0
+latency                           3    3730.2      76       1    163840       0
+latency                           4    3732.3      76       1    163840       0
+loss                              0    1554.6      73       1    229376       0
+loss                              1    1158.1      87       1     32768       0
+loss                              2    1775.6      88       1     32768       0
+loss                              3    1561.5      69       1    262144       0
+loss                              4    1374.2      86       1     98304       0
+combined                          0    6260.2      90       1     32768       0
+combined                          1    5978.4      86       1     32768       0
+combined                          2    5948.4      56       1    196608       0
+combined                          3    5767.6      78       1     32768       0
+combined                          4    6032.7      67       1    163840       0

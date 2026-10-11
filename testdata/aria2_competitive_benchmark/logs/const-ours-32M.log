@@ -1,0 +1,2 @@
+run const-ours-32M system=ours completion=45.439s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system ours -file-size 536870912 -run-id const-ours-32M -out /workspaces/mvp/testdata/aria2_competitive_benchmark/mechanism/const-ours-32M.json -c 16 -chunk 33554432

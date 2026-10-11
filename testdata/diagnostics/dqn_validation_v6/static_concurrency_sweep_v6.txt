@@ -1,0 +1,12 @@
+Candidate v6 static concurrency sweep (simulator only; GATE A)
+decision_interval=1 seeds=[300, 301, 302]
+
+regime                             best  mean completion s by C (subset)
+no-cap-high-rate                   C16  C1=2.32 C2=1.32 C4=0.82 C8=0.57 C12=0.49 C16=0.45
+shared-cap-2mib                    C1   C1=8.16 C2=8.24 C4=8.28 C8=8.30 C12=8.31 C16=8.31
+shared-cap-6mib-mild-congestion    C5   C1=3.47 C2=3.23 C4=3.17 C8=3.16 C12=3.25 C16=3.41
+shared-cap-10mib-mild-congestion   C9   C1=2.80 C2=2.16 C4=2.04 C8=2.02 C12=2.03 C16=2.09
+shared-cap-3mib-heavy-congestion   C2   C1=6.93 C2=6.55 C4=6.93 C8=7.89 C12=9.40 C16=10.60
+server-throttled-no-cap            C16  C1=16.32 C2=8.32 C4=4.32 C8=2.32 C12=1.65 C16=1.32
+
+distinct best C = [1, 2, 5, 9, 16]; gate A passed = True

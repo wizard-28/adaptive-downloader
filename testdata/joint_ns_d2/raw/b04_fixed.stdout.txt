@@ -1,0 +1,1 @@
+run b04_fixed mode=fixed completion=20.041s output=536870912 verified=true retries=0 decisions=0 err=""

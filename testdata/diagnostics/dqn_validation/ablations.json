@@ -1,0 +1,29 @@
+{
+  "corrupted_state": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.4997070312500003,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 15.0,
+    "median_completion_s": 1.6505208333333334,
+    "n": 32,
+    "sd_completion_s": 0.9609764558278895
+  },
+  "random_policy": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.5191048177083333,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 7.625,
+    "median_completion_s": 1.5624999999999998,
+    "n": 32,
+    "sd_completion_s": 1.0755692043606437
+  },
+  "shuffled_actions": {
+    "mean_chunk_changes": 0.0,
+    "mean_completion_s": 1.658955078125,
+    "mean_conc_changes": 0.0,
+    "mean_steps": 9.71875,
+    "median_completion_s": 1.4352083333333334,
+    "n": 32,
+    "sd_completion_s": 1.2170221300983726
+  }
+}

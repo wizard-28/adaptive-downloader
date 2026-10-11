@@ -1,0 +1,121 @@
+FINAL STAGE-0 TRACE-EXPANSION PROTOCOL (PREREGISTRATION)
+==========================================================
+final_trace_protocol_version: 1
+oracle_protocol_version: 2 (testdata/oracle_preregistration_v3; unchanged)
+Supersedes the §22.75 audit: every item that was UNFROZEN there is frozen here.
+
+FINAL TRACE POPULATION (n=5, frozen):
+  - Verizon-EVDO-driving
+  - Verizon-LTE-driving
+  - ATT-LTE-driving
+  - TMobile-LTE-driving
+  - TMobile-UMTS-driving
+Excluded: ATT-LTE-driving-2016, TMobile-LTE-short, Verizon-LTE-short,
+historical datasets, any other corpus member. Each family counted once.
+
+TRACE ELIGIBILITY (frozen):
+  - full-length trace duration >= 450 s
+  - valid paired .up/.down trace family
+  - genuine mm-link EOF/endpoint validation must pass (protocol-v2 endpoint evidence)
+  - no fatal child error
+  - no trace contamination according to the existing checks (epoch.ExclusionTraceContamination and anchor_alignment)
+  - each included family counted once
+  - technical execution failures may be rerun under the same protocol
+  - a scientifically ineligible trace is not silently replaced
+  - no post-hoc trace substitution based on observed H
+
+REPLAY / ORACLE RULES (frozen, existing):
+  - transport: protocol-v2 watchdog-only (request deadline none, dial deadline none, parent/child watchdog 45 m)
+  - http: HTTP/1.1 only; one request = one contiguous byte range
+  - concurrency: [1, 2, 4, 8, 16]
+  - chunk_size_bytes: 1048576
+  - replay: full-trace uninterrupted fixed-C replay; continuous backlog; trace time t=0 to EOF
+  - measurement: timestamped byte-delivery events mapped through the frozen trace-time anchor (StartupOffset 60 ms, AlignmentTolerance 100 ms)
+  - epoch_duration_s: 120
+  - byte_floor_bytes: 5242880
+  - min_observed_fraction: 0.8
+  - shared_validity: any invalid C invalidates the epoch for all C
+  - final_partial_epoch: excluded
+  - regime_classifier: exact existing classifier (native downlink only; full 120 s epochs; k=max(1,floor(n/3)); degraded=k lowest; good=k highest not degraded; recovering=rate[e]>=1.25*rate[e-1] and not degraded; precedence degraded>recovering>good>middle)
+  - injection_selection: exact existing rule: per regime (degraded,good,recovering) earliest full epoch and, if available, the next distinct one
+  - ladder: 1<->2<->4<->8<->16; at most one step per epoch boundary; no direct jumps
+  - dwell: after a change at boundary e, C_{e+1}=C_e (at least one complete following epoch)
+
+TAU SCOPE: PER-TRACE (frozen).
+  rationale: tau is a transition-cost property of the replayed trace/environment; the existing two-trace tau measurements are reusable only for those two traces, so each newly added trace requires its own tau measurement rather than assuming pooled cross-trace transferability
+  estimator: retain signed raw observations; aggregate with the frozen median rule (regime-specific iff >=2 regimes with valid observations, all medians >0, max/min >= 2.0); formal tau = max(0, estimated tau)
+  reuse v3 only for Verizon-EVDO-driving and Verizon-LTE-driving;
+  fresh per-trace tau required for ATT-LTE-driving, TMobile-LTE-driving,
+  TMobile-UMTS-driving; tau_campaign_v2 excluded.
+
+REUSE RULES:
+  fixed-C: epoch_pilot_v2 reusable for the two current traces; fresh fixed-C
+  required for the three new traces. tau: tau_campaign_v3 reusable only for
+  the two current traces.
+
+HEADROOM: H_j = (T_best_fixed,j - T_constrained,j) / T_best_fixed,j
+
+STATISTICAL DESIGN (frozen):
+  - unit: one trace = one statistical observation
+  - population_estimator: arithmetic mean of the five trace-level H_j values
+  - variability_estimator: ordinary sample standard deviation across the five H_j values
+  - confidence_bound: one-sided 95% Student-t lower confidence bound; df = n-1 (n=5, df=4)
+  - lcb_formula: LCB_95 = mean(H) - t_(0.95, df=n-1) * s(H)/sqrt(n)
+  - pass_criterion: LCB_95 >= 0.10
+  - criterion_meaning: predeclared 10% minimum population-level exploitable-headroom requirement
+  - not_yet_evaluated: True
+
+INVALID / MISSING HANDLING (frozen):
+  - a technical run failure may be rerun under the same protocol
+  - a trace failing a scientific eligibility criterion is not substituted or selectively deleted
+  - do not evaluate the final statistical gate unless all five predefined trace families yield usable trace-level H values
+  - if fewer than five usable traces remain, report the study as failing to reach the preregistered final-gate sample rather than changing n or replacing traces post hoc
+
+EXPERIMENT MATRIX:
+  3 new traces x 5 C = 15 fixed-C runs
+  per-trace tau: ATT 4x8=32, TMobile-LTE 2x8=16, TMobile-UMTS 5x8=40 => 88
+  total conditional new runs = 103
+
+No measured data. No source change. Existing frozen results unchanged.
+
+PROTOCOL AMENDMENT 1 (BOUNDARY-0 INJECTION REALIZATION) - FROZEN BEFORE EXECUTION
+==================================================================================
+amendment_version: 1
+status: FROZEN_BEFORE_EXECUTION
+frozen_at: 2026-09-28T01:53:15Z
+original_protocol_sha256 (json): bc4185579321420efe43e13234e23ceb08d44abb731805de2ed75e011a8c4c51
+No Stage-B (tau) run had started when this amendment was made (0 of 88); no
+measured data exists for the amended case. The original protocol text above is
+preserved unchanged as historical record.
+
+ORIGINAL BOUNDARY-0 SPECIFICATION (unchanged, historical):
+  injection_selection selects, per regime in the order degraded, good,
+  recovering, the earliest full epoch and, if available, the next distinct one.
+  For ATT-LTE-driving the good regime's earliest full epoch is epoch 0 with
+  start_ms = 0, so a switch injection at trace-time 0 ms is part of the frozen
+  ATT 4 x 8 = 32 matrix.
+
+IMPLEMENTATION INCOMPATIBILITY DISCOVERED BEFORE EXECUTION:
+  The frozen switch-injection harness cannot represent the mathematical
+  boundary t = 0. The child applies a scheduled switch only when
+  SwitchAt > 0; SwitchAt = 0 disables the switch
+  (internal/experiment/replay/child.go). Executing the boundary-0 injection
+  with -switch-at 0 would leave the run at the source C and record
+  switch_applied = false, so the measured window would not be governed by the
+  target C. No exact execution of a switch at t = 0 exists in the frozen
+  harness.
+
+BOUNDARY-0 RULE (frozen operational realization):
+  - a preregistered injection timestamp of exactly 0 ms is executed with the
+    earliest fixed positive switch instant of 1 ms;
+  - 1 ms is a fixed protocol constant, not chosen from observed results;
+  - the run still starts at the source C;
+  - the switch must actually be applied and recorded as switch_applied = true;
+  - the target C therefore governs the complete post-switch measurement window
+    [0 ms, 120 000 ms);
+  - the resulting run remains the preregistered boundary-0 injection; it is not
+    a substituted timestamp;
+  - no other rule changes: the remaining three ATT timestamps, all 8
+    directions, the estimator, the classifier, the dwell rule, the epoch rule,
+    and the statistical gate are unchanged; the experiment matrix remains
+    ATT-LTE-driving 4 x 8 = 32 runs and 88 tau runs in total.

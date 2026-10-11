@@ -1,0 +1,38 @@
+{
+  "decision_interval_1": {
+    "mean_avg_concurrency": 1.3056699201316195,
+    "mean_chunk_changes": 20.4375,
+    "mean_completion_s": 13.676158854166681,
+    "mean_conc_changes": 13.4375,
+    "mean_effective_actions_per_mib": 5.15234375,
+    "mean_max_concurrency": 3.125,
+    "mean_requests_per_mib": 21.02734375,
+    "median_completion_s": 13.47810416666669,
+    "n": 32,
+    "sd_completion_s": 9.196897618524975
+  },
+  "decision_interval_8": {
+    "mean_avg_concurrency": 1.4856018133663336,
+    "mean_chunk_changes": 4.15625,
+    "mean_completion_s": 15.710930338541669,
+    "mean_conc_changes": 6.8125,
+    "mean_effective_actions_per_mib": 1.6875,
+    "mean_max_concurrency": 3.09375,
+    "mean_requests_per_mib": 17.9921875,
+    "median_completion_s": 16.252,
+    "n": 32,
+    "sd_completion_s": 10.677180492855204
+  },
+  "dqn_final": {
+    "mean_avg_concurrency": 1.5417856196371544,
+    "mean_chunk_changes": 7.0,
+    "mean_completion_s": 12.701837239583336,
+    "mean_conc_changes": 3.96875,
+    "mean_effective_actions_per_mib": 1.73046875,
+    "mean_max_concurrency": 2.65625,
+    "mean_requests_per_mib": 13.8359375,
+    "median_completion_s": 12.219249999999999,
+    "n": 32,
+    "sd_completion_s": 9.544682858900666
+  }
+}

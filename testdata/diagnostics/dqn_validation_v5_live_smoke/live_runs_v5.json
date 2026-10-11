@@ -1,0 +1,2958 @@
+[
+  {
+    "run_id": "server-throttle-wallclock__fixed-1__rep0",
+    "order_index": 0,
+    "scenario": "server-throttle-wallclock",
+    "policy": "fixed-1",
+    "rep": 0,
+    "order_seed": 20260925,
+    "file_size": 16777216,
+    "chunk_size": 1048576,
+    "run_start_unix_nano": 1790340325037235775,
+    "completion_ms": 6245.067,
+    "wallclock_bps": 2686474.9409413864,
+    "output_size": 16777216,
+    "output_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "expected_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "total_requests": 16,
+    "successful_requests": 16,
+    "failed_requests": 0,
+    "retries": 0,
+    "success_bytes": 16777216,
+    "initial_concurrency": 1,
+    "final_concurrency": 1,
+    "max_in_flight": 1,
+    "mean_in_flight": 0.9972001792627532,
+    "actions": null,
+    "decisions": null,
+    "metrics": [
+      {
+        "RequestID": "a1-r1",
+        "RangeStart": 0,
+        "RangeEnd": 1048575,
+        "Bytes": 1048576,
+        "Duration": 2069931451,
+        "Throughput": 506575.22957749385,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r2",
+        "RangeStart": 1048576,
+        "RangeEnd": 2097151,
+        "Bytes": 1048576,
+        "Duration": 279238330,
+        "Throughput": 3755129.1758549055,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r3",
+        "RangeStart": 2097152,
+        "RangeEnd": 3145727,
+        "Bytes": 1048576,
+        "Duration": 279854263,
+        "Throughput": 3746864.488535592,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r4",
+        "RangeStart": 3145728,
+        "RangeEnd": 4194303,
+        "Bytes": 1048576,
+        "Duration": 278797908,
+        "Throughput": 3761061.2200146066,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r5",
+        "RangeStart": 4194304,
+        "RangeEnd": 5242879,
+        "Bytes": 1048576,
+        "Duration": 279401341,
+        "Throughput": 3752938.3225114867,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r6",
+        "RangeStart": 5242880,
+        "RangeEnd": 6291455,
+        "Bytes": 1048576,
+        "Duration": 277292191,
+        "Throughput": 3781484.0591742448,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r7",
+        "RangeStart": 6291456,
+        "RangeEnd": 7340031,
+        "Bytes": 1048576,
+        "Duration": 277466585,
+        "Throughput": 3779107.3112461455,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r8",
+        "RangeStart": 7340032,
+        "RangeEnd": 8388607,
+        "Bytes": 1048576,
+        "Duration": 279184133,
+        "Throughput": 3755858.145419747,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r9",
+        "RangeStart": 8388608,
+        "RangeEnd": 9437183,
+        "Bytes": 1048576,
+        "Duration": 278527272,
+        "Throughput": 3764715.7223440586,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r10",
+        "RangeStart": 9437184,
+        "RangeEnd": 10485759,
+        "Bytes": 1048576,
+        "Duration": 277867687,
+        "Throughput": 3773652.1699264734,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r11",
+        "RangeStart": 10485760,
+        "RangeEnd": 11534335,
+        "Bytes": 1048576,
+        "Duration": 278528460,
+        "Throughput": 3764699.6648026565,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r12",
+        "RangeStart": 11534336,
+        "RangeEnd": 12582911,
+        "Bytes": 1048576,
+        "Duration": 277961625,
+        "Throughput": 3772376.8523802524,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r13",
+        "RangeStart": 12582912,
+        "RangeEnd": 13631487,
+        "Bytes": 1048576,
+        "Duration": 279868444,
+        "Throughput": 3746674.6340291225,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r14",
+        "RangeStart": 13631488,
+        "RangeEnd": 14680063,
+        "Bytes": 1048576,
+        "Duration": 275026946,
+        "Throughput": 3812630.0540747745,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r15",
+        "RangeStart": 14680064,
+        "RangeEnd": 15728639,
+        "Bytes": 1048576,
+        "Duration": 276252458,
+        "Throughput": 3795716.4529555067,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r16",
+        "RangeStart": 15728640,
+        "RangeEnd": 16777215,
+        "Bytes": 1048576,
+        "Duration": 274843822,
+        "Throughput": 3815170.34790762,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      }
+    ],
+    "server_requests": [
+      {
+        "index": 1,
+        "start": "2026-09-25T12:45:25.038251204Z",
+        "end": "2026-09-25T12:45:27.106226179Z",
+        "rate": 524288,
+        "range": {
+          "Start": 0,
+          "End": 1048575
+        },
+        "has_range": true
+      },
+      {
+        "index": 2,
+        "start": "2026-09-25T12:45:27.107978088Z",
+        "end": "2026-09-25T12:45:27.385809875Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 1048576,
+          "End": 2097151
+        },
+        "has_range": true
+      },
+      {
+        "index": 3,
+        "start": "2026-09-25T12:45:27.387556058Z",
+        "end": "2026-09-25T12:45:27.665836438Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 2097152,
+          "End": 3145727
+        },
+        "has_range": true
+      },
+      {
+        "index": 4,
+        "start": "2026-09-25T12:45:27.667758972Z",
+        "end": "2026-09-25T12:45:27.945106336Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 3145728,
+          "End": 4194303
+        },
+        "has_range": true
+      },
+      {
+        "index": 5,
+        "start": "2026-09-25T12:45:27.946689369Z",
+        "end": "2026-09-25T12:45:28.224624802Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 4194304,
+          "End": 5242879
+        },
+        "has_range": true
+      },
+      {
+        "index": 6,
+        "start": "2026-09-25T12:45:28.226393334Z",
+        "end": "2026-09-25T12:45:28.502763264Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 5242880,
+          "End": 6291455
+        },
+        "has_range": true
+      },
+      {
+        "index": 7,
+        "start": "2026-09-25T12:45:28.503853214Z",
+        "end": "2026-09-25T12:45:28.780841803Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 6291456,
+          "End": 7340031
+        },
+        "has_range": true
+      },
+      {
+        "index": 8,
+        "start": "2026-09-25T12:45:28.781779079Z",
+        "end": "2026-09-25T12:45:29.060343507Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 7340032,
+          "End": 8388607
+        },
+        "has_range": true
+      },
+      {
+        "index": 9,
+        "start": "2026-09-25T12:45:29.061174134Z",
+        "end": "2026-09-25T12:45:29.339147911Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 8388608,
+          "End": 9437183
+        },
+        "has_range": true
+      },
+      {
+        "index": 10,
+        "start": "2026-09-25T12:45:29.340018628Z",
+        "end": "2026-09-25T12:45:29.617307677Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 9437184,
+          "End": 10485759
+        },
+        "has_range": true
+      },
+      {
+        "index": 11,
+        "start": "2026-09-25T12:45:29.618198159Z",
+        "end": "2026-09-25T12:45:29.896193587Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 10485760,
+          "End": 11534335
+        },
+        "has_range": true
+      },
+      {
+        "index": 12,
+        "start": "2026-09-25T12:45:29.8969733Z",
+        "end": "2026-09-25T12:45:30.174388832Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 11534336,
+          "End": 12582911
+        },
+        "has_range": true
+      },
+      {
+        "index": 13,
+        "start": "2026-09-25T12:45:30.175308997Z",
+        "end": "2026-09-25T12:45:30.454655724Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 12582912,
+          "End": 13631487
+        },
+        "has_range": true
+      },
+      {
+        "index": 14,
+        "start": "2026-09-25T12:45:30.455499901Z",
+        "end": "2026-09-25T12:45:30.729977751Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 13631488,
+          "End": 14680063
+        },
+        "has_range": true
+      },
+      {
+        "index": 15,
+        "start": "2026-09-25T12:45:30.730871026Z",
+        "end": "2026-09-25T12:45:31.006636199Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 14680064,
+          "End": 15728639
+        },
+        "has_range": true
+      },
+      {
+        "index": 16,
+        "start": "2026-09-25T12:45:31.007290826Z",
+        "end": "2026-09-25T12:45:31.281653648Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 15728640,
+          "End": 16777215
+        },
+        "has_range": true
+      }
+    ],
+    "server_total_requests": 16,
+    "netem_status": "none",
+    "schedule": {
+      "initial_rate": 524288,
+      "subsequent_rate": 4194304,
+      "transition_after_ms": 1000,
+      "start_unix_nano": 1790340325037235775
+    },
+    "validation": {
+      "output_size_ok": true,
+      "output_sha_ok": true,
+      "range_tiling_ok": true,
+      "success_bytes_ok": true,
+      "progress_monotone": true,
+      "progress_within_total": true,
+      "progress_matches_records": true,
+      "concurrency_bounds_ok": true,
+      "actions_in_space": true,
+      "retry_records_consistent": true,
+      "valid": true
+    },
+    "err": ""
+  },
+  {
+    "run_id": "baseline__fixed-1__rep0",
+    "order_index": 1,
+    "scenario": "baseline",
+    "policy": "fixed-1",
+    "rep": 0,
+    "order_seed": 20260925,
+    "file_size": 16777216,
+    "chunk_size": 1048576,
+    "run_start_unix_nano": 1790340331348224198,
+    "completion_ms": 4425.266,
+    "wallclock_bps": 3791233.3405494723,
+    "output_size": 16777216,
+    "output_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "expected_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "total_requests": 16,
+    "successful_requests": 16,
+    "failed_requests": 0,
+    "retries": 0,
+    "success_bytes": 16777216,
+    "initial_concurrency": 1,
+    "final_concurrency": 1,
+    "max_in_flight": 1,
+    "mean_in_flight": 0.9964781104509256,
+    "actions": null,
+    "decisions": null,
+    "metrics": [
+      {
+        "RequestID": "a1-r1",
+        "RangeStart": 0,
+        "RangeEnd": 1048575,
+        "Bytes": 1048576,
+        "Duration": 275930070,
+        "Throughput": 3800151.2484666854,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r2",
+        "RangeStart": 1048576,
+        "RangeEnd": 2097151,
+        "Bytes": 1048576,
+        "Duration": 274592322,
+        "Throughput": 3818664.6748265596,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r3",
+        "RangeStart": 2097152,
+        "RangeEnd": 3145727,
+        "Bytes": 1048576,
+        "Duration": 274771187,
+        "Throughput": 3816178.8775909757,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r4",
+        "RangeStart": 3145728,
+        "RangeEnd": 4194303,
+        "Bytes": 1048576,
+        "Duration": 274059291,
+        "Throughput": 3826091.7780744024,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r5",
+        "RangeStart": 4194304,
+        "RangeEnd": 5242879,
+        "Bytes": 1048576,
+        "Duration": 273910388,
+        "Throughput": 3828171.7157802717,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r6",
+        "RangeStart": 5242880,
+        "RangeEnd": 6291455,
+        "Bytes": 1048576,
+        "Duration": 274299476,
+        "Throughput": 3822741.5352408476,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r7",
+        "RangeStart": 6291456,
+        "RangeEnd": 7340031,
+        "Bytes": 1048576,
+        "Duration": 274684864,
+        "Throughput": 3817378.157392757,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r8",
+        "RangeStart": 7340032,
+        "RangeEnd": 8388607,
+        "Bytes": 1048576,
+        "Duration": 276398430,
+        "Throughput": 3793711.8528495263,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r9",
+        "RangeStart": 8388608,
+        "RangeEnd": 9437183,
+        "Bytes": 1048576,
+        "Duration": 277505841,
+        "Throughput": 3778572.7184027093,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r10",
+        "RangeStart": 9437184,
+        "RangeEnd": 10485759,
+        "Bytes": 1048576,
+        "Duration": 276055368,
+        "Throughput": 3798426.4084297754,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r11",
+        "RangeStart": 10485760,
+        "RangeEnd": 11534335,
+        "Bytes": 1048576,
+        "Duration": 279262990,
+        "Throughput": 3754797.583453504,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r12",
+        "RangeStart": 11534336,
+        "RangeEnd": 12582911,
+        "Bytes": 1048576,
+        "Duration": 278999896,
+        "Throughput": 3758338.3185203765,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r13",
+        "RangeStart": 12582912,
+        "RangeEnd": 13631487,
+        "Bytes": 1048576,
+        "Duration": 280191047,
+        "Throughput": 3742360.832821328,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r14",
+        "RangeStart": 13631488,
+        "RangeEnd": 14680063,
+        "Bytes": 1048576,
+        "Duration": 279857903,
+        "Throughput": 3746815.754565273,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r15",
+        "RangeStart": 14680064,
+        "RangeEnd": 15728639,
+        "Bytes": 1048576,
+        "Duration": 273974226,
+        "Throughput": 3827279.723750365,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r16",
+        "RangeStart": 15728640,
+        "RangeEnd": 16777215,
+        "Bytes": 1048576,
+        "Duration": 275658808,
+        "Throughput": 3803890.7866132837,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      }
+    ],
+    "server_requests": [
+      {
+        "index": 1,
+        "start": "2026-09-25T12:45:31.348995321Z",
+        "end": "2026-09-25T12:45:31.624026528Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 0,
+          "End": 1048575
+        },
+        "has_range": true
+      },
+      {
+        "index": 2,
+        "start": "2026-09-25T12:45:31.624714679Z",
+        "end": "2026-09-25T12:45:31.898762444Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 1048576,
+          "End": 2097151
+        },
+        "has_range": true
+      },
+      {
+        "index": 3,
+        "start": "2026-09-25T12:45:31.899756851Z",
+        "end": "2026-09-25T12:45:32.173960085Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 2097152,
+          "End": 3145727
+        },
+        "has_range": true
+      },
+      {
+        "index": 4,
+        "start": "2026-09-25T12:45:32.175037393Z",
+        "end": "2026-09-25T12:45:32.448619176Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 3145728,
+          "End": 4194303
+        },
+        "has_range": true
+      },
+      {
+        "index": 5,
+        "start": "2026-09-25T12:45:32.44917784Z",
+        "end": "2026-09-25T12:45:32.722723375Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 4194304,
+          "End": 5242879
+        },
+        "has_range": true
+      },
+      {
+        "index": 6,
+        "start": "2026-09-25T12:45:32.72324607Z",
+        "end": "2026-09-25T12:45:32.99678071Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 5242880,
+          "End": 6291455
+        },
+        "has_range": true
+      },
+      {
+        "index": 7,
+        "start": "2026-09-25T12:45:32.99800741Z",
+        "end": "2026-09-25T12:45:33.272294455Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 6291456,
+          "End": 7340031
+        },
+        "has_range": true
+      },
+      {
+        "index": 8,
+        "start": "2026-09-25T12:45:33.272899634Z",
+        "end": "2026-09-25T12:45:33.54883236Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 7340032,
+          "End": 8388607
+        },
+        "has_range": true
+      },
+      {
+        "index": 9,
+        "start": "2026-09-25T12:45:33.549684219Z",
+        "end": "2026-09-25T12:45:33.826564069Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 8388608,
+          "End": 9437183
+        },
+        "has_range": true
+      },
+      {
+        "index": 10,
+        "start": "2026-09-25T12:45:33.827788534Z",
+        "end": "2026-09-25T12:45:34.103216444Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 9437184,
+          "End": 10485759
+        },
+        "has_range": true
+      },
+      {
+        "index": 11,
+        "start": "2026-09-25T12:45:34.104025421Z",
+        "end": "2026-09-25T12:45:34.382844567Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 10485760,
+          "End": 11534335
+        },
+        "has_range": true
+      },
+      {
+        "index": 12,
+        "start": "2026-09-25T12:45:34.383514349Z",
+        "end": "2026-09-25T12:45:34.660878202Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 11534336,
+          "End": 12582911
+        },
+        "has_range": true
+      },
+      {
+        "index": 13,
+        "start": "2026-09-25T12:45:34.662943073Z",
+        "end": "2026-09-25T12:45:34.941572319Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 12582912,
+          "End": 13631487
+        },
+        "has_range": true
+      },
+      {
+        "index": 14,
+        "start": "2026-09-25T12:45:34.943524605Z",
+        "end": "2026-09-25T12:45:35.221927076Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 13631488,
+          "End": 14680063
+        },
+        "has_range": true
+      },
+      {
+        "index": 15,
+        "start": "2026-09-25T12:45:35.22361096Z",
+        "end": "2026-09-25T12:45:35.497054528Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 14680064,
+          "End": 15728639
+        },
+        "has_range": true
+      },
+      {
+        "index": 16,
+        "start": "2026-09-25T12:45:35.497707339Z",
+        "end": "2026-09-25T12:45:35.772899395Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 15728640,
+          "End": 16777215
+        },
+        "has_range": true
+      }
+    ],
+    "server_total_requests": 16,
+    "netem_status": "none",
+    "validation": {
+      "output_size_ok": true,
+      "output_sha_ok": true,
+      "range_tiling_ok": true,
+      "success_bytes_ok": true,
+      "progress_monotone": true,
+      "progress_within_total": true,
+      "progress_matches_records": true,
+      "concurrency_bounds_ok": true,
+      "actions_in_space": true,
+      "retry_records_consistent": true,
+      "valid": true
+    },
+    "err": ""
+  },
+  {
+    "run_id": "server-throttle-wallclock__v5__rep0",
+    "order_index": 2,
+    "scenario": "server-throttle-wallclock",
+    "policy": "v5",
+    "rep": 0,
+    "order_seed": 20260925,
+    "file_size": 16777216,
+    "chunk_size": 1048576,
+    "run_start_unix_nano": 1790340335801409697,
+    "completion_ms": 3500.631,
+    "wallclock_bps": 4792626.243668642,
+    "output_size": 16777216,
+    "output_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "expected_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "total_requests": 16,
+    "successful_requests": 16,
+    "failed_requests": 0,
+    "retries": 0,
+    "success_bytes": 16777216,
+    "initial_concurrency": 1,
+    "final_concurrency": 3,
+    "max_in_flight": 4,
+    "mean_in_flight": 1.8199971204055536,
+    "actions": [
+      {
+        "decision_index": 0,
+        "time_since_schedule_start_ms": 2066.336,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 1,
+        "concurrency_after": 2,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 15728640
+      },
+      {
+        "decision_index": 1,
+        "time_since_schedule_start_ms": 2345.596,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 2,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 14680064
+      },
+      {
+        "decision_index": 2,
+        "time_since_schedule_start_ms": 2345.768,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 13631488
+      },
+      {
+        "decision_index": 3,
+        "time_since_schedule_start_ms": 2633.722,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 12582912
+      },
+      {
+        "decision_index": 4,
+        "time_since_schedule_start_ms": 2634.421,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 11534336
+      },
+      {
+        "decision_index": 5,
+        "time_since_schedule_start_ms": 2635.106,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 10485760
+      },
+      {
+        "decision_index": 6,
+        "time_since_schedule_start_ms": 2635.202,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 9437184
+      },
+      {
+        "decision_index": 7,
+        "time_since_schedule_start_ms": 2921.32,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 8388608
+      },
+      {
+        "decision_index": 8,
+        "time_since_schedule_start_ms": 2921.748,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 7340032
+      },
+      {
+        "decision_index": 9,
+        "time_since_schedule_start_ms": 2922.3,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 6291456
+      },
+      {
+        "decision_index": 10,
+        "time_since_schedule_start_ms": 2922.37,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 5242880
+      },
+      {
+        "decision_index": 11,
+        "time_since_schedule_start_ms": 3218.211,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 4194304
+      },
+      {
+        "decision_index": 12,
+        "time_since_schedule_start_ms": 3218.326,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 2,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 3145728
+      },
+      {
+        "decision_index": 13,
+        "time_since_schedule_start_ms": 3220.333,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 2,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 2097152
+      },
+      {
+        "decision_index": 14,
+        "time_since_schedule_start_ms": 3220.505,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 1048576
+      },
+      {
+        "decision_index": 15,
+        "time_since_schedule_start_ms": 3500.312,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 0
+      }
+    ],
+    "decisions": [
+      {
+        "index": 0,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 1,
+        "concurrency_after": 1,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 507486.19673223636,
+        "request_duration": 2066215804,
+        "remaining_bytes": 15728640,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0,
+          0.9375,
+          0.0604970689692779,
+          0,
+          0.0604970689692779,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0.125,
+          0
+        ]
+      },
+      {
+        "index": 1,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 2,
+        "concurrency_after": 2,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 894127.6981826291,
+        "request_duration": 279152504,
+        "remaining_bytes": 14680064,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.3333333333333333,
+          0.875,
+          0.10658832766802658,
+          0.01814912069078337,
+          0.04609125869874867,
+          0.01814912069078337,
+          0.279152504,
+          -1,
+          0,
+          0,
+          0,
+          0.25,
+          0.7618758971968559
+        ]
+      },
+      {
+        "index": 2,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 1341095.1062278152,
+        "request_duration": 279050116,
+        "remaining_bytes": 13631488,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.8125,
+          0.15987099483344736,
+          0.04468088278395633,
+          0.05328266716542078,
+          0.02653176209317296,
+          0.279050116,
+          -0.0001023880000000088,
+          0,
+          0,
+          0,
+          0.375,
+          0.49989213951617373
+        ]
+      },
+      {
+        "index": 3,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 1592612.8000591593,
+        "request_duration": 287839278,
+        "remaining_bytes": 12582912,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.75,
+          0.1898542404245328,
+          0.07923791639880363,
+          0.02998324559108545,
+          0.0345570336148473,
+          0.287839278,
+          0.008789161999999962,
+          0,
+          0,
+          0,
+          0.5,
+          0.18754650036625978
+        ]
+      },
+      {
+        "index": 4,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7384661.055085519,
+        "request_duration": 288392775,
+        "remaining_bytes": 11534336,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.6875,
+          0.8803201979500674,
+          0.11242281360652237,
+          0.6904659575255346,
+          0.03318489720771874,
+          0.288392775,
+          0.0005534970000000139,
+          0,
+          0,
+          0.288392775,
+          0.625,
+          1
+        ]
+      },
+      {
+        "index": 5,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7379242.076891869,
+        "request_duration": 288771317,
+        "remaining_bytes": 10485760,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.625,
+          0.8796742054095112,
+          0.3427920289095859,
+          -0.000645992540556195,
+          0.2303692153030635,
+          0.288771317,
+          0.00037854200000003724,
+          0,
+          0,
+          0.577164092,
+          0.75,
+          -0.0007338154254105122
+        ]
+      },
+      {
+        "index": 6,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14497107.30914641,
+        "request_duration": 288134430,
+        "remaining_bytes": 9437184,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.5625,
+          1,
+          0.5038566818595634,
+          0.8485156574552704,
+          0.1614522484743113,
+          0.28813443,
+          -0.0006368870000000304,
+          0,
+          0,
+          0.865298522,
+          0.875,
+          0.9645794457054293
+        ]
+      },
+      {
+        "index": 7,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7290683.753020077,
+        "request_duration": 286232011,
+        "remaining_bytes": 8388608,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.5,
+          0.8691172305369469,
+          0.8711566361611288,
+          -0.8590726323278347,
+          0.367571271168599,
+          0.286232011,
+          -0.0019024189999999885,
+          0,
+          0,
+          1,
+          1,
+          -0.49709389621333
+        ]
+      },
+      {
+        "index": 8,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7289213.902242853,
+        "request_duration": 287567803,
+        "remaining_bytes": 7340032,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.4375,
+          0.8689420106700484,
+          0.8705448144738742,
+          -0.00017521986689850166,
+          0.5150216795163697,
+          0.287567803,
+          0.0013357920000000023,
+          0,
+          0,
+          0,
+          1,
+          -0.00020160671166333865
+        ]
+      },
+      {
+        "index": 9,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7291498.1423090855,
+        "request_duration": 286770491,
+        "remaining_bytes": 6291456,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.375,
+          0.8692143133055074,
+          0.8700639733327264,
+          0.00027230263545896527,
+          0.36056774162152827,
+          0.286770491,
+          -0.0007973119999999945,
+          0,
+          0,
+          0,
+          1,
+          0.00031337262109008916
+        ]
+      },
+      {
+        "index": 10,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14553730.625106512,
+        "request_duration": 286430292,
+        "remaining_bytes": 5242880,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.3125,
+          1,
+          0.8698090753245606,
+          0.8657255748268874,
+          0.2524791099257075,
+          0.286430292,
+          -0.000340199000000041,
+          0,
+          0,
+          0,
+          1,
+          0.9959863310748385
+        ]
+      },
+      {
+        "index": 11,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7181671.105210734,
+        "request_duration": 295880645,
+        "remaining_bytes": 4194304,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.25,
+          0.8561219102395455,
+          1,
+          -0.8788179778928492,
+          0.43645304939606144,
+          0.295880645,
+          0.009450353000000022,
+          0,
+          0,
+          0,
+          1,
+          -0.5065408801217128
+        ]
+      },
+      {
+        "index": 12,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7196879.575457983,
+        "request_duration": 296329658,
+        "remaining_bytes": 3145728,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.1875,
+          0.8579349011728743,
+          1,
+          0.001812990933328762,
+          0.5691625279450978,
+          0.296329658,
+          0.0004490129999999981,
+          0,
+          0,
+          0,
+          1,
+          0.002117678465700617
+        ]
+      },
+      {
+        "index": 13,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 2,
+        "concurrency_after": 2,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7177279.147799403,
+        "request_duration": 297458720,
+        "remaining_bytes": 2097152,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.3333333333333333,
+          0.125,
+          0.8555983481168036,
+          0.990546747893953,
+          -0.0023365530560707226,
+          0.3989576668415671,
+          0.29745872,
+          0.001129062000000014,
+          0,
+          0,
+          0,
+          1,
+          -0.0027234619466773575
+        ]
+      },
+      {
+        "index": 14,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14050757.311580112,
+        "request_duration": 297848855,
+        "remaining_bytes": 1048576,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.0625,
+          1,
+          0.9500622279608082,
+          0.8193824486471067,
+          0.2799713327059182,
+          0.297848855,
+          0.00039013500000001367,
+          0,
+          0,
+          0,
+          1,
+          0.9576718450317149
+        ]
+      },
+      {
+        "index": 15,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7252586.545038067,
+        "request_duration": 279817538,
+        "remaining_bytes": 0,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0,
+          0.8645756894395431,
+          1,
+          -0.8104051073243672,
+          0.4417946674882747,
+          0.279817538,
+          -0.018031317000000047,
+          0,
+          0,
+          0,
+          1,
+          -0.4838294915918337
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "RequestID": "a1-r1",
+        "RangeStart": 0,
+        "RangeEnd": 1048575,
+        "Bytes": 1048576,
+        "Duration": 2066215804,
+        "Throughput": 507486.19673223636,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r2",
+        "RangeStart": 1048576,
+        "RangeEnd": 2097151,
+        "Bytes": 1048576,
+        "Duration": 279152504,
+        "Throughput": 3756283.6978886635,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r3",
+        "RangeStart": 2097152,
+        "RangeEnd": 3145727,
+        "Bytes": 1048576,
+        "Duration": 279050116,
+        "Throughput": 3757661.939119208,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r5",
+        "RangeStart": 4194304,
+        "RangeEnd": 5242879,
+        "Bytes": 1048576,
+        "Duration": 287839278,
+        "Throughput": 3642921.866973277,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r6",
+        "RangeStart": 5242880,
+        "RangeEnd": 6291455,
+        "Bytes": 1048576,
+        "Duration": 288392775,
+        "Throughput": 3635930.199707673,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r4",
+        "RangeStart": 3145728,
+        "RangeEnd": 4194303,
+        "Bytes": 1048576,
+        "Duration": 288771317,
+        "Throughput": 3631163.9635594413,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r7",
+        "RangeStart": 6291456,
+        "RangeEnd": 7340031,
+        "Bytes": 1048576,
+        "Duration": 288134430,
+        "Throughput": 3639190.221036757,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r9",
+        "RangeStart": 8388608,
+        "RangeEnd": 9437183,
+        "Bytes": 1048576,
+        "Duration": 286232011,
+        "Throughput": 3663377.818353098,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r8",
+        "RangeStart": 7340032,
+        "RangeEnd": 8388607,
+        "Bytes": 1048576,
+        "Duration": 287567803,
+        "Throughput": 3646360.924487781,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r10",
+        "RangeStart": 9437184,
+        "RangeEnd": 10485759,
+        "Bytes": 1048576,
+        "Duration": 286770491,
+        "Throughput": 3656498.9526764103,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r11",
+        "RangeStart": 10485760,
+        "RangeEnd": 11534335,
+        "Bytes": 1048576,
+        "Duration": 286430292,
+        "Throughput": 3660841.849785916,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r13",
+        "RangeStart": 12582912,
+        "RangeEnd": 13631487,
+        "Bytes": 1048576,
+        "Duration": 295880645,
+        "Throughput": 3543915.4865976446,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r12",
+        "RangeStart": 11534336,
+        "RangeEnd": 12582911,
+        "Bytes": 1048576,
+        "Duration": 296329658,
+        "Throughput": 3538545.5748070953,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r15",
+        "RangeStart": 14680064,
+        "RangeEnd": 15728639,
+        "Bytes": 1048576,
+        "Duration": 297458720,
+        "Throughput": 3525114.3419160815,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r14",
+        "RangeStart": 13631488,
+        "RangeEnd": 14680063,
+        "Bytes": 1048576,
+        "Duration": 297848855,
+        "Throughput": 3520496.998385305,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r16",
+        "RangeStart": 15728640,
+        "RangeEnd": 16777215,
+        "Bytes": 1048576,
+        "Duration": 279817538,
+        "Throughput": 3747356.250414869,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      }
+    ],
+    "server_requests": [
+      {
+        "index": 1,
+        "start": "2026-09-25T12:45:35.801857452Z",
+        "end": "2026-09-25T12:45:37.86751131Z",
+        "rate": 524288,
+        "range": {
+          "Start": 0,
+          "End": 1048575
+        },
+        "has_range": true
+      },
+      {
+        "index": 2,
+        "start": "2026-09-25T12:45:37.868108526Z",
+        "end": "2026-09-25T12:45:38.146513444Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 1048576,
+          "End": 2097151
+        },
+        "has_range": true
+      },
+      {
+        "index": 3,
+        "start": "2026-09-25T12:45:37.868390966Z",
+        "end": "2026-09-25T12:45:38.146558212Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 2097152,
+          "End": 3145727
+        },
+        "has_range": true
+      },
+      {
+        "index": 4,
+        "start": "2026-09-25T12:45:38.147555971Z",
+        "end": "2026-09-25T12:45:38.43449506Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 4194304,
+          "End": 5242879
+        },
+        "has_range": true
+      },
+      {
+        "index": 5,
+        "start": "2026-09-25T12:45:38.147601438Z",
+        "end": "2026-09-25T12:45:38.435400558Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 3145728,
+          "End": 4194303
+        },
+        "has_range": true
+      },
+      {
+        "index": 6,
+        "start": "2026-09-25T12:45:38.147983542Z",
+        "end": "2026-09-25T12:45:38.434422215Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 5242880,
+          "End": 6291455
+        },
+        "has_range": true
+      },
+      {
+        "index": 7,
+        "start": "2026-09-25T12:45:38.148238535Z",
+        "end": "2026-09-25T12:45:38.435481574Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 6291456,
+          "End": 7340031
+        },
+        "has_range": true
+      },
+      {
+        "index": 8,
+        "start": "2026-09-25T12:45:38.436556578Z",
+        "end": "2026-09-25T12:45:38.722015721Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 7340032,
+          "End": 8388607
+        },
+        "has_range": true
+      },
+      {
+        "index": 9,
+        "start": "2026-09-25T12:45:38.436702478Z",
+        "end": "2026-09-25T12:45:38.722097854Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 8388608,
+          "End": 9437183
+        },
+        "has_range": true
+      },
+      {
+        "index": 10,
+        "start": "2026-09-25T12:45:38.437463473Z",
+        "end": "2026-09-25T12:45:38.72213962Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 9437184,
+          "End": 10485759
+        },
+        "has_range": true
+      },
+      {
+        "index": 11,
+        "start": "2026-09-25T12:45:38.437704078Z",
+        "end": "2026-09-25T12:45:38.722154775Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 10485760,
+          "End": 11534335
+        },
+        "has_range": true
+      },
+      {
+        "index": 12,
+        "start": "2026-09-25T12:45:38.72364848Z",
+        "end": "2026-09-25T12:45:39.018061193Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 11534336,
+          "End": 12582911
+        },
+        "has_range": true
+      },
+      {
+        "index": 13,
+        "start": "2026-09-25T12:45:38.723938743Z",
+        "end": "2026-09-25T12:45:39.017976754Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 12582912,
+          "End": 13631487
+        },
+        "has_range": true
+      },
+      {
+        "index": 14,
+        "start": "2026-09-25T12:45:38.724475407Z",
+        "end": "2026-09-25T12:45:39.019733902Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 13631488,
+          "End": 14680063
+        },
+        "has_range": true
+      },
+      {
+        "index": 15,
+        "start": "2026-09-25T12:45:38.724530651Z",
+        "end": "2026-09-25T12:45:39.019738652Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 14680064,
+          "End": 15728639
+        },
+        "has_range": true
+      },
+      {
+        "index": 16,
+        "start": "2026-09-25T12:45:39.022205531Z",
+        "end": "2026-09-25T12:45:39.300892262Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 15728640,
+          "End": 16777215
+        },
+        "has_range": true
+      }
+    ],
+    "server_total_requests": 16,
+    "netem_status": "none",
+    "schedule": {
+      "initial_rate": 524288,
+      "subsequent_rate": 4194304,
+      "transition_after_ms": 1000,
+      "start_unix_nano": 1790340335801409697
+    },
+    "validation": {
+      "output_size_ok": true,
+      "output_sha_ok": true,
+      "range_tiling_ok": true,
+      "success_bytes_ok": true,
+      "progress_monotone": true,
+      "progress_within_total": true,
+      "progress_matches_records": true,
+      "concurrency_bounds_ok": true,
+      "actions_in_space": true,
+      "retry_records_consistent": true,
+      "valid": true
+    },
+    "err": ""
+  },
+  {
+    "run_id": "baseline__v5__rep0",
+    "order_index": 3,
+    "scenario": "baseline",
+    "policy": "v5",
+    "rep": 0,
+    "order_seed": 20260925,
+    "file_size": 16777216,
+    "chunk_size": 1048576,
+    "run_start_unix_nano": 1790340339324339737,
+    "completion_ms": 1726.084,
+    "wallclock_bps": 9719814.331168124,
+    "output_size": 16777216,
+    "output_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "expected_sha256": "3d2faec79e653c2581e3b8be633056df45b128a225c60788388a7e3c3dab7fbd",
+    "total_requests": 16,
+    "successful_requests": 16,
+    "failed_requests": 0,
+    "retries": 0,
+    "success_bytes": 16777216,
+    "initial_concurrency": 1,
+    "final_concurrency": 3,
+    "max_in_flight": 4,
+    "mean_in_flight": 2.6847237661776195,
+    "actions": [
+      {
+        "decision_index": 0,
+        "time_since_schedule_start_ms": 276.764,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 1,
+        "concurrency_after": 2,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 15728640
+      },
+      {
+        "decision_index": 1,
+        "time_since_schedule_start_ms": 559.545,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 2,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 14680064
+      },
+      {
+        "decision_index": 2,
+        "time_since_schedule_start_ms": 560.764,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 13631488
+      },
+      {
+        "decision_index": 3,
+        "time_since_schedule_start_ms": 857.12,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 12582912
+      },
+      {
+        "decision_index": 4,
+        "time_since_schedule_start_ms": 857.358,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 11534336
+      },
+      {
+        "decision_index": 5,
+        "time_since_schedule_start_ms": 857.465,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 10485760
+      },
+      {
+        "decision_index": 6,
+        "time_since_schedule_start_ms": 857.852,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "changed": false,
+        "effective": false,
+        "no_op": true,
+        "remaining_bytes": 9437184
+      },
+      {
+        "decision_index": 7,
+        "time_since_schedule_start_ms": 1145.391,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 8388608
+      },
+      {
+        "decision_index": 8,
+        "time_since_schedule_start_ms": 1145.805,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 7340032
+      },
+      {
+        "decision_index": 9,
+        "time_since_schedule_start_ms": 1145.919,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 6291456
+      },
+      {
+        "decision_index": 10,
+        "time_since_schedule_start_ms": 1145.973,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 5242880
+      },
+      {
+        "decision_index": 11,
+        "time_since_schedule_start_ms": 1443.773,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 4194304
+      },
+      {
+        "decision_index": 12,
+        "time_since_schedule_start_ms": 1443.956,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 2,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 3145728
+      },
+      {
+        "decision_index": 13,
+        "time_since_schedule_start_ms": 1444.11,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 2,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 2097152
+      },
+      {
+        "decision_index": 14,
+        "time_since_schedule_start_ms": 1444.274,
+        "requested_action_index": 1,
+        "requested_action": "increase-concurrency",
+        "concurrency_before": 3,
+        "concurrency_after": 4,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 1048576
+      },
+      {
+        "decision_index": 15,
+        "time_since_schedule_start_ms": 1725.596,
+        "requested_action_index": 2,
+        "requested_action": "decrease-concurrency",
+        "concurrency_before": 4,
+        "concurrency_after": 3,
+        "changed": true,
+        "effective": true,
+        "no_op": false,
+        "remaining_bytes": 0
+      }
+    ],
+    "decisions": [
+      {
+        "index": 0,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 1,
+        "concurrency_after": 1,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 3790797.914126983,
+        "request_duration": 276610894,
+        "remaining_bytes": 15728640,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0,
+          0.9375,
+          0.4518983261736611,
+          0,
+          0.4518983261736611,
+          0,
+          0.276610894,
+          0.276610894,
+          0,
+          0,
+          0,
+          0.125,
+          0
+        ]
+      },
+      {
+        "index": 1,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 2,
+        "concurrency_after": 2,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 3748998.953967453,
+        "request_duration": 282634395,
+        "remaining_bytes": 14680064,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.3333333333333333,
+          0.875,
+          0.44691550182908213,
+          0.13556949785209832,
+          -0.004982824344578973,
+          0.13556949785209832,
+          0.282634395,
+          0.006023500999999987,
+          0,
+          0,
+          0,
+          0.25,
+          -0.01102642797279163
+        ]
+      },
+      {
+        "index": 2,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 5611287.170013916,
+        "request_duration": 283595836,
+        "remaining_bytes": 13631488,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.8125,
+          0.6689175570027728,
+          0.22897329904519345,
+          0.22200205517369065,
+          0.09639349579984251,
+          0.283595836,
+          0.0009614410000000073,
+          0,
+          0,
+          0,
+          0.375,
+          0.4967427942532924
+        ]
+      },
+      {
+        "index": 3,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 4894376.987817292,
+        "request_duration": 297167552,
+        "remaining_bytes": 12582912,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.75,
+          0.5834552035113921,
+          0.36095657643246726,
+          -0.08546235349138065,
+          0.13407606361199695,
+          0.297167552,
+          0.013571716000000011,
+          0,
+          0,
+          0,
+          0.5,
+          -0.1277621623123676
+        ]
+      },
+      {
+        "index": 4,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7226000.866709247,
+        "request_duration": 297208339,
+        "remaining_bytes": 11534336,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.6875,
+          0.8614064296137389,
+          0.4277061645561447,
+          0.2779512261023468,
+          0.11949195057581205,
+          0.297208339,
+          0.000040786999999986584,
+          0,
+          0,
+          0.297208339,
+          0.625,
+          0.4763882889887016
+        ]
+      },
+      {
+        "index": 5,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7227788.942443313,
+        "request_duration": 296425553,
+        "remaining_bytes": 10485760,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.625,
+          0.8616195848516599,
+          0.5578162440734229,
+          0.00021315523792098112,
+          0.16702973323377246,
+          0.296425553,
+          -0.0007827859999999798,
+          0,
+          0,
+          0.593633892,
+          0.75,
+          0.0002474502518126798
+        ]
+      },
+      {
+        "index": 6,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14079382.97860313,
+        "request_duration": 296561395,
+        "remaining_bytes": 9437184,
+        "effective": false,
+        "no_op": true,
+        "features": [
+          1,
+          0.5625,
+          1,
+          0.648957246306894,
+          0.8167736573409816,
+          0.11698475983501701,
+          0.296561395,
+          0.00013584199999999713,
+          0,
+          0,
+          0.890195287,
+          0.875,
+          0.9479515922117774
+        ]
+      },
+      {
+        "index": 7,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7166796.959695999,
+        "request_duration": 286795356,
+        "remaining_bytes": 8388608,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.5,
+          0.854348773920059,
+          0.9577880450726182,
+          -0.8240444682725825,
+          0.3269214290868064,
+          0.286795356,
+          -0.009766039000000004,
+          0,
+          0,
+          1,
+          1,
+          -0.49097222722134914
+        ]
+      },
+      {
+        "index": 8,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7172734.051755365,
+        "request_duration": 287671032,
+        "remaining_bytes": 7340032,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.4375,
+          0.8550565304464537,
+          0.9267562637268503,
+          0.0007077565263946539,
+          0.4760583408425392,
+          0.287671032,
+          0.0008756759999999919,
+          0,
+          0,
+          0,
+          1,
+          0.0008284163891840246
+        ]
+      },
+      {
+        "index": 9,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7174338.999672516,
+        "request_duration": 287606149,
+        "remaining_bytes": 6291456,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.375,
+          0.8552478551474233,
+          0.9052463437427312,
+          0.0001913247009696084,
+          0.3334531655476958,
+          0.287606149,
+          -0.00006488300000001557,
+          0,
+          0,
+          0,
+          1,
+          0.00022375678584632454
+        ]
+      },
+      {
+        "index": 10,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14567845.077771824,
+        "request_duration": 287915198,
+        "remaining_bytes": 5242880,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.3125,
+          1,
+          0.8902467971641388,
+          0.8813746068596015,
+          0.23347461329367789,
+          0.287915198,
+          0.0003090490000000057,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "index": 11,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7161046.438588081,
+        "request_duration": 297590513,
+        "remaining_bytes": 4194304,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0.25,
+          0.8536632583842374,
+          1,
+          -0.8829592036227873,
+          0.427844611363455,
+          0.297590513,
+          0.009675315000000018,
+          0,
+          0,
+          0,
+          1,
+          -0.5084347478739543
+        ]
+      },
+      {
+        "index": 12,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7158850.019664672,
+        "request_duration": 297010966,
+        "remaining_bytes": 3145728,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.1875,
+          0.853401424844822,
+          1,
+          -0.00026183353941544585,
+          0.5643789890412547,
+          0.297010966,
+          -0.0005795470000000136,
+          0,
+          0,
+          0,
+          1,
+          -0.00030671759249780605
+        ]
+      },
+      {
+        "index": 13,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 2,
+        "concurrency_after": 2,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7157077.994943688,
+        "request_duration": 296622437,
+        "remaining_bytes": 2097152,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.3333333333333333,
+          0.125,
+          0.853190183036767,
+          0.9959278650564687,
+          -0.00021124180805498494,
+          0.3951438423907029,
+          0.296622437,
+          -0.0003885289999999708,
+          0,
+          0,
+          0,
+          1,
+          -0.00024752924228289873
+        ]
+      },
+      {
+        "index": 14,
+        "action": "increase-concurrency",
+        "action_index": 1,
+        "reward": 0,
+        "concurrency_before": 3,
+        "concurrency_after": 3,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 14070331.374790564,
+        "request_duration": 297683751,
+        "remaining_bytes": 1048576,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          0.6666666666666666,
+          0.0625,
+          1,
+          0.9531065604505582,
+          0.8241240238960834,
+          0.2766640622159085,
+          0.297683751,
+          0.0010613139999999799,
+          0,
+          0,
+          0,
+          1,
+          0.9659323797688012
+        ]
+      },
+      {
+        "index": 15,
+        "action": "decrease-concurrency",
+        "action_index": 2,
+        "reward": 0,
+        "concurrency_before": 4,
+        "concurrency_after": 4,
+        "chunk_before": 1048576,
+        "chunk_after": 1048576,
+        "aggregate_throughput": 7244000.87913068,
+        "request_duration": 281140271,
+        "remaining_bytes": 0,
+        "effective": true,
+        "no_op": false,
+        "features": [
+          1,
+          0,
+          0.8635521983064032,
+          1,
+          -0.8137620086264472,
+          0.44090205071996097,
+          0.281140271,
+          -0.01654348,
+          0,
+          0,
+          0,
+          1,
+          -0.48515776308512804
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "RequestID": "a1-r1",
+        "RangeStart": 0,
+        "RangeEnd": 1048575,
+        "Bytes": 1048576,
+        "Duration": 276610894,
+        "Throughput": 3790797.914126983,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r2",
+        "RangeStart": 1048576,
+        "RangeEnd": 2097151,
+        "Bytes": 1048576,
+        "Duration": 282634395,
+        "Throughput": 3710008.472252643,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r3",
+        "RangeStart": 2097152,
+        "RangeEnd": 3145727,
+        "Bytes": 1048576,
+        "Duration": 283595836,
+        "Throughput": 3697430.8748313216,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r4",
+        "RangeStart": 3145728,
+        "RangeEnd": 4194303,
+        "Bytes": 1048576,
+        "Duration": 297167552,
+        "Throughput": 3528568.287294031,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r5",
+        "RangeStart": 4194304,
+        "RangeEnd": 5242879,
+        "Bytes": 1048576,
+        "Duration": 297208339,
+        "Throughput": 3528084.0488126413,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r6",
+        "RangeStart": 5242880,
+        "RangeEnd": 6291455,
+        "Bytes": 1048576,
+        "Duration": 296425553,
+        "Throughput": 3537400.8393938965,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r7",
+        "RangeStart": 6291456,
+        "RangeEnd": 7340031,
+        "Bytes": 1048576,
+        "Duration": 296561395,
+        "Throughput": 3535780.5084508723,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r11",
+        "RangeStart": 10485760,
+        "RangeEnd": 11534335,
+        "Bytes": 1048576,
+        "Duration": 286795356,
+        "Throughput": 3656181.936223542,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r8",
+        "RangeStart": 7340032,
+        "RangeEnd": 8388607,
+        "Bytes": 1048576,
+        "Duration": 287671032,
+        "Throughput": 3645052.4500499587,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r10",
+        "RangeStart": 9437184,
+        "RangeEnd": 10485759,
+        "Bytes": 1048576,
+        "Duration": 287606149,
+        "Throughput": 3645874.761877918,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r9",
+        "RangeStart": 8388608,
+        "RangeEnd": 9437183,
+        "Bytes": 1048576,
+        "Duration": 287915198,
+        "Throughput": 3641961.269442956,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r12",
+        "RangeStart": 11534336,
+        "RangeEnd": 12582911,
+        "Bytes": 1048576,
+        "Duration": 297590513,
+        "Throughput": 3523553.185312732,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r14",
+        "RangeStart": 13631488,
+        "RangeEnd": 14680063,
+        "Bytes": 1048576,
+        "Duration": 297010966,
+        "Throughput": 3530428.570102021,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r15",
+        "RangeStart": 14680064,
+        "RangeEnd": 15728639,
+        "Bytes": 1048576,
+        "Duration": 296622437,
+        "Throughput": 3535052.8793612467,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r13",
+        "RangeStart": 12582912,
+        "RangeEnd": 13631487,
+        "Bytes": 1048576,
+        "Duration": 297683751,
+        "Throughput": 3522449.567628567,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      },
+      {
+        "RequestID": "a1-r16",
+        "RangeStart": 15728640,
+        "RangeEnd": 16777215,
+        "Bytes": 1048576,
+        "Duration": 281140271,
+        "Throughput": 3729725.365456449,
+        "Success": true,
+        "StatusCode": 206,
+        "Attempt": 1
+      }
+    ],
+    "server_requests": [
+      {
+        "index": 1,
+        "start": "2026-09-25T12:45:39.325029494Z",
+        "end": "2026-09-25T12:45:39.600776655Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 0,
+          "End": 1048575
+        },
+        "has_range": true
+      },
+      {
+        "index": 2,
+        "start": "2026-09-25T12:45:39.601530457Z",
+        "end": "2026-09-25T12:45:39.8835566Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 1048576,
+          "End": 2097151
+        },
+        "has_range": true
+      },
+      {
+        "index": 3,
+        "start": "2026-09-25T12:45:39.602015787Z",
+        "end": "2026-09-25T12:45:39.884692227Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 2097152,
+          "End": 3145727
+        },
+        "has_range": true
+      },
+      {
+        "index": 4,
+        "start": "2026-09-25T12:45:39.884577896Z",
+        "end": "2026-09-25T12:45:40.180914191Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 3145728,
+          "End": 4194303
+        },
+        "has_range": true
+      },
+      {
+        "index": 5,
+        "start": "2026-09-25T12:45:39.885568321Z",
+        "end": "2026-09-25T12:45:40.18093186Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 5242880,
+          "End": 6291455
+        },
+        "has_range": true
+      },
+      {
+        "index": 6,
+        "start": "2026-09-25T12:45:39.885699135Z",
+        "end": "2026-09-25T12:45:40.18091901Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 4194304,
+          "End": 5242879
+        },
+        "has_range": true
+      },
+      {
+        "index": 7,
+        "start": "2026-09-25T12:45:39.886300263Z",
+        "end": "2026-09-25T12:45:40.181766399Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 6291456,
+          "End": 7340031
+        },
+        "has_range": true
+      },
+      {
+        "index": 8,
+        "start": "2026-09-25T12:45:40.182310536Z",
+        "end": "2026-09-25T12:45:40.469042686Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 7340032,
+          "End": 8388607
+        },
+        "has_range": true
+      },
+      {
+        "index": 9,
+        "start": "2026-09-25T12:45:40.182553516Z",
+        "end": "2026-09-25T12:45:40.469105334Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 8388608,
+          "End": 9437183
+        },
+        "has_range": true
+      },
+      {
+        "index": 10,
+        "start": "2026-09-25T12:45:40.182938064Z",
+        "end": "2026-09-25T12:45:40.46912028Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 9437184,
+          "End": 10485759
+        },
+        "has_range": true
+      },
+      {
+        "index": 11,
+        "start": "2026-09-25T12:45:40.18314298Z",
+        "end": "2026-09-25T12:45:40.469024317Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 10485760,
+          "End": 11534335
+        },
+        "has_range": true
+      },
+      {
+        "index": 12,
+        "start": "2026-09-25T12:45:40.470844882Z",
+        "end": "2026-09-25T12:45:40.766514747Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 11534336,
+          "End": 12582911
+        },
+        "has_range": true
+      },
+      {
+        "index": 13,
+        "start": "2026-09-25T12:45:40.471113772Z",
+        "end": "2026-09-25T12:45:40.766572436Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 12582912,
+          "End": 13631487
+        },
+        "has_range": true
+      },
+      {
+        "index": 14,
+        "start": "2026-09-25T12:45:40.471858774Z",
+        "end": "2026-09-25T12:45:40.766461947Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 13631488,
+          "End": 14680063
+        },
+        "has_range": true
+      },
+      {
+        "index": 15,
+        "start": "2026-09-25T12:45:40.472220764Z",
+        "end": "2026-09-25T12:45:40.766489045Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 14680064,
+          "End": 15728639
+        },
+        "has_range": true
+      },
+      {
+        "index": 16,
+        "start": "2026-09-25T12:45:40.769062922Z",
+        "end": "2026-09-25T12:45:41.048845191Z",
+        "rate": 4194304,
+        "range": {
+          "Start": 15728640,
+          "End": 16777215
+        },
+        "has_range": true
+      }
+    ],
+    "server_total_requests": 16,
+    "netem_status": "none",
+    "validation": {
+      "output_size_ok": true,
+      "output_sha_ok": true,
+      "range_tiling_ok": true,
+      "success_bytes_ok": true,
+      "progress_monotone": true,
+      "progress_within_total": true,
+      "progress_matches_records": true,
+      "concurrency_bounds_ok": true,
+      "actions_in_space": true,
+      "retry_records_consistent": true,
+      "valid": true
+    },
+    "err": ""
+  }
+]

@@ -1,0 +1,16 @@
+M3 throughput-envelope replay: executed, gate decision reached
+
+Trace: real NYU-METS 7Train1.csv (ODbL/DbCL; 1 Hz measured end-to-end throughput; NOT path capacity).
+Workload: 48 MiB, 1 MiB chunks, stable server (no artificial throttling); tc/netem aggregate envelope on lo updated at 1 Hz sample boundaries; identical timeline for every C.
+
+  C1  completion=95476ms replay=527164 B/s consumed-trace-mean=673112 B/s requests=48 retries=0 consumed=53.0%
+  C4  completion=96613ms replay=520960 B/s consumed-trace-mean=685889 B/s requests=48 retries=0 consumed=53.7%
+  C16 completion=107208ms replay=469476 B/s consumed-trace-mean=904109 B/s requests=48 retries=0 consumed=59.6%
+
+C-sensitivity: NONE. C1 95476 ms, C4 96613 ms, C16 107208 ms (C16 slower); max/min=1.123.
+The tc envelope is a shared aggregate ceiling: every C is capped at the same instantaneous rate, so concurrency cannot change effective throughput.
+Replay fidelity proxy: replay was 0.47-0.53 MB/s vs consumed-trace mean 0.67-0.90 MB/s (coarse 1 Hz comparison; the download saturates the envelope).
+Harness anomaly: the C8 run failed (tc/harness exit 2); it does not affect the decision because C1/C4/C16 already show no C sensitivity.
+Gates: B FAIL (envelope has no C sensitivity) -> A/C/D/E/F not evaluated; no RL; no aria2; frozen artifacts untouched.
+OUTCOME: NOT_READY_ENVELOPE_NO_C_SENSITIVITY.
+Next step: acquire richer path measurements or use a replay method that preserves a genuine concurrency-dependent cost; do not force M3 further.

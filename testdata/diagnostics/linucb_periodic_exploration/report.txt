@@ -1,0 +1,89 @@
+LinUCB periodic-exploration diagnostic (SEPARATE; replay of frozen benchmark v3 states)
+source: testdata/benchmark_v3/matrix_5mode_4MiB_reps10.json
+periodic intervals compared: [0 5]; initial warm-up = 5 (InitialExplorationRounds=1)
+NOTE: v3 states are held fixed; this isolates the exploration/posterior mechanism, not download dynamics.
+
+
+=== ExplorationInterval=0 ===
+  scenario             dec  normal  forced uniqArm domFrac  concCh chunkCh    finC finChunk
+  baseline           127.0   122.0     0.0    1.00   1.000     0.0     0.0    1.00 32768.0
+  server-throttle    127.0   122.0     0.0    1.00   1.000     0.0     0.0    1.00 32768.0
+  latency             37.0    32.0     0.0    1.00   1.000     0.0     3.0    1.00 131072.0
+  loss               121.2   116.2     0.0    1.50   0.985     0.0     0.1    1.00 36044.8
+  combined            46.0    41.0     0.0    1.00   1.000     0.0     2.7    1.00 121241.6
+  action counts:    
+    baseline         dominant=decrease-concurrency counts=map[decrease-concurrency:1220]
+                     effective=map[] noop=map[decrease-concurrency:1220]
+                     forcedEffective=map[] forcedNoop=map[]
+    server-throttle  dominant=decrease-chunk-size  counts=map[decrease-chunk-size:1220]
+                     effective=map[] noop=map[decrease-chunk-size:1220]
+                     forcedEffective=map[] forcedNoop=map[]
+    latency          dominant=increase-chunk-size  counts=map[increase-chunk-size:320]
+                     effective=map[increase-chunk-size:30] noop=map[increase-chunk-size:290]
+                     forcedEffective=map[] forcedNoop=map[]
+    loss             dominant=decrease-concurrency counts=map[decrease-chunk-size:112 decrease-concurrency:1048 increase-chunk-size:1 none:1]
+                     effective=map[increase-chunk-size:1 none:1] noop=map[decrease-chunk-size:112 decrease-concurrency:1048]
+                     forcedEffective=map[] forcedNoop=map[]
+    combined         dominant=increase-chunk-size  counts=map[increase-chunk-size:288 none:122]
+                     effective=map[increase-chunk-size:27 none:122] noop=map[increase-chunk-size:261]
+                     forcedEffective=map[] forcedNoop=map[]
+
+=== ExplorationInterval=5 ===
+  scenario             dec  normal  forced uniqArm domFrac  concCh chunkCh    finC finChunk
+  baseline           127.0   102.0    20.0    5.00   0.869     8.0     8.0    1.00 32768.0
+  server-throttle    127.0   102.0    20.0    5.00   0.869     8.0     8.0    1.00 32768.0
+  latency             37.0    27.0     5.0    5.00   0.875     2.0     5.0    1.00 131072.0
+  loss               121.2    97.2    19.0    5.00   0.761     7.8     8.4    1.20 52428.8
+  combined            46.0    34.5     6.5    5.00   0.856     2.9     5.4    1.30 124518.4
+  action counts:    
+    baseline         dominant=decrease-concurrency counts=map[decrease-chunk-size:40 decrease-concurrency:1060 increase-chunk-size:40 increase-concurrency:40 none:40]
+                     effective=map[increase-chunk-size:40 increase-concurrency:40 none:40] noop=map[decrease-chunk-size:40 decrease-concurrency:1060]
+                     forcedEffective=map[increase-chunk-size:40 increase-concurrency:40 none:40] forcedNoop=map[decrease-chunk-size:40 decrease-concurrency:40]
+    server-throttle  dominant=decrease-chunk-size  counts=map[decrease-chunk-size:1060 decrease-concurrency:40 increase-chunk-size:40 increase-concurrency:40 none:40]
+                     effective=map[increase-chunk-size:40 increase-concurrency:40 none:40] noop=map[decrease-chunk-size:1060 decrease-concurrency:40]
+                     forcedEffective=map[increase-chunk-size:40 increase-concurrency:40 none:40] forcedNoop=map[decrease-chunk-size:40 decrease-concurrency:40]
+    latency          dominant=increase-chunk-size  counts=map[decrease-chunk-size:10 decrease-concurrency:10 increase-chunk-size:280 increase-concurrency:10 none:10]
+                     effective=map[decrease-chunk-size:10 increase-chunk-size:30 increase-concurrency:10 none:10] noop=map[decrease-concurrency:10 increase-chunk-size:250]
+                     forcedEffective=map[decrease-chunk-size:10 increase-concurrency:10 none:10] forcedNoop=map[decrease-concurrency:10 increase-chunk-size:10]
+    loss             dominant=decrease-concurrency counts=map[decrease-chunk-size:118 decrease-concurrency:725 increase-chunk-size:149 increase-concurrency:53 none:117]
+                     effective=map[decrease-chunk-size:2 increase-chunk-size:149 increase-concurrency:53 none:117] noop=map[decrease-chunk-size:116 decrease-concurrency:725]
+                     forcedEffective=map[decrease-chunk-size:2 increase-chunk-size:38 increase-concurrency:38 none:38] forcedNoop=map[decrease-chunk-size:36 decrease-concurrency:38]
+    combined         dominant=increase-chunk-size  counts=map[decrease-chunk-size:17 decrease-concurrency:13 increase-chunk-size:257 increase-concurrency:30 none:93]
+                     effective=map[decrease-chunk-size:9 increase-chunk-size:32 increase-concurrency:30 none:93] noop=map[decrease-chunk-size:8 decrease-concurrency:13 increase-chunk-size:225]
+                     forcedEffective=map[decrease-chunk-size:9 increase-chunk-size:4 increase-concurrency:13 none:13] forcedNoop=map[decrease-chunk-size:4 decrease-concurrency:13 increase-chunk-size:9]
+
+COMPARISON (interval 0 vs 5)
+  scenario         i0 dominant            uniq   incC | i5 dominant            uniq   incC
+  baseline         decrease-concurrency   1.00      0 | decrease-concurrency   5.00     40
+  server-throttle  decrease-chunk-size    1.00      0 | decrease-chunk-size    5.00     40
+  latency          increase-chunk-size    1.00      0 | increase-chunk-size    5.00     10
+  loss             decrease-concurrency   1.50      0 | decrease-concurrency   5.00     53
+  combined         increase-chunk-size    1.00      0 | increase-chunk-size    5.00     30
+
+FORCED-EXPLORATION POSTERIOR EVENTS (arm previously frozen -> updated by forced selection)
+  scenario          run   dec arm                    reward meanBefore  meanAfter scoreBefore scoreAfter A_before  A_after
+  baseline            4    10 none                    3.584      1.774      2.378      1.915      2.493    2.000    3.000
+  baseline            8    16 increase-concurrency    3.429      1.639      2.237      1.781      2.352    2.000    3.000
+  baseline            5    22 decrease-concurrency    3.420      3.291      3.298      3.340      3.346   17.000   18.000
+  baseline            1    28 increase-chunk-size     3.393      2.077      2.517      2.219      2.632    2.000    3.000
+  baseline            8    34 decrease-chunk-size     3.425      2.098      2.542      2.240      2.657    2.000    3.000
+  server-throttle     4    10 none                    3.403      0.224      1.284      0.366      1.400    2.000    3.000
+  server-throttle     8    16 increase-concurrency    3.427      0.200      1.277      0.342      1.392    2.000    3.000
+  server-throttle     5    22 decrease-concurrency    3.471      0.342      1.423      0.487      1.540    2.000    3.000
+  server-throttle     1    28 increase-chunk-size     3.381      0.709      1.601      0.850      1.717    2.000    3.000
+  server-throttle     8    34 decrease-chunk-size     3.520      3.326      3.333      3.365      3.371   27.000   28.000
+  latency             2    10 none                    1.690      0.261      0.745      0.404      0.861    2.000    3.000
+  latency             0    16 increase-concurrency    1.636      0.237      0.711      0.380      0.828    2.000    3.000
+  latency             2    22 decrease-concurrency    1.632      0.237      0.726      0.384      0.844    2.000    3.000
+  latency             5    28 increase-chunk-size     1.639      1.466      1.474      1.509      1.516   22.000   23.000
+  latency             1    34 decrease-chunk-size     1.644      0.364      0.797      0.507      0.913    2.000    3.000
+  loss                1    10 none                    3.394      1.736      2.289      1.878      2.405    2.000    3.000
+  loss                4    16 increase-concurrency    3.373      1.714      2.268      1.855      2.383    2.000    3.000
+  loss                9    22 decrease-concurrency    3.615      2.233      2.340      2.291      2.396   12.000   13.000
+  loss                5    28 increase-chunk-size     3.544      2.070      2.562      2.211      2.678    2.000    3.000
+  loss                8    34 decrease-chunk-size     3.424      2.167      2.587      2.309      2.703    2.000    3.000
+  combined            7    10 none                    0.658      0.179      0.342      0.323      0.458    2.000    3.000
+  combined            2    16 increase-concurrency    0.648      0.151      0.319      0.294      0.436    2.000    3.000
+  combined            6    22 decrease-concurrency    0.647      0.173      0.339      0.320      0.458    2.000    3.000
+  combined            3    28 increase-chunk-size     0.650      0.595      0.598      0.638      0.640   22.000   23.000
+  combined            0    34 decrease-chunk-size     0.646      0.225      0.367      0.368      0.484    2.000    3.000

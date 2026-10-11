@@ -1,0 +1,20 @@
+DQN sanity training report (DEVELOPMENT / SANITY MODEL - not the final policy)
+No performance claim is made.
+
+episodes: 300
+episodes_requested: 300
+final_epsilon: 0.25387000000000004
+final_loss: 0.005356133449822664
+loss_finite: True
+mean_loss_last_100: 0.008097835283260793
+mean_return: -1.8480032434184188
+model_sha256: db8602b4b01478884d30a481077db3f91ee884fd07182aea2b10c712fca25da9
+q_finite: True
+q_max: 0.2756819427013397
+q_min: -0.9468125104904175
+replay_size: 3927
+seed: 0
+terminal_episodes: 300
+total_steps: 3927
+truncated_episodes: 0
+wall_seconds: 6.510493516921997

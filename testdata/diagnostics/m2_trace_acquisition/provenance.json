@@ -1,0 +1,23 @@
+{
+  "ugent_4g": {
+    "url": "https://users.ugent.be/~jvdrhoof/dataset-4g/",
+    "retrieved_utc": "2026-09-25",
+    "collector": "UGent/imec (van der Hooft et al.)",
+    "mobility_contexts": "train, tram, bus, car, bicycle, walking (per source)",
+    "method": "HTTP/2 adaptive streaming over 4G/LTE; throughput = bytes per elapsed interval; GPS included",
+    "license": "not explicitly stated on the page; citation required",
+    "citation": "van der Hooft et al., HTTP/2-Based Adaptive Streaming of HEVC Video Over 4G/LTE Networks, IEEE Comm. Letters 20(11), 2016",
+    "capacity_ground_truth": "unavailable (end-to-end measured throughput)"
+  },
+  "nyu_mets": {
+    "url": "https://github.com/NYU-METS/Main",
+    "retrieved_utc": "2026-09-25",
+    "collector": "NYU-METS (Mei et al.)",
+    "mobility_contexts": "subway 7/Q, rail LIRR, bus B57/B62 (NYC)",
+    "method": "LTE bandwidth measured in NYC; 1-second throughput samples",
+    "license": "Open Database License (ODbL 1.0) + Database Contents License (DbCL 1.0)",
+    "citation": "Mei et al., PAM 2019; Computer Networks 182 (2020) 107515",
+    "capacity_ground_truth": "unavailable (end-to-end measured throughput)",
+    "multivariate_note": "Multivariate_Dataset documents RSSI/RSRQ/neighbor/handover/speed/band; zip not yet downloaded"
+  }
+}

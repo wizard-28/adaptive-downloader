@@ -1,0 +1,50 @@
+{
+  "A2": {
+    "fixed-1": {
+      "n": 1,
+      "valid_n": 1,
+      "mean_ms": 8676.438,
+      "median_ms": 8676.438,
+      "sd_ms": 0,
+      "mean_requests": 16,
+      "mean_retries": 0,
+      "mean_final_concurrency": 1,
+      "mean_time_weighted_concurrency": 1
+    },
+    "v6": {
+      "n": 1,
+      "valid_n": 1,
+      "mean_ms": 8830.88,
+      "median_ms": 8830.88,
+      "sd_ms": 0,
+      "mean_requests": 16,
+      "mean_retries": 0,
+      "mean_final_concurrency": 1,
+      "mean_time_weighted_concurrency": 1.8982729920460937
+    }
+  },
+  "E2": {
+    "fixed-1": {
+      "n": 1,
+      "valid_n": 1,
+      "mean_ms": 7433.723,
+      "median_ms": 7433.723,
+      "sd_ms": 0,
+      "mean_requests": 16,
+      "mean_retries": 0,
+      "mean_final_concurrency": 1,
+      "mean_time_weighted_concurrency": 1
+    },
+    "v6": {
+      "n": 1,
+      "valid_n": 1,
+      "mean_ms": 6251.196,
+      "median_ms": 6251.196,
+      "sd_ms": 0,
+      "mean_requests": 16,
+      "mean_retries": 0,
+      "mean_final_concurrency": 1,
+      "mean_time_weighted_concurrency": 4.162110258580918
+    }
+  }
+}

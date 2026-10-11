@@ -1,0 +1,78 @@
+{
+  "mechanism_inventory": [
+    {
+      "id": "A",
+      "name": "per-flow / per-connection bandwidth sharing",
+      "screened_model": "fair",
+      "physical_motivation": "fair sharing among concurrent TCP flows at a shared bottleneck (documented)",
+      "infrastructure": "shared bottleneck replay exists (mm-link); no per-flow fairness instrumentation live",
+      "live_evidence": "M3 aggregate throughput envelope: no C sensitivity"
+    },
+    {
+      "id": "B",
+      "name": "server-side concurrency cap or queueing",
+      "screened_model": "cap",
+      "physical_motivation": "servers limit concurrent connections/workers (documented server behavior)",
+      "infrastructure": "the controlled server has no concurrency cap; would need a server change",
+      "live_evidence": "T1: per-response pacing, no live reversal at equal granularity"
+    },
+    {
+      "id": "C",
+      "name": "queueing/overhead that grows with concurrent requests",
+      "screened_model": "degrade",
+      "physical_motivation": "server per-connection processing cost (context switching, memory) degrades aggregate capacity",
+      "infrastructure": "not present in the controlled server",
+      "live_evidence": "L4 GATE E: the simulated over-concurrency penalty did NOT survive live (NOT_READY_LIVE_MISMATCH)"
+    },
+    {
+      "id": "D",
+      "name": "background traffic competing for a shared bottleneck",
+      "screened_model": "fair_bg",
+      "physical_motivation": "background flows share the bottleneck; fair sharing reduces the downloader's share",
+      "infrastructure": "tc/netem background traffic possible in principle; not part of the current controlled stack",
+      "live_evidence": "no live background-traffic study"
+    },
+    {
+      "id": "E",
+      "name": "contention where additional flows increase queueing delay",
+      "screened_model": "cap/degrade",
+      "physical_motivation": "queueing delay grows with utilization",
+      "infrastructure": "not present live",
+      "live_evidence": "T1/L4: no live concurrency penalty observed"
+    },
+    {
+      "id": "F",
+      "name": "server request-processing capacity that saturates as N increases",
+      "screened_model": "cap",
+      "physical_motivation": "server parallelism is finite",
+      "infrastructure": "not present live",
+      "live_evidence": "T1: aggregate scales monotonically with C"
+    },
+    {
+      "id": "G",
+      "name": "changing available capacity + per-flow sharing",
+      "screened_model": "fair (changing C)",
+      "physical_motivation": "capacity varies over time (native traces)",
+      "infrastructure": "yes (mm-link + native traces)",
+      "live_evidence": "S pivot shared model: no state-dependent preference"
+    },
+    {
+      "id": "H",
+      "name": "changing server availability + concurrency-dependent queueing",
+      "screened_model": "cap/degrade",
+      "physical_motivation": "server capacity varies with load",
+      "infrastructure": "not present live",
+      "live_evidence": "L4 GATE E: live mismatch"
+    }
+  ],
+  "classification": {
+    "A": "MECHANISTICALLY INSUFFICIENT",
+    "B": "MECHANISTICALLY INSUFFICIENT",
+    "C": "PLAUSIBLE - FRAGILE",
+    "D": "MECHANISTICALLY INSUFFICIENT",
+    "E": "PLAUSIBLE - FRAGILE",
+    "F": "MECHANISTICALLY INSUFFICIENT",
+    "G": "MECHANISTICALLY INSUFFICIENT",
+    "H": "PLAUSIBLE - FRAGILE"
+  }
+}

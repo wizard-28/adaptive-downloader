@@ -1,0 +1,33 @@
+{
+  "run_id": "W6_aria2_r06",
+  "cmd": [
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/tools/ns_bench",
+    "-run-id",
+    "W6_aria2_r06",
+    "-out",
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/w1_w6_adaptive/W6_aria2_r06.json",
+    "-system",
+    "aria2",
+    "-schedule",
+    "t2",
+    "-cap-c",
+    "12582912",
+    "-cap-gamma",
+    "0.1",
+    "-cap-at",
+    "4",
+    "-netem-latency-ms",
+    "40",
+    "-netem-loss",
+    "0.4"
+  ],
+  "exit": 0,
+  "wall_s": 55.74927616119385,
+  "completion_ms": 54325.661,
+  "content_verified": true,
+  "final_n": 0,
+  "final_s": 0,
+  "err": "",
+  "valid": true,
+  "invalid_reasons": []
+}

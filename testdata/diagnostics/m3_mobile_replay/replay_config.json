@@ -1,0 +1,11 @@
+{
+  "trace": "nyu_mets/7Train1.csv",
+  "trace_sha256": "0530c6e75b33a19084faee2694dfa376588f2f48affddb0ad0ffcdba4622b487",
+  "replay": "tc/netem aggregate rate envelope on lo, 1 Hz updates at sample boundaries; zero samples -> 8000 bps floor; last sample held after trace end",
+  "interpretation": "empirical throughput-envelope replay; measured end-to-end throughput, NOT path capacity",
+  "server": "controlled server rate unlimited (no synthetic throttling)",
+  "chunk_bytes": 1048576,
+  "workload_bytes": 50331648,
+  "identical_replay_across_c": true,
+  "missing_run": "C8 failed with a tc/harness error (exit 2); conclusion unaffected, anomaly documented"
+}

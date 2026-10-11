@@ -1,0 +1,118 @@
+FINAL HEAD-TO-HEAD: DQN Candidate v5 vs FINAL ARIA2 BASELINE CONFIG v2 (candidate F)
+Controlled server, 16 MiB file, 1 MiB fixed chunk, wall-clock unstable profiles.
+NO real-network generalization; NO capability-matched claim; structural asymmetry preserved below.
+
+1. FROZEN ARTIFACTS
+   v5 model SHA-256          : 3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75
+   aria2 baseline metadata   : b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02
+   aria2 version             : aria2 version 1.37.0
+   aria2 configuration       : aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 <url>
+   matrix SHA-256            : 78ae2b2dbe0486b376b94430c90c83ef6d069ae5f4a7d0b1384a50cf0d23e92e
+
+2. TEST MATRIX
+   source methodology        : cmd/final-evaluation (U1-U8 matrix, matched pairs, order seed) + python/analyze_final_evaluation.py (paired log-ratio analysis)
+   conditions                : U1, U2, U3, U4, U5, U6, U7, U8
+   pairs per condition       : 30
+   matched pairs             : 240
+   total downloads           : 480
+   file / chunk              : 16777216 / 1048576
+   v5 concurrency bounds     : [1, 4]
+   aria2 max connections     : 16
+   order seed                : 20260925
+
+3. VALIDITY
+   valid runs 480/480, invalid 0; valid pairs 240/240, excluded 0
+   rule: a run is valid only if it has no error, the output is exactly 16 MiB and SHA-256 matches the served content, v5 accounting checks pass, and any requested netem condition was applied
+
+4. PER-CONDITION MATCHED-PAIR RESULTS (ms; analyzer keys 'dqn' = Candidate v5)
+   cond   n   v5 mean  aria2 mean    v5 med  aria2 med   ratio             CI95   p_holm
+   U1    30    3262.9      1485.5    3262.3     1466.5   2.199 [2.164,2.234]        1
+   U2    30    2336.6       785.2    2337.9      782.1   2.977 [2.943,3.012]        1
+   U3    30    1982.8       754.2    1964.5      605.8   2.799 [2.463,3.181]        1
+   U4    30    3922.6      1907.2    3834.3     1767.2   2.086 [1.943,2.240]        1
+   U5    30    4221.9      2865.2    4184.1     2603.3   1.493 [1.397,1.594]        1
+   U6    30    3004.9      1118.7    3002.3     1119.9   2.686 [2.667,2.705]        1
+   U7    30    2288.9       891.2    2286.5      629.1   2.808 [2.411,3.270]        1
+   U8    30    3432.5      1806.7    3414.8     1498.3   1.962 [1.787,2.155]        1
+
+5. POOLED MATCHED-PAIR ANALYSIS (primary unit = pair; effect = log(v5/aria2))
+   pairs                     : 240
+   v5 mean / aria2 mean      : 3056.6 ms / 1451.7 ms
+   geometric ratio           : 2.3217 (ratio 95% CI [2.2269, 2.4206])
+   relative reduction        : -132.17% (negative = v5 slower)
+   paired permutation p      : 1 (one-sided, v5 faster)
+   effect distribution       : v5 faster 1/240 (0.4%), aria2 faster 239, ties 0; conditions v5 faster 0/8
+
+6. PRE-SPECIFIED CLAIM CRITERIA (reused methodology, locked before the run)
+   1_ratio_below_1: False
+   2_ci_excludes_zero_dqn_faster: False
+   3_perm_test_supports_dqn_faster: False
+   4_majority_conditions_dqn_faster: False
+   claim_supported           : False
+
+7. V5 OBSERVED LIVE BEHAVIOR (authoritative controller state)
+   max concurrency           : always 4; time-weighted mean 2.702
+   effective changes/run     : mean 7.40 (min 3, max 12)
+   final concurrency counts  : {1: 0, 2: 17, 3: 180, 4: 43}
+   constant-run fraction     : 0.000; ramp-to-max fraction 0.021
+   transition reactions (mean latency from transition to first effective change):
+     U1: 566 ms over 30 runs
+     U2: 152 ms over 30 runs
+     U6: 733 ms over 30 runs
+     U7: 665 ms over 30 runs
+     U8: 316 ms over 30 runs
+
+8. ARIA2 OBSERVED REQUEST BEHAVIOR
+   max in-flight             : mean 15.82, max 16 (204/240 runs reached 16)
+   range requests/run        : mean 15.03, range size 1 MiB
+   non-range requests/run    : 1.00 (initial probe; aborted)
+   retries                   : 0; failed server-side requests 245
+
+9. STRUCTURAL ASYMMETRY (MANDATORY CONTEXT)
+   A. v5 maximum concurrency                    : 4
+   B. aria2-F maximum configured connections    : 16
+   C. selection reason                          : candidate F was selected by the v2 calibration because with --min-split-size=1048576 only >=16 connections yield the intended ~16 x 1 MiB range split at the 16 MiB evaluation scale (candidates A-E yielded larger split sizes)
+   D. server pacing                             : the controlled server paces each response independently at the selected rate, so additional concurrent responses increase aggregate throughput
+   consequence                                  : aria2-F can exploit up to 16 independently paced responses while v5 can exploit at most 4; this compares two complete frozen configurations and is NOT a capability-matched comparison; the asymmetry is not normalized away
+   observed aria2 max in-flight (mean/max)      : 15.82 / 16
+   observed v5 time-weighted concurrency (mean) : 2.702
+
+10. INTERPRETATION
+   Descriptive: v5 was slower than aria2-F in all 8 tested conditions; the pooled
+   geometric ratio was 2.32 with a 95% CI that excludes 1.0, and v5 was faster in
+   1/240 pairs and 0/8 conditions.
+   Statistical: the pre-specified claim criteria were all false; no v5-faster claim is supported.
+   Structural: v5 can use at most 4 concurrent requests while aria2-F uses up to 16;
+   the controlled server paces responses independently, so aria2-F can exploit up to
+   16 independently paced responses. This is a comparison of two complete frozen
+   configurations, NOT a capability-matched comparison. The ratio must not be read as
+   an algorithmic effect isolated from this asymmetry.
+   Supported conclusion (exactly): under the tested controlled conditions at 16 MiB with
+   the frozen configurations and methodology, v5 did not outperform aria2-F and was
+   slower; no universal, consumer-network, optimality, convergence, or generalization
+   claim is made.
+
+11. V5 ADAPTATION CONTEXT (established before this comparison; unchanged)
+   v5 passed the live technical/reaction gates and was non-constant, but adaptation
+   was shallow: it generally ramps to C3-C4, never holds low concurrency, and does not
+   reliably track the simulator's static optimum. The head-to-head evaluated the
+   frozen candidate; nothing was retrained or tuned based on these results.
+
+12. ARTIFACTS
+   artifact_hashes.json
+   asymmetry_report.json
+   claim_assessment.json
+   execution_schedule.json
+   final_test_matrix_v5.json
+   final_test_matrix_v5.sha256
+   manifest_v5.json
+   per_condition_table.txt
+   raw_results.json
+   raw_results_all.json
+   report.txt
+   request_traces.json
+   run.log
+   statistical_analysis.json
+   summary.txt
+   validity_report.json
+

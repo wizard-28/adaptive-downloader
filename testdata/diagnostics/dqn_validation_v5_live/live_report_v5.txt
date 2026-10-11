@@ -1,0 +1,65 @@
+Candidate v5 live transfer validation (simulator-trained; controlled server)
+NO aria2 comparison; NO real-network claim; NO superiority claim.
+
+model_sha256 : 3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75
+file_size    : 16777216 (chunk 1048576, concurrency [1 4])
+matrix       : 5 scenarios x 5 policies x 5 reps = 125 expected runs
+
+GATE_A_technical_validity        PASS
+GATE_B_genuine_adaptation        PASS
+GATE_C_reaction_observability    PASS
+
+== baseline ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     4445.6   4442.4     16.6   16.0    0.0    0.0     1.00     1.00
+fixed-2     2262.2   2250.0     20.0   16.0    0.0    0.0     2.00     2.00
+fixed-3     1731.3   1731.2      8.2   16.0    0.0    0.0     3.00     3.00
+fixed-4     1170.0   1171.7      6.9   16.0    0.0    0.0     4.00     4.00
+v5          1719.9   1717.6     12.1   16.0    0.0    0.0     3.00     3.18
+
+== server-throttle-wallclock ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     6248.0   6258.9     29.1   16.0    0.0    0.0     1.00     1.00
+fixed-2     4041.3   4048.4     13.3   16.0    0.0    0.0     2.00     2.00
+fixed-3     3499.1   3511.8     22.3   16.0    0.0    0.0     3.00     3.00
+fixed-4     2947.2   2933.3     31.0   16.0    0.0    0.0     4.00     4.00
+v5          3494.9   3489.2     12.1   16.0    0.0    0.0     3.00     2.06
+
+== latency ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     5202.8   5181.1     52.3   16.0    0.0    0.0     1.00     1.00
+fixed-2     2695.6   2659.4     56.8   16.0    0.0    0.0     2.00     2.00
+fixed-3     1985.8   1984.4     18.8   16.0    0.0    0.0     3.00     3.00
+fixed-4     1391.6   1386.1     15.6   16.0    0.0    0.0     4.00     4.00
+v5          2039.9   2036.3     35.8   16.0    0.0    0.0     3.00     3.06
+
+== loss ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     4614.4   4601.0    159.2   16.0    0.0    0.0     1.00     1.00
+fixed-2     2268.9   2281.6     25.3   16.0    0.0    0.0     2.00     2.00
+fixed-3     1724.6   1711.6     21.4   16.0    0.0    0.0     3.00     3.00
+fixed-4     1244.7   1177.5     93.1   16.0    0.0    0.0     4.00     4.00
+v5          1735.2   1727.3     39.8   16.0    0.0    0.0     2.80     3.17
+
+== combined ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1    17451.0  17457.1     16.9   16.0    0.0    0.0     1.00     1.00
+fixed-2     8994.3   8796.5    388.5   16.0    0.0    0.0     2.00     2.00
+fixed-3     6558.1   6561.2     13.9   16.0    0.0    0.0     3.00     3.00
+fixed-4     4486.0   4431.2     91.1   16.0    0.0    0.0     4.00     4.00
+v5          6557.7   6550.6     11.9   16.0    0.0    0.0     3.80     3.14
+
+v5 actual concurrency behavior (valid runs):
+  combined                   n=5 mean_changes=5.20 constant=0 ramp=0 finalC(mean)=3.80 dominant=map[C4:5]
+  latency                    n=5 mean_changes=8.00 constant=0 ramp=0 finalC(mean)=3.00 dominant=map[C4:5]
+  server-throttle-wallclock  n=5 mean_changes=10.80 constant=0 ramp=0 finalC(mean)=3.00 dominant=map[C1:5]
+  loss                       n=5 mean_changes=10.60 constant=0 ramp=0 finalC(mean)=2.80 dominant=map[C4:5]
+  baseline                   n=5 mean_changes=11.20 constant=0 ramp=0 finalC(mean)=3.00 dominant=map[C4:5]
+
+transition reactions (v5):
+  server-throttle-wallclock  runs=5 changed_after=5 latency_ms(mean/median)=1067.0/1067.0 postMeanC=2.49
+
+validation:
+  expected=125 recorded=125 valid=125 invalid=0 netem_unavailable=0
+
+Caveats: controlled synthetic server; simulator-trained model; no aria2 comparison; no real-network generalization; performance differences are descriptive, not a ranking.

@@ -1,0 +1,89 @@
+{
+  "decision_interval": 2,
+  "different_regimes_have_different_best_c": true,
+  "distinct_best_c": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "label": "static concurrency sweep (simulator only; prerequisite for interpreting adaptive behavior)",
+  "note": "Fixed-concurrency policies C=1..4 start at C and never change it. If all regimes had the same best C, adaptive concurrency would be uninformative in this simulator.",
+  "regimes": {
+    "combined-mild": {
+      "best_c": 2,
+      "mean_completion_s_by_c": {
+        "1": 2.48,
+        "2": 1.6533333333333333,
+        "3": 1.7999999999999998,
+        "4": 1.9666666666666666
+      }
+    },
+    "latency-dominant": {
+      "best_c": 4,
+      "mean_completion_s_by_c": {
+        "1": 2.6,
+        "2": 1.38,
+        "3": 1.095,
+        "4": 0.9625
+      }
+    },
+    "low-bandwidth": {
+      "best_c": 4,
+      "mean_completion_s_by_c": {
+        "1": 8.08,
+        "2": 4.08,
+        "3": 3.4333333333333336,
+        "4": 3.12
+      }
+    },
+    "shared-cap-hard": {
+      "best_c": 1,
+      "mean_completion_s_by_c": {
+        "1": 4.0,
+        "2": 4.08,
+        "3": 4.62,
+        "4": 5.15
+      }
+    },
+    "shared-cap-moderate": {
+      "best_c": 3,
+      "mean_completion_s_by_c": {
+        "1": 8.16,
+        "2": 4.16,
+        "3": 3.7800000000000002,
+        "4": 4.200000000000001
+      }
+    },
+    "stable-no-cap": {
+      "best_c": 4,
+      "mean_completion_s_by_c": {
+        "1": 2.16,
+        "2": 1.16,
+        "3": 0.9299999999999999,
+        "4": 0.825
+      }
+    },
+    "throttle-down-wallclock": {
+      "best_c": 4,
+      "mean_completion_s_by_c": {
+        "1": 10.66,
+        "2": 3.5766666666666667,
+        "3": 1.5966666666666667,
+        "4": 0.6166666666666667
+      }
+    },
+    "throttle-up-wallclock": {
+      "best_c": 4,
+      "mean_completion_s_by_c": {
+        "1": 3.326666666666666,
+        "2": 1.7433333333333332,
+        "3": 1.9022222222222223,
+        "4": 1.5333333333333332
+      }
+    }
+  },
+  "seeds": [
+    300
+  ]
+}

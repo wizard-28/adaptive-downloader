@@ -1,0 +1,75 @@
+{
+  "study": "live-joint-ns-queueing-mechanism-gate",
+  "phase": "MECHANISM_GATE (fixed configurations only; no adaptation, no RL)",
+  "status": "DESIGN_FROZEN_BEFORE_GATE_EXECUTION (infrastructure validation: lo MTU 1500 + tbf burst 32kb; no mechanism parameter changed)",
+  "evidence_type": "LIVE (real tc qdisc + real iperf3 background traffic + real downloader)",
+  "mechanism": "shared finite-capacity bottleneck + independent background traffic -> queueing delay / contention",
+  "bottleneck": {
+    "qdisc": "tbf",
+    "interface": "lo",
+    "rate_bytes_per_second": 5000000,
+    "rate_label": "40 Mbit/s",
+    "burst_bytes": 32768,
+    "limit_bytes": 262144,
+    "max_queue_delay_ms": 52.4,
+    "note": "FIFO bounded queue; max queueing delay = limit/rate. Grounded: ~50 ms maximum queueing delay, comparable to the D2 netem RTT (40 ms).",
+    "burst_label": "32 kb (>= the 1500-byte link MTU)"
+  },
+  "background_traffic": {
+    "tool": "iperf3",
+    "server": "127.0.0.1 (iperf3 -s, one process, restarted per state)",
+    "client": "iperf3 -c 127.0.0.1 -P 4 -b <B> -t <run+drain>",
+    "offered_load_bytes_per_second": {
+      "S0_no_background": 0,
+      "S1_moderate": 2500000,
+      "S2_heavy": 4250000
+    },
+    "note": "B is grounded as 0.0 / 0.5 / 0.85 of the bottleneck rate C. The achieved background load is measured and reported."
+  },
+  "contention_states": [
+    "S0_no_background",
+    "S1_moderate",
+    "S2_heavy"
+  ],
+  "download": {
+    "file_size_bytes": 33554432,
+    "file_size_label": "32 MiB (mechanism-probing size; queueing physics depends on C and B, not F)",
+    "chunk_bytes": 1048576,
+    "concurrency_grid": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "timeout_ms": 30000,
+    "max_retries": 3,
+    "repetitions_per_cell": 3,
+    "order": "round-robin over N within each state; states run in order S0, S1, S2",
+    "content_verified": true
+  },
+  "measurements_per_run": [
+    "completion time",
+    "client attempts / successes / failures / retries / bytes",
+    "server-side per-request start/end/duration/size",
+    "ping RTT samples during the run (median, p95, loss)",
+    "tc qdisc backlog and drop counters before/after",
+    "nstat TCP retransmission and timeout deltas",
+    "system load"
+  ],
+  "predeclared_gate": {
+    "G-N_interior_optimum": "in at least one state, increasing N produces a measurable contention cost (p95 RTT and/or qdisc drops and/or retransmissions grow with N) and the winning N is not the largest N",
+    "G-N_state_dependence": "N*(state_a) != N*(state_b) for at least two states, with a material margin (winning N median >= 5% faster than the second-best N) and a consistent winner across all 3 repetitions in each of those states",
+    "stop_rule": "if the gate fails: report NO LIVE-GROUNDED JOINT N+S OPPORTUNITY and stop (no S sweep, no adaptive controller, no confirmatory protocol)"
+  },
+  "aria2": {
+    "reserved_for_later": "aria2 1.37.0 --split=16 --max-connection-per-server=16 --min-split-size=1M is frozen for the causal comparison only if the joint gate passes; it is not used in the mechanism gate."
+  },
+  "immutability": "no previous benchmark/evidence directory is modified; all raw measurements are preserved under mechanism_gate/",
+  "link_emulation": {
+    "mtu_bytes": 1500,
+    "original_mtu_bytes": 65536,
+    "note": "lo MTU temporarily set to 1500 to emulate a realistic Ethernet-like path. With the default 65536-byte loopback MTU the server's initial TCP window burst overran any sane queue and downloads stalled in retransmission (infrastructure failure, fixed during validation before any gate measurement). The original MTU is restored after the study.",
+    "restored_after_study": true
+  }
+}

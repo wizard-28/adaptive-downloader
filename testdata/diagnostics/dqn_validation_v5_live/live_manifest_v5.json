@@ -1,0 +1,865 @@
+{
+  "action_names": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "chunk_size": 1048576,
+  "concurrency_bounds": [
+    1,
+    4
+  ],
+  "expected_runs": 125,
+  "file_size": 16777216,
+  "gates": {
+    "A": "every required run present and valid; no required cell has unavailable netem",
+    "B": "NOT READY if constant fraction \u003e= 0.9, ramp-to-max fraction \u003e= 0.9, monotone-decrease fraction \u003e= 0.9, worst-scenario dominant single-concurrency time fraction \u003e= 0.9, or \u003c 2 distinct dominant actual concurrency values across scenarios",
+    "C": "for every valid v5 run in a wall-clock transition scenario the logs establish transition concurrency, first subsequent decision, whether concurrency changed, and reaction latency"
+  },
+  "go_version": "go1.27.1",
+  "label": "Candidate v5 live transfer validation (simulator-trained; no aria2 comparison)",
+  "max_retries": 3,
+  "model_path": "testdata/diagnostics/dqn_validation_v5/final_dqn_candidate_v5.json",
+  "model_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "model_sha256_expected": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75",
+  "num_actions": 3,
+  "order_seed": 20260925,
+  "policies": [
+    {
+      "concurrency": 1,
+      "kind": "fixed",
+      "name": "fixed-1"
+    },
+    {
+      "concurrency": 2,
+      "kind": "fixed",
+      "name": "fixed-2"
+    },
+    {
+      "concurrency": 3,
+      "kind": "fixed",
+      "name": "fixed-3"
+    },
+    {
+      "concurrency": 4,
+      "kind": "fixed",
+      "name": "fixed-4"
+    },
+    {
+      "bounds": [
+        1,
+        4
+      ],
+      "initial_concurrency": 1,
+      "kind": "trained-v5",
+      "name": "v5"
+    }
+  ],
+  "reps": 5,
+  "run_order": [
+    {
+      "order_index": 0,
+      "policy": "fixed-4",
+      "rep": 3,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 1,
+      "policy": "v5",
+      "rep": 2,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 2,
+      "policy": "fixed-2",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 3,
+      "policy": "fixed-1",
+      "rep": 4,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 4,
+      "policy": "fixed-3",
+      "rep": 2,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 5,
+      "policy": "fixed-1",
+      "rep": 3,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 6,
+      "policy": "fixed-2",
+      "rep": 3,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 7,
+      "policy": "fixed-2",
+      "rep": 2,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 8,
+      "policy": "fixed-3",
+      "rep": 1,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 9,
+      "policy": "fixed-3",
+      "rep": 4,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 10,
+      "policy": "fixed-3",
+      "rep": 2,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 11,
+      "policy": "fixed-2",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 12,
+      "policy": "fixed-4",
+      "rep": 4,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 13,
+      "policy": "fixed-2",
+      "rep": 3,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 14,
+      "policy": "v5",
+      "rep": 3,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 15,
+      "policy": "fixed-2",
+      "rep": 4,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 16,
+      "policy": "fixed-4",
+      "rep": 4,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 17,
+      "policy": "v5",
+      "rep": 1,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 18,
+      "policy": "fixed-3",
+      "rep": 1,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 19,
+      "policy": "fixed-4",
+      "rep": 1,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 20,
+      "policy": "fixed-3",
+      "rep": 2,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 21,
+      "policy": "fixed-2",
+      "rep": 1,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 22,
+      "policy": "fixed-4",
+      "rep": 2,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 23,
+      "policy": "fixed-4",
+      "rep": 3,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 24,
+      "policy": "fixed-3",
+      "rep": 0,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 25,
+      "policy": "fixed-4",
+      "rep": 2,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 26,
+      "policy": "fixed-1",
+      "rep": 3,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 27,
+      "policy": "fixed-2",
+      "rep": 4,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 28,
+      "policy": "fixed-1",
+      "rep": 2,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 29,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 30,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 31,
+      "policy": "fixed-1",
+      "rep": 3,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 32,
+      "policy": "fixed-2",
+      "rep": 1,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 33,
+      "policy": "v5",
+      "rep": 2,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 34,
+      "policy": "fixed-1",
+      "rep": 4,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 35,
+      "policy": "fixed-4",
+      "rep": 0,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 36,
+      "policy": "fixed-3",
+      "rep": 0,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 37,
+      "policy": "fixed-4",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 38,
+      "policy": "fixed-3",
+      "rep": 0,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 39,
+      "policy": "fixed-3",
+      "rep": 3,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 40,
+      "policy": "v5",
+      "rep": 4,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 41,
+      "policy": "fixed-2",
+      "rep": 1,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 42,
+      "policy": "fixed-3",
+      "rep": 3,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 43,
+      "policy": "fixed-3",
+      "rep": 4,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 44,
+      "policy": "fixed-3",
+      "rep": 3,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 45,
+      "policy": "fixed-4",
+      "rep": 1,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 46,
+      "policy": "fixed-3",
+      "rep": 4,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 47,
+      "policy": "fixed-3",
+      "rep": 1,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 48,
+      "policy": "fixed-2",
+      "rep": 1,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 49,
+      "policy": "v5",
+      "rep": 3,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 50,
+      "policy": "fixed-2",
+      "rep": 2,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 51,
+      "policy": "fixed-1",
+      "rep": 2,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 52,
+      "policy": "fixed-3",
+      "rep": 1,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 53,
+      "policy": "fixed-4",
+      "rep": 2,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 54,
+      "policy": "fixed-3",
+      "rep": 1,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 55,
+      "policy": "fixed-1",
+      "rep": 2,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 56,
+      "policy": "v5",
+      "rep": 1,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 57,
+      "policy": "fixed-3",
+      "rep": 4,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 58,
+      "policy": "fixed-2",
+      "rep": 1,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 59,
+      "policy": "fixed-1",
+      "rep": 2,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 60,
+      "policy": "fixed-1",
+      "rep": 4,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 61,
+      "policy": "v5",
+      "rep": 2,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 62,
+      "policy": "fixed-2",
+      "rep": 2,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 63,
+      "policy": "fixed-2",
+      "rep": 3,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 64,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 65,
+      "policy": "fixed-2",
+      "rep": 4,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 66,
+      "policy": "fixed-4",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 67,
+      "policy": "v5",
+      "rep": 3,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 68,
+      "policy": "fixed-2",
+      "rep": 3,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 69,
+      "policy": "fixed-1",
+      "rep": 4,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 70,
+      "policy": "fixed-2",
+      "rep": 2,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 71,
+      "policy": "fixed-2",
+      "rep": 4,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 72,
+      "policy": "fixed-1",
+      "rep": 3,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 73,
+      "policy": "fixed-1",
+      "rep": 4,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 74,
+      "policy": "v5",
+      "rep": 3,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 75,
+      "policy": "fixed-1",
+      "rep": 3,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 76,
+      "policy": "fixed-1",
+      "rep": 1,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 77,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 78,
+      "policy": "fixed-4",
+      "rep": 2,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 79,
+      "policy": "v5",
+      "rep": 2,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 80,
+      "policy": "fixed-2",
+      "rep": 2,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 81,
+      "policy": "fixed-2",
+      "rep": 0,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 82,
+      "policy": "fixed-1",
+      "rep": 1,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 83,
+      "policy": "fixed-4",
+      "rep": 4,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 84,
+      "policy": "fixed-2",
+      "rep": 3,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 85,
+      "policy": "fixed-3",
+      "rep": 4,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 86,
+      "policy": "fixed-3",
+      "rep": 2,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 87,
+      "policy": "fixed-3",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 88,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 89,
+      "policy": "v5",
+      "rep": 1,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 90,
+      "policy": "fixed-4",
+      "rep": 4,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 91,
+      "policy": "fixed-2",
+      "rep": 4,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 92,
+      "policy": "v5",
+      "rep": 3,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 93,
+      "policy": "fixed-4",
+      "rep": 0,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 94,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 95,
+      "policy": "fixed-1",
+      "rep": 1,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 96,
+      "policy": "fixed-3",
+      "rep": 2,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 97,
+      "policy": "fixed-4",
+      "rep": 3,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 98,
+      "policy": "fixed-3",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 99,
+      "policy": "fixed-4",
+      "rep": 3,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 100,
+      "policy": "fixed-4",
+      "rep": 0,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 101,
+      "policy": "fixed-1",
+      "rep": 1,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 102,
+      "policy": "fixed-4",
+      "rep": 4,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 103,
+      "policy": "fixed-2",
+      "rep": 0,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 104,
+      "policy": "fixed-4",
+      "rep": 1,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 105,
+      "policy": "v5",
+      "rep": 1,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 106,
+      "policy": "v5",
+      "rep": 4,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 107,
+      "policy": "fixed-3",
+      "rep": 3,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 108,
+      "policy": "fixed-1",
+      "rep": 2,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 109,
+      "policy": "v5",
+      "rep": 4,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 110,
+      "policy": "v5",
+      "rep": 4,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 111,
+      "policy": "fixed-4",
+      "rep": 2,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 112,
+      "policy": "fixed-2",
+      "rep": 0,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 113,
+      "policy": "v5",
+      "rep": 1,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 114,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 115,
+      "policy": "fixed-3",
+      "rep": 3,
+      "scenario": "server-throttle-wallclock"
+    },
+    {
+      "order_index": 116,
+      "policy": "fixed-4",
+      "rep": 3,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 117,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 118,
+      "policy": "v5",
+      "rep": 2,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 119,
+      "policy": "fixed-4",
+      "rep": 1,
+      "scenario": "loss"
+    },
+    {
+      "order_index": 120,
+      "policy": "fixed-4",
+      "rep": 1,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 121,
+      "policy": "v5",
+      "rep": 4,
+      "scenario": "combined"
+    },
+    {
+      "order_index": 122,
+      "policy": "v5",
+      "rep": 0,
+      "scenario": "baseline"
+    },
+    {
+      "order_index": 123,
+      "policy": "fixed-1",
+      "rep": 1,
+      "scenario": "latency"
+    },
+    {
+      "order_index": 124,
+      "policy": "fixed-1",
+      "rep": 0,
+      "scenario": "latency"
+    }
+  ],
+  "scenarios": [
+    {
+      "initial_rate": 4194304,
+      "name": "baseline",
+      "subsequent_rate": 4194304,
+      "transition_after": ""
+    },
+    {
+      "initial_rate": 524288,
+      "name": "server-throttle-wallclock",
+      "subsequent_rate": 4194304,
+      "transition_after": "1s"
+    },
+    {
+      "initial_rate": 4194304,
+      "name": "latency",
+      "network": {
+        "BandwidthBps": 0,
+        "Latency": 20000000,
+        "Jitter": 0,
+        "LossPercent": 0
+      },
+      "subsequent_rate": 4194304,
+      "transition_after": ""
+    },
+    {
+      "initial_rate": 4194304,
+      "name": "loss",
+      "network": {
+        "BandwidthBps": 0,
+        "Latency": 0,
+        "Jitter": 0,
+        "LossPercent": 1
+      },
+      "subsequent_rate": 4194304,
+      "transition_after": ""
+    },
+    {
+      "initial_rate": 1048576,
+      "name": "combined",
+      "network": {
+        "BandwidthBps": 0,
+        "Latency": 20000000,
+        "Jitter": 0,
+        "LossPercent": 1
+      },
+      "subsequent_rate": 1048576,
+      "transition_after": ""
+    }
+  ],
+  "started_utc": "2026-09-25T12:46:08.579984614Z",
+  "state_spec_version": 2,
+  "sudo": true,
+  "timeout": "30s"
+}

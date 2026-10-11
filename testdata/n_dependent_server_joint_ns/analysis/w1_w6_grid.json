@@ -1,0 +1,664 @@
+{
+  "workloads": {
+    "W1": {
+      "label": "healthy",
+      "cells": {
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 69.925997,
+          "runs_s": [
+            69.89241,
+            69.959584
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 65.29215500000001,
+          "runs_s": [
+            65.40558,
+            65.17873
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 77.8072265,
+          "runs_s": [
+            77.593059,
+            78.021394
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 35.38718399999999,
+          "runs_s": [
+            35.39841199999999,
+            35.375955999999995
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 35.0651635,
+          "runs_s": [
+            34.766846,
+            35.363481
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 48.521353,
+          "runs_s": [
+            48.8002,
+            48.242506
+          ],
+          "invalid_reasons": []
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 18.4606025,
+          "runs_s": [
+            18.470052,
+            18.451152999999998
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 21.961498000000002,
+          "runs_s": [
+            19.735901000000002,
+            24.187095000000003
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 34.1621495,
+          "runs_s": [
+            34.315226,
+            34.009072999999994
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "live_argmin": "16/1048576",
+      "live_argmin_s": 18.4606025,
+      "predicted_optimum": "16/1048576",
+      "prediction_match": true
+    },
+    "W2": {
+      "label": "T=1,C=4M,g=0.10,t=4",
+      "cells": {
+        "2/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 163.162957,
+          "runs_s": [
+            162.810465,
+            163.515449
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 177.7455065,
+          "runs_s": [
+            177.485411,
+            178.005602
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 174.93283050000002,
+          "runs_s": [
+            174.777306,
+            175.088355
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 177.1041635,
+          "runs_s": [
+            177.416169,
+            176.792158
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 209.062543,
+          "runs_s": [
+            208.504582,
+            209.62050399999998
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 214.55859650000002,
+          "runs_s": [
+            214.625324,
+            214.491869
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts",
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts"
+          ]
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 267.51067950000004,
+          "runs_s": [
+            267.667706,
+            267.353653
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [130023424,134217727] after 4 attempts",
+            "downloader: retry limit exceeded: range [121634816,125829119] after 4 attempts"
+          ]
+        },
+        "16/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [385875968,402653183] after 4 attempts",
+            "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts"
+          ]
+        }
+      },
+      "live_argmin": "2/4194304",
+      "live_argmin_s": 163.162957,
+      "predicted_optimum": "2/4194304",
+      "prediction_match": true
+    },
+    "W3": {
+      "label": "T=2,C=4M,g=0.10,t=4",
+      "cells": {
+        "2/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 162.986998,
+          "runs_s": [
+            162.452259,
+            163.521737
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 180.8301835,
+          "runs_s": [
+            180.79810500000002,
+            180.862262
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 175.065653,
+          "runs_s": [
+            174.91603,
+            175.21527600000002
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 177.4009035,
+          "runs_s": [
+            177.876211,
+            176.92559599999998
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 218.4566625,
+          "runs_s": [
+            218.58980499999998,
+            218.32352
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 214.433773,
+          "runs_s": [
+            214.56108799999998,
+            214.30645800000002
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts",
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts"
+          ]
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 296.3313945,
+          "runs_s": [
+            295.87214500000005,
+            296.790644
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [121634816,125829119] after 4 attempts",
+            "downloader: retry limit exceeded: range [125829120,130023423] after 4 attempts"
+          ]
+        },
+        "16/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts",
+            "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts"
+          ]
+        }
+      },
+      "live_argmin": "2/4194304",
+      "live_argmin_s": 162.986998,
+      "predicted_optimum": "2/4194304",
+      "prediction_match": true
+    },
+    "W4": {
+      "label": "T=2,C=4M,g=0.10,t=8",
+      "cells": {
+        "2/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 162.32332350000001,
+          "runs_s": [
+            162.160029,
+            162.486618
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 173.7772455,
+          "runs_s": [
+            174.059603,
+            173.494888
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 171.4185645,
+          "runs_s": [
+            171.205791,
+            171.631338
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 176.86477,
+          "runs_s": [
+            177.010542,
+            176.718998
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 194.631907,
+          "runs_s": [
+            194.28607,
+            194.977744
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 202.43706050000003,
+          "runs_s": [
+            202.435201,
+            202.43892000000002
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts",
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts"
+          ]
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 221.063608,
+          "runs_s": [
+            221.051911,
+            221.075305
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [192937984,197132287] after 4 attempts",
+            "downloader: retry limit exceeded: range [188743680,192937983] after 4 attempts"
+          ]
+        },
+        "16/16777216": {
+          "valid": 0,
+          "invalid": 2,
+          "median_s": null,
+          "runs_s": [],
+          "invalid_reasons": [
+            "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts",
+            "downloader: retry limit exceeded: range [352321536,369098751] after 4 attempts"
+          ]
+        }
+      },
+      "live_argmin": "2/4194304",
+      "live_argmin_s": 162.32332350000001,
+      "predicted_optimum": "2/4194304",
+      "prediction_match": true
+    },
+    "W5": {
+      "label": "T=2,C=8M,g=0.10,t=4",
+      "cells": {
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 98.9952045,
+          "runs_s": [
+            98.652952,
+            99.337457
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 95.896827,
+          "runs_s": [
+            95.744288,
+            96.04936599999999
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 105.0775915,
+          "runs_s": [
+            104.879751,
+            105.275432
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 113.493465,
+          "runs_s": [
+            112.496644,
+            114.490286
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 112.512676,
+          "runs_s": [
+            112.50324,
+            112.52211199999999
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 110.35318050000001,
+          "runs_s": [
+            110.310293,
+            110.396068
+          ],
+          "invalid_reasons": []
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 151.9597045,
+          "runs_s": [
+            152.17811799999998,
+            151.741291
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 148.460754,
+          "runs_s": [
+            148.45164499999998,
+            148.469863
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 85.4363025,
+          "runs_s": [
+            86.170363,
+            84.702242
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "live_argmin": "16/16777216",
+      "live_argmin_s": 85.4363025,
+      "predicted_optimum": "4/4194304",
+      "prediction_match": false
+    },
+    "W6": {
+      "label": "T=2,C=12M,g=0.10,t=4",
+      "cells": {
+        "4/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 73.83701199999999,
+          "runs_s": [
+            73.767108,
+            73.906916
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 68.590876,
+          "runs_s": [
+            68.732953,
+            68.448799
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 80.5470895,
+          "runs_s": [
+            80.79120900000001,
+            80.30297
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 77.8134335,
+          "runs_s": [
+            77.05525,
+            78.571617
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 78.77237199999999,
+          "runs_s": [
+            78.831487,
+            78.713257
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 83.827659,
+          "runs_s": [
+            83.94747,
+            83.707848
+          ],
+          "invalid_reasons": []
+        },
+        "16/1048576": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 103.57433950000001,
+          "runs_s": [
+            103.442482,
+            103.706197
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 100.8037365,
+          "runs_s": [
+            101.03842999999999,
+            100.56904300000001
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid": 2,
+          "invalid": 0,
+          "median_s": 70.09676300000001,
+          "runs_s": [
+            70.77982300000001,
+            69.413703
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "live_argmin": "4/4194304",
+      "live_argmin_s": 68.590876,
+      "predicted_optimum": "4/4194304",
+      "prediction_match": true
+    }
+  },
+  "common_cells": [
+    "16/1048576",
+    "4/1048576",
+    "4/16777216",
+    "4/4194304",
+    "8/1048576",
+    "8/4194304"
+  ],
+  "family_mean_by_cell": {
+    "16/1048576": {
+      "mean_s": 176.48338808333332,
+      "n_workloads": 6
+    },
+    "4/1048576": {
+      "mean_s": 129.1851915,
+      "n_workloads": 6
+    },
+    "4/16777216": {
+      "mean_s": 132.46695741666667,
+      "n_workloads": 6
+    },
+    "4/4194304": {
+      "mean_s": 125.19948433333334,
+      "n_workloads": 6
+    },
+    "8/1048576": {
+      "mean_s": 141.47419916666666,
+      "n_workloads": 6
+    },
+    "8/4194304": {
+      "mean_s": 142.96327358333335,
+      "n_workloads": 6
+    }
+  },
+  "family_best_single_fixed": "4/4194304",
+  "family_best_single_fixed_mean_s": 125.19948433333334
+}

@@ -1,0 +1,55 @@
+FINAL RESULTS TABLES (descriptive only; no ranking)
+==============================================================================
+
+TABLE 1 - Experimental configurations
+  v1: 256 KiB, 5 modes (4 baseline + linucb), reps=10, request-count throttle
+  v2: 256 KiB + 5-action warm-up, reps=10
+  v3: 4 MiB, 5 modes (4 baseline + linucb) + 1 scenario, reps=10
+  v4: 4 MiB, standard vs periodic LinUCB, 5 scenarios, reps=10
+  v5: 4 MiB, 6 modes (4 baseline + linucb + linucb-periodic), reps=10
+  v6: 4 MiB wall-clock throttle (512 KiB/s -> 4 MiB/s after 1 s), 6 modes, reps=10
+  aria2: 1.37.0, -x4 -s4 -k1MiB, 5 scenarios (request-count throttle), reps=10
+  aria2 wall-clock: same config, 1 scenario, reps=10
+  granularity matched: internal fixed 1 MiB/4C, 5 scenarios (old) + wall-clock, reps=10
+
+TABLE 2 - LinUCB lock-in diagnosis (frozen v3 replay)
+  replay matched actions: 4582/4582
+  feature norm mean: 1.0066
+  bytes_transferred always 1.0: True (share of ||x||^2 = 0.9868)
+  first greedy: mean=2.653 bonus=0.145
+  baseline lock decision (mean): 5
+
+TABLE 3 - Periodic exploration behavior
+  intervals compared: [0, 5]
+  live replay validation: 4586/4586
+    baseline         forced=170  best_rank_reached=1
+    server-throttle  forced=190  best_rank_reached=1
+    latency          forced=50   best_rank_reached=1
+    loss             forced=137  best_rank_reached=1
+    combined         forced=62   best_rank_reached=1
+
+TABLE 4 - Final six-mode v5 (mean completion ms)
+  scenario                   fixed   conc-adaptive  chunk-adaptive  joint-adaptive      linucb-std linucb-periodic
+  baseline                  1155.1          1156.3          1160.7          1147.6          1162.5          1113.6
+  server-throttle           1382.3           569.7          1343.3           647.6          1328.7          1215.7
+  latency                   6340.1          2302.4          2559.6          2190.5          2635.0          2456.6
+  loss                      1971.6          1198.2          1564.4          1263.7          1537.5          1648.5
+  combined                 10154.9          5328.4          5928.8          5652.8          7186.8          6119.7
+
+TABLE 5 - Wall-clock throttle v6 (mean completion ms)
+            fixed   conc-adaptive  chunk-adaptive  joint-adaptive      linucb-std linucb-periodic
+           2057.9          1324.5          2029.0          1404.7          2061.3          1323.4
+
+TABLE 6 - aria2 comparison (mean completion ms, not ranked)
+  aria2 old (request-count throttle) per scenario:
+    baseline         320.9
+    server-throttle  2117.9
+    latency          853.2
+    loss             362.4
+    combined         1282.5
+  aria2 wall-clock (server-throttle-wallclock): 2129.7; matched internal: 2055.7
+
+TABLE 7 - Granularity-matched aria2 control (wall-clock)
+  aria2: 4 requests (1 probe + 3 x 1 MiB), max in-flight 4, 0 post-1s requests
+  matched internal: 4 x 1 MiB, max in-flight 4, 0 post-1s requests
+  means: aria2 2129.7 vs matched 2055.7 ms

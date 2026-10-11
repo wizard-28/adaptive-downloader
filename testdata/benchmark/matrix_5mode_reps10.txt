@@ -1,0 +1,116 @@
+Formal 5-mode LinUCB benchmark (descriptive only; no ranking, no performance claim)
+generated_utc: 2026-09-24T17:11:33Z
+source_raw: testdata/benchmark/matrix_5mode_reps10.json
+reproduce: go run ./cmd/experiment -matrix -sudo -reps 10 -json \
+             -modes fixed,concurrency-adaptive,chunk-size-adaptive,joint-adaptive,linucb > matrix_5mode_reps10.json
+
+CONFIGURATION (DefaultMatrixConfig, reps=10)
+  modes: fixed, concurrency-adaptive, chunk-size-adaptive, joint-adaptive, linucb
+  common base: file=262144 B chunk=32768 initial_chunk=32768 step=32768
+               min/max chunk=32768/131072 concurrency=1 min/max=1/4
+               thresholds=0.2/0.2 window=4 retries=3 timeout=30s
+               LinUCB alpha=0.2 reward=DefaultRewardConfig (aggregate-throughput based)
+  scenarios:
+    baseline        rate=4194304->4194304 after=0 netem=None
+    server-throttle rate=524288->4194304 after=4 netem=None
+    latency         rate=4194304->4194304 after=0 netem={'BandwidthBps': 0, 'Latency': 20000000, 'Jitter': 0, 'LossPercent': 0}
+    loss            rate=4194304->4194304 after=0 netem={'BandwidthBps': 0, 'Latency': 0, 'Jitter': 0, 'LossPercent': 1}
+    combined        rate=1048576 constant (after=0) netem={'BandwidthBps': 0, 'Latency': 20000000, 'Jitter': 0, 'LossPercent': 1}
+
+CORRECTNESS
+  total runs=250 invalid=0 failed_downloads=0
+  per-run check: Err=='' AND OutputMatches AND NoDuplicateRanges AND NoMissingRanges
+  SHA-256: not implemented in the framework (byte-for-byte output compare used instead)
+  network status: baseline=['none'], server-throttle=['none'], latency=['applied'], loss=['applied'], combined=['applied']
+
+PERFORMANCE (completion time ms; wallclock=FileSize/Duration B/s; framework per-request AverageThroughput B/s)
+  n=10 per cell; +/- is a descriptive 95% t confidence interval of the mean
+  == baseline ==
+    fixed                dur=73.5+/-0.5 ms (med 73.3 sd 0.7) wallclock=3565826 perreq=3602504 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=73.3+/-0.3 ms (med 73.3 sd 0.4) wallclock=3576803 perreq=3616884 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    chunk-size-adaptive  dur=73.4+/-0.4 ms (med 73.2 sd 0.6) wallclock=3569810 perreq=3609359 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    joint-adaptive       dur=73.7+/-0.6 ms (med 73.8 sd 0.8) wallclock=3557311 perreq=3600053 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    linucb               dur=74.2+/-0.8 ms (med 74.2 sd 1.1) wallclock=3532545 perreq=3609983 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+  == server-throttle ==
+    fixed                dur=296.0+/-0.8 ms (med 295.7 sd 1.1) wallclock=885768 perreq=887937 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=287.8+/-0.7 ms (med 288.1 sd 0.9) wallclock=910850 perreq=884520 att=8.0 retr=0.0 finalC=4.00 finalChunk=32768
+    chunk-size-adaptive  dur=296.2+/-0.8 ms (med 296.2 sd 1.1) wallclock=884974 perreq=887228 att=7.0 retr=0.0 finalC=1.00 finalChunk=131072
+    joint-adaptive       dur=288.0+/-0.7 ms (med 287.8 sd 1.0) wallclock=910163 perreq=883963 att=8.0 retr=0.0 finalC=3.00 finalChunk=98304
+    linucb               dur=297.4+/-0.8 ms (med 297.4 sd 1.1) wallclock=881401 perreq=886144 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+  == latency ==
+    fixed                dur=434.1+/-0.7 ms (med 434.0 sd 1.0) wallclock=603823 perreq=604933 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=327.1+/-0.7 ms (med 326.8 sd 1.0) wallclock=801430 perreq=553371 att=8.0 retr=0.0 finalC=3.00 finalChunk=32768
+    chunk-size-adaptive  dur=312.5+/-0.4 ms (med 312.6 sd 0.6) wallclock=838913 perreq=840768 att=5.0 retr=0.0 finalC=1.00 finalChunk=131072
+    joint-adaptive       dur=326.8+/-0.3 ms (med 326.8 sd 0.4) wallclock=802116 perreq=553872 att=8.0 retr=0.0 finalC=2.00 finalChunk=65536
+    linucb               dur=434.9+/-0.6 ms (med 435.0 sd 0.8) wallclock=602737 perreq=604975 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+  == loss ==
+    fixed                dur=135.4+/-71.6 ms (med 73.5 sd 100.1) wallclock=2786893 perreq=2815527 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=132.0+/-68.5 ms (med 73.3 sd 95.8) wallclock=2816021 perreq=2836988 att=8.0 retr=0.0 finalC=1.30 finalChunk=32768
+    chunk-size-adaptive  dur=174.2+/-228.6 ms (med 73.7 sd 319.6) wallclock=3248907 perreq=3289239 att=7.7 retr=0.0 finalC=1.00 finalChunk=42598
+    joint-adaptive       dur=94.4+/-46.5 ms (med 74.3 sd 65.0) wallclock=3287701 perreq=3328234 att=8.0 retr=0.0 finalC=1.10 finalChunk=32768
+    linucb               dur=115.4+/-62.5 ms (med 74.5 sd 87.3) wallclock=3022192 perreq=3086250 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+  == combined ==
+    fixed                dur=710.4+/-90.0 ms (med 628.3 sd 125.9) wallclock=378368 perreq=378850 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+    concurrency-adaptive dur=591.3+/-218.7 ms (med 449.2 sd 305.8) wallclock=503518 perreq=354436 att=8.0 retr=0.0 finalC=2.10 finalChunk=32768
+    chunk-size-adaptive  dur=539.1+/-73.5 ms (med 505.2 sd 102.8) wallclock=497267 perreq=497965 att=5.2 retr=0.0 finalC=1.00 finalChunk=95027
+    joint-adaptive       dur=470.4+/-51.8 ms (med 447.5 sd 72.4) wallclock=565954 perreq=382255 att=8.0 retr=0.0 finalC=1.90 finalChunk=32768
+    linucb               dur=682.0+/-81.4 ms (med 628.6 sd 113.7) wallclock=392334 perreq=393501 att=8.0 retr=0.0 finalC=1.00 finalChunk=32768
+
+LINUCB BEHAVIOR (pooled over 10 runs per scenario)
+  == baseline == decisions=80 (per-run 8..8) unique_actions=1 controller_changes(conc/chunk)=0/0 max_conc=1
+      none                     80 (100.0%)
+      increase-concurrency      0 (  0.0%)
+      decrease-concurrency      0 (  0.0%)
+      increase-chunk-size       0 (  0.0%)
+      decrease-chunk-size       0 (  0.0%)
+  == server-throttle == decisions=80 (per-run 8..8) unique_actions=1 controller_changes(conc/chunk)=0/0 max_conc=1
+      none                     80 (100.0%)
+      increase-concurrency      0 (  0.0%)
+      decrease-concurrency      0 (  0.0%)
+      increase-chunk-size       0 (  0.0%)
+      decrease-chunk-size       0 (  0.0%)
+  == latency == decisions=80 (per-run 8..8) unique_actions=1 controller_changes(conc/chunk)=0/0 max_conc=1
+      none                     80 (100.0%)
+      increase-concurrency      0 (  0.0%)
+      decrease-concurrency      0 (  0.0%)
+      increase-chunk-size       0 (  0.0%)
+      decrease-chunk-size       0 (  0.0%)
+  == loss == decisions=80 (per-run 8..8) unique_actions=1 controller_changes(conc/chunk)=0/0 max_conc=1
+      none                     80 (100.0%)
+      increase-concurrency      0 (  0.0%)
+      decrease-concurrency      0 (  0.0%)
+      increase-chunk-size       0 (  0.0%)
+      decrease-chunk-size       0 (  0.0%)
+  == combined == decisions=80 (per-run 8..8) unique_actions=1 controller_changes(conc/chunk)=0/0 max_conc=1
+      none                     80 (100.0%)
+      increase-concurrency      0 (  0.0%)
+      decrease-concurrency      0 (  0.0%)
+      increase-chunk-size       0 (  0.0%)
+      decrease-chunk-size       0 (  0.0%)
+
+AGGREGATE-THROUGHPUT VALIDATION
+  (a) Windowed Context.AggregateThroughput vs per-request Throughput, LinUCB decisions at C=1:
+      400 decisions; mean relative difference=0.0059 max=0.0313 (no overlap => the two agree)
+  (b) Wall-clock run rate vs per-request weighted average (benchmark runs with concurrency>1):
+      server-throttle concurrency-adaptive maxC=4 wallclock=910850 perreq=884520 ratio=1.03
+      server-throttle joint-adaptive       maxC=3 wallclock=910163 perreq=883963 ratio=1.03
+      latency         concurrency-adaptive maxC=3 wallclock=801430 perreq=553371 ratio=1.45
+      latency         joint-adaptive       maxC=2 wallclock=802116 perreq=553872 ratio=1.45
+      loss            concurrency-adaptive maxC=4 wallclock=2816021 perreq=2836988 ratio=0.99
+      loss            joint-adaptive       maxC=2 wallclock=3287701 perreq=3328234 ratio=0.99
+      combined        concurrency-adaptive maxC=4 wallclock=503518 perreq=354436 ratio=1.42
+      combined        joint-adaptive       maxC=2 wallclock=565954 perreq=382255 ratio=1.48
+
+STATISTICAL ANALYSIS
+  Independent runs (fresh server/output per run; no shared seed): unpaired design, n=10 per cell.
+  Reported: mean, median, standard deviation, and a descriptive 95% t CI of the mean (df=9, t=2.262).
+  No significance tests: the design has no pairing and the task forbids ranking/superiority claims.
+
+CAVEATS
+  - Chunk-size performance tradeoff is not strongly modeled by the harness (server paces each
+    request at a fixed rate), so chunk-size adaptation cannot be validated from throughput.
+  - Credit assignment is approximate under concurrency>1 (one serialized decision per completion).
+  - Reward weights were not tuned; LinUCB alpha (0.2) was not tuned.
+  - LinUCB selected ActionNone in every run (no exploration); no overlapping LinUCB samples exist.
+  - loss scenario shows high wall-clock variance (TCP retransmits).
+  - Fairness not implemented. No aria2/IDM comparison.

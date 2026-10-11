@@ -1,0 +1,86 @@
+{
+  "candidates": [
+    {
+      "name": "A",
+      "max_connection_per_server": 1,
+      "split": 16,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "B",
+      "max_connection_per_server": 2,
+      "split": 16,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "C",
+      "max_connection_per_server": 4,
+      "split": 16,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "D",
+      "max_connection_per_server": 4,
+      "split": 8,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "E",
+      "max_connection_per_server": 4,
+      "split": 4,
+      "min_split_size": 1048576
+    },
+    {
+      "name": "F",
+      "max_connection_per_server": 16,
+      "split": 16,
+      "min_split_size": 1048576
+    }
+  ],
+  "file_size": 16777216,
+  "label": "aria2 baseline calibration v2 validation set (NOT the final test set)",
+  "note": "wall-clock transitions only; 16 MiB; 1 MiB min split",
+  "profiles": [
+    {
+      "Name": "V16-1",
+      "InitialRate": 1048576,
+      "SubsequentRate": 1048576,
+      "TransitionAfter": 0,
+      "LatencyMs": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V16-2",
+      "InitialRate": 4194304,
+      "SubsequentRate": 4194304,
+      "TransitionAfter": 0,
+      "LatencyMs": 25,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V16-3",
+      "InitialRate": 2097152,
+      "SubsequentRate": 2097152,
+      "TransitionAfter": 0,
+      "LatencyMs": 0,
+      "LossPercent": 1
+    },
+    {
+      "Name": "V16-4",
+      "InitialRate": 1048576,
+      "SubsequentRate": 6291456,
+      "TransitionAfter": 2000000000,
+      "LatencyMs": 0,
+      "LossPercent": 0
+    },
+    {
+      "Name": "V16-5",
+      "InitialRate": 1572864,
+      "SubsequentRate": 5242880,
+      "TransitionAfter": 3000000000,
+      "LatencyMs": 25,
+      "LossPercent": 1
+    }
+  ],
+  "repetitions": 5
+}

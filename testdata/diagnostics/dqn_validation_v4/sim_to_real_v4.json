@@ -1,0 +1,126 @@
+{
+  "candidate_v4_sha256": "227d9845096b5d1382c58cc9080e5907fc0b81cba7dc04546c5eaa5b3ecf4ad5",
+  "improved": [
+    "request granularity now matches aria2: 4 x 1 MiB requests (v2/v3 used 57-109 decisions with 32-449 KiB chunks)",
+    "decisions fall to exactly 4 per run (no fragmentation, no chunk-size drift)",
+    "stable concurrency adaptation: final concurrency 3 (occasionally 4)",
+    "no artificial chunk-size drift (chunk fixed at 1 MiB by construction)"
+  ],
+  "live_v2": {
+    "baseline": {
+      "att": 108.8,
+      "dur": 1170.9325999999999,
+      "finalC": 1,
+      "finalChunk": 32768,
+      "valid": 5
+    },
+    "combined": {
+      "att": 65.6,
+      "dur": 2572.5674,
+      "finalC": 4,
+      "finalChunk": 85196.8,
+      "valid": 5
+    },
+    "latency": {
+      "att": 65.6,
+      "dur": 1993.3304,
+      "finalC": 1.6,
+      "finalChunk": 124518.4,
+      "valid": 5
+    },
+    "loss": {
+      "att": 71,
+      "dur": 1226.6452,
+      "finalC": 2,
+      "finalChunk": 91750.4,
+      "valid": 5
+    },
+    "server-throttle-wallclock": {
+      "att": 75.4,
+      "dur": 1499.4325999999999,
+      "finalC": 1.4,
+      "finalChunk": 104857.6,
+      "valid": 5
+    }
+  },
+  "live_v3": {
+    "baseline": {
+      "att": 87.4,
+      "dur": 1159.8338,
+      "finalC": 1,
+      "finalChunk": 32768,
+      "valid": 5
+    },
+    "combined": {
+      "att": 75.4,
+      "dur": 5997.4592,
+      "finalC": 1,
+      "finalChunk": 91750.4,
+      "valid": 5
+    },
+    "latency": {
+      "att": 75.8,
+      "dur": 3723.1046,
+      "finalC": 1,
+      "finalChunk": 163840,
+      "valid": 5
+    },
+    "loss": {
+      "att": 80.6,
+      "dur": 1484.792,
+      "finalC": 1,
+      "finalChunk": 131072,
+      "valid": 5
+    },
+    "server-throttle-wallclock": {
+      "att": 37,
+      "dur": 1918.4972,
+      "finalC": 1,
+      "finalChunk": 458752,
+      "valid": 5
+    }
+  },
+  "live_v4": {
+    "baseline": {
+      "att": 4,
+      "dur": 840.8554,
+      "finalC": 3,
+      "finalChunk": 1048576,
+      "valid": 5
+    },
+    "combined": {
+      "att": 4,
+      "dur": 3355.3408,
+      "finalC": 3.2,
+      "finalChunk": 1048576,
+      "valid": 5
+    },
+    "latency": {
+      "att": 4,
+      "dur": 1008.51,
+      "finalC": 3,
+      "finalChunk": 1048576,
+      "valid": 5
+    },
+    "loss": {
+      "att": 4,
+      "dur": 845.2678,
+      "finalC": 3,
+      "finalChunk": 1048576,
+      "valid": 5
+    },
+    "server-throttle-wallclock": {
+      "att": 4,
+      "dur": 2634.2284,
+      "finalC": 3,
+      "finalChunk": 1048576,
+      "valid": 5
+    }
+  },
+  "net_assessment": "substantial improvement in sim-to-real agreement: practical request granularity AND concurrency adaptation; v4 is the cleanest candidate",
+  "remains": [
+    "the frozen real server still models no chunk-size tradeoff (chunk is pinned, so this is now irrelevant to the learned variable)",
+    "concurrency is held near 3 rather than strongly condition-dependent in these short runs",
+    "live n=5 per scenario"
+  ]
+}

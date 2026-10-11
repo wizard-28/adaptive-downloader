@@ -1,0 +1,37 @@
+{
+  "candidates": [
+    1,
+    2,
+    4
+  ],
+  "criterion": "min mean validation completion time; tie-break lower interval; test never used",
+  "interval_episodes": 375,
+  "results": {
+    "1": {
+      "constant_episode_fraction": 0.0,
+      "final_loss": 0.277579128742218,
+      "mean_completion_s": 2.7592361111111114,
+      "mean_effective_changes": 5.75,
+      "mean_return": -9.228304699593698
+    },
+    "2": {
+      "constant_episode_fraction": 0.0,
+      "final_loss": 1.0875027179718018,
+      "mean_completion_s": 2.849479166666667,
+      "mean_effective_changes": 2.875,
+      "mean_return": -9.318489105607602
+    },
+    "4": {
+      "constant_episode_fraction": 0.0,
+      "final_loss": 2.333367109298706,
+      "mean_completion_s": 2.3161111111111112,
+      "mean_effective_changes": 1.375,
+      "mean_return": -9.276326622885794
+    }
+  },
+  "selected": 4,
+  "selection_seeds": [
+    100,
+    101
+  ]
+}

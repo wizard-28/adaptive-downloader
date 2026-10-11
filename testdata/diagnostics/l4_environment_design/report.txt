@@ -1,0 +1,19 @@
+L4 environment-design (simulator only; no training; no aria2 comparison)
+
+phase bestC  C16 pen%  C1 pen%  throughput C1,C2,C4,C8,C16
+    1    16       0.0   1271.8  0.49 0.98 1.91 3.67 6.77
+    2     2      40.3     10.0  2.65 2.92 2.88 2.57 2.08
+    3     4       8.0      6.6  4.81 5.05 5.13 5.03 4.75
+    4    16       0.0   1362.0  0.12 0.25 0.49 0.96 1.82
+    5     2      54.0      6.8  2.82 3.01 2.85 2.48 1.96
+    6     6       3.3      3.5  5.07 5.18 5.24 5.22 5.08
+    7    16       0.0   1119.9  0.98 1.92 3.68 6.83 11.93
+
+durations [20.0, 55.0, 20.0, 20.0, 55.0, 20.0, None]; file 512 MiB
+best static C=16 (174.0s); C1=206.0s; C16=174.0s
+action-constrained oracle=143.4s -> headroom=17.6% (threshold 10%)
+byte shares (oracle run): degraded=47.1% (rule>=50%), high-C=33.4% (rule>=20%)
+phase bytes at best static (MiB): [136.0, 119.0, 93.0, 36.0, 107.0, 21.0, 0.0]
+oracle phase times (s): [20.1, 55.1, 19.8, 20.4, 30.1, 0.0, 0.0]
+gates: {"A_distinct_phase_optima": {"passed": true, "phase_best_c": [16, 2, 4, 16, 2, 6, 16]}, "B_headroom_ge_10pct": {"headroom": 0.17602070874848674, "passed": true, "threshold": 0.1}, "C_transitions_with_work": {"passed": true, "remaining_frac": [0.734, 0.502, 0.32, 0.25, 0.041, 0.0], "transitions": [1, 2, 3, 4, 5, 6]}, "D_sim_live_parity": {"detail": "atomic <=4 step, clamp [1,16]; runner test policy_runner_v7_test.go; simulator oracle identical", "passed": true}, "E_live_tradeoff": {"detail": "see live probe results", "passed": null}, "F_control_authority": {"detail": "16->2 in 4 decisions; phases 20-55 s", "passed": true}, "byte_weight": {"degraded_byte_share": 0.470703125, "degraded_phase_indices": [1, 4], "highc_byte_share": 0.333984375, "highc_phase_indices": [0, 3, 6], "rule_met": false}}
+OUTCOME (pre-live): NOT_READY_PHASE_WEIGHTING

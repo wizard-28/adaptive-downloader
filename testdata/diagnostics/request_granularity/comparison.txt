@@ -1,0 +1,21 @@
+Request-granularity comparison (mean completion ms; descriptive only; no ranking)
+aria2 1.37.0: -x4 -s4 -k1MiB. internal matched: fixed policy, chunk=1MiB, concurrency=4. v5 fixed: no policy, chunk=32KiB, concurrency=1.
+
+  scenario              aria2  matched1MiB     v5_fixed matched/aria2
+  baseline              320.9        285.5       1155.1         0.89
+  server-throttle      2117.9       2052.9       1382.3         0.97
+  latency               853.2        376.5       6340.1         0.44
+  loss                  362.4        306.5       1971.6         0.85
+  combined             1282.5       1232.3      10154.9         0.96
+
+request behavior (per run; observed)
+  scenario          aria2_range  matched_rng aria2_maxC match_maxC      reqs
+  baseline              1048576      1048576          4          4         4
+  server-throttle       1048576      1048576          4          4         4
+  latency               1048576      1048576          4          4         4
+  loss                  1048576      1048576          4          4         4
+  combined              1048576      1048576          4          4         4
+
+server-throttle: the rate switches to 4MiB/s after request 4. aria2 and the matched 1MiB/4C config issue exactly 4 requests,
+so all run at the initial 512KiB/s and the switch never benefits them. v5 fixed issues ~128 x 32KiB requests, so requests
+5..128 run at 4MiB/s. This is a request-count/rate-switch interaction, not an algorithmic property.

@@ -1,0 +1,108 @@
+=== BLOCK aria2frontier START 2026-09-28T18:30:04Z
+[aria2frontier] af-split1 aria2 -> 180007ms err='aria2: signal: killed'
+[aria2frontier] af-split2 aria2 -> 180007ms err='aria2: signal: killed'
+[aria2frontier] af-split4 aria2 -> 180003ms err='aria2: signal: killed'
+[aria2frontier] af-split8 aria2 -> 105617ms err=''
+[aria2frontier] af-split16 aria2 -> 53349ms err=''
+[aria2frontier-extra] af-split16-r2 aria2 -> 53101ms err=''
+[aria2frontier-extra] af-split16-r3 aria2 -> 53334ms err=''
+[aria2frontier-extra] af-split16-min32M aria2 -> 53367ms err=''
+[aria2frontier-extra] af-split4-min32M aria2 -> 180028ms err='aria2: signal: killed'
+[aria2frontier] medians: {4: 180028, 16: 53334}
+[aria2frontier] FROZEN aria2_final split=16 median=53334ms
+=== BLOCK aria2frontier EXIT:0 2026-09-28T18:47:32Z
+=== BLOCK oursfrontier START 2026-09-28T18:47:32Z
+[oursfrontier] of-c1-s262144 ours -> 419044ms err=''
+[oursfrontier] of-c1-s524288 ours -> 331848ms err=''
+[oursfrontier] of-c1-s1048576 ours -> 289267ms err=''
+[oursfrontier] of-c1-s2097152 ours -> 274343ms err=''
+[oursfrontier] of-c1-s4194304 ours -> 250789ms err=''
+[oursfrontier] of-c1-s8388608 ours -> 250980ms err=''
+[oursfrontier] of-c1-s16777216 ours -> 257526ms err=''
+[oursfrontier] of-c1-s33554432 ours -> 267231ms err=''
+[oursfrontier] of-c2-s262144 ours -> 211985ms err=''
+[oursfrontier] of-c2-s524288 ours -> 167083ms err=''
+[oursfrontier] of-c2-s1048576 ours -> 146851ms err=''
+[oursfrontier] of-c2-s2097152 ours -> 142002ms err=''
+[oursfrontier] of-c2-s4194304 ours -> 126935ms err=''
+[oursfrontier] of-c2-s8388608 ours -> 129272ms err=''
+[oursfrontier] of-c2-s16777216 ours -> 137055ms err=''
+[oursfrontier] of-c2-s33554432 ours -> 147530ms err=''
+[oursfrontier] of-c4-s262144 ours -> 106651ms err=''
+[oursfrontier] of-c4-s524288 ours -> 84431ms err=''
+[oursfrontier] of-c4-s1048576 ours -> 76888ms err=''
+[oursfrontier] of-c4-s2097152 ours -> 77296ms err=''
+[oursfrontier] of-c4-s4194304 ours -> 65271ms err=''
+[oursfrontier] of-c4-s8388608 ours -> 68651ms err=''
+[oursfrontier] of-c4-s16777216 ours -> 78017ms err=''
+[oursfrontier] of-c4-s33554432 ours -> 88260ms err=''
+[oursfrontier] of-c8-s262144 ours -> 54673ms err=''
+[oursfrontier] of-c8-s524288 ours -> 44324ms err=''
+[oursfrontier] of-c8-s1048576 ours -> 42469ms err=''
+[oursfrontier] of-c8-s2097152 ours -> 46163ms err=''
+[oursfrontier] of-c8-s4194304 ours -> 34778ms err=''
+[oursfrontier] of-c8-s8388608 ours -> 38898ms err=''
+[oursfrontier] of-c8-s16777216 ours -> 48653ms err=''
+[oursfrontier] of-c8-s33554432 ours -> 58933ms err=''
+[oursfrontier] of-c16-s262144 ours -> 29423ms err=''
+[oursfrontier] of-c16-s524288 ours -> 24438ms err=''
+[oursfrontier] of-c16-s1048576 ours -> 25596ms err=''
+[oursfrontier] of-c16-s2097152 ours -> 30026ms err=''
+[oursfrontier] of-c16-s4194304 ours -> 19995ms err=''
+[oursfrontier] of-c16-s8388608 ours -> 24523ms err=''
+[oursfrontier] of-c16-s16777216 ours -> 34550ms err=''
+[oursfrontier] of-c16-s33554432 ours -> 45975ms err=''
+[oursfrontier-top3] of-c16-s4194304-r2 ours -> 19906ms err=''
+[oursfrontier-top3] of-c16-s4194304-r3 ours -> 20695ms err=''
+[oursfrontier-top3] of-c16-s524288-r2 ours -> 24531ms err=''
+[oursfrontier-top3] of-c16-s524288-r3 ours -> 24616ms err=''
+[oursfrontier-top3] of-c16-s8388608-r2 ours -> 24604ms err=''
+[oursfrontier-top3] of-c16-s8388608-r3 ours -> 24241ms err=''
+[oursfrontier] top medians: {(16, 4194304): 20300, (16, 8388608): 24423, (16, 524288): 24574}
+[oursfrontier] FROZEN our_final C=16 chunk=4194304 median=20300ms
+=== BLOCK oursfrontier EXIT:0 2026-09-28T20:11:06Z
+=== BLOCK final START 2026-09-28T20:11:06Z
+[final  1/30] ours 20046ms vs aria2 56953ms ratio=0.352
+[final  2/30] ours 20652ms vs aria2 53308ms ratio=0.387
+[final  3/30] ours 20679ms vs aria2 53324ms ratio=0.388
+[final  4/30] ours 19799ms vs aria2 54442ms ratio=0.364
+[final  5/30] ours 19853ms vs aria2 54184ms ratio=0.366
+[final  6/30] ours 19684ms vs aria2 53042ms ratio=0.371
+[final  7/30] ours 19979ms vs aria2 53182ms ratio=0.376
+[final  8/30] ours 20306ms vs aria2 53997ms ratio=0.376
+[final  9/30] ours 20149ms vs aria2 53024ms ratio=0.380
+[final 10/30] ours 20699ms vs aria2 53299ms ratio=0.388
+[final 11/30] ours 19855ms vs aria2 53656ms ratio=0.370
+[final 12/30] ours 20177ms vs aria2 53027ms ratio=0.381
+[final 13/30] ours 20834ms vs aria2 53257ms ratio=0.391
+[final 14/30] ours 20036ms vs aria2 53385ms ratio=0.375
+[final 15/30] ours 19652ms vs aria2 53501ms ratio=0.367
+[final 16/30] ours 20262ms vs aria2 53128ms ratio=0.381
+[final 17/30] ours 20645ms vs aria2 54417ms ratio=0.379
+[final 18/30] ours 20506ms vs aria2 54566ms ratio=0.376
+[final 19/30] ours 20030ms vs aria2 53114ms ratio=0.377
+[final 20/30] ours 19962ms vs aria2 53043ms ratio=0.376
+[final 21/30] ours 19721ms vs aria2 53265ms ratio=0.370
+[final 22/30] ours 19910ms vs aria2 53392ms ratio=0.373
+[final 23/30] ours 20620ms vs aria2 53655ms ratio=0.384
+[final 24/30] ours 19721ms vs aria2 53143ms ratio=0.371
+[final 25/30] ours 20014ms vs aria2 53297ms ratio=0.376
+[final 26/30] ours 19963ms vs aria2 53087ms ratio=0.376
+[final 27/30] ours 20015ms vs aria2 52995ms ratio=0.378
+[final 28/30] ours 19966ms vs aria2 53350ms ratio=0.374
+[final 29/30] ours 20240ms vs aria2 53384ms ratio=0.379
+[final 30/30] ours 19623ms vs aria2 53368ms ratio=0.368
+=== BLOCK final EXIT:0 2026-09-28T20:49:19Z
+=== BLOCK mechanism START 2026-09-28T20:49:19Z
+[controlA  1/10] ours 47675ms vs aria2 53437ms ratio=0.892
+[controlA  2/10] ours 44717ms vs aria2 53335ms ratio=0.838
+[controlA  3/10] ours 45949ms vs aria2 53450ms ratio=0.860
+[controlA  4/10] ours 45011ms vs aria2 54013ms ratio=0.833
+[controlA  5/10] ours 45354ms vs aria2 54758ms ratio=0.828
+[controlA  6/10] ours 51565ms vs aria2 53542ms ratio=0.963
+[controlA  7/10] ours 45517ms vs aria2 54214ms ratio=0.840
+[controlA  8/10] ours 45877ms vs aria2 53535ms ratio=0.857
+[controlA  9/10] ours 46838ms vs aria2 53360ms ratio=0.878
+[controlA 10/10] ours 44500ms vs aria2 53293ms ratio=0.835
+=== BLOCK mechanism EXIT:0 2026-09-28T21:08:34Z
+=== ALL REMAINING BLOCKS DONE 2026-09-28T21:08:34Z

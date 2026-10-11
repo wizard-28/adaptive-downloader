@@ -1,0 +1,32 @@
+{
+  "method": "consumed-window trace mean vs replay wall-clock throughput (coarse, 1 Hz)",
+  "per_c": {
+    "1": {
+      "replay_bps": 527163.7715444805,
+      "trace_mean_bps": 673111.9791666666,
+      "rel_err": 0.21682604401555078,
+      "consumed_fraction": 0.5304239057388889,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    },
+    "4": {
+      "replay_bps": 520960.04920545674,
+      "trace_mean_bps": 685889.1752577319,
+      "rel_err": 0.24046031341769009,
+      "consumed_fraction": 0.5367403260444444,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    },
+    "16": {
+      "replay_bps": 469475.9307540168,
+      "trace_mean_bps": 904108.7962962963,
+      "rel_err": 0.4807307121916783,
+      "consumed_fraction": 0.5956008569333333,
+      "requests": 48,
+      "retries": 0,
+      "failures": 0
+    }
+  }
+}

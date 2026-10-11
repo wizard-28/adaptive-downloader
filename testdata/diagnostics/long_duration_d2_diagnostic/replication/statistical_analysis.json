@@ -1,0 +1,55 @@
+{
+  "aggregate": {
+    "aria2_mean_ms": 53452.0845,
+    "ci95_log_ratio": [
+      -0.569093293392554,
+      -0.514941151577245
+    ],
+    "dqn_mean_ms": 31137.68415,
+    "geometric_ratio": 0.5815739043550995,
+    "mean_log_ratio": -0.5420172224848995,
+    "p_one_sided": 4.9999750001249995e-06,
+    "pairs": 20,
+    "ratio_ci95": [
+      0.5660384368857619,
+      0.5975357576204594
+    ],
+    "relative_reduction": 0.4184260956449005
+  },
+  "claim_criteria": {
+    "1_ratio_below_1": true,
+    "2_ci_excludes_zero_dqn_faster": true,
+    "3_perm_test_supports_dqn_faster": true,
+    "4_majority_conditions_dqn_faster": true
+  },
+  "claim_supported": true,
+  "effect_distribution": {
+    "aria2_faster_pairs": 0,
+    "conditions_dqn_faster": 1,
+    "dqn_faster_pairs": 20,
+    "dqn_faster_pct": 100.0,
+    "ties": 0
+  },
+  "method": "matched pairs; effect=log(DQN/aria2); one-sided paired permutation test; Holm across 8 conditions",
+  "per_condition": {
+    "D2": {
+      "aria2_mean_ms": 53452.0845,
+      "aria2_median_ms": 53269.652,
+      "aria2_sd_ms": 445.78120216261794,
+      "ci95_log_ratio": [
+        -0.569093293392554,
+        -0.514941151577245
+      ],
+      "dqn_mean_ms": 31137.68415,
+      "dqn_median_ms": 30511.909,
+      "dqn_sd_ms": 1843.7093332524591,
+      "geometric_ratio": 0.5815739043550995,
+      "mean_log_ratio": -0.5420172224848995,
+      "n": 20,
+      "p_holm": 4.9999750001249995e-06,
+      "p_one_sided": 4.9999750001249995e-06,
+      "paired_mean_delta_ms": -22314.40035,
+      "reduction": 0.4184260956449005
+    }
+  }
+}

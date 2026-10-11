@@ -1,0 +1,130 @@
+LinUCB learning-horizon study (SEPARATE diagnostic; descriptive only)
+warm-up = 5 fixed selections (InitialExplorationRounds=1 x NumActions=5); reps=3
+only the file size varies; all other DefaultMatrixConfig parameters are unchanged
+file-size in bytes; durations in ms; wallclock in B/s
+
+scenario           mode          fileSize  total   warm   post  uniq  cChg   kChg   finC   finK    durMs  wallBps
+baseline           fixed           262144    8.0   -1.0    0.0   0.0   0.0      0   1.00  32768     70.7  3671063
+baseline           linucb          262144    7.0    5.0    2.0   1.0   0.0      0   1.00  32768     62.7  4156999
+combined           fixed           262144    8.0   -1.0    0.0   0.0   0.0      0   1.00  32768    625.0   418996
+combined           linucb          262144    7.0    5.0    2.0   1.3   0.0      2   1.00  76459    650.3   413732
+latency            fixed           262144    8.0   -1.0    0.0   0.0   0.0      0   1.00  32768    432.3   605575
+latency            linucb          262144    7.0    5.0    2.0   1.0   0.0      2   1.00  98304    383.7   682161
+server-throttle    fixed           262144    8.0   -1.0    0.0   0.0   0.0      0   1.00  32768    294.7   887493
+server-throttle    linucb          262144    7.0    5.0    2.0   1.0   0.0      0   1.00  32768    230.0  1137988
+baseline           fixed           524288   16.0   -1.0    0.0   0.0   0.0      0   1.00  32768    146.7  3558939
+baseline           linucb          524288   15.0    5.0   10.0   1.0   0.0      0   1.00  32768    138.0  3783692
+combined           fixed           524288   16.0   -1.0    0.0   0.0   0.0      0   1.00  32768   1316.7   400792
+combined           linucb          524288    9.0    5.0    4.0   1.0   0.0      3   1.00 131072    906.3   578244
+latency            fixed           524288   16.0   -1.0    0.0   0.0   0.0      0   1.00  32768    829.0   632132
+latency            linucb          524288    9.0    5.0    4.0   1.0   0.0      3   1.00 131072    535.3   978846
+server-throttle    fixed           524288   16.0   -1.0    0.0   0.0   0.0      0   1.00  32768    369.7  1415265
+server-throttle    linucb          524288   15.0    5.0   10.0   1.0   0.0      0   1.00  32768    305.0  1717077
+baseline           fixed          1048576   32.0   -1.0    0.0   0.0   0.0      0   1.00  32768    291.7  3589721
+baseline           linucb         1048576   31.0    5.0   26.0   1.0   0.0      0   1.00  32768    283.7  3688312
+combined           fixed          1048576   32.0   -1.0    0.0   0.0   0.0      0   1.00  32768   2476.3   424484
+combined           linucb         1048576   13.0    5.0    8.0   1.0   0.0      3   1.00 131072   2028.7   543344
+latency            fixed          1048576   32.0   -1.0    0.0   0.0   0.0      0   1.00  32768   1614.0   649467
+latency            linucb         1048576   13.0    5.0    8.0   1.0   0.0      3   1.00 131072    835.7  1254404
+server-throttle    fixed          1048576   32.0   -1.0    0.0   0.0   0.0      0   1.00  32768    514.7  2035843
+server-throttle    linucb         1048576   31.0    5.0   26.0   1.0   0.0      0   1.00  32768    452.7  2314804
+baseline           fixed          2097152   64.0   -1.0    0.0   0.0   0.0      0   1.00  32768    582.3  3599139
+baseline           linucb         2097152   63.0    5.0   58.0   1.0   0.0      0   1.00  32768    577.7  3626076
+combined           fixed          2097152   64.0   -1.0    0.0   0.0   0.0      0   1.00  32768   5133.0   408603
+combined           linucb         2097152   21.0    5.0   16.0   1.0   0.0      3   1.00 131072   2939.7   713305
+latency            fixed          2097152   64.0   -1.0    0.0   0.0   0.0      0   1.00  32768   3180.3   659273
+latency            linucb         2097152   21.0    5.0   16.0   1.0   0.0      3   1.00 131072   1431.3  1464494
+server-throttle    fixed          2097152   64.0   -1.0    0.0   0.0   0.0      0   1.00  32768    799.0  2623353
+server-throttle    linucb         2097152   63.0    5.0   58.0   1.0   0.0      0   1.00  32768    739.7  2833367
+baseline           fixed          4194304  128.0   -1.0    0.0   0.0   0.0      0   1.00  32768   1147.0  3654929
+baseline           linucb         4194304  127.0    5.0  122.0   1.0   0.0      0   1.00  32768   1158.3  3619107
+combined           fixed          4194304  128.0   -1.0    0.0   0.0   0.0      0   1.00  32768  10553.0   398361
+combined           linucb         4194304   37.0    5.0   32.0   1.0   0.0      3   1.00 131072   5834.3   719444
+latency            fixed          4194304  128.0   -1.0    0.0   0.0   0.0      0   1.00  32768   6330.0   662542
+latency            linucb         4194304   37.0    5.0   32.0   1.0   0.0      3   1.00 131072   2631.7  1593362
+server-throttle    fixed          4194304  128.0   -1.0    0.0   0.0   0.0      0   1.00  32768   1373.3  3053396
+server-throttle    linucb         4194304  127.0    5.0  122.0   1.0   0.0      0   1.00  32768   1329.3  3154406
+
+post-warm-up action counts (pooled over runs):
+  baseline           fixed        size=262144    total=8.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  baseline           linucb       size=262144    total=7.0 warm=5.0 post=2.0 postRange=2..2 counts=map[decrease-concurrency:6]
+  combined           fixed        size=262144    total=8.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  combined           linucb       size=262144    total=7.0 warm=5.0 post=2.0 postRange=2..2 counts=map[decrease-chunk-size:1 increase-chunk-size:5]
+  latency            fixed        size=262144    total=8.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  latency            linucb       size=262144    total=7.0 warm=5.0 post=2.0 postRange=2..2 counts=map[increase-chunk-size:6]
+  server-throttle    fixed        size=262144    total=8.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  server-throttle    linucb       size=262144    total=7.0 warm=5.0 post=2.0 postRange=2..2 counts=map[decrease-chunk-size:6]
+  baseline           fixed        size=524288    total=16.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  baseline           linucb       size=524288    total=15.0 warm=5.0 post=10.0 postRange=10..10 counts=map[decrease-concurrency:30]
+  combined           fixed        size=524288    total=16.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  combined           linucb       size=524288    total=9.0 warm=5.0 post=4.0 postRange=4..4 counts=map[increase-chunk-size:12]
+  latency            fixed        size=524288    total=16.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  latency            linucb       size=524288    total=9.0 warm=5.0 post=4.0 postRange=4..4 counts=map[increase-chunk-size:12]
+  server-throttle    fixed        size=524288    total=16.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  server-throttle    linucb       size=524288    total=15.0 warm=5.0 post=10.0 postRange=10..10 counts=map[decrease-chunk-size:30]
+  baseline           fixed        size=1048576   total=32.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  baseline           linucb       size=1048576   total=31.0 warm=5.0 post=26.0 postRange=26..26 counts=map[decrease-concurrency:78]
+  combined           fixed        size=1048576   total=32.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  combined           linucb       size=1048576   total=13.0 warm=5.0 post=8.0 postRange=8..8 counts=map[increase-chunk-size:24]
+  latency            fixed        size=1048576   total=32.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  latency            linucb       size=1048576   total=13.0 warm=5.0 post=8.0 postRange=8..8 counts=map[increase-chunk-size:24]
+  server-throttle    fixed        size=1048576   total=32.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  server-throttle    linucb       size=1048576   total=31.0 warm=5.0 post=26.0 postRange=26..26 counts=map[decrease-chunk-size:78]
+  baseline           fixed        size=2097152   total=64.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  baseline           linucb       size=2097152   total=63.0 warm=5.0 post=58.0 postRange=58..58 counts=map[decrease-concurrency:174]
+  combined           fixed        size=2097152   total=64.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  combined           linucb       size=2097152   total=21.0 warm=5.0 post=16.0 postRange=16..16 counts=map[increase-chunk-size:48]
+  latency            fixed        size=2097152   total=64.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  latency            linucb       size=2097152   total=21.0 warm=5.0 post=16.0 postRange=16..16 counts=map[increase-chunk-size:48]
+  server-throttle    fixed        size=2097152   total=64.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  server-throttle    linucb       size=2097152   total=63.0 warm=5.0 post=58.0 postRange=58..58 counts=map[decrease-chunk-size:174]
+  baseline           fixed        size=4194304   total=128.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  baseline           linucb       size=4194304   total=127.0 warm=5.0 post=122.0 postRange=122..122 counts=map[decrease-concurrency:366]
+  combined           fixed        size=4194304   total=128.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  combined           linucb       size=4194304   total=37.0 warm=5.0 post=32.0 postRange=32..32 counts=map[increase-chunk-size:96]
+  latency            fixed        size=4194304   total=128.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  latency            linucb       size=4194304   total=37.0 warm=5.0 post=32.0 postRange=32..32 counts=map[increase-chunk-size:96]
+  server-throttle    fixed        size=4194304   total=128.0 warm=-1.0 post=0.0 postRange=-1..-1 counts=map[]
+  server-throttle    linucb       size=4194304   total=127.0 warm=5.0 post=122.0 postRange=122..122 counts=map[decrease-chunk-size:366]
+
+valid runs (Err=='' && output/range correctness):
+  baseline           fixed        size=262144    valid=3/3
+  baseline           linucb       size=262144    valid=3/3
+  combined           fixed        size=262144    valid=3/3
+  combined           linucb       size=262144    valid=3/3
+  latency            fixed        size=262144    valid=3/3
+  latency            linucb       size=262144    valid=3/3
+  server-throttle    fixed        size=262144    valid=3/3
+  server-throttle    linucb       size=262144    valid=3/3
+  baseline           fixed        size=524288    valid=3/3
+  baseline           linucb       size=524288    valid=3/3
+  combined           fixed        size=524288    valid=3/3
+  combined           linucb       size=524288    valid=3/3
+  latency            fixed        size=524288    valid=3/3
+  latency            linucb       size=524288    valid=3/3
+  server-throttle    fixed        size=524288    valid=3/3
+  server-throttle    linucb       size=524288    valid=3/3
+  baseline           fixed        size=1048576   valid=3/3
+  baseline           linucb       size=1048576   valid=3/3
+  combined           fixed        size=1048576   valid=3/3
+  combined           linucb       size=1048576   valid=3/3
+  latency            fixed        size=1048576   valid=3/3
+  latency            linucb       size=1048576   valid=3/3
+  server-throttle    fixed        size=1048576   valid=3/3
+  server-throttle    linucb       size=1048576   valid=3/3
+  baseline           fixed        size=2097152   valid=3/3
+  baseline           linucb       size=2097152   valid=3/3
+  combined           fixed        size=2097152   valid=3/3
+  combined           linucb       size=2097152   valid=3/3
+  latency            fixed        size=2097152   valid=3/3
+  latency            linucb       size=2097152   valid=3/3
+  server-throttle    fixed        size=2097152   valid=3/3
+  server-throttle    linucb       size=2097152   valid=3/3
+  baseline           fixed        size=4194304   valid=3/3
+  baseline           linucb       size=4194304   valid=3/3
+  combined           fixed        size=4194304   valid=3/3
+  combined           linucb       size=4194304   valid=3/3
+  latency            fixed        size=4194304   valid=3/3
+  latency            linucb       size=4194304   valid=3/3
+  server-throttle    fixed        size=4194304   valid=3/3
+  server-throttle    linucb       size=4194304   valid=3/3

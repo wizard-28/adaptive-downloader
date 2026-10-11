@@ -1,0 +1,10 @@
+{
+  "GATE_D_live_transfer": {
+    "constant_fraction": 0,
+    "passed": false,
+    "ramp_to_max_fraction": 0,
+    "responsive_conditions": 1,
+    "rule": "constant fraction \u003c 0.9 AND ramp-to-max fraction \u003c 0.9 AND \u003e=2/5 conditions with phase spread \u003e= 2.0",
+    "v6_valid_runs": 2
+  }
+}

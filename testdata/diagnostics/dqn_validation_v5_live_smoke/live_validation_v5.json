@@ -1,0 +1,17 @@
+{
+  "check_definitions": {
+    "actions_in_space": "requested actions in {none, increase, decrease}",
+    "concurrency_bounds_ok": "authoritative before/after concurrency in [1,4]",
+    "progress_matches_records": "model RemainingBytes equals file_size - cumulative successful bytes per attempt",
+    "progress_monotone": "model RemainingBytes never increases",
+    "range_tiling_ok": "successful ranges tile [0,file_size) exactly (no gaps/overlaps)",
+    "retry_records_consistent": "attempt numbers within [1, max_retries+1]",
+    "success_bytes_ok": "sum(success bytes) == file_size and each success bytes == range length"
+  },
+  "exclusions": [],
+  "expected_runs": 4,
+  "invalid_runs": 0,
+  "netem_unavailable": 0,
+  "runs_recorded": 4,
+  "valid_runs": 4
+}

@@ -1,0 +1,33 @@
+{
+  "run_id": "W1_family_best_fixed_r05",
+  "cmd": [
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/tools/ns_bench",
+    "-run-id",
+    "W1_family_best_fixed_r05",
+    "-out",
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/w1_w6_adaptive/W1_family_best_fixed_r05.json",
+    "-system",
+    "ours",
+    "-policy",
+    "none",
+    "-n",
+    "4",
+    "-chunk",
+    "4194304",
+    "-schedule",
+    "t1",
+    "-netem-latency-ms",
+    "40",
+    "-netem-loss",
+    "0.4"
+  ],
+  "exit": 0,
+  "wall_s": 66.8711314201355,
+  "completion_ms": 65005.851,
+  "content_verified": true,
+  "final_n": 4,
+  "final_s": 4194304,
+  "err": "",
+  "valid": true,
+  "invalid_reasons": []
+}

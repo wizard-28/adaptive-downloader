@@ -1,0 +1,45 @@
+{
+  "run_id": "af-split1",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --min-split-size=1M --max-connection-per-server=1 --split=1",
+    "file_size_bytes": 536870912,
+    "system": "aria2"
+  },
+  "completion_ms": 833157.92,
+  "wallclock_bytes_per_second": 644380.7339669771,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": true,
+  "netem_status": "applied",
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 169,
+      "end_ms": 833060,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    }
+  ],
+  "total_requests": 1,
+  "successful_requests": 1,
+  "failed_requests": 0,
+  "server_bytes": 536870912,
+  "range_count": 0,
+  "aria2_exit": 0,
+  "aria2_output_tail": "=\n[#33482c 509MiB/512MiB(99%) CN:1 DL:629KiB ETA:4s]\nFILE: /tmp/aria2-comp-577981983/out.bin\n-------------------------------------------------------------------------------\n\n[#33482c 509MiB/512MiB(99%) CN:1 DL:629KiB ETA:4s]\n *** Download Progress Summary as of Mon Sep 28 21:42:48 2026 *** \n===============================================================================\n[#33482c 510MiB/512MiB(99%) CN:1 DL:622KiB ETA:3s]\nFILE: /tmp/aria2-comp-577981983/out.bin\n-------------------------------------------------------------------------------\n\n[#33482c 510MiB/512MiB(99%) CN:1 DL:622KiB ETA:3s]\n *** Download Progress Summary as of Mon Sep 28 21:42:49 2026 *** \n===============================================================================\n[#33482c 510MiB/512MiB(99%) CN:1 DL:629KiB ETA:2s]\nFILE: /tmp/aria2-comp-577981983/out.bin\n-------------------------------------------------------------------------------\n\n[#33482c 510MiB/512MiB(99%) CN:1 DL:629KiB ETA:2s]\n *** Download Progress Summary as of Mon Sep 28 21:42:50 2026 *** \n===============================================================================\n[#33482c 511MiB/512MiB(99%) CN:1 DL:629KiB ETA:1s]\nFILE: /tmp/aria2-comp-577981983/out.bin\n-------------------------------------------------------------------------------\n\n[#33482c 511MiB/512MiB(99%) CN:1 DL:629KiB ETA:1s]\n *** Download Progress Summary as of Mon Sep 28 21:42:51 2026 *** \n===============================================================================\n[#33482c 511MiB/512MiB(99%) CN:1 DL:629KiB]\nFILE: /tmp/aria2-comp-577981983/out.bin\n-------------------------------------------------------------------------------\n\n[#33482c 511MiB/512MiB(99%) CN:1 DL:629KiB]\n\n09/28 21:42:51 [NOTICE] Download complete: /tmp/aria2-comp-577981983/out.bin\n\nDownload Results:\ngid   |stat|avg speed  |path/URI\n======+====+===========+=======================================================\n33482c|OK  |   629KiB/s|/tmp/aria2-comp-577981983/out.bin\n\nStatus Legend:\n(OK):download completed.\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": ""
+}

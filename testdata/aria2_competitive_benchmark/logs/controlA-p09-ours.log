@@ -1,0 +1,2 @@
+run controlA-p09-ours system=ours completion=44.500s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system ours -file-size 536870912 -run-id controlA-p09-ours -out /workspaces/mvp/testdata/aria2_competitive_benchmark/mechanism/controlA-p09-ours.json -c 16 -chunk 33554432

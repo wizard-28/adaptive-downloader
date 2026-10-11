@@ -1,0 +1,42 @@
+{
+  "aria2_version": "aria2 version 1.37.0",
+  "command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4 \u003curl\u003e",
+  "label": "FINAL ARIA2 BASELINE CONFIG v1",
+  "pooled_validation": {
+    "A": {
+      "count": 25,
+      "mean_ms": 4889.15812,
+      "median_ms": 4213.469,
+      "sd_ms": 2059.1633941798273,
+      "mean_wallclock_bps": 1072022.0775242536,
+      "retries": 0,
+      "failures": 0
+    },
+    "B": {
+      "count": 25,
+      "mean_ms": 2697.5534799999996,
+      "median_ms": 2830.911,
+      "sd_ms": 932.7457378323041,
+      "mean_wallclock_bps": 1780026.3703140316,
+      "retries": 0,
+      "failures": 0
+    },
+    "C": {
+      "count": 25,
+      "mean_ms": 1496.33616,
+      "median_ms": 1602.547,
+      "sd_ms": 426.6886449031126,
+      "mean_wallclock_bps": 3064373.691236368,
+      "retries": 0,
+      "failures": 0
+    }
+  },
+  "selected_config": {
+    "name": "C",
+    "max_connection_per_server": 4,
+    "split": 4,
+    "min_split_size": 1048576
+  },
+  "selection_criterion": "lowest pooled mean completion time across all validation profiles; tie-break lower pooled median, then lower pooled retries",
+  "validation_dataset": "testdata/diagnostics/aria2_calibration/validation_results.json"
+}

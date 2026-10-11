@@ -1,0 +1,501 @@
+{
+  "label": "7Train1",
+  "trace": "testdata/external/mobile_traces/raw/nyu_mets/7Train1.csv",
+  "concurrency": 1,
+  "workload_bytes": 50331648,
+  "chunk_bytes": 1048576,
+  "completion_ms": 95476.303,
+  "output_size": 50331648,
+  "sha_ok": true,
+  "err": "",
+  "trace_seconds_available": 180,
+  "trace_seconds_consumed": 95.476303033,
+  "trace_fraction_consumed": 0.5304239057388889,
+  "requests": 48,
+  "retries": 0,
+  "failures": 0,
+  "replay_throughput_bytes_per_s": 527163.7715444805,
+  "trace_consumed_mean_bytes_per_s": 673111.9791666666,
+  "applied_samples": [
+    {
+      "second": 0,
+      "rate_bps": 570000,
+      "target_bytes_per_s": 71250
+    },
+    {
+      "second": 1,
+      "rate_bps": 1060000,
+      "target_bytes_per_s": 132500
+    },
+    {
+      "second": 2,
+      "rate_bps": 900000,
+      "target_bytes_per_s": 112500
+    },
+    {
+      "second": 3,
+      "rate_bps": 360000,
+      "target_bytes_per_s": 45000
+    },
+    {
+      "second": 4,
+      "rate_bps": 670000,
+      "target_bytes_per_s": 83750
+    },
+    {
+      "second": 5,
+      "rate_bps": 320000,
+      "target_bytes_per_s": 40000
+    },
+    {
+      "second": 6,
+      "rate_bps": 110000,
+      "target_bytes_per_s": 13750
+    },
+    {
+      "second": 7,
+      "rate_bps": 210000,
+      "target_bytes_per_s": 26250
+    },
+    {
+      "second": 8,
+      "rate_bps": 1150000,
+      "target_bytes_per_s": 143750
+    },
+    {
+      "second": 9,
+      "rate_bps": 1050000,
+      "target_bytes_per_s": 131250
+    },
+    {
+      "second": 10,
+      "rate_bps": 350000,
+      "target_bytes_per_s": 43750
+    },
+    {
+      "second": 11,
+      "rate_bps": 60000,
+      "target_bytes_per_s": 7500
+    },
+    {
+      "second": 12,
+      "rate_bps": 790000,
+      "target_bytes_per_s": 98750
+    },
+    {
+      "second": 13,
+      "rate_bps": 1440000,
+      "target_bytes_per_s": 180000
+    },
+    {
+      "second": 14,
+      "rate_bps": 1000000,
+      "target_bytes_per_s": 125000
+    },
+    {
+      "second": 15,
+      "rate_bps": 850000,
+      "target_bytes_per_s": 106250
+    },
+    {
+      "second": 16,
+      "rate_bps": 1610000,
+      "target_bytes_per_s": 201250
+    },
+    {
+      "second": 17,
+      "rate_bps": 2400000,
+      "target_bytes_per_s": 300000
+    },
+    {
+      "second": 18,
+      "rate_bps": 500000,
+      "target_bytes_per_s": 62500
+    },
+    {
+      "second": 19,
+      "rate_bps": 1690000,
+      "target_bytes_per_s": 211250
+    },
+    {
+      "second": 20,
+      "rate_bps": 2910000,
+      "target_bytes_per_s": 363750
+    },
+    {
+      "second": 21,
+      "rate_bps": 3540000,
+      "target_bytes_per_s": 442500
+    },
+    {
+      "second": 22,
+      "rate_bps": 4030000,
+      "target_bytes_per_s": 503750.00000000006
+    },
+    {
+      "second": 23,
+      "rate_bps": 3680000,
+      "target_bytes_per_s": 460000
+    },
+    {
+      "second": 24,
+      "rate_bps": 2950000,
+      "target_bytes_per_s": 368750
+    },
+    {
+      "second": 25,
+      "rate_bps": 1960000,
+      "target_bytes_per_s": 245000
+    },
+    {
+      "second": 26,
+      "rate_bps": 1230000,
+      "target_bytes_per_s": 153750
+    },
+    {
+      "second": 27,
+      "rate_bps": 1410000,
+      "target_bytes_per_s": 176250
+    },
+    {
+      "second": 28,
+      "rate_bps": 410000,
+      "target_bytes_per_s": 51250
+    },
+    {
+      "second": 29,
+      "rate_bps": 160000,
+      "target_bytes_per_s": 20000
+    },
+    {
+      "second": 30,
+      "rate_bps": 2490000,
+      "target_bytes_per_s": 311250
+    },
+    {
+      "second": 31,
+      "rate_bps": 1270000,
+      "target_bytes_per_s": 158750
+    },
+    {
+      "second": 32,
+      "rate_bps": 940000,
+      "target_bytes_per_s": 117500
+    },
+    {
+      "second": 33,
+      "rate_bps": 1390000,
+      "target_bytes_per_s": 173750
+    },
+    {
+      "second": 34,
+      "rate_bps": 1410000,
+      "target_bytes_per_s": 176250
+    },
+    {
+      "second": 35,
+      "rate_bps": 2180000,
+      "target_bytes_per_s": 272500
+    },
+    {
+      "second": 36,
+      "rate_bps": 2210000,
+      "target_bytes_per_s": 276250
+    },
+    {
+      "second": 37,
+      "rate_bps": 4390000,
+      "target_bytes_per_s": 548750
+    },
+    {
+      "second": 38,
+      "rate_bps": 4910000,
+      "target_bytes_per_s": 613750
+    },
+    {
+      "second": 39,
+      "rate_bps": 7160000,
+      "target_bytes_per_s": 895000
+    },
+    {
+      "second": 40,
+      "rate_bps": 6670000,
+      "target_bytes_per_s": 833750
+    },
+    {
+      "second": 41,
+      "rate_bps": 4840000,
+      "target_bytes_per_s": 605000
+    },
+    {
+      "second": 42,
+      "rate_bps": 4410000,
+      "target_bytes_per_s": 551250
+    },
+    {
+      "second": 43,
+      "rate_bps": 5340000,
+      "target_bytes_per_s": 667500
+    },
+    {
+      "second": 44,
+      "rate_bps": 6730000,
+      "target_bytes_per_s": 841250
+    },
+    {
+      "second": 45,
+      "rate_bps": 6620000,
+      "target_bytes_per_s": 827500
+    },
+    {
+      "second": 46,
+      "rate_bps": 5890000,
+      "target_bytes_per_s": 736250
+    },
+    {
+      "second": 47,
+      "rate_bps": 5930000,
+      "target_bytes_per_s": 741250
+    },
+    {
+      "second": 48,
+      "rate_bps": 6590000,
+      "target_bytes_per_s": 823750
+    },
+    {
+      "second": 49,
+      "rate_bps": 7370000,
+      "target_bytes_per_s": 921250
+    },
+    {
+      "second": 50,
+      "rate_bps": 4580000,
+      "target_bytes_per_s": 572500
+    },
+    {
+      "second": 51,
+      "rate_bps": 5470000,
+      "target_bytes_per_s": 683750
+    },
+    {
+      "second": 52,
+      "rate_bps": 6010000,
+      "target_bytes_per_s": 751250
+    },
+    {
+      "second": 53,
+      "rate_bps": 6850000,
+      "target_bytes_per_s": 856250
+    },
+    {
+      "second": 54,
+      "rate_bps": 7870000,
+      "target_bytes_per_s": 983750
+    },
+    {
+      "second": 55,
+      "rate_bps": 6480000,
+      "target_bytes_per_s": 810000
+    },
+    {
+      "second": 56,
+      "rate_bps": 990000,
+      "target_bytes_per_s": 123750
+    },
+    {
+      "second": 57,
+      "rate_bps": 2500000,
+      "target_bytes_per_s": 312500
+    },
+    {
+      "second": 58,
+      "rate_bps": 7440000,
+      "target_bytes_per_s": 930000
+    },
+    {
+      "second": 59,
+      "rate_bps": 6510000,
+      "target_bytes_per_s": 813750
+    },
+    {
+      "second": 60,
+      "rate_bps": 590000,
+      "target_bytes_per_s": 73750
+    },
+    {
+      "second": 61,
+      "rate_bps": 3010000,
+      "target_bytes_per_s": 376250
+    },
+    {
+      "second": 62,
+      "rate_bps": 7070000,
+      "target_bytes_per_s": 883750
+    },
+    {
+      "second": 63,
+      "rate_bps": 1970000,
+      "target_bytes_per_s": 246250
+    },
+    {
+      "second": 64,
+      "rate_bps": 6500000,
+      "target_bytes_per_s": 812500
+    },
+    {
+      "second": 65,
+      "rate_bps": 3750000,
+      "target_bytes_per_s": 468750
+    },
+    {
+      "second": 66,
+      "rate_bps": 4330000,
+      "target_bytes_per_s": 541250
+    },
+    {
+      "second": 67,
+      "rate_bps": 4520000,
+      "target_bytes_per_s": 565000
+    },
+    {
+      "second": 68,
+      "rate_bps": 4139999,
+      "target_bytes_per_s": 517499.99999999994
+    },
+    {
+      "second": 69,
+      "rate_bps": 5550000,
+      "target_bytes_per_s": 693750
+    },
+    {
+      "second": 70,
+      "rate_bps": 7020000,
+      "target_bytes_per_s": 877500
+    },
+    {
+      "second": 71,
+      "rate_bps": 7010000,
+      "target_bytes_per_s": 876250
+    },
+    {
+      "second": 72,
+      "rate_bps": 4580000,
+      "target_bytes_per_s": 572500
+    },
+    {
+      "second": 73,
+      "rate_bps": 10500000,
+      "target_bytes_per_s": 1312500
+    },
+    {
+      "second": 74,
+      "rate_bps": 10700000,
+      "target_bytes_per_s": 1337500
+    },
+    {
+      "second": 75,
+      "rate_bps": 10500000,
+      "target_bytes_per_s": 1312500
+    },
+    {
+      "second": 76,
+      "rate_bps": 8109999,
+      "target_bytes_per_s": 1013749.9999999999
+    },
+    {
+      "second": 77,
+      "rate_bps": 9370000,
+      "target_bytes_per_s": 1171250
+    },
+    {
+      "second": 78,
+      "rate_bps": 12500000,
+      "target_bytes_per_s": 1562500
+    },
+    {
+      "second": 79,
+      "rate_bps": 12700000,
+      "target_bytes_per_s": 1587500
+    },
+    {
+      "second": 80,
+      "rate_bps": 12500000,
+      "target_bytes_per_s": 1562500
+    },
+    {
+      "second": 81,
+      "rate_bps": 14800000,
+      "target_bytes_per_s": 1850000
+    },
+    {
+      "second": 82,
+      "rate_bps": 10300000,
+      "target_bytes_per_s": 1287500
+    },
+    {
+      "second": 83,
+      "rate_bps": 10700000,
+      "target_bytes_per_s": 1337500
+    },
+    {
+      "second": 84,
+      "rate_bps": 10200000,
+      "target_bytes_per_s": 1275000
+    },
+    {
+      "second": 85,
+      "rate_bps": 11900000,
+      "target_bytes_per_s": 1487500
+    },
+    {
+      "second": 86,
+      "rate_bps": 10600000,
+      "target_bytes_per_s": 1325000
+    },
+    {
+      "second": 87,
+      "rate_bps": 9100000,
+      "target_bytes_per_s": 1137500
+    },
+    {
+      "second": 88,
+      "rate_bps": 15600000,
+      "target_bytes_per_s": 1950000
+    },
+    {
+      "second": 89,
+      "rate_bps": 13000000,
+      "target_bytes_per_s": 1625000
+    },
+    {
+      "second": 90,
+      "rate_bps": 11600000,
+      "target_bytes_per_s": 1450000
+    },
+    {
+      "second": 91,
+      "rate_bps": 9020000,
+      "target_bytes_per_s": 1127500
+    },
+    {
+      "second": 92,
+      "rate_bps": 14800000,
+      "target_bytes_per_s": 1850000
+    },
+    {
+      "second": 93,
+      "rate_bps": 16900000,
+      "target_bytes_per_s": 2112500
+    },
+    {
+      "second": 94,
+      "rate_bps": 14400000,
+      "target_bytes_per_s": 1800000
+    },
+    {
+      "second": 95,
+      "rate_bps": 14300000,
+      "target_bytes_per_s": 1787500
+    }
+  ]
+}

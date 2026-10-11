@@ -1,0 +1,482 @@
+matrix locked: 8 conditions, 240 pairs, 480 downloads, sha256=01b8567797c0d457f88edffbb3af2c9c9be68a9593085c3f7e204654969e73bc
+[  1/480] U1-p00 U1    aria2 dur=  1494.0ms ok=true
+[  2/480] U1-p00 U1    dqn   dur=  1406.8ms ok=true
+[  3/480] U1-p01 U1    aria2 dur=  1424.8ms ok=true
+[  4/480] U1-p01 U1    dqn   dur=  1124.3ms ok=true
+[  5/480] U1-p02 U1    aria2 dur=  1423.0ms ok=true
+[  6/480] U1-p02 U1    dqn   dur=  1158.5ms ok=true
+[  7/480] U1-p03 U1    dqn   dur=  1107.8ms ok=true
+[  8/480] U1-p03 U1    aria2 dur=  1426.3ms ok=true
+[  9/480] U1-p04 U1    dqn   dur=  1438.3ms ok=true
+[ 10/480] U1-p04 U1    aria2 dur=  1447.4ms ok=true
+[ 11/480] U1-p05 U1    dqn   dur=  1405.0ms ok=true
+[ 12/480] U1-p05 U1    aria2 dur=  1439.8ms ok=true
+[ 13/480] U1-p06 U1    dqn   dur=  1248.6ms ok=true
+[ 14/480] U1-p06 U1    aria2 dur=  1449.0ms ok=true
+[ 15/480] U1-p07 U1    aria2 dur=  1453.9ms ok=true
+[ 16/480] U1-p07 U1    dqn   dur=  1435.7ms ok=true
+[ 17/480] U1-p08 U1    dqn   dur=  1185.6ms ok=true
+[ 18/480] U1-p08 U1    aria2 dur=  1468.0ms ok=true
+[ 19/480] U1-p09 U1    dqn   dur=  1168.0ms ok=true
+[ 20/480] U1-p09 U1    aria2 dur=  1426.7ms ok=true
+[ 21/480] U1-p10 U1    dqn   dur=  1164.7ms ok=true
+[ 22/480] U1-p10 U1    aria2 dur=  1428.0ms ok=true
+[ 23/480] U1-p11 U1    aria2 dur=  1425.2ms ok=true
+[ 24/480] U1-p11 U1    dqn   dur=  1095.2ms ok=true
+[ 25/480] U1-p12 U1    dqn   dur=  1183.7ms ok=true
+[ 26/480] U1-p12 U1    aria2 dur=  1427.1ms ok=true
+[ 27/480] U1-p13 U1    aria2 dur=  1429.3ms ok=true
+[ 28/480] U1-p13 U1    dqn   dur=  1408.0ms ok=true
+[ 29/480] U1-p14 U1    aria2 dur=  1429.8ms ok=true
+[ 30/480] U1-p14 U1    dqn   dur=  1150.0ms ok=true
+[ 31/480] U1-p15 U1    dqn   dur=  1410.8ms ok=true
+[ 32/480] U1-p15 U1    aria2 dur=  1449.9ms ok=true
+[ 33/480] U1-p16 U1    aria2 dur=  1438.6ms ok=true
+[ 34/480] U1-p16 U1    dqn   dur=  1439.1ms ok=true
+[ 35/480] U1-p17 U1    dqn   dur=  1146.0ms ok=true
+[ 36/480] U1-p17 U1    aria2 dur=  1421.0ms ok=true
+[ 37/480] U1-p18 U1    dqn   dur=  1421.3ms ok=true
+[ 38/480] U1-p18 U1    aria2 dur=  1429.5ms ok=true
+[ 39/480] U1-p19 U1    dqn   dur=  1294.6ms ok=true
+[ 40/480] U1-p19 U1    aria2 dur=  1438.9ms ok=true
+[ 41/480] U1-p20 U1    aria2 dur=  1428.4ms ok=true
+[ 42/480] U1-p20 U1    dqn   dur=  1300.5ms ok=true
+[ 43/480] U1-p21 U1    aria2 dur=  1464.7ms ok=true
+[ 44/480] U1-p21 U1    dqn   dur=  1185.4ms ok=true
+[ 45/480] U1-p22 U1    dqn   dur=  1150.3ms ok=true
+[ 46/480] U1-p22 U1    aria2 dur=  1428.4ms ok=true
+[ 47/480] U1-p23 U1    dqn   dur=  1130.3ms ok=true
+[ 48/480] U1-p23 U1    aria2 dur=  1428.0ms ok=true
+[ 49/480] U1-p24 U1    aria2 dur=  1430.6ms ok=true
+[ 50/480] U1-p24 U1    dqn   dur=  1256.3ms ok=true
+[ 51/480] U1-p25 U1    dqn   dur=  1180.7ms ok=true
+[ 52/480] U1-p25 U1    aria2 dur=  1494.6ms ok=true
+[ 53/480] U1-p26 U1    dqn   dur=  1254.7ms ok=true
+[ 54/480] U1-p26 U1    aria2 dur=  1427.6ms ok=true
+[ 55/480] U1-p27 U1    aria2 dur=  1428.8ms ok=true
+[ 56/480] U1-p27 U1    dqn   dur=  1153.9ms ok=true
+[ 57/480] U1-p28 U1    aria2 dur=  1439.4ms ok=true
+[ 58/480] U1-p28 U1    dqn   dur=  1405.2ms ok=true
+[ 59/480] U1-p29 U1    dqn   dur=  1311.6ms ok=true
+[ 60/480] U1-p29 U1    aria2 dur=  1434.2ms ok=true
+[ 61/480] U2-p00 U2    aria2 dur=   771.1ms ok=true
+[ 62/480] U2-p00 U2    dqn   dur=  1059.9ms ok=true
+[ 63/480] U2-p01 U2    aria2 dur=   776.0ms ok=true
+[ 64/480] U2-p01 U2    dqn   dur=  1052.7ms ok=true
+[ 65/480] U2-p02 U2    aria2 dur=   775.2ms ok=true
+[ 66/480] U2-p02 U2    dqn   dur=  1256.1ms ok=true
+[ 67/480] U2-p03 U2    dqn   dur=  1075.5ms ok=true
+[ 68/480] U2-p03 U2    aria2 dur=   764.6ms ok=true
+[ 69/480] U2-p04 U2    aria2 dur=   761.4ms ok=true
+[ 70/480] U2-p04 U2    dqn   dur=  1046.8ms ok=true
+[ 71/480] U2-p05 U2    aria2 dur=   781.7ms ok=true
+[ 72/480] U2-p05 U2    dqn   dur=  1050.7ms ok=true
+[ 73/480] U2-p06 U2    aria2 dur=   770.9ms ok=true
+[ 74/480] U2-p06 U2    dqn   dur=  1049.9ms ok=true
+[ 75/480] U2-p07 U2    aria2 dur=   766.6ms ok=true
+[ 76/480] U2-p07 U2    dqn   dur=  1069.7ms ok=true
+[ 77/480] U2-p08 U2    aria2 dur=   773.6ms ok=true
+[ 78/480] U2-p08 U2    dqn   dur=  1046.8ms ok=true
+[ 79/480] U2-p09 U2    dqn   dur=  1046.9ms ok=true
+[ 80/480] U2-p09 U2    aria2 dur=   766.3ms ok=true
+[ 81/480] U2-p10 U2    aria2 dur=   764.3ms ok=true
+[ 82/480] U2-p10 U2    dqn   dur=  1254.9ms ok=true
+[ 83/480] U2-p11 U2    dqn   dur=  1048.4ms ok=true
+[ 84/480] U2-p11 U2    aria2 dur=   771.9ms ok=true
+[ 85/480] U2-p12 U2    dqn   dur=  1206.3ms ok=true
+[ 86/480] U2-p12 U2    aria2 dur=   766.4ms ok=true
+[ 87/480] U2-p13 U2    aria2 dur=   769.2ms ok=true
+[ 88/480] U2-p13 U2    dqn   dur=  1072.3ms ok=true
+[ 89/480] U2-p14 U2    aria2 dur=   758.5ms ok=true
+[ 90/480] U2-p14 U2    dqn   dur=  1141.6ms ok=true
+[ 91/480] U2-p15 U2    dqn   dur=  1212.0ms ok=true
+[ 92/480] U2-p15 U2    aria2 dur=   762.8ms ok=true
+[ 93/480] U2-p16 U2    aria2 dur=   797.2ms ok=true
+[ 94/480] U2-p16 U2    dqn   dur=  1048.5ms ok=true
+[ 95/480] U2-p17 U2    dqn   dur=  1130.3ms ok=true
+[ 96/480] U2-p17 U2    aria2 dur=   769.4ms ok=true
+[ 97/480] U2-p18 U2    aria2 dur=   759.9ms ok=true
+[ 98/480] U2-p18 U2    dqn   dur=  1050.1ms ok=true
+[ 99/480] U2-p19 U2    dqn   dur=  1052.8ms ok=true
+[100/480] U2-p19 U2    aria2 dur=   748.0ms ok=true
+[101/480] U2-p20 U2    dqn   dur=  1261.1ms ok=true
+[102/480] U2-p20 U2    aria2 dur=   769.3ms ok=true
+[103/480] U2-p21 U2    aria2 dur=   771.0ms ok=true
+[104/480] U2-p21 U2    dqn   dur=  1094.3ms ok=true
+[105/480] U2-p22 U2    aria2 dur=   761.8ms ok=true
+[106/480] U2-p22 U2    dqn   dur=  1045.7ms ok=true
+[107/480] U2-p23 U2    aria2 dur=   767.4ms ok=true
+[108/480] U2-p23 U2    dqn   dur=  1047.6ms ok=true
+[109/480] U2-p24 U2    dqn   dur=  1049.6ms ok=true
+[110/480] U2-p24 U2    aria2 dur=   768.6ms ok=true
+[111/480] U2-p25 U2    dqn   dur=  1069.1ms ok=true
+[112/480] U2-p25 U2    aria2 dur=   770.9ms ok=true
+[113/480] U2-p26 U2    dqn   dur=  1254.4ms ok=true
+[114/480] U2-p26 U2    aria2 dur=   766.1ms ok=true
+[115/480] U2-p27 U2    aria2 dur=   764.7ms ok=true
+[116/480] U2-p27 U2    dqn   dur=  1048.8ms ok=true
+[117/480] U2-p28 U2    dqn   dur=  1051.0ms ok=true
+[118/480] U2-p28 U2    aria2 dur=   817.3ms ok=true
+[119/480] U2-p29 U2    dqn   dur=  1050.3ms ok=true
+[120/480] U2-p29 U2    aria2 dur=   764.1ms ok=true
+[121/480] U3-p00 U3    dqn   dur=  1512.7ms ok=true
+[122/480] U3-p00 U3    aria2 dur=   638.7ms ok=true
+[123/480] U3-p01 U3    dqn   dur=  1596.8ms ok=true
+[124/480] U3-p01 U3    aria2 dur=   571.9ms ok=true
+[125/480] U3-p02 U3    dqn   dur=  1440.3ms ok=true
+[126/480] U3-p02 U3    aria2 dur=   468.3ms ok=true
+[127/480] U3-p03 U3    aria2 dur=   573.6ms ok=true
+[128/480] U3-p03 U3    dqn   dur=  2027.1ms ok=true
+[129/480] U3-p04 U3    dqn   dur=  2158.5ms ok=true
+[130/480] U3-p04 U3    aria2 dur=   565.5ms ok=true
+[131/480] U3-p05 U3    aria2 dur=   566.0ms ok=true
+[132/480] U3-p05 U3    dqn   dur=  1805.5ms ok=true
+[133/480] U3-p06 U3    aria2 dur=   704.5ms ok=true
+[134/480] U3-p06 U3    dqn   dur=  2068.7ms ok=true
+[135/480] U3-p07 U3    dqn   dur=  1637.5ms ok=true
+[136/480] U3-p07 U3    aria2 dur=   571.3ms ok=true
+[137/480] U3-p08 U3    aria2 dur=   641.9ms ok=true
+[138/480] U3-p08 U3    dqn   dur=  1764.9ms ok=true
+[139/480] U3-p09 U3    aria2 dur=   532.0ms ok=true
+[140/480] U3-p09 U3    dqn   dur=  1961.5ms ok=true
+[141/480] U3-p10 U3    aria2 dur=   714.8ms ok=true
+[142/480] U3-p10 U3    dqn   dur=  1672.7ms ok=true
+[143/480] U3-p11 U3    aria2 dur=   645.3ms ok=true
+[144/480] U3-p11 U3    dqn   dur=  1493.0ms ok=true
+[145/480] U3-p12 U3    dqn   dur=  2517.6ms ok=true
+[146/480] U3-p12 U3    aria2 dur=   660.2ms ok=true
+[147/480] U3-p13 U3    dqn   dur=  1378.2ms ok=true
+[148/480] U3-p13 U3    aria2 dur=   473.2ms ok=true
+[149/480] U3-p14 U3    aria2 dur=   573.4ms ok=true
+[150/480] U3-p14 U3    dqn   dur=  2072.6ms ok=true
+[151/480] U3-p15 U3    aria2 dur=   645.8ms ok=true
+[152/480] U3-p15 U3    dqn   dur=  1565.9ms ok=true
+[153/480] U3-p16 U3    aria2 dur=   571.4ms ok=true
+[154/480] U3-p16 U3    dqn   dur=  2125.4ms ok=true
+[155/480] U3-p17 U3    aria2 dur=   576.0ms ok=true
+[156/480] U3-p17 U3    dqn   dur=  1854.2ms ok=true
+[157/480] U3-p18 U3    dqn   dur=  1536.6ms ok=true
+[158/480] U3-p18 U3    aria2 dur=   568.6ms ok=true
+[159/480] U3-p19 U3    dqn   dur=  2004.7ms ok=true
+[160/480] U3-p19 U3    aria2 dur=   470.1ms ok=true
+[161/480] U3-p20 U3    aria2 dur=   639.6ms ok=true
+[162/480] U3-p20 U3    dqn   dur=  1610.6ms ok=true
+[163/480] U3-p21 U3    aria2 dur=   642.7ms ok=true
+[164/480] U3-p21 U3    dqn   dur=  2091.3ms ok=true
+[165/480] U3-p22 U3    aria2 dur=   587.1ms ok=true
+[166/480] U3-p22 U3    dqn   dur=  2323.7ms ok=true
+[167/480] U3-p23 U3    dqn   dur=  1627.5ms ok=true
+[168/480] U3-p23 U3    aria2 dur=   731.6ms ok=true
+[169/480] U3-p24 U3    dqn   dur=  1718.4ms ok=true
+[170/480] U3-p24 U3    aria2 dur=   653.6ms ok=true
+[171/480] U3-p25 U3    aria2 dur=  1456.3ms ok=true
+[172/480] U3-p25 U3    dqn   dur=  2108.9ms ok=true
+[173/480] U3-p26 U3    aria2 dur=   649.3ms ok=true
+[174/480] U3-p26 U3    dqn   dur=  1327.3ms ok=true
+[175/480] U3-p27 U3    aria2 dur=   476.0ms ok=true
+[176/480] U3-p27 U3    dqn   dur=  1973.3ms ok=true
+[177/480] U3-p28 U3    aria2 dur=   567.6ms ok=true
+[178/480] U3-p28 U3    dqn   dur=  1425.4ms ok=true
+[179/480] U3-p29 U3    dqn   dur=  2170.9ms ok=true
+[180/480] U3-p29 U3    aria2 dur=   644.7ms ok=true
+[181/480] U4-p00 U4    aria2 dur=  1528.9ms ok=true
+[182/480] U4-p00 U4    dqn   dur=  3318.2ms ok=true
+[183/480] U4-p01 U4    aria2 dur=  1610.2ms ok=true
+[184/480] U4-p01 U4    dqn   dur=  3669.6ms ok=true
+[185/480] U4-p02 U4    dqn   dur=  2784.5ms ok=true
+[186/480] U4-p02 U4    aria2 dur=  2643.4ms ok=true
+[187/480] U4-p03 U4    aria2 dur=  1533.3ms ok=true
+[188/480] U4-p03 U4    dqn   dur=  2652.0ms ok=true
+[189/480] U4-p04 U4    dqn   dur=  4593.0ms ok=true
+[190/480] U4-p04 U4    aria2 dur=  1465.4ms ok=true
+[191/480] U4-p05 U4    aria2 dur=  1463.0ms ok=true
+[192/480] U4-p05 U4    dqn   dur=  2755.3ms ok=true
+[193/480] U4-p06 U4    aria2 dur=  1461.2ms ok=true
+[194/480] U4-p06 U4    dqn   dur=  3451.0ms ok=true
+[195/480] U4-p07 U4    aria2 dur=  1457.5ms ok=true
+[196/480] U4-p07 U4    dqn   dur=  4315.1ms ok=true
+[197/480] U4-p08 U4    dqn   dur=  2840.3ms ok=true
+[198/480] U4-p08 U4    aria2 dur=  1568.4ms ok=true
+[199/480] U4-p09 U4    aria2 dur=  1463.6ms ok=true
+[200/480] U4-p09 U4    dqn   dur=  2679.3ms ok=true
+[201/480] U4-p10 U4    dqn   dur=  2663.6ms ok=true
+[202/480] U4-p10 U4    aria2 dur=  1450.0ms ok=true
+[203/480] U4-p11 U4    aria2 dur=  1720.4ms ok=true
+[204/480] U4-p11 U4    dqn   dur=  4704.0ms ok=true
+[205/480] U4-p12 U4    dqn   dur=  3840.2ms ok=true
+[206/480] U4-p12 U4    aria2 dur=  2482.7ms ok=true
+[207/480] U4-p13 U4    aria2 dur=  1521.6ms ok=true
+[208/480] U4-p13 U4    dqn   dur=  3657.0ms ok=true
+[209/480] U4-p14 U4    aria2 dur=  1466.9ms ok=true
+[210/480] U4-p14 U4    dqn   dur=  2996.3ms ok=true
+[211/480] U4-p15 U4    dqn   dur=  3132.1ms ok=true
+[212/480] U4-p15 U4    aria2 dur=  1536.5ms ok=true
+[213/480] U4-p16 U4    aria2 dur=  1456.9ms ok=true
+[214/480] U4-p16 U4    dqn   dur=  2584.8ms ok=true
+[215/480] U4-p17 U4    aria2 dur=  1455.2ms ok=true
+[216/480] U4-p17 U4    dqn   dur=  2820.0ms ok=true
+[217/480] U4-p18 U4    aria2 dur=  1554.1ms ok=true
+[218/480] U4-p18 U4    dqn   dur=  2524.3ms ok=true
+[219/480] U4-p19 U4    dqn   dur=  2648.2ms ok=true
+[220/480] U4-p19 U4    aria2 dur=  1479.5ms ok=true
+[221/480] U4-p20 U4    dqn   dur=  3890.5ms ok=true
+[222/480] U4-p20 U4    aria2 dur=  1602.1ms ok=true
+[223/480] U4-p21 U4    aria2 dur=  1675.2ms ok=true
+[224/480] U4-p21 U4    dqn   dur=  4147.4ms ok=true
+[225/480] U4-p22 U4    dqn   dur=  3080.1ms ok=true
+[226/480] U4-p22 U4    aria2 dur=  2540.7ms ok=true
+[227/480] U4-p23 U4    dqn   dur=  2682.3ms ok=true
+[228/480] U4-p23 U4    aria2 dur=  1799.6ms ok=true
+[229/480] U4-p24 U4    aria2 dur=  2495.1ms ok=true
+[230/480] U4-p24 U4    dqn   dur=  2851.2ms ok=true
+[231/480] U4-p25 U4    dqn   dur=  3702.7ms ok=true
+[232/480] U4-p25 U4    aria2 dur=  1548.7ms ok=true
+[233/480] U4-p26 U4    aria2 dur=  1630.7ms ok=true
+[234/480] U4-p26 U4    dqn   dur=  3408.3ms ok=true
+[235/480] U4-p27 U4    dqn   dur=  2671.1ms ok=true
+[236/480] U4-p27 U4    aria2 dur=  1350.7ms ok=true
+[237/480] U4-p28 U4    dqn   dur=  3392.0ms ok=true
+[238/480] U4-p28 U4    aria2 dur=  1542.0ms ok=true
+[239/480] U4-p29 U4    aria2 dur=  1742.0ms ok=true
+[240/480] U4-p29 U4    dqn   dur=  3371.9ms ok=true
+[241/480] U5-p00 U5    dqn   dur=  4149.9ms ok=true
+[242/480] U5-p00 U5    aria2 dur=  2481.4ms ok=true
+[243/480] U5-p01 U5    aria2 dur=  4503.6ms ok=true
+[244/480] U5-p01 U5    dqn   dur=  4093.3ms ok=true
+[245/480] U5-p02 U5    aria2 dur=  2520.1ms ok=true
+[246/480] U5-p02 U5    dqn   dur=  3876.6ms ok=true
+[247/480] U5-p03 U5    aria2 dur=  2459.7ms ok=true
+[248/480] U5-p03 U5    dqn   dur=  4139.8ms ok=true
+[249/480] U5-p04 U5    aria2 dur=  2442.7ms ok=true
+[250/480] U5-p04 U5    dqn   dur=  3865.2ms ok=true
+[251/480] U5-p05 U5    aria2 dur=  2449.0ms ok=true
+[252/480] U5-p05 U5    dqn   dur=  5317.4ms ok=true
+[253/480] U5-p06 U5    aria2 dur=  2451.2ms ok=true
+[254/480] U5-p06 U5    dqn   dur=  3570.5ms ok=true
+[255/480] U5-p07 U5    aria2 dur=  2453.6ms ok=true
+[256/480] U5-p07 U5    dqn   dur=  5317.8ms ok=true
+[257/480] U5-p08 U5    aria2 dur=  2463.0ms ok=true
+[258/480] U5-p08 U5    dqn   dur=  3871.3ms ok=true
+[259/480] U5-p09 U5    dqn   dur=  3774.5ms ok=true
+[260/480] U5-p09 U5    aria2 dur=  2585.1ms ok=true
+[261/480] U5-p10 U5    aria2 dur=  2691.8ms ok=true
+[262/480] U5-p10 U5    dqn   dur=  3500.8ms ok=true
+[263/480] U5-p11 U5    dqn   dur=  4007.6ms ok=true
+[264/480] U5-p11 U5    aria2 dur=  2454.8ms ok=true
+[265/480] U5-p12 U5    aria2 dur=  2767.5ms ok=true
+[266/480] U5-p12 U5    dqn   dur=  3912.3ms ok=true
+[267/480] U5-p13 U5    dqn   dur=  3846.7ms ok=true
+[268/480] U5-p13 U5    aria2 dur=  3384.9ms ok=true
+[269/480] U5-p14 U5    dqn   dur=  3716.1ms ok=true
+[270/480] U5-p14 U5    aria2 dur=  3491.1ms ok=true
+[271/480] U5-p15 U5    dqn   dur=  3608.9ms ok=true
+[272/480] U5-p15 U5    aria2 dur=  2699.6ms ok=true
+[273/480] U5-p16 U5    dqn   dur=  4183.6ms ok=true
+[274/480] U5-p16 U5    aria2 dur=  2693.4ms ok=true
+[275/480] U5-p17 U5    dqn   dur=  4480.9ms ok=true
+[276/480] U5-p17 U5    aria2 dur=  2489.1ms ok=true
+[277/480] U5-p18 U5    dqn   dur=  3645.5ms ok=true
+[278/480] U5-p18 U5    aria2 dur=  2455.5ms ok=true
+[279/480] U5-p19 U5    dqn   dur=  5378.7ms ok=true
+[280/480] U5-p19 U5    aria2 dur=  2452.9ms ok=true
+[281/480] U5-p20 U5    aria2 dur=  3502.8ms ok=true
+[282/480] U5-p20 U5    dqn   dur=  3770.7ms ok=true
+[283/480] U5-p21 U5    dqn   dur=  4028.0ms ok=true
+[284/480] U5-p21 U5    aria2 dur=  2441.2ms ok=true
+[285/480] U5-p22 U5    aria2 dur=  2476.1ms ok=true
+[286/480] U5-p22 U5    dqn   dur=  4057.7ms ok=true
+[287/480] U5-p23 U5    aria2 dur=  2452.9ms ok=true
+[288/480] U5-p23 U5    dqn   dur=  3816.8ms ok=true
+[289/480] U5-p24 U5    aria2 dur=  2450.1ms ok=true
+[290/480] U5-p24 U5    dqn   dur=  3489.9ms ok=true
+[291/480] U5-p25 U5    aria2 dur=  2450.7ms ok=true
+[292/480] U5-p25 U5    dqn   dur=  3801.0ms ok=true
+[293/480] U5-p26 U5    dqn   dur=  5563.6ms ok=true
+[294/480] U5-p26 U5    aria2 dur=  2455.6ms ok=true
+[295/480] U5-p27 U5    aria2 dur=  2453.9ms ok=true
+[296/480] U5-p27 U5    dqn   dur=  4053.7ms ok=true
+[297/480] U5-p28 U5    aria2 dur=  2442.3ms ok=true
+[298/480] U5-p28 U5    dqn   dur=  3417.6ms ok=true
+[299/480] U5-p29 U5    dqn   dur=  4816.4ms ok=true
+[300/480] U5-p29 U5    aria2 dur=  2447.1ms ok=true
+[301/480] U6-p00 U6    dqn   dur=  2387.2ms ok=true
+[302/480] U6-p00 U6    aria2 dur=  1107.1ms ok=true
+[303/480] U6-p01 U6    aria2 dur=  1099.4ms ok=true
+[304/480] U6-p01 U6    dqn   dur=  2011.5ms ok=true
+[305/480] U6-p02 U6    aria2 dur=  1109.6ms ok=true
+[306/480] U6-p02 U6    dqn   dur=  2633.0ms ok=true
+[307/480] U6-p03 U6    dqn   dur=  1767.6ms ok=true
+[308/480] U6-p03 U6    aria2 dur=  1099.3ms ok=true
+[309/480] U6-p04 U6    dqn   dur=  1842.6ms ok=true
+[310/480] U6-p04 U6    aria2 dur=  1110.0ms ok=true
+[311/480] U6-p05 U6    dqn   dur=  1791.3ms ok=true
+[312/480] U6-p05 U6    aria2 dur=  1114.2ms ok=true
+[313/480] U6-p06 U6    aria2 dur=  1110.3ms ok=true
+[314/480] U6-p06 U6    dqn   dur=  1836.1ms ok=true
+[315/480] U6-p07 U6    dqn   dur=  2241.9ms ok=true
+[316/480] U6-p07 U6    aria2 dur=  1104.8ms ok=true
+[317/480] U6-p08 U6    dqn   dur=  1898.1ms ok=true
+[318/480] U6-p08 U6    aria2 dur=  1118.0ms ok=true
+[319/480] U6-p09 U6    aria2 dur=  1098.0ms ok=true
+[320/480] U6-p09 U6    dqn   dur=  1787.1ms ok=true
+[321/480] U6-p10 U6    aria2 dur=  1099.4ms ok=true
+[322/480] U6-p10 U6    dqn   dur=  2211.4ms ok=true
+[323/480] U6-p11 U6    aria2 dur=  1116.4ms ok=true
+[324/480] U6-p11 U6    dqn   dur=  1787.7ms ok=true
+[325/480] U6-p12 U6    dqn   dur=  1810.9ms ok=true
+[326/480] U6-p12 U6    aria2 dur=  1109.1ms ok=true
+[327/480] U6-p13 U6    dqn   dur=  2601.1ms ok=true
+[328/480] U6-p13 U6    aria2 dur=  1115.1ms ok=true
+[329/480] U6-p14 U6    dqn   dur=  2570.3ms ok=true
+[330/480] U6-p14 U6    aria2 dur=  1103.5ms ok=true
+[331/480] U6-p15 U6    dqn   dur=  2253.9ms ok=true
+[332/480] U6-p15 U6    aria2 dur=  1115.8ms ok=true
+[333/480] U6-p16 U6    dqn   dur=  2587.3ms ok=true
+[334/480] U6-p16 U6    aria2 dur=  1106.3ms ok=true
+[335/480] U6-p17 U6    dqn   dur=  1905.8ms ok=true
+[336/480] U6-p17 U6    aria2 dur=  1096.0ms ok=true
+[337/480] U6-p18 U6    aria2 dur=  1111.5ms ok=true
+[338/480] U6-p18 U6    dqn   dur=  1898.0ms ok=true
+[339/480] U6-p19 U6    aria2 dur=  1123.4ms ok=true
+[340/480] U6-p19 U6    dqn   dur=  1793.1ms ok=true
+[341/480] U6-p20 U6    dqn   dur=  2233.7ms ok=true
+[342/480] U6-p20 U6    aria2 dur=  1104.8ms ok=true
+[343/480] U6-p21 U6    dqn   dur=  2414.5ms ok=true
+[344/480] U6-p21 U6    aria2 dur=  1098.6ms ok=true
+[345/480] U6-p22 U6    dqn   dur=  1879.2ms ok=true
+[346/480] U6-p22 U6    aria2 dur=  1112.8ms ok=true
+[347/480] U6-p23 U6    dqn   dur=  2634.7ms ok=true
+[348/480] U6-p23 U6    aria2 dur=  1105.0ms ok=true
+[349/480] U6-p24 U6    dqn   dur=  2397.1ms ok=true
+[350/480] U6-p24 U6    aria2 dur=  1097.6ms ok=true
+[351/480] U6-p25 U6    dqn   dur=  2216.2ms ok=true
+[352/480] U6-p25 U6    aria2 dur=  1111.1ms ok=true
+[353/480] U6-p26 U6    dqn   dur=  2623.3ms ok=true
+[354/480] U6-p26 U6    aria2 dur=  1118.8ms ok=true
+[355/480] U6-p27 U6    dqn   dur=  2210.4ms ok=true
+[356/480] U6-p27 U6    aria2 dur=  1118.4ms ok=true
+[357/480] U6-p28 U6    dqn   dur=  1852.3ms ok=true
+[358/480] U6-p28 U6    aria2 dur=  1115.8ms ok=true
+[359/480] U6-p29 U6    dqn   dur=  2225.3ms ok=true
+[360/480] U6-p29 U6    aria2 dur=  1102.8ms ok=true
+[361/480] U7-p00 U7    dqn   dur=  1149.5ms ok=true
+[362/480] U7-p00 U7    aria2 dur=  1614.9ms ok=true
+[363/480] U7-p01 U7    dqn   dur=  1062.5ms ok=true
+[364/480] U7-p01 U7    aria2 dur=   574.2ms ok=true
+[365/480] U7-p02 U7    aria2 dur=   582.9ms ok=true
+[366/480] U7-p02 U7    dqn   dur=  1395.4ms ok=true
+[367/480] U7-p03 U7    aria2 dur=   590.6ms ok=true
+[368/480] U7-p03 U7    dqn   dur=  1147.4ms ok=true
+[369/480] U7-p04 U7    dqn   dur=  1284.2ms ok=true
+[370/480] U7-p04 U7    aria2 dur=   574.0ms ok=true
+[371/480] U7-p05 U7    aria2 dur=   579.4ms ok=true
+[372/480] U7-p05 U7    dqn   dur=  1389.2ms ok=true
+[373/480] U7-p06 U7    dqn   dur=  1473.8ms ok=true
+[374/480] U7-p06 U7    aria2 dur=   589.2ms ok=true
+[375/480] U7-p07 U7    dqn   dur=   992.4ms ok=true
+[376/480] U7-p07 U7    aria2 dur=   577.5ms ok=true
+[377/480] U7-p08 U7    dqn   dur=  1352.7ms ok=true
+[378/480] U7-p08 U7    aria2 dur=   577.1ms ok=true
+[379/480] U7-p09 U7    aria2 dur=   589.5ms ok=true
+[380/480] U7-p09 U7    dqn   dur=  1459.9ms ok=true
+[381/480] U7-p10 U7    dqn   dur=  1033.5ms ok=true
+[382/480] U7-p10 U7    aria2 dur=   580.2ms ok=true
+[383/480] U7-p11 U7    aria2 dur=   584.0ms ok=true
+[384/480] U7-p11 U7    dqn   dur=  1465.7ms ok=true
+[385/480] U7-p12 U7    aria2 dur=   622.4ms ok=true
+[386/480] U7-p12 U7    dqn   dur=  1114.8ms ok=true
+[387/480] U7-p13 U7    aria2 dur=   594.0ms ok=true
+[388/480] U7-p13 U7    dqn   dur=  1489.3ms ok=true
+[389/480] U7-p14 U7    aria2 dur=   595.9ms ok=true
+[390/480] U7-p14 U7    dqn   dur=  1495.6ms ok=true
+[391/480] U7-p15 U7    aria2 dur=   590.0ms ok=true
+[392/480] U7-p15 U7    dqn   dur=  1049.8ms ok=true
+[393/480] U7-p16 U7    aria2 dur=   578.8ms ok=true
+[394/480] U7-p16 U7    dqn   dur=  1439.0ms ok=true
+[395/480] U7-p17 U7    dqn   dur=  1594.8ms ok=true
+[396/480] U7-p17 U7    aria2 dur=   591.9ms ok=true
+[397/480] U7-p18 U7    aria2 dur=   584.6ms ok=true
+[398/480] U7-p18 U7    dqn   dur=  1319.2ms ok=true
+[399/480] U7-p19 U7    dqn   dur=  1316.2ms ok=true
+[400/480] U7-p19 U7    aria2 dur=   573.5ms ok=true
+[401/480] U7-p20 U7    aria2 dur=   587.9ms ok=true
+[402/480] U7-p20 U7    dqn   dur=   973.0ms ok=true
+[403/480] U7-p21 U7    dqn   dur=  1397.2ms ok=true
+[404/480] U7-p21 U7    aria2 dur=   578.8ms ok=true
+[405/480] U7-p22 U7    dqn   dur=  1093.1ms ok=true
+[406/480] U7-p22 U7    aria2 dur=   576.4ms ok=true
+[407/480] U7-p23 U7    aria2 dur=   579.3ms ok=true
+[408/480] U7-p23 U7    dqn   dur=  1152.9ms ok=true
+[409/480] U7-p24 U7    dqn   dur=  1402.4ms ok=true
+[410/480] U7-p24 U7    aria2 dur=   572.8ms ok=true
+[411/480] U7-p25 U7    aria2 dur=   582.5ms ok=true
+[412/480] U7-p25 U7    dqn   dur=  1678.9ms ok=true
+[413/480] U7-p26 U7    dqn   dur=  1451.6ms ok=true
+[414/480] U7-p26 U7    aria2 dur=   804.1ms ok=true
+[415/480] U7-p27 U7    dqn   dur=  1267.5ms ok=true
+[416/480] U7-p27 U7    aria2 dur=   585.0ms ok=true
+[417/480] U7-p28 U7    aria2 dur=   587.8ms ok=true
+[418/480] U7-p28 U7    dqn   dur=  1020.6ms ok=true
+[419/480] U7-p29 U7    aria2 dur=   575.3ms ok=true
+[420/480] U7-p29 U7    dqn   dur=  1400.6ms ok=true
+[421/480] U8-p00 U8    aria2 dur=  2759.9ms ok=true
+[422/480] U8-p00 U8    dqn   dur=  2846.0ms ok=true
+[423/480] U8-p01 U8    aria2 dur=  1425.7ms ok=true
+[424/480] U8-p01 U8    dqn   dur=  3101.1ms ok=true
+[425/480] U8-p02 U8    dqn   dur=  3305.8ms ok=true
+[426/480] U8-p02 U8    aria2 dur=  1421.8ms ok=true
+[427/480] U8-p03 U8    aria2 dur=  1497.4ms ok=true
+[428/480] U8-p03 U8    dqn   dur=  4742.8ms ok=true
+[429/480] U8-p04 U8    aria2 dur=  1426.3ms ok=true
+[430/480] U8-p04 U8    dqn   dur=  3305.8ms ok=true
+[431/480] U8-p05 U8    dqn   dur=  4218.5ms ok=true
+[432/480] U8-p05 U8    aria2 dur=  1437.8ms ok=true
+[433/480] U8-p06 U8    dqn   dur=  3009.5ms ok=true
+[434/480] U8-p06 U8    aria2 dur=  1419.6ms ok=true
+[435/480] U8-p07 U8    dqn   dur=  3531.9ms ok=true
+[436/480] U8-p07 U8    aria2 dur=  1495.2ms ok=true
+[437/480] U8-p08 U8    dqn   dur=  3022.6ms ok=true
+[438/480] U8-p08 U8    aria2 dur=  1444.6ms ok=true
+[439/480] U8-p09 U8    aria2 dur=  1585.9ms ok=true
+[440/480] U8-p09 U8    dqn   dur=  2642.9ms ok=true
+[441/480] U8-p10 U8    aria2 dur=  1412.2ms ok=true
+[442/480] U8-p10 U8    dqn   dur=  3005.5ms ok=true
+[443/480] U8-p11 U8    aria2 dur=  1441.6ms ok=true
+[444/480] U8-p11 U8    dqn   dur=  3019.4ms ok=true
+[445/480] U8-p12 U8    aria2 dur=  1434.8ms ok=true
+[446/480] U8-p12 U8    dqn   dur=  3059.0ms ok=true
+[447/480] U8-p13 U8    aria2 dur=  1429.4ms ok=true
+[448/480] U8-p13 U8    dqn   dur=  3097.3ms ok=true
+[449/480] U8-p14 U8    dqn   dur=  3129.9ms ok=true
+[450/480] U8-p14 U8    aria2 dur=  1440.3ms ok=true
+[451/480] U8-p15 U8    aria2 dur=  1775.6ms ok=true
+[452/480] U8-p15 U8    dqn   dur=  2811.5ms ok=true
+[453/480] U8-p16 U8    dqn   dur=  2564.6ms ok=true
+[454/480] U8-p16 U8    aria2 dur=  1447.4ms ok=true
+[455/480] U8-p17 U8    dqn   dur=  3191.6ms ok=true
+[456/480] U8-p17 U8    aria2 dur=  1411.6ms ok=true
+[457/480] U8-p18 U8    aria2 dur=  1510.2ms ok=true
+[458/480] U8-p18 U8    dqn   dur=  3286.8ms ok=true
+[459/480] U8-p19 U8    dqn   dur=  5951.5ms ok=true
+[460/480] U8-p19 U8    aria2 dur=  1713.6ms ok=true
+[461/480] U8-p20 U8    aria2 dur=  1457.2ms ok=true
+[462/480] U8-p20 U8    dqn   dur=  2615.5ms ok=true
+[463/480] U8-p21 U8    aria2 dur=  1428.8ms ok=true
+[464/480] U8-p21 U8    dqn   dur=  3302.6ms ok=true
+[465/480] U8-p22 U8    aria2 dur=  1437.1ms ok=true
+[466/480] U8-p22 U8    dqn   dur=  3142.6ms ok=true
+[467/480] U8-p23 U8    aria2 dur=  1725.9ms ok=true
+[468/480] U8-p23 U8    dqn   dur=  2844.0ms ok=true
+[469/480] U8-p24 U8    dqn   dur=  2895.8ms ok=true
+[470/480] U8-p24 U8    aria2 dur=  2750.3ms ok=true
+[471/480] U8-p25 U8    dqn   dur=  2589.7ms ok=true
+[472/480] U8-p25 U8    aria2 dur=  1433.1ms ok=true
+[473/480] U8-p26 U8    aria2 dur=  1421.8ms ok=true
+[474/480] U8-p26 U8    dqn   dur=  3188.8ms ok=true
+[475/480] U8-p27 U8    aria2 dur=  1433.3ms ok=true
+[476/480] U8-p27 U8    dqn   dur=  3118.2ms ok=true
+[477/480] U8-p28 U8    aria2 dur=  1450.3ms ok=true
+[478/480] U8-p28 U8    dqn   dur=  2861.6ms ok=true
+[479/480] U8-p29 U8    dqn   dur=  3720.8ms ok=true
+[480/480] U8-p29 U8    aria2 dur=  1429.7ms ok=true
+wrote raw results for 480 runs

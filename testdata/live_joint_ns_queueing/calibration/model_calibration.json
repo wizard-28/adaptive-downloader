@@ -1,0 +1,127 @@
+{
+  "model": "T = F/(C-B_ach) + S/(N(C-B_ach)) + k_loss*retrans*MSS/(C-B_ach) + RTT_q",
+  "k_loss": 21.8245,
+  "C_bytes_per_second": 5000000,
+  "file_bytes": 33554432,
+  "chunk_bytes": 1048576,
+  "rmse_rel": 0.08241067132637722,
+  "max_abs_rel": 0.1865478216430148,
+  "rows": [
+    {
+      "state": "S0_no_background",
+      "N": 1,
+      "observed_s": 7.1660770000000005,
+      "predicted_s": 6.968001599999999,
+      "rel_err": -0.027640702158238228
+    },
+    {
+      "state": "S0_no_background",
+      "N": 2,
+      "observed_s": 7.157907,
+      "predicted_s": 7.155340508799999,
+      "rel_err": -0.00035855330336095735
+    },
+    {
+      "state": "S0_no_background",
+      "N": 4,
+      "observed_s": 7.096881000000001,
+      "predicted_s": 7.4788138455999995,
+      "rel_err": 0.05381700011596627
+    },
+    {
+      "state": "S0_no_background",
+      "N": 8,
+      "observed_s": 7.053846999999999,
+      "predicted_s": 7.1463306856,
+      "rel_err": 0.013111098893979474
+    },
+    {
+      "state": "S0_no_background",
+      "N": 16,
+      "observed_s": 7.071757,
+      "predicted_s": 7.460842245599999,
+      "rel_err": 0.055019600588651386
+    },
+    {
+      "state": "S1_moderate",
+      "N": 1,
+      "observed_s": 14.856127,
+      "predicted_s": 16.512156337888197,
+      "rel_err": 0.1114711349659434
+    },
+    {
+      "state": "S1_moderate",
+      "N": 2,
+      "observed_s": 14.99393,
+      "predicted_s": 16.332858298939428,
+      "rel_err": 0.08929802252907858
+    },
+    {
+      "state": "S1_moderate",
+      "N": 4,
+      "observed_s": 15.061183000000002,
+      "predicted_s": 15.268957117887153,
+      "rel_err": 0.013795338512728466
+    },
+    {
+      "state": "S1_moderate",
+      "N": 8,
+      "observed_s": 15.125316000000002,
+      "predicted_s": 15.84813309591788,
+      "rel_err": 0.04778856163520015
+    },
+    {
+      "state": "S1_moderate",
+      "N": 16,
+      "observed_s": 14.283911,
+      "predicted_s": 16.948543481592697,
+      "rel_err": 0.1865478216430148
+    },
+    {
+      "state": "S2_heavy",
+      "N": 1,
+      "observed_s": 62.49148,
+      "predicted_s": 64.48843108749372,
+      "rel_err": 0.031955573583690444
+    },
+    {
+      "state": "S2_heavy",
+      "N": 2,
+      "observed_s": 67.893999,
+      "predicted_s": 63.85551595965203,
+      "rel_err": -0.05948217957154008
+    },
+    {
+      "state": "S2_heavy",
+      "N": 4,
+      "observed_s": 51.958892999999996,
+      "predicted_s": 52.40463862479133,
+      "rel_err": 0.008578812962611341
+    },
+    {
+      "state": "S2_heavy",
+      "N": 8,
+      "observed_s": 30.297356,
+      "predicted_s": 30.945452029307148,
+      "rel_err": 0.02139117450734472
+    },
+    {
+      "state": "S2_heavy",
+      "N": 16,
+      "observed_s": 15.88598,
+      "predicted_s": 18.7387743688,
+      "rel_err": 0.17957937557519282
+    }
+  ],
+  "predicted_N_star_per_state": {
+    "S0_no_background": 1,
+    "S1_moderate": 4,
+    "S2_heavy": 16
+  },
+  "observed_N_star_per_state": {
+    "S0_no_background": 8,
+    "S1_moderate": 16,
+    "S2_heavy": 16
+  },
+  "note": "B_ach(N) is measured per state/N; the model reproduces the live medians within the reported error and predicts the same boundary/flat N* pattern. The work-conserving bulk term is N-independent, so no interior optimum is structurally expected from this mechanism."
+}

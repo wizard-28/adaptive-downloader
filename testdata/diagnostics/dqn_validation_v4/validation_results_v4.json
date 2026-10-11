@@ -1,0 +1,57 @@
+{
+  "conditions": [
+    {
+      "file_size": 4194304,
+      "latency_s": 0.09,
+      "link_bandwidth": 716800,
+      "loss_percent": 0.0,
+      "rate": 716800,
+      "rate_after": 3145728,
+      "switch_after_seconds": 0.8,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.0,
+      "link_bandwidth": 2097152,
+      "loss_percent": 4.5,
+      "rate": 2097152,
+      "rate_after": 524288,
+      "switch_after_requests": 8,
+      "switch_kind": "request-count"
+    },
+    {
+      "file_size": 8388608,
+      "latency_s": 0.05,
+      "link_bandwidth": 0,
+      "loss_percent": 2.5,
+      "rate": 5242880,
+      "rate_after": 1048576,
+      "switch_after_seconds": 0.4,
+      "switch_kind": "wall-clock"
+    },
+    {
+      "file_size": 4194304,
+      "latency_s": 0.02,
+      "link_bandwidth": 0,
+      "loss_percent": 0.0,
+      "rate": 3145728,
+      "rate_after": 3145728,
+      "switch_kind": "none"
+    }
+  ],
+  "selected_seed": 1,
+  "validation_mean_completion_s": 2.2992460317460317,
+  "validation_summary": {
+    "mean_avg_concurrency": 3.6666666666666665,
+    "mean_completion_s": 2.2992460317460317,
+    "mean_conc_changes": 0.3333333333333333,
+    "mean_effective_actions_per_mib": 0.08333333333333333,
+    "mean_max_concurrency": 3.6666666666666665,
+    "mean_requests": 5.0,
+    "mean_requests_per_mib": 1.0,
+    "median_completion_s": 1.375,
+    "n": 12,
+    "sd_completion_s": 2.1787215791637378
+  }
+}

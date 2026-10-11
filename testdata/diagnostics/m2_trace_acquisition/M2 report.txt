@@ -1,0 +1,37 @@
+M2 real mobile trace acquisition + data audit
+
+Sources: UGent/imec 4G LTE logs (citation documented; license not explicit); NYU-METS (ODbL/DbCL, free public).
+
+Traces acquired: 23 (16 UGent, 7 NYU)
+
+  ugent_4g/bicycle_0001        bicycle                dur=  530.0s n=  531 med_int=1.0s med_thr=3815293 B/s REPLAY_PARTIAL
+  ugent_4g/bicycle_0002        bicycle                dur=  657.0s n=  658 med_int=1.0s med_thr=2842936 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0001            bus                    dur=  606.0s n=  607 med_int=1.0s med_thr=3355407 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0002            bus                    dur=  545.0s n=  546 med_int=1.0s med_thr=4043316 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0003            bus                    dur=  762.2s n=  758 med_int=1.001s med_thr=2454891 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0004            bus                    dur=  280.0s n=  281 med_int=1.0s med_thr=6742696 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0005            bus                    dur=  337.0s n=  338 med_int=1.0s med_thr=4878028 B/s REPLAY_PARTIAL
+  ugent_4g/bus_0006            bus                    dur=  515.0s n=  516 med_int=1.0s med_thr=3519459 B/s REPLAY_PARTIAL
+  ugent_4g/car_0001            car                    dur=  467.0s n=  468 med_int=1.0s med_thr=4142442 B/s REPLAY_PARTIAL
+  ugent_4g/car_0002            car                    dur=  565.0s n=  566 med_int=1.0s med_thr=3557078 B/s REPLAY_PARTIAL
+  ugent_4g/train_0001          train                  dur=  505.0s n=  506 med_int=1.0s med_thr=2747498 B/s REPLAY_PARTIAL
+  ugent_4g/train_0002          train                  dur=  503.0s n=  496 med_int=1.0s med_thr=2696720 B/s REPLAY_PARTIAL
+  ugent_4g/train_0003          train                  dur=  540.0s n=  532 med_int=1.0s med_thr=2533325 B/s REPLAY_PARTIAL
+  ugent_4g/tram_0001           tram                   dur=  571.0s n=  572 med_int=1.0s med_thr=1790163 B/s REPLAY_PARTIAL
+  ugent_4g/tram_0002           tram                   dur=  658.0s n=  659 med_int=1.0s med_thr=1445153 B/s REPLAY_PARTIAL
+  ugent_4g/tram_0003           tram                   dur=  471.0s n=  472 med_int=1.0s med_thr=4511082 B/s REPLAY_PARTIAL
+  nyu_mets/7Train1             7Train1                dur= 4909.0s n= 4910 med_int=1.0s med_thr=659375 B/s REPLAY_PARTIAL
+  nyu_mets/7Train2             7Train2                dur= 3115.0s n= 3116 med_int=1.0s med_thr=1052500 B/s REPLAY_PARTIAL
+  nyu_mets/Long_Island_Rail_Road Long_Island_Rail_Road  dur= 1446.0s n= 1447 med_int=1.0s med_thr=385000 B/s REPLAY_PARTIAL
+  nyu_mets/QTrain              QTrain                 dur= 2403.0s n= 2404 med_int=1.0s med_thr=968750 B/s REPLAY_PARTIAL
+  nyu_mets/bus57               bus57                  dur= 2402.0s n= 2403 med_int=1.0s med_thr=847500 B/s REPLAY_PARTIAL
+  nyu_mets/bus62               bus62                  dur= 3292.0s n= 3293 med_int=1.0s med_thr=340000 B/s REPLAY_PARTIAL
+  nyu_mets/bus62_2             bus62_2                dur= 1451.0s n= 1452 med_int=1.0s med_thr=338125 B/s REPLAY_PARTIAL
+
+Variables: throughput for all; GPS for UGent; RTT/jitter/loss/network-type unavailable and recorded as unavailable.
+Capacity vs throughput: measured end-to-end throughput only; capacity_ground_truth=unavailable.
+Development (6): ugent_4g/train_0001, ugent_4g/train_0002, ugent_4g/tram_0001, nyu_mets/7Train1, nyu_mets/bus57, nyu_mets/bus62
+Held-out (7): ugent_4g/train_0003, ugent_4g/tram_0002, ugent_4g/car_0001, nyu_mets/7Train2, nyu_mets/Long_Island_Rail_Road, nyu_mets/QTrain, nyu_mets/bus62_2
+
+Gates: {"A_ge5_traces": true, "B_provenance_license": true, "C_temporal_throughput_complete": true, "D_genuine_mobility": true, "E_no_fabrication": true, "F_long_enough": true}
+M3 justification: YES for a throughput-trajectory replay stage based on the license-explicit NYU-METS traces; UGent requires license clarification. No synthetic data, no RL, no aria2.

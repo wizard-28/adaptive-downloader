@@ -1,0 +1,52 @@
+{
+  "aria2_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "matrix_sha256": "8ce09d595e3a8e5cb37ec8a7d38944721eb0ecd55ce2344968f538f679da1172",
+  "results": [
+    {
+      "condition": "A2",
+      "duration_ms": 7845.586,
+      "ok": true,
+      "pair_id": "A2-p00",
+      "policy": "v6",
+      "run_id": "A2-p00-v6",
+      "system": "dqn",
+      "wallclock_bps": 2138427.3908921527
+    },
+    {
+      "condition": "A2",
+      "duration_ms": 6939.806,
+      "ok": true,
+      "pair_id": "A2-p00",
+      "policy": "aria2-f",
+      "run_id": "A2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 2417533.8618975803
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 11900.359,
+      "ok": true,
+      "pair_id": "D2-p00",
+      "policy": "v6",
+      "run_id": "D2-p00-v6",
+      "system": "dqn",
+      "wallclock_bps": 1409807.5528645816
+    },
+    {
+      "condition": "D2",
+      "duration_ms": 2366.781,
+      "ok": true,
+      "pair_id": "D2-p00",
+      "policy": "aria2-f",
+      "run_id": "D2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7088622.056709091
+    }
+  ],
+  "systems": {
+    "aria2": "aria2-F",
+    "dqn": "Candidate v6 (state v3, 1 MiB chunk, C 1-16)"
+  },
+  "v6_sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887"
+}

@@ -1,0 +1,62 @@
+{
+  "actions": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency",
+    "increase-chunk-size",
+    "decrease-chunk-size"
+  ],
+  "calibration_sanity_vs_frozen_server_seconds": {
+    "1MiB@512KiB/s": {
+      "frozen_server_approx": 2.05,
+      "sim": 2.0
+    },
+    "32KiB@4MiB/s": {
+      "frozen_server_approx": 0.008,
+      "sim": 0.0078
+    },
+    "32KiB@512KiB/s": {
+      "frozen_server_approx": 0.064,
+      "sim": 0.0625
+    }
+  },
+  "feature_names": [
+    "concurrency_norm",
+    "chunk_size_norm",
+    "remaining_bytes_frac",
+    "aggregate_throughput_norm",
+    "aggregate_throughput_ewma_norm",
+    "aggregate_throughput_slope",
+    "aggregate_throughput_volatility",
+    "request_duration_norm",
+    "request_duration_slope",
+    "recent_failure_rate",
+    "recent_retry_rate",
+    "since_concurrency_change_norm",
+    "since_chunk_change_norm"
+  ],
+  "label": "DEVELOPMENT / SANITY MODEL - not the final evaluation policy",
+  "no_performance_claim": true,
+  "reward": "reward_t = -(elapsed_wall_clock_seconds between decision t and observation t+1); gamma=1.0",
+  "simulator_assumptions": [
+    "one decision = one request wave: each of `concurrency` workers completes one `chunk_size` request (or fails once and is retried)",
+    "per-request service time = latency + chunk_size / current_rate",
+    "current_rate = bandwidth until `switch_after` requests, then bandwidth_2 (request-count based, like the real SetRateAfter)",
+    "aggregate throughput per wave = bytes_wave / elapsed_wave",
+    "the simulator does NOT model the real downloader request/connection behavior; training conditions are NOT final evaluation conditions"
+  ],
+  "state_spec": {
+    "counter_window": 8,
+    "duration_scale": 1.0,
+    "ewma_alpha": 0.3,
+    "max_chunk_size": 131072,
+    "max_concurrency": 4,
+    "min_chunk_size": 32768,
+    "min_concurrency": 1,
+    "staleness_scale": 1.0,
+    "throughput_scale": 8388608.0,
+    "version": 1
+  },
+  "transition": "(s_t, a_t, r_t, s_t+1, done)",
+  "version": 1
+}

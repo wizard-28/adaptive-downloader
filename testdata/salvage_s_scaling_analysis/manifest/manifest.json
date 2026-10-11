@@ -1,0 +1,69 @@
+{
+  "protocol_version": 7,
+  "protocol_id": "salvage_s_protocol_v7",
+  "protocol_status": "FINAL_S_PROTOCOL_FROZEN \u2014 READY_FOR_STAGE_0S",
+  "protocol_json_sha256": "db1b3cf05db3a624ea2996081fd267649ba6360c8fbf181f0456fda7752b2ac0",
+  "frozen_R_bytes_per_second": 500000.0,
+  "frozen_D_seconds": 0.04,
+  "frozen_N": 4,
+  "stage0s_calibrated_service_times_seconds": {
+    "262144": 0.5777166945,
+    "1048576": 2.1905264195,
+    "4194304": 8.6409296585,
+    "16777216": 34.4278713685
+  },
+  "file_size_grid_bytes": [
+    67108864,
+    134217728,
+    268435456,
+    536870912,
+    1073741824,
+    2147483648,
+    4294967296,
+    8589934592,
+    17179869184,
+    34359738368
+  ],
+  "chunk_size_grid_bytes": [
+    262144,
+    1048576,
+    4194304,
+    16777216
+  ],
+  "switch_strategies": [
+    {
+      "from": "16MiB",
+      "to": "4MiB",
+      "B_switch_bytes": 67108864
+    },
+    {
+      "from": "4MiB",
+      "to": "1MiB",
+      "B_switch_bytes": 16777216
+    },
+    {
+      "from": "1MiB",
+      "to": "256KiB",
+      "B_switch_bytes": 4194304
+    }
+  ],
+  "model_equations": {
+    "MODEL_A_analytical": "t(s) = D + s/R",
+    "MODEL_B_stage0s_calibrated": "t(s) = a + b*s with a=0.041837515381, b=2.049600672081e-06 (OLS fit to the four pooled medians; R^2=0.999999988509)"
+  },
+  "simulation_assumptions": [
+    "N=4 work-conserving workers; one contiguous range per request; allocation in order",
+    "B_pending = TotalSize - CompletedBytes - InFlightBytes sampled immediately before each allocation decision",
+    "at most one switch; target fixed afterwards; in-flight ranges never resized",
+    "final partial range supported; EOF when all bytes are complete",
+    "deterministic (no RNG); ties broken by allocation sequence",
+    "no failures/retries are modeled (Stage 0S had 0 failures and 0 retries)"
+  ],
+  "rng_seed": null,
+  "tools": {
+    "analysis": "tools/scaling_analysis.py",
+    "figures": "tools/make_figures.py",
+    "simulator": "tools/scaling_analysis.py:simulate()"
+  },
+  "created_utc": "2026-09-28T14:54:33Z"
+}

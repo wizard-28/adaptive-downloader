@@ -1,0 +1,21 @@
+{
+  "run_id": "b2_o2_16MiB",
+  "block": 2,
+  "order_in_block": 2,
+  "arm_label": "16MiB",
+  "arm_bytes": 16777216,
+  "duration_seconds": 276.19256388,
+  "clean": true,
+  "run_err": "",
+  "total_attempts": 32,
+  "failed_attempts": 0,
+  "retry_attempts": 0,
+  "server_requests": 32,
+  "server_service_median_seconds": 34.4210689225,
+  "client_service_median_seconds": 34.4276830575,
+  "realized_tail_seconds": 35.003049401,
+  "eof_reached": true,
+  "coverage_no_missing": true,
+  "coverage_no_duplicates": true,
+  "output_size_bytes": 536870912
+}

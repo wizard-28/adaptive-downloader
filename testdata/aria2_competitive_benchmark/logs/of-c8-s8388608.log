@@ -1,0 +1,2 @@
+run of-c8-s8388608 system=ours completion=38.898s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system ours -file-size 536870912 -run-id of-c8-s8388608 -out /workspaces/mvp/testdata/aria2_competitive_benchmark/discovery_ours/of-c8-s8388608.json -c 8 -chunk 8388608

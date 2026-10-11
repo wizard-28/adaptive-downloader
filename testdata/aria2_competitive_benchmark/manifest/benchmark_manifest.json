@@ -1,0 +1,89 @@
+{
+  "study": "aria2_competitive_benchmark",
+  "workload": {
+    "family": "D2 (exact historical configuration)",
+    "file_size_bytes": 536870912,
+    "schedule": {
+      "phase_0_rate": 655360,
+      "phase_1_rate": 163840,
+      "phase_2_rate": 2560000,
+      "phase_seconds": 2.0,
+      "anchor": "download start (wall clock)"
+    },
+    "netem": {
+      "latency_ms": 40,
+      "loss_percent": 0.4
+    },
+    "server": "logical deterministic server (same pacing semantics; memory-safe replication)"
+  },
+  "aria2": {
+    "version": "aria2 version 1.37.0",
+    "historical_f": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+    "frontier": {
+      "max_connection_per_server": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "split": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "min_split_size": [
+        "1M",
+        "2M",
+        "4M",
+        "8M",
+        "16M",
+        "32M"
+      ],
+      "effective_ranges_recorded": true
+    }
+  },
+  "ours": {
+    "frontier": {
+      "concurrency": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "chunk_bytes": [
+        262144,
+        524288,
+        1048576,
+        2097152,
+        4194304,
+        8388608,
+        16777216,
+        33554432
+      ]
+    },
+    "policy": "fixed (no adaptation)"
+  },
+  "v6": {
+    "model": "/workspaces/mvp/testdata/diagnostics/dqn_validation_v6/final_dqn_candidate_v6.json",
+    "sha256": "daa7176793093bea102965700774609fd70d4bbb60523d2417302e2a7f0d9887"
+  },
+  "seeds": {
+    "pair_order_lcg_seed": 20260928
+  },
+  "selection_rules_predeclared": {
+    "aria2_final": "lowest median completion over the discovery runs (ties: lower mean, then lower max_connections); the best config is re-run twice more for a 3-run median",
+    "our_final": "lowest median completion over the discovery runs; the top-3 configs by the first pass are re-run twice more (3 runs total) and the selection uses the 3-run median (ties: lower mean, then smaller chunk)"
+  },
+  "blocks": [
+    "d2repro",
+    "aria2frontier",
+    "oursfrontier",
+    "final",
+    "mechanism"
+  ],
+  "created_utc": "2026-09-28T20:49:19Z"
+}

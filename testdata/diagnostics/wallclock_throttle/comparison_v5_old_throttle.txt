@@ -1,0 +1,10 @@
+Old (request-count) throttle vs new (wall-clock) throttle - server-throttle scenario (mean completion ms; descriptive; no ranking)
+old: 512KiB/s -> 4MiB/s after REQUEST 4. new: after 1.0s ELAPSED. Both 4 MiB, same six modes/config otherwise.
+
+  mode                  old_req4_ms  new_wall_ms    old/new
+  fixed                      1382.3       2057.9       1.49
+  concurrency-adaptive        569.7       1324.5       2.33
+  chunk-size-adaptive        1343.3       2029.0       1.51
+  joint-adaptive              647.6       1404.7       2.17
+  linucb-standard            1328.7       2061.3       1.55
+  linucb-periodic            1215.7       1323.4       1.09

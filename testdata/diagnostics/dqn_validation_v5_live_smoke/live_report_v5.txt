@@ -1,0 +1,32 @@
+Candidate v5 live transfer validation (simulator-trained; controlled server)
+NO aria2 comparison; NO real-network claim; NO superiority claim.
+
+model_sha256 : 3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75
+file_size    : 16777216 (chunk 1048576, concurrency [1 4])
+matrix       : 2 scenarios x 2 policies x 1 reps = 4 expected runs
+
+GATE_A_technical_validity        PASS
+GATE_B_genuine_adaptation        PASS
+GATE_C_reaction_observability    PASS
+
+== baseline ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     4425.3   4425.3      0.0   16.0    0.0    0.0     1.00     1.00
+v5          1726.1   1726.1      0.0   16.0    0.0    0.0     3.00     3.19
+
+== server-throttle-wallclock ==
+policy     mean_ms   med_ms    sd_ms    att   retr   fail   finalC  twMeanC
+fixed-1     6245.1   6245.1      0.0   16.0    0.0    0.0     1.00     1.00
+v5          3500.6   3500.6      0.0   16.0    0.0    0.0     3.00     2.07
+
+v5 actual concurrency behavior (valid runs):
+  server-throttle-wallclock  n=1 mean_changes=12.00 constant=0 ramp=0 finalC(mean)=3.00 dominant=map[C1:1]
+  baseline                   n=1 mean_changes=12.00 constant=0 ramp=0 finalC(mean)=3.00 dominant=map[C4:1]
+
+transition reactions (v5):
+  server-throttle-wallclock  runs=1 changed_after=1 latency_ms(mean/median)=1066.3/1066.3 postMeanC=2.50
+
+validation:
+  expected=4 recorded=4 valid=4 invalid=0 netem_unavailable=0
+
+Caveats: controlled synthetic server; simulator-trained model; no aria2 comparison; no real-network generalization; performance differences are descriptive, not a ranking.

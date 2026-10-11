@@ -1,0 +1,193 @@
+{
+  "best_fixed_chunk": 16777216,
+  "best_fixed_ms": 184193.52,
+  "boundaries_s": [
+    30,
+    75,
+    105,
+    150
+  ],
+  "concurrency": 16,
+  "file_bytes": 536870912,
+  "fixed_runs": [
+    {
+      "bytes": {
+        "p1": 100663296,
+        "p2": 50331648,
+        "p3": 67108864,
+        "p4": 50331648,
+        "p5": 268435456
+      },
+      "chunk": 1048576,
+      "max_in_flight": 16,
+      "ms": 245697.094,
+      "started": {
+        "p1": 96,
+        "p2": 48,
+        "p3": 64,
+        "p4": 48,
+        "p5": 256
+      }
+    },
+    {
+      "bytes": {
+        "p1": 268435456,
+        "p3": 268435456
+      },
+      "chunk": 16777216,
+      "max_in_flight": 16,
+      "ms": 184193.52,
+      "started": {
+        "p1": 16,
+        "p3": 16
+      }
+    },
+    {
+      "bytes": {
+        "p1": 100663296,
+        "p2": 67108864,
+        "p3": 33554432,
+        "p4": 67108864,
+        "p5": 268435456
+      },
+      "chunk": 2097152,
+      "max_in_flight": 16,
+      "ms": 266397.948,
+      "started": {
+        "p1": 48,
+        "p2": 32,
+        "p3": 16,
+        "p4": 32,
+        "p5": 128
+      }
+    },
+    {
+      "bytes": {
+        "p1": 88080384,
+        "p2": 50331648,
+        "p3": 79691776,
+        "p4": 50331648,
+        "p5": 268435456
+      },
+      "chunk": 262144,
+      "max_in_flight": 16,
+      "ms": 245771.336,
+      "started": {
+        "p1": 336,
+        "p2": 192,
+        "p3": 304,
+        "p4": 192,
+        "p5": 1024
+      }
+    },
+    {
+      "bytes": {
+        "p1": 134217728,
+        "p2": 67108864,
+        "p4": 67108864,
+        "p5": 268435456
+      },
+      "chunk": 4194304,
+      "max_in_flight": 16,
+      "ms": 266663.296,
+      "started": {
+        "p1": 32,
+        "p2": 16,
+        "p4": 16,
+        "p5": 64
+      }
+    },
+    {
+      "bytes": {
+        "p1": 92274688,
+        "p2": 50331648,
+        "p3": 75497472,
+        "p4": 50331648,
+        "p5": 268435456
+      },
+      "chunk": 524288,
+      "max_in_flight": 16,
+      "ms": 245832.037,
+      "started": {
+        "p1": 176,
+        "p2": 96,
+        "p3": 144,
+        "p4": 96,
+        "p5": 512
+      }
+    },
+    {
+      "bytes": {
+        "p1": 134217728,
+        "p2": 134217728,
+        "p5": 268435456
+      },
+      "chunk": 8388608,
+      "max_in_flight": 16,
+      "ms": 267029.173,
+      "started": {
+        "p1": 16,
+        "p2": 16,
+        "p5": 32
+      }
+    }
+  ],
+  "gates": {
+    "A_preference_changes": {
+      "passed": true,
+      "phase_best": {
+        "p1": 16777216,
+        "p2": 8388608,
+        "p3": 16777216,
+        "p4": 4194304,
+        "p5": 1048576
+      }
+    },
+    "B_headroom_ge_10pct": {
+      "detail": "oracle bound <= best fixed (smallest chunk is best)",
+      "passed": false
+    },
+    "C_transitions_with_work": {
+      "detail": {
+        "p1": 100663296,
+        "p2": 50331648,
+        "p3": 67108864,
+        "p4": 50331648,
+        "p5": 268435456
+      },
+      "passed": true
+    },
+    "D_fixed_concurrency": {
+      "passed": true
+    },
+    "E_granularity_isolation": {
+      "detail": "every request equals the selected chunk size; only chunk size varies",
+      "passed": true
+    },
+    "F_reproducibility": {
+      "detail": "single repetition per chunk size in this sweep",
+      "passed": null
+    }
+  },
+  "ladder": [
+    1048576,
+    16777216,
+    2097152,
+    262144,
+    4194304,
+    524288,
+    8388608
+  ],
+  "larger_chunk_ever_better": false,
+  "normal_rate": 184320,
+  "oracle_note": "best fixed is the smallest ladder element; no down-step exists, and no larger chunk measured faster, so the action-constrained oracle cannot beat best fixed (analytical bound; live oracle not run).",
+  "outcome": "NOT_READY_NON_RL_GRANULARITY_EFFECT",
+  "phase_best_chunk_by_throughput": {
+    "p1": 16777216,
+    "p2": 8388608,
+    "p3": 16777216,
+    "p4": 4194304,
+    "p5": 1048576
+  },
+  "throttle_rate": 65536
+}

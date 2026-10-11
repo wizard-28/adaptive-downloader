@@ -1,0 +1,22 @@
+Descriptive comparison: aria2 1.37.0 vs frozen v5 six-mode results (mean completion ms; no ranking)
+aria2 config: -x4 -s4 -k1MiB -m3 timeout30; measured server-side max in-flight 4, 3x1MiB ranges + 1 non-range request, 0 retries
+v5 modes use internal chunk 32KiB / concurrency max 4; aria2 min split is 1MiB (>=1MiB required). Different request granularity/config.
+
+  scenario                  fixed concurrency-adaptive chunk-size-adaptive joint-adaptive linucb-standard linucb-periodic          aria2
+  baseline                 1155.1         1156.3         1160.7         1147.6         1162.5         1113.6          320.9
+  server-throttle          1382.3          569.7         1343.3          647.6         1328.7         1215.7         2117.9
+  latency                  6340.1         2302.4         2559.6         2190.5         2635.0         2456.6          853.2
+  loss                     1971.6         1198.2         1564.4         1263.7         1537.5         1648.5          362.4
+  combined                10154.9         5328.4         5928.8         5652.8         7186.8         6119.7         1282.5
+
+wall-clock Mbps (fileSize/duration):
+  scenario                  fixed concurrency-adaptive chunk-size-adaptive joint-adaptive linucb-standard linucb-periodic          aria2
+  baseline                    3.6            3.6            3.6            3.7            3.6            3.8           13.1
+  server-throttle             3.0            7.4            3.1            6.5            3.2            3.5            2.0
+  latency                     0.7            1.8            1.6            2.0            1.6            1.7            4.9
+  loss                        2.2            3.6            2.8            3.4            3.1            2.7           12.0
+  combined                    0.4            0.8            0.7            0.7            0.6            0.7            3.3
+
+aria2 observed request behavior (per run): 1 non-range request (initial full-body 200, aborted -> 1 failed server request),
+then 3 concurrent 1MiB range requests covering bytes 1-4 MiB; server-observed max simultaneous in-flight requests = 4; 0 retries;
+range sizes constant at 1MiB (no within-run split-size adaptation observed).

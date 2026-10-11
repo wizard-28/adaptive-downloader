@@ -1,0 +1,87 @@
+{
+  "study": "adaptive_n_mechanism_screen",
+  "kind": "analytical screening (no empirical experiments)",
+  "created_utc": "2026-09-28T16:44:08Z",
+  "context": {
+    "s_study": "closed (salvage_s_protocol_v7, salvage_s_stage0s, salvage_s_scaling_analysis, salvage_s_mechanism_pivot)",
+    "concurrency_evidence": [
+      "T1 (testdata/diagnostics/t1_server_throttle)",
+      "L3/L4 (testdata/diagnostics/l4_environment_design, v7_design)",
+      "M3 (testdata/diagnostics/m3_mobile_replay)"
+    ]
+  },
+  "baseline": {
+    "file_bytes": 536870912,
+    "request_bytes": 1048576,
+    "rtt_seconds": 0.04,
+    "N_grid": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ]
+  },
+  "models": [
+    "direct",
+    "fair",
+    "fair_bg",
+    "cap",
+    "degrade"
+  ],
+  "state_parameters": {
+    "C_bytes_per_s": [
+      524288.0,
+      2097152,
+      8388608,
+      33554432
+    ],
+    "K": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "B": [
+      0,
+      4,
+      16
+    ],
+    "gamma": [
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2
+    ]
+  },
+  "experiments": [
+    "E1 stationary",
+    "E2 transitions",
+    "E3 robustness",
+    "E4 severity"
+  ],
+  "rng": {
+    "stochastic": false,
+    "deterministic": true
+  },
+  "tools": {
+    "simulator": "tools/n_sim.py",
+    "screening": "tools/run_n_screening.py",
+    "figures": "tools/make_figures.py",
+    "report": "tools/make_report.py"
+  },
+  "classification": {
+    "A": "MECHANISTICALLY INSUFFICIENT",
+    "B": "MECHANISTICALLY INSUFFICIENT",
+    "C": "PLAUSIBLE - FRAGILE",
+    "D": "MECHANISTICALLY INSUFFICIENT",
+    "E": "PLAUSIBLE - FRAGILE",
+    "F": "MECHANISTICALLY INSUFFICIENT",
+    "G": "MECHANISTICALLY INSUFFICIENT",
+    "H": "PLAUSIBLE - FRAGILE"
+  },
+  "robust_mechanism_found": false,
+  "new_preregistered_protocol_justified": false
+}

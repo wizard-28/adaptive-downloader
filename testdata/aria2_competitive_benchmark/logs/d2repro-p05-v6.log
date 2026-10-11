@@ -1,0 +1,2 @@
+run d2repro-p05-v6 system=v6 completion=28.041s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system v6 -file-size 536870912 -run-id d2repro-p05-v6 -out /workspaces/mvp/testdata/aria2_competitive_benchmark/reproduction_d2/d2repro-p05-v6.json -model /workspaces/mvp/testdata/diagnostics/dqn_validation_v6/final_dqn_candidate_v6.json

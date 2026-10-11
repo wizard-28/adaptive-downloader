@@ -1,0 +1,686 @@
+{
+  "action_space": [
+    "none",
+    "increase-concurrency",
+    "decrease-concurrency"
+  ],
+  "concurrency_bounds": [
+    1,
+    16
+  ],
+  "decision_interval": 1,
+  "episodes": 60,
+  "fixed_chunk_bytes": 1048576,
+  "num_actions": 3,
+  "numpy": "2.5.3",
+  "phase_seconds_train": [
+    1.5,
+    3.0
+  ],
+  "python": "3.14.7",
+  "seed_separation": {
+    "test": [
+      200
+    ],
+    "train": [
+      0
+    ],
+    "validation": [
+      100
+    ]
+  },
+  "seeds": [
+    0
+  ],
+  "selected_seed": 0,
+  "selection_criterion": "min mean validation completion time; tie-break lowest seed (test never used)",
+  "state_spec_version": 3,
+  "test_conditions": [
+    {
+      "family": "A",
+      "name": "A2",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.006,
+          "latency_s": 0.05,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.006,
+          "latency_s": 0.05,
+          "link_bandwidth": 943718.4,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.006,
+          "latency_s": 0.05,
+          "link_bandwidth": 5767168.0,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "name": "B2",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.006,
+          "latency_s": 0.02,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.006,
+          "latency_s": 0.11,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.006,
+          "latency_s": 0.02,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "C",
+      "name": "C2",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.025,
+          "latency_s": 0.04,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.025,
+          "latency_s": 0.04,
+          "link_bandwidth": 5242880,
+          "loss_percent": 3.2,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.025,
+          "latency_s": 0.04,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "D",
+      "name": "D2",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.004,
+          "latency_s": 0.04,
+          "link_bandwidth": 0,
+          "loss_percent": 0.4,
+          "rate": 655360
+        },
+        {
+          "congestion": 0.004,
+          "latency_s": 0.04,
+          "link_bandwidth": 0,
+          "loss_percent": 0.4,
+          "rate": 163840
+        },
+        {
+          "congestion": 0.004,
+          "latency_s": 0.04,
+          "link_bandwidth": 0,
+          "loss_percent": 0.4,
+          "rate": 5242880
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "name": "E2",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.004,
+          "latency_s": 0.02,
+          "link_bandwidth": 5767168.0,
+          "loss_percent": 0.4,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.018,
+          "latency_s": 0.11,
+          "link_bandwidth": 1887436.8,
+          "loss_percent": 3.8,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.012,
+          "latency_s": 0.06,
+          "link_bandwidth": 4194304.0,
+          "loss_percent": 1.7,
+          "rate": 8388608
+        }
+      ]
+    }
+  ],
+  "torch": "2.9.0+cpu",
+  "train": {
+    "batch_size": 64,
+    "episodes": 60,
+    "epsilon_decay_steps": 5000,
+    "epsilon_end": 0.05,
+    "epsilon_start": 1.0,
+    "gamma": 1.0,
+    "gradient_clip": 10.0,
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "learning_rate": 0.001,
+    "max_episode_steps": 200,
+    "num_actions": 3,
+    "randomize_conditions": true,
+    "replay_capacity": 20000,
+    "seed": 0,
+    "target_update_interval": 200,
+    "train_start": 500
+  },
+  "training_families": {
+    "A": [
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          4194304,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          4194304,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          838860.8,
+          1572864.0
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          4194304,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          4194304,
+          8388608
+        ]
+      }
+    ],
+    "B": [
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.01,
+          0.02
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.1,
+          0.15
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.002,
+          0.008
+        ],
+        "lat": [
+          0.01,
+          0.02
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.8
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      }
+    ],
+    "C": [
+      {
+        "cong": [
+          0.01,
+          0.02
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.01,
+          0.02
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          3.0,
+          4.5
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.01,
+          0.02
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      }
+    ],
+    "D": [
+      {
+        "cong": [
+          0.0,
+          0.005
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          0,
+          0
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          524288,
+          1048576
+        ]
+      },
+      {
+        "cong": [
+          0.0,
+          0.005
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          0,
+          0
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          131072,
+          262144
+        ]
+      },
+      {
+        "cong": [
+          0.0,
+          0.005
+        ],
+        "lat": [
+          0.02,
+          0.05
+        ],
+        "link": [
+          0,
+          0
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          4194304,
+          8388608
+        ]
+      }
+    ],
+    "E": [
+      {
+        "cong": [
+          0.002,
+          0.005
+        ],
+        "lat": [
+          0.01,
+          0.03
+        ],
+        "link": [
+          5242880,
+          7340032
+        ],
+        "loss": [
+          0.2,
+          0.5
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.015,
+          0.03
+        ],
+        "lat": [
+          0.1,
+          0.15
+        ],
+        "link": [
+          1258291.2,
+          2097152.0
+        ],
+        "loss": [
+          3.0,
+          4.5
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      },
+      {
+        "cong": [
+          0.008,
+          0.015
+        ],
+        "lat": [
+          0.04,
+          0.07
+        ],
+        "link": [
+          3670016.0,
+          5242880
+        ],
+        "loss": [
+          1.0,
+          2.0
+        ],
+        "rate": [
+          8388608,
+          8388608
+        ]
+      }
+    ]
+  },
+  "validation_conditions": [
+    {
+      "family": "A",
+      "name": "A1",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.005,
+          "latency_s": 0.03,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.005,
+          "latency_s": 0.03,
+          "link_bandwidth": 1258291.2,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.005,
+          "latency_s": 0.03,
+          "link_bandwidth": 5242880,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "B",
+      "name": "B1",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.005,
+          "latency_s": 0.015,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.005,
+          "latency_s": 0.13,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.005,
+          "latency_s": 0.015,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.5,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "C",
+      "name": "C1",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.015,
+          "latency_s": 0.03,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.3,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.015,
+          "latency_s": 0.03,
+          "link_bandwidth": 6291456,
+          "loss_percent": 4.0,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.015,
+          "latency_s": 0.03,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.3,
+          "rate": 8388608
+        }
+      ]
+    },
+    {
+      "family": "D",
+      "name": "D1",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 0.3,
+          "rate": 786432
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 0.3,
+          "rate": 196608
+        },
+        {
+          "congestion": 0.0,
+          "latency_s": 0.03,
+          "link_bandwidth": 0,
+          "loss_percent": 0.3,
+          "rate": 6291456
+        }
+      ]
+    },
+    {
+      "family": "E",
+      "name": "E1",
+      "phase_seconds": 2.0,
+      "phases": [
+        {
+          "congestion": 0.003,
+          "latency_s": 0.02,
+          "link_bandwidth": 6291456,
+          "loss_percent": 0.3,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.02,
+          "latency_s": 0.12,
+          "link_bandwidth": 1572864.0,
+          "loss_percent": 3.5,
+          "rate": 8388608
+        },
+        {
+          "congestion": 0.01,
+          "latency_s": 0.05,
+          "link_bandwidth": 4718592.0,
+          "loss_percent": 1.5,
+          "rate": 8388608
+        }
+      ]
+    }
+  ]
+}

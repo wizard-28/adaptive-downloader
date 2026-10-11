@@ -1,0 +1,336 @@
+{
+  "grid": {
+    "N": [
+      4,
+      8,
+      16
+    ],
+    "S": [
+      1048576,
+      4194304,
+      16777216
+    ],
+    "timeouts": [
+      20,
+      30,
+      60
+    ],
+    "reps": 2,
+    "state": "capped from start C=8MiB/s gamma=0.05",
+    "netem": "40ms + 0.4%"
+  },
+  "by_timeout": {
+    "20s": {
+      "cells": {
+        "16/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 115.33299,
+          "runs_ms": [
+            115141.052,
+            115524.928
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid_reps": 0,
+          "invalid_reps": 2,
+          "median_s": null,
+          "runs_ms": [
+            80093.09,
+            80096.897
+          ],
+          "invalid_reasons": [
+            "exit 3",
+            "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts",
+            "content verification failed",
+            "exit 3",
+            "downloader: retry limit exceeded: range [0,16777215] after 4 attempts",
+            "content verification failed"
+          ]
+        },
+        "16/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 112.867181,
+          "runs_ms": [
+            112793.632,
+            112940.73
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 89.454007,
+          "runs_ms": [
+            90609.001,
+            88299.013
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 100.5290085,
+          "runs_ms": [
+            100221.572,
+            100836.445
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 86.50185300000001,
+          "runs_ms": [
+            86325.577,
+            86678.129
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 93.2882555,
+          "runs_ms": [
+            94495.62,
+            92080.891
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid_reps": 0,
+          "invalid_reps": 2,
+          "median_s": null,
+          "runs_ms": [
+            80081.596,
+            80073.347
+          ],
+          "invalid_reasons": [
+            "exit 3",
+            "downloader: retry limit exceeded: range [83886080,100663295] after 4 attempts",
+            "content verification failed",
+            "exit 3",
+            "downloader: retry limit exceeded: range [50331648,67108863] after 4 attempts",
+            "content verification failed"
+          ]
+        },
+        "8/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 91.587115,
+          "runs_ms": [
+            91624.419,
+            91549.811
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "argmin": "4/4194304",
+      "argmin_completion_s": 86.50185300000001,
+      "selected_4_4M_is_argmin": true
+    },
+    "30s": {
+      "cells": {
+        "16/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 115.4294815,
+          "runs_ms": [
+            115429.264,
+            115429.699
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid_reps": 0,
+          "invalid_reps": 2,
+          "median_s": null,
+          "runs_ms": [
+            120069.172,
+            120063.595
+          ],
+          "invalid_reasons": [
+            "exit 3",
+            "downloader: retry limit exceeded: range [33554432,50331647] after 4 attempts",
+            "content verification failed",
+            "exit 3",
+            "downloader: retry limit exceeded: range [67108864,83886079] after 4 attempts",
+            "content verification failed"
+          ]
+        },
+        "16/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 112.3185545,
+          "runs_ms": [
+            112428.529,
+            112208.58
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 90.45317549999999,
+          "runs_ms": [
+            90274.947,
+            90631.404
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 96.677254,
+          "runs_ms": [
+            96423.75,
+            96930.758
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 86.42809299999999,
+          "runs_ms": [
+            86250.732,
+            86605.454
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 92.8197215,
+          "runs_ms": [
+            92819.931,
+            92819.512
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 93.764046,
+          "runs_ms": [
+            93745.23,
+            93782.862
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 91.8718235,
+          "runs_ms": [
+            91765.037,
+            91978.61
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "argmin": "4/4194304",
+      "argmin_completion_s": 86.42809299999999,
+      "selected_4_4M_is_argmin": true
+    },
+    "60s": {
+      "cells": {
+        "16/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 115.470452,
+          "runs_ms": [
+            115363.946,
+            115576.958
+          ],
+          "invalid_reasons": []
+        },
+        "16/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 108.854228,
+          "runs_ms": [
+            108792.833,
+            108915.623
+          ],
+          "invalid_reasons": []
+        },
+        "16/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 112.25516999999999,
+          "runs_ms": [
+            112259.924,
+            112250.416
+          ],
+          "invalid_reasons": []
+        },
+        "4/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 89.833073,
+          "runs_ms": [
+            89942.387,
+            89723.759
+          ],
+          "invalid_reasons": []
+        },
+        "4/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 97.22108,
+          "runs_ms": [
+            97452.612,
+            96989.548
+          ],
+          "invalid_reasons": []
+        },
+        "4/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 86.47881749999999,
+          "runs_ms": [
+            86632.072,
+            86325.563
+          ],
+          "invalid_reasons": []
+        },
+        "8/1048576": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 92.89684500000001,
+          "runs_ms": [
+            91111.507,
+            94682.183
+          ],
+          "invalid_reasons": []
+        },
+        "8/16777216": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 93.8008045,
+          "runs_ms": [
+            93862.731,
+            93738.878
+          ],
+          "invalid_reasons": []
+        },
+        "8/4194304": {
+          "valid_reps": 2,
+          "invalid_reps": 0,
+          "median_s": 91.665673,
+          "runs_ms": [
+            91723.344,
+            91608.002
+          ],
+          "invalid_reasons": []
+        }
+      },
+      "argmin": "4/4194304",
+      "argmin_completion_s": 86.47881749999999,
+      "selected_4_4M_is_argmin": true
+    }
+  }
+}

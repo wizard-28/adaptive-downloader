@@ -1,0 +1,29 @@
+{
+  "run_id": "p1_healthy_aria2_r07",
+  "cmd": [
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/tools/ns_bench",
+    "-run-id",
+    "p1_healthy_aria2_r07",
+    "-out",
+    "/workspaces/mvp/testdata/n_dependent_server_joint_ns/adaptive/p1_healthy_aria2_r07.json",
+    "-system",
+    "aria2",
+    "-schedule",
+    "t1",
+    "-netem-latency-ms",
+    "40",
+    "-netem-loss",
+    "0.4"
+  ],
+  "exit": 0,
+  "wall_s": 56.44727611541748,
+  "stdout": "run p1_healthy_aria2_r07 system=aria2 policy=none completion=54.519s output=536870912 verified=true retries=0 finalN=0 finalS=0 err=\"\"",
+  "stderr": "",
+  "completion_ms": 54518.509,
+  "content_verified": true,
+  "final_n": 0,
+  "final_s": 0,
+  "err": "",
+  "valid": true,
+  "invalid_reasons": []
+}

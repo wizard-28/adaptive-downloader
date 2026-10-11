@@ -1,0 +1,9 @@
+{
+  "exclusions": null,
+  "expected_pairs": 20,
+  "expected_runs": 40,
+  "invalid_runs": 0,
+  "recorded_runs": 40,
+  "valid_pairs": 20,
+  "valid_runs": 40
+}

@@ -1,0 +1,2 @@
+run of-c4-s2097152 system=ours completion=77.296s output=536870912 verified=true err=""
+cmd: /workspaces/mvp/testdata/aria2_competitive_benchmark/tools/bench_run -system ours -file-size 536870912 -run-id of-c4-s2097152 -out /workspaces/mvp/testdata/aria2_competitive_benchmark/discovery_ours/of-c4-s2097152.json -c 4 -chunk 2097152

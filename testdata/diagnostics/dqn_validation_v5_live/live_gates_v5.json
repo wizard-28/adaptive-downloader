@@ -1,0 +1,68 @@
+[
+  {
+    "name": "GATE_A_technical_validity",
+    "passed": true,
+    "rule": "all required runs recorded and valid; no required cell has unavailable netem",
+    "detail": {
+      "expected_runs": 125,
+      "invalid_runs": 0,
+      "netem_unavailable": 0,
+      "recorded_runs": 125,
+      "valid_runs": 125
+    }
+  },
+  {
+    "name": "GATE_B_genuine_adaptation",
+    "passed": true,
+    "rule": "v5 must not be constant, ramp-to-max, monotone-decrease, or dominated by a single concurrency (\u003e=0.9 of time in the worst scenario), and must show \u003e=2 distinct dominant actual concurrency values across scenarios; adaptation must be observable in the live logs",
+    "detail": {
+      "constant_run_fraction": 0,
+      "distinct_dominant_concurrency": 2,
+      "dominant_concurrency_values": [
+        "C1",
+        "C4"
+      ],
+      "monotone_decrease_fraction": 0,
+      "per_scenario": {
+        "baseline": {
+          "dominant": "C4",
+          "dominant_fraction": 0.6690295169303083,
+          "runs": 5
+        },
+        "combined": {
+          "dominant": "C4",
+          "dominant_fraction": 0.6527831354334938,
+          "runs": 5
+        },
+        "latency": {
+          "dominant": "C4",
+          "dominant_fraction": 0.585475666088448,
+          "runs": 5
+        },
+        "loss": {
+          "dominant": "C4",
+          "dominant_fraction": 0.6738868658565533,
+          "runs": 5
+        },
+        "server-throttle-wallclock": {
+          "dominant": "C1",
+          "dominant_fraction": 0.591808272765256,
+          "runs": 5
+        }
+      },
+      "ramp_to_max_fraction": 0,
+      "v5_valid_runs": 25,
+      "worst_dominant_time_fraction": 0.6738868658565533
+    }
+  },
+  {
+    "name": "GATE_C_reaction_observability",
+    "passed": true,
+    "rule": "for every valid v5 run in a wall-clock transition scenario the logs establish transition concurrency, the first subsequent decision, whether concurrency changed, and the reaction latency",
+    "detail": {
+      "runs_with_complete_logs": 5,
+      "transition_runs": 5,
+      "transition_scenario": "server-throttle-wallclock"
+    }
+  }
+]

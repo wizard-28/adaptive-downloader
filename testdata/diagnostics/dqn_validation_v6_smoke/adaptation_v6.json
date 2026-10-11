@@ -1,0 +1,167 @@
+{
+  "by_condition": {
+    "A2": {
+      "changes_in_phase": [
+        6,
+        2,
+        0
+      ],
+      "mean_concurrency_phase": [
+        12.662267105863158,
+        14.499968483201545,
+        15.0
+      ],
+      "reaction_count": 1,
+      "reaction_latency_s": 0.0020111555111554935,
+      "v6_final_concurrency_counts": {
+        "1": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 1,
+        "16": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      }
+    },
+    "B2": {
+      "changes_in_phase": [
+        7,
+        0,
+        0
+      ],
+      "mean_concurrency_phase": [
+        13.0,
+        16.0,
+        NaN
+      ],
+      "reaction_count": 0,
+      "reaction_latency_s": 0.0,
+      "v6_final_concurrency_counts": {
+        "1": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      }
+    },
+    "C2": {
+      "changes_in_phase": [
+        8,
+        2,
+        0
+      ],
+      "mean_concurrency_phase": [
+        13.882026533576768,
+        13.339511373209772,
+        NaN
+      ],
+      "reaction_count": 1,
+      "reaction_latency_s": 0.39878521478521467,
+      "v6_final_concurrency_counts": {
+        "1": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 1,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      }
+    },
+    "D2": {
+      "changes_in_phase": [
+        4,
+        0,
+        0
+      ],
+      "mean_concurrency_phase": [
+        11.585208970814953,
+        13.0,
+        NaN
+      ],
+      "reaction_count": 0,
+      "reaction_latency_s": 0.0,
+      "v6_final_concurrency_counts": {
+        "1": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 1,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      }
+    },
+    "E2": {
+      "changes_in_phase": [
+        5,
+        3,
+        0
+      ],
+      "mean_concurrency_phase": [
+        11.899999999999997,
+        12.249263361338237,
+        11.0
+      ],
+      "reaction_count": 1,
+      "reaction_latency_s": 0.01818181818181852,
+      "v6_final_concurrency_counts": {
+        "1": 0,
+        "10": 0,
+        "11": 1,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      }
+    }
+  },
+  "constant_fraction": 0.0,
+  "phase_responsive_conditions_fraction": 0.4,
+  "ramp_to_max_fraction": 0.2
+}

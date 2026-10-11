@@ -1,0 +1,1384 @@
+{
+  "configuration": "internal downloader, fixed policy, chunk=1048576 (min=max=initial), concurrency=4 (min=max), retries=3, timeout=30s",
+  "file_size": 4194304,
+  "chunk_size": 1048576,
+  "concurrency": 4,
+  "repetitions": 10,
+  "scenarios": [
+    {
+      "Name": "baseline",
+      "Config": {
+        "Name": "baseline",
+        "InitialRate": 4194304,
+        "ChangedRate": 4194304,
+        "RateChangeAfter": 0,
+        "Network": null
+      },
+      "Runs": [
+        {
+          "scenario": "baseline",
+          "rep": 0,
+          "duration_ms": 284.917,
+          "wallclock_bps": 14721143.350519625,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 1,
+          "duration_ms": 284.344,
+          "wallclock_bps": 14750808.879385535,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 2,
+          "duration_ms": 283.337,
+          "wallclock_bps": 14803234.311085386,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 3,
+          "duration_ms": 283.535,
+          "wallclock_bps": 14792896.82049835,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 4,
+          "duration_ms": 288.811,
+          "wallclock_bps": 14522660.147986054,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 5,
+          "duration_ms": 283.16,
+          "wallclock_bps": 14812487.639497103,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 6,
+          "duration_ms": 287.235,
+          "wallclock_bps": 14602343.029226938,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 7,
+          "duration_ms": 290.599,
+          "wallclock_bps": 14433305.001049556,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 8,
+          "duration_ms": 285.276,
+          "wallclock_bps": 14702617.815729327,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "baseline",
+          "rep": 9,
+          "duration_ms": 284.253,
+          "wallclock_bps": 14755531.16413899,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        }
+      ]
+    },
+    {
+      "Name": "server-throttle",
+      "Config": {
+        "Name": "server-throttle",
+        "InitialRate": 524288,
+        "ChangedRate": 4194304,
+        "RateChangeAfter": 4,
+        "Network": null
+      },
+      "Runs": [
+        {
+          "scenario": "server-throttle",
+          "rep": 0,
+          "duration_ms": 2060.937,
+          "wallclock_bps": 2035144.2086778975,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 1,
+          "duration_ms": 2034.871,
+          "wallclock_bps": 2061213.7083874114,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 2,
+          "duration_ms": 2053.837,
+          "wallclock_bps": 2042179.588740489,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 3,
+          "duration_ms": 2051.633,
+          "wallclock_bps": 2044373.4332602373,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 4,
+          "duration_ms": 2055.172,
+          "wallclock_bps": 2040853.02835967,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 5,
+          "duration_ms": 2055.479,
+          "wallclock_bps": 2040548.2128496573,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 6,
+          "duration_ms": 2054.122,
+          "wallclock_bps": 2041896.245695241,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 7,
+          "duration_ms": 2052.514,
+          "wallclock_bps": 2043495.9274333818,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 8,
+          "duration_ms": 2053.158,
+          "wallclock_bps": 2042854.9580694716,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        },
+        {
+          "scenario": "server-throttle",
+          "rep": 9,
+          "duration_ms": 2057.032,
+          "wallclock_bps": 2039007.6576348837,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "none"
+        }
+      ]
+    },
+    {
+      "Name": "latency",
+      "Config": {
+        "Name": "latency",
+        "InitialRate": 4194304,
+        "ChangedRate": 4194304,
+        "RateChangeAfter": 0,
+        "Network": {
+          "BandwidthBps": 0,
+          "Latency": 20000000,
+          "Jitter": 0,
+          "LossPercent": 0
+        }
+      },
+      "Runs": [
+        {
+          "scenario": "latency",
+          "rep": 0,
+          "duration_ms": 369.076,
+          "wallclock_bps": 11364336.884544104,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 1,
+          "duration_ms": 368.208,
+          "wallclock_bps": 11391126.754443139,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 2,
+          "duration_ms": 367.52,
+          "wallclock_bps": 11412451.023073576,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 3,
+          "duration_ms": 367.976,
+          "wallclock_bps": 11398308.58534252,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 4,
+          "duration_ms": 369.383,
+          "wallclock_bps": 11354891.806065792,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 5,
+          "duration_ms": 368.484,
+          "wallclock_bps": 11382594.630974479,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 6,
+          "duration_ms": 369.342,
+          "wallclock_bps": 11356152.292455232,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 7,
+          "duration_ms": 368.333,
+          "wallclock_bps": 11387260.983946592,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 8,
+          "duration_ms": 369.459,
+          "wallclock_bps": 11352556.034634426,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "latency",
+          "rep": 9,
+          "duration_ms": 447.422,
+          "wallclock_bps": 9374380.338919409,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        }
+      ]
+    },
+    {
+      "Name": "loss",
+      "Config": {
+        "Name": "loss",
+        "InitialRate": 4194304,
+        "ChangedRate": 4194304,
+        "RateChangeAfter": 0,
+        "Network": {
+          "BandwidthBps": 0,
+          "Latency": 0,
+          "Jitter": 0,
+          "LossPercent": 1
+        }
+      },
+      "Runs": [
+        {
+          "scenario": "loss",
+          "rep": 0,
+          "duration_ms": 286.23,
+          "wallclock_bps": 14653614.226321487,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 1,
+          "duration_ms": 491.959,
+          "wallclock_bps": 8525718.606631855,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 2,
+          "duration_ms": 283.552,
+          "wallclock_bps": 14792009.93115901,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 3,
+          "duration_ms": 287.792,
+          "wallclock_bps": 14574081.280925114,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 4,
+          "duration_ms": 290.239,
+          "wallclock_bps": 14451207.453167908,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 5,
+          "duration_ms": 285.988,
+          "wallclock_bps": 14666013.958627634,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 6,
+          "duration_ms": 285.538,
+          "wallclock_bps": 14689127.19147714,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 7,
+          "duration_ms": 283.709,
+          "wallclock_bps": 14783824.270643512,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 8,
+          "duration_ms": 283.278,
+          "wallclock_bps": 14806317.46905866,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "loss",
+          "rep": 9,
+          "duration_ms": 286.855,
+          "wallclock_bps": 14621686.914991893,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        }
+      ]
+    },
+    {
+      "Name": "combined",
+      "Config": {
+        "Name": "combined",
+        "InitialRate": 1048576,
+        "ChangedRate": 4194304,
+        "RateChangeAfter": 0,
+        "Network": {
+          "BandwidthBps": 0,
+          "Latency": 20000000,
+          "Jitter": 0,
+          "LossPercent": 1
+        }
+      },
+      "Runs": [
+        {
+          "scenario": "combined",
+          "rep": 0,
+          "duration_ms": 1128.077,
+          "wallclock_bps": 3718100.8034026045,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 1,
+          "duration_ms": 1129.853,
+          "wallclock_bps": 3712256.3731742096,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 2,
+          "duration_ms": 1128.744,
+          "wallclock_bps": 3715903.6947261738,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 3,
+          "duration_ms": 2163.713,
+          "wallclock_bps": 1938475.2044286835,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 4,
+          "duration_ms": 1124.343,
+          "wallclock_bps": 3730448.804323947,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 5,
+          "duration_ms": 1125.66,
+          "wallclock_bps": 3726084.252793916,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 6,
+          "duration_ms": 1134.491,
+          "wallclock_bps": 3697080.0120935296,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 7,
+          "duration_ms": 1132.341,
+          "wallclock_bps": 3704099.7367400816,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "2097152-3145727(1048576)",
+              "3145728-4194303(1048576)",
+              "1048576-2097151(1048576)",
+              "0-1048575(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 8,
+          "duration_ms": 1130.348,
+          "wallclock_bps": 3710630.7084190003,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "1048576-2097151(1048576)",
+              "2097152-3145727(1048576)",
+              "0-1048575(1048576)",
+              "3145728-4194303(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        },
+        {
+          "scenario": "combined",
+          "rep": 9,
+          "duration_ms": 1124.953,
+          "wallclock_bps": 3728425.987574592,
+          "output_matches": true,
+          "no_duplicate_ranges": true,
+          "no_missing_ranges": true,
+          "total_attempts": 4,
+          "server_range_requests": {
+            "count": 4,
+            "min_bytes": 1048576,
+            "max_bytes": 1048576,
+            "mean_bytes": 1048576,
+            "first_ranges": [
+              "3145728-4194303(1048576)",
+              "0-1048575(1048576)",
+              "2097152-3145727(1048576)",
+              "1048576-2097151(1048576)"
+            ]
+          },
+          "server_max_in_flight": 4,
+          "server_non_range_requests": 0,
+          "err": "",
+          "netem_status": "applied"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "mechanism_inventory": [
+    {
+      "id": "A",
+      "name": "time-varying downstream capacity (shared link, in-flight tracking)",
+      "physical_motivation": "mobile/cellular capacity varies on second scales; mm-link delivery-opportunity traces are the natural replay vehicle",
+      "required_parameters": "trace/profile r(t), N, RTT D, file size",
+      "screened_model": "shared",
+      "supported_by_infrastructure": "yes (mm-link + native traces)",
+      "risk": "none (natural mechanism)"
+    },
+    {
+      "id": "B",
+      "name": "time-varying capacity + fixed RTT",
+      "physical_motivation": "same as A with a non-zero latency per request",
+      "required_parameters": "A + D",
+      "screened_model": "shared (D=40ms)",
+      "supported_by_infrastructure": "yes",
+      "risk": "none"
+    },
+    {
+      "id": "C",
+      "name": "time-varying capacity + per-request setup overhead",
+      "physical_motivation": "per-request setup cost (handshake/queueing) on top of capacity variation",
+      "required_parameters": "A + setup cost",
+      "screened_model": "shared with D representing the setup cost",
+      "supported_by_infrastructure": "yes",
+      "risk": "low"
+    },
+    {
+      "id": "D",
+      "name": "capacity transitions during in-flight range requests",
+      "physical_motivation": "requests are not resized; a request experiences every capacity change while in flight",
+      "required_parameters": "A",
+      "screened_model": "shared (in-flight integration)",
+      "supported_by_infrastructure": "yes",
+      "risk": "none"
+    },
+    {
+      "id": "E",
+      "name": "server-side request serialization / concurrency-dependent service rate",
+      "physical_motivation": "a server that serializes range requests or degrades per-request rate with load",
+      "required_parameters": "serialization policy, rate",
+      "screened_model": "serialized",
+      "supported_by_infrastructure": "partially (controlled server can throttle per request; serialization would need a change)",
+      "risk": "medium (can be engineered to favor a chunk size)"
+    },
+    {
+      "id": "F",
+      "name": "documented HTTP request-level behavior (per-request pacing fixed at request start)",
+      "physical_motivation": "server-side per-request rate limiting whose rate is sampled when the response starts (the existing project server semantics for scheduled rates); a response keeps its start rate",
+      "required_parameters": "rate schedule/profile, per-request pacing semantics",
+      "screened_model": "lockin_full",
+      "supported_by_infrastructure": "yes (server.SetRateScheduleAt + per-request pacing fixed at request start)",
+      "risk": "medium (the schedule must be externally grounded, not authored to win)"
+    }
+  ],
+  "classification": {
+    "A/B/C/D": "MECHANISTICALLY INSUFFICIENT",
+    "E": "MECHANISTICALLY INSUFFICIENT",
+    "F": "MECHANISTICALLY INSUFFICIENT"
+  },
+  "five_condition_rule": "a candidate is plausible only if (1) preferred S changes between states, (2) the transition occurs within an ordinary download, (3) future-only adaptation can react, (4) not residue/phase dependent, (5) weakens when stationary"
+}

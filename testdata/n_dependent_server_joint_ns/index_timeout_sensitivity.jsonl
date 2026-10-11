@@ -1,0 +1,54 @@
+{"run_id": "to20_capped_n4_s1048576_r0", "completion_ms": 90609.001, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n4_s1048576_r1", "completion_ms": 88299.013, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n4_s4194304_r0", "completion_ms": 86325.577, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n4_s4194304_r1", "completion_ms": 86678.129, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n4_s16777216_r0", "completion_ms": 100221.572, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n4_s16777216_r1", "completion_ms": 100836.445, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n8_s1048576_r0", "completion_ms": 94495.62, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n8_s1048576_r1", "completion_ms": 92080.891, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n8_s4194304_r0", "completion_ms": 91624.419, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n8_s4194304_r1", "completion_ms": 91549.811, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n8_s16777216_r0", "completion_ms": 80081.596, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [83886080,100663295] after 4 attempts", "content verification failed"]}
+{"run_id": "to20_capped_n8_s16777216_r1", "completion_ms": 80073.347, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [50331648,67108863] after 4 attempts", "content verification failed"]}
+{"run_id": "to20_capped_n16_s1048576_r0", "completion_ms": 115141.052, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n16_s1048576_r1", "completion_ms": 115524.928, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n16_s4194304_r0", "completion_ms": 112793.632, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n16_s4194304_r1", "completion_ms": 112940.73, "valid": true, "invalid_reasons": []}
+{"run_id": "to20_capped_n16_s16777216_r0", "completion_ms": 80093.09, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [218103808,234881023] after 4 attempts", "content verification failed"]}
+{"run_id": "to20_capped_n16_s16777216_r1", "completion_ms": 80096.897, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [0,16777215] after 4 attempts", "content verification failed"]}
+{"run_id": "to30_capped_n4_s1048576_r0", "completion_ms": 90274.947, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n4_s1048576_r1", "completion_ms": 90631.404, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n4_s4194304_r0", "completion_ms": 86250.732, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n4_s4194304_r1", "completion_ms": 86605.454, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n4_s16777216_r0", "completion_ms": 96423.75, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n4_s16777216_r1", "completion_ms": 96930.758, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s1048576_r0", "completion_ms": 92819.931, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s1048576_r1", "completion_ms": 92819.512, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s4194304_r0", "completion_ms": 91765.037, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s4194304_r1", "completion_ms": 91978.61, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s16777216_r0", "completion_ms": 93745.23, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n8_s16777216_r1", "completion_ms": 93782.862, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n16_s1048576_r0", "completion_ms": 115429.264, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n16_s1048576_r1", "completion_ms": 115429.699, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n16_s4194304_r0", "completion_ms": 112428.529, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n16_s4194304_r1", "completion_ms": 112208.58, "valid": true, "invalid_reasons": []}
+{"run_id": "to30_capped_n16_s16777216_r0", "completion_ms": 120069.172, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [33554432,50331647] after 4 attempts", "content verification failed"]}
+{"run_id": "to30_capped_n16_s16777216_r1", "completion_ms": 120063.595, "valid": false, "invalid_reasons": ["exit 3", "downloader: retry limit exceeded: range [67108864,83886079] after 4 attempts", "content verification failed"]}
+{"run_id": "to60_capped_n4_s1048576_r0", "completion_ms": 89942.387, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n4_s1048576_r1", "completion_ms": 89723.759, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n4_s4194304_r0", "completion_ms": 86632.072, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n4_s4194304_r1", "completion_ms": 86325.563, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n4_s16777216_r0", "completion_ms": 97452.612, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n4_s16777216_r1", "completion_ms": 96989.548, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s1048576_r0", "completion_ms": 91111.507, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s1048576_r1", "completion_ms": 94682.183, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s4194304_r0", "completion_ms": 91723.344, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s4194304_r1", "completion_ms": 91608.002, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s16777216_r0", "completion_ms": 93862.731, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n8_s16777216_r1", "completion_ms": 93738.878, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s1048576_r0", "completion_ms": 115363.946, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s1048576_r1", "completion_ms": 115576.958, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s4194304_r0", "completion_ms": 112259.924, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s4194304_r1", "completion_ms": 112250.416, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s16777216_r0", "completion_ms": 108792.833, "valid": true, "invalid_reasons": []}
+{"run_id": "to60_capped_n16_s16777216_r1", "completion_ms": 108915.623, "valid": true, "invalid_reasons": []}

@@ -1,0 +1,74 @@
+{
+  "simulator": {
+    "bandwidth": 2010465,
+    "bandwidth_2": 2182997,
+    "chunk_step": 32768,
+    "decision_cost_s": 0.0,
+    "file_size": 1512761,
+    "latency_s": 0.0010685425206983235,
+    "loss_percent": 2.086178382506156,
+    "max_chunk_size": 131072,
+    "max_concurrency": 4,
+    "max_episode_steps": 200,
+    "min_chunk_size": 32768,
+    "min_concurrency": 1,
+    "rand_bandwidth": [
+      524288,
+      8388608
+    ],
+    "rand_bandwidth_2": [
+      262144,
+      4194304
+    ],
+    "rand_file_size": [
+      262144,
+      2097152
+    ],
+    "rand_initial_concurrency": true,
+    "rand_latency_s": [
+      0.0,
+      0.1
+    ],
+    "rand_loss_percent": [
+      0.0,
+      5.0
+    ],
+    "rand_switch_after": [
+      0,
+      16
+    ],
+    "spec": {
+      "counter_window": 8,
+      "duration_scale": 1.0,
+      "ewma_alpha": 0.3,
+      "max_chunk_size": 131072,
+      "max_concurrency": 4,
+      "min_chunk_size": 32768,
+      "min_concurrency": 1,
+      "staleness_scale": 1.0,
+      "throughput_scale": 8388608.0,
+      "version": 1
+    },
+    "switch_after": 4
+  },
+  "train": {
+    "batch_size": 64,
+    "episodes": 300,
+    "epsilon_decay_steps": 5000,
+    "epsilon_end": 0.05,
+    "epsilon_start": 1.0,
+    "gamma": 1.0,
+    "gradient_clip": 10.0,
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "learning_rate": 0.001,
+    "max_episode_steps": 200,
+    "randomize_conditions": true,
+    "replay_capacity": 20000,
+    "seed": 0,
+    "target_update_interval": 200,
+    "train_start": 500
+  }
+}

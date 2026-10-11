@@ -1,0 +1,72 @@
+{
+  "run_id": "af-split4",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --min-split-size=1M --max-connection-per-server=4 --split=4",
+    "file_size_bytes": 536870912,
+    "system": "aria2"
+  },
+  "completion_ms": 210222.377,
+  "wallclock_bytes_per_second": 2553823.811058896,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": true,
+  "netem_status": "applied",
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 147,
+      "end_ms": 210066,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 342,
+      "end_ms": 210165,
+      "rate_bytes_per_second": 655360,
+      "range_start": 402653184,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 342,
+      "end_ms": 210165,
+      "rate_bytes_per_second": 655360,
+      "range_start": 134217728,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 342,
+      "end_ms": 210164,
+      "rate_bytes_per_second": 655360,
+      "range_start": 268435456,
+      "range_end": 402653183,
+      "has_range": true
+    }
+  ],
+  "total_requests": 4,
+  "successful_requests": 3,
+  "failed_requests": 1,
+  "server_bytes": 402653184,
+  "range_count": 3,
+  "aria2_exit": 0,
+  "aria2_output_tail": "========\n[#bd586e 501MiB/512MiB(97%) CN:4 DL:2.4MiB ETA:4s]\nFILE: /tmp/aria2-comp-93238865/out.bin\n-------------------------------------------------------------------------------\n\n[#bd586e 501MiB/512MiB(97%) CN:4 DL:2.4MiB ETA:4s]\n *** Download Progress Summary as of Mon Sep 28 21:53:21 2026 *** \n===============================================================================\n[#bd586e 504MiB/512MiB(98%) CN:4 DL:2.4MiB ETA:3s]\nFILE: /tmp/aria2-comp-93238865/out.bin\n-------------------------------------------------------------------------------\n\n[#bd586e 504MiB/512MiB(98%) CN:4 DL:2.4MiB ETA:3s]\n *** Download Progress Summary as of Mon Sep 28 21:53:22 2026 *** \n===============================================================================\n[#bd586e 506MiB/512MiB(98%) CN:4 DL:2.4MiB ETA:2s]\nFILE: /tmp/aria2-comp-93238865/out.bin\n-------------------------------------------------------------------------------\n\n[#bd586e 506MiB/512MiB(98%) CN:4 DL:2.4MiB ETA:2s]\n *** Download Progress Summary as of Mon Sep 28 21:53:23 2026 *** \n===============================================================================\n[#bd586e 508MiB/512MiB(99%) CN:4 DL:2.4MiB ETA:1s]\nFILE: /tmp/aria2-comp-93238865/out.bin\n-------------------------------------------------------------------------------\n\n[#bd586e 508MiB/512MiB(99%) CN:4 DL:2.4MiB ETA:1s]\n *** Download Progress Summary as of Mon Sep 28 21:53:24 2026 *** \n===============================================================================\n[#bd586e 511MiB/512MiB(99%) CN:4 DL:2.4MiB]\nFILE: /tmp/aria2-comp-93238865/out.bin\n-------------------------------------------------------------------------------\n\n[#bd586e 511MiB/512MiB(99%) CN:4 DL:2.4MiB]\n\n09/28 21:53:24 [NOTICE] Download complete: /tmp/aria2-comp-93238865/out.bin\n\nDownload Results:\ngid   |stat|avg speed  |path/URI\n======+====+===========+=======================================================\nbd586e|OK  |   2.4MiB/s|/tmp/aria2-comp-93238865/out.bin\n\nStatus Legend:\n(OK):download completed.\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": ""
+}

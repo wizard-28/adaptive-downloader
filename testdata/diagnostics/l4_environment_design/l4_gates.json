@@ -1,0 +1,89 @@
+{
+  "gates": {
+    "A_distinct_phase_optima": {
+      "passed": true,
+      "phase_best_c": [
+        16,
+        2,
+        4,
+        16,
+        2,
+        6,
+        16
+      ]
+    },
+    "B_headroom_ge_10pct": {
+      "headroom": 0.17602070874848674,
+      "passed": true,
+      "threshold": 0.1
+    },
+    "C_transitions_with_work": {
+      "passed": true,
+      "remaining_frac": [
+        0.734,
+        0.502,
+        0.32,
+        0.25,
+        0.041,
+        0.0
+      ],
+      "transitions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "D_sim_live_parity": {
+      "detail": "atomic <=4 step, clamp [1,16]; runner test policy_runner_v7_test.go; simulator oracle identical",
+      "passed": true
+    },
+    "E_live_tradeoff": {
+      "detail": {
+        "degraded_C16_worse_than_best": false,
+        "degraded_ms": {
+          "1": 69741.534,
+          "4": 24807.374,
+          "8": 18851.993,
+          "16": 17922.701
+        },
+        "highC_C16_better_than_C1": true,
+        "high_capacity_ms": {
+          "1": 66140.576,
+          "4": 16366.838,
+          "8": 8133.475,
+          "16": 4074.702
+        },
+        "recovery_C16_better_than_C1": true,
+        "recovery_ms": {
+          "1": 10356.766,
+          "4": 6041.118,
+          "8": 5897.029,
+          "16": 5797.681
+        }
+      },
+      "passed": false
+    },
+    "F_control_authority": {
+      "detail": "16->2 in 4 decisions; phases 20-55 s",
+      "passed": true
+    },
+    "byte_weight": {
+      "degraded_byte_share": 0.470703125,
+      "degraded_phase_indices": [
+        1,
+        4
+      ],
+      "highc_byte_share": 0.333984375,
+      "highc_phase_indices": [
+        0,
+        3,
+        6
+      ],
+      "rule_met": false
+    }
+  },
+  "outcome": "NOT_READY_LIVE_MISMATCH"
+}

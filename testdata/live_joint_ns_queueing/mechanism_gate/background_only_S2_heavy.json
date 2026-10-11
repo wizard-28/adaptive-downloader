@@ -1,0 +1,6 @@
+{
+  "offered_bps": 4250000,
+  "offered_bits_per_second": 34000000,
+  "achieved_bits_per_second": 33825520.5794986,
+  "rel_err": -0.005131747661805986
+}

@@ -1,0 +1,62 @@
+{
+  "file_size_bytes": 536870912,
+  "label": "long multi-transition trajectory with materially different phase-optimal concurrency",
+  "name": "L2",
+  "note": "pre-registered in PROJECT_CONTEXT 22.38 before measurement; separate from A2-E2 and L1",
+  "phase_seconds_bounds": [
+    18,
+    25
+  ],
+  "phase_seconds_used_for_sweep": 20.0,
+  "phases": [
+    {
+      "congestion": 0.002,
+      "latency_s": 0.02,
+      "link_bandwidth": 0,
+      "loss_percent": 0.3,
+      "rate": 524288
+    },
+    {
+      "congestion": 0.03,
+      "latency_s": 0.12,
+      "link_bandwidth": 1048576,
+      "loss_percent": 3.0,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.006,
+      "latency_s": 0.04,
+      "link_bandwidth": 4194304,
+      "loss_percent": 0.5,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.03,
+      "link_bandwidth": 0,
+      "loss_percent": 0.5,
+      "rate": 131072
+    },
+    {
+      "congestion": 0.06,
+      "latency_s": 0.1,
+      "link_bandwidth": 2621440.0,
+      "loss_percent": 2.0,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.004,
+      "latency_s": 0.03,
+      "link_bandwidth": 5242880,
+      "loss_percent": 0.4,
+      "rate": 8388608
+    },
+    {
+      "congestion": 0.002,
+      "latency_s": 0.02,
+      "link_bandwidth": 0,
+      "loss_percent": 0.3,
+      "rate": 1048576
+    }
+  ]
+}

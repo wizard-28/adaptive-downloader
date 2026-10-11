@@ -1,0 +1,72 @@
+{
+  "run_id": "af-split4",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=4 --split=4",
+    "file_size_bytes": 536870912,
+    "system": "aria2"
+  },
+  "completion_ms": 180003.307,
+  "wallclock_bytes_per_second": 2982561.3814972853,
+  "output_size_bytes": 516947968,
+  "output_sha256": "",
+  "content_verified": false,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": true,
+  "netem_status": "applied",
+  "schedule_events": [
+    "rate=163840 at 2s",
+    "rate=2560000 at 4s"
+  ],
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 225,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 415,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 402653184,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 415,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 268435456,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 415,
+      "end_ms": -9223372036854,
+      "rate_bytes_per_second": 655360,
+      "range_start": 134217728,
+      "range_end": 268435455,
+      "has_range": true
+    }
+  ],
+  "total_requests": 4,
+  "successful_requests": 0,
+  "failed_requests": 0,
+  "server_bytes": 0,
+  "range_count": 3,
+  "aria2_exit": -1,
+  "aria2_output_tail": "MiB ETA:35s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n[#2b22d0 424MiB/512MiB(82%) CN:4 DL:2.4MiB ETA:35s]\n *** Download Progress Summary as of Mon Sep 28 18:38:59 2026 *** \n===============================================================================\n[#2b22d0 427MiB/512MiB(83%) CN:4 DL:2.4MiB ETA:35s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n[#2b22d0 427MiB/512MiB(83%) CN:4 DL:2.4MiB ETA:35s]\n *** Download Progress Summary as of Mon Sep 28 18:39:00 2026 *** \n===============================================================================\n[#2b22d0 429MiB/512MiB(83%) CN:4 DL:2.4MiB ETA:34s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n[#2b22d0 429MiB/512MiB(83%) CN:4 DL:2.4MiB ETA:34s]\n *** Download Progress Summary as of Mon Sep 28 18:39:01 2026 *** \n===============================================================================\n[#2b22d0 431MiB/512MiB(84%) CN:4 DL:2.4MiB ETA:33s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n[#2b22d0 431MiB/512MiB(84%) CN:4 DL:2.4MiB ETA:33s]\n *** Download Progress Summary as of Mon Sep 28 18:39:02 2026 *** \n===============================================================================\n[#2b22d0 434MiB/512MiB(84%) CN:4 DL:2.4MiB ETA:32s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n[#2b22d0 434MiB/512MiB(84%) CN:4 DL:2.4MiB ETA:32s]\n *** Download Progress Summary as of Mon Sep 28 18:39:03 2026 *** \n===============================================================================\n[#2b22d0 436MiB/512MiB(85%) CN:4 DL:2.4MiB ETA:30s]\nFILE: /tmp/aria2-comp-3809749875/out.bin\n-------------------------------------------------------------------------------\n\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": "aria2: signal: killed"
+}

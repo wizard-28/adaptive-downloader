@@ -1,0 +1,22 @@
+Candidate v6 (concurrency 1-16, shared-bottleneck simulator)
+Simulator-only training + held-out validation. NO aria2 comparison; NO performance claim.
+
+candidate sha256 : 34f8b4a8cd5de147b7f9baddea6284e831b0bda189d9145cd61d6b51e2d0a04a
+selected seed    : 0   episodes/seed: 60
+verdict          : NOT_READY
+  GATE_A_environment_validity: FAIL (static C=1..16 sweep shows multiple meaningful concurrency optima)
+  GATE_B_training_validity: FAIL (v6 held-out mean completion < best globally-fixed C (chosen on validation))
+  GATE_C_condition_dependent: FAIL (not constant (<0.9), not ramp-to-max (<0.9), and >=50% of held-out conditions show a phase-to-phase time-weighted concurrency spread >= 2.0)
+
+held-out test (mean completion s; best fixed C per condition):
+  cond        v6  best C  best fixed  meanC p0     p1     p2
+  A2       5.287 C13           5.288     12.66  14.50  15.00
+  B2       3.554 C16           3.554     13.00  16.00    nan
+  C2       4.355 C5            3.584     13.88  13.34    nan
+  D2       3.624 C16           1.940     11.59  13.00    nan
+  E2       4.897 C11           4.900     11.90  12.25  11.00
+
+v6 overall mean: 4.343s; best global fixed C on validation C14: 4.237s
+v6 constant fraction 0.000; ramp-to-max 0.200; phase-responsive conditions 2/5
+
+Caveats: simulator-only; controlled shared-bottleneck profiles; no real-network claim.

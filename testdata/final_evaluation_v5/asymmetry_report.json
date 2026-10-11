@@ -1,0 +1,15 @@
+{
+  "aria2_baseline_selection_reason": "candidate F was selected by the v2 calibration because with --min-split-size=1048576 only \u003e=16 connections yield the intended ~16 x 1 MiB range split at the 16 MiB evaluation scale (candidates A-E yielded larger split sizes)",
+  "aria2_frozen_command": "aria2c --no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1048576 --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16 \u003curl\u003e",
+  "aria2_max_configured_connections": 16,
+  "consequence": "aria2-F can exploit up to 16 independently paced responses while v5 can exploit at most 4; this compares two complete frozen configurations and is NOT a capability-matched comparison; the asymmetry is not normalized away",
+  "observed_aria2_max_in_flight_max": 16,
+  "observed_aria2_max_in_flight_mean": 15.820833333333333,
+  "observed_aria2_non_range_mean": 1,
+  "observed_aria2_range_count_mean": 15.025,
+  "observed_v5_changes_mean": 7.4,
+  "observed_v5_max_concurrency_mean": 4,
+  "observed_v5_time_weighted_mean": 2.702363236550871,
+  "server_pacing": "the controlled server paces each response independently at the selected rate, so additional concurrent responses increase aggregate throughput",
+  "v5_max_concurrency": 4
+}

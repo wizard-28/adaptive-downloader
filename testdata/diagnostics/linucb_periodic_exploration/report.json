@@ -1,0 +1,828 @@
+{
+  "source": "testdata/benchmark_v3/matrix_5mode_4MiB_reps10.json",
+  "intervals": [
+    0,
+    5
+  ],
+  "warmup_decisions": 5,
+  "scenarios_by_interval": {
+    "0": [
+      {
+        "name": "baseline",
+        "runs": 10,
+        "total_decisions_mean": 127,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 122,
+        "forced_exploration_mean": 0,
+        "unique_post_warmup_arms_mean": 1,
+        "post_warmup_action_counts": {
+          "decrease-concurrency": 1220
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0,
+          "decrease-concurrency": 1,
+          "increase-chunk-size": 0,
+          "increase-concurrency": 0,
+          "none": 0
+        },
+        "predicted_effective": {},
+        "predicted_noop": {
+          "decrease-concurrency": 1220
+        },
+        "forced_effective": {},
+        "forced_noop": {},
+        "simulated_concurrency_changes_mean": 0,
+        "simulated_chunk_changes_mean": 0,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 32768,
+        "dominant_arm": "decrease-concurrency",
+        "dominant_arm_fraction_mean": 1,
+        "recorded_action_matches": 1270,
+        "recorded_action_total": 1270
+      },
+      {
+        "name": "server-throttle",
+        "runs": 10,
+        "total_decisions_mean": 127,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 122,
+        "forced_exploration_mean": 0,
+        "unique_post_warmup_arms_mean": 1,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 1220
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 1,
+          "decrease-concurrency": 0,
+          "increase-chunk-size": 0,
+          "increase-concurrency": 0,
+          "none": 0
+        },
+        "predicted_effective": {},
+        "predicted_noop": {
+          "decrease-chunk-size": 1220
+        },
+        "forced_effective": {},
+        "forced_noop": {},
+        "simulated_concurrency_changes_mean": 0,
+        "simulated_chunk_changes_mean": 0,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 32768,
+        "dominant_arm": "decrease-chunk-size",
+        "dominant_arm_fraction_mean": 1,
+        "recorded_action_matches": 1270,
+        "recorded_action_total": 1270
+      },
+      {
+        "name": "latency",
+        "runs": 10,
+        "total_decisions_mean": 37,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 32,
+        "forced_exploration_mean": 0,
+        "unique_post_warmup_arms_mean": 1,
+        "post_warmup_action_counts": {
+          "increase-chunk-size": 320
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0,
+          "decrease-concurrency": 0,
+          "increase-chunk-size": 1,
+          "increase-concurrency": 0,
+          "none": 0
+        },
+        "predicted_effective": {
+          "increase-chunk-size": 30
+        },
+        "predicted_noop": {
+          "increase-chunk-size": 290
+        },
+        "forced_effective": {},
+        "forced_noop": {},
+        "simulated_concurrency_changes_mean": 0,
+        "simulated_chunk_changes_mean": 3,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 131072,
+        "dominant_arm": "increase-chunk-size",
+        "dominant_arm_fraction_mean": 1,
+        "recorded_action_matches": 370,
+        "recorded_action_total": 370
+      },
+      {
+        "name": "loss",
+        "runs": 10,
+        "total_decisions_mean": 121.2,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 116.2,
+        "forced_exploration_mean": 0,
+        "unique_post_warmup_arms_mean": 1.5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 112,
+          "decrease-concurrency": 1048,
+          "increase-chunk-size": 1,
+          "none": 1
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.0963855421686747,
+          "decrease-concurrency": 0.9018932874354562,
+          "increase-chunk-size": 0.0008605851979345956,
+          "increase-concurrency": 0,
+          "none": 0.0008605851979345956
+        },
+        "predicted_effective": {
+          "increase-chunk-size": 1,
+          "none": 1
+        },
+        "predicted_noop": {
+          "decrease-chunk-size": 112,
+          "decrease-concurrency": 1048
+        },
+        "forced_effective": {},
+        "forced_noop": {},
+        "simulated_concurrency_changes_mean": 0,
+        "simulated_chunk_changes_mean": 0.1,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 36044.8,
+        "dominant_arm": "decrease-concurrency",
+        "dominant_arm_fraction_mean": 0.984656762295082,
+        "recorded_action_matches": 1212,
+        "recorded_action_total": 1212
+      },
+      {
+        "name": "combined",
+        "runs": 10,
+        "total_decisions_mean": 46,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 41,
+        "forced_exploration_mean": 0,
+        "unique_post_warmup_arms_mean": 1,
+        "post_warmup_action_counts": {
+          "increase-chunk-size": 288,
+          "none": 122
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0,
+          "decrease-concurrency": 0,
+          "increase-chunk-size": 0.7024390243902439,
+          "increase-concurrency": 0,
+          "none": 0.2975609756097561
+        },
+        "predicted_effective": {
+          "increase-chunk-size": 27,
+          "none": 122
+        },
+        "predicted_noop": {
+          "increase-chunk-size": 261
+        },
+        "forced_effective": {},
+        "forced_noop": {},
+        "simulated_concurrency_changes_mean": 0,
+        "simulated_chunk_changes_mean": 2.7,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 121241.6,
+        "dominant_arm": "increase-chunk-size",
+        "dominant_arm_fraction_mean": 1,
+        "recorded_action_matches": 460,
+        "recorded_action_total": 460
+      }
+    ],
+    "5": [
+      {
+        "name": "baseline",
+        "runs": 10,
+        "total_decisions_mean": 127,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 102,
+        "forced_exploration_mean": 20,
+        "unique_post_warmup_arms_mean": 5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 40,
+          "decrease-concurrency": 1060,
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.03278688524590164,
+          "decrease-concurrency": 0.8688524590163934,
+          "increase-chunk-size": 0.03278688524590164,
+          "increase-concurrency": 0.03278688524590164,
+          "none": 0.03278688524590164
+        },
+        "predicted_effective": {
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "predicted_noop": {
+          "decrease-chunk-size": 40,
+          "decrease-concurrency": 1060
+        },
+        "forced_effective": {
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "forced_noop": {
+          "decrease-chunk-size": 40,
+          "decrease-concurrency": 40
+        },
+        "simulated_concurrency_changes_mean": 8,
+        "simulated_chunk_changes_mean": 8,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 32768,
+        "dominant_arm": "decrease-concurrency",
+        "dominant_arm_fraction_mean": 0.8688524590163935,
+        "recorded_action_matches": 1110,
+        "recorded_action_total": 1270
+      },
+      {
+        "name": "server-throttle",
+        "runs": 10,
+        "total_decisions_mean": 127,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 102,
+        "forced_exploration_mean": 20,
+        "unique_post_warmup_arms_mean": 5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 1060,
+          "decrease-concurrency": 40,
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.8688524590163934,
+          "decrease-concurrency": 0.03278688524590164,
+          "increase-chunk-size": 0.03278688524590164,
+          "increase-concurrency": 0.03278688524590164,
+          "none": 0.03278688524590164
+        },
+        "predicted_effective": {
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "predicted_noop": {
+          "decrease-chunk-size": 1060,
+          "decrease-concurrency": 40
+        },
+        "forced_effective": {
+          "increase-chunk-size": 40,
+          "increase-concurrency": 40,
+          "none": 40
+        },
+        "forced_noop": {
+          "decrease-chunk-size": 40,
+          "decrease-concurrency": 40
+        },
+        "simulated_concurrency_changes_mean": 8,
+        "simulated_chunk_changes_mean": 8,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 32768,
+        "dominant_arm": "decrease-chunk-size",
+        "dominant_arm_fraction_mean": 0.8688524590163935,
+        "recorded_action_matches": 1110,
+        "recorded_action_total": 1270
+      },
+      {
+        "name": "latency",
+        "runs": 10,
+        "total_decisions_mean": 37,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 27,
+        "forced_exploration_mean": 5,
+        "unique_post_warmup_arms_mean": 5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 10,
+          "decrease-concurrency": 10,
+          "increase-chunk-size": 280,
+          "increase-concurrency": 10,
+          "none": 10
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.03125,
+          "decrease-concurrency": 0.03125,
+          "increase-chunk-size": 0.875,
+          "increase-concurrency": 0.03125,
+          "none": 0.03125
+        },
+        "predicted_effective": {
+          "decrease-chunk-size": 10,
+          "increase-chunk-size": 30,
+          "increase-concurrency": 10,
+          "none": 10
+        },
+        "predicted_noop": {
+          "decrease-concurrency": 10,
+          "increase-chunk-size": 250
+        },
+        "forced_effective": {
+          "decrease-chunk-size": 10,
+          "increase-concurrency": 10,
+          "none": 10
+        },
+        "forced_noop": {
+          "decrease-concurrency": 10,
+          "increase-chunk-size": 10
+        },
+        "simulated_concurrency_changes_mean": 2,
+        "simulated_chunk_changes_mean": 5,
+        "simulated_final_concurrency_mean": 1,
+        "simulated_final_chunk_mean": 131072,
+        "dominant_arm": "increase-chunk-size",
+        "dominant_arm_fraction_mean": 0.875,
+        "recorded_action_matches": 330,
+        "recorded_action_total": 370
+      },
+      {
+        "name": "loss",
+        "runs": 10,
+        "total_decisions_mean": 121.2,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 97.2,
+        "forced_exploration_mean": 19,
+        "unique_post_warmup_arms_mean": 5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 118,
+          "decrease-concurrency": 725,
+          "increase-chunk-size": 149,
+          "increase-concurrency": 53,
+          "none": 117
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.10154905335628227,
+          "decrease-concurrency": 0.6239242685025818,
+          "increase-chunk-size": 0.12822719449225473,
+          "increase-concurrency": 0.04561101549053356,
+          "none": 0.10068846815834767
+        },
+        "predicted_effective": {
+          "decrease-chunk-size": 2,
+          "increase-chunk-size": 149,
+          "increase-concurrency": 53,
+          "none": 117
+        },
+        "predicted_noop": {
+          "decrease-chunk-size": 116,
+          "decrease-concurrency": 725
+        },
+        "forced_effective": {
+          "decrease-chunk-size": 2,
+          "increase-chunk-size": 38,
+          "increase-concurrency": 38,
+          "none": 38
+        },
+        "forced_noop": {
+          "decrease-chunk-size": 36,
+          "decrease-concurrency": 38
+        },
+        "simulated_concurrency_changes_mean": 7.8,
+        "simulated_chunk_changes_mean": 8.4,
+        "simulated_final_concurrency_mean": 1.2,
+        "simulated_final_chunk_mean": 52428.8,
+        "dominant_arm": "decrease-concurrency",
+        "dominant_arm_fraction_mean": 0.7606045081967213,
+        "recorded_action_matches": 778,
+        "recorded_action_total": 1212
+      },
+      {
+        "name": "combined",
+        "runs": 10,
+        "total_decisions_mean": 46,
+        "warmup_decisions": 5,
+        "normal_decisions_mean": 34.5,
+        "forced_exploration_mean": 6.5,
+        "unique_post_warmup_arms_mean": 5,
+        "post_warmup_action_counts": {
+          "decrease-chunk-size": 17,
+          "decrease-concurrency": 13,
+          "increase-chunk-size": 257,
+          "increase-concurrency": 30,
+          "none": 93
+        },
+        "post_warmup_action_fractions": {
+          "decrease-chunk-size": 0.041463414634146344,
+          "decrease-concurrency": 0.03170731707317073,
+          "increase-chunk-size": 0.6268292682926829,
+          "increase-concurrency": 0.07317073170731707,
+          "none": 0.22682926829268293
+        },
+        "predicted_effective": {
+          "decrease-chunk-size": 9,
+          "increase-chunk-size": 32,
+          "increase-concurrency": 30,
+          "none": 93
+        },
+        "predicted_noop": {
+          "decrease-chunk-size": 8,
+          "decrease-concurrency": 13,
+          "increase-chunk-size": 225
+        },
+        "forced_effective": {
+          "decrease-chunk-size": 9,
+          "increase-chunk-size": 4,
+          "increase-concurrency": 13,
+          "none": 13
+        },
+        "forced_noop": {
+          "decrease-chunk-size": 4,
+          "decrease-concurrency": 13,
+          "increase-chunk-size": 9
+        },
+        "simulated_concurrency_changes_mean": 2.9,
+        "simulated_chunk_changes_mean": 5.4,
+        "simulated_final_concurrency_mean": 1.3,
+        "simulated_final_chunk_mean": 124518.4,
+        "dominant_arm": "increase-chunk-size",
+        "dominant_arm_fraction_mean": 0.8563524590163935,
+        "recorded_action_matches": 386,
+        "recorded_action_total": 460
+      }
+    ]
+  },
+  "comparison": [
+    {
+      "scenario": "baseline",
+      "interval0_dominant_arm": "decrease-concurrency",
+      "interval0_unique_arms_mean": 1,
+      "interval0_dominant_fraction_mean": 1,
+      "interval0_increase_concurrency_count": 0,
+      "interval5_dominant_arm": "decrease-concurrency",
+      "interval5_unique_arms_mean": 5,
+      "interval5_dominant_fraction_mean": 0.8688524590163935,
+      "interval5_increase_concurrency_count": 40
+    },
+    {
+      "scenario": "server-throttle",
+      "interval0_dominant_arm": "decrease-chunk-size",
+      "interval0_unique_arms_mean": 1,
+      "interval0_dominant_fraction_mean": 1,
+      "interval0_increase_concurrency_count": 0,
+      "interval5_dominant_arm": "decrease-chunk-size",
+      "interval5_unique_arms_mean": 5,
+      "interval5_dominant_fraction_mean": 0.8688524590163935,
+      "interval5_increase_concurrency_count": 40
+    },
+    {
+      "scenario": "latency",
+      "interval0_dominant_arm": "increase-chunk-size",
+      "interval0_unique_arms_mean": 1,
+      "interval0_dominant_fraction_mean": 1,
+      "interval0_increase_concurrency_count": 0,
+      "interval5_dominant_arm": "increase-chunk-size",
+      "interval5_unique_arms_mean": 5,
+      "interval5_dominant_fraction_mean": 0.875,
+      "interval5_increase_concurrency_count": 10
+    },
+    {
+      "scenario": "loss",
+      "interval0_dominant_arm": "decrease-concurrency",
+      "interval0_unique_arms_mean": 1.5,
+      "interval0_dominant_fraction_mean": 0.984656762295082,
+      "interval0_increase_concurrency_count": 0,
+      "interval5_dominant_arm": "decrease-concurrency",
+      "interval5_unique_arms_mean": 5,
+      "interval5_dominant_fraction_mean": 0.7606045081967213,
+      "interval5_increase_concurrency_count": 53
+    },
+    {
+      "scenario": "combined",
+      "interval0_dominant_arm": "increase-chunk-size",
+      "interval0_unique_arms_mean": 1,
+      "interval0_dominant_fraction_mean": 1,
+      "interval0_increase_concurrency_count": 0,
+      "interval5_dominant_arm": "increase-chunk-size",
+      "interval5_unique_arms_mean": 5,
+      "interval5_dominant_fraction_mean": 0.8563524590163935,
+      "interval5_increase_concurrency_count": 30
+    }
+  ],
+  "forced_exploration_posterior_events": [
+    {
+      "scenario": "baseline",
+      "run": 4,
+      "decision": 10,
+      "arm": "none",
+      "reward": 3.5836996118488087,
+      "mean_before": 1.77389501074985,
+      "mean_after": 2.377572321543809,
+      "score_before": 1.9153831286810072,
+      "score_after": 2.4930839293162768,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "baseline",
+      "run": 8,
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 3.42943760584234,
+      "mean_before": 1.6392581308195606,
+      "mean_after": 2.2366361388351113,
+      "score_before": 1.7807872877422815,
+      "score_after": 2.3521725984074506,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "baseline",
+      "run": 5,
+      "decision": 22,
+      "arm": "decrease-concurrency",
+      "reward": 3.4201342077502055,
+      "mean_before": 3.290949103847103,
+      "mean_after": 3.2982570110803042,
+      "score_before": 3.339689927759955,
+      "score_after": 3.3456292943211263,
+      "a_diag_before": 17,
+      "a_diag_after": 18
+    },
+    {
+      "scenario": "baseline",
+      "run": 1,
+      "decision": 28,
+      "arm": "increase-chunk-size",
+      "reward": 3.392614503273581,
+      "mean_before": 2.0773018782185155,
+      "mean_after": 2.516799702418346,
+      "score_before": 2.2189643782219277,
+      "score_after": 2.6324136894067554,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "baseline",
+      "run": 8,
+      "decision": 34,
+      "arm": "decrease-chunk-size",
+      "reward": 3.424596856998496,
+      "mean_before": 2.0983242815679417,
+      "mean_after": 2.5417400586930956,
+      "score_before": 2.2400447819393987,
+      "score_after": 2.657388093005395,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "server-throttle",
+      "run": 4,
+      "decision": 10,
+      "arm": "none",
+      "reward": 3.402710049135817,
+      "mean_before": 0.2240165491115783,
+      "mean_after": 1.284313446008369,
+      "score_before": 0.36550672047608684,
+      "score_after": 1.399826149979493,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "server-throttle",
+      "run": 8,
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 3.42672850500478,
+      "mean_before": 0.20016205459019548,
+      "mean_after": 1.2768706595652022,
+      "score_before": 0.34169361822078737,
+      "score_after": 1.3924083536577596,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "server-throttle",
+      "run": 5,
+      "decision": 22,
+      "arm": "decrease-concurrency",
+      "reward": 3.470655212383187,
+      "mean_before": 0.3419541051623619,
+      "mean_after": 1.4225506594004522,
+      "score_before": 0.48721806950120017,
+      "score_after": 1.5400940991708816,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "server-throttle",
+      "run": 1,
+      "decision": 28,
+      "arm": "increase-chunk-size",
+      "reward": 3.3806240481869736,
+      "mean_before": 0.7087061380301942,
+      "mean_after": 1.6014916583887253,
+      "score_before": 0.8503710588918376,
+      "score_after": 1.7171069462998925,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "server-throttle",
+      "run": 8,
+      "decision": 34,
+      "arm": "decrease-chunk-size",
+      "reward": 3.519676960662187,
+      "mean_before": 3.3259468109073778,
+      "mean_after": 3.3331370864827488,
+      "score_before": 3.364710710015867,
+      "score_after": 3.371226652929752,
+      "a_diag_before": 27,
+      "a_diag_after": 28
+    },
+    {
+      "scenario": "latency",
+      "run": 2,
+      "decision": 10,
+      "arm": "none",
+      "reward": 1.689752369104509,
+      "mean_before": 0.26115412738569566,
+      "mean_after": 0.7450464834305083,
+      "score_before": 0.40428790130034054,
+      "score_after": 0.8614481908781303,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "latency",
+      "run": 0,
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 1.6360440055712573,
+      "mean_before": 0.2370665506066262,
+      "mean_after": 0.7111144765238228,
+      "score_before": 0.38024103873597725,
+      "score_after": 0.8275405277023158,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "latency",
+      "run": 2,
+      "decision": 22,
+      "arm": "decrease-concurrency",
+      "reward": 1.6321388437692144,
+      "mean_before": 0.2370428053019073,
+      "mean_after": 0.7259132700719181,
+      "score_before": 0.38392901922829326,
+      "score_after": 0.844310847802589,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "latency",
+      "run": 5,
+      "decision": 28,
+      "arm": "increase-chunk-size",
+      "reward": 1.6386749698942429,
+      "mean_before": 1.4660670454868334,
+      "mean_after": 1.4737756104414896,
+      "score_before": 1.509026229932052,
+      "score_after": 1.5158018648385143,
+      "a_diag_before": 22,
+      "a_diag_after": 23
+    },
+    {
+      "scenario": "latency",
+      "run": 1,
+      "decision": 34,
+      "arm": "decrease-chunk-size",
+      "reward": 1.6439573303443107,
+      "mean_before": 0.3638156907711361,
+      "mean_after": 0.7967373294381579,
+      "score_before": 0.5067682956979447,
+      "score_after": 0.9130515238123191,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "loss",
+      "run": 1,
+      "decision": 10,
+      "arm": "none",
+      "reward": 3.393610368420906,
+      "mean_before": 1.736265398327408,
+      "mean_after": 2.2890875892125973,
+      "score_before": 1.877753379571222,
+      "score_after": 2.4045991045696846,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "loss",
+      "run": 4,
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 3.373181229842619,
+      "mean_before": 1.7138657798977737,
+      "mean_after": 2.267574642328591,
+      "score_before": 1.8553949071190856,
+      "score_after": 2.38311104351341,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "loss",
+      "run": 9,
+      "decision": 22,
+      "arm": "decrease-concurrency",
+      "reward": 3.6151261408318227,
+      "mean_before": 2.2326040607822084,
+      "mean_after": 2.3401771111230074,
+      "score_before": 2.29070998317971,
+      "score_after": 2.395994545370965,
+      "a_diag_before": 12,
+      "a_diag_after": 13
+    },
+    {
+      "scenario": "loss",
+      "run": 5,
+      "decision": 28,
+      "arm": "increase-chunk-size",
+      "reward": 3.543737991166119,
+      "mean_before": 2.069820279944981,
+      "mean_after": 2.5623131235781598,
+      "score_before": 2.211482869370224,
+      "score_after": 2.677927173347651,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "loss",
+      "run": 8,
+      "decision": 34,
+      "arm": "decrease-chunk-size",
+      "reward": 3.423906975654439,
+      "mean_before": 2.166800653296044,
+      "mean_after": 2.5870935677798412,
+      "score_before": 2.3085211686390927,
+      "score_after": 2.7027416023678246,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "combined",
+      "run": 7,
+      "decision": 10,
+      "arm": "none",
+      "reward": 0.6580001068989625,
+      "mean_before": 0.17939926306944837,
+      "mean_after": 0.3415094581317831,
+      "score_before": 0.32253250943463285,
+      "score_after": 0.4579108408187714,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "combined",
+      "run": 2,
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 0.6480254243567061,
+      "mean_before": 0.15107102938793412,
+      "mean_after": 0.3194650162944407,
+      "score_before": 0.29424497501517,
+      "score_after": 0.4358907752199539,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "combined",
+      "run": 6,
+      "decision": 22,
+      "arm": "decrease-concurrency",
+      "reward": 0.64696816877616,
+      "mean_before": 0.17317237264140353,
+      "mean_after": 0.3391999884237044,
+      "score_before": 0.32005806030579675,
+      "score_after": 0.45759729234866864,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    },
+    {
+      "scenario": "combined",
+      "run": 3,
+      "decision": 28,
+      "arm": "increase-chunk-size",
+      "reward": 0.6497669728433186,
+      "mean_before": 0.5952479021329667,
+      "mean_after": 0.5976839369810195,
+      "score_before": 0.6382070229644565,
+      "score_after": 0.6397101311028978,
+      "a_diag_before": 22,
+      "a_diag_after": 23
+    },
+    {
+      "scenario": "combined",
+      "run": 0,
+      "decision": 34,
+      "arm": "decrease-chunk-size",
+      "reward": 0.6460965250010808,
+      "mean_before": 0.22494469727299907,
+      "mean_after": 0.3673713626623864,
+      "score_before": 0.3678968501354175,
+      "score_after": 0.4836853097481111,
+      "a_diag_before": 2,
+      "a_diag_after": 3
+    }
+  ]
+}

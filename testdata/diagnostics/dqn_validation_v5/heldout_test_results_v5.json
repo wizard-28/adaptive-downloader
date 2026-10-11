@@ -1,0 +1,664 @@
+{
+  "by_condition": {
+    "unseen-high-bandwidth": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.3125,
+          "increase-concurrency": 0.6875,
+          "none": 0.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 16,
+        "completion": {
+          "max": 0.6788888888888888,
+          "mean": 0.6313888888888888,
+          "median": 0.6155555555555554,
+          "min": 0.6155555555555554,
+          "n": 4,
+          "p25": 0.6155555555555554,
+          "p75": 0.6630555555555554,
+          "sd": 0.027424137786507232
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.08183018037835461,
+          "3": 0.5208974923009239,
+          "4": 0.39727232732072154
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "3": 2,
+          "4": 2
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 4.0,
+        "mean_requests": 16.0,
+        "mean_steps": 4.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 3.325955556080758,
+        "transition_reactions_within_3": 0,
+        "transitions": 0
+      },
+      "dqn_minus_best_fixed_s": 0.05805555555555553,
+      "fixed_mean_completion_s": {
+        "C1": 1.3333333333333333,
+        "C2": 0.8266666666666667,
+        "C3": 0.6577777777777777,
+        "C4": 0.5733333333333333
+      }
+    },
+    "unseen-latency": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.625,
+          "none": 0.375
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 5,
+        "completion": {
+          "max": 1.3266666666666667,
+          "mean": 1.0933333333333335,
+          "median": 1.0933333333333335,
+          "min": 0.86,
+          "n": 4,
+          "p25": 0.9183333333333334,
+          "p75": 1.2683333333333333,
+          "sd": 0.1649915822768611
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.17835365853658536,
+          "3": 0.6249999999999999,
+          "4": 0.19664634146341461
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "3": 3,
+          "4": 1
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 1.25,
+        "mean_requests": 8.0,
+        "mean_steps": 2.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.25,
+        "time_weighted_mean_concurrency": 3.1030150753768844,
+        "transition_reactions_within_3": 0,
+        "transitions": 0
+      },
+      "dqn_minus_best_fixed_s": 0.2333333333333335,
+      "fixed_mean_completion_s": {
+        "C1": 2.96,
+        "C2": 1.56,
+        "C3": 1.0933333333333335,
+        "C4": 0.86
+      }
+    },
+    "unseen-latency+loss": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.5,
+          "none": 0.5
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 4,
+        "completion": {
+          "max": 2.2466666666666666,
+          "mean": 1.5477777777777777,
+          "median": 1.478888888888889,
+          "min": 0.9866666666666666,
+          "n": 4,
+          "p25": 1.0916666666666668,
+          "p75": 2.0727777777777776,
+          "sd": 0.4536559309693897
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.36288585786073224,
+          "3": 0.47774587221823406,
+          "4": 0.15936826992103373
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "2": 1,
+          "3": 2,
+          "4": 1
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 1.0,
+        "mean_requests": 8.0,
+        "mean_steps": 2.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.25,
+        "time_weighted_mean_concurrency": 3.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 0
+      },
+      "dqn_minus_best_fixed_s": 0.4256944444444446,
+      "fixed_mean_completion_s": {
+        "C1": 3.9000000000000004,
+        "C2": 2.0841666666666665,
+        "C3": 1.4427777777777777,
+        "C4": 1.122083333333333
+      }
+    },
+    "unseen-loss": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.625,
+          "none": 0.375
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 4,
+        "completion": {
+          "max": 1.33,
+          "mean": 0.9366666666666668,
+          "median": 0.8983333333333334,
+          "min": 0.62,
+          "n": 4,
+          "p25": 0.6791666666666667,
+          "p75": 1.2325000000000002,
+          "sd": 0.2556364606232844
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.35498220640569395,
+          "3": 0.4795373665480427,
+          "4": 0.16548042704626334
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "2": 1,
+          "3": 2,
+          "4": 1
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 1.0,
+        "mean_requests": 8.0,
+        "mean_steps": 2.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.25,
+        "time_weighted_mean_concurrency": 3.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 0
+      },
+      "dqn_minus_best_fixed_s": 0.23854166666666665,
+      "fixed_mean_completion_s": {
+        "C1": 2.3125,
+        "C2": 1.23625,
+        "C3": 0.8775,
+        "C4": 0.6981250000000001
+      }
+    },
+    "unseen-low-bandwidth": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 1.0,
+          "none": 0.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 4,
+        "completion": {
+          "max": 10.706666666666665,
+          "mean": 7.607222222222221,
+          "median": 7.164444444444444,
+          "min": 5.393333333333333,
+          "n": 4,
+          "p25": 5.836111111111111,
+          "p75": 9.82111111111111,
+          "sd": 1.9300235877788423
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.3518586138903089,
+          "3": 0.47089753888848324,
+          "4": 0.17724384722120792
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "2": 1,
+          "3": 2,
+          "4": 1
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 1.0,
+        "mean_requests": 4.0,
+        "mean_steps": 1.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.25,
+        "time_weighted_mean_concurrency": 3.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 0
+      },
+      "dqn_minus_best_fixed_s": 2.2138888888888886,
+      "fixed_mean_completion_s": {
+        "C1": 21.333333333333332,
+        "C2": 10.706666666666665,
+        "C3": 7.164444444444444,
+        "C4": 5.393333333333333
+      }
+    },
+    "unseen-three-phase": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.75,
+          "none": 0.25
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 2,
+        "completion": {
+          "max": 4.089166666666667,
+          "mean": 4.089166666666667,
+          "median": 4.089166666666667,
+          "min": 4.089166666666667,
+          "n": 4,
+          "p25": 4.089166666666667,
+          "p75": 4.089166666666667,
+          "sd": 0.0
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        },
+        "constant_episode_fraction": 0.5,
+        "dominant_concurrency": "4",
+        "final_concurrency_distribution": {
+          "4": 4
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 0.5,
+        "mean_requests": 16.0,
+        "mean_steps": 4.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.5,
+        "time_weighted_mean_concurrency": 4.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 8
+      },
+      "dqn_minus_best_fixed_s": 0.0,
+      "fixed_mean_completion_s": {
+        "C1": 20.39666666666667,
+        "C2": 10.191666666666666,
+        "C3": 5.456666666666667,
+        "C4": 4.089166666666667
+      }
+    },
+    "unseen-throttle-down": {
+      "best_fixed_c": 4,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.1875,
+          "increase-concurrency": 0.8125,
+          "none": 0.0
+        },
+        "changes_after_first_transition": 2,
+        "changes_before_first_transition": 12,
+        "completion": {
+          "max": 3.5966666666666667,
+          "mean": 2.8375,
+          "median": 2.5933333333333333,
+          "min": 2.566666666666667,
+          "n": 4,
+          "p25": 2.5733333333333337,
+          "p75": 3.345833333333333,
+          "sd": 0.4384402594551635
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.02114537444933921,
+          "3": 0.09867841409691631,
+          "4": 0.8801762114537446
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "4",
+        "final_concurrency_distribution": {
+          "4": 4
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 3.5,
+        "mean_requests": 16.0,
+        "mean_steps": 4.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.25,
+        "time_weighted_mean_concurrency": 3.863499544405172,
+        "transition_reactions_within_3": 2,
+        "transitions": 4
+      },
+      "dqn_minus_best_fixed_s": 0.7725,
+      "fixed_mean_completion_s": {
+        "C1": 22.5,
+        "C2": 7.609999999999999,
+        "C3": 3.9133333333333336,
+        "C4": 2.065
+      }
+    },
+    "unseen-throttle-up": {
+      "best_fixed_c": 3,
+      "dqn": {
+        "action_fraction": {
+          "decrease-concurrency": 0.3125,
+          "increase-concurrency": 0.6875,
+          "none": 0.0
+        },
+        "changes_after_first_transition": 11,
+        "changes_before_first_transition": 4,
+        "completion": {
+          "max": 2.723333333333333,
+          "mean": 2.3516666666666666,
+          "median": 2.3449999999999998,
+          "min": 1.9933333333333332,
+          "n": 4,
+          "p25": 1.9933333333333332,
+          "p75": 2.716666666666667,
+          "sd": 0.3584573428828969
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.2583274273564848,
+          "3": 0.41530829199149544,
+          "4": 0.32636428065201983
+        },
+        "constant_episode_fraction": 0.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "2": 1,
+          "3": 1,
+          "4": 2
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 3.75,
+        "mean_requests": 16.0,
+        "mean_steps": 4.0,
+        "n": 4,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 3.082110352191518,
+        "transition_reactions_within_3": 4,
+        "transitions": 4
+      },
+      "dqn_minus_best_fixed_s": 0.3049999999999997,
+      "fixed_mean_completion_s": {
+        "C1": 5.5,
+        "C2": 2.9100000000000006,
+        "C3": 2.046666666666667,
+        "C4": 2.5900000000000003
+      }
+    }
+  },
+  "dqn": {
+    "overall": {
+      "action_fraction": {
+        "decrease-concurrency": 0.14130434782608695,
+        "increase-concurrency": 0.7065217391304348,
+        "none": 0.15217391304347827
+      },
+      "changes_after_first_transition": 13,
+      "changes_before_first_transition": 51,
+      "completion": {
+        "max": 10.706666666666665,
+        "mean": 2.636840277777778,
+        "median": 1.9933333333333332,
+        "min": 0.6155555555555554,
+        "n": 32,
+        "p25": 0.9516666666666667,
+        "p75": 3.9660416666666674,
+        "sd": 2.2847667799500897
+      },
+      "concurrency_time_fraction": {
+        "1": 0.0,
+        "2": 0.21261242280191192,
+        "3": 0.3337195981090584,
+        "4": 0.4536679790890296
+      },
+      "constant_episode_fraction": 0.0625,
+      "dominant_concurrency": "4",
+      "final_concurrency_distribution": {
+        "2": 4,
+        "3": 12,
+        "4": 16
+      },
+      "max_concurrency": 4,
+      "mean_effective_changes": 2.0,
+      "mean_requests": 11.5,
+      "mean_steps": 2.875,
+      "n": 32,
+      "ramp_to_max_fraction": 0.21875,
+      "time_weighted_mean_concurrency": 3.2968225660067914,
+      "transition_reactions_within_3": 6,
+      "transitions": 16
+    }
+  },
+  "fixed": {
+    "C1": {
+      "overall": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 22.5,
+          "mean": 10.029479166666667,
+          "median": 4.916666666666667,
+          "min": 1.3333333333333333,
+          "n": 32,
+          "p25": 2.615,
+          "p75": 21.09916666666667,
+          "sd": 8.903926689535439
+        },
+        "concurrency_time_fraction": {
+          "1": 0.9999999999999997,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "1",
+        "final_concurrency_distribution": {
+          "1": 32
+        },
+        "max_concurrency": 1,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 1.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 12
+      }
+    },
+    "C2": {
+      "overall": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 10.706666666666665,
+          "mean": 4.640677083333333,
+          "median": 2.5783333333333336,
+          "min": 0.8266666666666667,
+          "n": 32,
+          "p25": 1.3875000000000002,
+          "p75": 9.54625,
+          "sd": 3.899166084708561
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.9999999999999998,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "2",
+        "final_concurrency_distribution": {
+          "2": 32
+        },
+        "max_concurrency": 2,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 2.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 12
+      }
+    },
+    "C3": {
+      "overall": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 7.164444444444444,
+          "mean": 2.8315625,
+          "median": 1.798888888888889,
+          "min": 0.6577777777777777,
+          "n": 32,
+          "p25": 0.9783333333333335,
+          "p75": 5.070833333333334,
+          "sd": 2.262860738913733
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.9999999999999997,
+          "4": 0.0
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "3",
+        "final_concurrency_distribution": {
+          "3": 32
+        },
+        "max_concurrency": 3,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 3.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 16
+      }
+    },
+    "C4": {
+      "overall": {
+        "action_fraction": {
+          "decrease-concurrency": 0.0,
+          "increase-concurrency": 0.0,
+          "none": 1.0
+        },
+        "changes_after_first_transition": 0,
+        "changes_before_first_transition": 0,
+        "completion": {
+          "max": 5.393333333333333,
+          "mean": 2.1738802083333333,
+          "median": 1.6341666666666665,
+          "min": 0.5733333333333333,
+          "n": 32,
+          "p25": 0.77375,
+          "p75": 3.7143750000000004,
+          "sd": 1.6508000691974956
+        },
+        "concurrency_time_fraction": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0000000000000002
+        },
+        "constant_episode_fraction": 1.0,
+        "dominant_concurrency": "4",
+        "final_concurrency_distribution": {
+          "4": 32
+        },
+        "max_concurrency": 4,
+        "mean_effective_changes": 0.0,
+        "mean_requests": 11.5,
+        "mean_steps": 2.875,
+        "n": 32,
+        "ramp_to_max_fraction": 0.0,
+        "time_weighted_mean_concurrency": 4.0,
+        "transition_reactions_within_3": 0,
+        "transitions": 16
+      }
+    }
+  },
+  "randomized_distribution": {
+    "dqn": {
+      "action_fraction": {
+        "decrease-concurrency": 0.25925925925925924,
+        "increase-concurrency": 0.6666666666666666,
+        "none": 0.07407407407407407
+      },
+      "changes_after_first_transition": 6,
+      "changes_before_first_transition": 12,
+      "completion": {
+        "max": 4.898335588479263,
+        "mean": 3.2544164255782175,
+        "median": 3.5107191802338753,
+        "min": 1.0363147565922501,
+        "n": 5,
+        "p25": 1.668768241716199,
+        "p75": 4.711913232112407,
+        "sd": 1.429149867699412
+      },
+      "concurrency_time_fraction": {
+        "1": 0.0,
+        "2": 0.030377863733018276,
+        "3": 0.3236311219186157,
+        "4": 0.6459910143483659
+      },
+      "constant_episode_fraction": 0.2,
+      "dominant_concurrency": "4",
+      "final_concurrency_distribution": {
+        "3": 1,
+        "4": 4
+      },
+      "max_concurrency": 4,
+      "mean_effective_changes": 3.6,
+      "mean_requests": 19.8,
+      "mean_steps": 5.4,
+      "n": 5,
+      "ramp_to_max_fraction": 0.2,
+      "time_weighted_mean_concurrency": 3.7175417013183107,
+      "transition_reactions_within_3": 3,
+      "transitions": 4
+    },
+    "seeds": [
+      400,
+      401,
+      402,
+      403,
+      404
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+regime T=1s: fixed frontier...
+regime T=1s: causal controllers...
+regime T=1s: full causal target scan...
+regime T=1s: probe + oracles...
+regime T=2s: fixed frontier...
+regime T=2s: causal controllers...
+regime T=2s: full causal target scan...
+regime T=2s: probe + oracles...
+regime T=4s: fixed frontier...
+regime T=4s: causal controllers...
+regime T=4s: full causal target scan...
+regime T=4s: probe + oracles...
+regime T=8s: fixed frontier...
+regime T=8s: causal controllers...
+regime T=8s: full causal target scan...
+regime T=8s: probe + oracles...
+D2 anchor validation...
+stationary constant_640KiB...
+stationary constant_2500KiB...
+wrong-config penalty matrix...
+=== FIXED FRONTIER OPTIMA ===
+  T=1s   best fixed N=16 S=1048576  18.46s | action-space best [16, 4194304] 19.92s | aria2 52.89s
+  T=2s   best fixed N=16 S=1048576  19.65s | action-space best [16, 4194304] 19.92s | aria2 52.89s
+  T=4s   best fixed N=16 S=4194304  19.92s | action-space best [16, 4194304] 19.92s | aria2 52.89s
+  T=8s   best fixed N=16 S=1048576  23.23s | action-space best [16, 4194304] 24.69s | aria2 52.89s
+=== CAUSAL (best threshold/target per regime) ===
+  T=1s   best causal probe_joint_16_16M gain vs best fixed -16.3%
+  T=2s   best causal probe_joint_16_16M gain vs best fixed -9.3%
+  T=4s   best causal probe_joint_16_16M gain vs best fixed -7.8%
+  T=8s   best causal probe_joint_16_16M gain vs best fixed +1.1%
+=== PROBE / RAMP / BOUND ===
+  T=1s   best probe joint_16_16M    -16.3% | best blind ramp t=1_16_4194304   +2.9% | optimistic causal bound 21.19s (-14.7%)
+  T=2s   best probe joint_16_16M     -9.3% | best blind ramp t=2_16_4194304   +3.7% | optimistic causal bound 21.19s (-7.8%)
+  T=4s   best probe joint_16_16M     -7.8% | best blind ramp t=4_16_4194304   +0.0% | optimistic causal bound 21.19s (-6.3%)
+  T=8s   best probe joint_16_16M     +1.1% | best blind ramp t=2_16_4194304   -2.0% | optimistic causal bound 22.44s (+3.4%)
+=== ORACLE ===
+  T=1s   same-start gain +1.4% (switch 1.3s -> 16/4194304) | unconstrained gain +14.4%
+  T=2s   same-start gain +2.3% (switch 2.3s -> 16/4194304) | unconstrained gain +14.5%
+  T=4s   same-start gain +0.0% (switch 4.1s -> 16/4194304) | unconstrained gain +6.3%
+  T=8s   same-start gain -0.3% (switch 1.6s -> 16/4194304) | unconstrained gain +7.6%
+=== GATE ===
+{
+  "G1_fixed_optimum_varies": {
+    "distinct_argmins": 2,
+    "argmins": {
+      "T=1s": [
+        16,
+        1048576
+      ],
+      "T=2s": [
+        16,
+        1048576
+      ],
+      "T=4s": [
+        16,
+        4194304
+      ],
+      "T=8s": [
+        16,
+        1048576
+      ]
+    },
+    "max_wrong_config_penalty": 0.07902775069864167,
+    "pass": true
+  },
+  "G2_positive_causal_headroom": {
+    "best_causal_gain_per_regime": {
+      "T=1s": -0.16308138905136363,
+      "T=2s": -0.09263894824673842,
+      "T=4s": -0.07789756871248166,
+      "T=8s": 0.01109101868595585
+    },
+    "optimistic_causal_bound_gain_per_regime": {
+      "T=1s": -0.1474838066766317,
+      "T=2s": -0.07798603903372175,
+      "T=4s": -0.06344234977614484,
+      "T=8s": 0.033841384655128225
+    },
+    "best_blind_ramp_gain_per_regime": {
+      "T=1s": 0.02861723099586257,
+      "T=2s": 0.03657121924415436,
+      "T=4s": 0.0,
+      "T=8s": -0.020304830793076507
+    },
+    "n_regimes_gain_ge_5pct": 0,
+    "family_median_gain": -0.08526825847961003,
+    "pass": false
+  },
+  "G3_beats_aria2": {
+    "aria2_per_regime": {
+      "T=1s": 52.893800000000006,
+      "T=2s": 52.893800000000006,
+      "T=4s": 52.893800000000006,
+      "T=8s": 52.893800000000006
+    },
+    "causal_best_per_regime": {
+      "T=1s": 23.1556,
+      "T=2s": 23.1556,
+      "T=4s": 23.1556,
+      "T=8s": 29.7532
+    },
+    "regimes_beaten": [
+      "T=1s",
+      "T=2s",
+      "T=4s",
+      "T=8s"
+    ],
+    "pass": true
+  },
+  "G4_no_stationary_gain": {
+    "stationary": {
+      "constant_640KiB": {
+        "max_causal_gain": -3.0331140899883886,
+        "switches": 0
+      },
+      "constant_2500KiB": {
+        "max_causal_gain": -3.1442320912965798,
+        "switches": 0
+      }
+    },
+    "pass": true
+  },
+  "overall": "FAIL"
+}

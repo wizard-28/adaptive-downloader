@@ -1,0 +1,161 @@
+{
+  "study": "aria2-competitive-benchmark",
+  "generated_utc": "2026-09-28T22:14:44Z",
+  "status": "ARIA2_COMPETITIVE_WIN_REPRODUCED",
+  "workload": {
+    "file_size_bytes": 536870912,
+    "schedule": "d2",
+    "pacing_phases": [
+      [
+        0,
+        655360
+      ],
+      [
+        2,
+        163840
+      ],
+      [
+        4,
+        2560000
+      ]
+    ],
+    "phase_seconds": 2.0,
+    "netem": {
+      "latency_ms": 40,
+      "loss_pct": 0.4
+    }
+  },
+  "frozen_configs": {
+    "aria2_final": {
+      "max_connection_per_server": 16,
+      "split": 16,
+      "min_split": "1M",
+      "args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+      "median_ms": 53334.261,
+      "mean_ms": 53267.324,
+      "runs": 3
+    },
+    "our_final": {
+      "concurrency": 16,
+      "chunk_bytes": 4194304,
+      "median_ms": 20300.475,
+      "mean_ms": 20300.475,
+      "runs": 2
+    }
+  },
+  "blocks": {
+    "d2repro": {
+      "path": "reproduction_d2/",
+      "pairs": 20,
+      "ratio": 0.5230470825508537,
+      "ci95": [
+        0.5199929974239208,
+        0.5261191052961945
+      ],
+      "wins": 20
+    },
+    "aria2frontier": {
+      "path": "discovery_aria2/",
+      "medians_s": {
+        "1": 833.2,
+        "2": 419.2,
+        "4": 210.4,
+        "8": 105.6,
+        "16": 53.3
+      },
+      "invalid_timeout_180s": [
+        "discovery_aria2/invalid_timeout/af-split1.json",
+        "discovery_aria2/invalid_timeout/af-split2.json",
+        "discovery_aria2/invalid_timeout/af-split4.json",
+        "discovery_aria2/invalid_timeout/af-split4-min32M.json"
+      ],
+      "note": "split 1/2/4 first hit the 180s tool timeout (invalid, excluded); re-run with -aria2-timeout 1500s produced the valid runs above"
+    },
+    "oursfrontier": {
+      "path": "discovery_ours/",
+      "grid": {
+        "concurrency": [
+          1,
+          2,
+          4,
+          8,
+          16
+        ],
+        "chunk_bytes": [
+          262144,
+          524288,
+          1048576,
+          2097152,
+          4194304,
+          8388608,
+          16777216,
+          33554432
+        ]
+      }
+    },
+    "final": {
+      "path": "final_reproduction/",
+      "n": 30,
+      "geo_ratio": 0.3756370278940139,
+      "ci95": [
+        0.3727790802326555,
+        0.37851688629357666
+      ],
+      "wins": 30,
+      "losses": 0,
+      "p_one_sided": 4.999750012499375e-05
+    },
+    "mechanism": {
+      "path": "mechanism/",
+      "controlA_pairs": 10,
+      "constant_rate": {
+        "const-ours-4M": 15331.707,
+        "const-ours-32M": 16719.229,
+        "const-aria2": 24807.788
+      }
+    }
+  },
+  "selection": {
+    "rule": "freeze top-1 of each frontier by 3-run median before the final block",
+    "bookkeeping_note": "the driver recorded the top-3 medians over 2 re-runs; the corrected 3-run medians (grid run + 2 re-runs) are reported here; the frozen config (C=16, 4MiB) is the top-1 under both",
+    "our_final_selection_median_ms": 20300.475,
+    "our_final_corrected_3run_median_ms": 19994.678,
+    "aria2_final_selection_median_ms": 53334.261
+  },
+  "artifacts": {
+    "analysis": "analysis/benchmark_analysis.json",
+    "figures": [
+      "fig1_d2_reproduction.png",
+      "fig2_aria2_frontier.png",
+      "fig3_ours_frontier.png",
+      "fig4_final_comparison.png",
+      "fig5_request_sizes.png",
+      "fig6_request_timeline.png",
+      "fig7_cumulative_bytes.png",
+      "fig8_paired_ratios.png",
+      "fig9_mechanism_control.png"
+    ],
+    "reports": [
+      "reports/win_mechanism.md",
+      "reports/tables.md"
+    ],
+    "tool_sha256": "923a5b57ed0f129743cfcae61b7b3bebd4e20e2e25d3c883e0be7eccea67e304",
+    "driver_sha256": "1c2c951f11b76e9caf71f963675543124633bd4c5e2e0905eaaec8b0d05c4345",
+    "analysis_sha256": "f4a5558cbbc2ff26bc1aa4ccaa93f1a62ee351c707442532d7421a4e9d36e9b0"
+  },
+  "evidence_classification": {
+    "d2repro": "LIVE EXPERIMENTAL (fresh replication of historical D2)",
+    "aria2frontier": "LIVE EXPERIMENTAL (discovery)",
+    "oursfrontier": "LIVE EXPERIMENTAL (discovery)",
+    "final": "LIVE EXPERIMENTAL (predeclared final block)",
+    "mechanism": "LIVE EXPERIMENTAL (controls)"
+  },
+  "scope": "under the frozen D2/512MiB workload family only; no universal aria2 superiority, consumer-network, or out-of-family claim",
+  "integrity": {
+    "invalid_final_pairs": 0,
+    "content_verified_all_final": true,
+    "no_config_change_during_final": true,
+    "netem_cleaned": "checked separately",
+    "git_repo": false
+  }
+}

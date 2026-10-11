@@ -1,0 +1,79 @@
+{
+  "source": "testdata/benchmark_v4/matrix_linucb_periodic_reps10.json",
+  "standard_recorded_matches": 4586,
+  "standard_recorded_total": 4586,
+  "periodic_by_scenario": [
+    {
+      "name": "baseline",
+      "runs": 10,
+      "decisions": 1090,
+      "forced_events": 170,
+      "mean_score_delta": 0.2214496532644837,
+      "fraction_score_increased": 0.8352941176470589,
+      "fraction_rank_improved": 0.6058823529411764,
+      "best_rank_reached": 1,
+      "recorded_action_matches": 1090,
+      "recorded_action_total": 1090
+    },
+    {
+      "name": "server-throttle",
+      "runs": 10,
+      "decisions": 1230,
+      "forced_events": 190,
+      "mean_score_delta": 0.360216746037877,
+      "fraction_score_increased": 0.7947368421052632,
+      "fraction_rank_improved": 0.6,
+      "best_rank_reached": 1,
+      "recorded_action_matches": 1230,
+      "recorded_action_total": 1230
+    },
+    {
+      "name": "latency",
+      "runs": 10,
+      "decisions": 380,
+      "forced_events": 50,
+      "mean_score_delta": 0.3350990980869088,
+      "fraction_score_increased": 0.88,
+      "fraction_rank_improved": 0.8,
+      "best_rank_reached": 1,
+      "recorded_action_matches": 380,
+      "recorded_action_total": 380
+    },
+    {
+      "name": "loss",
+      "runs": 10,
+      "decisions": 903,
+      "forced_events": 137,
+      "mean_score_delta": 0.5404373456222942,
+      "fraction_score_increased": 0.781021897810219,
+      "fraction_rank_improved": 0.40875912408759124,
+      "best_rank_reached": 1,
+      "recorded_action_matches": 903,
+      "recorded_action_total": 903
+    },
+    {
+      "name": "combined",
+      "runs": 10,
+      "decisions": 450,
+      "forced_events": 62,
+      "mean_score_delta": 0.06345412285265468,
+      "fraction_score_increased": 0.7741935483870968,
+      "fraction_rank_improved": 0.5,
+      "best_rank_reached": 1,
+      "recorded_action_matches": 450,
+      "recorded_action_total": 450
+    }
+  ],
+  "forced_events_sample": [
+    {
+      "scenario": "loss",
+      "decision": 16,
+      "arm": "increase-concurrency",
+      "reward": 3.458224333329797,
+      "score_before": 1.8029868681320456,
+      "score_after": 2.3959264235426776,
+      "rank_before": 2,
+      "rank_after": 2
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "chunk-size-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_chunk_changes": 0.5,
+        "mean_completion_s": 2.684124999999999,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 15.5,
+        "median_completion_s": 2.1016249999999994,
+        "n": 4,
+        "sd_completion_s": 1.4385041764364108
+      },
+      "unseen-high-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.2079791666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.16762499999999997,
+        "n": 4,
+        "sd_completion_s": 0.11493803244393629
+      },
+      "unseen-latency": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.0093749999999995,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 1.6075,
+        "n": 4,
+        "sd_completion_s": 1.0689623692511345
+      },
+      "unseen-latency+loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.1913541666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 14.75,
+        "median_completion_s": 1.7322500000000005,
+        "n": 4,
+        "sd_completion_s": 0.9914297079901409
+      },
+      "unseen-loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.293125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 0.2601875,
+        "n": 4,
+        "sd_completion_s": 0.07615911591858195
+      },
+      "unseen-low-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.7209999999999996,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.7146666666666666,
+        "n": 4,
+        "sd_completion_s": 0.0341418609139373
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.191703125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.14106249999999998,
+        "n": 4,
+        "sd_completion_s": 0.10330946924433827
+      },
+      "unseen-throttle-up-request": {
+        "mean_chunk_changes": 0.75,
+        "mean_completion_s": 2.5894999999999992,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 13.5,
+        "median_completion_s": 2.267,
+        "n": 4,
+        "sd_completion_s": 0.8941827274109008
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_chunk_changes": 0.75,
+        "mean_completion_s": 2.903499999999999,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 14.25,
+        "median_completion_s": 2.6439999999999997,
+        "n": 4,
+        "sd_completion_s": 0.6938535508304314
+      }
+    },
+    "overall": {
+      "mean_chunk_changes": 0.2222222222222222,
+      "mean_completion_s": 1.7546290509259255,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 14.805555555555555,
+      "median_completion_s": 1.6789999999999998,
+      "n": 36,
+      "sd_completion_s": 1.3559737736767603
+    }
+  },
+  "concurrency-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.805374999999999,
+        "mean_conc_changes": 0.25,
+        "mean_steps": 16.25,
+        "median_completion_s": 2.2846249999999992,
+        "n": 4,
+        "sd_completion_s": 1.3494360454000764
+      },
+      "unseen-high-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.2079791666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.16762499999999997,
+        "n": 4,
+        "sd_completion_s": 0.11493803244393629
+      },
+      "unseen-latency": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.0093749999999995,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 1.6075,
+        "n": 4,
+        "sd_completion_s": 1.0689623692511345
+      },
+      "unseen-latency+loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.1913541666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 14.75,
+        "median_completion_s": 1.7322500000000005,
+        "n": 4,
+        "sd_completion_s": 0.9914297079901409
+      },
+      "unseen-loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.293125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 0.2601875,
+        "n": 4,
+        "sd_completion_s": 0.07615911591858195
+      },
+      "unseen-low-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.7209999999999996,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.7146666666666666,
+        "n": 4,
+        "sd_completion_s": 0.0341418609139373
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.191703125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.14106249999999998,
+        "n": 4,
+        "sd_completion_s": 0.10330946924433827
+      },
+      "unseen-throttle-up-request": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.279499999999999,
+        "mean_conc_changes": 0.75,
+        "mean_steps": 14.75,
+        "median_completion_s": 1.7055,
+        "n": 4,
+        "sd_completion_s": 1.0314849732303408
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.655499999999999,
+        "mean_conc_changes": 0.75,
+        "mean_steps": 15.25,
+        "median_completion_s": 2.2085,
+        "n": 4,
+        "sd_completion_s": 0.8149817482618844
+      }
+    },
+    "overall": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 1.7061012731481477,
+      "mean_conc_changes": 0.19444444444444445,
+      "mean_steps": 15.13888888888889,
+      "median_completion_s": 1.6440000000000001,
+      "n": 36,
+      "sd_completion_s": 1.3348275832536116
+    }
+  },
+  "dqn": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_chunk_changes": 2.0,
+        "mean_completion_s": 1.35009375,
+        "mean_conc_changes": 1.5,
+        "mean_steps": 5.75,
+        "median_completion_s": 1.2085625,
+        "n": 4,
+        "sd_completion_s": 0.3631457327880743
+      },
+      "unseen-high-bandwidth": {
+        "mean_chunk_changes": 2.75,
+        "mean_completion_s": 0.17295833333333333,
+        "mean_conc_changes": 1.5,
+        "mean_steps": 5.75,
+        "median_completion_s": 0.182875,
+        "n": 4,
+        "sd_completion_s": 0.04966773279057093
+      },
+      "unseen-latency": {
+        "mean_chunk_changes": 2.5,
+        "mean_completion_s": 0.7610156250000001,
+        "mean_conc_changes": 1.0,
+        "mean_steps": 3.75,
+        "median_completion_s": 0.7274687500000001,
+        "n": 4,
+        "sd_completion_s": 0.13502359729385038
+      },
+      "unseen-latency+loss": {
+        "mean_chunk_changes": 1.5,
+        "mean_completion_s": 0.9843958333333334,
+        "mean_conc_changes": 1.5,
+        "mean_steps": 5.25,
+        "median_completion_s": 0.9505416666666666,
+        "n": 4,
+        "sd_completion_s": 0.18425255703600305
+      },
+      "unseen-loss": {
+        "mean_chunk_changes": 2.0,
+        "mean_completion_s": 0.253140625,
+        "mean_conc_changes": 1.25,
+        "mean_steps": 4.0,
+        "median_completion_s": 0.243375,
+        "n": 4,
+        "sd_completion_s": 0.021044334479186435
+      },
+      "unseen-low-bandwidth": {
+        "mean_chunk_changes": 2.5,
+        "mean_completion_s": 2.8438333333333334,
+        "mean_conc_changes": 2.0,
+        "mean_steps": 5.25,
+        "median_completion_s": 2.8433333333333333,
+        "n": 4,
+        "sd_completion_s": 0.08583624590527646
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_chunk_changes": 3.25,
+        "mean_completion_s": 0.17860937500000001,
+        "mean_conc_changes": 0.5,
+        "mean_steps": 8.25,
+        "median_completion_s": 0.15396875,
+        "n": 4,
+        "sd_completion_s": 0.06699773164012254
+      },
+      "unseen-throttle-up-request": {
+        "mean_chunk_changes": 1.5,
+        "mean_completion_s": 2.137,
+        "mean_conc_changes": 2.0,
+        "mean_steps": 6.0,
+        "median_completion_s": 2.138,
+        "n": 4,
+        "sd_completion_s": 0.3730026809555126
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_chunk_changes": 1.75,
+        "mean_completion_s": 2.4197499999999996,
+        "mean_conc_changes": 2.5,
+        "mean_steps": 6.75,
+        "median_completion_s": 2.4515,
+        "n": 4,
+        "sd_completion_s": 0.10080271573722596
+      }
+    },
+    "overall": {
+      "mean_chunk_changes": 2.1944444444444446,
+      "mean_completion_s": 1.233421875,
+      "mean_conc_changes": 1.5277777777777777,
+      "mean_steps": 5.638888888888889,
+      "median_completion_s": 0.957875,
+      "n": 36,
+      "sd_completion_s": 0.9810608899901291
+    }
+  },
+  "fixed": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.881999999999999,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.2846249999999992,
+        "n": 4,
+        "sd_completion_s": 1.2857300819962163
+      },
+      "unseen-high-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.2079791666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.16762499999999997,
+        "n": 4,
+        "sd_completion_s": 0.11493803244393629
+      },
+      "unseen-latency": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.0093749999999995,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 1.6075,
+        "n": 4,
+        "sd_completion_s": 1.0689623692511345
+      },
+      "unseen-latency+loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.1913541666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 14.75,
+        "median_completion_s": 1.7322500000000005,
+        "n": 4,
+        "sd_completion_s": 0.9914297079901409
+      },
+      "unseen-loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.293125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 0.2601875,
+        "n": 4,
+        "sd_completion_s": 0.07615911591858195
+      },
+      "unseen-low-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.7209999999999996,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.7146666666666666,
+        "n": 4,
+        "sd_completion_s": 0.0341418609139373
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.191703125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.14106249999999998,
+        "n": 4,
+        "sd_completion_s": 0.10330946924433827
+      },
+      "unseen-throttle-up-request": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.5334999999999988,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.1519999999999997,
+        "n": 4,
+        "sd_completion_s": 0.9155081922080203
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.8459999999999988,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.5894999999999992,
+        "n": 4,
+        "sd_completion_s": 0.7392979778140868
+      }
+    },
+    "overall": {
+      "mean_chunk_changes": 0.0,
+      "mean_completion_s": 1.7640040509259254,
+      "mean_conc_changes": 0.0,
+      "mean_steps": 15.583333333333334,
+      "median_completion_s": 1.89425,
+      "n": 36,
+      "sd_completion_s": 1.350824471228343
+    }
+  },
+  "joint-adaptive": {
+    "by_condition": {
+      "unseen-combined": {
+        "mean_chunk_changes": 0.25,
+        "mean_completion_s": 2.752187499999999,
+        "mean_conc_changes": 0.25,
+        "mean_steps": 15.75,
+        "median_completion_s": 2.2846249999999992,
+        "n": 4,
+        "sd_completion_s": 1.399363430892328
+      },
+      "unseen-high-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.2079791666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.16762499999999997,
+        "n": 4,
+        "sd_completion_s": 0.11493803244393629
+      },
+      "unseen-latency": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.0093749999999995,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 1.6075,
+        "n": 4,
+        "sd_completion_s": 1.0689623692511345
+      },
+      "unseen-latency+loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.1913541666666667,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 14.75,
+        "median_completion_s": 1.7322500000000005,
+        "n": 4,
+        "sd_completion_s": 0.9914297079901409
+      },
+      "unseen-loss": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.293125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 12.5,
+        "median_completion_s": 0.2601875,
+        "n": 4,
+        "sd_completion_s": 0.07615911591858195
+      },
+      "unseen-low-bandwidth": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 2.7209999999999996,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 2.7146666666666666,
+        "n": 4,
+        "sd_completion_s": 0.0341418609139373
+      },
+      "unseen-throttle-down-wallclock": {
+        "mean_chunk_changes": 0.0,
+        "mean_completion_s": 0.191703125,
+        "mean_conc_changes": 0.0,
+        "mean_steps": 16.75,
+        "median_completion_s": 0.14106249999999998,
+        "n": 4,
+        "sd_completion_s": 0.10330946924433827
+      },
+      "unseen-throttle-up-request": {
+        "mean_chunk_changes": 0.5,
+        "mean_completion_s": 2.3394999999999992,
+        "mean_conc_changes": 0.5,
+        "mean_steps": 13.5,
+        "median_completion_s": 1.8285,
+        "n": 4,
+        "sd_completion_s": 0.9996825746205628
+      },
+      "unseen-throttle-up-wallclock": {
+        "mean_chunk_changes": 0.5,
+        "mean_completion_s": 2.6847499999999993,
+        "mean_conc_changes": 0.5,
+        "mean_steps": 14.25,
+        "median_completion_s": 2.268,
+        "n": 4,
+        "sd_completion_s": 0.8030866625090953
+      }
+    },
+    "overall": {
+      "mean_chunk_changes": 0.1388888888888889,
+      "mean_completion_s": 1.7101082175925921,
+      "mean_conc_changes": 0.1388888888888889,
+      "mean_steps": 14.833333333333334,
+      "median_completion_s": 1.7015,
+      "n": 36,
+      "sd_completion_s": 1.3376526622739493
+    }
+  }
+}

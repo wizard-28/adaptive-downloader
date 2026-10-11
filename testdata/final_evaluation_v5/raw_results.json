@@ -1,0 +1,4812 @@
+{
+  "aria2_baseline_sha256": "b72498176a48f889cd2d1dbc9d9ef6b9afc668f2cf0d902e44d51dee0dedca02",
+  "aria2_version": "aria2 version 1.37.0",
+  "matrix_sha256": "78ae2b2dbe0486b376b94430c90c83ef6d069ae5f4a7d0b1384a50cf0d23e92e",
+  "results": [
+    {
+      "condition": "U1",
+      "duration_ms": 3252.719,
+      "ok": true,
+      "pair_id": "U1-p00",
+      "policy": "v5",
+      "run_id": "U1-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 5157905.124912419
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1463.54,
+      "ok": true,
+      "pair_id": "U1-p00",
+      "policy": "aria2-f",
+      "run_id": "U1-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11463448.897877747
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3255.099,
+      "ok": true,
+      "pair_id": "U1-p01",
+      "policy": "v5",
+      "run_id": "U1-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 5154133.868125056
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1460.783,
+      "ok": true,
+      "pair_id": "U1-p01",
+      "policy": "aria2-f",
+      "run_id": "U1-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11485084.36913628
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3266.271,
+      "ok": true,
+      "pair_id": "U1-p02",
+      "policy": "v5",
+      "run_id": "U1-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 5136504.594995332
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1822.549,
+      "ok": true,
+      "pair_id": "U1-p02",
+      "policy": "aria2-f",
+      "run_id": "U1-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9205357.99037502
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3270.111,
+      "ok": true,
+      "pair_id": "U1-p03",
+      "policy": "v5",
+      "run_id": "U1-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 5130472.941132579
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1501.17,
+      "ok": true,
+      "pair_id": "U1-p03",
+      "policy": "aria2-f",
+      "run_id": "U1-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11176093.313881839
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3254.262,
+      "ok": true,
+      "pair_id": "U1-p04",
+      "policy": "v5",
+      "run_id": "U1-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 5155459.517395956
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1470.95,
+      "ok": true,
+      "pair_id": "U1-p04",
+      "policy": "aria2-f",
+      "run_id": "U1-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11405701.077534927
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3236.29,
+      "ok": true,
+      "pair_id": "U1-p05",
+      "policy": "v5",
+      "run_id": "U1-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 5184089.188546144
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1495.397,
+      "ok": true,
+      "pair_id": "U1-p05",
+      "policy": "aria2-f",
+      "run_id": "U1-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11219238.770707713
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3266.011,
+      "ok": true,
+      "pair_id": "U1-p06",
+      "policy": "v5",
+      "run_id": "U1-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 5136913.500903702
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1485.973,
+      "ok": true,
+      "pair_id": "U1-p06",
+      "policy": "aria2-f",
+      "run_id": "U1-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11290390.875204327
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3249.144,
+      "ok": true,
+      "pair_id": "U1-p07",
+      "policy": "v5",
+      "run_id": "U1-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 5163580.315307663
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1472.483,
+      "ok": true,
+      "pair_id": "U1-p07",
+      "policy": "aria2-f",
+      "run_id": "U1-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11393826.618032262
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3276.592,
+      "ok": true,
+      "pair_id": "U1-p08",
+      "policy": "v5",
+      "run_id": "U1-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 5120325.020631192
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1464.597,
+      "ok": true,
+      "pair_id": "U1-p08",
+      "policy": "aria2-f",
+      "run_id": "U1-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11455175.724107042
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3324.096,
+      "ok": true,
+      "pair_id": "U1-p09",
+      "policy": "v5",
+      "run_id": "U1-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 5047151.466142976
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1461.826,
+      "ok": true,
+      "pair_id": "U1-p09",
+      "policy": "aria2-f",
+      "run_id": "U1-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11476889.862404965
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3244.59,
+      "ok": true,
+      "pair_id": "U1-p10",
+      "policy": "v5",
+      "run_id": "U1-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 5170827.747111346
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1468.493,
+      "ok": true,
+      "pair_id": "U1-p10",
+      "policy": "aria2-f",
+      "run_id": "U1-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11424784.45590139
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3267.465,
+      "ok": true,
+      "pair_id": "U1-p11",
+      "policy": "v5",
+      "run_id": "U1-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 5134627.608864976
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1463.452,
+      "ok": true,
+      "pair_id": "U1-p11",
+      "policy": "aria2-f",
+      "run_id": "U1-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11464138.215670893
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3252.706,
+      "ok": true,
+      "pair_id": "U1-p12",
+      "policy": "v5",
+      "run_id": "U1-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 5157925.739369005
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1446.627,
+      "ok": true,
+      "pair_id": "U1-p12",
+      "policy": "aria2-f",
+      "run_id": "U1-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11597471.912248285
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3258.85,
+      "ok": true,
+      "pair_id": "U1-p13",
+      "policy": "v5",
+      "run_id": "U1-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 5148201.35937524
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1472.243,
+      "ok": true,
+      "pair_id": "U1-p13",
+      "policy": "aria2-f",
+      "run_id": "U1-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11395684.000535239
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3269.875,
+      "ok": true,
+      "pair_id": "U1-p14",
+      "policy": "v5",
+      "run_id": "U1-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 5130843.227952139
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1461.914,
+      "ok": true,
+      "pair_id": "U1-p14",
+      "policy": "aria2-f",
+      "run_id": "U1-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11476199.010338502
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3231.27,
+      "ok": true,
+      "pair_id": "U1-p15",
+      "policy": "v5",
+      "run_id": "U1-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 5192143.02735457
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1450.162,
+      "ok": true,
+      "pair_id": "U1-p15",
+      "policy": "aria2-f",
+      "run_id": "U1-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11569201.234069021
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3195.332,
+      "ok": true,
+      "pair_id": "U1-p16",
+      "policy": "v5",
+      "run_id": "U1-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 5250539.224093146
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1448.207,
+      "ok": true,
+      "pair_id": "U1-p16",
+      "policy": "aria2-f",
+      "run_id": "U1-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11584819.021037739
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3262.399,
+      "ok": true,
+      "pair_id": "U1-p17",
+      "policy": "v5",
+      "run_id": "U1-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 5142600.889713367
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1454.169,
+      "ok": true,
+      "pair_id": "U1-p17",
+      "policy": "aria2-f",
+      "run_id": "U1-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11537322.00315094
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3258.599,
+      "ok": true,
+      "pair_id": "U1-p18",
+      "policy": "v5",
+      "run_id": "U1-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 5148597.909715187
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1449.199,
+      "ok": true,
+      "pair_id": "U1-p18",
+      "policy": "aria2-f",
+      "run_id": "U1-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11576889.026282793
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3271.881,
+      "ok": true,
+      "pair_id": "U1-p19",
+      "policy": "v5",
+      "run_id": "U1-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 5127697.492665534
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1573.038,
+      "ok": true,
+      "pair_id": "U1-p19",
+      "policy": "aria2-f",
+      "run_id": "U1-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10665486.784171775
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3272.856,
+      "ok": true,
+      "pair_id": "U1-p20",
+      "policy": "v5",
+      "run_id": "U1-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 5126169.926205124
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1493.612,
+      "ok": true,
+      "pair_id": "U1-p20",
+      "policy": "aria2-f",
+      "run_id": "U1-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11232646.765023312
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3271.298,
+      "ok": true,
+      "pair_id": "U1-p21",
+      "policy": "v5",
+      "run_id": "U1-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 5128611.334094295
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1502.112,
+      "ok": true,
+      "pair_id": "U1-p21",
+      "policy": "aria2-f",
+      "run_id": "U1-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11169084.595556123
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3261.795,
+      "ok": true,
+      "pair_id": "U1-p22",
+      "policy": "v5",
+      "run_id": "U1-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 5143553.166278076
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1488.501,
+      "ok": true,
+      "pair_id": "U1-p22",
+      "policy": "aria2-f",
+      "run_id": "U1-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11271215.807043461
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3262.278,
+      "ok": true,
+      "pair_id": "U1-p23",
+      "policy": "v5",
+      "run_id": "U1-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 5142791.632104929
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1455.488,
+      "ok": true,
+      "pair_id": "U1-p23",
+      "policy": "aria2-f",
+      "run_id": "U1-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11526866.590449387
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3291.55,
+      "ok": true,
+      "pair_id": "U1-p24",
+      "policy": "v5",
+      "run_id": "U1-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 5097056.401999058
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1462.44,
+      "ok": true,
+      "pair_id": "U1-p24",
+      "policy": "aria2-f",
+      "run_id": "U1-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11472071.332841005
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3290.894,
+      "ok": true,
+      "pair_id": "U1-p25",
+      "policy": "v5",
+      "run_id": "U1-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 5098072.438674719
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1455.82,
+      "ok": true,
+      "pair_id": "U1-p25",
+      "policy": "aria2-f",
+      "run_id": "U1-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11524237.88655191
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3263.693,
+      "ok": true,
+      "pair_id": "U1-p26",
+      "policy": "v5",
+      "run_id": "U1-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 5140561.933980922
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1478.316,
+      "ok": true,
+      "pair_id": "U1-p26",
+      "policy": "aria2-f",
+      "run_id": "U1-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11348869.930380244
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3249.775,
+      "ok": true,
+      "pair_id": "U1-p27",
+      "policy": "v5",
+      "run_id": "U1-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 5162577.716918863
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1460.023,
+      "ok": true,
+      "pair_id": "U1-p27",
+      "policy": "aria2-f",
+      "run_id": "U1-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11491062.812024195
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3325.22,
+      "ok": true,
+      "pair_id": "U1-p28",
+      "policy": "v5",
+      "run_id": "U1-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 5045445.414138013
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1478.472,
+      "ok": true,
+      "pair_id": "U1-p28",
+      "policy": "aria2-f",
+      "run_id": "U1-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11347672.46183898
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 3234.242,
+      "ok": true,
+      "pair_id": "U1-p29",
+      "policy": "v5",
+      "run_id": "U1-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 5187371.878789527
+    },
+    {
+      "condition": "U1",
+      "duration_ms": 1502.294,
+      "ok": true,
+      "pair_id": "U1-p29",
+      "policy": "aria2-f",
+      "run_id": "U1-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11167731.48265253
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2332.671,
+      "ok": true,
+      "pair_id": "U2-p00",
+      "policy": "v5",
+      "run_id": "U2-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 7192277.0077734925
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 783.298,
+      "ok": true,
+      "pair_id": "U2-p00",
+      "policy": "aria2-f",
+      "run_id": "U2-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21418688.672765665
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2337.027,
+      "ok": true,
+      "pair_id": "U2-p01",
+      "policy": "v5",
+      "run_id": "U2-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 7178871.275342561
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 774.401,
+      "ok": true,
+      "pair_id": "U2-p01",
+      "policy": "aria2-f",
+      "run_id": "U2-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21664765.412234746
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2342.053,
+      "ok": true,
+      "pair_id": "U2-p02",
+      "policy": "v5",
+      "run_id": "U2-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 7163465.557781997
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 785.408,
+      "ok": true,
+      "pair_id": "U2-p02",
+      "policy": "aria2-f",
+      "run_id": "U2-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21361147.327249024
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2327.624,
+      "ok": true,
+      "pair_id": "U2-p03",
+      "policy": "v5",
+      "run_id": "U2-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 7207872.061810671
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 836.535,
+      "ok": true,
+      "pair_id": "U2-p03",
+      "policy": "aria2-f",
+      "run_id": "U2-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20055605.56342532
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2321.918,
+      "ok": true,
+      "pair_id": "U2-p04",
+      "policy": "v5",
+      "run_id": "U2-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 7225585.055113918
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 796.737,
+      "ok": true,
+      "pair_id": "U2-p04",
+      "policy": "aria2-f",
+      "run_id": "U2-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21057407.902482253
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2333.301,
+      "ok": true,
+      "pair_id": "U2-p05",
+      "policy": "v5",
+      "run_id": "U2-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 7190335.0660716295
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 815.315,
+      "ok": true,
+      "pair_id": "U2-p05",
+      "policy": "aria2-f",
+      "run_id": "U2-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20577587.803486995
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2332.842,
+      "ok": true,
+      "pair_id": "U2-p06",
+      "policy": "v5",
+      "run_id": "U2-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 7191749.805601922
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 758.377,
+      "ok": true,
+      "pair_id": "U2-p06",
+      "policy": "aria2-f",
+      "run_id": "U2-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22122527.45006771
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2311.528,
+      "ok": true,
+      "pair_id": "U2-p07",
+      "policy": "v5",
+      "run_id": "U2-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 7258063.064777932
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 784.572,
+      "ok": true,
+      "pair_id": "U2-p07",
+      "policy": "aria2-f",
+      "run_id": "U2-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21383908.678872045
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2319.394,
+      "ok": true,
+      "pair_id": "U2-p08",
+      "policy": "v5",
+      "run_id": "U2-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 7233448.047205434
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 786.678,
+      "ok": true,
+      "pair_id": "U2-p08",
+      "policy": "aria2-f",
+      "run_id": "U2-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21326662.243001584
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2341.069,
+      "ok": true,
+      "pair_id": "U2-p09",
+      "policy": "v5",
+      "run_id": "U2-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 7166476.511371514
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 773.867,
+      "ok": true,
+      "pair_id": "U2-p09",
+      "policy": "aria2-f",
+      "run_id": "U2-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21679714.989785068
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2323.263,
+      "ok": true,
+      "pair_id": "U2-p10",
+      "policy": "v5",
+      "run_id": "U2-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 7221401.967835756
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 782.212,
+      "ok": true,
+      "pair_id": "U2-p10",
+      "policy": "aria2-f",
+      "run_id": "U2-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21448425.746472824
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2342.872,
+      "ok": true,
+      "pair_id": "U2-p11",
+      "policy": "v5",
+      "run_id": "U2-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 7160961.418293445
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 758.52,
+      "ok": true,
+      "pair_id": "U2-p11",
+      "policy": "aria2-f",
+      "run_id": "U2-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22118356.800084375
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2324.169,
+      "ok": true,
+      "pair_id": "U2-p12",
+      "policy": "v5",
+      "run_id": "U2-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 7218586.9444089485
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 857.562,
+      "ok": true,
+      "pair_id": "U2-p12",
+      "policy": "aria2-f",
+      "run_id": "U2-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 19563851.943066508
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2349.157,
+      "ok": true,
+      "pair_id": "U2-p13",
+      "policy": "v5",
+      "run_id": "U2-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 7141802.782870621
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 777.643,
+      "ok": true,
+      "pair_id": "U2-p13",
+      "policy": "aria2-f",
+      "run_id": "U2-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21574444.82879676
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2338.609,
+      "ok": true,
+      "pair_id": "U2-p14",
+      "policy": "v5",
+      "run_id": "U2-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 7174014.980700066
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 761.209,
+      "ok": true,
+      "pair_id": "U2-p14",
+      "policy": "aria2-f",
+      "run_id": "U2-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22040222.856009323
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2346.857,
+      "ok": true,
+      "pair_id": "U2-p15",
+      "policy": "v5",
+      "run_id": "U2-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 7148801.993474677
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 814.728,
+      "ok": true,
+      "pair_id": "U2-p15",
+      "policy": "aria2-f",
+      "run_id": "U2-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20592413.664437704
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2341.592,
+      "ok": true,
+      "pair_id": "U2-p16",
+      "policy": "v5",
+      "run_id": "U2-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 7164875.8622338995
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 780.911,
+      "ok": true,
+      "pair_id": "U2-p16",
+      "policy": "aria2-f",
+      "run_id": "U2-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21484158.886223912
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2343.882,
+      "ok": true,
+      "pair_id": "U2-p17",
+      "policy": "v5",
+      "run_id": "U2-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 7157875.695107518
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 770.891,
+      "ok": true,
+      "pair_id": "U2-p17",
+      "policy": "aria2-f",
+      "run_id": "U2-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21763408.83471204
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2342.547,
+      "ok": true,
+      "pair_id": "U2-p18",
+      "policy": "v5",
+      "run_id": "U2-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 7161954.914885378
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 764.131,
+      "ok": true,
+      "pair_id": "U2-p18",
+      "policy": "aria2-f",
+      "run_id": "U2-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21955942.10940271
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2321.315,
+      "ok": true,
+      "pair_id": "U2-p19",
+      "policy": "v5",
+      "run_id": "U2-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 7227462.020449615
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 794.441,
+      "ok": true,
+      "pair_id": "U2-p19",
+      "policy": "aria2-f",
+      "run_id": "U2-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21118265.54772475
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2341.063,
+      "ok": true,
+      "pair_id": "U2-p20",
+      "policy": "v5",
+      "run_id": "U2-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 7166494.878608563
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 759.463,
+      "ok": true,
+      "pair_id": "U2-p20",
+      "policy": "aria2-f",
+      "run_id": "U2-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22090893.170569204
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2334.996,
+      "ok": true,
+      "pair_id": "U2-p21",
+      "policy": "v5",
+      "run_id": "U2-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 7185115.520540506
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 786.432,
+      "ok": true,
+      "pair_id": "U2-p21",
+      "policy": "aria2-f",
+      "run_id": "U2-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21333333.333333332
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2341.082,
+      "ok": true,
+      "pair_id": "U2-p22",
+      "policy": "v5",
+      "run_id": "U2-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 7166436.71601422
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 801.211,
+      "ok": true,
+      "pair_id": "U2-p22",
+      "policy": "aria2-f",
+      "run_id": "U2-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20939822.34392688
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2336.307,
+      "ok": true,
+      "pair_id": "U2-p23",
+      "policy": "v5",
+      "run_id": "U2-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 7181083.650393549
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 781.945,
+      "ok": true,
+      "pair_id": "U2-p23",
+      "policy": "aria2-f",
+      "run_id": "U2-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21455749.445293467
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2337.274,
+      "ok": true,
+      "pair_id": "U2-p24",
+      "policy": "v5",
+      "run_id": "U2-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 7178112.621797873
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 780.842,
+      "ok": true,
+      "pair_id": "U2-p24",
+      "policy": "aria2-f",
+      "run_id": "U2-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21486057.35859495
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2349.153,
+      "ok": true,
+      "pair_id": "U2-p25",
+      "policy": "v5",
+      "run_id": "U2-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 7141814.943513684
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 795.718,
+      "ok": true,
+      "pair_id": "U2-p25",
+      "policy": "aria2-f",
+      "run_id": "U2-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21084374.11243682
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2339.33,
+      "ok": true,
+      "pair_id": "U2-p26",
+      "policy": "v5",
+      "run_id": "U2-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 7171803.89256753
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 794.13,
+      "ok": true,
+      "pair_id": "U2-p26",
+      "policy": "aria2-f",
+      "run_id": "U2-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21126535.957588807
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2351.511,
+      "ok": true,
+      "pair_id": "U2-p27",
+      "policy": "v5",
+      "run_id": "U2-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 7134653.420715447
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 758.491,
+      "ok": true,
+      "pair_id": "U2-p27",
+      "policy": "aria2-f",
+      "run_id": "U2-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22119202.469113015
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2359.128,
+      "ok": true,
+      "pair_id": "U2-p28",
+      "policy": "v5",
+      "run_id": "U2-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 7111617.51291155
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 757.402,
+      "ok": true,
+      "pair_id": "U2-p28",
+      "policy": "aria2-f",
+      "run_id": "U2-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22151005.67466154
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 2334.844,
+      "ok": true,
+      "pair_id": "U2-p29",
+      "policy": "v5",
+      "run_id": "U2-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 7185583.276655743
+    },
+    {
+      "condition": "U2",
+      "duration_ms": 781.944,
+      "ok": true,
+      "pair_id": "U2-p29",
+      "policy": "aria2-f",
+      "run_id": "U2-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21455776.88427816
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1940.261,
+      "ok": true,
+      "pair_id": "U3-p00",
+      "policy": "v5",
+      "run_id": "U3-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 8646886.166345662
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 495.19,
+      "ok": true,
+      "pair_id": "U3-p00",
+      "policy": "aria2-f",
+      "run_id": "U3-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 33880361.07352733
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1961.411,
+      "ok": true,
+      "pair_id": "U3-p01",
+      "policy": "v5",
+      "run_id": "U3-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 8553646.329096757
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1463.614,
+      "ok": true,
+      "pair_id": "U3-p01",
+      "policy": "aria2-f",
+      "run_id": "U3-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11462869.30843788
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1939.277,
+      "ok": true,
+      "pair_id": "U3-p02",
+      "policy": "v5",
+      "run_id": "U3-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 8651273.644765548
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 585.182,
+      "ok": true,
+      "pair_id": "U3-p02",
+      "policy": "aria2-f",
+      "run_id": "U3-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28670082.12829513
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1982.076,
+      "ok": true,
+      "pair_id": "U3-p03",
+      "policy": "v5",
+      "run_id": "U3-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 8464466.549214056
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 574.238,
+      "ok": true,
+      "pair_id": "U3-p03",
+      "policy": "aria2-f",
+      "run_id": "U3-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 29216485.150756307
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1960.362,
+      "ok": true,
+      "pair_id": "U3-p04",
+      "policy": "v5",
+      "run_id": "U3-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 8558223.430162387
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1453.171,
+      "ok": true,
+      "pair_id": "U3-p04",
+      "policy": "aria2-f",
+      "run_id": "U3-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11545245.535453157
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1977.423,
+      "ok": true,
+      "pair_id": "U3-p05",
+      "policy": "v5",
+      "run_id": "U3-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 8484383.968427595
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1498.031,
+      "ok": true,
+      "pair_id": "U3-p05",
+      "policy": "aria2-f",
+      "run_id": "U3-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11199511.892611034
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1979.038,
+      "ok": true,
+      "pair_id": "U3-p06",
+      "policy": "v5",
+      "run_id": "U3-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 8477460.260995494
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1655.117,
+      "ok": true,
+      "pair_id": "U3-p06",
+      "policy": "aria2-f",
+      "run_id": "U3-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10136574.03071807
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1986.187,
+      "ok": true,
+      "pair_id": "U3-p07",
+      "policy": "v5",
+      "run_id": "U3-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 8446946.838338988
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 756.061,
+      "ok": true,
+      "pair_id": "U3-p07",
+      "policy": "aria2-f",
+      "run_id": "U3-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22190294.169385806
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1953.745,
+      "ok": true,
+      "pair_id": "U3-p08",
+      "policy": "v5",
+      "run_id": "U3-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 8587208.668480279
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 706.559,
+      "ok": true,
+      "pair_id": "U3-p08",
+      "policy": "aria2-f",
+      "run_id": "U3-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 23744961.142664663
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1949.109,
+      "ok": true,
+      "pair_id": "U3-p09",
+      "policy": "v5",
+      "run_id": "U3-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 8607633.539222281
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 748.021,
+      "ok": true,
+      "pair_id": "U3-p09",
+      "policy": "aria2-f",
+      "run_id": "U3-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22428803.469421316
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1944.38,
+      "ok": true,
+      "pair_id": "U3-p10",
+      "policy": "v5",
+      "run_id": "U3-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 8628568.489698514
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 578.585,
+      "ok": true,
+      "pair_id": "U3-p10",
+      "policy": "aria2-f",
+      "run_id": "U3-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28996977.10794438
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1987.039,
+      "ok": true,
+      "pair_id": "U3-p11",
+      "policy": "v5",
+      "run_id": "U3-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 8443324.96745157
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 739.217,
+      "ok": true,
+      "pair_id": "U3-p11",
+      "policy": "aria2-f",
+      "run_id": "U3-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22695928.25922564
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 2021.526,
+      "ok": true,
+      "pair_id": "U3-p12",
+      "policy": "v5",
+      "run_id": "U3-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 8299282.8190188985
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 575.968,
+      "ok": true,
+      "pair_id": "U3-p12",
+      "policy": "aria2-f",
+      "run_id": "U3-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 29128729.37385411
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1931.12,
+      "ok": true,
+      "pair_id": "U3-p13",
+      "policy": "v5",
+      "run_id": "U3-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 8687816.396702431
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 751.35,
+      "ok": true,
+      "pair_id": "U3-p13",
+      "policy": "aria2-f",
+      "run_id": "U3-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22329428.362281226
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1942.05,
+      "ok": true,
+      "pair_id": "U3-p14",
+      "policy": "v5",
+      "run_id": "U3-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 8638920.728096599
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 745.937,
+      "ok": true,
+      "pair_id": "U3-p14",
+      "policy": "aria2-f",
+      "run_id": "U3-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22491465.096918374
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1964.972,
+      "ok": true,
+      "pair_id": "U3-p15",
+      "policy": "v5",
+      "run_id": "U3-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 8538145.072805109
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 499.014,
+      "ok": true,
+      "pair_id": "U3-p15",
+      "policy": "aria2-f",
+      "run_id": "U3-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 33620732.08366899
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 2321.145,
+      "ok": true,
+      "pair_id": "U3-p16",
+      "policy": "v5",
+      "run_id": "U3-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 7227991.357713542
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 586.476,
+      "ok": true,
+      "pair_id": "U3-p16",
+      "policy": "aria2-f",
+      "run_id": "U3-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28606824.490686744
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1929.701,
+      "ok": true,
+      "pair_id": "U3-p17",
+      "policy": "v5",
+      "run_id": "U3-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 8694204.957141029
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 760.972,
+      "ok": true,
+      "pair_id": "U3-p17",
+      "policy": "aria2-f",
+      "run_id": "U3-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22047087.146439027
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1962.699,
+      "ok": true,
+      "pair_id": "U3-p18",
+      "policy": "v5",
+      "run_id": "U3-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 8548033.091166807
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 581.912,
+      "ok": true,
+      "pair_id": "U3-p18",
+      "policy": "aria2-f",
+      "run_id": "U3-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28831190.970456015
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1964.905,
+      "ok": true,
+      "pair_id": "U3-p19",
+      "policy": "v5",
+      "run_id": "U3-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 8538436.20938417
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 812.458,
+      "ok": true,
+      "pair_id": "U3-p19",
+      "policy": "aria2-f",
+      "run_id": "U3-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20649948.67426993
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1993.554,
+      "ok": true,
+      "pair_id": "U3-p20",
+      "policy": "v5",
+      "run_id": "U3-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 8415731.903926354
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 578.837,
+      "ok": true,
+      "pair_id": "U3-p20",
+      "policy": "aria2-f",
+      "run_id": "U3-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28984353.10804251
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1984.018,
+      "ok": true,
+      "pair_id": "U3-p21",
+      "policy": "v5",
+      "run_id": "U3-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 8456181.345128926
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 607.151,
+      "ok": true,
+      "pair_id": "U3-p21",
+      "policy": "aria2-f",
+      "run_id": "U3-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27632691.043908354
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1943.035,
+      "ok": true,
+      "pair_id": "U3-p22",
+      "policy": "v5",
+      "run_id": "U3-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 8634541.323239159
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 507.863,
+      "ok": true,
+      "pair_id": "U3-p22",
+      "policy": "aria2-f",
+      "run_id": "U3-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 33034924.7730195
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1980.605,
+      "ok": true,
+      "pair_id": "U3-p23",
+      "policy": "v5",
+      "run_id": "U3-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 8470753.128463272
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 524.658,
+      "ok": true,
+      "pair_id": "U3-p23",
+      "policy": "aria2-f",
+      "run_id": "U3-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 31977432.91820576
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1938.206,
+      "ok": true,
+      "pair_id": "U3-p24",
+      "policy": "v5",
+      "run_id": "U3-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 8656054.10364017
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 751.317,
+      "ok": true,
+      "pair_id": "U3-p24",
+      "policy": "aria2-f",
+      "run_id": "U3-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22330409.13489246
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1929.787,
+      "ok": true,
+      "pair_id": "U3-p25",
+      "policy": "v5",
+      "run_id": "U3-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 8693817.504211605
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 573.755,
+      "ok": true,
+      "pair_id": "U3-p25",
+      "policy": "aria2-f",
+      "run_id": "U3-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 29241080.252023946
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1992.107,
+      "ok": true,
+      "pair_id": "U3-p26",
+      "policy": "v5",
+      "run_id": "U3-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 8421844.810544815
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 747.788,
+      "ok": true,
+      "pair_id": "U3-p26",
+      "policy": "aria2-f",
+      "run_id": "U3-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 22435791.962427855
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1964.077,
+      "ok": true,
+      "pair_id": "U3-p27",
+      "policy": "v5",
+      "run_id": "U3-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 8542035.775583137
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 604.363,
+      "ok": true,
+      "pair_id": "U3-p27",
+      "policy": "aria2-f",
+      "run_id": "U3-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27760164.007392902
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 1981.157,
+      "ok": true,
+      "pair_id": "U3-p28",
+      "policy": "v5",
+      "run_id": "U3-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 8468392.964313278
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 578.813,
+      "ok": true,
+      "pair_id": "U3-p28",
+      "policy": "aria2-f",
+      "run_id": "U3-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28985554.92015556
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 2178.243,
+      "ok": true,
+      "pair_id": "U3-p29",
+      "policy": "v5",
+      "run_id": "U3-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 7702178.315275201
+    },
+    {
+      "condition": "U3",
+      "duration_ms": 585.331,
+      "ok": true,
+      "pair_id": "U3-p29",
+      "policy": "aria2-f",
+      "run_id": "U3-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28662783.96326181
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4025.243,
+      "ok": true,
+      "pair_id": "U4-p00",
+      "policy": "v5",
+      "run_id": "U4-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 4168000.789020688
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1750.951,
+      "ok": true,
+      "pair_id": "U4-p00",
+      "policy": "aria2-f",
+      "run_id": "U4-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9581773.56191007
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3826.12,
+      "ok": true,
+      "pair_id": "U4-p01",
+      "policy": "v5",
+      "run_id": "U4-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 4384916.312086396
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2133.326,
+      "ok": true,
+      "pair_id": "U4-p01",
+      "policy": "aria2-f",
+      "run_id": "U4-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7864347.033692929
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3844.801,
+      "ok": true,
+      "pair_id": "U4-p02",
+      "policy": "v5",
+      "run_id": "U4-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 4363611.016538957
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1623.11,
+      "ok": true,
+      "pair_id": "U4-p02",
+      "policy": "aria2-f",
+      "run_id": "U4-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10336462.716636581
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3835.985,
+      "ok": true,
+      "pair_id": "U4-p03",
+      "policy": "v5",
+      "run_id": "U4-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 4373639.625806671
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2484.984,
+      "ok": true,
+      "pair_id": "U4-p03",
+      "policy": "aria2-f",
+      "run_id": "U4-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6751438.238636547
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3829.097,
+      "ok": true,
+      "pair_id": "U4-p04",
+      "policy": "v5",
+      "run_id": "U4-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 4381507.1804135535
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2112.894,
+      "ok": true,
+      "pair_id": "U4-p04",
+      "policy": "aria2-f",
+      "run_id": "U4-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7940396.442036374
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3822.075,
+      "ok": true,
+      "pair_id": "U4-p05",
+      "policy": "v5",
+      "run_id": "U4-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 4389556.981482572
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1783.48,
+      "ok": true,
+      "pair_id": "U4-p05",
+      "policy": "aria2-f",
+      "run_id": "U4-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9407011.012178438
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3807.661,
+      "ok": true,
+      "pair_id": "U4-p06",
+      "policy": "v5",
+      "run_id": "U4-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 4406173.763893371
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1639.901,
+      "ok": true,
+      "pair_id": "U4-p06",
+      "policy": "aria2-f",
+      "run_id": "U4-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10230627.3366502
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4105.288,
+      "ok": true,
+      "pair_id": "U4-p07",
+      "policy": "v5",
+      "run_id": "U4-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 4086733.01361561
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2465.824,
+      "ok": true,
+      "pair_id": "U4-p07",
+      "policy": "aria2-f",
+      "run_id": "U4-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6803898.412863205
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4149.202,
+      "ok": true,
+      "pair_id": "U4-p08",
+      "policy": "v5",
+      "run_id": "U4-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 4043480.1679937495
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1683.188,
+      "ok": true,
+      "pair_id": "U4-p08",
+      "policy": "aria2-f",
+      "run_id": "U4-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9967523.532724805
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3977.043,
+      "ok": true,
+      "pair_id": "U4-p09",
+      "policy": "v5",
+      "run_id": "U4-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 4218515.11286149
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1716.507,
+      "ok": true,
+      "pair_id": "U4-p09",
+      "policy": "aria2-f",
+      "run_id": "U4-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9774044.615023417
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3766.78,
+      "ok": true,
+      "pair_id": "U4-p10",
+      "policy": "v5",
+      "run_id": "U4-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 4453994.127610319
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1555.268,
+      "ok": true,
+      "pair_id": "U4-p10",
+      "policy": "aria2-f",
+      "run_id": "U4-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10787347.261050828
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3744.488,
+      "ok": true,
+      "pair_id": "U4-p11",
+      "policy": "v5",
+      "run_id": "U4-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 4480510.018993251
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2308.407,
+      "ok": true,
+      "pair_id": "U4-p11",
+      "policy": "aria2-f",
+      "run_id": "U4-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7267876.072113799
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3885.009,
+      "ok": true,
+      "pair_id": "U4-p12",
+      "policy": "v5",
+      "run_id": "U4-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 4318449.712729108
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1597.55,
+      "ok": true,
+      "pair_id": "U4-p12",
+      "policy": "aria2-f",
+      "run_id": "U4-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10501840.943945417
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4780.283,
+      "ok": true,
+      "pair_id": "U4-p13",
+      "policy": "v5",
+      "run_id": "U4-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 3509670.034179984
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2464.259,
+      "ok": true,
+      "pair_id": "U4-p13",
+      "policy": "aria2-f",
+      "run_id": "U4-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6808219.428233801
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3859.776,
+      "ok": true,
+      "pair_id": "U4-p14",
+      "policy": "v5",
+      "run_id": "U4-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 4346681.258187004
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1799.102,
+      "ok": true,
+      "pair_id": "U4-p14",
+      "policy": "aria2-f",
+      "run_id": "U4-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9325327.858009163
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3779.997,
+      "ok": true,
+      "pair_id": "U4-p15",
+      "policy": "v5",
+      "run_id": "U4-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 4438420.453772848
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1526.044,
+      "ok": true,
+      "pair_id": "U4-p15",
+      "policy": "aria2-f",
+      "run_id": "U4-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10993926.780617071
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3753.167,
+      "ok": true,
+      "pair_id": "U4-p16",
+      "policy": "v5",
+      "run_id": "U4-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 4470149.076766368
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1681.409,
+      "ok": true,
+      "pair_id": "U4-p16",
+      "policy": "aria2-f",
+      "run_id": "U4-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9978069.583307808
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3810.823,
+      "ok": true,
+      "pair_id": "U4-p17",
+      "policy": "v5",
+      "run_id": "U4-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 4402517.77634385
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2473.676,
+      "ok": true,
+      "pair_id": "U4-p17",
+      "policy": "aria2-f",
+      "run_id": "U4-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6782301.31997885
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3771.949,
+      "ok": true,
+      "pair_id": "U4-p18",
+      "policy": "v5",
+      "run_id": "U4-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 4447890.467235903
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2425.912,
+      "ok": true,
+      "pair_id": "U4-p18",
+      "policy": "aria2-f",
+      "run_id": "U4-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6915838.66191354
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3833.209,
+      "ok": true,
+      "pair_id": "U4-p19",
+      "policy": "v5",
+      "run_id": "U4-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 4376807.004261965
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2045.44,
+      "ok": true,
+      "pair_id": "U4-p19",
+      "policy": "aria2-f",
+      "run_id": "U4-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8202252.816020024
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3804.388,
+      "ok": true,
+      "pair_id": "U4-p20",
+      "policy": "v5",
+      "run_id": "U4-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 4409964.49363209
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1612.458,
+      "ok": true,
+      "pair_id": "U4-p20",
+      "policy": "aria2-f",
+      "run_id": "U4-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10404746.046098564
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3948.447,
+      "ok": true,
+      "pair_id": "U4-p21",
+      "policy": "v5",
+      "run_id": "U4-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 4249067.0382558005
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2114.326,
+      "ok": true,
+      "pair_id": "U4-p21",
+      "policy": "aria2-f",
+      "run_id": "U4-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7935018.535457634
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3848.255,
+      "ok": true,
+      "pair_id": "U4-p22",
+      "policy": "v5",
+      "run_id": "U4-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 4359694.458917093
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1697.941,
+      "ok": true,
+      "pair_id": "U4-p22",
+      "policy": "aria2-f",
+      "run_id": "U4-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9880918.12377462
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4018.708,
+      "ok": true,
+      "pair_id": "U4-p23",
+      "policy": "v5",
+      "run_id": "U4-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 4174778.560671738
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1544.588,
+      "ok": true,
+      "pair_id": "U4-p23",
+      "policy": "aria2-f",
+      "run_id": "U4-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10861935.998466905
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3876.96,
+      "ok": true,
+      "pair_id": "U4-p24",
+      "policy": "v5",
+      "run_id": "U4-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 4327415.294457513
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2063.909,
+      "ok": true,
+      "pair_id": "U4-p24",
+      "policy": "aria2-f",
+      "run_id": "U4-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8128854.518295137
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3804.681,
+      "ok": true,
+      "pair_id": "U4-p25",
+      "policy": "v5",
+      "run_id": "U4-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 4409624.880509037
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1620.398,
+      "ok": true,
+      "pair_id": "U4-p25",
+      "policy": "aria2-f",
+      "run_id": "U4-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10353762.470701642
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3730.861,
+      "ok": true,
+      "pair_id": "U4-p26",
+      "policy": "v5",
+      "run_id": "U4-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 4496875.118102765
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1886.596,
+      "ok": true,
+      "pair_id": "U4-p26",
+      "policy": "aria2-f",
+      "run_id": "U4-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8892850.403584022
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 4798.512,
+      "ok": true,
+      "pair_id": "U4-p27",
+      "policy": "v5",
+      "run_id": "U4-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 3496337.1978646717
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1467.69,
+      "ok": true,
+      "pair_id": "U4-p27",
+      "policy": "aria2-f",
+      "run_id": "U4-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11431035.16410141
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3804.77,
+      "ok": true,
+      "pair_id": "U4-p28",
+      "policy": "v5",
+      "run_id": "U4-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 4409521.731931234
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 2472.889,
+      "ok": true,
+      "pair_id": "U4-p28",
+      "policy": "aria2-f",
+      "run_id": "U4-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6784459.795809678
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 3835.312,
+      "ok": true,
+      "pair_id": "U4-p29",
+      "policy": "v5",
+      "run_id": "U4-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 4374407.0886540655
+    },
+    {
+      "condition": "U4",
+      "duration_ms": 1464.948,
+      "ok": true,
+      "pair_id": "U4-p29",
+      "policy": "aria2-f",
+      "run_id": "U4-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11452431.076051844
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4260.523,
+      "ok": true,
+      "pair_id": "U5-p00",
+      "policy": "v5",
+      "run_id": "U5-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 3937830.167798648
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2582.113,
+      "ok": true,
+      "pair_id": "U5-p00",
+      "policy": "aria2-f",
+      "run_id": "U5-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6497475.5171442935
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4306.697,
+      "ok": true,
+      "pair_id": "U5-p01",
+      "policy": "v5",
+      "run_id": "U5-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 3895610.9519662056
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2476.452,
+      "ok": true,
+      "pair_id": "U5-p01",
+      "policy": "aria2-f",
+      "run_id": "U5-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6774698.641443484
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4200.519,
+      "ok": true,
+      "pair_id": "U5-p02",
+      "policy": "v5",
+      "run_id": "U5-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 3994081.6837157505
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2471.396,
+      "ok": true,
+      "pair_id": "U5-p02",
+      "policy": "aria2-f",
+      "run_id": "U5-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6788558.369439782
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4272.938,
+      "ok": true,
+      "pair_id": "U5-p03",
+      "policy": "v5",
+      "run_id": "U5-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 3926388.8219300164
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2478.772,
+      "ok": true,
+      "pair_id": "U5-p03",
+      "policy": "aria2-f",
+      "run_id": "U5-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6768357.8804343445
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4199.711,
+      "ok": true,
+      "pair_id": "U5-p04",
+      "policy": "v5",
+      "run_id": "U5-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 3994850.121829811
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2474.758,
+      "ok": true,
+      "pair_id": "U5-p04",
+      "policy": "aria2-f",
+      "run_id": "U5-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6779335.999721993
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4253.94,
+      "ok": true,
+      "pair_id": "U5-p05",
+      "policy": "v5",
+      "run_id": "U5-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 3943923.985763787
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2466.699,
+      "ok": true,
+      "pair_id": "U5-p05",
+      "policy": "aria2-f",
+      "run_id": "U5-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6801484.899454696
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4165.65,
+      "ok": true,
+      "pair_id": "U5-p06",
+      "policy": "v5",
+      "run_id": "U5-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 4027514.553551067
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3543.671,
+      "ok": true,
+      "pair_id": "U5-p06",
+      "policy": "aria2-f",
+      "run_id": "U5-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4734416.936560985
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4140.672,
+      "ok": true,
+      "pair_id": "U5-p07",
+      "policy": "v5",
+      "run_id": "U5-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 4051809.947757273
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3488.106,
+      "ok": true,
+      "pair_id": "U5-p07",
+      "policy": "aria2-f",
+      "run_id": "U5-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4809835.480917151
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4294.644,
+      "ok": true,
+      "pair_id": "U5-p08",
+      "policy": "v5",
+      "run_id": "U5-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 3906544.0581338056
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2495.944,
+      "ok": true,
+      "pair_id": "U5-p08",
+      "policy": "aria2-f",
+      "run_id": "U5-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6721791.835073222
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4168.815,
+      "ok": true,
+      "pair_id": "U5-p09",
+      "policy": "v5",
+      "run_id": "U5-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 4024456.8300584224
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4484.193,
+      "ok": true,
+      "pair_id": "U5-p09",
+      "policy": "aria2-f",
+      "run_id": "U5-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 3741412.557398845
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4068.382,
+      "ok": true,
+      "pair_id": "U5-p10",
+      "policy": "v5",
+      "run_id": "U5-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 4123805.4833592325
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2577.706,
+      "ok": true,
+      "pair_id": "U5-p10",
+      "policy": "aria2-f",
+      "run_id": "U5-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6508583.989019694
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4091.464,
+      "ok": true,
+      "pair_id": "U5-p11",
+      "policy": "v5",
+      "run_id": "U5-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 4100541.028834666
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3466.182,
+      "ok": true,
+      "pair_id": "U5-p11",
+      "policy": "aria2-f",
+      "run_id": "U5-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4840258.243796777
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4418.01,
+      "ok": true,
+      "pair_id": "U5-p12",
+      "policy": "v5",
+      "run_id": "U5-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 3797459.942372244
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2475.74,
+      "ok": true,
+      "pair_id": "U5-p12",
+      "policy": "aria2-f",
+      "run_id": "U5-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6776646.982316399
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4145.616,
+      "ok": true,
+      "pair_id": "U5-p13",
+      "policy": "v5",
+      "run_id": "U5-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 4046977.8194603645
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2583.334,
+      "ok": true,
+      "pair_id": "U5-p13",
+      "policy": "aria2-f",
+      "run_id": "U5-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6494404.517573028
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4162.501,
+      "ok": true,
+      "pair_id": "U5-p14",
+      "policy": "v5",
+      "run_id": "U5-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 4030561.4340993552
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3521.085,
+      "ok": true,
+      "pair_id": "U5-p14",
+      "policy": "aria2-f",
+      "run_id": "U5-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4764785.854360232
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4183.572,
+      "ok": true,
+      "pair_id": "U5-p15",
+      "policy": "v5",
+      "run_id": "U5-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 4010261.0878933123
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2582.001,
+      "ok": true,
+      "pair_id": "U5-p15",
+      "policy": "aria2-f",
+      "run_id": "U5-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6497757.359505283
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4135.21,
+      "ok": true,
+      "pair_id": "U5-p16",
+      "policy": "v5",
+      "run_id": "U5-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 4057161.788639513
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2599.639,
+      "ok": true,
+      "pair_id": "U5-p16",
+      "policy": "aria2-f",
+      "run_id": "U5-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6453671.452074692
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4532.564,
+      "ok": true,
+      "pair_id": "U5-p17",
+      "policy": "v5",
+      "run_id": "U5-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 3701484.634304115
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2478.375,
+      "ok": true,
+      "pair_id": "U5-p17",
+      "policy": "aria2-f",
+      "run_id": "U5-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6769442.073939577
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4120.913,
+      "ok": true,
+      "pair_id": "U5-p18",
+      "policy": "v5",
+      "run_id": "U5-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 4071237.6116651823
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2606.98,
+      "ok": true,
+      "pair_id": "U5-p18",
+      "policy": "aria2-f",
+      "run_id": "U5-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6435498.546210557
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4176.498,
+      "ok": true,
+      "pair_id": "U5-p19",
+      "policy": "v5",
+      "run_id": "U5-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 4017053.5218740683
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2909.815,
+      "ok": true,
+      "pair_id": "U5-p19",
+      "policy": "aria2-f",
+      "run_id": "U5-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 5765732.873052067
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4062.588,
+      "ok": true,
+      "pair_id": "U5-p20",
+      "policy": "v5",
+      "run_id": "U5-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 4129686.7907845937
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3492.125,
+      "ok": true,
+      "pair_id": "U5-p20",
+      "policy": "aria2-f",
+      "run_id": "U5-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4804299.960625693
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4184.541,
+      "ok": true,
+      "pair_id": "U5-p21",
+      "policy": "v5",
+      "run_id": "U5-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 4009332.4453028417
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2705.239,
+      "ok": true,
+      "pair_id": "U5-p21",
+      "policy": "aria2-f",
+      "run_id": "U5-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6201750.011736486
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4046.179,
+      "ok": true,
+      "pair_id": "U5-p22",
+      "policy": "v5",
+      "run_id": "U5-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 4146434.4508732804
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2820.363,
+      "ok": true,
+      "pair_id": "U5-p22",
+      "policy": "aria2-f",
+      "run_id": "U5-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 5948601.651631368
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4647.022,
+      "ok": true,
+      "pair_id": "U5-p23",
+      "policy": "v5",
+      "run_id": "U5-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 3610315.5956653534
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2482.038,
+      "ok": true,
+      "pair_id": "U5-p23",
+      "policy": "aria2-f",
+      "run_id": "U5-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6759451.708636209
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4402.637,
+      "ok": true,
+      "pair_id": "U5-p24",
+      "policy": "v5",
+      "run_id": "U5-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 3810719.802700064
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2703.129,
+      "ok": true,
+      "pair_id": "U5-p24",
+      "policy": "aria2-f",
+      "run_id": "U5-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6206590.954408761
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4287.017,
+      "ok": true,
+      "pair_id": "U5-p25",
+      "policy": "v5",
+      "run_id": "U5-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 3913494.1615580255
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2831.089,
+      "ok": true,
+      "pair_id": "U5-p25",
+      "policy": "aria2-f",
+      "run_id": "U5-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 5926064.493203852
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4150.744,
+      "ok": true,
+      "pair_id": "U5-p26",
+      "policy": "v5",
+      "run_id": "U5-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 4041978.0164712644
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3473.759,
+      "ok": true,
+      "pair_id": "U5-p26",
+      "policy": "aria2-f",
+      "run_id": "U5-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4829700.621142687
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4280.725,
+      "ok": true,
+      "pair_id": "U5-p27",
+      "policy": "v5",
+      "run_id": "U5-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 3919246.3893382545
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2471.994,
+      "ok": true,
+      "pair_id": "U5-p27",
+      "policy": "aria2-f",
+      "run_id": "U5-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6786916.149472855
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4024.133,
+      "ok": true,
+      "pair_id": "U5-p28",
+      "policy": "v5",
+      "run_id": "U5-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 4169150.4729093197
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 2727.371,
+      "ok": true,
+      "pair_id": "U5-p28",
+      "policy": "aria2-f",
+      "run_id": "U5-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6151424.21034762
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 4271.14,
+      "ok": true,
+      "pair_id": "U5-p29",
+      "policy": "v5",
+      "run_id": "U5-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 3928041.6937866705
+    },
+    {
+      "condition": "U5",
+      "duration_ms": 3486.627,
+      "ok": true,
+      "pair_id": "U5-p29",
+      "policy": "aria2-f",
+      "run_id": "U5-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 4811875.775642189
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3119.333,
+      "ok": true,
+      "pair_id": "U6-p00",
+      "policy": "v5",
+      "run_id": "U6-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 5378462.639288591
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1124.801,
+      "ok": true,
+      "pair_id": "U6-p00",
+      "policy": "aria2-f",
+      "run_id": "U6-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14915719.313905304
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2959.198,
+      "ok": true,
+      "pair_id": "U6-p01",
+      "policy": "v5",
+      "run_id": "U6-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 5669514.51035044
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1120.502,
+      "ok": true,
+      "pair_id": "U6-p01",
+      "policy": "aria2-f",
+      "run_id": "U6-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14972946.054536272
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2957.619,
+      "ok": true,
+      "pair_id": "U6-p02",
+      "policy": "v5",
+      "run_id": "U6-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 5672541.324626329
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1137.881,
+      "ok": true,
+      "pair_id": "U6-p02",
+      "policy": "aria2-f",
+      "run_id": "U6-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14744262.36135413
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3045.866,
+      "ok": true,
+      "pair_id": "U6-p03",
+      "policy": "v5",
+      "run_id": "U6-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 5508192.415556035
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1122.574,
+      "ok": true,
+      "pair_id": "U6-p03",
+      "policy": "aria2-f",
+      "run_id": "U6-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14945309.618786825
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2947.076,
+      "ok": true,
+      "pair_id": "U6-p04",
+      "policy": "v5",
+      "run_id": "U6-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 5692834.524796781
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1110.826,
+      "ok": true,
+      "pair_id": "U6-p04",
+      "policy": "aria2-f",
+      "run_id": "U6-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15103369.924722683
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3011.984,
+      "ok": true,
+      "pair_id": "U6-p05",
+      "policy": "v5",
+      "run_id": "U6-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 5570154.423131065
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1102.466,
+      "ok": true,
+      "pair_id": "U6-p05",
+      "policy": "aria2-f",
+      "run_id": "U6-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15217898.783273136
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3001.924,
+      "ok": true,
+      "pair_id": "U6-p06",
+      "policy": "v5",
+      "run_id": "U6-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 5588821.036108842
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1125.8,
+      "ok": true,
+      "pair_id": "U6-p06",
+      "policy": "aria2-f",
+      "run_id": "U6-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14902483.567241075
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2941.349,
+      "ok": true,
+      "pair_id": "U6-p07",
+      "policy": "v5",
+      "run_id": "U6-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 5703918.848120369
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1130.983,
+      "ok": true,
+      "pair_id": "U6-p07",
+      "policy": "aria2-f",
+      "run_id": "U6-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14834189.373315074
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3014.292,
+      "ok": true,
+      "pair_id": "U6-p08",
+      "policy": "v5",
+      "run_id": "U6-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 5565889.436059944
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1113.955,
+      "ok": true,
+      "pair_id": "U6-p08",
+      "policy": "aria2-f",
+      "run_id": "U6-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15060945.908946052
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3052.242,
+      "ok": true,
+      "pair_id": "U6-p09",
+      "policy": "v5",
+      "run_id": "U6-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 5496686.042587711
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1105.669,
+      "ok": true,
+      "pair_id": "U6-p09",
+      "policy": "aria2-f",
+      "run_id": "U6-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15173814.224691115
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3082.787,
+      "ok": true,
+      "pair_id": "U6-p10",
+      "policy": "v5",
+      "run_id": "U6-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 5442223.54642082
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1119.265,
+      "ok": true,
+      "pair_id": "U6-p10",
+      "policy": "aria2-f",
+      "run_id": "U6-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14989493.99829352
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3002.137,
+      "ok": true,
+      "pair_id": "U6-p11",
+      "policy": "v5",
+      "run_id": "U6-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 5588424.512272424
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1104.197,
+      "ok": true,
+      "pair_id": "U6-p11",
+      "policy": "aria2-f",
+      "run_id": "U6-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15194042.36743987
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2946.287,
+      "ok": true,
+      "pair_id": "U6-p12",
+      "policy": "v5",
+      "run_id": "U6-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 5694359.035626875
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1121.888,
+      "ok": true,
+      "pair_id": "U6-p12",
+      "policy": "aria2-f",
+      "run_id": "U6-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14954448.215864684
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3002.423,
+      "ok": true,
+      "pair_id": "U6-p13",
+      "policy": "v5",
+      "run_id": "U6-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 5587892.17908336
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1125.48,
+      "ok": true,
+      "pair_id": "U6-p13",
+      "policy": "aria2-f",
+      "run_id": "U6-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14906720.688061982
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2997.211,
+      "ok": true,
+      "pair_id": "U6-p14",
+      "policy": "v5",
+      "run_id": "U6-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 5597609.244060562
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1111.221,
+      "ok": true,
+      "pair_id": "U6-p14",
+      "policy": "aria2-f",
+      "run_id": "U6-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15098001.20768056
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3023.725,
+      "ok": true,
+      "pair_id": "U6-p15",
+      "policy": "v5",
+      "run_id": "U6-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 5548525.742255
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1131.804,
+      "ok": true,
+      "pair_id": "U6-p15",
+      "policy": "aria2-f",
+      "run_id": "U6-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14823428.791557549
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3009.479,
+      "ok": true,
+      "pair_id": "U6-p16",
+      "policy": "v5",
+      "run_id": "U6-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 5574790.852503042
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1127.433,
+      "ok": true,
+      "pair_id": "U6-p16",
+      "policy": "aria2-f",
+      "run_id": "U6-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14880898.465806838
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2943.672,
+      "ok": true,
+      "pair_id": "U6-p17",
+      "policy": "v5",
+      "run_id": "U6-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 5699417.598156316
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1105.776,
+      "ok": true,
+      "pair_id": "U6-p17",
+      "policy": "aria2-f",
+      "run_id": "U6-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15172345.936247485
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3008.186,
+      "ok": true,
+      "pair_id": "U6-p18",
+      "policy": "v5",
+      "run_id": "U6-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 5577187.0489391275
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1105.851,
+      "ok": true,
+      "pair_id": "U6-p18",
+      "policy": "aria2-f",
+      "run_id": "U6-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15171316.931485344
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2997.733,
+      "ok": true,
+      "pair_id": "U6-p19",
+      "policy": "v5",
+      "run_id": "U6-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 5596634.523488249
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1118.945,
+      "ok": true,
+      "pair_id": "U6-p19",
+      "policy": "aria2-f",
+      "run_id": "U6-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14993780.748830372
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3086.678,
+      "ok": true,
+      "pair_id": "U6-p20",
+      "policy": "v5",
+      "run_id": "U6-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 5435363.19629064
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1118.204,
+      "ok": true,
+      "pair_id": "U6-p20",
+      "policy": "aria2-f",
+      "run_id": "U6-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15003716.674238332
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2995.738,
+      "ok": true,
+      "pair_id": "U6-p21",
+      "policy": "v5",
+      "run_id": "U6-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 5600361.58035182
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1120.859,
+      "ok": true,
+      "pair_id": "U6-p21",
+      "policy": "aria2-f",
+      "run_id": "U6-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14968177.085610235
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3018.157,
+      "ok": true,
+      "pair_id": "U6-p22",
+      "policy": "v5",
+      "run_id": "U6-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 5558761.853674279
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1114.915,
+      "ok": true,
+      "pair_id": "U6-p22",
+      "policy": "aria2-f",
+      "run_id": "U6-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15047977.648520293
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2967.252,
+      "ok": true,
+      "pair_id": "U6-p23",
+      "policy": "v5",
+      "run_id": "U6-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 5654125.770241288
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1123.901,
+      "ok": true,
+      "pair_id": "U6-p23",
+      "policy": "aria2-f",
+      "run_id": "U6-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14927663.557555337
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2935.628,
+      "ok": true,
+      "pair_id": "U6-p24",
+      "policy": "v5",
+      "run_id": "U6-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 5715034.738733926
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1124.922,
+      "ok": true,
+      "pair_id": "U6-p24",
+      "policy": "aria2-f",
+      "run_id": "U6-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14914114.934190992
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3008.99,
+      "ok": true,
+      "pair_id": "U6-p25",
+      "policy": "v5",
+      "run_id": "U6-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 5575696.828503917
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1106.449,
+      "ok": true,
+      "pair_id": "U6-p25",
+      "policy": "aria2-f",
+      "run_id": "U6-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15163117.323979687
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3012.9,
+      "ok": true,
+      "pair_id": "U6-p26",
+      "policy": "v5",
+      "run_id": "U6-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 5568460.951242988
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1125.341,
+      "ok": true,
+      "pair_id": "U6-p26",
+      "policy": "aria2-f",
+      "run_id": "U6-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14908561.938114759
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2997.964,
+      "ok": true,
+      "pair_id": "U6-p27",
+      "policy": "v5",
+      "run_id": "U6-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 5596203.289966123
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1126.194,
+      "ok": true,
+      "pair_id": "U6-p27",
+      "policy": "aria2-f",
+      "run_id": "U6-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14897269.919747397
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 2952.677,
+      "ok": true,
+      "pair_id": "U6-p28",
+      "policy": "v5",
+      "run_id": "U6-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 5682035.657811538
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1113.226,
+      "ok": true,
+      "pair_id": "U6-p28",
+      "policy": "aria2-f",
+      "run_id": "U6-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 15070808.622867234
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 3106.981,
+      "ok": true,
+      "pair_id": "U6-p29",
+      "policy": "v5",
+      "run_id": "U6-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 5399845.0585954655
+    },
+    {
+      "condition": "U6",
+      "duration_ms": 1118.555,
+      "ok": true,
+      "pair_id": "U6-p29",
+      "policy": "aria2-f",
+      "run_id": "U6-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 14999008.542271055
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2280.413,
+      "ok": true,
+      "pair_id": "U7-p00",
+      "policy": "v5",
+      "run_id": "U7-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 7357095.403332642
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 639.349,
+      "ok": true,
+      "pair_id": "U7-p00",
+      "policy": "aria2-f",
+      "run_id": "U7-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 26241092.110881533
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2289.124,
+      "ok": true,
+      "pair_id": "U7-p01",
+      "policy": "v5",
+      "run_id": "U7-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 7329098.81683998
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 618.286,
+      "ok": true,
+      "pair_id": "U7-p01",
+      "policy": "aria2-f",
+      "run_id": "U7-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27135041.065138146
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2297.198,
+      "ok": true,
+      "pair_id": "U7-p02",
+      "policy": "v5",
+      "run_id": "U7-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 7303339.111387003
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 628.168,
+      "ok": true,
+      "pair_id": "U7-p02",
+      "policy": "aria2-f",
+      "run_id": "U7-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 26708167.241884336
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2272.056,
+      "ok": true,
+      "pair_id": "U7-p03",
+      "policy": "v5",
+      "run_id": "U7-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 7384156.024323344
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1626.133,
+      "ok": true,
+      "pair_id": "U7-p03",
+      "policy": "aria2-f",
+      "run_id": "U7-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10317247.113243503
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2465.043,
+      "ok": true,
+      "pair_id": "U7-p04",
+      "policy": "v5",
+      "run_id": "U7-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 6806054.093174034
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 609.924,
+      "ok": true,
+      "pair_id": "U7-p04",
+      "policy": "aria2-f",
+      "run_id": "U7-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27507059.89598704
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2292.633,
+      "ok": true,
+      "pair_id": "U7-p05",
+      "policy": "v5",
+      "run_id": "U7-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 7317881.230881698
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1628.681,
+      "ok": true,
+      "pair_id": "U7-p05",
+      "policy": "aria2-f",
+      "run_id": "U7-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10301106.232589439
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2294.887,
+      "ok": true,
+      "pair_id": "U7-p06",
+      "policy": "v5",
+      "run_id": "U7-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 7310693.7291465765
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1604.34,
+      "ok": true,
+      "pair_id": "U7-p06",
+      "policy": "aria2-f",
+      "run_id": "U7-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10457394.317912662
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2285.439,
+      "ok": true,
+      "pair_id": "U7-p07",
+      "policy": "v5",
+      "run_id": "U7-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 7340916.121585394
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 616.195,
+      "ok": true,
+      "pair_id": "U7-p07",
+      "policy": "aria2-f",
+      "run_id": "U7-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27227121.284658264
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2291.067,
+      "ok": true,
+      "pair_id": "U7-p08",
+      "policy": "v5",
+      "run_id": "U7-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 7322883.1806315575
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 801.383,
+      "ok": true,
+      "pair_id": "U7-p08",
+      "policy": "aria2-f",
+      "run_id": "U7-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20935328.051630743
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2293.818,
+      "ok": true,
+      "pair_id": "U7-p09",
+      "policy": "v5",
+      "run_id": "U7-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 7314100.769982622
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 803.086,
+      "ok": true,
+      "pair_id": "U7-p09",
+      "policy": "aria2-f",
+      "run_id": "U7-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20890933.225084238
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2279.58,
+      "ok": true,
+      "pair_id": "U7-p10",
+      "policy": "v5",
+      "run_id": "U7-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 7359783.81982646
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1593.211,
+      "ok": true,
+      "pair_id": "U7-p10",
+      "policy": "aria2-f",
+      "run_id": "U7-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10530441.981633319
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2294.611,
+      "ok": true,
+      "pair_id": "U7-p11",
+      "policy": "v5",
+      "run_id": "U7-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 7311573.072734334
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 618.491,
+      "ok": true,
+      "pair_id": "U7-p11",
+      "policy": "aria2-f",
+      "run_id": "U7-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27126047.10497
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2286.638,
+      "ok": true,
+      "pair_id": "U7-p12",
+      "policy": "v5",
+      "run_id": "U7-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 7337066.907835871
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 784.778,
+      "ok": true,
+      "pair_id": "U7-p12",
+      "policy": "aria2-f",
+      "run_id": "U7-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21378295.51796814
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2292.511,
+      "ok": true,
+      "pair_id": "U7-p13",
+      "policy": "v5",
+      "run_id": "U7-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 7318270.664786341
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 629.95,
+      "ok": true,
+      "pair_id": "U7-p13",
+      "policy": "aria2-f",
+      "run_id": "U7-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 26632615.286927532
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2286.189,
+      "ok": true,
+      "pair_id": "U7-p14",
+      "policy": "v5",
+      "run_id": "U7-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 7338507.883643916
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1631.841,
+      "ok": true,
+      "pair_id": "U7-p14",
+      "policy": "aria2-f",
+      "run_id": "U7-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10281158.519733235
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2270.973,
+      "ok": true,
+      "pair_id": "U7-p15",
+      "policy": "v5",
+      "run_id": "U7-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 7387677.440462744
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 611.954,
+      "ok": true,
+      "pair_id": "U7-p15",
+      "policy": "aria2-f",
+      "run_id": "U7-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27415812.29961729
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2267.158,
+      "ok": true,
+      "pair_id": "U7-p16",
+      "policy": "v5",
+      "run_id": "U7-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 7400108.858756206
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 618.749,
+      "ok": true,
+      "pair_id": "U7-p16",
+      "policy": "aria2-f",
+      "run_id": "U7-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27114736.34704864
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2255.501,
+      "ok": true,
+      "pair_id": "U7-p17",
+      "policy": "v5",
+      "run_id": "U7-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 7438354.494189982
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 817.302,
+      "ok": true,
+      "pair_id": "U7-p17",
+      "policy": "aria2-f",
+      "run_id": "U7-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 20527560.19194863
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2275.699,
+      "ok": true,
+      "pair_id": "U7-p18",
+      "policy": "v5",
+      "run_id": "U7-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 7372335.269295281
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 608.64,
+      "ok": true,
+      "pair_id": "U7-p18",
+      "policy": "aria2-f",
+      "run_id": "U7-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27565089.379600424
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2253.034,
+      "ok": true,
+      "pair_id": "U7-p19",
+      "policy": "v5",
+      "run_id": "U7-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 7446499.25389497
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 601.02,
+      "ok": true,
+      "pair_id": "U7-p19",
+      "policy": "aria2-f",
+      "run_id": "U7-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27914571.89444611
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2280.037,
+      "ok": true,
+      "pair_id": "U7-p20",
+      "policy": "v5",
+      "run_id": "U7-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 7358308.659026149
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 798.37,
+      "ok": true,
+      "pair_id": "U7-p20",
+      "policy": "aria2-f",
+      "run_id": "U7-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 21014336.71104876
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2289.885,
+      "ok": true,
+      "pair_id": "U7-p21",
+      "policy": "v5",
+      "run_id": "U7-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 7326663.129371124
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 606.66,
+      "ok": true,
+      "pair_id": "U7-p21",
+      "policy": "aria2-f",
+      "run_id": "U7-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27655055.55006099
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2286.89,
+      "ok": true,
+      "pair_id": "U7-p22",
+      "policy": "v5",
+      "run_id": "U7-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 7336258.412079287
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 912.513,
+      "ok": true,
+      "pair_id": "U7-p22",
+      "policy": "aria2-f",
+      "run_id": "U7-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 18385728.203324225
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2254.872,
+      "ok": true,
+      "pair_id": "U7-p23",
+      "policy": "v5",
+      "run_id": "U7-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 7440429.434575444
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 606.284,
+      "ok": true,
+      "pair_id": "U7-p23",
+      "policy": "aria2-f",
+      "run_id": "U7-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27672206.42471185
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2292.663,
+      "ok": true,
+      "pair_id": "U7-p24",
+      "policy": "v5",
+      "run_id": "U7-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 7317785.47479503
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1637.897,
+      "ok": true,
+      "pair_id": "U7-p24",
+      "policy": "aria2-f",
+      "run_id": "U7-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 10243144.71544914
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2286.35,
+      "ok": true,
+      "pair_id": "U7-p25",
+      "policy": "v5",
+      "run_id": "U7-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 7337991.121219411
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 1699.207,
+      "ok": true,
+      "pair_id": "U7-p25",
+      "policy": "aria2-f",
+      "run_id": "U7-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9873556.31185606
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2298.615,
+      "ok": true,
+      "pair_id": "U7-p26",
+      "policy": "v5",
+      "run_id": "U7-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 7298836.90831218
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 594.243,
+      "ok": true,
+      "pair_id": "U7-p26",
+      "policy": "aria2-f",
+      "run_id": "U7-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28232921.548928633
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2281.35,
+      "ok": true,
+      "pair_id": "U7-p27",
+      "policy": "v5",
+      "run_id": "U7-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 7354073.68444123
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 599.711,
+      "ok": true,
+      "pair_id": "U7-p27",
+      "policy": "aria2-f",
+      "run_id": "U7-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 27975501.53323851
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2293.593,
+      "ok": true,
+      "pair_id": "U7-p28",
+      "policy": "v5",
+      "run_id": "U7-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 7314818.278569912
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 592.442,
+      "ok": true,
+      "pair_id": "U7-p28",
+      "policy": "aria2-f",
+      "run_id": "U7-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28318748.50196306
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 2279.996,
+      "ok": true,
+      "pair_id": "U7-p29",
+      "policy": "v5",
+      "run_id": "U7-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 7358440.979721016
+    },
+    {
+      "condition": "U7",
+      "duration_ms": 597.518,
+      "ok": true,
+      "pair_id": "U7-p29",
+      "policy": "aria2-f",
+      "run_id": "U7-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 28078176.724383198
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3346.112,
+      "ok": true,
+      "pair_id": "U8-p00",
+      "policy": "v5",
+      "run_id": "U8-p00-v5",
+      "system": "dqn",
+      "wallclock_bps": 5013943.346785761
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1468.985,
+      "ok": true,
+      "pair_id": "U8-p00",
+      "policy": "aria2-f",
+      "run_id": "U8-p00-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11420958.00842078
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3597.51,
+      "ok": true,
+      "pair_id": "U8-p01",
+      "policy": "v5",
+      "run_id": "U8-p01-v5",
+      "system": "dqn",
+      "wallclock_bps": 4663563.4091357635
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2840.622,
+      "ok": true,
+      "pair_id": "U8-p01",
+      "policy": "aria2-f",
+      "run_id": "U8-p01-aria2",
+      "system": "aria2",
+      "wallclock_bps": 5906176.886611454
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3391.755,
+      "ok": true,
+      "pair_id": "U8-p02",
+      "policy": "v5",
+      "run_id": "U8-p02-v5",
+      "system": "dqn",
+      "wallclock_bps": 4946470.485043878
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1444.263,
+      "ok": true,
+      "pair_id": "U8-p02",
+      "policy": "aria2-f",
+      "run_id": "U8-p02-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11616454.897757543
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3438.236,
+      "ok": true,
+      "pair_id": "U8-p03",
+      "policy": "v5",
+      "run_id": "U8-p03-v5",
+      "system": "dqn",
+      "wallclock_bps": 4879599.887849467
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2760.032,
+      "ok": true,
+      "pair_id": "U8-p03",
+      "policy": "aria2-f",
+      "run_id": "U8-p03-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6078630.972394522
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3669.737,
+      "ok": true,
+      "pair_id": "U8-p04",
+      "policy": "v5",
+      "run_id": "U8-p04-v5",
+      "system": "dqn",
+      "wallclock_bps": 4571776.124556065
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1471.104,
+      "ok": true,
+      "pair_id": "U8-p04",
+      "policy": "aria2-f",
+      "run_id": "U8-p04-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11404507.091272948
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3370.732,
+      "ok": true,
+      "pair_id": "U8-p05",
+      "policy": "v5",
+      "run_id": "U8-p05-v5",
+      "system": "dqn",
+      "wallclock_bps": 4977321.2465422945
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2789.998,
+      "ok": true,
+      "pair_id": "U8-p05",
+      "policy": "aria2-f",
+      "run_id": "U8-p05-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6013343.378740773
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3623.721,
+      "ok": true,
+      "pair_id": "U8-p06",
+      "policy": "v5",
+      "run_id": "U8-p06-v5",
+      "system": "dqn",
+      "wallclock_bps": 4629831.049355069
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1436.511,
+      "ok": true,
+      "pair_id": "U8-p06",
+      "policy": "aria2-f",
+      "run_id": "U8-p06-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11679142.032326937
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3317.396,
+      "ok": true,
+      "pair_id": "U8-p07",
+      "policy": "v5",
+      "run_id": "U8-p07-v5",
+      "system": "dqn",
+      "wallclock_bps": 5057344.977807895
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1884.275,
+      "ok": true,
+      "pair_id": "U8-p07",
+      "policy": "aria2-f",
+      "run_id": "U8-p07-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8903804.380995343
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3355.941,
+      "ok": true,
+      "pair_id": "U8-p08",
+      "policy": "v5",
+      "run_id": "U8-p08-v5",
+      "system": "dqn",
+      "wallclock_bps": 4999258.330226903
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1517.47,
+      "ok": true,
+      "pair_id": "U8-p08",
+      "policy": "aria2-f",
+      "run_id": "U8-p08-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11056044.600552235
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3312.683,
+      "ok": true,
+      "pair_id": "U8-p09",
+      "policy": "v5",
+      "run_id": "U8-p09-v5",
+      "system": "dqn",
+      "wallclock_bps": 5064540.132575317
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1446.911,
+      "ok": true,
+      "pair_id": "U8-p09",
+      "policy": "aria2-f",
+      "run_id": "U8-p09-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11595195.557985252
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3453.048,
+      "ok": true,
+      "pair_id": "U8-p10",
+      "policy": "v5",
+      "run_id": "U8-p10-v5",
+      "system": "dqn",
+      "wallclock_bps": 4858668.63130776
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1495.477,
+      "ok": true,
+      "pair_id": "U8-p10",
+      "policy": "aria2-f",
+      "run_id": "U8-p10-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11218638.60159668
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3395.787,
+      "ok": true,
+      "pair_id": "U8-p11",
+      "policy": "v5",
+      "run_id": "U8-p11-v5",
+      "system": "dqn",
+      "wallclock_bps": 4940597.275388592
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1814.813,
+      "ok": true,
+      "pair_id": "U8-p11",
+      "policy": "aria2-f",
+      "run_id": "U8-p11-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9244597.652760917
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3371.249,
+      "ok": true,
+      "pair_id": "U8-p12",
+      "policy": "v5",
+      "run_id": "U8-p12-v5",
+      "system": "dqn",
+      "wallclock_bps": 4976557.946327904
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1434.617,
+      "ok": true,
+      "pair_id": "U8-p12",
+      "policy": "aria2-f",
+      "run_id": "U8-p12-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11694560.987357602
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3604.024,
+      "ok": true,
+      "pair_id": "U8-p13",
+      "policy": "v5",
+      "run_id": "U8-p13-v5",
+      "system": "dqn",
+      "wallclock_bps": 4655134.37202416
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2628.873,
+      "ok": true,
+      "pair_id": "U8-p13",
+      "policy": "aria2-f",
+      "run_id": "U8-p13-aria2",
+      "system": "aria2",
+      "wallclock_bps": 6381904.336953516
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3468.496,
+      "ok": true,
+      "pair_id": "U8-p14",
+      "policy": "v5",
+      "run_id": "U8-p14-v5",
+      "system": "dqn",
+      "wallclock_bps": 4837029.075426352
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1471.279,
+      "ok": true,
+      "pair_id": "U8-p14",
+      "policy": "aria2-f",
+      "run_id": "U8-p14-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11403150.592103876
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3430.891,
+      "ok": true,
+      "pair_id": "U8-p15",
+      "policy": "v5",
+      "run_id": "U8-p15-v5",
+      "system": "dqn",
+      "wallclock_bps": 4890046.346561287
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3018.005,
+      "ok": true,
+      "pair_id": "U8-p15",
+      "policy": "aria2-f",
+      "run_id": "U8-p15-aria2",
+      "system": "aria2",
+      "wallclock_bps": 5559041.817359481
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3485.886,
+      "ok": true,
+      "pair_id": "U8-p16",
+      "policy": "v5",
+      "run_id": "U8-p16-v5",
+      "system": "dqn",
+      "wallclock_bps": 4812898.643271754
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1425.237,
+      "ok": true,
+      "pair_id": "U8-p16",
+      "policy": "aria2-f",
+      "run_id": "U8-p16-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11771527.121454185
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3445.959,
+      "ok": true,
+      "pair_id": "U8-p17",
+      "policy": "v5",
+      "run_id": "U8-p17-v5",
+      "system": "dqn",
+      "wallclock_bps": 4868663.84655186
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1447.002,
+      "ok": true,
+      "pair_id": "U8-p17",
+      "policy": "aria2-f",
+      "run_id": "U8-p17-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11594466.351808775
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3231.956,
+      "ok": true,
+      "pair_id": "U8-p18",
+      "policy": "v5",
+      "run_id": "U8-p18-v5",
+      "system": "dqn",
+      "wallclock_bps": 5191040.967141879
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2073.255,
+      "ok": true,
+      "pair_id": "U8-p18",
+      "policy": "aria2-f",
+      "run_id": "U8-p18-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8092210.557794386
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3387.628,
+      "ok": true,
+      "pair_id": "U8-p19",
+      "policy": "v5",
+      "run_id": "U8-p19-v5",
+      "system": "dqn",
+      "wallclock_bps": 4952496.555111717
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1786.464,
+      "ok": true,
+      "pair_id": "U8-p19",
+      "policy": "aria2-f",
+      "run_id": "U8-p19-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9391298.11739839
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3413.786,
+      "ok": true,
+      "pair_id": "U8-p20",
+      "policy": "v5",
+      "run_id": "U8-p20-v5",
+      "system": "dqn",
+      "wallclock_bps": 4914548.246433725
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 2266.766,
+      "ok": true,
+      "pair_id": "U8-p20",
+      "policy": "aria2-f",
+      "run_id": "U8-p20-aria2",
+      "system": "aria2",
+      "wallclock_bps": 7401388.586206075
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3451.917,
+      "ok": true,
+      "pair_id": "U8-p21",
+      "policy": "v5",
+      "run_id": "U8-p21-v5",
+      "system": "dqn",
+      "wallclock_bps": 4860260.545082631
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1982.807,
+      "ok": true,
+      "pair_id": "U8-p21",
+      "policy": "aria2-f",
+      "run_id": "U8-p21-aria2",
+      "system": "aria2",
+      "wallclock_bps": 8461345.960549867
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3352.087,
+      "ok": true,
+      "pair_id": "U8-p22",
+      "policy": "v5",
+      "run_id": "U8-p22-v5",
+      "system": "dqn",
+      "wallclock_bps": 5005006.134983967
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1501.173,
+      "ok": true,
+      "pair_id": "U8-p22",
+      "policy": "aria2-f",
+      "run_id": "U8-p22-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11176070.979160963
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3561.452,
+      "ok": true,
+      "pair_id": "U8-p23",
+      "policy": "v5",
+      "run_id": "U8-p23-v5",
+      "system": "dqn",
+      "wallclock_bps": 4710779.760614491
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1442.667,
+      "ok": true,
+      "pair_id": "U8-p23",
+      "policy": "aria2-f",
+      "run_id": "U8-p23-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11629306.000622459
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3356.679,
+      "ok": true,
+      "pair_id": "U8-p24",
+      "policy": "v5",
+      "run_id": "U8-p24-v5",
+      "system": "dqn",
+      "wallclock_bps": 4998159.192463742
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1460.346,
+      "ok": true,
+      "pair_id": "U8-p24",
+      "policy": "aria2-f",
+      "run_id": "U8-p24-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11488521.21346585
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3385.835,
+      "ok": true,
+      "pair_id": "U8-p25",
+      "policy": "v5",
+      "run_id": "U8-p25-v5",
+      "system": "dqn",
+      "wallclock_bps": 4955119.195117305
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1785.797,
+      "ok": true,
+      "pair_id": "U8-p25",
+      "policy": "aria2-f",
+      "run_id": "U8-p25-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9394805.792595686
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3415.843,
+      "ok": true,
+      "pair_id": "U8-p26",
+      "policy": "v5",
+      "run_id": "U8-p26-v5",
+      "system": "dqn",
+      "wallclock_bps": 4911588.735196553
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1437.203,
+      "ok": true,
+      "pair_id": "U8-p26",
+      "policy": "aria2-f",
+      "run_id": "U8-p26-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11673518.633067144
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3413.65,
+      "ok": true,
+      "pair_id": "U8-p27",
+      "policy": "v5",
+      "run_id": "U8-p27-v5",
+      "system": "dqn",
+      "wallclock_bps": 4914744.042300763
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1793.318,
+      "ok": true,
+      "pair_id": "U8-p27",
+      "policy": "aria2-f",
+      "run_id": "U8-p27-aria2",
+      "system": "aria2",
+      "wallclock_bps": 9355404.897513993
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3478.904,
+      "ok": true,
+      "pair_id": "U8-p28",
+      "policy": "v5",
+      "run_id": "U8-p28-v5",
+      "system": "dqn",
+      "wallclock_bps": 4822557.909042618
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1440.247,
+      "ok": true,
+      "pair_id": "U8-p28",
+      "policy": "aria2-f",
+      "run_id": "U8-p28-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11648846.343717432
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 3446.336,
+      "ok": true,
+      "pair_id": "U8-p29",
+      "policy": "v5",
+      "run_id": "U8-p29-v5",
+      "system": "dqn",
+      "wallclock_bps": 4868131.255919331
+    },
+    {
+      "condition": "U8",
+      "duration_ms": 1436.511,
+      "ok": true,
+      "pair_id": "U8-p29",
+      "policy": "aria2-f",
+      "run_id": "U8-p29-aria2",
+      "system": "aria2",
+      "wallclock_bps": 11679142.032326937
+    }
+  ],
+  "systems": {
+    "aria2": "FINAL ARIA2 BASELINE CONFIG v2 (candidate F: 16 connections, split 16, min-split 1 MiB)",
+    "dqn": "Candidate v5 (state spec v2, 1 MiB fixed chunk, concurrency 1-4)"
+  },
+  "v5_sha256": "3a927a58baa7f9b5f150827ba0bd81defc95adb25e5328eb037f5edf9925da75"
+}

@@ -1,0 +1,57 @@
+{
+  "regime": "degraded",
+  "results": [
+    {
+      "concurrency": 1,
+      "duration_ms": 69741.534,
+      "file_size": 67108864,
+      "label": "degraded",
+      "latency_ms": 120,
+      "link": 4194304,
+      "loss_percent": 3,
+      "output_size": 67108864,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 962251.0454100422
+    },
+    {
+      "concurrency": 4,
+      "duration_ms": 24807.374,
+      "file_size": 67108864,
+      "label": "degraded",
+      "latency_ms": 120,
+      "link": 4194304,
+      "loss_percent": 3,
+      "output_size": 67108864,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 2705198.220496857
+    },
+    {
+      "concurrency": 8,
+      "duration_ms": 18851.993,
+      "file_size": 67108864,
+      "label": "degraded",
+      "latency_ms": 120,
+      "link": 4194304,
+      "loss_percent": 3,
+      "output_size": 67108864,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 3559775.563252119
+    },
+    {
+      "concurrency": 16,
+      "duration_ms": 17922.701,
+      "file_size": 67108864,
+      "label": "degraded",
+      "latency_ms": 120,
+      "link": 4194304,
+      "loss_percent": 3,
+      "output_size": 67108864,
+      "rate": 8388608,
+      "sha_ok": true,
+      "wallclock_bps": 3744349.9169014757
+    }
+  ]
+}
