@@ -1,0 +1,23 @@
+# Stock NGINX per-request rate control (limit_rate / limit_rate_after).
+# @@DIR@@ is replaced with the scratch directory at run time.
+daemon on;
+pid @@DIR@@/nginx.pid;
+error_log @@DIR@@/logs/error.log warn;
+worker_processes 1;
+events { worker_connections 1024; }
+http {
+  access_log off;
+  client_body_temp_path @@DIR@@/tmp/body;
+  proxy_temp_path @@DIR@@/tmp/proxy;
+  fastcgi_temp_path @@DIR@@/tmp/fcgi;
+  uwsgi_temp_path @@DIR@@/tmp/uwsgi;
+  scgi_temp_path @@DIR@@/tmp/scgi;
+  sendfile on;
+  server {
+    listen 127.0.0.1:18080;
+    # N1: every response is limited to 640 KiB/s from its first byte.
+    location /constant/ { alias @@DIR@@/www/; limit_rate 640k; }
+    # N2: the first 1 MiB of every response is unthrottled, the rest 640 KiB/s.
+    location /burst/    { alias @@DIR@@/www/; limit_rate_after 1m; limit_rate 640k; }
+  }
+}
