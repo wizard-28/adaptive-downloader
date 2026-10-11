@@ -1,0 +1,19 @@
+{
+  "run_id": "ng-N2-p00-aria2",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+    "file_size_bytes": 536870912,
+    "url": "http://127.0.0.1:18080/burst/big.bin"
+  },
+  "completion_ms": 57779.373,
+  "output_size_bytes": 536870912,
+  "output_sha256": "8bd575172a18217564e55d63b083a05f682d990372e9c7b0e2d70be1cae4ed77",
+  "content_verified": true,
+  "netem_status": "applied",
+  "aria2_exit": 0,
+  "client_requests": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "err": ""
+}

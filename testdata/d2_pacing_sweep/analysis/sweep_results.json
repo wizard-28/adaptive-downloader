@@ -1,0 +1,109 @@
+{
+ "label": "D2 pacing-schedule sweep results (screening, n=5 pairs/schedule; descriptive)",
+ "manifest_sha256": "acff04fe85f6c4f2603e28e51f7a6f03bf8afd36bbae337e817b7357ad46fa8f",
+ "schedules": {
+  "S0_D2_reference": {
+   "phases": "640,160@2,2500@4",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 20.147964,
+   "aria2_mean_s": 53.3464988,
+   "per_pair_ratio": [
+    0.3726,
+    0.3717,
+    0.3894,
+    0.3801,
+    0.3746
+   ],
+   "geo_mean_ratio": 0.3776367224461478,
+   "ratio_min": 0.37173689424156303,
+   "ratio_max": 0.3894344522518064,
+   "pairs_ours_faster": 5
+  },
+  "S1_no_dip": {
+   "phases": "640,2500@2",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 20.0723002,
+   "aria2_mean_s": 48.9218822,
+   "per_pair_ratio": [
+    0.353,
+    0.7506,
+    0.3902,
+    0.363,
+    0.3703
+   ],
+   "geo_mean_ratio": 0.4251985347719339,
+   "ratio_min": 0.35300955156593156,
+   "ratio_max": 0.7505854823428786,
+   "pairs_ours_faster": 5
+  },
+  "S2_long_dip": {
+   "phases": "640,160@2,2500@8",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 44.116811399999996,
+   "aria2_mean_s": 54.73924,
+   "per_pair_ratio": [
+    0.7831,
+    0.8231,
+    0.7907,
+    0.8079,
+    0.827
+   ],
+   "geo_mean_ratio": 0.8061625465406795,
+   "ratio_min": 0.7831334553990219,
+   "ratio_max": 0.8269564228115535,
+   "pairs_ours_faster": 5
+  },
+  "S3_partial_recovery": {
+   "phases": "640,160@2,1280@4",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 31.625482599999998,
+   "aria2_mean_s": 54.2910866,
+   "per_pair_ratio": [
+    0.5861,
+    0.5594,
+    0.6082,
+    0.5776,
+    0.5824
+   ],
+   "geo_mean_ratio": 0.5825368219313909,
+   "ratio_min": 0.5594032147612622,
+   "ratio_max": 0.6082027377749629,
+   "pairs_ours_faster": 5
+  },
+  "S4_constant_fast": {
+   "phases": "2500",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 15.3645082,
+   "aria2_mean_s": 27.1247722,
+   "per_pair_ratio": [
+    0.6021,
+    0.6183,
+    0.524,
+    0.5799,
+    0.5225
+   ],
+   "geo_mean_ratio": 0.5679934727990242,
+   "ratio_min": 0.5225306364607842,
+   "ratio_max": 0.6182887510856679,
+   "pairs_ours_faster": 5
+  },
+  "S5_constant_slow": {
+   "phases": "640",
+   "n_valid_pairs": 5,
+   "ours_mean_s": 53.8263038,
+   "aria2_mean_s": 53.9274712,
+   "per_pair_ratio": [
+    0.9901,
+    1.0068,
+    1.0079,
+    0.9868,
+    0.9992
+   ],
+   "geo_mean_ratio": 0.9981454572478811,
+   "ratio_min": 0.9867757748345478,
+   "ratio_max": 1.0079464762031556,
+   "pairs_ours_faster": 3
+  }
+ },
+ "invalid_runs": []
+}

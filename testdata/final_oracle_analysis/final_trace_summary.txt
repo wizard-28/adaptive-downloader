@@ -1,0 +1,10 @@
+FINAL TRACE SUMMARY — STAGE C
+==============================
+
+Verizon-EVDO-driving   epochs=7 excluded=2 best=543.982429(C8) inst=534.805587 con=535.057012 trans=3 H=0.0164075465
+Verizon-LTE-driving    epochs=11 excluded=1 best=68.519878(C16) inst=68.260657 con=68.506557 trans=3 H=0.0001943981
+ATT-LTE-driving        epochs=6 excluded=3 best=53.180538(C4) inst=53.063101 con=53.172222 trans=1 H=0.0001563742
+TMobile-LTE-driving    epochs=3 excluded=1 best=12.165657(C4) inst=12.150952 con=12.158184 trans=1 H=0.0006142775
+TMobile-UMTS-driving   epochs=7 excluded=1 best=173.111726(C2) inst=171.733363 con=172.603064 trans=2 H=0.0029383433
+
+mean=0.0040621879 sd=0.0069959662 LCB_95=-0.0026077024 threshold=0.10 FAIL

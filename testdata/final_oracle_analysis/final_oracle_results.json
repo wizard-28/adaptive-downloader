@@ -1,0 +1,1276 @@
+{
+  "stage": "Stage C \u2014 frozen oracle + final statistical gate",
+  "status": "FINAL_ORACLE_ANALYSIS_COMPLETE",
+  "epoch_rule_applied": "shared-valid full 120 s epochs of the native downlink trace (frozen 'native downlink trace semantics' + 'final partial epoch excluded'); native final partial epochs have no frozen regime label",
+  "workload_bytes_B_e": 5242880,
+  "ladder": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "traces": {
+    "Verizon-EVDO-driving": {
+      "trace_id": "Verizon-EVDO-driving",
+      "fixed_c_source": "/home/vscode/epoch_pilot_v2",
+      "tau_source": "/home/vscode/tau_campaign_v3/tau_observations.jsonl",
+      "tau_kind": "v3_raw",
+      "native_downlink_duration_ms": 1062016,
+      "native_full_epochs": 8,
+      "candidate_epochs": 9,
+      "retained_epochs": 7,
+      "retained_epoch_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "excluded_epochs": [
+        {
+          "epoch_index": 4,
+          "native_full_epoch": true,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "below_byte_floor"
+          ]
+        },
+        {
+          "epoch_index": 8,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)",
+            "below_byte_floor"
+          ]
+        }
+      ],
+      "excluded_epoch_count": 2,
+      "t_fixed_seconds": {
+        "1": 548.1368302768582,
+        "2": 546.2279583384169,
+        "4": 545.6767473621135,
+        "8": 543.98242850185,
+        "16": 547.8249923449954
+      },
+      "t_best_fixed_seconds": 543.98242850185,
+      "best_c": 8,
+      "t_instantaneous_seconds": 534.8055870504361,
+      "t_constrained_seconds": 535.0570115074763,
+      "transitions": 3,
+      "oracle_sequence": [
+        4,
+        4,
+        8,
+        8,
+        4,
+        4,
+        8
+      ],
+      "transition_details": [
+        {
+          "epoch_index": 2,
+          "from_c": 4,
+          "to_c": 8,
+          "regime": "middle",
+          "tau_seconds": 0
+        },
+        {
+          "epoch_index": 4,
+          "from_c": 8,
+          "to_c": 4,
+          "regime": "recovering",
+          "tau_seconds": 0
+        },
+        {
+          "epoch_index": 6,
+          "from_c": 4,
+          "to_c": 8,
+          "regime": "middle",
+          "tau_seconds": 0
+        }
+      ],
+      "formal_tau": {
+        "1->2": {
+          "estimate_seconds": 0.8538358917550842,
+          "formal_seconds": 0.8538358917550842,
+          "pooled_seconds": 0.8538358917550842,
+          "pooled_n": 4,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 0.21152484703718805,
+            "recovering": 16.787157332718984
+          },
+          "formal_per_regime_tau": {
+            "degraded": 0.21152484703718805,
+            "recovering": 16.787157332718984
+          }
+        },
+        "2->1": {
+          "estimate_seconds": -0.09309301543792506,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.09309301543792506,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.08866799049863977,
+            "recovering": -0.3865317486702128
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->4": {
+          "estimate_seconds": 0.012146239166193562,
+          "formal_seconds": 0.012146239166193562,
+          "pooled_seconds": 0.012146239166193562,
+          "pooled_n": 4,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 1.9762406622388098,
+            "recovering": 0.012146239166193562
+          },
+          "formal_per_regime_tau": {
+            "degraded": 1.9762406622388098,
+            "recovering": 0.012146239166193562
+          }
+        },
+        "4->2": {
+          "estimate_seconds": -0.23865919769912808,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.23865919769912808,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.020060017619365267,
+            "recovering": -0.23865919769912808
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->8": {
+          "estimate_seconds": -0.12384362823063233,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.12384362823063233,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 1.062262431810766,
+            "recovering": -8.537803384188654
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->4": {
+          "estimate_seconds": -1.7431204366331463,
+          "formal_seconds": 0,
+          "pooled_seconds": -1.7431204366331463,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -3.603847099590734,
+            "recovering": -0.25906541135907546
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->16": {
+          "estimate_seconds": -0.6586468284321964,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.6586468284321964,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -1.4804655412673338,
+            "recovering": 0.5783362752119201
+          },
+          "formal_per_regime_tau": {}
+        },
+        "16->8": {
+          "estimate_seconds": -0.09635106557817638,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.09635106557817638,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 11.908955574659075,
+            "recovering": -8.51886409958334
+          },
+          "formal_per_regime_tau": {}
+        }
+      },
+      "H": 0.016407546506519783,
+      "sanity_bound_ok": true,
+      "tau_observations": {
+        "count": 32,
+        "negative_signed": 18,
+        "min_seconds": -16.496626312121908,
+        "max_seconds": 32.80600281381898
+      },
+      "tau_raw_observations_path": "/home/vscode/final_oracle_analysis/tau_observations_Verizon-EVDO-driving.jsonl",
+      "tau_aggregation_path": "/home/vscode/final_oracle_analysis/tau_aggregation_Verizon-EVDO-driving.json"
+    },
+    "Verizon-LTE-driving": {
+      "trace_id": "Verizon-LTE-driving",
+      "fixed_c_source": "/home/vscode/epoch_pilot_v2",
+      "tau_source": "/home/vscode/tau_campaign_v3/tau_observations.jsonl",
+      "tau_kind": "v3_raw",
+      "native_downlink_duration_ms": 1363038,
+      "native_full_epochs": 11,
+      "candidate_epochs": 12,
+      "retained_epochs": 11,
+      "retained_epoch_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "excluded_epochs": [
+        {
+          "epoch_index": 11,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)",
+            "below_observed_fraction"
+          ]
+        }
+      ],
+      "excluded_epoch_count": 1,
+      "t_fixed_seconds": {
+        "1": 70.41550248422384,
+        "2": 68.81353440078114,
+        "4": 68.77209374187278,
+        "8": 68.87639917055893,
+        "16": 68.51987753995569
+      },
+      "t_best_fixed_seconds": 68.51987753995569,
+      "best_c": 16,
+      "t_instantaneous_seconds": 68.26065746887564,
+      "t_constrained_seconds": 68.5065574043028,
+      "transitions": 3,
+      "oracle_sequence": [
+        2,
+        4,
+        4,
+        8,
+        8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "transition_details": [
+        {
+          "epoch_index": 1,
+          "from_c": 2,
+          "to_c": 4,
+          "regime": "good",
+          "tau_seconds": 0.0021280700017428677
+        },
+        {
+          "epoch_index": 3,
+          "from_c": 4,
+          "to_c": 8,
+          "regime": "recovering",
+          "tau_seconds": 0.09046324575294107
+        },
+        {
+          "epoch_index": 5,
+          "from_c": 8,
+          "to_c": 4,
+          "regime": "degraded",
+          "tau_seconds": 0.0002044834636342932
+        }
+      ],
+      "formal_tau": {
+        "1->2": {
+          "estimate_seconds": 0.027383865743502076,
+          "formal_seconds": 0.027383865743502076,
+          "pooled_seconds": 0.027383865743502076,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 2.5150512919933146,
+            "good": -0.314657667082213,
+            "recovering": 0.02622171864996167
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->1": {
+          "estimate_seconds": -0.15549270011022326,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.15549270011022326,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.3129823695591833,
+            "good": -0.41035400821450013,
+            "recovering": 0.1303822169440591
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->4": {
+          "estimate_seconds": 0.0021280700017428677,
+          "formal_seconds": 0.0021280700017428677,
+          "pooled_seconds": 0.0021280700017428677,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 3.1649661545553966,
+            "good": -0.06137137181393724,
+            "recovering": -0.01924423213943833
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->2": {
+          "estimate_seconds": 0.05278946475999839,
+          "formal_seconds": 0.05278946475999839,
+          "pooled_seconds": 0.05278946475999839,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.1056555385158577,
+            "good": -0.43857086745452184,
+            "recovering": 0.057255833552595906
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->8": {
+          "estimate_seconds": 0.09046324575294107,
+          "formal_seconds": 0.09046324575294107,
+          "pooled_seconds": 0.09046324575294107,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.11636097996367378,
+            "good": -0.2026826807443335,
+            "recovering": 0.1270807815797003
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->4": {
+          "estimate_seconds": 0.0002044834636342932,
+          "formal_seconds": 0.0002044834636342932,
+          "pooled_seconds": 0.0002044834636342932,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.17981750347761427,
+            "good": -0.2468377760213884,
+            "recovering": 0.02089867661157361
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->16": {
+          "estimate_seconds": 0.026382929614230693,
+          "formal_seconds": 0.026382929614230693,
+          "pooled_seconds": 0.026382929614230693,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 2.5995867786776277,
+            "good": 0.7984335782481374,
+            "recovering": -0.12867044513236098
+          },
+          "formal_per_regime_tau": {}
+        },
+        "16->8": {
+          "estimate_seconds": 0.03267508615694356,
+          "formal_seconds": 0.03267508615694356,
+          "pooled_seconds": 0.03267508615694356,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -1.9894349338331005,
+            "good": 0.394450499069305,
+            "recovering": 0.01753514719417354
+          },
+          "formal_per_regime_tau": {}
+        }
+      },
+      "H": 0.00019439812403521475,
+      "sanity_bound_ok": true,
+      "tau_observations": {
+        "count": 40,
+        "negative_signed": 14,
+        "min_seconds": -4.814274672786746,
+        "max_seconds": 5.658169586537749
+      },
+      "tau_raw_observations_path": "/home/vscode/final_oracle_analysis/tau_observations_Verizon-LTE-driving.jsonl",
+      "tau_aggregation_path": "/home/vscode/final_oracle_analysis/tau_aggregation_Verizon-LTE-driving.json"
+    },
+    "ATT-LTE-driving": {
+      "trace_id": "ATT-LTE-driving",
+      "fixed_c_source": "/home/vscode/final_fixed_c_stage_a",
+      "tau_source": "/home/vscode/final_tau_stage_b/tau_aggregation_ATT-LTE-driving.json",
+      "tau_kind": "stage_b",
+      "native_downlink_duration_ms": 786112,
+      "native_full_epochs": 6,
+      "candidate_epochs": 9,
+      "retained_epochs": 6,
+      "retained_epoch_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "excluded_epochs": [
+        {
+          "epoch_index": 6,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "2": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "4": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "8": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "16": {
+              "valid": true,
+              "exclusion_reason": ""
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)"
+          ]
+        },
+        {
+          "epoch_index": 7,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)",
+            "below_byte_floor"
+          ]
+        },
+        {
+          "epoch_index": 8,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_byte_floor"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)",
+            "below_byte_floor"
+          ]
+        }
+      ],
+      "excluded_epoch_count": 3,
+      "t_fixed_seconds": {
+        "1": 54.44293492360898,
+        "2": 53.2862766535238,
+        "4": 53.180538035011,
+        "8": 53.2180827799841,
+        "16": 53.45459506114159
+      },
+      "t_best_fixed_seconds": 53.180538035011,
+      "best_c": 4,
+      "t_instantaneous_seconds": 53.063100500353556,
+      "t_constrained_seconds": 53.17222197342685,
+      "transitions": 1,
+      "oracle_sequence": [
+        8,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "transition_details": [
+        {
+          "epoch_index": 1,
+          "from_c": 8,
+          "to_c": 4,
+          "regime": "good",
+          "tau_seconds": 0
+        }
+      ],
+      "formal_tau": {
+        "1->2": {
+          "estimate_seconds": 0.7220978764685039,
+          "formal_seconds": 0.7220978764685039,
+          "pooled_seconds": 0.7220978764685039,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.8953907154815205,
+            "good": -0.25440473361788274
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->1": {
+          "estimate_seconds": 0.0865395492048319,
+          "formal_seconds": 0.0865395492048319,
+          "pooled_seconds": 0.0865395492048319,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.7653254930977025,
+            "good": 0.0865395492048319
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->4": {
+          "estimate_seconds": 0.1535075397953995,
+          "formal_seconds": 0.1535075397953995,
+          "pooled_seconds": 0.1535075397953995,
+          "pooled_n": 4,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 0.030977249629678877,
+            "good": 0.1535075397953995
+          },
+          "formal_per_regime_tau": {
+            "degraded": 0.030977249629678877,
+            "good": 0.1535075397953995
+          }
+        },
+        "4->2": {
+          "estimate_seconds": 0.13608054720203602,
+          "formal_seconds": 0.13608054720203602,
+          "pooled_seconds": 0.13608054720203602,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.4982798954866433,
+            "good": -0.11807435854452863
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->8": {
+          "estimate_seconds": 0.23294021959261046,
+          "formal_seconds": 0.23294021959261046,
+          "pooled_seconds": 0.23294021959261046,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.18849675300880248,
+            "good": 0.6045265852370271
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->4": {
+          "estimate_seconds": -0.007793634557337559,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.007793634557337559,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.5244525683076717,
+            "good": 0.3678217104974444
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->16": {
+          "estimate_seconds": -0.08873641140695916,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.08873641140695916,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.783465090938128,
+            "good": 0.09724252871370856
+          },
+          "formal_per_regime_tau": {}
+        },
+        "16->8": {
+          "estimate_seconds": 0.1137390137990277,
+          "formal_seconds": 0.1137390137990277,
+          "pooled_seconds": 0.1137390137990277,
+          "pooled_n": 4,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.8037355760850544,
+            "good": 0.3706288976840316
+          },
+          "formal_per_regime_tau": {}
+        }
+      },
+      "H": 0.0001563741528653137,
+      "sanity_bound_ok": true,
+      "tau_observations": {
+        "count": 32,
+        "negative_signed": 12,
+        "min_seconds": -1.889374765167201,
+        "max_seconds": 1.0600425208156488
+      },
+      "tau_raw_observations_path": "/home/vscode/final_tau_stage_b/tau_observations_ATT-LTE-driving.jsonl",
+      "tau_aggregation_path": "/home/vscode/final_tau_stage_b/tau_aggregation_ATT-LTE-driving.json"
+    },
+    "TMobile-LTE-driving": {
+      "trace_id": "TMobile-LTE-driving",
+      "fixed_c_source": "/home/vscode/final_fixed_c_stage_a",
+      "tau_source": "/home/vscode/final_tau_stage_b/tau_aggregation_TMobile-LTE-driving.json",
+      "tau_kind": "stage_b",
+      "native_downlink_duration_ms": 474609,
+      "native_full_epochs": 3,
+      "candidate_epochs": 4,
+      "retained_epochs": 3,
+      "retained_epoch_indices": [
+        0,
+        1,
+        2
+      ],
+      "excluded_epochs": [
+        {
+          "epoch_index": 3,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "2": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "4": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "8": {
+              "valid": true,
+              "exclusion_reason": ""
+            },
+            "16": {
+              "valid": true,
+              "exclusion_reason": ""
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)"
+          ]
+        }
+      ],
+      "excluded_epoch_count": 1,
+      "t_fixed_seconds": {
+        "1": 12.480225248080592,
+        "2": 12.201450189456548,
+        "4": 12.16565684224394,
+        "8": 12.169975516947385,
+        "16": 12.192478446471954
+      },
+      "t_best_fixed_seconds": 12.16565684224394,
+      "best_c": 4,
+      "t_instantaneous_seconds": 12.150952156075075,
+      "t_constrained_seconds": 12.158183753464172,
+      "transitions": 1,
+      "oracle_sequence": [
+        16,
+        8,
+        8
+      ],
+      "transition_details": [
+        {
+          "epoch_index": 1,
+          "from_c": 16,
+          "to_c": 8,
+          "regime": "recovering",
+          "tau_seconds": 0.0011615656049819428
+        }
+      ],
+      "formal_tau": {
+        "1->2": {
+          "estimate_seconds": 0.1554657043336596,
+          "formal_seconds": 0.1554657043336596,
+          "pooled_seconds": 0.1554657043336596,
+          "pooled_n": 2,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.37781646390217133,
+            "recovering": -0.0668850552348521
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->1": {
+          "estimate_seconds": 1.2187005571844267,
+          "formal_seconds": 1.2187005571844267,
+          "pooled_seconds": 1.2187005571844267,
+          "pooled_n": 2,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 1.877919210192344,
+            "recovering": 0.5594819041765092
+          },
+          "formal_per_regime_tau": {
+            "degraded": 1.877919210192344,
+            "recovering": 0.5594819041765092
+          }
+        },
+        "2->4": {
+          "estimate_seconds": 0.07074636913845661,
+          "formal_seconds": 0.07074636913845661,
+          "pooled_seconds": 0.07074636913845661,
+          "pooled_n": 2,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 0.03154670431125883,
+            "recovering": 0.10994603396565439
+          },
+          "formal_per_regime_tau": {
+            "degraded": 0.03154670431125883,
+            "recovering": 0.10994603396565439
+          }
+        },
+        "4->2": {
+          "estimate_seconds": -0.2151075694282324,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.2151075694282324,
+          "pooled_n": 2,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.45606300992957527,
+            "recovering": 0.025847871073110505
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->8": {
+          "estimate_seconds": 0.364615800951299,
+          "formal_seconds": 0.364615800951299,
+          "pooled_seconds": 0.364615800951299,
+          "pooled_n": 2,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 0.5783965183205982,
+            "recovering": 0.15083508358199968
+          },
+          "formal_per_regime_tau": {
+            "degraded": 0.5783965183205982,
+            "recovering": 0.15083508358199968
+          }
+        },
+        "8->4": {
+          "estimate_seconds": 0.0780246728692394,
+          "formal_seconds": 0.0780246728692394,
+          "pooled_seconds": 0.0780246728692394,
+          "pooled_n": 2,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.06071828502674435,
+            "recovering": 0.09533106071173446
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->16": {
+          "estimate_seconds": -0.01694574658496082,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.01694574658496082,
+          "pooled_n": 2,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.10184697281983454,
+            "recovering": 0.0679554796499129
+          },
+          "formal_per_regime_tau": {}
+        },
+        "16->8": {
+          "estimate_seconds": 0.0011615656049819428,
+          "formal_seconds": 0.0011615656049819428,
+          "pooled_seconds": 0.0011615656049819428,
+          "pooled_n": 2,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.08108702860312038,
+            "recovering": -0.07876389739315649
+          },
+          "formal_per_regime_tau": {}
+        }
+      },
+      "H": 0.0006142774596287302,
+      "sanity_bound_ok": true,
+      "tau_observations": {
+        "count": 16,
+        "negative_signed": 4,
+        "min_seconds": -0.45606300992957527,
+        "max_seconds": 1.877919210192344
+      },
+      "tau_raw_observations_path": "/home/vscode/final_tau_stage_b/tau_observations_TMobile-LTE-driving.jsonl",
+      "tau_aggregation_path": "/home/vscode/final_tau_stage_b/tau_aggregation_TMobile-LTE-driving.json"
+    },
+    "TMobile-UMTS-driving": {
+      "trace_id": "TMobile-UMTS-driving",
+      "fixed_c_source": "/home/vscode/final_fixed_c_stage_a",
+      "tau_source": "/home/vscode/final_tau_stage_b/tau_aggregation_TMobile-UMTS-driving.json",
+      "tau_kind": "stage_b",
+      "native_downlink_duration_ms": 928424,
+      "native_full_epochs": 7,
+      "candidate_epochs": 8,
+      "retained_epochs": 7,
+      "retained_epoch_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "excluded_epochs": [
+        {
+          "epoch_index": 7,
+          "native_full_epoch": false,
+          "per_c": {
+            "1": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "2": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "4": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "8": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            },
+            "16": {
+              "valid": false,
+              "exclusion_reason": "below_observed_fraction"
+            }
+          },
+          "excluded": true,
+          "reasons": [
+            "final_partial_epoch (native downlink trace; no frozen regime label)",
+            "below_observed_fraction"
+          ]
+        }
+      ],
+      "excluded_epoch_count": 1,
+      "t_fixed_seconds": {
+        "1": 174.51337557748784,
+        "2": 173.11172556678582,
+        "4": 173.32733046541222,
+        "8": 173.59986989622982,
+        "16": 174.0467089335309
+      },
+      "t_best_fixed_seconds": 173.11172556678582,
+      "best_c": 2,
+      "t_instantaneous_seconds": 171.73336317627508,
+      "t_constrained_seconds": 172.60306389132413,
+      "transitions": 2,
+      "oracle_sequence": [
+        16,
+        8,
+        8,
+        8,
+        8,
+        4,
+        4
+      ],
+      "transition_details": [
+        {
+          "epoch_index": 1,
+          "from_c": 16,
+          "to_c": 8,
+          "regime": "degraded",
+          "tau_seconds": 0.22123979777542604
+        },
+        {
+          "epoch_index": 5,
+          "from_c": 8,
+          "to_c": 4,
+          "regime": "recovering",
+          "tau_seconds": 0
+        }
+      ],
+      "formal_tau": {
+        "1->2": {
+          "estimate_seconds": -0.1715482714807358,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.1715482714807358,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.6603175728586198,
+            "good": -0.4141669938184061,
+            "recovering": -0.38256574119121667
+          },
+          "formal_per_regime_tau": {}
+        },
+        "2->1": {
+          "estimate_seconds": 0.28059028877010567,
+          "formal_seconds": 0.28059028877010567,
+          "pooled_seconds": 0.28059028877010567,
+          "pooled_n": 5,
+          "regime_specific": true,
+          "regime_medians": {
+            "degraded": 19.51293272916763,
+            "good": 0.28059028877010567,
+            "recovering": 0.28952249302745076
+          },
+          "formal_per_regime_tau": {
+            "degraded": 19.51293272916763,
+            "good": 0.28059028877010567,
+            "recovering": 0.28952249302745076
+          }
+        },
+        "2->4": {
+          "estimate_seconds": -0.14326050417533548,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.14326050417533548,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -0.7602946143211529,
+            "good": 0.08032328603656837,
+            "recovering": -0.07841488082011774
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->2": {
+          "estimate_seconds": 0.028961015344290256,
+          "formal_seconds": 0.028961015344290256,
+          "pooled_seconds": 0.028961015344290256,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.8863698100218358,
+            "good": -0.4322992901230368,
+            "recovering": -0.32087206978533556
+          },
+          "formal_per_regime_tau": {}
+        },
+        "4->8": {
+          "estimate_seconds": 0.4416839598132168,
+          "formal_seconds": 0.4416839598132168,
+          "pooled_seconds": 0.4416839598132168,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 2.2424169288735367,
+            "good": -0.7085984674873372,
+            "recovering": -0.086192236654859
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->4": {
+          "estimate_seconds": -0.06678655725768495,
+          "formal_seconds": 0,
+          "pooled_seconds": -0.06678655725768495,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 0.153407801866875,
+            "good": -0.1652885532026328,
+            "recovering": -0.1723647638208466
+          },
+          "formal_per_regime_tau": {}
+        },
+        "8->16": {
+          "estimate_seconds": 0.14758138596095965,
+          "formal_seconds": 0.14758138596095965,
+          "pooled_seconds": 0.14758138596095965,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": -4.4380575632880195,
+            "good": 0.14758138596095965,
+            "recovering": 0.9108531362380448
+          },
+          "formal_per_regime_tau": {}
+        },
+        "16->8": {
+          "estimate_seconds": 0.22123979777542604,
+          "formal_seconds": 0.22123979777542604,
+          "pooled_seconds": 0.22123979777542604,
+          "pooled_n": 5,
+          "regime_specific": false,
+          "regime_medians": {
+            "degraded": 2.17949147257151,
+            "good": -0.6289148963534166,
+            "recovering": -0.38743809890426795
+          },
+          "formal_per_regime_tau": {}
+        }
+      },
+      "H": 0.0029383432797303833,
+      "sanity_bound_ok": true,
+      "tau_observations": {
+        "count": 40,
+        "negative_signed": 19,
+        "min_seconds": -6.978701707544635,
+        "max_seconds": 38.96518650381079
+      },
+      "tau_raw_observations_path": "/home/vscode/final_tau_stage_b/tau_observations_TMobile-UMTS-driving.jsonl",
+      "tau_aggregation_path": "/home/vscode/final_tau_stage_b/tau_aggregation_TMobile-UMTS-driving.json"
+    }
+  },
+  "provenance": {
+    "prereg_json_sha256": "3b371c3f5daac6b8f3722aac387e46fc18cb97ea6c4762e471a8f0ebec38b692",
+    "prereg_txt_sha256": "1062f993e4fde4d54d9ef044c37bf35ea1860801e398b759856dd3214644c785",
+    "oracle_protocol_version": 2,
+    "final_trace_protocol_version": 1,
+    "amendment": 1,
+    "fixed_c_input_sha256": {
+      "Verizon-EVDO-driving_C1/result.json": "f2b2c154a42a283aeed14e0c8aa7ba06bb793286bf034951bbba8ec0754e012c",
+      "Verizon-EVDO-driving_C2/result.json": "665a69597b501aa1d25488cec28b196531b3ca003a5a9c4af4294299b20acab7",
+      "Verizon-EVDO-driving_C4/result.json": "69feec0ed9ef21de7bdb5a59a14302f86a5a18eb6b8ce31984b60c686b9c6b66",
+      "Verizon-EVDO-driving_C8/result.json": "318f21e5e269ad21ef9b9a4f195e12a87e9603a65312aef363ab510a7e798670",
+      "Verizon-EVDO-driving_C16/result.json": "c30d30227431336aaa5bb213623bc85f9106268b63a3d4c809017e6c9347c241",
+      "Verizon-LTE-driving_C1/result.json": "c04525d6d0116d2fbac5dc43f0f4c13c2b7c9bfbed07d9b4dd41a76cf1058ace",
+      "Verizon-LTE-driving_C2/result.json": "85063e78d17ea45e1b99d78ee353f675ca243e2364bc73ee2106553c539ae9dd",
+      "Verizon-LTE-driving_C4/result.json": "487ef02949047ba9902d6c41064d12b8cff7e58da928288b4553acff1099f9b6",
+      "Verizon-LTE-driving_C8/result.json": "5586e34c62595e93c5f4f965947362557d3d6106342486abbf09064f33e0846d",
+      "Verizon-LTE-driving_C16/result.json": "71ebf2782435f37979dd88306b9f5d723464a6ab3f6a562f2e2866c65c4f2dc4",
+      "ATT-LTE-driving_C1/result.json": "edebcbad7b301af648fa2474256a3f1366890b2870d23132b39ed1929e1400bf",
+      "ATT-LTE-driving_C2/result.json": "7076e994dc7d5de711bab64da05533c0f7a2cd93d1e93506ead35e45587aa7cc",
+      "ATT-LTE-driving_C4/result.json": "ff8554fdd24137b59a98fcae1e5e5fe56557aa85acca9d974dbd43837abae1cf",
+      "ATT-LTE-driving_C8/result.json": "5d0218387a5ccc57dc98cf1469e3928b96f108c0c60cc5d9b108064fb25fbc40",
+      "ATT-LTE-driving_C16/result.json": "0269e893a1c5bdeed3a6eb3858c7dae0a7a5ca0ee96b3a0727aaaf4932883d4e",
+      "TMobile-LTE-driving_C1/result.json": "e677b6b46bc737e9754254800d712bf5d2c5d8c81e90244db8fb6e6aa9058ff8",
+      "TMobile-LTE-driving_C2/result.json": "ed634f6ce10fe8918aff2c47d753cc7ad72d59028e8e9d3053f406dfa59c0219",
+      "TMobile-LTE-driving_C4/result.json": "419005cd1257fd5d43ee69b5a70a8d45da197b595ce4d983c16aa139ce6c683a",
+      "TMobile-LTE-driving_C8/result.json": "611c2826f4449aab74f65c379ccb562b8945989b8a0607a92bcae2da2fe66385",
+      "TMobile-LTE-driving_C16/result.json": "85f8e473a5ab266051418251ee381382a9b79f063b4c64e43a873c619e3997cd",
+      "TMobile-UMTS-driving_C1/result.json": "a23a81515950e420d4bdfeb55154987ea30ed5dc7ee5a21fb08bceac7122a642",
+      "TMobile-UMTS-driving_C2/result.json": "f8e460d6466fa822983fe4d971378978dc1d12909c9c0f26851db3dea0f21436",
+      "TMobile-UMTS-driving_C4/result.json": "80825802bf64774eb8293770e0102ee08806f77b989f2e1ff811607e7d79ea4d",
+      "TMobile-UMTS-driving_C8/result.json": "e451c5352e50596ede48aabae10e3007e4cf36ce28ca9cfdff637d29cdee2457",
+      "TMobile-UMTS-driving_C16/result.json": "718899f80aa636a3b3c606b2be42bb186e5d33ccdf4fb3aa4f03fd40ef3b985f"
+    },
+    "tau_input_sha256": {
+      "tau_aggregation_Verizon-EVDO-driving.json": "f36a734f70ae8ef0cd781561c1a043230a2f6f8ff4bf82991a949f3a0cbcfa3a",
+      "tau_observations_Verizon-EVDO-driving.jsonl": "696499ab18a40543089d47969566095617ecdfca097ade127e008a19db8ccd44",
+      "tau_aggregation_Verizon-LTE-driving.json": "7606a74ccc8b52bc436068fe62ec2878b2421d9f4d9fd961c031b3996fe33c4e",
+      "tau_observations_Verizon-LTE-driving.jsonl": "2e5205e3783e82fed42c8415a05f5bbbad84856d0d06e7a33ab6f7482fd6261a",
+      "tau_aggregation_ATT-LTE-driving.json": "830ded6e39a0a2703127f0629d7ae8a49eff1547acccdda3826d039a60e8def2",
+      "tau_observations_ATT-LTE-driving.jsonl": "1cae12a9fa6e3b7e3c56a10d282ff3f564a594a83e9b0558e54e0bcb1c0fbc84",
+      "tau_aggregation_TMobile-LTE-driving.json": "ceb9a2e89b859c1e66ba271004c46a39fc9b35a17d015b96ad40e79f7ff64977",
+      "tau_observations_TMobile-LTE-driving.jsonl": "972807f710592c5767f4a399094ea6dcd50793b7c1b4a2b608e39a7cf7e737de",
+      "tau_aggregation_TMobile-UMTS-driving.json": "ab14f7dfc49b72be7ecca3b0d1607dab96c8aa1057fb09f30614dd41741db07d",
+      "tau_observations_TMobile-UMTS-driving.jsonl": "2e013311c0948d9d138e2b6155d3bd67423ed9324117d05b83d8ee3ea8bc0a7a"
+    },
+    "harness_binary_sha256": "dde3c742b724cb4855c45a95050da6247264120588f5c6ca96a59dd5702e7f36",
+    "tau_campaign_v3_manifest_sha256": "02f3b2a7220c4808cb6d6f4283f3cdde768a4f239e3e5156e2e6262db11a9039"
+  },
+  "integrity_checks": [
+    {
+      "check": "exactly the five frozen traces",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "exactly five H values feed the CI",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "sanity bound holds for all five traces",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no unlabeled retained epoch",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "retained == shared-valid full native epochs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "epoch_pilot_v2 unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "tau_campaign_v3 unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Stage-A evidence unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Stage-B evidence unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "oracle_stage_v3 unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "preregistration v4 + amendment 1 unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no source code changed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no experiment process started",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no network namespaces",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no qdisc residue",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "replica validated against oracle_stage_v3 (formula check)",
+      "pass": true,
+      "detail": "oracle_replica.py reproduces oracle_stage_v3 fixed/inst/constrained values to 1e-9"
+    },
+    {
+      "check": "raw signed tau observations preserved and unaltered",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "confirmations": {
+    "no_experiment_run": true,
+    "no_source_change": true,
+    "no_preregistration_change": true,
+    "no_frozen_artifact_modified": true,
+    "no_epoch_excluded_for_rate_or_H_reasons": true,
+    "raw_signed_tau_unaltered": true,
+    "no_cross_trace_tau_pooling": true,
+    "no_oracle_reinterpretation_of_invalid_epochs": true
+  }
+}

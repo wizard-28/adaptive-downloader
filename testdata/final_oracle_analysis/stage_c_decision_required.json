@@ -1,0 +1,74 @@
+{
+  "stage": "Stage C \u2014 frozen oracle + final statistical gate",
+  "status": "DECISION REQUIRED \u2014 frozen epoch-set semantics conflict for ATT-LTE-driving e6 and TMobile-LTE-driving e3",
+  "issue": {
+    "what": "Two shared-valid retained replay epochs have no frozen regime label because they are the native downlink traces' final partial epochs.",
+    "affected": [
+      {
+        "trace": "ATT-LTE-driving",
+        "epoch_index": 6,
+        "replay_slice_ms": [
+          720000,
+          840000
+        ],
+        "native_downlink_duration_ms": 786112,
+        "native_epoch_partial_s": 66.112,
+        "rate_bytes_per_s": {
+          "1": 155201.5,
+          "2": 156636.1,
+          "4": 156391.1,
+          "8": 155550.2,
+          "16": 155091.1
+        },
+        "shared_valid": true,
+        "regime_label": null
+      },
+      {
+        "trace": "TMobile-LTE-driving",
+        "epoch_index": 3,
+        "replay_slice_ms": [
+          360000,
+          474999
+        ],
+        "native_downlink_duration_ms": 474609,
+        "native_epoch_partial_s": 114.609,
+        "shared_valid": true,
+        "regime_label": null
+      }
+    ],
+    "why": [
+      "The frozen v3 oracle prereg defines T_fixed over 'retained shared-valid epochs' (replay-sliced; \u00a722.63 freezes epoch slicing over max(up,down)).",
+      "The frozen regime classifier labels only full 120 s epochs of the NATIVE downlink trace (final partial excluded); the oracle's transition cost uses the entered epoch's frozen regime label.",
+      "cmd/oracle rejects a retained epoch without a label; no frozen rule defines a label for epochs beyond the native downlink trace.",
+      "The Stage-C task lists 'native downlink trace semantics' and 'final partial epoch excluded' as frozen epoch rules, but the literal retention rule ('retained shared-valid epochs') conflicts for these two epochs."
+    ]
+  },
+  "option_A": {
+    "name": "Native downlink trace semantics (recommended): retained = shared-valid full native-downlink epochs",
+    "exclusions": "ATT e6 and TMobile-LTE e3 excluded as native final partial epochs (no frozen regime label); all other exclusions unchanged",
+    "H_values": {
+      "Verizon-EVDO-driving": 0.0164075465,
+      "Verizon-LTE-driving": 0.0001943981,
+      "ATT-LTE-driving": 0.0001563742,
+      "TMobile-LTE-driving": 0.0006142775,
+      "TMobile-UMTS-driving": 0.0029383433
+    },
+    "mean": 0.0040621879,
+    "sd": 0.0069959662,
+    "lcb_95": -0.0026077024,
+    "threshold": 0.1,
+    "result": "FAIL",
+    "sanity_bound": "holds for all five traces"
+  },
+  "option_B": {
+    "name": "Literal 'retained shared-valid epochs' reading: ATT/TMobile-LTE cannot yield a valid H (no frozen label) \u2192 FINAL STATISTICAL GATE NOT EVALUABLE",
+    "note": "no frozen rule can label the affected epochs; inventing a label is a methodological decision not in the freeze"
+  },
+  "recommendation": "Option A: apply the frozen 'native downlink trace semantics' + 'final partial epoch excluded' rules; the gate outcome is FAIL under both options, but A yields a defined final gate evaluation.",
+  "not_done": [
+    "no experiment run",
+    "no source change",
+    "no frozen artifact modified",
+    "no oracle outputs finalized yet"
+  ]
+}
