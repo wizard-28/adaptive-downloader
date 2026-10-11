@@ -1,0 +1,38 @@
+{
+ "label": "NGINX limit_rate check (screening, n=5 pairs/config; descriptive)",
+ "configs": {
+  "N1_constant": {
+   "n_valid_pairs": 5,
+   "ours_mean_s": 50.2724282,
+   "aria2_mean_s": 58.2790588,
+   "per_pair_ratio": [
+    0.8535,
+    0.9009,
+    0.887,
+    0.8109,
+    0.8668
+   ],
+   "geo_mean_ratio": 0.8632701643032261,
+   "ratio_min": 0.8109154172113899,
+   "ratio_max": 0.9008791653600088,
+   "pairs_ours_faster": 5
+  },
+  "N2_burst_then_pace": {
+   "n_valid_pairs": 5,
+   "ours_mean_s": 33.6825094,
+   "aria2_mean_s": 56.4366956,
+   "per_pair_ratio": [
+    0.5745,
+    0.5749,
+    0.6255,
+    0.6249,
+    0.5879
+   ],
+   "geo_mean_ratio": 0.5970824311511163,
+   "ratio_min": 0.5744995363656854,
+   "ratio_max": 0.6254526222537307,
+   "pairs_ours_faster": 5
+  }
+ },
+ "invalid_runs": []
+}

@@ -1,0 +1,20 @@
+{
+  "run_id": "ng-N1-p01-ours",
+  "system": "ours",
+  "config": {
+    "chunk_bytes": 4194304,
+    "concurrency": 16,
+    "file_size_bytes": 536870912,
+    "url": "http://127.0.0.1:18080/constant/big.bin"
+  },
+  "completion_ms": 51763.552,
+  "output_size_bytes": 536870912,
+  "output_sha256": "8bd575172a18217564e55d63b083a05f682d990372e9c7b0e2d70be1cae4ed77",
+  "content_verified": true,
+  "netem_status": "applied",
+  "aria2_exit": 0,
+  "client_requests": 128,
+  "client_failed": 0,
+  "client_retries": 0,
+  "err": ""
+}

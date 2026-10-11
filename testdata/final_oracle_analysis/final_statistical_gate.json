@@ -1,0 +1,20 @@
+{
+  "statistical_unit": "one trace = one observation",
+  "n": 5,
+  "df": 4,
+  "H_values": {
+    "Verizon-EVDO-driving": 0.016407546506519783,
+    "Verizon-LTE-driving": 0.00019439812403521475,
+    "ATT-LTE-driving": 0.0001563741528653137,
+    "TMobile-LTE-driving": 0.0006142774596287302,
+    "TMobile-UMTS-driving": 0.0029383432797303833
+  },
+  "mean_H": 0.004062187904555885,
+  "sample_sd_H": 0.006995966177685293,
+  "t_critical_one_sided_95_df4": 2.1318467863266495,
+  "lcb_95": -0.002607702350669921,
+  "threshold": 0.1,
+  "criterion": "LCB_95 >= 0.10",
+  "result": "FAIL",
+  "not_evaluable": false
+}

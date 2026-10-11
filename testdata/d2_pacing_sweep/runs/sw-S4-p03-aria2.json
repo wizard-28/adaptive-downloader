@@ -1,0 +1,331 @@
+{
+  "run_id": "sw-S4-p03-aria2",
+  "system": "aria2",
+  "config": {
+    "aria2_args": "--no-conf --file-allocation=none --allow-overwrite=true --auto-file-renaming=false --enable-color=false --summary-interval=1 --console-log-level=notice --min-split-size=1M --max-tries=3 --retry-wait=1 --timeout=30 --connect-timeout=30 --http-accept-gzip=false --check-certificate=false --disable-ipv6=true --conditional-get=false --max-connection-per-server=16 --split=16",
+    "file_size_bytes": 536870912,
+    "phases": "2500",
+    "system": "aria2"
+  },
+  "completion_ms": 25722.394,
+  "wallclock_bytes_per_second": 20871731.92355268,
+  "output_size_bytes": 536870912,
+  "output_sha256": "04cc281208a84cf78af7c2e5bd14cdded9174657969c0b5fc5e6b8feab6a65a8",
+  "content_verified": true,
+  "coverage_no_missing": false,
+  "coverage_no_duplicates": false,
+  "netem_status": "applied",
+  "schedule_events": null,
+  "server_requests": [
+    {
+      "index": 1,
+      "start_ms": 140,
+      "end_ms": 23914,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 0,
+      "range_end": 0,
+      "has_range": false
+    },
+    {
+      "index": 2,
+      "start_ms": 314,
+      "end_ms": 19173,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 268435456,
+      "range_end": 301989887,
+      "has_range": true
+    },
+    {
+      "index": 3,
+      "start_ms": 314,
+      "end_ms": 22986,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 134217728,
+      "range_end": 167772159,
+      "has_range": true
+    },
+    {
+      "index": 4,
+      "start_ms": 314,
+      "end_ms": 23381,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 201326592,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 5,
+      "start_ms": 314,
+      "end_ms": 20029,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 469762048,
+      "range_end": 503316479,
+      "has_range": true
+    },
+    {
+      "index": 6,
+      "start_ms": 315,
+      "end_ms": 17666,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 335544320,
+      "range_end": 369098751,
+      "has_range": true
+    },
+    {
+      "index": 7,
+      "start_ms": 315,
+      "end_ms": 23239,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 402653184,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 8,
+      "start_ms": 315,
+      "end_ms": 19804,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 33554432,
+      "range_end": 67108863,
+      "has_range": true
+    },
+    {
+      "index": 9,
+      "start_ms": 315,
+      "end_ms": 18883,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 67108864,
+      "range_end": 100663295,
+      "has_range": true
+    },
+    {
+      "index": 10,
+      "start_ms": 315,
+      "end_ms": 21916,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 100663296,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 11,
+      "start_ms": 315,
+      "end_ms": 23220,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 167772160,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 12,
+      "start_ms": 315,
+      "end_ms": 23522,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 234881024,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 13,
+      "start_ms": 315,
+      "end_ms": 23169,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 301989888,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 14,
+      "start_ms": 315,
+      "end_ms": 23556,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 369098752,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 15,
+      "start_ms": 315,
+      "end_ms": 22711,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 436207616,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 16,
+      "start_ms": 315,
+      "end_ms": 16395,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 503316480,
+      "range_end": 536870911,
+      "has_range": true
+    },
+    {
+      "index": 17,
+      "start_ms": 16482,
+      "end_ms": 20953,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 190840832,
+      "range_end": 201326591,
+      "has_range": true
+    },
+    {
+      "index": 18,
+      "start_ms": 17748,
+      "end_ms": 21805,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 225443840,
+      "range_end": 234881023,
+      "has_range": true
+    },
+    {
+      "index": 19,
+      "start_ms": 18965,
+      "end_ms": 23055,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 258998272,
+      "range_end": 268435455,
+      "has_range": true
+    },
+    {
+      "index": 20,
+      "start_ms": 19254,
+      "end_ms": 22454,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 126877696,
+      "range_end": 134217727,
+      "has_range": true
+    },
+    {
+      "index": 21,
+      "start_ms": 19886,
+      "end_ms": 23069,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 328204288,
+      "range_end": 335544319,
+      "has_range": true
+    },
+    {
+      "index": 22,
+      "start_ms": 20110,
+      "end_ms": 22855,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 463470592,
+      "range_end": 469762047,
+      "has_range": true
+    },
+    {
+      "index": 23,
+      "start_ms": 21034,
+      "end_ms": 22869,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 254803968,
+      "range_end": 258998271,
+      "has_range": true
+    },
+    {
+      "index": 24,
+      "start_ms": 21887,
+      "end_ms": 23248,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 30408704,
+      "range_end": 33554431,
+      "has_range": true
+    },
+    {
+      "index": 25,
+      "start_ms": 21996,
+      "end_ms": 22911,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 188743680,
+      "range_end": 190840831,
+      "has_range": true
+    },
+    {
+      "index": 26,
+      "start_ms": 22555,
+      "end_ms": 23454,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 434110464,
+      "range_end": 436207615,
+      "has_range": true
+    },
+    {
+      "index": 27,
+      "start_ms": 22871,
+      "end_ms": 22959,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 32505856,
+      "range_end": 33554431,
+      "has_range": true
+    },
+    {
+      "index": 28,
+      "start_ms": 22936,
+      "end_ms": 23388,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 189792256,
+      "range_end": 190840831,
+      "has_range": true
+    },
+    {
+      "index": 29,
+      "start_ms": 22950,
+      "end_ms": 23402,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 253755392,
+      "range_end": 254803967,
+      "has_range": true
+    },
+    {
+      "index": 30,
+      "start_ms": 23039,
+      "end_ms": 23498,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 327155712,
+      "range_end": 328204287,
+      "has_range": true
+    },
+    {
+      "index": 31,
+      "start_ms": 23067,
+      "end_ms": 23527,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 326107136,
+      "range_end": 327155711,
+      "has_range": true
+    },
+    {
+      "index": 32,
+      "start_ms": 23136,
+      "end_ms": 23223,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 401604608,
+      "range_end": 402653183,
+      "has_range": true
+    },
+    {
+      "index": 33,
+      "start_ms": 23522,
+      "end_ms": 23650,
+      "rate_bytes_per_second": 2560000,
+      "range_start": 253471045,
+      "range_end": 253755391,
+      "has_range": true
+    }
+  ],
+  "total_requests": 33,
+  "successful_requests": 23,
+  "failed_requests": 10,
+  "server_bytes": 334780091,
+  "range_count": 32,
+  "aria2_exit": 0,
+  "aria2_output_tail": "==========\n[#abb668 407MiB/512MiB(79%) CN:16 DL:25MiB ETA:4s]\nFILE: /tmp/aria2-comp-2880681263/out.bin\n-------------------------------------------------------------------------------\n\n[#abb668 407MiB/512MiB(79%) CN:16 DL:25MiB ETA:4s]\n *** Download Progress Summary as of Sun Oct 11 20:48:06 2026 *** \n===============================================================================\n[#abb668 442MiB/512MiB(86%) CN:16 DL:26MiB ETA:2s]\nFILE: /tmp/aria2-comp-2880681263/out.bin\n-------------------------------------------------------------------------------\n\n[#abb668 442MiB/512MiB(86%) CN:16 DL:26MiB ETA:2s]\n *** Download Progress Summary as of Sun Oct 11 20:48:07 2026 *** \n===============================================================================\n[#abb668 471MiB/512MiB(92%) CN:16 DL:26MiB ETA:1s]\nFILE: /tmp/aria2-comp-2880681263/out.bin\n-------------------------------------------------------------------------------\n\n[#abb668 471MiB/512MiB(92%) CN:16 DL:26MiB ETA:1s]\n *** Download Progress Summary as of Sun Oct 11 20:48:08 2026 *** \n===============================================================================\n[#abb668 500MiB/512MiB(97%) CN:16 DL:27MiB]\nFILE: /tmp/aria2-comp-2880681263/out.bin\n-------------------------------------------------------------------------------\n\n[#abb668 500MiB/512MiB(97%) CN:16 DL:27MiB]\n *** Download Progress Summary as of Sun Oct 11 20:48:09 2026 *** \n===============================================================================\n[#abb668 511MiB/512MiB(99%) CN:1 DL:26MiB]\nFILE: /tmp/aria2-comp-2880681263/out.bin\n-------------------------------------------------------------------------------\n\n[#abb668 511MiB/512MiB(99%) CN:1 DL:26MiB]\n\n10/11 20:48:11 [NOTICE] Download complete: /tmp/aria2-comp-2880681263/out.bin\n\nDownload Results:\ngid   |stat|avg speed  |path/URI\n======+====+===========+=======================================================\nabb668|OK  |    21MiB/s|/tmp/aria2-comp-2880681263/out.bin\n\nStatus Legend:\n(OK):download completed.\n",
+  "client_requests": 0,
+  "client_successful": 0,
+  "client_failed": 0,
+  "client_retries": 0,
+  "client_bytes": 0,
+  "err": ""
+}

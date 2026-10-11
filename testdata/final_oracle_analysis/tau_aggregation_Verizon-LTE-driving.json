@@ -1,0 +1,174 @@
+{
+  "directions": [
+    {
+      "from_c": 1,
+      "to_c": 2,
+      "tau_seconds": 0.027383865743502076,
+      "pooled_tau_seconds": 0.027383865743502076,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": 2.5150512919933146,
+        "good": -0.314657667082213,
+        "recovering": 0.02622171864996167
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.314657667082213)",
+      "formal_tau_seconds": 0.027383865743502076
+    },
+    {
+      "from_c": 2,
+      "to_c": 1,
+      "tau_seconds": -0.15549270011022326,
+      "pooled_tau_seconds": -0.15549270011022326,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": -0.3129823695591833,
+        "good": -0.41035400821450013,
+        "recovering": 0.1303822169440591
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.41035400821450013)",
+      "formal_tau_seconds": 0
+    },
+    {
+      "from_c": 2,
+      "to_c": 4,
+      "tau_seconds": 0.0021280700017428677,
+      "pooled_tau_seconds": 0.0021280700017428677,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": 3.1649661545553966,
+        "good": -0.06137137181393724,
+        "recovering": -0.01924423213943833
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.06137137181393724)",
+      "formal_tau_seconds": 0.0021280700017428677
+    },
+    {
+      "from_c": 4,
+      "to_c": 2,
+      "tau_seconds": 0.05278946475999839,
+      "pooled_tau_seconds": 0.05278946475999839,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": 0.1056555385158577,
+        "good": -0.43857086745452184,
+        "recovering": 0.057255833552595906
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.43857086745452184)",
+      "formal_tau_seconds": 0.05278946475999839
+    },
+    {
+      "from_c": 4,
+      "to_c": 8,
+      "tau_seconds": 0.09046324575294107,
+      "pooled_tau_seconds": 0.09046324575294107,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": -0.11636097996367378,
+        "good": -0.2026826807443335,
+        "recovering": 0.1270807815797003
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.2026826807443335)",
+      "formal_tau_seconds": 0.09046324575294107
+    },
+    {
+      "from_c": 8,
+      "to_c": 4,
+      "tau_seconds": 0.0002044834636342932,
+      "pooled_tau_seconds": 0.0002044834636342932,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": -0.17981750347761427,
+        "good": -0.2468377760213884,
+        "recovering": 0.02089867661157361
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.2468377760213884)",
+      "formal_tau_seconds": 0.0002044834636342932
+    },
+    {
+      "from_c": 8,
+      "to_c": 16,
+      "tau_seconds": 0.026382929614230693,
+      "pooled_tau_seconds": 0.026382929614230693,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": 2.5995867786776277,
+        "good": 0.7984335782481374,
+        "recovering": -0.12867044513236098
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-0.12867044513236098)",
+      "formal_tau_seconds": 0.026382929614230693
+    },
+    {
+      "from_c": 16,
+      "to_c": 8,
+      "tau_seconds": 0.03267508615694356,
+      "pooled_tau_seconds": 0.03267508615694356,
+      "pooled_n": 5,
+      "regime_medians": {
+        "degraded": -1.9894349338331005,
+        "good": 0.394450499069305,
+        "recovering": 0.01753514719417354
+      },
+      "regime_counts": {
+        "degraded": 2,
+        "good": 1,
+        "recovering": 2
+      },
+      "regime_specific": false,
+      "regime_ratio_defined": false,
+      "reason": "regime ratio undefined: non-positive regime median (min=-1.9894349338331005)",
+      "formal_tau_seconds": 0.03267508615694356
+    }
+  ],
+  "observations": 40,
+  "threshold": 2
+}

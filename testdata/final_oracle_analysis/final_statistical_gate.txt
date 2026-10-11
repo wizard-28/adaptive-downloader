@@ -1,0 +1,18 @@
+FINAL STATISTICAL GATE — STAGE C
+=================================
+unit: one trace = one observation | n=5 | df=4
+criterion: one-sided 95% Student-t lower confidence bound, LCB_95 >= 0.10
+
+  H(Verizon-EVDO-driving  ) = 0.0164075465
+  H(Verizon-LTE-driving   ) = 0.0001943981
+  H(ATT-LTE-driving       ) = 0.0001563742
+  H(TMobile-LTE-driving   ) = 0.0006142775
+  H(TMobile-UMTS-driving  ) = 0.0029383433
+
+  mean_H   = 0.0040621879
+  sample SD = 0.0069959662
+  t_crit   = 2.1318467863 (t_0.95, df=4)
+  LCB_95   = -0.0026077024
+  threshold= 0.10
+
+  RESULT: FAIL

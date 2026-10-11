@@ -1,0 +1,5 @@
+NGINX limit_rate check (screening, n=5 pairs/config; descriptive)
+
+N1_constant            n=5 ours=50.3s aria2=58.3s geo=0.863 [0.811,0.901] ours<aria2 5/5
+N2_burst_then_pace     n=5 ours=33.7s aria2=56.4s geo=0.597 [0.574,0.625] ours<aria2 5/5
+invalid/missing: 0

@@ -1,0 +1,11 @@
+D2 pacing-schedule sweep results (screening, n=5 pairs/schedule; descriptive)
+
+schedule               phases               n  ours_s  aria2_s  geo_ratio  [min,max]  ours<aria2
+S0_D2_reference        640,160@2,2500@4     5    20.1    53.3     0.378  [0.372,0.389]  5/5
+S1_no_dip              640,2500@2           5    20.1    48.9     0.425  [0.353,0.751]  5/5
+S2_long_dip            640,160@2,2500@8     5    44.1    54.7     0.806  [0.783,0.827]  5/5
+S3_partial_recovery    640,160@2,1280@4     5    31.6    54.3     0.583  [0.559,0.608]  5/5
+S4_constant_fast       2500                 5    15.4    27.1     0.568  [0.523,0.618]  5/5
+S5_constant_slow       640                  5    53.8    53.9     0.998  [0.987,1.008]  3/5
+
+invalid/missing runs: 0

@@ -7059,9 +7059,11 @@ frozen D2/512 MiB workload family.
   ratio **0.3756** CI95 [0.3728, 0.3785]; relative improvement **62.4%**;
   **30/30 wins**; paired sign-flip permutation p ~ 5e-5; all 30 runs
   content-verified; zero config changes during the block.
-- **Mechanism:** ours issues 3840 ranges of 4 MiB (480 start <2 s, 3360 >=4 s);
-  aria2 issues 450 ranges of 32 MiB, all starting <2 s at the 640 KiB/s phase and
-  held there (~51 s each). The win is a **request-granularity x
+- **Mechanism:** totals over the 30 runs: ours issues 3840 ranges of 4 MiB (480
+  start <2 s, 3360 >=4 s) = 128 per run; aria2 issues 450 ranges of 32 MiB plus
+  30 unranged probes (480 requests; 16 per run), all starting <2 s at the
+  640 KiB/s phase and held there (~51 s each). (Corrected 2026-10-11: the earlier
+  wording read as per-run counts.) The win is a **request-granularity x
   phase-locked-pacing interaction**, not generic adaptive superiority.
 - **Controls:** granularity-matched control A (ours C=16, 32 MiB on D2) ratio
   **0.862** CI [0.839, 0.885] (10 pairs) — the win shrinks as granularity is
@@ -7371,6 +7373,71 @@ time-varying per-response pacing schedule.
 - **Not modified:** no frozen artifact or prior study was touched.
 
 ---
+
+### 22.104 Publication-readiness pass: manuscript correction, pacing sweep, NGINX check, release (executed 2026-10-11)
+
+**Status: manuscript corrected against raw data; two screening checks run under
+frozen protocols; public release tooling added. Frozen evidence unchanged.**
+
+- **Confirmed results (reproduced from raw runs by `tools/claims_check.py`, 113
+  numbers, `tools/paper_numbers.json`):** D2 ours (16 x 4 MiB) vs aria2, 30/30,
+  geo 0.3756; within-download joint controller vs best of three stationary
+  configs, geo 0.766, 10/10; the same controller is slower than aria2 (geo 1.096,
+  0/10).
+- **Descriptive estimates:** six-workload selector vs family-best single fixed:
+  point 0.770, workload-level interval [0.455, 1.304] (includes 1;
+  consistent improvement NOT established); vs per-workload best fixed 0.999
+  [0.969, 1.029] block-level, [0.873, 1.143] workload-level. Cross-workload P1
+  gains (+47.5 % / +8.2 %) are against a baseline chosen for two workloads that
+  were designed to have different optima.
+- **Failed gates (reported as failed):** live S-margin 3.74 % vs predeclared
+  5 % (5 of 6 checks passed); five-trace recorded-replay oracle gate LCB95
+  = -0.26 % vs 10 %.
+- **New screening evidence (n=5 pairs per cell, descriptive only):**
+  - `testdata/d2_pacing_sweep/` (protocol committed as 0ff53da before any run;
+    60/60 valid): ours/aria2 geo ratios S0 D2 0.378, S1 no-dip 0.425, S2
+    long-dip 0.806, S3 partial-recovery 0.583, S4 constant-fast 0.568, S5
+    constant-slow 0.998. Predeclared expectations (S0 reproduces D2; S5 parity)
+    held. Ours faster in 28/30 pairs. S4 shows an advantage with no phase
+    structure; its mechanism was not tested.
+  - `testdata/nginx_limit_rate/` (protocol committed as b60b967 before any run;
+    20/20 valid; NGINX 1.24.0 per-response `limit_rate`/`limit_rate_after`, NOT
+    a shared or N-dependent cap): N1 constant 0.863 (5/5), N2 burst-then-pace
+    0.597 (5/5). The predeclared N1 parity expectation was **not met**; cause
+    untested.
+- **Corrections made to earlier text:** paper draft abstract/section 6 (withdrawn
+  "23 %" family claim; per-workload baseline labels; aria2 "beats" claim for the
+  P2 controller removed); the "constant pacing removes the win" wording (false
+  for constant fast pacing); D2 request counts are per-30-runs totals (128 vs 16
+  requests per run); long-duration v6 table description (pooled ratio 1.805 ->
+  1.062 -> 0.909 driven by D2 only); duplicate section number renumbered
+  (22.99 -> 22.102).
+- **Bug fixed:** the NGINX runner (`nginx_run.go`) initially left `tc netem` on
+  `lo` because `os.Exit` skipped a deferred clear; found in smoke testing,
+  cleared, fixed (explicit clear on every exit path) and verified on success and
+  failure paths before any measured run. Qdisc clean after every run and after the
+  campaign.
+- **Pre-registration language:** `docs/PREREGISTRATION_NOTE.md` states that
+  protocols were predeclared with recorded hashes but are not independently
+  timestamped; the repository starts at one import commit; W1-W6 was amended
+  twice post-hoc. Evidence records under `testdata/` were not edited.
+- **Raw-trace oracle artifacts archived:** `testdata/final_oracle_analysis/`
+  (copied from the original out-of-repo location so the trace gate is
+  recomputable; `tau_raw_observations_path` fields still name the old path).
+- **Release tooling:** `LICENSE` (MIT; copyright holder placeholder),
+  `DATA_LICENSE.md` (proposed CC BY 4.0 pending ownership verification),
+  `CITATION.cff` (authors placeholder), `docs/REPRODUCING.md`,
+  `README.public.md`, `.gitattributes` (export-ignore for internal docs),
+  `scripts/make_public_release.sh` (clean tree + SHA256SUMS).
+- **Validation:** `go vet`, `go build`, `go test -count=1 ./...` (30 packages),
+  `go test -race` on replay and rl, `pytest python/tests` (70),
+  `gen_state_parity_v5.py --check`, offline analysis scripts re-run with no
+  diff, `claims_check.py` 113/113.
+- **Open (human decisions / not done):** authors, order, affiliations, ORCID,
+  copyright holder, AI-use disclosure; bibliography verification; data archive
+  DOI and `SHA256SUMS` upload; IEEE Access template conversion and figures; the
+  model-based controller (deliberately deferred). No controller or mechanism
+  search was run.
 
 ### 22.103 Research verification audit (executed 2026-10-11; no live experiments re-run)
 

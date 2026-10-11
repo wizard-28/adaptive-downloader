@@ -1,0 +1,241 @@
+FINAL ORACLE RESULTS — STAGE C
+==================================
+Status: FINAL_ORACLE_ANALYSIS_COMPLETE
+
+EPOCH RULE: retained = shared-valid full 120 s epochs of the native downlink trace;
+the native final partial epochs (ATT e6, TMobile-LTE e3) have no frozen regime label
+and cannot enter the constrained oracle (final partial epoch excluded).
+
+== Verizon-EVDO-driving
+   retained epochs: [0, 1, 2, 3, 5, 6, 7] (7); excluded: 2
+     e4 excluded: below_byte_floor
+     e8 excluded: final_partial_epoch (native downlink trace; no frozen regime label); below_byte_floor
+   T_fixed: C1=548.136830, C2=546.227958, C4=545.676747, C8=543.982429, C16=547.824992
+   T_best_fixed=543.982429 (C8)  T_instantaneous=534.805587  T_constrained=535.057012
+   transitions=3 sequence=[4, 4, 8, 8, 4, 4, 8]
+   formal tau: 1->2=0.8538, 16->8=0.0000, 2->1=0.0000, 2->4=0.0121, 4->2=0.0000, 4->8=0.0000, 8->16=0.0000, 8->4=0.0000
+   H = 0.0164075465
+
+== Verizon-LTE-driving
+   retained epochs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] (11); excluded: 1
+     e11 excluded: final_partial_epoch (native downlink trace; no frozen regime label); below_observed_fraction
+   T_fixed: C1=70.415502, C2=68.813534, C4=68.772094, C8=68.876399, C16=68.519878
+   T_best_fixed=68.519878 (C16)  T_instantaneous=68.260657  T_constrained=68.506557
+   transitions=3 sequence=[2, 4, 4, 8, 8, 4, 4, 4, 4, 4, 4]
+   formal tau: 1->2=0.0274, 16->8=0.0327, 2->1=0.0000, 2->4=0.0021, 4->2=0.0528, 4->8=0.0905, 8->16=0.0264, 8->4=0.0002
+   H = 0.0001943981
+
+== ATT-LTE-driving
+   retained epochs: [0, 1, 2, 3, 4, 5] (6); excluded: 3
+     e6 excluded: final_partial_epoch (native downlink trace; no frozen regime label)
+     e7 excluded: final_partial_epoch (native downlink trace; no frozen regime label); below_byte_floor
+     e8 excluded: final_partial_epoch (native downlink trace; no frozen regime label); below_byte_floor
+   T_fixed: C1=54.442935, C2=53.286277, C4=53.180538, C8=53.218083, C16=53.454595
+   T_best_fixed=53.180538 (C4)  T_instantaneous=53.063101  T_constrained=53.172222
+   transitions=1 sequence=[8, 4, 4, 4, 4, 4]
+   formal tau: 1->2=0.7221, 16->8=0.1137, 2->1=0.0865, 2->4=0.1535, 4->2=0.1361, 4->8=0.2329, 8->16=0.0000, 8->4=0.0000
+   H = 0.0001563742
+
+== TMobile-LTE-driving
+   retained epochs: [0, 1, 2] (3); excluded: 1
+     e3 excluded: final_partial_epoch (native downlink trace; no frozen regime label)
+   T_fixed: C1=12.480225, C2=12.201450, C4=12.165657, C8=12.169976, C16=12.192478
+   T_best_fixed=12.165657 (C4)  T_instantaneous=12.150952  T_constrained=12.158184
+   transitions=1 sequence=[16, 8, 8]
+   formal tau: 1->2=0.1555, 16->8=0.0012, 2->1=1.2187, 2->4=0.0707, 4->2=0.0000, 4->8=0.3646, 8->16=0.0000, 8->4=0.0780
+   H = 0.0006142775
+
+== TMobile-UMTS-driving
+   retained epochs: [0, 1, 2, 3, 4, 5, 6] (7); excluded: 1
+     e7 excluded: final_partial_epoch (native downlink trace; no frozen regime label); below_observed_fraction
+   T_fixed: C1=174.513376, C2=173.111726, C4=173.327330, C8=173.599870, C16=174.046709
+   T_best_fixed=173.111726 (C2)  T_instantaneous=171.733363  T_constrained=172.603064
+   transitions=2 sequence=[16, 8, 8, 8, 8, 4, 4]
+   formal tau: 1->2=0.0000, 16->8=0.2212, 2->1=0.2806, 2->4=0.0000, 4->2=0.0290, 4->8=0.4417, 8->16=0.1476, 8->4=0.0000
+   H = 0.0029383433
+
+RAW SIGNED TAU OBSERVATIONS (per trace; preserved unaltered, never clamped)
+  Verizon-EVDO-driving
+    1->2   e3  degraded   tau=   -0.516 valid=True
+    2->1   e3  degraded   tau=    0.009 valid=True
+    2->4   e3  degraded   tau=   -0.440 valid=True
+    4->2   e3  degraded   tau=   -1.154 valid=True
+    4->8   e3  degraded   tau=    1.337 valid=True
+    8->4   e3  degraded   tau=   -2.803 valid=True
+    8->16  e3  degraded   tau=   -2.816 valid=True
+    16->8  e3  degraded   tau=    0.348 valid=True
+    1->2   e4  degraded   tau=    0.939 valid=True
+    2->1   e4  degraded   tau=   -0.186 valid=True
+    2->4   e4  degraded   tau=    4.392 valid=True
+    4->2   e4  degraded   tau=    1.194 valid=True
+    4->8   e4  degraded   tau=    0.788 valid=True
+    8->4   e4  degraded   tau=   -4.405 valid=True
+    8->16  e4  degraded   tau=   -0.144 valid=True
+    16->8  e4  degraded   tau=   23.470 valid=True
+    1->2   e1  recovering tau=    0.768 valid=True
+    2->1   e1  recovering tau=    0.000 valid=True
+    2->4   e1  recovering tau=    0.252 valid=True
+    4->2   e1  recovering tau=   -0.324 valid=True
+    4->8   e1  recovering tau=  -16.040 valid=True
+    8->4   e1  recovering tau=    0.165 valid=True
+    8->16  e1  recovering tau=    2.330 valid=True
+    16->8  e1  recovering tau=  -16.497 valid=True
+    1->2   e5  recovering tau=   32.806 valid=True
+    2->1   e5  recovering tau=   -0.773 valid=True
+    2->4   e5  recovering tau=   -0.228 valid=True
+    4->2   e5  recovering tau=   -0.153 valid=True
+    4->8   e5  recovering tau=   -1.035 valid=True
+    8->4   e5  recovering tau=   -0.683 valid=True
+    8->16  e5  recovering tau=   -1.173 valid=True
+    16->8  e5  recovering tau=   -0.541 valid=True
+  Verizon-LTE-driving
+    1->2   e2  degraded   tau=    0.027 valid=True
+    2->1   e2  degraded   tau=    0.472 valid=True
+    2->4   e2  degraded   tau=    0.672 valid=True
+    4->2   e2  degraded   tau=    0.193 valid=True
+    4->8   e2  degraded   tau=   -2.471 valid=True
+    8->4   e2  degraded   tau=    0.354 valid=True
+    8->16  e2  degraded   tau=    0.003 valid=True
+    16->8  e2  degraded   tau=   -4.814 valid=True
+    1->2   e4  degraded   tau=    5.003 valid=True
+    2->1   e4  degraded   tau=   -1.098 valid=True
+    2->4   e4  degraded   tau=    5.658 valid=True
+    4->2   e4  degraded   tau=    0.018 valid=True
+    4->8   e4  degraded   tau=    2.238 valid=True
+    8->4   e4  degraded   tau=   -0.714 valid=True
+    8->16  e4  degraded   tau=    5.196 valid=True
+    16->8  e4  degraded   tau=    0.835 valid=True
+    1->2   e1  good       tau=   -0.315 valid=True
+    2->1   e1  good       tau=   -0.410 valid=True
+    2->4   e1  good       tau=   -0.061 valid=True
+    4->2   e1  good       tau=   -0.439 valid=True
+    4->8   e1  good       tau=   -0.203 valid=True
+    8->4   e1  good       tau=   -0.247 valid=True
+    8->16  e1  good       tau=    0.798 valid=True
+    16->8  e1  good       tau=    0.394 valid=True
+    1->2   e3  recovering tau=    0.061 valid=True
+    2->1   e3  recovering tau=   -0.155 valid=True
+    2->4   e3  recovering tau=    0.002 valid=True
+    4->2   e3  recovering tau=    0.053 valid=True
+    4->8   e3  recovering tau=    0.090 valid=True
+    8->4   e3  recovering tau=    0.042 valid=True
+    8->16  e3  recovering tau=    0.026 valid=True
+    16->8  e3  recovering tau=    0.033 valid=True
+    1->2   e6  recovering tau=   -0.009 valid=True
+    2->1   e6  recovering tau=    0.416 valid=True
+    2->4   e6  recovering tau=   -0.041 valid=True
+    4->2   e6  recovering tau=    0.062 valid=True
+    4->8   e6  recovering tau=    0.164 valid=True
+    8->4   e6  recovering tau=    0.000 valid=True
+    8->16  e6  recovering tau=   -0.284 valid=True
+    16->8  e6  recovering tau=    0.002 valid=True
+  ATT-LTE-driving
+    1->2   e2  degraded   tau=    0.731 valid=True
+    2->1   e2  degraded   tau=    0.359 valid=True
+    2->4   e2  degraded   tau=   -0.149 valid=True
+    4->2   e2  degraded   tau=    0.699 valid=True
+    4->8   e2  degraded   tau=    0.023 valid=True
+    8->4   e2  degraded   tau=   -0.752 valid=True
+    8->16  e2  degraded   tau=   -1.337 valid=True
+    16->8  e2  degraded   tau=   -1.746 valid=True
+    1->2   e3  degraded   tau=    1.060 valid=True
+    2->1   e3  degraded   tau=   -1.889 valid=True
+    2->4   e3  degraded   tau=    0.211 valid=True
+    4->2   e3  degraded   tau=    0.298 valid=True
+    4->8   e3  degraded   tau=   -0.400 valid=True
+    8->4   e3  degraded   tau=   -0.297 valid=True
+    8->16  e3  degraded   tau=   -0.229 valid=True
+    16->8  e3  degraded   tau=    0.138 valid=True
+    1->2   e0  good       tau=   -1.222 valid=True
+    2->1   e0  good       tau=   -0.056 valid=True
+    2->4   e0  good       tau=    0.128 valid=True
+    4->2   e0  good       tau=   -0.025 valid=True
+    4->8   e0  good       tau=    0.766 valid=True
+    8->4   e0  good       tau=    0.454 valid=True
+    8->16  e0  good       tau=    0.052 valid=True
+    16->8  e0  good       tau=    0.652 valid=True
+    1->2   e1  good       tau=    0.713 valid=True
+    2->1   e1  good       tau=    0.229 valid=True
+    2->4   e1  good       tau=    0.179 valid=True
+    4->2   e1  good       tau=   -0.211 valid=True
+    4->8   e1  good       tau=    0.443 valid=True
+    8->4   e1  good       tau=    0.281 valid=True
+    8->16  e1  good       tau=    0.142 valid=True
+    16->8  e1  good       tau=    0.089 valid=True
+  TMobile-LTE-driving
+    1->2   e2  degraded   tau=    0.378 valid=True
+    2->1   e2  degraded   tau=    1.878 valid=True
+    2->4   e2  degraded   tau=    0.032 valid=True
+    4->2   e2  degraded   tau=   -0.456 valid=True
+    4->8   e2  degraded   tau=    0.578 valid=True
+    8->4   e2  degraded   tau=    0.061 valid=True
+    8->16  e2  degraded   tau=   -0.102 valid=True
+    16->8  e2  degraded   tau=    0.081 valid=True
+    1->2   e1  recovering tau=   -0.067 valid=True
+    2->1   e1  recovering tau=    0.559 valid=True
+    2->4   e1  recovering tau=    0.110 valid=True
+    4->2   e1  recovering tau=    0.026 valid=True
+    4->8   e1  recovering tau=    0.151 valid=True
+    8->4   e1  recovering tau=    0.095 valid=True
+    8->16  e1  recovering tau=    0.068 valid=True
+    16->8  e1  recovering tau=   -0.079 valid=True
+  TMobile-UMTS-driving
+    1->2   e1  degraded   tau=   -0.172 valid=True
+    2->1   e1  degraded   tau=    0.061 valid=True
+    2->4   e1  degraded   tau=   -0.805 valid=True
+    4->2   e1  degraded   tau=    0.157 valid=True
+    4->8   e1  degraded   tau=    3.925 valid=True
+    8->4   e1  degraded   tau=    0.168 valid=True
+    8->16  e1  degraded   tau=   -6.979 valid=True
+    16->8  e1  degraded   tau=    4.138 valid=True
+    1->2   e4  degraded   tau=    1.492 valid=True
+    2->1   e4  degraded   tau=   38.965 valid=True
+    2->4   e4  degraded   tau=   -0.716 valid=True
+    4->2   e4  degraded   tau=    1.616 valid=True
+    4->8   e4  degraded   tau=    0.560 valid=True
+    8->4   e4  degraded   tau=    0.139 valid=True
+    8->16  e4  degraded   tau=   -1.897 valid=True
+    16->8  e4  degraded   tau=    0.221 valid=True
+    1->2   e6  good       tau=   -0.414 valid=True
+    2->1   e6  good       tau=    0.281 valid=True
+    2->4   e6  good       tau=    0.080 valid=True
+    4->2   e6  good       tau=   -0.432 valid=True
+    4->8   e6  good       tau=   -0.709 valid=True
+    8->4   e6  good       tau=   -0.165 valid=True
+    8->16  e6  good       tau=    0.148 valid=True
+    16->8  e6  good       tau=   -0.629 valid=True
+    1->2   e2  recovering tau=   -0.120 valid=True
+    2->1   e2  recovering tau=    0.481 valid=True
+    2->4   e2  recovering tau=   -0.143 valid=True
+    4->2   e2  recovering tau=    0.029 valid=True
+    4->8   e2  recovering tau=   -0.614 valid=True
+    8->4   e2  recovering tau=   -0.067 valid=True
+    8->16  e2  recovering tau=    0.260 valid=True
+    16->8  e2  recovering tau=   -0.998 valid=True
+    1->2   e3  recovering tau=   -0.645 valid=True
+    2->1   e3  recovering tau=    0.098 valid=True
+    2->4   e3  recovering tau=   -0.014 valid=True
+    4->2   e3  recovering tau=   -0.671 valid=True
+    4->8   e3  recovering tau=    0.442 valid=True
+    8->4   e3  recovering tau=   -0.278 valid=True
+    8->16  e3  recovering tau=    1.562 valid=True
+    16->8  e3  recovering tau=    0.223 valid=True
+
+INTEGRITY CHECKS: 17/17 pass
+  [PASS] exactly the five frozen traces
+  [PASS] exactly five H values feed the CI
+  [PASS] sanity bound holds for all five traces
+  [PASS] no unlabeled retained epoch
+  [PASS] retained == shared-valid full native epochs
+  [PASS] epoch_pilot_v2 unchanged
+  [PASS] tau_campaign_v3 unchanged
+  [PASS] Stage-A evidence unchanged
+  [PASS] Stage-B evidence unchanged
+  [PASS] oracle_stage_v3 unchanged
+  [PASS] preregistration v4 + amendment 1 unchanged
+  [PASS] no source code changed
+  [PASS] no experiment process started
+  [PASS] no network namespaces
+  [PASS] no qdisc residue
+  [PASS] replica validated against oracle_stage_v3 (formula check) — oracle_replica.py reproduces oracle_stage_v3 fixed/inst/constrained values to 1e-9
+  [PASS] raw signed tau observations preserved and unaltered
