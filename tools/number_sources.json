@@ -1,0 +1,51 @@
+{
+ "_comment": "Raw source artifacts for every recomputed value family in tools/claims_check.py",
+ "sources": {
+  "d2.*": [
+   "testdata/aria2_competitive_benchmark/final_reproduction/final-p??-{ours,aria2}.json"
+  ],
+  "controlA.*, const.*": [
+   "testdata/aria2_competitive_benchmark/mechanism/{controlA-p??-*,const-*}.json"
+  ],
+  "p1.*, p2.*, mean_s.*": [
+   "testdata/n_dependent_server_joint_ns/adaptive/*.json"
+  ],
+  "gate.*": [
+   "testdata/n_dependent_server_joint_ns/analysis/gate_b.json (cells/optima computed by tools/analyze_gate_b.py from fixed_grid/*.json)",
+   "testdata/n_dependent_server_joint_ns/analysis/precision_s_row.json"
+  ],
+  "analytic.*": [
+   "testdata/n_dependent_server_joint_ns/analysis/prescreen_b.json (analytic model, not live)"
+  ],
+  "w16.*": [
+   "testdata/n_dependent_server_joint_ns/w1_w6_adaptive/*.json"
+  ],
+  "w5.*": [
+   "testdata/n_dependent_server_joint_ns/analysis/w1_w6_grid.json",
+   "testdata/n_dependent_server_joint_ns/manifest/w1_w6_manifest.json"
+  ],
+  "sweep.*": [
+   "testdata/d2_pacing_sweep/runs/*.json",
+   "testdata/d2_pacing_sweep/manifest/sweep_manifest.json"
+  ],
+  "nginx.*": [
+   "testdata/nginx_limit_rate/runs/*.json",
+   "testdata/nginx_limit_rate/manifest/nginx_manifest.json"
+  ],
+  "trace.*": [
+   "testdata/final_oracle_analysis/final_oracle_results.json (per-trace t_constrained/t_best_fixed; H recomputed and asserted equal)"
+  ],
+  "h2h.v2.*": [
+   "testdata/final_evaluation/raw_results.json"
+  ],
+  "h2h.v5.*": [
+   "testdata/final_evaluation_v5/raw_results_all.json"
+  ],
+  "h2h.v6.*": [
+   "testdata/final_evaluation_v6/raw_results_all.json"
+  ],
+  "long.*": [
+   "testdata/diagnostics/dqn_long_duration_v6/size_{16,128,512}MiB/raw_results_all.json"
+  ]
+ }
+}

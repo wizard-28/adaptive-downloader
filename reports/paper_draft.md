@@ -29,7 +29,7 @@ pacing, a soft concurrency-dependent throttle, and network impairment, and repor
 four findings. (i) On one characterised workload (512 MiB; per-response pacing
 640→160→2500 KiB/s; 40 ms RTT, 0.4 % loss) a fixed configuration of 16
 connections and 4 MiB ranges completes **62.4 % faster than aria2 1.37** (30/30
-paired runs, geometric ratio 0.3756 [0.3728, 0.3785]); controls attribute much of
+paired runs, geometric ratio 0.3756 [0.3726, 0.3787]); controls attribute much of
 the gap to an interaction between request granularity, request-start timing, and
 phase-locked pacing: it shrinks when granularity is matched (ratio 0.862). A
 five-pair screen over six pacing schedules shows ours faster in 28 of 30 pairs,
@@ -48,8 +48,9 @@ that cap; across six predeclared workloads a frozen workload selector is not
 distinguishable from the per-workload best fixed configuration on average
 (geometric ratio 0.999 [0.969, 1.029]) and a consistent improvement over a single
 family-wide configuration is **not** established (point estimate 0.770,
-workload-level interval [0.455, 1.304]). (iv) Learned (LinUCB, DQN) policies
-were slower than aria2 in the head-to-heads we ran. All results are scoped to the
+workload-level interval [0.455, 1.304]). (iv) The DQN policies (v2, v5, v6) were
+slower than aria2 overall in the head-to-heads we ran (LinUCB was evaluated only
+descriptively). All results are scoped to the
 controlled mechanisms; none is a validation on live networks or production servers.
 
 ---
@@ -61,7 +62,7 @@ controlled mechanisms; none is a validation on live networks or production serve
   that a causal controller can observe.
 - Contributions (each with its evidence label):
   1. A controlled, instrumented platform (downloader, server, policies, harness).
-  2. A mechanism-explained comparison with aria2 on one characterised workload
+  2. A partly mechanism-explained comparison with aria2 on one characterised workload
      (**Confirmed**, single workload; sensitivity screen in §4.1).
   3. A replay-based negative result on recorded cellular traces (**Confirmed**
      under the frozen counterfactual model; not a live-network validation).
@@ -75,10 +76,35 @@ controlled mechanisms; none is a validation on live networks or production serve
 
 ## 2. Related work
 
-Placeholder — authors must verify and complete the bibliography. Topics: smart /
-elastic data-transfer nodes, adaptive segment sizing for parallel downloads,
-adaptive bitrate analogies, multi-source download, aria2 and other download
-managers as practical baselines.
+All entries below were checked against an authoritative record; see
+`reports/references.md` for the verification log and the list of unresolved
+candidates, which are deliberately not cited.
+
+**Online tuning of transfer parallelism.** Balaprakash et al. [balaprakash2016direct]
+treat the number of parallel streams as an online optimization problem solved by
+direct search on production GridFTP/Globus links. Falcon [arifuzzaman2023falcon,
+arifuzzaman2021online] tunes the degree of parallelism with a utility function
+and online search for high-speed science networks. FastBioDL
+[swargo2025fastbiodl] applies gradient-descent concurrency tuning to HTTP/FTP
+genomic downloads (arXiv preprint, no peer-reviewed venue found). These works
+optimize concurrency online against observed throughput; the present paper
+instead asks, with a controlled server whose mechanism is known, whether an
+optimum exists for a causal controller to track at all.
+
+**Multi-source and range-based downloading.** MDTP [abdollah2025mdtp] splits a
+request into chunk requests across replica servers and sizes chunks to measured
+per-server throughput, comparing against aria2 [aria2manual]. HTTP range
+requests are specified in RFC 9110 [rfc9110]. Our setting is single-source.
+
+**Adaptation in adjacent domains.** BOLA [spiteri2016bola, spiteri2020bola]
+selects video bitrates by utility maximization without bandwidth prediction and
+serves as an analogy for decision rules that need no throughput forecast.
+DeLoad [liu2025deload] (preprint) sizes download tasks for short-video
+preloading. Neither is a range-download concurrency study.
+
+**Position.** The contribution here is a mechanism-first, controlled
+evaluation with explicit failed gates and a practical baseline comparison, not
+a new tuning algorithm.
 
 ## 3. System and experimental platform
 
@@ -103,7 +129,7 @@ managers as practical baselines.
   --min-split-size=1M`. The full aria2 split frontier (1/2/4/8/16) and a
   40-configuration grid for ours were run in discovery.
 - **Confirmed (30 fresh pairs):** ours 20.12 s vs aria2 53.56 s mean; geometric
-  ratio 0.3756, 95 % CI [0.3728, 0.3785], 30/30 wins; all runs content-verified.
+  ratio 0.3756, 95 % CI [0.3726, 0.3787], 30/30 wins; all runs content-verified.
 - **Mechanism (per-request server logs, per run):** aria2 issues 16 requests (one
   unranged probe plus 15 × 32 MiB ranges), all starting before 2 s and held at
   640 KiB/s; ours issues 128 × 4 MiB ranges, of which 16 start before 2 s and 112
@@ -111,11 +137,13 @@ managers as practical baselines.
   late, over 30 runs). aria2 cannot be configured to finer
   initial pieces: with `-x16`, `--split` of 16/64/256 gave the same range-size
   distribution in a local probe.
-- **Controls:** granularity-matched control ratio 0.862 [0.839, 0.885] (10
+- **Controls:** granularity-matched control ratio 0.862 [0.834, 0.890] (10
   pairs). A constant 2.5 MB/s schedule removes most of the *4 MiB vs 32 MiB*
   difference within our own downloader (2.3× → 1.1×) but ours is still faster
   than aria2 (15.3 s vs 24.8 s); see §4.1. The phase-locked mechanism therefore
   explains the size of the D2 gap, not the whole of it.
+- **This is a fixed-configuration result, not an adaptive one:** neither system
+  adapts during the transfer in this comparison.
 - **Limitation:** one workload family on a synthetic server; the win is a
   property of this pacing mechanism, not a general statement about aria2.
 
@@ -147,6 +175,8 @@ not test why S4 favours the smaller ranges (an obvious candidate is the
 finishing tail of 32 MiB pieces, unmeasured here), so the mechanism for S4 is
 a hypothesis, not a finding. S1 has one pair at 0.751 (a slow ours run); it is
 retained under the predeclared exclusion rules.
+
+![Paired completion-time ratios ours/aria2 for the frozen D2 benchmark, the six sweep schedules and the two NGINX configurations. Dots are pairs; bars are per-cell geometric means; the dashed line is parity. Sweep and NGINX cells have n=5 pairs and are screening evidence only.](ieee_access/figures/fig1_ours_vs_aria2.png)
 
 ### 4.2 Stock-server check (NGINX `limit_rate` / `limit_rate_after`)
 
@@ -205,7 +235,7 @@ demonstrations in a selected environment, not prevalence estimates.
   (4, 4 MiB) and changed only reachability).
 - Selector: probe at (16, 1 MiB), classify after ≥ 20 samples, apply the
   predeclared (N,S), no further switching. Live, 10 blocks per workload:
-  healthy 19.1 s vs fixed (16,1M) 19.0 s (geo 1.006 [0.939, 1.080], 6/10) and vs
+  healthy 19.1 s vs fixed (16,1M) 19.0 s (geo 1.006 [0.931, 1.082], 6/10) and vs
   aria2 53.9 s (geo 0.353, 10/10); capped 84.2 s vs fixed (16,1M) 115.3 s
   (geo 0.730, 10/10) and vs aria2 68.3 s (geo 1.232, 0/10: aria2 faster).
 - Baselines, stated explicitly: vs the best single fixed configuration across the
@@ -215,22 +245,23 @@ demonstrations in a selected environment, not prevalence estimates.
 
 ### 6.1 Six-workload family
 
-Frozen manifest `testdata/n_dependent_server_joint_ns/manifest/w1_w6_manifest.json`:
+Frozen manifest `testdata/n_dependent_server_joint_ns/manifest/w1_w6_manifest.json`
+(predeclared in a logged protocol, but not independently timestamped):
 six predeclared workloads (W1 healthy; W2–W6 cap/schedule/transition variants)
 chosen by a predeclared qualification and selection rule from 72 analytic
 candidates (13 qualified). Two post-hoc amendments were made after design output
 and before any live W1–W6 run (post-drop window 20 samples → fixed 25 s; relaxed
 transition coverage); the first manifest was overwritten and is not preserved.
 W2–W4 share one selector target by construction. Live fixed-grid validation: 5/6
-model optima matched; **W5 mismatched** (live (16,16M) 85.4 s vs model (4,4M)
-95.7 s) and the frozen selector was not retuned. 10 fresh paired blocks per
+model optima matched; **W5 mismatched** (live argmin (16,16M) 85.4 s; the model's
+target (4,4M) measured 95.9 s live against a model prediction of 94.8 s) and the frozen selector was not retuned. 10 fresh paired blocks per
 workload, 240 runs, 0 invalid.
 
 | comparison (selector vs …) | pooled geo ratio | block-level 95 % CI | workload-level (six-cluster) interval | blocks won |
 |---|---|---|---|---|
 | per-workload best fixed | 0.999 | [0.969, 1.029] | [0.873, 1.143] | 24/60 |
 | family-best single fixed (4, 4 MiB) | 0.770 | [0.684, 0.859] | [0.455, 1.304] | 40/60 |
-| aria2 | 1.660 | [1.360, 1.990] | [0.707, 3.902] | 10/60 |
+| aria2 | 1.660 | [1.360, 1.990] | [0.707, 3.901] | 10/60 |
 
 **Primary comparison is the workload-level interval**, because the unit of
 generalisation is the workload, not the block. It includes 1 for all three
@@ -249,6 +280,8 @@ selector loses on W5 (1.058) and W6 (1.090).
 | W5 | 1.172 (frozen-target mismatch) | 1.058 |
 | W6 | 1.088 | 1.090 |
 
+![Selector paired ratios per workload against the per-workload best fixed configuration (left) and the family-best single fixed configuration (right). Dots are blocks; the shaded band is the workload-level 95 % t-interval (six clusters), which includes 1 in both panels.](ieee_access/figures/fig2_six_workload_selector.png)
+
 aria2 is faster on every degraded workload (its burst-started 32 MiB pieces start
 before the cap rate drops, §7). The result is workload-level selection under the
 constructed cap, not within-download adaptation.
@@ -260,11 +293,11 @@ constructed cap, not within-download adaptation.
   a predeclared target ((4,4M) joint; (4,1M) N-only; (16,4M) S-only).
 - **Confirmed (10 paired blocks, 0 invalid):** causal joint 58.7 s vs best of the
   three stationary configurations run under this schedule, (16,1M) 76.7 s: geo
-  0.766 [0.763, 0.769], 10/10 (+23.4 %). The comparison set is
+  0.766 [0.762, 0.769], 10/10 (+23.4 %). The comparison set is
   {(16,1M), (4,1M), (4,4M)}; no fixed grid was run under this schedule, so
   "best" means best of those three.
 - Ablation: N-only 62.0 s (geo 0.808 vs best fixed, 10/10); joint vs N-only geo
-  0.947 [0.943, 0.951], 10/10; S-only 82.1 s, worse than not switching (geo
+  0.947 [0.943, 0.952], 10/10; S-only 82.1 s, worse than not switching (geo
   1.070, 0/10). Under this cap the N move carries the gain.
 - **aria2 is faster:** 53.6 s vs causal joint 58.7 s (geo 1.096, 0/10). This
   result supports improvement over the best stationary configuration under the
@@ -272,6 +305,8 @@ constructed cap, not within-download adaptation.
   (per-request server logs): aria2's first nine pieces start at k ≤ 9 where the
   cap rate exceeds the base rate and hold 640 KiB/s for ~52 s; the server fixes a
   request's rate at its start.
+![P2 completion times (10 paired blocks). The causal joint controller is faster than the best of the three fixed configurations run under this schedule but slower than aria2; the S-only ablation is worse than not switching.](ieee_access/figures/fig3_within_download_controller.png)
+
 - Block-level CIs here are very narrow because the emulated server is nearly
   deterministic; they quantify emulator noise, not population variability.
 
@@ -289,18 +324,34 @@ under the frozen model.
 
 ## 9. Learned-policy experiments (inventory; none is a positive result)
 
-| experiment | design | outcome |
-|---|---|---|
-| LinUCB, five- and six-mode 4 MiB benchmarks | 300 runs, 5 scenarios | descriptive; locks onto a single arm after warm-up; periodic exploration changes coverage but not the dominant preference |
-| DQN v2 vs aria2 baseline v1 | 240 pairs, U1–U8 unstable profiles | 75.7 % slower (geo 1.757 [1.669, 1.850]); faster in 31/240 pairs |
-| DQN v3 | simulator + live transfer | fixed fragmentation but simulator rewarded larger chunks the server does not reward; mixed |
-| DQN v4 (concurrency-only, fixed 1 MiB) | simulator + live transfer, no aria2 comparison | live transfer matched simulator behaviour; the 4 MiB file gave only a four-request control horizon, which motivated the 16 MiB v5 formulation |
-| DQN v5 vs aria2-F | 240 pairs, 16 MiB, U1–U8 | geo 2.322 [2.227, 2.421] (v5/aria2-F); faster in 1/240 pairs; outperformance criteria not met. The exported v5 artifact predates a later simulator window-accounting fix (not retrained) |
-| DQN v6 vs aria2-F | 150 pairs, five trajectories A2–E2 | pooled geo 1.456 [1.300, 1.630]; faster in 37/150; faster in one of five trajectories (E2, 0.948 [0.897, 1.002], interval includes 1); D2 5.47× slower |
-| v6 long-duration diagnostic | 16/128/512 MiB, 5 pairs per cell, 45 pairs, trajectories A2/D2/E2 | pooled ratio 1.805 → 1.062 → 0.909 (512 MiB CI [0.757, 1.092] includes 1); driven entirely by D2 (6.00 → 1.16 → 0.568) while A2 (0.943 → 0.973 → 1.092) and E2 (1.039 → 1.062 → 1.211) worsen with size; exploratory, small n |
+Status column: **valid** = the stated comparison is internally consistent and
+reproducible from its artifacts; **stale** = produced before a later correction
+of its simulator/environment; **non-comparable** = different workload, file
+size or aria2 configuration from the other rows, so ratios must not be pooled.
 
-Every variant above is reported, including failures. Candidate artifacts are
-frozen with SHA-256 hashes; none was tuned after its evaluation.
+| experiment | design | outcome | status |
+|---|---|---|---|
+| LinUCB, five- and six-mode 4 MiB benchmarks | 300 runs, 5 scenarios, fixed/rule-based/LinUCB modes | descriptive; locks onto a single arm after warm-up; periodic exploration changes coverage but not the dominant preference; no ranking made | valid (descriptive), non-comparable to aria2 rows |
+| DQN v1 (frozen candidate) | simulator train/validation/test + 25-run live transfer, no aria2 comparison | superseded; trained on the v1 environment later corrected (§22.24) | stale |
+| DQN v2 vs aria2 baseline v1 | 240 pairs, U1–U8 profiles, 4 MiB, aria2 `-x4 -s4` | 75.7 % slower (geo 1.757 [1.672, 1.847]); faster in 31/240 pairs | valid; non-comparable to the 16 MiB rows |
+| DQN v3 | simulator + live transfer vs v2 | fixed fragmentation, but simulator rewarded chunk sizes the server does not reward | valid (negative/mixed) |
+| DQN v4 (concurrency-only, fixed 1 MiB) | simulator + 25-run live transfer, no aria2 comparison | live behaviour matched simulator; 4 MiB file gave only a four-request control horizon | valid; no head-to-head |
+| DQN v5 vs aria2-F | 240 pairs, 16 MiB, U1–U8 | geo 2.322 [2.230, 2.417]; faster in 1/240 pairs; outperformance criteria not met | valid as a head-to-head; **candidate artifact stale** with respect to a later simulator window-accounting fix (not retrained) |
+| DQN v6 (concurrency 1–16) vs aria2-F | 150 pairs, trajectories A2–E2, 16 MiB | pooled geo 1.456 [1.305, 1.624]; faster in 37/150; one of five trajectories not slower (E2, 0.948 [0.897, 1.002]); D2 5.47× slower | valid; non-comparable to v5 rows (different bounds/trajectories) |
+| v6 long-duration diagnostic | 16/128/512 MiB, 5 pairs/cell, A2/D2/E2 | pooled 1.805 → 1.062 → 0.909 (512 MiB CI [0.750, 1.102] includes 1), driven by D2 (6.00 → 1.16 → 0.568) while A2 and E2 worsen with size | valid but exploratory, small n |
+
+No learned policy outperformed the practical baseline in a supported
+comparison. The single sub-1 pooled value (v6 at 512 MiB) has an interval that
+includes 1 and is driven by one trajectory. Candidate artifacts are frozen with
+SHA-256 hashes; none was tuned after its evaluation. Intervals in this table are
+95 % t-intervals on the log ratio recomputed by `tools/claims_check.py` with the
+critical value for the actual degrees of freedom; the frozen analysis script
+(`python/analyze_final_evaluation.py`) used 2.045 for every n (and the frozen D2
+analysis used the normal value 1.96, giving [0.3728, 0.3785] instead of the t-interval
+reported here), which is correct
+for n=30 and slightly conservative for n=150 and n=240 (and too narrow for
+n=15), so its stored intervals differ in the third decimal. The frozen
+artifacts were not modified.
 
 ## 10. Discussion, limitations, and threats to validity
 
@@ -318,7 +369,7 @@ frozen with SHA-256 hashes; none was tuned after its evaluation.
 - **Statistics:** block-level intervals reflect emulator noise; workload-level
   intervals are primary for cross-workload claims; n = 5 sweep pairs are
   screening only.
-- **Multiplicity and amendments:** disclosed in §6.1 and the note above.
+- **Multiplicity and amendments:** the W1–W6 family was selected from 72 analytic candidates and its manifest was amended twice before the live runs; the protocol was predeclared in a logged protocol, but not independently timestamped (§6.1 and the note above).
 - **Failed gates are reported as failed** (§6 S-margin; §8 trace gate).
 
 ## 11. Conclusion
@@ -337,11 +388,30 @@ family-wide configuration is not established; learned policies were slower than
 aria2. These results delimit when adaptation is worth its complexity; they do not
 establish general superiority of adaptive downloading.
 
-## Declarations (to be completed by the authors)
+## Declarations
 
-Authors, order, affiliations and ORCID; funding; conflicts of interest; AI-use
-disclosure; data availability (code MIT; data under separate terms, archived with
-a DOI); reproducibility instructions (`docs/REPRODUCING.md`).
+**Authors, order, affiliations, ORCID, funding, conflicts of interest:** TO BE
+PROVIDED BY THE HUMAN AUTHORS (not filled by the preparer).
+
+**Use of AI tools (draft; authors must confirm wording and scope).** An AI
+coding assistant (Anthropic Claude, run through the Claude Code CLI) was used
+during the project to write and modify source code and analysis scripts, to run
+experiments and tests, to audit results against raw data, to correct
+manuscript claims, and to draft this text. It did not generate experimental
+data other than by executing the specified programs. All numerical claims are
+recomputed from raw run files by `tools/claims_check.py`. Human authors are
+responsible for the content and must verify this disclosure against the actual
+workflow and the publisher's policy.
+
+**Data and code availability.** Code: MIT license (copyright holder to be
+confirmed). Raw runs, manifests and analysis outputs are under `testdata/`;
+because of size they are distributed as a separate archive with SHA-256
+checksums (`docs/ARCHIVE_PLAN.md`). **DOI: not yet issued.** Third-party trace
+files keep their own terms (`DATA_LICENSE.md`).
+
+**Reproducibility.** `docs/REPRODUCING.md`; `python3 tools/claims_check.py`
+recomputes every quoted number; protocols and hashes for the pacing sweep and
+the NGINX check are committed before their runs.
 
 ---
 
@@ -350,7 +420,7 @@ a DOI); reproducibility instructions (`docs/REPRODUCING.md`).
 | Claim | Label | Evidence |
 |---|---|---|
 | Fixed (16, 4 MiB) beats aria2 by 62.4 % on D2 (30/30, ratio 0.3756) | Confirmed (single workload) | 30-pair frozen benchmark; per-request logs |
-| The D2 gap is explained by granularity × request-start timing × pacing | Confirmed (controls) | granularity-matched 0.862; constant-rate control |
+| The D2 gap is partly attributable to granularity × request-start timing × pacing | Confirmed for the matched-granularity effect (0.862); **residual advantage unexplained** (constant fast pacing 0.568; NGINX constant 0.863) | granularity-matched control; constant-rate control; sweep S4; NGINX N1 |
 | Ours is faster than aria2 across six pacing schedules except constant slow pacing (parity) | Descriptive (screen, n=5/schedule, 28/30 pairs) | `d2_pacing_sweep/analysis/sweep_results.json` |
 | Ours is faster than aria2 against stock NGINX per-response rate limiting | Descriptive (screen, n=5/config, 10/10 pairs); predeclared parity expectation for N1 **not met** | `nginx_limit_rate/analysis/nginx_results.json` |
 | No exploitable concurrency headroom on recorded cellular traces replayed | Confirmed under frozen model; Failed gate for any headroom claim | five-trace gate, LCB95 = −0.26 % vs 10 % |

@@ -1,0 +1,12 @@
+{
+ "_comment": "Tokens in the manuscript that are not recomputed results. Section numbers, critical values, and the frozen-analysis interval endpoints that the paper quotes only to explain a methodological difference (frozen D2 analysis used z=1.96).",
+ "decimals": [
+  "4.1",
+  "4.2",
+  "2.045",
+  "1.96",
+  "0.3728",
+  "0.3785"
+ ],
+ "fractions": []
+}
