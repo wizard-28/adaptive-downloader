@@ -23,12 +23,19 @@ ratios, never silently averaged.
 
 ```
 go build ./... && go vet ./...
-go test -count=1 ./...                  # unit + integration tests
+go test -p 1 -count=1 ./...            # unit + integration tests, serialized (see note)
 go test -race -count=1 ./internal/experiment/replay/ ./internal/rl/...
 python3 -m pytest python/tests -q       # simulator/state tests (needs torch/numpy for some)
 python3 python/gen_state_parity_v5.py --check
 python3 tools/claims_check.py           # recomputes every number in the paper
 ```
+
+**Note on `-p 1`.** `internal/experiment/replay` contains wall-clock alignment
+tests with a 100 ms tolerance. When the default parallel `go test ./...` runs
+other heavy packages at the same time, those tests can fail on timing alone
+(observed in the release-candidate verification, see
+`reports/verification/`); they pass in isolation and with `-p 1`. Use `-p 1`
+for verification. No test was weakened.
 
 `tools/claims_check.py` reads only raw run files under `testdata/` and compares
 each recomputed value with `tools/paper_numbers.json` (the numbers quoted in

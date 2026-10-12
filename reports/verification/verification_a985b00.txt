@@ -1,0 +1,74 @@
+revision: a985b00b6da5ba64b85c856fcf3259131f50c103
+date: 2026-10-12T02:36:06Z
+go: go version go1.27.1 linux/amd64
+== claims_check
+checked 113 numbers: 113 ok, 0 failed
+paper scan: 0 unverified tokens
+rc=0
+== claims_check self-test
+PASS unmodified paper and numbers pass
+PASS wrong expected number is rejected
+PASS paper edit rejected: D2 headline ratio 0.3756 -> 0.3956
+PASS paper edit rejected: P2 ratio 0.766 [0.762, 0.769] -> 0.716
+PASS paper edit rejected: sweep win count 28 of 30 -> 29 of 30
+PASS paper edit rejected: NGINX ratio 0.863 -> 0.763
+PASS paper edit rejected: family ratio 0.770 -> 0.670
+rc=0
+== parity fixture
+parity fixture up to date
+rc=0
+== pytest
+......................................................................   [100%]
+70 passed in 4.34s
+== go build/vet
+ok
+== go test -count=1 ./...
+ok  	adaptivedl/cmd/aria2-benchmark	0.004s
+ok  	adaptivedl/cmd/aria2-wallclock	0.008s
+ok  	adaptivedl/cmd/calibration	0.007s
+ok  	adaptivedl/cmd/dqn-live-v5	0.006s
+ok  	adaptivedl/cmd/dqn-transfer	0.003s
+ok  	adaptivedl/cmd/epoch-pilot	0.003s
+ok  	adaptivedl/cmd/experiment	0.003s
+ok  	adaptivedl/cmd/final-evaluation-v5	0.005s
+ok  	adaptivedl/cmd/granularity-study	2.379s
+ok  	adaptivedl/internal/assembler	0.007s
+ok  	adaptivedl/internal/chunksize	0.003s
+ok  	adaptivedl/internal/concurrency	0.003s
+ok  	adaptivedl/internal/diagnostics	1.804s
+ok  	adaptivedl/internal/downloader	1.744s
+ok  	adaptivedl/internal/experiment	20.934s
+ok  	adaptivedl/internal/experiment/epoch	0.005s
+ok  	adaptivedl/internal/experiment/network	0.004s
+ok  	adaptivedl/internal/experiment/pilot	0.012s
+--- FAIL: TestAnchorCalibration (7.31s)
+    anchor_test.go:297: C=1 rep=0: outcome=TRACE_ENDPOINT_NOT_REACHED err=replay: downlink endpoint not reached: observed=2.379s expected=2.199s residual=-180ms tolerance=100ms
+--- FAIL: TestRunWatchdogTimeout (0.18s)
+    replay_test.go:289: outcome = DOWNLOADER_SUMMARY_MISSING, want WATCHDOG_TIMEOUT
+FAIL
+FAIL	adaptivedl/internal/experiment/replay	12.058s
+ok  	adaptivedl/internal/experiment/server	0.520s
+ok  	adaptivedl/internal/experiment/tau	0.005s
+ok  	adaptivedl/internal/fetcher	0.524s
+ok  	adaptivedl/internal/metrics	0.003s
+ok  	adaptivedl/internal/policy	0.006s
+ok  	adaptivedl/internal/rangetracker	0.004s
+ok  	adaptivedl/internal/rl	3.177s
+ok  	adaptivedl/internal/rl/dqn	0.282s
+FAIL
+== go test -race replay+rl
+ok  	adaptivedl/internal/experiment/replay	45.173s
+ok  	adaptivedl/internal/rl	17.527s
+ok  	adaptivedl/internal/rl/dqn	1.064s
+END
+
+== SUPPLEMENT (same clean checkout a985b00) ==
+Default parallel `go test -count=1 ./...` FAILED twice in internal/experiment/replay
+(TestAnchorCalibration: TRACE_ENDPOINT_NOT_REACHED residual -180 ms, tolerance 100 ms;
+TestRunWatchdogTimeout: DOWNLOADER_SUMMARY_MISSING). Those tests measure sub-100 ms
+wall-clock alignment and are sensitive to concurrent package load. Isolated reruns
+(2x) and the serialized full run passed:
+  go test -count=1 ./internal/experiment/replay/   -> ok 28.5 s (x2)
+  go test -p 1 -count=1 ./...                      -> all 27 packages ok, 70 s
+  go test -race -count=1 replay + rl               -> ok
+No test was weakened. Recommended command for verification: go test -p 1 -count=1 ./...
