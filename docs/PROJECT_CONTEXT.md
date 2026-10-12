@@ -7374,6 +7374,59 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.105 Finalization cycle: paper-rc1, hardened claims check, bounded model-based controller attempt (executed 2026-10-12)
+
+**Status: manuscript/release candidate tagged (`paper-rc1`, commit d1d4afa);
+model-based controller attempt STOPPED at its predeclared feasibility gate
+(0/6 criteria); no live evaluation; not merged.** Not submission-ready: human
+items below are open. Frozen evidence under `testdata/` is unchanged since the
+import commit 8685eb7 (`git diff --name-status 8685eb7 HEAD -- testdata` shows
+additions only).
+
+- **Phase 1 (manuscript):** claims re-scoped (D2 fixed-config result, sweep
+  28/30 pairs and 0.378-0.806 range, NGINX 0.863/0.597 with failed parity
+  expectation, six-workload 0.770 [0.455, 1.304] not established, P2 0.766 vs
+  aria2 slower, failed S-margin and trace gates). D2 mechanism claim downgraded
+  to "partly attributable" because constant-fast pacing (S4 0.568) and NGINX N1
+  (0.863) still favour ours. RL inventory has a valid/stale/non-comparable
+  column; related work and `reports/references.bib` contain only entries
+  verified against Crossref/arXiv/RFC Editor/aria2 manual (`reports/references.md`
+  lists unresolved candidates: "Liu et al. smart DTN" (no match; likely a
+  mislabel of DeLoad's first author), "elastic DTN", Mahimahi, trace dataset,
+  LinUCB/DQN/netem refs). Figures regenerated from raw data
+  (`reports/ieee_access/make_figures.py`).
+- **Corrections found by the stronger checker:** frozen analysis scripts used a
+  fixed t=2.045 for every n (and z=1.96 for the D2 analysis); paper intervals
+  are now recomputed with the correct critical value (v2 [1.672, 1.847], v5
+  [2.230, 2.417], v6 [1.305, 1.624], D2 [0.3726, 0.3787], long-duration 512 MiB
+  [0.750, 1.102], control A [0.834, 0.890]); frozen artifacts untouched. The
+  "model 95.7 s" W5 figure was wrong: model prediction 94.8 s, live (4,4M)
+  95.9 s, live argmin (16,16M) 85.4 s (also true of §22.100).
+- **Phase 2:** `tools/claims_check.py` recomputes 113 expected numbers plus a
+  manuscript scan that fails on any number not reproduced from raw runs or
+  listed in `tools/paper_constants.json`; `tools/test_claims_check.py` shows it
+  fails on mutated numbers (found and fixed two loose-match weaknesses).
+  Release script builds from a committed revision, runs a leak scan, writes
+  SHA256SUMS and runs the checker inside the tree. Clean-checkout verification
+  `reports/verification/verification_a985b00.txt`: claims 113/113, parity current,
+  pytest 70, Go build/vet ok, race (replay, rl) ok, **default parallel
+  `go test ./...` failed twice in internal/experiment/replay (wall-clock
+  alignment tests, load sensitive); passes isolated and with `-p 1`** (documented
+  in docs/REPRODUCING.md; no test weakened).
+- **Phase 3 (branch `exp/model-based-ns`, not merged):** gate protocol committed
+  (b22ad8b), one amendment A1 after an A0 smoke failure was diagnosed as a probe
+  design flaw (size fixed => overhead collinear with size/b) plus a non-robust
+  loss (35f2af5), single evidence run 560 rows: median regret 0.54 (<= 0.05),
+  prediction error 0.46 (<= 0.10), total cost 1.77x (<= 1.25x), k-hat worse than
+  naive k:=N, logC error 0.16 (<= 0.15), fallback 64 % (<= 30 %). The true-k
+  ablation also failed. Stopped by rule; no live runs, no second controller.
+  Summary: `reports/model_based_attempt.md`.
+- **Human-only blockers:** authors/order/affiliations/ORCID; copyright holder
+  and contributor consent for MIT; third-party trace redistribution terms and
+  citation; AI-use disclosure sign-off; DOI issuance and data archive upload;
+  unresolved citations (Mahimahi, trace dataset, standard RL/bandit refs);
+  IEEE Access template conversion.
+
 ### 22.104 Publication-readiness pass: manuscript correction, pacing sweep, NGINX check, release (executed 2026-10-11)
 
 **Status: manuscript corrected against raw data; two screening checks run under

@@ -371,6 +371,11 @@ artifacts were not modified.
   screening only.
 - **Multiplicity and amendments:** the W1–W6 family was selected from 72 analytic candidates and its manifest was amended twice before the live runs; the protocol was predeclared in a logged protocol, but not independently timestamped (§6.1 and the note above).
 - **Failed gates are reported as failed** (§6 S-margin; §8 trace gate).
+- **A bounded model-based controller attempt was stopped at its own predeclared
+  simulation gate** and produced no live evaluation (`reports/model_based_attempt.md`);
+  the adaptive results of §6–§7 therefore rest on frozen selection rules and a
+  threshold controller, not on a controller that identifies the server model
+  online.
 
 ## 11. Conclusion
 
