@@ -7378,7 +7378,9 @@ time-varying per-response pacing schedule.
 
 **Status: manuscript/release candidate tagged (`paper-rc1`, commit d1d4afa);
 model-based controller attempt STOPPED at its predeclared feasibility gate
-(0/6 criteria); no live evaluation; not merged.** Not submission-ready: human
+(0/6 criteria); no live evaluation; not merged Final submission-candidate tag after the negative-result disclosure was added to
+the manuscript: `paper-rc1.1` (it differs from `paper-rc1` only in
+`reports/paper_draft.md` §10, `reports/model_based_attempt.md` and internal docs).** Not submission-ready: human
 items below are open. Frozen evidence under `testdata/` is unchanged since the
 import commit 8685eb7 (`git diff --name-status 8685eb7 HEAD -- testdata` shows
 additions only).
