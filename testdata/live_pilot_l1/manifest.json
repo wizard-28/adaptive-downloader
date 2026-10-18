@@ -1,0 +1,43 @@
+{
+  "pilot": "live_pilot_l1",
+  "seed": 20261018,
+  "client": {
+    "location": "Katpadi, IN",
+    "access_network": "AS45820 Tata Teleservices (user's broadband; ~2.4 MB/s single-stream to cdn.kernel.org at Stage 0)",
+    "host": "devcontainer on the author's machine"
+  },
+  "file": {
+    "name": "linux-3.0.tar.xz",
+    "size": 63798008,
+    "sha256": "ef5e8c2dedb20a6eab01bb379e9982cd7d47cf95bd87c9ee3e872272e85c24b6",
+    "checksum_source": "https://cdn.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc"
+  },
+  "servers": [
+    {"id": "kcdn", "url": "https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz"},
+    {"id": "kedge", "url": "https://mirrors.edge.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz"},
+    {"id": "riken", "url": "https://ftp.riken.jp/Linux/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz"},
+    {"id": "tuna", "url": "https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.0.tar.xz"}
+  ],
+  "reserve_servers": [
+    {"id": "jaist", "url": "https://ftp.jaist.ac.jp/pub/Linux/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz"}
+  ],
+  "cells": [
+    {"n": 1, "s": 1048576}, {"n": 1, "s": 4194304},
+    {"n": 4, "s": 1048576}, {"n": 4, "s": 4194304},
+    {"n": 8, "s": 1048576}, {"n": 8, "s": 4194304},
+    {"n": 16, "s": 1048576}, {"n": 16, "s": 4194304}
+  ],
+  "aria2_args": [
+    "--no-conf", "--file-allocation=none", "--allow-overwrite=true",
+    "--auto-file-renaming=false", "--enable-color=false", "--summary-interval=0",
+    "--console-log-level=notice",
+    "--max-connection-per-server=16", "--split=16", "--min-split-size=1048576",
+    "--max-tries=3", "--retry-wait=1", "--timeout=60", "--connect-timeout=30",
+    "--http-accept-gzip=false", "--conditional-get=false"
+  ],
+  "reps": 2,
+  "gap_s": 5,
+  "run_timeout_s": 900,
+  "max_retries": 3,
+  "timeline_ms": 100
+}

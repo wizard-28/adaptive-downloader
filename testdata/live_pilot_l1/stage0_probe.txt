@@ -1,0 +1,16 @@
+# Stage 0 probe, 2026-10-18 06:23Z, client AS45820 Tata Teleservices, Katpadi IN
+# columns: url | status content-range for Range bytes=0-0 | 4 MiB single-stream curl speed (B/s)
+# (an earlier probe on a different access network was discarded: the user switched networks mid-probe)
+https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/63798008  | 4MiB speed=2360707
+https://mirrors.edge.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/63798008  | 4MiB speed=1511446
+https://mirrors.mit.edu/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=0
+https://mirror.aarnet.edu.au/pub/ftp.kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=421
+https://ftp.riken.jp/Linux/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/63798008  | 4MiB speed=1205651
+https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/63798008  | 4MiB speed=1123912
+https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 403  | 4MiB speed=8287
+https://ftp.jaist.ac.jp/pub/Linux/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/63798008  | 4MiB speed=621837
+https://mirror.init7.net/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=336
+https://ftp.fau.de/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=489
+https://mirrors.dotsrc.org/kernel/linux/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=283
+https://mirror.nju.edu.cn/kernel/v3.x/linux-3.0.tar.xz | 404  | 4MiB speed=121
+https://mirror.kakao.com/linux/kernel/v3.x/linux-3.0.tar.xz | 206 0-0/4109  | 4MiB speed=5823
