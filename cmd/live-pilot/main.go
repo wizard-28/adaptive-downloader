@@ -46,6 +46,9 @@ type Manifest struct {
 	RunTimeoutSec int      `json:"run_timeout_s"`
 	MaxRetries    int      `json:"max_retries"`
 	TimelineMs    int      `json:"timeline_ms"`
+	// UserAgent is sent by the project downloader (amendment A2); empty keeps
+	// the Go default. aria2 and curl keep their own defaults.
+	UserAgent string `json:"user_agent,omitempty"`
 }
 
 type File struct {
@@ -102,6 +105,7 @@ type Record struct {
 	FailedAttempts int64          `json:"failed_attempts,omitempty"`
 	StatusCodes    map[string]int `json:"status_codes,omitempty"`
 	TimelineMs     int            `json:"timeline_ms,omitempty"`
+	UserAgent      string         `json:"user_agent,omitempty"`
 	Timeline       []int64        `json:"timeline_bytes,omitempty"`
 	// External tools.
 	Command string `json:"command,omitempty"`
@@ -373,6 +377,7 @@ func (r *runner) runOurs(ctx context.Context, p Planned, outPath string, start t
 		NoRequestTimeout: true, // watchdog-only: the run context is the deadline
 		MaxRetries:       r.m.MaxRetries,
 		ByteObserver:     tl,
+		UserAgent:        r.m.UserAgent,
 	})
 	if err != nil {
 		return err
@@ -389,6 +394,7 @@ func (r *runner) runOurs(ctx context.Context, p Planned, outPath string, start t
 		}
 	}
 	rec.TimelineMs = r.m.TimelineMs
+	rec.UserAgent = r.m.UserAgent
 	rec.Timeline = tl.Buckets()
 	return runErr
 }

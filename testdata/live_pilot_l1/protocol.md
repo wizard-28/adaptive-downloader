@@ -102,4 +102,31 @@ claim.
 
 ## Amendments
 
-(none)
+- **A1 (2026-10-18 12:05 IST, during S1; informational, no design change).**
+  The access network (Tata) disconnects nightly at about 01:30 IST. No slot
+  window overlaps it: each slot takes about 75 min and the latest starts at
+  21:00. The client's public IP may change after reconnection. Any run hit by
+  an outage is kept as invalid with its error, per the validity rules.
+- **A2 (2026-10-18 ~13:20 IST, after S1; implementation change, with the
+  reason found in the data).** In S1, all 16 project-downloader runs against
+  `tuna` failed. The server returned **403** to every range request,
+  including N=1, while curl and aria2 succeeded. A direct check showed that
+  `tuna` rejects the Go default User-Agent `Go-http-client/1.1` with 403 and
+  accepts any other value (`stage0_ua_check.txt`). This is a real-world
+  observation in its own right: a stock Go client is refused by a major
+  public mirror.
+  - **Fix:** an optional `UserAgent` field on `fetcher.Config` and
+    `downloader.Config`. Empty keeps the old behaviour exactly; a regression
+    test covers both cases. From S2 onward the downloader sends
+    `adaptivedl-research-pilot/1.0 (live_pilot_l1)` to every server
+    (`manifest.json` `user_agent`). This also meets the pilot's intent of an
+    identifying UA. aria2 and curl keep their own defaults.
+  - **Data handling:** the S1 `tuna` runs stay in `raw/S1.jsonl` as invalid,
+    and the `tuna`/S1 condition is INCOMPLETE. To recover a midday `tuna`
+    condition, a **supplementary slot `S1T`** (`tuna` only, the full 10 arms
+    × 2 reps, new UA) runs right after this amendment (~13:25 IST). It is
+    analysed as its own condition (`tuna`/S1T) and labeled as such.
+  - **Caveat:** in S1 the other three servers saw the Go default UA, and in
+    later slots they see the new one. UA is not expected to affect
+    throughput on servers that accept both, but this is an uncontrolled
+    change between S1 and later slots, and it is stated here.

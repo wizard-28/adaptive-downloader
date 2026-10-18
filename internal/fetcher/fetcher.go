@@ -104,6 +104,10 @@ type Config struct {
 	// connection identity). Nil disables byte instrumentation and leaves the
 	// fetch path unchanged.
 	ByteObserver ByteObserver
+	// UserAgent optionally sets the User-Agent request header. Empty keeps
+	// the Go default ("Go-http-client/1.1"), so existing behavior is
+	// unchanged. Some public mirrors reject the Go default with 403.
+	UserAgent string
 }
 
 // Validate rejects ambiguous timeout configurations so "no deadline" can
@@ -126,8 +130,9 @@ func (c Config) Validate() error {
 
 // Fetcher performs single HTTP range requests.
 type Fetcher struct {
-	client   *http.Client
-	observer ByteObserver
+	client    *http.Client
+	observer  ByteObserver
+	userAgent string
 }
 
 // New returns a Fetcher configured by cfg.
@@ -159,7 +164,7 @@ func New(cfg Config) *Fetcher {
 			Timeout:   timeout,
 		}
 	}
-	return &Fetcher{client: client, observer: cfg.ByteObserver}
+	return &Fetcher{client: client, observer: cfg.ByteObserver, userAgent: cfg.UserAgent}
 }
 
 // newHTTP1Transport returns a dedicated transport that can only speak
@@ -246,6 +251,9 @@ func (f *Fetcher) Fetch(ctx context.Context, requestID, rawURL string, start, en
 		return res
 	}
 	req.Header.Set("Range", "bytes="+res.Range.String())
+	if f.userAgent != "" {
+		req.Header.Set("User-Agent", f.userAgent)
+	}
 
 	// When byte instrumentation is enabled, capture the actual connection
 	// identity from httptrace. WithClientTrace composes with any trace already

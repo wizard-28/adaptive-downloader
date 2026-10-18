@@ -1,0 +1,4 @@
+# UA check vs tuna, 2026-10-18T07:42:42Z, Range bytes=0-1023, curl --http1.1 -A <ua>
+Go-http-client/1.1                               403
+curl/8.5.0                                       206
+adaptivedl-research-pilot/1.0 (live_pilot_l1)    206
