@@ -8,3 +8,6 @@
 2026-10-18T07:44:37Z start S1T servers=tuna
 2026-10-18T07:57:43Z end S1T exit=0 runs=22
 2026-10-18T07:57:43Z waiting for S2 at 2026-10-18T21:00 IST
+2026-10-18T15:30:00Z start S2 servers=all
+2026-10-18T16:36:46Z end S2 exit=0 runs=80
+2026-10-18T16:36:46Z waiting for S3 at 2026-10-19T08:00 IST
