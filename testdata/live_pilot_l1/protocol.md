@@ -126,6 +126,12 @@ claim.
     condition, a **supplementary slot `S1T`** (`tuna` only, the full 10 arms
     × 2 reps, new UA) runs right after this amendment (~13:25 IST). It is
     analysed as its own condition (`tuna`/S1T) and labeled as such.
+  - **Operator error during S1T:** the first S1T launch ran on all servers,
+    because the scheduler had no server filter. It was stopped after two
+    `kcdn` runs, which stay in `raw/S1T.jsonl`. A third, in-flight `kcdn` run
+    was aborted without a record. `kcdn`/S1T is therefore INCOMPLETE and is
+    excluded automatically. The scheduler gained an `@server` filter and S1T
+    was restarted with `tuna` only (`logs/scheduler.log`).
   - **Caveat:** in S1 the other three servers saw the Go default UA, and in
     later slots they see the new one. UA is not expected to affect
     throughput on servers that accept both, but this is an uncontrolled
