@@ -72,6 +72,9 @@ type Config struct {
 	// and leaves download behavior unchanged. The observer is shared by all
 	// workers, so it must be safe for concurrent use (see fetcher.ByteMeter).
 	ByteObserver fetcher.ByteObserver
+	// UserAgent optionally sets the User-Agent header on every range request.
+	// Empty keeps the Go default.
+	UserAgent string
 
 	// Policy optionally drives concurrency changes. When nil the downloader
 	// behaves exactly as the fixed/adaptive-concurrency baseline. Policies are
@@ -203,6 +206,7 @@ func New(cfg Config) (*Downloader, error) {
 			DialTimeout:      cfg.DialTimeout,
 			NoDialTimeout:    cfg.NoDialTimeout,
 			ByteObserver:     cfg.ByteObserver,
+			UserAgent:        cfg.UserAgent,
 		}),
 		controller: controller,
 		chunkSize:  chunkCtl,

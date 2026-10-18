@@ -136,6 +136,31 @@ func TestFetchSendsRangeHeader(t *testing.T) {
 	}
 }
 
+func TestFetchUserAgent(t *testing.T) {
+	got := make(chan string, 1)
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		got <- r.Header.Get("User-Agent")
+		w.Header().Set("Content-Range", "bytes 0-9/100")
+		w.Header().Set("Content-Length", "10")
+		w.WriteHeader(http.StatusPartialContent)
+		_, _ = w.Write(make([]byte, 10))
+	}))
+	t.Cleanup(srv.Close)
+
+	for _, tc := range []struct{ set, want string }{
+		{"", "Go-http-client/1.1"}, // empty keeps the Go default
+		{"adaptivedl-test/1.0", "adaptivedl-test/1.0"},
+	} {
+		res := New(Config{Timeout: time.Second, UserAgent: tc.set}).Fetch(context.Background(), "id", srv.URL, 0, 9)
+		if !res.Success {
+			t.Fatalf("Success = false, Err = %v", res.Err)
+		}
+		if ua := <-got; ua != tc.want {
+			t.Fatalf("UserAgent %q: header = %q, want %q", tc.set, ua, tc.want)
+		}
+	}
+}
+
 func TestFetchContentRangeMismatch(t *testing.T) {
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Range", "bytes 0-4/10")

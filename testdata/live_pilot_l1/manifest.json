@@ -39,5 +39,6 @@
   "gap_s": 5,
   "run_timeout_s": 900,
   "max_retries": 3,
-  "timeline_ms": 100
+  "timeline_ms": 100,
+  "user_agent": "adaptivedl-research-pilot/1.0 (live_pilot_l1)"
 }

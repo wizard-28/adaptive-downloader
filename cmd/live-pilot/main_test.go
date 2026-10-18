@@ -128,6 +128,25 @@ func TestRunOursChecksum(t *testing.T) {
 	}
 }
 
+func TestRunOursUserAgent(t *testing.T) {
+	content := testContent(1 << 20)
+	uas := make(chan string, 16)
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		uas <- r.Header.Get("User-Agent")
+		http.ServeContent(w, r, "f.bin", time.Time{}, bytes.NewReader(content))
+	}))
+	defer ts.Close()
+	m := testManifest(ts.URL, content)
+	m.UserAgent = "adaptivedl-research-pilot/1.0"
+	rec := (&runner{m: m, slot: "T"}).run(Planned{Server: m.Servers[0], Arm: Arm{Kind: "ours", N: 1, S: 1 << 20}}, 0)
+	if !rec.Valid || rec.UserAgent != m.UserAgent {
+		t.Fatalf("run %+v", rec)
+	}
+	if ua := <-uas; ua != m.UserAgent {
+		t.Fatalf("server saw User-Agent %q", ua)
+	}
+}
+
 func TestRunOursRateLimitedMarked(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "slow down", http.StatusTooManyRequests)
