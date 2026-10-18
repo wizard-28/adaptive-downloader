@@ -7374,6 +7374,78 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.106 Live-internet pilot L-P1 + Thursday-review materials (started 2026-10-18; IN PROGRESS)
+
+**Status: `LIVE_PILOT_RUNNING` (descriptive; no RL, no adaptive policy run
+live).** Branch `exp/live-pilot-l1` (not merged). Protocol frozen before S1
+in commit 3e643d2: `testdata/live_pilot_l1/protocol.md`, `manifest.json`,
+`stage0_probe.txt`.
+
+- **Question:** on real public mirrors over the author's real access network,
+  does the best fixed (N,S) change across servers and time-of-day slots? The
+  headline is the selection headroom of one global fixed cell against the
+  per-condition clairvoyant best, an upper bound on what any cross-condition
+  adaptive selection could add.
+- **Design:**
+  - Client: devcontainer, AS45820 Tata Teleservices, Katpadi IN; about
+    2.4 MB/s single-stream to the CDN at Stage 0.
+  - File: `linux-3.0.tar.xz` (63,798,008 B), SHA-256 from kernel.org.
+  - Servers: `kcdn`, `kedge`, `riken`, `tuna` (5 of 13 candidates passed
+    Stage 0; `jaist` is the reserve).
+  - Arms: 8 fixed cells (N ∈ {1,4,8,16} × S ∈ {1,4} MiB) + aria2 1.37.0
+    (`-x16 -s16 -k1M`, 60 s timeout) + curl; 2 reps per slot.
+  - Order: seeded blocks.
+  - Timeouts: watchdog-only (`NoRequestTimeout`, 900 s per-run deadline).
+  - Slots (IST): S1 Sun 12:00, S1T Sun 13:15 (tuna only), S2 Sun 21:00,
+    S3 Mon 08:00, S4 Mon 20:00, S5 Tue 08:00.
+- **Code:**
+  - `cmd/live-pilot` (runner and tests; one JSONL record per run, resumable,
+    invalid runs kept)
+  - `scripts/live_pilot_slots.sh` (detached slot scheduler, `@server`
+    filter)
+  - `tools/analyze_live_pilot.py` and `tools/test_analyze_live_pilot.py`
+    (predeclared descriptive analysis)
+  - **API addition:** an optional `UserAgent` field on `fetcher.Config` and
+    `downloader.Config`. Empty keeps the Go default and unchanged behaviour;
+    `TestFetchUserAgent` covers it.
+- **Amendments:**
+  - A1: the access network drops nightly at about 01:30 IST; no slot overlaps
+    it.
+  - A2: the `tuna` mirror returns 403 to Go's default User-Agent
+    `Go-http-client/1.1` (`stage0_ua_check.txt`). All 16 S1 downloader runs
+    against it failed and are kept as invalid. From S1T on, the downloader
+    sends `adaptivedl-research-pilot/1.0 (live_pilot_l1)`. S1T also records
+    an operator error: the first launch ran all servers; 2 `kcdn` runs are
+    kept and one in-flight run was lost.
+- **Data so far:**
+  - S1: 80 runs, 64 valid; all invalid runs are `tuna`/403.
+  - S1T: 22 of 22 valid.
+  - Preliminary S1, three complete servers: global cell N16/S1M, headroom
+    1.6 % (bootstrap [0.0, 2.6]); `kedge` single-connection is 5.7× slower
+    than its best cell.
+- **Paper:**
+  - `reports/paper_draft.md` §8a pre-written as a DRAFT with `[PLACEHOLDER]`s.
+  - The §10 limitation now names the pilot.
+  - New verified citations (Mahimahi, Sprout/Saturator trace provenance,
+    LinUCB, DQN, Double DQN, tc-netem) are in `reports/references.bib` and
+    `reports/references.md`.
+  - Still open (human): the redistribution terms for the Mahimahi-bundled
+    traces.
+  - `tools/claims_check.py`: 113/113, 0 unverified tokens.
+- **Thursday materials:**
+  - Slide deck (15 slides, private claude.ai artifact; slide 11 holds pilot
+    placeholders)
+  - `reports/thursday/project_summary.md`
+  - `reports/thursday/qa.md`
+- **Immediate next step:** after the last slot, run
+  `python3 tools/analyze_live_pilot.py`. Then:
+  - fill §8a, deck slide 11 and the summary and Q&A placeholders from
+    `analysis/summary.json`;
+  - extend `tools/claims_check.py` to recompute the §8a numbers from
+    `testdata/live_pilot_l1/raw/`;
+  - record the results here and drop the IN PROGRESS label.
+  - Do not rank modes; follow the protocol's interpretation rules.
+
 ### 22.105 Finalization cycle: paper-rc1, hardened claims check, bounded model-based controller attempt (executed 2026-10-12)
 
 **Status: manuscript/release candidate tagged (`paper-rc1`, commit d1d4afa);
