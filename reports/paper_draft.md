@@ -118,7 +118,8 @@ a new tuning algorithm.
   k = concurrent requests. This request-start semantics is a property of the
   server model and drives the aria2 results below.
 - Harness: experiment matrix, aria2/curl/wget runners, SHA-256 content
-  verification of every output, tc/netem, mm-link trace replay.
+  verification of every output, tc/netem [tcnetem], and Mahimahi mm-link
+  trace replay [netravali2015mahimahi].
 
 ## 4. Phase-locked pacing and the aria2 comparison
 
@@ -313,7 +314,9 @@ constructed cap, not within-download adaptation.
 ## 8. Recorded cellular traces replayed in a controlled setup
 
 Five recorded driving traces (Verizon EVDO and LTE, AT&T LTE, T-Mobile LTE and
-UMTS) were replayed through mm-link on a controlled host; this is trace replay,
+UMTS), recorded with the Saturator tool of Winstein et al. [winstein2013sprout]
+and distributed with Mahimahi [netravali2015mahimahi], were replayed through
+mm-link on a controlled host; this is trace replay,
 not measurement on live mobile networks. A per-trace counterfactual oracle with
 transition costs estimates the completion-time headroom of switching concurrency
 over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
@@ -322,7 +325,54 @@ over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
 policies; this bounds the benefit available to any concurrency-switching policy
 under the frozen model.
 
+### 8a. Live-internet pilot (Descriptive) — DRAFT, values filled after the last slot
+
+<!-- Pre-written 2026-10-18. Every [PLACEHOLDER] is filled from
+`tools/analyze_live_pilot.py` output and recomputed by `tools/claims_check.py`
+before this section loses its DRAFT label. Delete this comment then. -->
+
+To check whether the trace-replay conclusion survives contact with real
+paths, we ran a small descriptive pilot (`testdata/live_pilot_l1/`; protocol
+committed before the first slot, with amendments logged). One client on the
+author's residential broadband in India downloaded a kernel.org release
+tarball from four public mirrors: the kernel.org CDN, the kernel.org origin
+mirror, and university mirrors in Japan and China. Each download used one of
+eight fixed (N, S) cells (N in {1, 4, 8, 16}, S in {1, 4} MiB), and aria2
+and a single-stream curl reference ran alongside. There were two reps per
+cell per server in [SLOTS] time-of-day slots, every file was
+checksum-verified, and invalid runs were kept. A condition is one (server,
+slot) pair.
+
+- **Validity:** [VALID] of [TOTAL] runs valid; [INVALID-SUMMARY].
+- **Best fixed cell per condition:** [TOP-CELL-SUMMARY]. The top cell
+  changed across slots on [CHANGED] of [SERVERS] servers.
+- **Selection headroom:** one global cell, [GLOBAL-CELL], was on average
+  [HEADROOM] % slower than each condition's clairvoyant best (95 % bootstrap
+  over conditions [LO, HI]; [N-COND] conditions). It was within 5 % of the
+  best in [NEAR] of them. Excluding [N-LINK] access-link-bound conditions:
+  [HEADROOM-NOLINK].
+- **Within-run variability:** median coefficient of variation of 1 s
+  throughput bins [CV-RANGE] across servers.
+- **Context:** aria2's time ratio over the condition's best fixed cell was
+  [ARIA2-RANGE].
+
+In this pilot, [ONE-SENTENCE-INTERPRETATION, worded per the protocol's
+predeclared interpretation rules]. A side observation: the Tsinghua mirror
+rejected the Go standard library's default User-Agent with HTTP 403 for
+every range request, while accepting curl, aria2 and an identifying
+User-Agent. The downloader's runs against it therefore used an explicit
+User-Agent (amendment A2).
+
+The pilot has one client and one access network. Its slots span about two
+days, and CDN and mirror behaviour may change over time. It is screening
+evidence that a fixed configuration with enough connections was near-best on
+the observed paths. It does not validate the findings across networks.
+
 ## 9. Learned-policy experiments (inventory; none is a positive result)
+
+The learners are a LinUCB contextual bandit [li2010linucb] and Double DQN
+[vanhasselt2016ddqn] agents in the DQN family [mnih2015dqn], all acting through
+the same serialized policy interface as the deterministic controllers.
 
 Status column: **valid** = the stated comparison is internally consistent and
 reproducible from its artifacts; **stale** = produced before a later correction
@@ -361,8 +411,11 @@ artifacts were not modified.
 - **Request-start rate semantics** drive both the D2 mechanism and the aria2
   "cap escape"; a server that re-evaluates rates during a response would change
   both.
-- **Single machine, single aria2 version (1.37.0), loopback + netem**; no
-  real-network or production-server evaluation. The only stock-server check is
+- **Single machine, single aria2 version (1.37.0), loopback + netem** for every
+  controlled result. Real paths appear only in the descriptive live pilot of
+  §8a: one client and one access network, public mirrors, and fixed cells
+  only, with no adaptive or learned controller run live. That pilot is not a
+  validation across networks. The only stock-server check is
   the NGINX per-response rate-limit screen of §4.2 (n=5 per configuration), and
   it exercised neither a shared cap nor a connection limit, so the adaptive
   results of §6-§7 have no stock-server counterpart.

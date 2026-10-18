@@ -1,4 +1,4 @@
-# Reference verification log (2026-10-12)
+# Reference verification log (2026-10-12; additions 2026-10-18)
 
 Method: each entry was checked against an authoritative record fetched on the
 date above (Crossref API record, IETF/RFC Editor page, arXiv abstract page,
@@ -17,6 +17,12 @@ memory. `reports/references.bib` contains only the VERIFIED entries.
 | liu2025deload | VERIFIED as arXiv preprint | arXiv:2510.18459 | no peer-reviewed venue found; cite as preprint |
 | rfc9110 | VERIFIED | rfc-editor.org/info/rfc9110 | STD 97, June 2022 (month from search record) |
 | aria2manual | VERIFIED | aria2.github.io manual | used for option semantics only |
+| netravali2015mahimahi | VERIFIED (2026-10-18) | USENIX ATC '15 page citation metadata | pp. 417-429; ISBN 978-1-931971-225 |
+| winstein2013sprout | VERIFIED (2026-10-18) | USENIX NSDI '13 page citation metadata | pp. 459-471; provenance of the five replayed traces: `mahimahi/traces/README` (repo commit f1346c3) states they were recorded with Saturator from this paper |
+| li2010linucb | VERIFIED (2026-10-18) | Crossref DOI 10.1145/1772690.1772758 | WWW 2010, pp. 661-670 |
+| mnih2015dqn | VERIFIED (2026-10-18) | Crossref DOI 10.1038/nature14236 | Nature 518(7540):529-533 |
+| vanhasselt2016ddqn | VERIFIED (2026-10-18) | Crossref DOI 10.1609/aaai.v30i1.10295 | AAAI 30(1) |
+| tcnetem | VERIFIED (2026-10-18) | man7.org tc-netem(8) page (HTTP 200) | software manual; iproute2 6.1.0 installed |
 
 ## UNRESOLVED (not cited as fact)
 - "Liu et al. (smart DTN)" from the earlier related-work placeholder: **no
@@ -25,10 +31,10 @@ memory. `reports/references.bib` contains only the VERIFIED entries.
   placeholder was likely mislabelled. Do not cite.
 - "Elastic DTN (Swargo/Arifuzzaman)": the verified Swargo/Arifuzzaman work found
   is FastBioDL (above); no separate "elastic DTN" record was found. Do not cite.
-- Any "mm-link/Mahimahi" citation: Mahimahi is used for trace replay but its
-  publication record was not verified in this pass; authors must add and verify
-  (Netravali et al., USENIX ATC 2015 is the expected record, UNVERIFIED here).
-- Cellular trace provenance: the origin of the recorded driving traces and their
-  terms were not verified here; authors must supply the dataset citation.
-- LinUCB / contextual bandits, Double DQN, netem: standard references not
-  verified in this pass; add only after checking records.
+- ~~Mahimahi~~, ~~trace provenance~~, ~~LinUCB / DQN / Double DQN~~, ~~netem~~:
+  resolved 2026-10-18 (table above).
+- **Still open (human):** the *redistribution terms* of the Mahimahi-bundled
+  traces. The Mahimahi repository is GPL-3.0 (`COPYING`), and the traces
+  README states their origin but gives no separate data licence. Confirm
+  whether redistributing them in a data archive is permitted; citing them is
+  unaffected.
