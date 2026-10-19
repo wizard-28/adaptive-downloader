@@ -363,7 +363,11 @@ every range request, while accepting curl, aria2 and an identifying
 User-Agent. The downloader's runs against it therefore used an explicit
 User-Agent (amendment A2).
 
-The pilot has one client and one access network. Its slots span about two
+One morning slot ran by accident on a second, unidentified access network
+(amendment A3). It is reported separately below and is never pooled with the
+primary conditions: [OTHER-NETWORK-SUMMARY].
+
+The pilot has one client and one primary access network. Its slots span about two
 days, and CDN and mirror behaviour may change over time. It is screening
 evidence that a fixed configuration with enough connections was near-best on
 the observed paths. It does not validate the findings across networks.
