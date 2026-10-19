@@ -136,3 +136,27 @@ claim.
     later slots they see the new one. UA is not expected to affect
     throughput on servers that accept both, but this is an uncontrolled
     change between S1 and later slots, and it is stated here.
+- **A3 (2026-10-19, after S3; data routing, decided before any headroom
+  computation).** The operator reports that **S3 ran on a different access
+  network**, not the Tata line in `manifest.json` `client`. The operator
+  confirmed this after being asked about S3's anomalies, and was back on Tata
+  afterwards. S3 itself showed:
+  - 68 of 80 valid runs;
+  - a window from about 08:08 to 08:40 IST with DNS failures and
+    retry-exhausted ranges;
+  - peaks of about 12 MB/s, where S1 and S2 stayed near 2.4 MB/s.
+
+  The predeclared conditions assume a single client access network, so:
+  - **Data handling:** `raw/S3.jsonl` is moved unchanged to
+    `raw_other_network/S3.jsonl`, with all 80 records kept, invalid ones
+    included. The primary analysis (`raw/`) therefore covers Tata slots only.
+    S3 is analysed separately with the same frozen script
+    (`--raw raw_other_network --out analysis_other_network`). It is reported as
+    a supplementary, descriptive, single-slot result on an unidentified
+    second access network, and is never pooled with the Tata conditions.
+  - **S5 becomes required:** S5 (Tue 10-20 ~08:00 IST, already scheduled)
+    replaces S3 as the Tata morning slot. If S5 cannot run, the primary
+    analysis has no morning slot, and that is stated.
+  - **Caveat:** this routing was decided after seeing S3's raw run times, but
+    before any headroom or ranking computation over S3 or the Tata set. The
+    cue was the operator's report, not the results.
