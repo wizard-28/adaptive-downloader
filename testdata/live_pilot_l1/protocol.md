@@ -160,3 +160,15 @@ claim.
   - **Caveat:** this routing was decided after seeing S3's raw run times, but
     before any headroom or ranking computation over S3 or the Tata set. The
     cue was the operator's report, not the results.
+- **A4 (2026-10-20 ~08:05 IST, during S5; re-run of an interrupted slot).**
+  The operator reports that the internet dropped briefly as S5 began (Tata,
+  08:00 IST). S5 wrote 8 records, only 2 of them valid. The invalid ones are
+  retry-exhausted ranges on `kcdn`. One in-flight `kcdn` curl run was killed
+  without a record, which was the operator's stop. The scheduler and runner
+  were stopped by PID (`logs/scheduler.log`).
+  - **Data handling:** the 8 S5 records stay in `raw/S5.jsonl`, untouched.
+    `kcdn`/S5 is INCOMPLETE and is excluded automatically. The other servers
+    have no S5 records.
+  - **Replacement slot S5R:** S5R runs the full schedule (4 servers × 10 arms ×
+    2 reps) from about 08:06 IST on the same Tata line. It is analysed as its
+    own condition set and is the Tata morning slot that A3 requires.

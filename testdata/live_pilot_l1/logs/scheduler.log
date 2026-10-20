@@ -17,3 +17,5 @@
 2026-10-19T14:30:00Z start S4 servers=all
 2026-10-19T15:34:29Z end S4 exit=0 runs=80
 2026-10-19T15:34:29Z waiting for S5 at 2026-10-20T08:00 IST
+2026-10-20T02:30:00Z start S5 servers=all
+2026-10-20T02:35:15Z operator: S5 stopped after 8 records (internet outage ~08:00-08:04 IST, operator-reported); scheduler 13472 and runner 216696 killed by PID; one in-flight kcdn curl run lost without record; restarting as S5R
