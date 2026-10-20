@@ -7421,12 +7421,16 @@ in commit 3e643d2: `testdata/live_pilot_l1/protocol.md`, `manifest.json`,
     was moved unchanged to `raw_other_network/S3.jsonl`, is analysed
     separately as a supplementary result, and is never pooled with the Tata
     conditions. S5 (Tue 08:00) is now **required**, as the Tata morning slot.
+  - A4: an internet drop at the start of S5 (8 records, 2 valid, all
+    `kcdn`; kept in `raw/S5.jsonl`, and `kcdn`/S5 is INCOMPLETE). The slot
+    was re-run in full as **S5R** from 08:06 IST on Tata.
 - **Data so far:**
   - S1: 80 runs, 64 valid; all invalid runs are `tuna`/403.
   - S1T: 22 of 22 valid.
   - S2: 80 of 80 valid.
   - S3 (other network): 68 of 80 valid. Its DNS and retry failures cluster
     between about 08:08 and 08:40 IST, and its peaks reach about 12 MB/s.
+  - S4: 80 of 80 valid (peaks about 2.43 MB/s, the Tata ceiling).
   - Preliminary S1, three complete servers: global cell N16/S1M, headroom
     1.6 % (bootstrap [0.0, 2.6]); `kedge` single-connection is 5.7× slower
     than its best cell.
@@ -7444,7 +7448,7 @@ in commit 3e643d2: `testdata/live_pilot_l1/protocol.md`, `manifest.json`,
     placeholders)
   - `reports/thursday/project_summary.md`
   - `reports/thursday/qa.md`
-- **Immediate next step:** after S5 (S4 Mon 20:00, S5 Tue 08:00), run
+- **Immediate next step:** after S5R (started Tue 08:06 IST, about 1 h), run
   `python3 tools/analyze_live_pilot.py` (primary, Tata) and
   `python3 tools/analyze_live_pilot.py --raw testdata/live_pilot_l1/raw_other_network --out testdata/live_pilot_l1/analysis_other_network`
   (supplementary, S3). Then:

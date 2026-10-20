@@ -1,0 +1,8 @@
+[S5 1/80] kcdn ours_N8_S4M rep0 valid=false 60.0s downloader: retry limit exceeded: range [0,4194303] after 4 attempts
+[S5 2/80] kcdn ours_N16_S4M rep0 valid=false 60.0s downloader: retry limit exceeded: range [4194304,8388607] after 4 attempts
+[S5 3/80] kcdn ours_N8_S1M rep0 valid=false 60.0s downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts
+[S5 4/80] kcdn ours_N1_S1M rep0 valid=false 15.3s downloader: retry limit exceeded: range [0,1048575] after 4 attempts
+[S5 5/80] kcdn ours_N4_S4M rep0 valid=false 0.3s downloader: retry limit exceeded: range [0,4194303] after 4 attempts
+[S5 6/80] kcdn ours_N16_S1M rep0 valid=false 0.5s downloader: retry limit exceeded: range [6291456,7340031] after 4 attempts
+[S5 7/80] kcdn ours_N4_S1M rep0 valid=true 26.8s 
+[S5 8/80] kcdn aria2 rep0 valid=true 27.9s 
