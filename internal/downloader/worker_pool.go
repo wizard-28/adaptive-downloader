@@ -7,6 +7,7 @@ import (
 	"sync/atomic"
 
 	"adaptivedl/internal/assembler"
+	"adaptivedl/internal/fetcher"
 	"adaptivedl/internal/metrics"
 	"adaptivedl/internal/rangetracker"
 )
@@ -32,6 +33,22 @@ type workerPool struct {
 	active int
 	wake   chan struct{}
 	wg     sync.WaitGroup
+
+	// Opt-in straggler splitting (Config.SplitStragglers). splitMu guards
+	// tasks and every task's r and lim; a split shrinks the victim's Limit,
+	// splits it in the tracker and updates the victim's boundaries in one
+	// critical section.
+	splitMu sync.Mutex
+	tasks   map[*task]struct{}
+	splits  atomic.Int64
+}
+
+// task is one range being processed by a worker. Without splitting, r never
+// changes. With splitting, another worker may shorten r (never below the
+// bytes already received) and take the remainder as a new task.
+type task struct {
+	r   rangetracker.Range
+	lim *fetcher.Limit // current attempt's limit; nil between attempts
 }
 
 func newWorkerPool(
@@ -52,6 +69,7 @@ func newWorkerPool(
 		reqCounter: reqCounter,
 		target:     target,
 		wake:       make(chan struct{}, 1),
+		tasks:      make(map[*task]struct{}),
 	}
 }
 
@@ -135,7 +153,17 @@ func (p *workerPool) worker(ctx context.Context) {
 		// future ranges only. RangeTracker ranges are half-open [Start, End).
 		r, ok := p.tracker.Allocate(p.d.currentChunkSize())
 		if !ok {
-			return
+			if !p.d.cfg.SplitStragglers {
+				return
+			}
+			t, ok := p.splitStraggler()
+			if !ok {
+				return
+			}
+			if !p.processTask(ctx, t) {
+				return
+			}
+			continue
 		}
 		if !p.processRange(ctx, r) {
 			return
@@ -143,17 +171,81 @@ func (p *workerPool) worker(ctx context.Context) {
 	}
 }
 
+// splitStraggler implements aria2-style dynamic segmentation. When nothing
+// is pending, it takes the in-flight range with the most unreceived bytes
+// and, if at least 2*SplitMinBytes remain, moves its end to the middle of
+// the unreceived part and returns the second half as a new task. Bytes
+// already received stay with the original request.
+func (p *workerPool) splitStraggler() (*task, bool) {
+	p.splitMu.Lock()
+	defer p.splitMu.Unlock()
+
+	var victim *task
+	var victimRem, victimRecv int64
+	for t := range p.tasks {
+		if t.lim == nil {
+			continue
+		}
+		recv, end := t.lim.Snapshot()
+		if rem := end - (t.r.Start + recv) + 1; rem > victimRem {
+			victim, victimRem, victimRecv = t, rem, recv
+		}
+	}
+	if victim == nil || victimRem < 2*p.d.splitMinBytes() {
+		return nil, false
+	}
+	at := victim.r.Start + victimRecv + victimRem/2
+	if !victim.lim.Shrink(at - 1) {
+		return nil, false // the reader passed the split point meanwhile
+	}
+	head, tail, err := p.tracker.Split(victim.r, at)
+	if err != nil {
+		p.state.fail(fmt.Errorf("downloader: split [%d,%d) at %d: %w", victim.r.Start, victim.r.End, at, err))
+		return nil, false
+	}
+	victim.r = head
+	t := &task{r: tail}
+	p.tasks[t] = struct{}{}
+	p.splits.Add(1)
+	return t, true
+}
+
 // processRange fetches r and, on failure, retries the SAME range with its
 // original boundaries until it succeeds or the retry limit is reached. The
 // chunk-size target may change between retries, but a failed range is never
-// resized or replaced by a differently-sized allocation.
+// resized or replaced by a differently-sized allocation. The one exception is
+// opt-in straggler splitting, where another worker may shorten the range's
+// end (never below the bytes already received); a retry then uses the
+// shortened boundaries.
 //
 // It returns false when the worker must stop (fatal error or cancellation).
 func (p *workerPool) processRange(ctx context.Context, r rangetracker.Range) bool {
-	// Inclusive bounds for fetcher, assembler, and metrics.
-	end := r.End - 1
+	return p.processTask(ctx, &task{r: r})
+}
+
+func (p *workerPool) processTask(ctx context.Context, t *task) bool {
+	split := p.d.cfg.SplitStragglers
+	if split {
+		p.splitMu.Lock()
+		p.tasks[t] = struct{}{}
+		p.splitMu.Unlock()
+		defer func() {
+			p.splitMu.Lock()
+			delete(p.tasks, t)
+			p.splitMu.Unlock()
+		}()
+	}
 
 	for {
+		r := t.r
+		if split {
+			p.splitMu.Lock()
+			r = t.r
+			p.splitMu.Unlock()
+		}
+		// Inclusive bounds for fetcher, assembler, and metrics.
+		end := r.End - 1
+
 		attempt := p.state.recordAttempt(r.Start)
 		if attempt > p.state.maxAttempts {
 			p.state.fail(fmt.Errorf("%w: range [%d,%d] after %d attempts",
@@ -162,7 +254,21 @@ func (p *workerPool) processRange(ctx context.Context, r rangetracker.Range) boo
 		}
 
 		reqID := fmt.Sprintf("a%d-r%d", attempt, p.reqCounter.Add(1))
-		res := p.d.fetcher.Fetch(ctx, reqID, p.d.cfg.URL, r.Start, end)
+		var res fetcher.Result
+		if split {
+			lim := fetcher.NewLimit(r.Start, end)
+			p.splitMu.Lock()
+			t.lim = lim
+			p.splitMu.Unlock()
+			res = p.d.fetcher.FetchLimited(ctx, reqID, p.d.cfg.URL, r.Start, end, lim)
+			p.splitMu.Lock()
+			t.lim = nil
+			r = t.r // may have been shortened during the fetch
+			p.splitMu.Unlock()
+			end = r.End - 1
+		} else {
+			res = p.d.fetcher.Fetch(ctx, reqID, p.d.cfg.URL, r.Start, end)
+		}
 
 		// Record every attempt (success or failure) for observation only.
 		rec := metrics.Record{
@@ -185,6 +291,10 @@ func (p *workerPool) processRange(ctx context.Context, r rangetracker.Range) boo
 		}
 
 		if res.Success {
+			if int64(len(res.Data)) != r.Length() {
+				p.state.fail(fmt.Errorf("downloader: range [%d,%d] got %d bytes after split", r.Start, end, len(res.Data)))
+				return false
+			}
 			if err := p.asm.WriteRange(r.Start, end, res.Data); err != nil {
 				p.state.fail(fmt.Errorf("downloader: assemble [%d,%d]: %w", r.Start, end, err))
 				return false

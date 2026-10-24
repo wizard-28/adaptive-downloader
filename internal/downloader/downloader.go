@@ -90,6 +90,16 @@ type Config struct {
 	// affects policies that consume it (e.g. an RL adapter).
 	RewardConfig *rl.RewardConfig
 
+	// SplitStragglers enables aria2-style dynamic segmentation: when no
+	// unallocated bytes remain, an idle worker takes the second half of the
+	// unreceived part of the in-flight range with the most bytes left. Off by
+	// default; with it off, in-flight ranges are immutable as before.
+	SplitStragglers bool
+	// SplitMinBytes is the smallest piece a split may create (both halves
+	// are at least this long). Zero uses 1 MiB, matching aria2's -k1M. It
+	// requires SplitStragglers.
+	SplitMinBytes int64
+
 	// Adaptive chunk size (optional). When MaxChunkSize > 0 the downloader
 	// reads a chunk-size controller at each allocation; otherwise ChunkSize is
 	// fixed for the whole run. All four values must be set together.
@@ -117,6 +127,10 @@ func (c Config) validate() error {
 		return fmt.Errorf("%w: dial timeout must be >= 0", ErrInvalidConfig)
 	case c.MaxRetries < 0:
 		return fmt.Errorf("%w: max retries must be >= 0", ErrInvalidConfig)
+	case c.SplitMinBytes < 0:
+		return fmt.Errorf("%w: split min bytes must be >= 0", ErrInvalidConfig)
+	case c.SplitMinBytes > 0 && !c.SplitStragglers:
+		return fmt.Errorf("%w: split min bytes requires split stragglers", ErrInvalidConfig)
 	case c.MinConcurrency < 0:
 		return fmt.Errorf("%w: min concurrency must be >= 0", ErrInvalidConfig)
 	case c.MaxConcurrency < 0:
@@ -171,6 +185,7 @@ type Downloader struct {
 	mu        sync.Mutex
 	collector *metrics.Collector
 	pool      *workerPool
+	splits    int64 // straggler splits in the most recent Download
 }
 
 // New validates cfg and returns a Downloader. It has no side effects; the
@@ -249,6 +264,22 @@ func (d *Downloader) Metrics() metrics.Snapshot {
 	return c.Snapshot()
 }
 
+// Splits returns how many straggler splits the most recent Download made
+// (always 0 unless Config.SplitStragglers is set). Call it after Download.
+func (d *Downloader) Splits() int64 {
+	d.mu.Lock()
+	defer d.mu.Unlock()
+	return d.splits
+}
+
+// splitMinBytes returns the smallest piece a straggler split may create.
+func (d *Downloader) splitMinBytes() int64 {
+	if d.cfg.SplitMinBytes > 0 {
+		return d.cfg.SplitMinBytes
+	}
+	return 1 << 20
+}
+
 // Concurrency returns the current target concurrency.
 func (d *Downloader) Concurrency() int { return d.controller.Current() }
 
@@ -322,6 +353,7 @@ func (d *Downloader) Download(ctx context.Context) (err error) {
 	defer func() {
 		d.mu.Lock()
 		d.pool = nil
+		d.splits = pool.splits.Load()
 		d.mu.Unlock()
 	}()
 

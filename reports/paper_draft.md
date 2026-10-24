@@ -27,7 +27,7 @@ is rarely clear when adaptation has anything causal to exploit. We build a
 controlled single-server HTTP/1.1 range-download platform with per-response
 pacing, a soft concurrency-dependent throttle, and network impairment, and report
 four findings. (i) On one characterised workload (512 MiB; per-response pacing
-640→160→2500 KiB/s; 40 ms RTT, 0.4 % loss) a fixed configuration of 16
+640→160→2500 KiB/s; netem 40 ms delay per direction, i.e. 80 ms RTT, and 0.4 % loss) a fixed configuration of 16
 connections and 4 MiB ranges completes **62.4 % faster than aria2 1.37** (30/30
 paired runs, geometric ratio 0.3756 [0.3726, 0.3787]); controls attribute much of
 the gap to an interaction between request granularity, request-start timing, and
@@ -124,7 +124,9 @@ a new tuning algorithm.
 ## 4. Phase-locked pacing and the aria2 comparison
 
 - Workload D2: 512 MiB, per-response pacing 640 → 160 → 2500 KiB/s at 2 s / 4 s,
-  40 ms RTT + 0.4 % loss; both systems receive the same object.
+  netem `delay 40ms loss 0.4%` on loopback, which applies in both directions
+  (measured RTT 80 ms; earlier drafts said "40 ms RTT"); both systems receive
+  the same object.
 - Frozen configurations (selected on separate discovery runs): ours (16 conn,
   4 MiB); aria2 1.37 `--max-connection-per-server=16 --split=16
   --min-split-size=1M`. The full aria2 split frontier (1/2/4/8/16) and a
@@ -417,7 +419,17 @@ size or aria2 configuration from the other rows, so ratios must not be pooled.
 | v6 long-duration diagnostic | 16/128/512 MiB, 5 pairs/cell, A2/D2/E2 | pooled 1.805 → 1.062 → 0.909 (512 MiB CI [0.750, 1.102] includes 1), driven by D2 (6.00 → 1.16 → 0.568) while A2 and E2 worsen with size | valid but exploratory, small n |
 
 No learned policy outperformed the practical baseline in a supported
-comparison. The single sub-1 pooled value (v6 at 512 MiB) has an interval that
+comparison. Two features of these head-to-heads worked against the learned
+policies regardless of what they learned:
+- **Short downloads.** The files were 4–16 MiB, so most runs lasted only a
+  few seconds.
+- **Ramped start.** v6 started at one connection and ramped up, while aria2
+  opened all of its connections at once.
+
+The startup cost is therefore a large share of each run. The long-duration
+diagnostic shows the pooled gap shrinking with file size, but it does not
+remove the gap per trajectory. These comparisons test the frozen candidates
+as built; they do not show that a learned controller cannot match aria2. The single sub-1 pooled value (v6 at 512 MiB) has an interval that
 includes 1 and is driven by one trajectory. Candidate artifacts are frozen with
 SHA-256 hashes; none was tuned after its evaluation. Intervals in this table are
 95 % t-intervals on the log ratio recomputed by `tools/claims_check.py` with the
@@ -514,3 +526,5 @@ the NGINX check are committed before their runs.
 | Selector matches per-workload best fixed on average | Descriptive (interval includes 1; not an equivalence test) | 0.999 [0.969, 1.029]; workload-level [0.873, 1.143] |
 | Selector improves on a single family-wide fixed config | **Not established** | 0.770 point; workload-level [0.455, 1.304]; loses W5/W6 |
 | Learned policies beat aria2 | **Not supported** | §9 |
+| On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
+| …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |

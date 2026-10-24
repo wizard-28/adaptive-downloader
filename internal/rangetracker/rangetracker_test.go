@@ -365,3 +365,46 @@ func assertCoverage(t *testing.T, ranges []Range, total int64) {
 		t.Fatalf("covered %d bytes, want %d", covered, total)
 	}
 }
+
+func TestSplitInFlight(t *testing.T) {
+	tr := New(100)
+	r, _ := tr.Allocate(100)
+	head, tail, err := tr.Split(r, 40)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if head != (Range{0, 40}) || tail != (Range{40, 100}) {
+		t.Fatalf("split = %v %v", head, tail)
+	}
+	if err := tr.Complete(r); !errors.Is(err, ErrRangeNotInFlight) {
+		t.Fatalf("original range still in flight: %v", err)
+	}
+	if got := tr.InFlightBytes(); got != 100 {
+		t.Fatalf("in-flight bytes = %d, want 100", got)
+	}
+	if err := tr.Complete(tail); err != nil {
+		t.Fatal(err)
+	}
+	if err := tr.Complete(head); err != nil {
+		t.Fatal(err)
+	}
+	if !tr.Done() || tr.CompletedBytes() != 100 {
+		t.Fatalf("done=%v completed=%d", tr.Done(), tr.CompletedBytes())
+	}
+}
+
+func TestSplitRejectsBadPoint(t *testing.T) {
+	tr := New(100)
+	r, _ := tr.Allocate(100)
+	for _, at := range []int64{0, 100, -1, 150} {
+		if _, _, err := tr.Split(r, at); !errors.Is(err, ErrInvalidSplit) {
+			t.Fatalf("split at %d: err = %v", at, err)
+		}
+	}
+	if _, _, err := tr.Split(Range{0, 50}, 10); !errors.Is(err, ErrRangeNotInFlight) {
+		t.Fatalf("split of unknown range: err = %v", err)
+	}
+	if err := tr.Complete(r); err != nil {
+		t.Fatalf("failed splits must leave r untouched: %v", err)
+	}
+}

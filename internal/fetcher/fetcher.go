@@ -16,6 +16,7 @@ import (
 	"net/http/httptrace"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -220,11 +221,69 @@ type Result struct {
 	Err        error
 }
 
+// Limit lets a caller observe an in-flight request's progress and move its
+// inclusive end earlier while the body is being read (straggler splitting).
+// The request is still sent for its original [start, end]; the fetcher stops
+// reading once the current end is reached and closes the connection. Shrink
+// and the body reader synchronize on the same mutex, so bytes already
+// accepted are never given away.
+type Limit struct {
+	mu       sync.Mutex
+	start    int64
+	end      int64 // current inclusive end
+	received int64
+}
+
+// NewLimit returns a Limit for the inclusive range [start, end].
+func NewLimit(start, end int64) *Limit { return &Limit{start: start, end: end} }
+
+// Snapshot returns the bytes accepted so far and the current inclusive end.
+func (l *Limit) Snapshot() (received, end int64) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	return l.received, l.end
+}
+
+// Shrink moves the inclusive end to newEnd. It fails (and changes nothing)
+// unless start+received-1 <= newEnd < end, i.e. unless every accepted byte
+// stays inside the shortened range and the range really gets shorter.
+func (l *Limit) Shrink(newEnd int64) bool {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	if newEnd >= l.end || newEnd < l.start+l.received-1 || newEnd < l.start {
+		return false
+	}
+	l.end = newEnd
+	return true
+}
+
+// accept appends up to len(p) bytes to buf without passing the current end
+// and reports whether the end has been reached.
+func (l *Limit) accept(buf, p []byte) ([]byte, bool) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	room := l.end - l.start + 1 - int64(len(buf))
+	if int64(len(p)) > room {
+		p = p[:room]
+	}
+	buf = append(buf, p...)
+	l.received = int64(len(buf))
+	return buf, l.received == l.end-l.start+1
+}
+
 // Fetch requests the inclusive byte range [start, end] from rawURL.
 //
 // It returns a Result whose Success field reports the outcome; a non-nil Err
 // accompanies every failure. Fetch never retries and never writes to disk.
 func (f *Fetcher) Fetch(ctx context.Context, requestID, rawURL string, start, end int64) (res Result) {
+	return f.FetchLimited(ctx, requestID, rawURL, start, end, nil)
+}
+
+// FetchLimited is Fetch with an optional Limit. With lim == nil it behaves
+// exactly like Fetch. With a Limit, the response is read up to the Limit's
+// current end, which may shrink during the read; on return res.Range.End is
+// that final end and success means exactly those bytes were received.
+func (f *Fetcher) FetchLimited(ctx context.Context, requestID, rawURL string, start, end int64, lim *Limit) (res Result) {
 	res = Result{
 		RequestID: requestID,
 		URL:       rawURL,
@@ -289,11 +348,27 @@ func (f *Fetcher) Fetch(ctx context.Context, requestID, rawURL string, start, en
 			observer:  f.observer,
 		}
 	}
-	body, err := io.ReadAll(io.LimitReader(reader, expected+1))
-	res.Data = body
-	if err != nil {
-		res.Err = readError(err)
-		return res
+	if lim != nil {
+		body, err := readLimited(reader, lim, expected)
+		res.Data = body
+		_, finalEnd := lim.Snapshot()
+		if err != nil {
+			res.Err = readError(err)
+			return res
+		}
+		if resp.StatusCode == http.StatusPartialContent && finalEnd < end {
+			// The tail was handed to another request; the original
+			// Content-Range still describes the request that was sent.
+			res.Range.End = finalEnd
+			expected = res.Range.Length()
+		}
+	} else {
+		body, err := io.ReadAll(io.LimitReader(reader, expected+1))
+		res.Data = body
+		if err != nil {
+			res.Err = readError(err)
+			return res
+		}
 	}
 
 	switch resp.StatusCode {
@@ -313,7 +388,7 @@ func (f *Fetcher) Fetch(ctx context.Context, requestID, rawURL string, start, en
 			res.Err = fmt.Errorf("%w: %q: %w", ErrInvalidContentRange, header, err)
 			return res
 		}
-		if crStart != start || crEnd != end {
+		if crStart != start || crEnd != end { // end is the requested (original) end
 			res.Err = fmt.Errorf("%w: %q does not match requested bytes=%s", ErrInvalidContentRange, header, res.Range)
 			return res
 		}
@@ -352,6 +427,29 @@ func isTimeout(err error) bool {
 	}
 	var netErr net.Error
 	return errors.As(err, &netErr) && netErr.Timeout()
+}
+
+// readLimited reads the body into a buffer sized for the original range,
+// stopping as soon as the Limit's current end is reached. Reading past the
+// original length is reported by the caller's length check, as in Fetch.
+func readLimited(r io.Reader, lim *Limit, expected int64) ([]byte, error) {
+	buf := make([]byte, 0, expected)
+	chunk := make([]byte, 32<<10)
+	for {
+		n, err := r.Read(chunk)
+		if n > 0 {
+			var done bool
+			if buf, done = lim.accept(buf, chunk[:n]); done {
+				return buf, nil
+			}
+		}
+		if err == io.EOF {
+			return buf, nil
+		}
+		if err != nil {
+			return buf, err
+		}
+	}
 }
 
 // parseContentRange parses a "bytes START-END/TOTAL" header. TOTAL may be "*".
