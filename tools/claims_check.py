@@ -331,6 +331,53 @@ out["nginx.valid_runs"] = sum(1 for o_ in nm_["order"] if json.load(open(os.path
 for k_, t_ in orr.items():
     out[f"trace.H_pct.{k_}"] = t_["H"] * 100
 
+# live-internet pilot L-P1 (§8a): point values recomputed here from raw JSONL;
+# bootstrap bounds and timeline CVs via the frozen tools/analyze_live_pilot.py.
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import analyze_live_pilot as _lp
+for _tag, _dir in (("lp1", "raw"), ("lp1x", "raw_other_network")):
+    _recs = []
+    for _p in sorted(glob.glob(os.path.join(T, "live_pilot_l1", _dir, "*.jsonl"))):
+        _recs += [json.loads(l) for l in open(_p) if l.strip()]
+    out[f"{_tag}.runs"] = len(_recs)
+    out[f"{_tag}.valid"] = sum(1 for r in _recs if r["valid"])
+    out[f"{_tag}.invalid"] = out[f"{_tag}.runs"] - out[f"{_tag}.valid"]
+    _cells = sorted({r["arm"] for r in _recs if r["kind"] == "ours"})
+    _cond = {}
+    for r in _recs:
+        if r["valid"]:
+            _cond.setdefault((r["server"], r["slot"]), {}).setdefault(r["arm"], []).append(r["duration_s"])
+    _rows = {k: {c: geo(v[c]) for c in _cells} for k, v in _cond.items() if all(c in v for c in _cells)}
+    _ctx = {k: _cond[k] for k in _rows}
+    _tab = [_rows[k] for k in sorted(_rows)]
+    _g = min(_cells, key=lambda c: geo([row[c] / min(row.values()) for row in _tab]))
+    _rat = [row[_g] / min(row.values()) for row in _tab]
+    out[f"{_tag}.n_cond"] = len(_tab)
+    out[f"{_tag}.servers"] = len({k[0] for k in _rows})
+    out[f"{_tag}.headroom_pct"] = (geo(_rat) - 1) * 100
+    out[f"{_tag}.global_max_pct"] = (max(_rat) - 1) * 100
+    out[f"{_tag}.near"] = sum(1 for x in _rat if x <= 1.05)
+    out[f"{_tag}.global_is_N8_S1M"] = _g == "ours_N8_S1M"
+    _h = _lp.headroom(_tab, _cells)
+    assert abs(_h["headroom_pct"] - out[f"{_tag}.headroom_pct"]) < 1e-9 and _h["global_cell"] == _g
+    out[f"{_tag}.boot_lo_pct"], out[f"{_tag}.boot_hi_pct"] = _h["boot95_pct"]
+    _a = [geo(_ctx[k]["aria2"]) / min(_rows[k].values()) for k in _rows]
+    out[f"{_tag}.aria2_min"], out[f"{_tag}.aria2_max"] = min(_a), max(_a)
+    _cv = [v["median_cv"] for v in _lp.variability(_recs).values()]
+    out[f"{_tag}.cv_min"], out[f"{_tag}.cv_max"] = min(_cv), max(_cv)
+    _top = {}
+    for k in sorted(_rows):
+        _top.setdefault(k[0], set()).add(min(_rows[k], key=_rows[k].get))
+    out[f"{_tag}.servers_top_changed"] = sum(1 for v in _top.values() if len(v) > 1)
+    _ok = [r for r in _recs if r["valid"]]
+    out[f"{_tag}.max_MBps"] = max(r["bytes"] / r["duration_s"] for r in _ok) / 1e6
+    if _tag == "lp1":
+        out["lp1.tuna_403_invalid"] = sum(1 for r in _recs if not r["valid"] and r["server"] == "tuna" and "403" in (r.get("status_codes") or {}))
+        out["lp1.s5_invalid"] = sum(1 for r in _recs if not r["valid"] and r["slot"] == "S5")
+        _k4 = [min(_rows[k]["ours_N4_S1M"], _rows[k]["ours_N4_S4M"]) / min(_rows[k].values()) for k in _rows if k[0] == "kedge"]
+        out["lp1.kedge_N4_min"], out["lp1.kedge_N4_max"] = min(_k4), max(_k4)
+
+
 def scan_paper(text, out, consts):
     """Every decimal number, percentage and a/b fraction in the manuscript must
     be reproduced by a recomputed value (within one unit of its last digit) or be

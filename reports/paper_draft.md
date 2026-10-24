@@ -325,11 +325,7 @@ over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
 policies; this bounds the benefit available to any concurrency-switching policy
 under the frozen model.
 
-### 8a. Live-internet pilot (Descriptive) — DRAFT, values filled after the last slot
-
-<!-- Pre-written 2026-10-18. Every [PLACEHOLDER] is filled from
-`tools/analyze_live_pilot.py` output and recomputed by `tools/claims_check.py`
-before this section loses its DRAFT label. Delete this comment then. -->
+### 8a. Live-internet pilot (Descriptive)
 
 To check whether the trace-replay conclusion survives contact with real
 paths, we ran a small descriptive pilot (`testdata/live_pilot_l1/`; protocol
@@ -339,38 +335,64 @@ tarball from four public mirrors: the kernel.org CDN, the kernel.org origin
 mirror, and university mirrors in Japan and China. Each download used one of
 eight fixed (N, S) cells (N in {1, 4, 8, 16}, S in {1, 4} MiB), and aria2
 and a single-stream curl reference ran alongside. There were two reps per
-cell per server in [SLOTS] time-of-day slots, every file was
-checksum-verified, and invalid runs were kept. A condition is one (server,
-slot) pair.
+cell per server in four time-of-day slots on the primary access network
+(Sunday midday, Sunday evening, Monday evening, Tuesday morning), plus a
+re-run of the midday slot for the Tsinghua mirror (amendment A2). Every file
+was checksum-verified and invalid runs were kept. A condition is one
+(server, slot) pair.
 
-- **Validity:** [VALID] of [TOTAL] runs valid; [INVALID-SUMMARY].
-- **Best fixed cell per condition:** [TOP-CELL-SUMMARY]. The top cell
-  changed across slots on [CHANGED] of [SERVERS] servers.
-- **Selection headroom:** one global cell, [GLOBAL-CELL], was on average
-  [HEADROOM] % slower than each condition's clairvoyant best (95 % bootstrap
-  over conditions [LO, HI]; [N-COND] conditions). It was within 5 % of the
-  best in [NEAR] of them. Excluding [N-LINK] access-link-bound conditions:
-  [HEADROOM-NOLINK].
+- **Validity:** 328 of 350 runs valid. The invalid runs are the 16
+  downloader runs that the Tsinghua mirror refused with HTTP 403 in the first
+  slot (see below), and 6 runs during an internet drop at the start of the
+  first Tuesday attempt, which was then re-run in full (amendment A4). The
+  fastest valid run reached 2.43 MB/s, which is the access link's ceiling.
+- **Best fixed cell per condition:** no single cell was top everywhere, but
+  the top cell always had N of 8 or more, except for 4 × 1 MiB on the CDN in two
+  slots and 4 × 4 MiB on the Tsinghua mirror in one. The top cell changed
+  across slots on 4 of 4 servers. How many connections were "enough" depended
+  on the server. On the origin mirror, the better of the two N = 4 cells was
+  1.37–1.71× slower than that condition's best in every slot, and N = 1 was
+  slower still.
+- **Selection headroom:** one global cell, 8 × 1 MiB, was on average 3.7 %
+  slower than each condition's clairvoyant best (95 % bootstrap over
+  conditions [1.0, 4.8]; 16 conditions). It was within 5 % of the best in 11
+  of 16 conditions and at most 15.3 % slower in any one, with two reps per
+  cell. No condition was access-link-bound by the protocol's definition,
+  because N = 1 was always more than 5 % slower than the best, so the
+  headroom excluding such conditions is identical.
 - **Within-run variability:** median coefficient of variation of 1 s
-  throughput bins [CV-RANGE] across servers.
+  throughput bins 0.11–0.29 across servers.
 - **Context:** aria2's time ratio over the condition's best fixed cell was
-  [ARIA2-RANGE].
+  1.00–1.26.
 
-In this pilot, [ONE-SENTENCE-INTERPRETATION, worded per the protocol's
-predeclared interpretation rules]. A side observation: the Tsinghua mirror
+In this pilot, one fixed configuration (8 × 1 MiB) was near-best across all
+observed conditions: the bootstrap upper bound of 4.8 % is below the
+predeclared 5 % line. This supports, but does not prove, the thesis that
+real-condition variability did not move the best setting. The bound is
+close to the line, and individual conditions deviated by up to 15.3 %, so
+this is a screening result. A side observation: the Tsinghua mirror
 rejected the Go standard library's default User-Agent with HTTP 403 for
 every range request, while accepting curl, aria2 and an identifying
 User-Agent. The downloader's runs against it therefore used an explicit
 User-Agent (amendment A2).
 
 One morning slot ran by accident on a second, unidentified access network
-(amendment A3). It is reported separately below and is never pooled with the
-primary conditions: [OTHER-NETWORK-SUMMARY].
+(amendment A3). It is reported separately and is never pooled with the
+primary conditions. On that network 68 of 80 runs were valid. The failures
+were DNS and retry exhaustion, clustered in about half an hour of unstable
+connectivity. Peak throughput was 12.3 MB/s, and within-run variability was
+far higher (median coefficient of variation 1.16–1.77). The same global
+cell, 8 × 1 MiB, had 7.2 % headroom (bootstrap [1.2, 12.2]; 4 conditions;
+within 5 % of the best in 2 of 4). This single slot does not meet the
+predeclared small-headroom criterion. With four conditions from one
+partially unstable slot it is inconclusive, but it is the one place in the
+pilot where the best setting may have moved by more than 5 %.
 
-The pilot has one client and one primary access network. Its slots span about two
-days, and CDN and mirror behaviour may change over time. It is screening
-evidence that a fixed configuration with enough connections was near-best on
-the observed paths. It does not validate the findings across networks.
+The pilot has one client and one primary access network. Its slots span
+about two days, and CDN and mirror behaviour may change over time. It is
+screening evidence that a fixed configuration with enough connections was
+near-best on the observed paths. It does not validate the findings across
+networks.
 
 ## 9. Learned-policy experiments (inventory; none is a positive result)
 
@@ -417,8 +439,8 @@ artifacts were not modified.
   both.
 - **Single machine, single aria2 version (1.37.0), loopback + netem** for every
   controlled result. Real paths appear only in the descriptive live pilot of
-  §8a: one client and one access network, public mirrors, and fixed cells
-  only, with no adaptive or learned controller run live. That pilot is not a
+  §8a: one client, one primary access network (plus one accidental slot on a
+  second), public mirrors, and fixed cells only, with no adaptive or learned controller run live. That pilot is not a
   validation across networks. The only stock-server check is
   the NGINX per-response rate-limit screen of §4.2 (n=5 per configuration), and
   it exercised neither a shared cap nor a connection limit, so the adaptive

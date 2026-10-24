@@ -46,6 +46,10 @@
   ],
   "long.*": [
    "testdata/diagnostics/dqn_long_duration_v6/size_{16,128,512}MiB/raw_results_all.json"
+  ],
+  "lp1.*, lp1x.*": [
+   "testdata/live_pilot_l1/raw/*.jsonl (primary, Tata)",
+   "testdata/live_pilot_l1/raw_other_network/S3.jsonl (amendment A3); bootstrap and timeline CVs via tools/analyze_live_pilot.py"
   ]
  }
 }
