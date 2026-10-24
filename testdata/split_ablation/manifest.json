@@ -1,0 +1,34 @@
+{
+  "study": "split_ablation",
+  "seed": 20261024,
+  "blocks": 10,
+  "harness": "testdata/split_ablation/tools/split_bench.go (copy of frozen ns_bench.go + -split, -no-request-timeout)",
+  "common_args": ["-schedule", "t1", "-netem-latency-ms", "40", "-netem-loss", "0.4"],
+  "cap_args": ["-cap-c", "8388608", "-cap-gamma", "0.05"],
+  "scenarios": {
+    "CAP0": {"extra": ["-cap-at", "0"], "uses_cap": true},
+    "CAP8": {"extra": ["-cap-at", "8"], "uses_cap": true},
+    "HEALTHY": {"extra": [], "uses_cap": false},
+    "D2": {"extra": ["-schedule", "d2"], "uses_cap": false}
+  },
+  "arms": {
+    "aria2": ["-system", "aria2"],
+    "fixed_16_1M_T30": ["-system", "ours", "-n", "16", "-chunk", "1048576"],
+    "fixed_16_4M_T30": ["-system", "ours", "-n", "16", "-chunk", "4194304"],
+    "fixed_16_32M_NT": ["-system", "ours", "-n", "16", "-chunk", "33554432", "-max-chunk", "33554432", "-no-request-timeout"],
+    "fixed_16_32M_NT_split": ["-system", "ours", "-n", "16", "-chunk", "33554432", "-max-chunk", "33554432", "-no-request-timeout", "-split"],
+    "fixed_16_1M_NT_split": ["-system", "ours", "-n", "16", "-chunk", "1048576", "-no-request-timeout", "-split"],
+    "fixed_16_4M_NT_split": ["-system", "ours", "-n", "16", "-chunk", "4194304", "-no-request-timeout", "-split"],
+    "fixed_4_4M_NT_split": ["-system", "ours", "-n", "4", "-chunk", "4194304", "-no-request-timeout", "-split"],
+    "selector_NT_split": ["-system", "ours", "-policy", "classifier", "-n", "16", "-chunk", "1048576", "-healthy-n", "16", "-healthy-s", "1048576", "-capped-n", "4", "-capped-s", "4194304", "-threshold", "460800", "-classify-after", "20", "-no-request-timeout", "-split"],
+    "causal_joint_T30": ["-system", "ours", "-policy", "drop", "-n", "16", "-chunk", "1048576", "-capped-n", "4", "-capped-s", "4194304", "-drop", "0.5"],
+    "causal_joint_NT_split": ["-system", "ours", "-policy", "drop", "-n", "16", "-chunk", "1048576", "-capped-n", "4", "-capped-s", "4194304", "-drop", "0.5", "-no-request-timeout", "-split"]
+  },
+  "scenario_arms": {
+    "CAP0": ["aria2", "fixed_16_1M_T30", "fixed_16_32M_NT", "fixed_16_32M_NT_split", "fixed_16_1M_NT_split", "fixed_4_4M_NT_split", "selector_NT_split"],
+    "CAP8": ["aria2", "fixed_16_1M_T30", "fixed_16_32M_NT", "fixed_16_32M_NT_split", "fixed_16_1M_NT_split", "fixed_4_4M_NT_split", "causal_joint_T30", "causal_joint_NT_split"],
+    "HEALTHY": ["aria2", "fixed_16_1M_T30", "fixed_16_32M_NT_split", "fixed_16_1M_NT_split", "selector_NT_split"],
+    "D2": ["aria2", "fixed_16_4M_T30", "fixed_16_4M_NT_split"]
+  },
+  "scenario_order": ["CAP8", "CAP0", "HEALTHY", "D2"]
+}

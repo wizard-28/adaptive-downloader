@@ -126,6 +126,13 @@ Preserve these unless a task explicitly changes them:
   in-flight range.
 - A **failed range must retry using its original boundaries**.
 - Do not silently re-split a failed range using the current chunk-size target.
+- **Documented exception (opt-in only):** with
+  `downloader.Config.SplitStragglers` on, an idle worker may shorten an
+  in-flight range's end, never below the bytes already received, and take
+  the remainder as a new range (aria2-style dynamic segmentation). A retry
+  then uses the range's current boundaries. With the option off, which is the
+  default, everything above holds unchanged. Do not extend this exception
+  without an explicit task.
 
 ---
 

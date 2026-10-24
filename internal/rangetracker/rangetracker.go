@@ -15,6 +15,10 @@ import (
 // flight is completed or failed.
 var ErrRangeNotInFlight = errors.New("rangetracker: range is not in flight")
 
+// ErrInvalidSplit is returned when a split point is not strictly inside the
+// range being split.
+var ErrInvalidSplit = errors.New("rangetracker: split point outside range")
+
 // Range is a half-open byte interval [Start, End). End is exclusive, so
 // Length is End-Start.
 type Range struct {
@@ -135,6 +139,28 @@ func (t *Tracker) Fail(r Range) error {
 	delete(t.inFlight, r)
 	t.pending = mergeRange(t.pending, r)
 	return nil
+}
+
+// Split replaces the in-flight range r with two in-flight ranges
+// [r.Start, at) and [at, r.End), which it returns. It is used only by opt-in
+// straggler splitting; the caller must already have stopped r's request from
+// reading past at. It returns ErrRangeNotInFlight if r is not in flight and
+// ErrInvalidSplit unless r.Start < at < r.End.
+func (t *Tracker) Split(r Range, at int64) (head, tail Range, err error) {
+	t.mu.Lock()
+	defer t.mu.Unlock()
+
+	if _, ok := t.inFlight[r]; !ok {
+		return Range{}, Range{}, ErrRangeNotInFlight
+	}
+	if at <= r.Start || at >= r.End {
+		return Range{}, Range{}, ErrInvalidSplit
+	}
+	delete(t.inFlight, r)
+	head, tail = Range{Start: r.Start, End: at}, Range{Start: at, End: r.End}
+	t.inFlight[head] = struct{}{}
+	t.inFlight[tail] = struct{}{}
+	return head, tail, nil
 }
 
 // Done reports whether there is no pending or in-flight work.

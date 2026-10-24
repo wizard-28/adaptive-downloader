@@ -7374,6 +7374,57 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.107 Study audit (2026-10-24): engine flaws behind "aria2 wins under the cap"; opt-in straggler splitting; split ablation (IN PROGRESS)
+
+**Status: `SPLIT_ABLATION_PENDING`.** Branch `exp/live-pilot-l1`. The user
+asked for an audit of mistakes that keep us from beating aria2, then asked
+for all flaws to be fixed by Wed 2026-10-28. The user chose opt-in splitting
+over an explanation-only fix.
+
+- **Audit findings:**
+  1. **Whole-request timeout.** All capped-server runs (§22.96–§22.98) used a
+     30 s deadline covering request and body. 16 MiB and 32 MiB ranges at
+     N=16 mostly failed and restarted from zero. aria2's `--timeout` acts on
+     stalls. The earlier timeout-sensitivity study only went up to 60 s.
+  2. **No dynamic segmentation.** The server log of `p1_capped_aria2_r00`
+     shows aria2 splitting the unfinished part of slow pieces from 53 s on.
+     Ours had immutable in-flight ranges, so its slowest range set the
+     finish time.
+     - Scratchpad diagnostic (not data, disclosed in the protocol): ours
+       16 × 32 MiB with no deadline and no split took 114.7/113.9 s at CAP0
+       (aria2 68.1/68.4) and 56.4/54.2 s at CAP8 (aria2 53.2/53.2).
+     - So at CAP8 a *stationary* configuration beat the published causal
+       controller's 58.7 s. The published "+23.4 % vs best of three" holds
+       only for its predeclared set, all of which had small S.
+  3. **Netem RTT mislabel.** `delay 40ms` on `lo` gives an 80 ms RTT
+     (measured 80.1 ms), and the loss also applies in both directions. The
+     paper text said "40 ms RTT"; corrected in §4 and the abstract.
+  4. **DQN head-to-head design.** The files were 4–16 MiB, and v6 started at
+     C=1 while aria2 opened 16 connections at once. This is now stated in
+     §9; nothing was rerun.
+- **Code:**
+  - `downloader.Config.SplitStragglers` and `SplitMinBytes` (default 1 MiB),
+    plus `Downloader.Splits()`.
+  - `fetcher.Limit` and `FetchLimited`: an in-flight end can be shrunk under
+    a lock, never below the received bytes. With a nil `Limit` the path is
+    unchanged.
+  - `rangetracker.Split`.
+  - Tests: `internal/downloader/split_test.go` (gated server; tail taken;
+    head retry uses the shortened bounds; off by default),
+    `internal/fetcher/limit_test.go`, and `TestSplit*`.
+  - `AGENTS.md` §5 has a documented opt-in exception.
+- **Split ablation:**
+  - Protocol: `testdata/split_ablation/` (`protocol.md`, `manifest.json`;
+    harness `tools/split_bench.go` is a copy of frozen `ns_bench.go` plus
+    `-split` and `-no-request-timeout`).
+  - Runner and analysis: `tools/run_split_ablation.py` and
+    `tools/analyze_split_ablation.py`.
+  - Size: 230 runs, CAP8/CAP0/HEALTHY/D2, 10 blocks, comparisons C1–C5.
+- **Immediate next step:** commit and freeze the protocol, run the smoke,
+  run the ablation (about 4.5 h, uses `lo` netem, so no tests in parallel),
+  then analyse. Revise paper §6/§7, the abstract (iii), the conclusion and
+  the claim map strictly by the protocol's interpretation rules.
+
 ### 22.106 Live-internet pilot L-P1 + Thursday-review materials (2026-10-18 to 2026-10-20; analysed 2026-10-24; COMPLETE)
 
 **Status: `LIVE_PILOT_COMPLETE` (descriptive; no RL, no adaptive policy run
