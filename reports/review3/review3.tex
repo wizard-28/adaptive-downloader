@@ -56,6 +56,62 @@ Segmented download managers fetch a file as byte ranges over parallel HTTP conne
 
 The main finding is that \textbf{a well-chosen fixed setting was nearly always enough}. On a server with per-response rate pacing, a fixed 16~$\times$~4~MiB setting took 62.4\,\% less time than aria2 (time ratio 0.376 over 30 paired runs), a gap we trace mainly to request timing rather than a general advantage. On public mirrors, one fixed setting was within 3.7\,\% [1.0, 4.8] of the best per-condition choice. In recorded cellular traces, a clairvoyant oracle found no exploitable concurrency headroom. Rule-based, selector, learned and online-tuned controllers did not beat the best fixed setting in the comparisons we ran. A 230-run engine ablation showed that aria2's earlier lead on a concurrency-capped server came from two engine differences, a whole-request timeout and the lack of straggler splitting. Once both were fixed, our downloader matched aria2 or came within 1.6\,\% of it, and the best fixed setting beat the causal controller, the workload selector and the online tuner. No learned policy outperformed the baselines in the comparisons we ran.
 
+\chapter*{Terms and Abbreviations}
+\addcontentsline{toc}{chapter}{Terms and Abbreviations}
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{11.6cm}@{}}
+\toprule
+\textbf{Term} & \textbf{Meaning}\\
+\midrule
+\endhead
+$N$ & Number of parallel connections, i.e. HTTP range requests in flight at once.\\
+$S$ & Range size: the number of bytes asked for in one request.\\
+Range request & An HTTP request for part of a file (\code{Range: bytes=a-b}). A server that supports it answers with status \code{206 Partial Content} and a \code{Content-Range} header saying which bytes it sent.\\
+Half-open range $[s, e)$ & The bytes from $s$ up to but not including $e$; its length is $e - s$. HTTP itself uses inclusive ranges.\\
+aria2 & A widely used open-source download manager that also downloads in parallel pieces; our external baseline, always run with \code{-x16 -s16 -k1M} (up to 16 connections, file split into 16 pieces, minimum piece 1~MiB).\\
+\code{tc netem} & The Linux network emulator. We use it to add delay and packet loss to the test link.\\
+Round trip (RTT) & Time for a packet to go to the server and back. Our emulated link has 80~ms.\\
+KiB, MiB & Binary units: 1~KiB = 1{,}024 bytes, 1~MiB = 1{,}048{,}576 bytes. MB/s means $10^6$ bytes per second.\\
+Paced server & Our test server. It sends each response at a set rate, and a response keeps the rate in force when its request arrived.\\
+Pacing schedule & The rate the paced server uses over time. D2 is the reference schedule: 640~KiB/s, a \emph{dip} to 160~KiB/s from 2~s to 4~s, then 2{,}500~KiB/s.\\
+Dip & The extra-slow phase in a schedule (160~KiB/s). ``No dip'' skips it; ``long dip'' makes it last until 8~s.\\
+Paired run, block & Runs of every compared option under the same conditions, back to back in random order. A block is one such set.\\
+Time ratio $R$ & Our completion time divided by the other option's, averaged as a geometric mean over pairs. $R < 1$: ours took less time. $R = 0.376$ means 62.4\,\% less time.\\
+Per-request and aggregate throughput & Per-request: how fast one request downloads. Aggregate: total bytes per second across all connections together.\\
+Geometric mean & The average used for ratios: the exponential of the mean of the logarithms. It treats ``twice as fast'' and ``half as fast'' symmetrically.\\
+95\,\% bootstrap interval & A range for $R$ obtained by resampling the pairs 10{,}000 times. If it excludes 1, the difference is unlikely to be noise.\\
+Screen & A small experiment (here 5 pairs) used to check a direction, not to confirm a result.\\
+Protocol & The written plan of an experiment (runs, comparisons, decision rules), fixed before its first run.\\
+Content-verified & The downloaded file was checked byte for byte against the source.\\
+Policy, controller & A policy decides whether to change $N$ or $S$; the controllers hold the current $N$ and $S$ targets within bounds. The policy runner passes each result to the policy and applies its decision.\\
+Straggler splitting & An optional engine mode: when nothing is left to allocate, an idle connection takes over the unfinished second half of the range with the most bytes still to come.\\
+LinUCB & A contextual bandit: a learning method that picks one of a few actions from the current measurements and learns from the reward that follows.\\
+DQN & Deep Q-Network, a reinforcement-learning agent with a neural network that estimates the long-term value of each action. We use the Double DQN variant.\\
+Mahimahi & A tool that replays recorded network traces, here cellular traces, so a download sees that network's real capacity over time.\\
+Race detector & Go's built-in checker for unsafe concurrent access to shared memory, run on the test suite.\\
+No cap, CAP0, CAP8 & Scenarios of the capped test server: no cap; the soft concurrency cap on from the start; the cap switching on at 8~s.\\
+Soft concurrency cap & A server rule that gives each new request less bandwidth the more requests are already active (Equation~\ref{eq:cap}).\\
+Original / fixed engine & Original engine: a 30~s deadline on each whole request and no straggler splitting (``T30'' in arm names). Fixed engine: no whole-request deadline (``NT'') and straggler splitting on (``split'').\\
+Arm & One option in an experiment, such as a fixed setting, a controller or aria2.\\
+Ablation & An experiment that switches engine features on and off one at a time to see which one causes an effect.\\
+Best fixed setting & The fixed $(N, S)$ that was fastest in a scenario, chosen after the runs. Adaptive methods cannot know it in advance (Section~\ref{sec:adhelp}).\\
+Causal drop controller & Switches once to a preset $(N, S)$ when measured throughput falls below half its earlier maximum.\\
+Workload selector & Measures throughput for a short start-up period, decides which kind of server it faces, and moves once to that kind's preset $(N, S)$.\\
+Online tuner & Our re-implementation of the FastBioDL idea: every 2~s it moves $N$ up or down depending on whether aggregate throughput improved.\\
+Oracle, headroom & An oracle is a hypothetical controller that knows the future and always picks the best setting. Headroom is how much faster it would be than the best fixed setting: an upper bound on what any adaptive method can gain.\\
+Goodput, transfer efficiency & Goodput: useful bytes delivered per second. Transfer efficiency: useful bytes divided by all bytes transferred, which drops when requests restart.\\
+Latency (time to first byte) & Time from sending a request until the response headers arrive.\\
+v2--v6 & Successive versions of our DQN agent; v2 and v3 adapt $N$ and $S$, v4 onwards adapt $N$ only.\\
+kcdn, kedge, riken, tuna & The four public mirrors in the live pilot: cdn.kernel.org, mirrors.edge.kernel.org, ftp.riken.jp and mirrors.tuna.tsinghua.edu.cn.\\
+Condition, session & In the live pilot, one mirror measured in one of four measurement sessions; 4 mirrors $\times$ 4 sessions = 16 conditions.\\
+FastBioDL, Falcon & Published downloaders that tune the number of parallel streams online.\\
+PPO & Proximal Policy Optimization, another reinforcement-learning algorithm.\\
+IDM & Internet Download Manager, a Windows-only commercial download manager.\\
+\code{iperf3} & A tool that generates TCP traffic; used as competing background traffic.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
 % ================================================================= 1
 \chapter{Complete Working Project}
 This is a research project. Its question is when changing the number of connections $N$ and the range size $S$ during a download actually helps. Answering it needed a working experimental system, which has four parts, all working and tested:
@@ -242,7 +298,7 @@ Because the rules are explicit, each result can be traced to them. Figure~\ref{f
 
 Under the cap, each request's rate is fixed when it starts. With $k$ requests active at that moment,
 \begin{equation}
-\text{rate} = \min\!\left(\text{base},\; \frac{C}{k\,\bigl(1 + \gamma\,(k-1)\bigr)}\right), \qquad C = 8~\text{MiB/s},\; \gamma = 0.05,
+\label{eq:cap}\text{rate} = \min\!\left(\text{base},\; \frac{C}{k\,\bigl(1 + \gamma\,(k-1)\bigr)}\right), \qquad C = 8~\text{MiB/s},\; \gamma = 0.05,
 \end{equation}
 so the total falls slightly as more connections are opened. The model imitates servers that share a fixed budget across a client's connections and penalise many parallel ones. $C$ and $\gamma$ were chosen during design, from a search over candidate server models, so that the cap changes which setting is best. Because a request keeps its starting rate, requests started before the cap switches on keep their higher rate, which is why many early, long requests can still win.
 
@@ -283,7 +339,7 @@ Paced (D2) & aria2; 16$\times$4~MiB T30 and fixed & 30\\
 In an earlier predeclared comparison, a causal controller was 23.4\,\% faster than the best of three fixed settings when the cap switched on at 8~s. That result replicated here ($R = 0.767$). Most of the gain came from the $N$ move: an $N$-only version reached 0.808 of the fixed setting's time, while an $S$-only version was slower than not adapting at all (1.070). But those three fixed settings used small ranges (1--4~MiB) on the original engine. Against the best fixed setting on the fixed engine (16~$\times$~32~MiB), the causal controller was 7\,\% \emph{slower}, and the workload selector was 23\,\% slower (Figure~\ref{fig:adaptive.png}).
 
 \textbf{What ``best fixed setting'' means.} The best fixed setting in each comparison is chosen after the fact, which an adaptive method cannot do. Two results show when this matters. On the live mirrors, one setting chosen for all conditions (8~$\times$~1~MiB) was within 3.7\,\% of the per-condition best, so knowing the conditions in advance was worth little. Between servers with and without a cap, no single setting works: 16~$\times$~1~MiB is best without the cap (18.4~s) but slow with it (115.2~s). There, a one-time choice made from early measurements did as well as knowing the workload in advance: the workload selector matched the per-workload best ($R = 0.999$ [0.969, 1.029], measured on the original engine).
-\fig{adaptive.png}{0.95}{Adaptive controllers against the best stationary setting.}
+\fig{adaptive.png}{0.95}{Adaptive controllers against the best fixed setting.}
 
 \section{Adaptation Speed}\label{sec:adapt}
 The decision logs record when each controller acts. Table~\ref{tab:adapt} reports how quickly each adaptive controller reacted.

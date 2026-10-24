@@ -1,35 +1,36 @@
 \contentsline {chapter}{Abstract}{1}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}System Architecture}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Layers}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Technology Stack}{3}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Detailed Design}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Range Conventions}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Range Lifecycle}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Controller Independence}{4}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Policy Interface}{5}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Configuration}{5}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Methodology and Algorithm}{6}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Download Algorithm}{6}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Control Policies}{6}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Experimental Method}{7}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Paced Test Server}{8}{section.3.4}%
-\contentsline {chapter}{\numberline {4}UML and Data-Flow Diagrams}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}UML Class Diagram}{9}{section.4.1}%
-\contentsline {section}{\numberline {4.2}UML State Diagram}{10}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Data-Flow Diagram (Level 1)}{10}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Run Record (Data Store D3)}{11}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Module Development}{12}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Working Prototype}{13}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Features}{13}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Prototype on the Live Internet}{13}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Implementation Progress}{16}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Engineering Challenges Addressed}{16}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Planned for Review 3}{16}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Test Cases}{17}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Initial Results}{19}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Choosing the Setting}{19}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Why It Is Faster}{19}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Other Pacing Schedules}{20}{section.9.3}%
-\contentsline {section}{\numberline {9.4}What This Result Does and Does Not Show}{21}{section.9.4}%
-\contentsline {chapter}{\numberline {10}Individual Contribution}{22}{chapter.10}%
-\contentsline {chapter}{References}{23}{chapter*.29}%
+\contentsline {chapter}{Terms and Abbreviations}{2}{chapter*.5}%
+\contentsline {chapter}{\numberline {1}System Architecture}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Layers}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Technology Stack}{5}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Detailed Design}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Range Conventions}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Range Lifecycle}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Controller Independence}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Policy Interface}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Configuration}{7}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Methodology and Algorithm}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Download Algorithm}{8}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Control Policies}{8}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Method}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Paced Test Server}{10}{section.3.4}%
+\contentsline {chapter}{\numberline {4}UML and Data-Flow Diagrams}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}UML Class Diagram}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}UML State Diagram}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Data-Flow Diagram (Level 1)}{12}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Run Record (Data Store D3)}{13}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Module Development}{14}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Working Prototype}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Features}{15}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Prototype on the Live Internet}{15}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Implementation Progress}{18}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Engineering Challenges Addressed}{18}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Planned for Review 3}{18}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Test Cases}{19}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Initial Results}{21}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Choosing the Setting}{21}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Why It Is Faster}{21}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Other Pacing Schedules}{22}{section.9.3}%
+\contentsline {section}{\numberline {9.4}What This Result Does and Does Not Show}{23}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Individual Contribution}{24}{chapter.10}%
+\contentsline {chapter}{References}{25}{chapter*.30}%

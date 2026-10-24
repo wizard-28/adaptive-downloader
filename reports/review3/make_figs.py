@@ -61,7 +61,7 @@ ax.set_yticks(range(len(items)), [it[0] for it in reversed(items)], fontsize=8.5
 ax.set_xlabel("completion time (s)")
 ax.set_xlim(45, 95)
 ax.set_ylim(-0.7, len(items) - 0.4)
-ax.scatter([], [], color=BLUE, label="adaptive"); ax.scatter([], [], color=DARK, label="stationary")
+ax.scatter([], [], color=BLUE, label="adaptive"); ax.scatter([], [], color=DARK, label="fixed")
 ax.legend(frameon=False, fontsize=8.5, loc="lower right")
 ax.set_title("The adaptive gain disappears with the fixed engine")
 fig.tight_layout()

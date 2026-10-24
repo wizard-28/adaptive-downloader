@@ -1,22 +1,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Final system architecture. Only the Fetcher talks to the network; policies act only through the controllers.}}{3}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces UML class diagram of the final implementation. Every policy, rule-based, learned or online-tuned, implements one interface.}}{4}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Level-1 data flow. Each attempt's result reaches the policy, which can change $N$ and $S$ for later allocations.}}{4}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Final system architecture. Only the Fetcher talks to the network; policies act only through the controllers.}}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces UML class diagram of the final implementation. Every policy, rule-based, learned or online-tuned, implements one interface.}}{7}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Level-1 data flow. Each attempt's result reaches the policy, which can change $N$ and $S$ for later allocations.}}{7}{figure.caption.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Worker algorithm.}}{6}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Worker algorithm.}}{9}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Live download of \texttt {linux-3.0.tar.xz} (63.8~MB) from cdn.kernel.org with 8 connections; the SHA-256 matches the published value.}}{8}{figure.caption.10}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Benchmark log on the paced test server: ours about 20~s, aria2 about 54~s.}}{8}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces The automated Go test suite passing.}}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Live download of \texttt {linux-3.0.tar.xz} (63.8~MB) from cdn.kernel.org with 8 connections; the SHA-256 matches the published value.}}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Benchmark log on the paced test server: ours about 20~s, aria2 about 54~s.}}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The automated Go test suite passing.}}{12}{figure.caption.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Extra bytes re-downloaded under the original 30~s whole-request timeout (capped server, 32~MiB ranges).}}{11}{figure.caption.15}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Extra bytes re-downloaded under the original 30~s whole-request timeout (capped server, 32~MiB ranges).}}{14}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}}{13}{figure.caption.19}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Completion time before and after the engine fix, and aria2, in four scenarios (10 blocks each).}}{14}{figure.caption.21}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Adaptive controllers against the best stationary setting.}}{15}{figure.caption.22}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Online concurrency tuner against fixed settings and aria2 (8 blocks per scenario).}}{16}{figure.caption.24}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Live-internet pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}}{18}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}}{16}{figure.caption.20}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Completion time before and after the engine fix, and aria2, in four scenarios (10 blocks each).}}{17}{figure.caption.22}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Adaptive controllers against the best fixed setting.}}{18}{figure.caption.23}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Online concurrency tuner against fixed settings and aria2 (8 blocks per scenario).}}{19}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Live-internet pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}}{21}{figure.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

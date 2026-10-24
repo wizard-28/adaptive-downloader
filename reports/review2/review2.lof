@@ -1,22 +1,22 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network.}}{2}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network.}}{4}{figure.caption.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Algorithm flowchart for one worker (\texttt {internal/downloader/worker\_pool.go}).}}{6}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Algorithm flowchart for one worker (\texttt {internal/downloader/worker\_pool.go}).}}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}}{10}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces UML class diagram of the main types. The Downloader owns its parts; every policy implements the same interface.}}{9}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces UML state diagram for one byte range in the RangeTracker.}}{10}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Level-1 data-flow diagram of one download.}}{10}{figure.caption.15}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Throughput of a live download from \texttt {cdn.kernel.org} (8 connections, 1~MiB ranges), per second.}}{14}{figure.caption.18}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Terminal capture: live download and checksum verification.}}{14}{figure.caption.19}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Terminal capture: the automated test suite passing.}}{15}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces UML class diagram of the main types. The Downloader owns its parts; every policy implements the same interface.}}{11}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces UML state diagram for one byte range in the RangeTracker.}}{12}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Level-1 data-flow diagram of one download.}}{12}{figure.caption.16}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Throughput of a live download from \texttt {cdn.kernel.org} (8 connections, 1~MiB ranges), per second.}}{16}{figure.caption.19}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Terminal capture: live download and checksum verification.}}{16}{figure.caption.20}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Terminal capture: the automated test suite passing.}}{17}{figure.caption.21}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Completion time in seconds for all 40 $(N, S)$ settings on the paced server.}}{19}{figure.caption.25}%
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Data received over time in one paired run, reconstructed from per-request server logs.}}{20}{figure.caption.26}%
-\contentsline {figure}{\numberline {9.3}{\ignorespaces Mean completion time of ours and aria2 under six pacing schedules.}}{20}{figure.caption.27}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Completion time in seconds for all 40 $(N, S)$ settings on the paced server.}}{21}{figure.caption.26}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Data received over time in one paired run, reconstructed from per-request server logs.}}{22}{figure.caption.27}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Mean completion time of ours and aria2 under the six pacing schedules S0--S5 defined in Table~\ref {tab:schedules}.}}{22}{figure.caption.28}%
 \addvspace {10\p@ }

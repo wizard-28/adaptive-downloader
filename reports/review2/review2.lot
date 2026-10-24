@@ -1,22 +1,22 @@
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1.1}{\ignorespaces Technology stack}}{3}{table.caption.6}%
+\contentsline {table}{\numberline {1.1}{\ignorespaces Technology stack}}{5}{table.caption.7}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Components and their responsibilities}}{4}{table.caption.7}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Components and their responsibilities}}{6}{table.caption.8}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Experiment scenarios}}{7}{table.caption.9}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Platform}}{7}{table.caption.10}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Pacing schedules used in the sweep (rates per response)}}{8}{table.caption.12}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Experiment scenarios}}{9}{table.caption.10}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Platform}}{9}{table.caption.11}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Pacing schedules used in the sweep (rates per response; the ``dip'' is the 160~KiB/s phase)}}{10}{table.caption.13}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Fields of the per-run JSON record}}{11}{table.caption.16}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Fields of the per-run JSON record}}{13}{table.caption.17}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Modules and status}}{12}{table.caption.17}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Milestones}}{16}{table.caption.21}%
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Test types}}{17}{table.caption.22}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces Representative test cases}}{17}{table.caption.23}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces Verification commands and results}}{18}{table.caption.24}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Modules and status}}{14}{table.caption.18}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {10.1}{\ignorespaces Team members}}{22}{table.caption.28}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces Milestones}}{18}{table.caption.22}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Test types}}{19}{table.caption.23}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Representative test cases}}{19}{table.caption.24}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Verification commands and results}}{20}{table.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {10.1}{\ignorespaces Team members}}{24}{table.caption.29}%

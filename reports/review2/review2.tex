@@ -23,7 +23,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[font=small,labelfont=bf,skip=6pt]{caption}
-\usepackage{booktabs,tabularx,array}
+\usepackage{booktabs,tabularx,array,longtable}
 \usepackage{enumitem}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{listings}
@@ -117,6 +117,43 @@
 Download managers speed up large downloads by fetching a file as several byte ranges over parallel HTTP connections. Two settings decide how well this works: the number of parallel connections, $N$, and the size of each requested range, $S$. This research project asks when changing $N$ and $S$ during a download actually helps. To answer it, we built an instrumented segmented HTTP range downloader in Go, whose $N$ and $S$ a control policy can change while a download is running, and a reproducible test platform around it: a local server with configurable rate pacing, Linux network emulation, and an automated benchmark against aria2, a widely used open-source download manager.
 
 This report covers the system architecture, detailed design, algorithm, module development, working prototype, implementation progress, testing and initial results. In the first benchmark, on a 512~MiB file with server-side rate pacing, our downloader with 16 connections and 4~MiB ranges took 62.4\,\% less time than aria2 (time ratio 0.376), and was faster in 30 of 30 paired runs. Controls trace most of this gap to how request start times interact with per-response rate limiting, not to a general advantage over aria2. The project has 549 automated test functions, and all of them pass.
+
+\chapter*{Terms and Abbreviations}
+\addcontentsline{toc}{chapter}{Terms and Abbreviations}
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{11.6cm}@{}}
+\toprule
+\textbf{Term} & \textbf{Meaning}\\
+\midrule
+\endhead
+$N$ & Number of parallel connections, i.e. HTTP range requests in flight at once.\\
+$S$ & Range size: the number of bytes asked for in one request.\\
+Range request & An HTTP request for part of a file (\code{Range: bytes=a-b}). A server that supports it answers with status \code{206 Partial Content} and a \code{Content-Range} header saying which bytes it sent.\\
+Half-open range $[s, e)$ & The bytes from $s$ up to but not including $e$; its length is $e - s$. HTTP itself uses inclusive ranges.\\
+aria2 & A widely used open-source download manager that also downloads in parallel pieces; our external baseline, always run with \code{-x16 -s16 -k1M} (up to 16 connections, file split into 16 pieces, minimum piece 1~MiB).\\
+\code{tc netem} & The Linux network emulator. We use it to add delay and packet loss to the test link.\\
+Round trip (RTT) & Time for a packet to go to the server and back. Our emulated link has 80~ms.\\
+KiB, MiB & Binary units: 1~KiB = 1{,}024 bytes, 1~MiB = 1{,}048{,}576 bytes. MB/s means $10^6$ bytes per second.\\
+Paced server & Our test server. It sends each response at a set rate, and a response keeps the rate in force when its request arrived.\\
+Pacing schedule & The rate the paced server uses over time. D2 is the reference schedule: 640~KiB/s, a \emph{dip} to 160~KiB/s from 2~s to 4~s, then 2{,}500~KiB/s.\\
+Dip & The extra-slow phase in a schedule (160~KiB/s). ``No dip'' skips it; ``long dip'' makes it last until 8~s.\\
+Paired run, block & Runs of every compared option under the same conditions, back to back in random order. A block is one such set.\\
+Time ratio $R$ & Our completion time divided by the other option's, averaged as a geometric mean over pairs. $R < 1$: ours took less time. $R = 0.376$ means 62.4\,\% less time.\\
+Per-request and aggregate throughput & Per-request: how fast one request downloads. Aggregate: total bytes per second across all connections together.\\
+Geometric mean & The average used for ratios: the exponential of the mean of the logarithms. It treats ``twice as fast'' and ``half as fast'' symmetrically.\\
+95\,\% bootstrap interval & A range for $R$ obtained by resampling the pairs 10{,}000 times. If it excludes 1, the difference is unlikely to be noise.\\
+Screen & A small experiment (here 5 pairs) used to check a direction, not to confirm a result.\\
+Protocol & The written plan of an experiment (runs, comparisons, decision rules), fixed before its first run.\\
+Content-verified & The downloaded file was checked byte for byte against the source.\\
+Policy, controller & A policy decides whether to change $N$ or $S$; the controllers hold the current $N$ and $S$ targets within bounds. The policy runner passes each result to the policy and applies its decision.\\
+Straggler splitting & An optional engine mode: when nothing is left to allocate, an idle connection takes over the unfinished second half of the range with the most bytes still to come.\\
+LinUCB & A contextual bandit: a learning method that picks one of a few actions from the current measurements and learns from the reward that follows.\\
+DQN & Deep Q-Network, a reinforcement-learning agent with a neural network that estimates the long-term value of each action. We use the Double DQN variant.\\
+Mahimahi & A tool that replays recorded network traces, here cellular traces, so a download sees that network's real capacity over time.\\
+Race detector & Go's built-in checker for unsafe concurrent access to shared memory, run on the test suite.\\
+\bottomrule
+\end{longtable}
+\endgroup
 
 % ================================================================= 1
 \chapter{System Architecture}
@@ -277,7 +314,7 @@ This makes the server a controlled stand-in for per-connection rate limiting, su
 \fig{schedule.png}{0.9}{Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}
 
 \begin{table}[H]\centering
-\caption{Pacing schedules used in the sweep (rates per response)}\label{tab:schedules}
+\caption{Pacing schedules used in the sweep (rates per response; the ``dip'' is the 160~KiB/s phase)}\label{tab:schedules}
 \begin{tabularx}{\linewidth}{@{}llL@{}}
 \toprule
 \textbf{Schedule} & \textbf{Rates over time} & \textbf{What it varies}\\
@@ -490,7 +527,7 @@ The server sends slowly for the first 4 seconds, then speeds up, and each reques
 A screening run over six pacing schedules (5 pairs each, 60 runs, all content-verified) found ours faster in 28 of 30 pairs (Figure~\ref{fig:pacing.png}). The two were level only when the server sent at one constant slow rate.
 
 \textbf{A server we did not write.} To check that the direction does not depend on our own server, we repeated the comparison against stock NGINX~1.24 in two configurations: \code{limit\_rate 640k} per response, and the same with the first 1~MiB of each response unthrottled (\code{limit\_rate\_after 1m}). Ours was faster in 10 of 10 pairs ($R = 0.863$ and $0.597$). With 5 pairs per configuration, this is a screen, not a confirmation.
-\fig{pacing.png}{0.95}{Mean completion time of ours and aria2 under six pacing schedules.}
+\fig{pacing.png}{0.95}{Mean completion time of ours and aria2 under the six pacing schedules S0--S5 defined in Table~\ref{tab:schedules}.}
 
 \section{What This Result Does and Does Not Show}
 This is not evidence that our downloader is better than aria2 in general. The gap comes from one specific interaction:
