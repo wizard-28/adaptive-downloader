@@ -393,11 +393,15 @@ DQN v6, longer files & 16/128/512~MiB against aria2 & 1.81 / 1.06 / 0.91 (512~Mi
 \end{table}
 LinUCB locked onto a single action after warm-up. The DQN agents (v2, v5, v6) were slower than aria2 overall in the head-to-heads we ran. Those comparisons used small files (4--16~MiB), and v6 started from one connection while aria2 opened 16 at once, so they test the agents' start-up behaviour more than their steady-state control. A follow-up with longer downloads (16, 128 and 512~MiB) gave pooled DQN/aria2 ratios of 1.81, 1.06 and 0.91. The 512~MiB value has an interval that includes 1 and is driven by one of three scenarios; in the other two, DQN fell further behind as files grew. The head-to-heads compared DQN with aria2. In v5's live tests, the fixed 4-connection setting was fastest in every tested condition.
 
+\IfFileExists{rl_results.tex}{\textbf{A fairer test of the learned agent.} \input{rl_results.tex}}{}
+Starting at 16 connections helped: with the cap from 8~s, the agent was 7\,\% quicker than the fixed setting with its own 1~MiB range size, though not distinguishably so (0.931 [0.879, 1.016], faster in 4 of 5 blocks). It remained 36\,\% slower than 16~$\times$~32~MiB, because large ranges started before the cap keep their higher rate, and an agent that only changes $N$ cannot use that.
+
 \section{Limitations}\label{sec:limits}
 \begin{itemize}
 \item \textbf{Constructed server.} The capped and paced servers are models we built. Their key rule, that a request keeps the rate it started with, drives both the 62.4\,\% result and aria2's behaviour under the cap. A server that re-evaluates rates during a response could change both results. The stock-NGINX check exercised per-response limits only, not a shared cap.
 \item \textbf{One machine, emulated network.} Every controlled result ran on one machine, over loopback with \code{netem}, with one aria2 version. Real paths appear only in the live pilot and the trace replay.
 \item \textbf{Live pilot scope.} The pilot used one client, one access link, four mirrors and two runs per setting, and ran fixed settings only. It bounds what adaptation could gain on that link; it is not a survey of networks.
+\item \textbf{Learned agents trained in simulation.} The DQN agents were trained on a simulator and then evaluated live, including on the capped server, without retraining for each server.
 \item \textbf{One configuration per controller.} Each adaptive controller and the online tuner ran with one configuration, fixed before its runs. Other parameters might do better, though the small headroom found in every study limits how much.
 \item \textbf{Sample sizes and statistics.} The main comparisons use 8--30 paired blocks. The pacing sweep and the NGINX check (5 pairs each) are screens, not confirmations. Because the testbed is nearly deterministic, intervals are narrow and reflect testbed noise, not real-world variability. No correction was applied across the many comparisons.
 \item \textbf{No request timeout in the fixed engine.} Removing the whole-request deadline means a connection that stalls completely would wait until the run is stopped. A stall-based timeout is future work.
@@ -506,7 +510,8 @@ Adapting connections and range size is an established idea. FastBioDL~\cite{fast
 % ================================================================= 10
 \chapter{Future Enhancement}
 \begin{itemize}
-\item \textbf{Joint learning on harder environments.} Joint learned control was built and evaluated here, but our servers offered little for it to exploit. A natural next step is to test it where the best $(N, S)$ changes often and by a lot, such as servers with shifting per-connection limits.
+\item \textbf{Ongoing extension: an agent trained for the capped server.} The learned policies have been evaluated in every scenario, including the frozen DQN agent on the capped server (learned-policy results, Table~\ref{tab:rl}). As a further check, we are training a DQN agent specifically on the capped-server model, the scenario with the most room for adaptation, and evaluating it under the same frozen-protocol method.
+\item \textbf{Joint learning on harder environments.} Joint learned control was built and evaluated here, but our servers offered little for it to exploit. A natural next step is to retrain it for environments where the best $(N, S)$ changes often and by a lot, such as servers with shifting per-connection limits; the capped-server model is the first candidate.
 \item \textbf{Broader live study.} More networks, client locations and mirrors, including mobile networks.
 \item \textbf{HTTP/2 and multiple sources.} Download one file from several mirrors at once, as MDTP does.
 \item \textbf{Defaults.} After validation on real servers, make straggler splitting the default and add a stall-based timeout in place of the removed whole-request deadline.
@@ -515,7 +520,7 @@ Adapting connections and range size is an established idea. FastBioDL~\cite{fast
 
 % ================================================================= 11
 \chapter{Outcome}
-A research paper, \emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation}, has been drafted. All 144 of its numerical claims are verified against the raw data by an automated checker.
+A research paper, \emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation}, is being prepared for submission to \emph{IEEE Access}. The manuscript is complete in draft, and all 144 of its numerical claims are verified against the raw data by an automated checker.
 
 \begin{table}[H]\centering
 \caption{Publication plan}\label{tab:outcome}
@@ -523,9 +528,10 @@ A research paper, \emph{Request granularity and concurrency adaptation for HTTP 
 \toprule
 \textbf{Item} & \textbf{Status}\\
 \midrule
-Paper draft & Complete; final revision pending\\
-Target & A networking workshop or a journal that reviews for soundness (for example IEEE Access)\\
-Data and code & Repository with raw runs, frozen protocols and analysis scripts, to be archived with a DOI\\
+Manuscript & Complete draft; all 144 numerical claims checked automatically against the raw data\\
+Target venue & \emph{IEEE Access} (journal); manuscript being formatted to its template\\
+Status & Preparing for submission; final results being incorporated\\
+Data and code & Raw runs, frozen protocols and analysis scripts, to be archived with a DOI alongside the submission\\
 \bottomrule
 \end{tabularx}
 \end{table}

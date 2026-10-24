@@ -15,13 +15,14 @@
 \contentsline {table}{\numberline {6.5}{\ignorespaces Online tuner results; ratios are tuner / other}}{19}{table.caption.26}%
 \contentsline {table}{\numberline {6.6}{\ignorespaces Studies that looked for a benefit from adaptation (``Testbed'': local server and emulated network)}}{20}{table.caption.27}%
 \contentsline {table}{\numberline {6.7}{\ignorespaces Learned-policy evaluations (ratio $>1$: slower than the comparison)}}{21}{table.caption.29}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Frozen DQN agent on the capped and uncapped server (512~MiB; ratios are agent / other)}}{22}{table.caption.30}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Ours (best fixed setting, fixed engine) against aria2}}{23}{table.caption.30}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces Ours (best fixed setting, fixed engine) against aria2}}{24}{table.caption.31}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Review 1 objectives and outcomes}}{24}{table.caption.31}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces Deviations and their reasons}}{25}{table.caption.32}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces Techniques from the Review 1 literature survey and how this project used them}}{26}{table.caption.33}%
+\contentsline {table}{\numberline {8.1}{\ignorespaces Review 1 objectives and outcomes}}{25}{table.caption.32}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Deviations and their reasons}}{26}{table.caption.33}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Techniques from the Review 1 literature survey and how this project used them}}{27}{table.caption.34}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {11.1}{\ignorespaces Publication plan}}{29}{table.caption.34}%
+\contentsline {table}{\numberline {11.1}{\ignorespaces Publication plan}}{30}{table.caption.35}%

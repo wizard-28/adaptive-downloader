@@ -404,6 +404,9 @@ INPUT ./figs/live.png
 INPUT ./figs/live.png
 INPUT ./figs/live.png
 INPUT ./figs/live.png
+INPUT ./rl_results.tex
+INPUT ./rl_results.tex
+INPUT rl_results.tex
 INPUT review3.aux
 INPUT ./review3.out
 INPUT ./review3.out

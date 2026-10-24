@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Predeclared analysis of the RL-on-capped-server experiment (protocol.md). Standard library only.
 
-Usage: analyze_online_tuner.py [RUNS_DIR] [OUT_JSON]
+Usage: analyze_rl_capped.py [RUNS_DIR] [OUT_JSON]
 """
 import glob, json, math, os, random, statistics, sys
 

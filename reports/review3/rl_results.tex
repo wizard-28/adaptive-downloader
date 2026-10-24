@@ -1,0 +1,17 @@
+To remove the handicaps of the earlier head-to-heads, the frozen DQN v6 agent was also run on the capped server with a 512~MiB file, on the fixed engine, starting either at one connection (as trained) or at 16 (as aria2 does). The protocol was written down before the first run: 2 scenarios $\times$ 5 arms $\times$ 5 blocks, with 0 invalid runs. The agent was not retrained for this server.
+
+\begin{table}[H]\centering
+\caption{Frozen DQN agent on the capped and uncapped server (512~MiB; ratios are agent / other)}\label{tab:rlcap}
+\small
+\begin{tabularx}{\linewidth}{@{}llrlLL@{}}
+\toprule
+\textbf{Scenario} & \textbf{Agent} & \textbf{Time (s)} & \textbf{Best fixed (s)} & \textbf{vs best fixed} & \textbf{vs aria2}\\
+\midrule
+Cap from 8~s & DQN v6, start $N=16$ & 71.3 & 16~$\times$~32~MiB, 52.6 & 1.356 [1.252, 1.472] slower & 1.367 [1.281, 1.477] slower\\
+Cap from 8~s & DQN v6, start $N=1$ & 89.7 & 16~$\times$~32~MiB, 52.6 & 1.706 [1.612, 1.806] slower & 1.720 [1.622, 1.823] slower\\
+No cap & DQN v6, start $N=16$ & 19.0 & 16~$\times$~1~MiB, 18.4 & 1.031 [1.010, 1.063] slower & 0.359 [0.351, 0.367] faster\\
+No cap & DQN v6, start $N=1$ & 22.0 & 16~$\times$~1~MiB, 18.4 & 1.194 [1.176, 1.219] slower & 0.416 [0.407, 0.432] faster\\
+\bottomrule
+\end{tabularx}
+\end{table}
+The frozen agent did not beat a well-chosen fixed setting, even with a fair start, a long file and the scenario built so that the best setting changes. This is a 5-block screen.
