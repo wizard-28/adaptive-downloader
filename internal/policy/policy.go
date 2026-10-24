@@ -143,7 +143,10 @@ type Context struct {
 	// non-positive. It never replaces Throughput.
 	AggregateThroughput float64       // bytes per second (aggregate/wall-clock)
 	RequestDuration     time.Duration // duration of the most recent request
-	BytesTransferred    int64         // bytes of the most recent request
+	// Latency is the mean time until response headers arrived, over the
+	// attempts in the recent window that received a response.
+	Latency          time.Duration
+	BytesTransferred int64 // bytes of the most recent request
 
 	// Outcome counters.
 	SuccessfulRequests int64
@@ -166,6 +169,8 @@ func (c Context) Validate() error {
 		return fmt.Errorf("%w: negative aggregate throughput %v", ErrInvalidContext, c.AggregateThroughput)
 	case c.RequestDuration < 0:
 		return fmt.Errorf("%w: negative request duration %v", ErrInvalidContext, c.RequestDuration)
+	case c.Latency < 0:
+		return fmt.Errorf("%w: negative latency %v", ErrInvalidContext, c.Latency)
 	case c.BytesTransferred < 0:
 		return fmt.Errorf("%w: negative bytes transferred %d", ErrInvalidContext, c.BytesTransferred)
 	case c.SuccessfulRequests < 0:

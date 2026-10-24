@@ -1,0 +1,37 @@
+{
+ "split_ablation/CAP8/causal_joint_NT_split": {
+  "metric": "reaction_s",
+  "n": 10,
+  "median": 1.52,
+  "min": 1.49,
+  "max": 1.74
+ },
+ "split_ablation/CAP8/causal_joint_T30": {
+  "metric": "reaction_s",
+  "n": 10,
+  "median": 1.53,
+  "min": 1.5,
+  "max": 1.59
+ },
+ "split_ablation/CAP0/selector_NT_split": {
+  "metric": "first_move_s",
+  "n": 10,
+  "median": 3.99,
+  "min": 3.98,
+  "max": 4.25
+ },
+ "online_tuner/CAP8/online_tuner": {
+  "metric": "reaction_s",
+  "n": 8,
+  "median": 2.14,
+  "min": 2.06,
+  "max": 2.32
+ },
+ "online_tuner/HEALTHY/online_tuner": {
+  "metric": "ramp_s",
+  "n": 8,
+  "median": 8.08,
+  "min": 8.0,
+  "max": 8.25
+ }
+}

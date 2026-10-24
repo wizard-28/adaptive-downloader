@@ -413,3 +413,42 @@ func TestFetchMultipleRanges(t *testing.T) {
 		}
 	}
 }
+
+// TestFetchRecordsLatency checks that Latency covers the wait for response
+// headers and never exceeds the whole request duration.
+func TestFetchRecordsLatency(t *testing.T) {
+	const delay = 60 * time.Millisecond
+	release := make(chan struct{})
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		time.Sleep(delay) // the delay under test, not synchronization
+		w.Header().Set("Content-Range", "bytes 0-9/10")
+		w.Header().Set("Content-Length", "10")
+		w.WriteHeader(http.StatusPartialContent)
+		w.(http.Flusher).Flush()
+		<-release
+		_, _ = w.Write(make([]byte, 10))
+	}))
+	defer srv.Close()
+	f := New(Config{Timeout: 5 * time.Second})
+	go func() { time.Sleep(2 * delay); close(release) }()
+	res := f.Fetch(context.Background(), "r1", srv.URL, 0, 9)
+	if !res.Success {
+		t.Fatalf("fetch failed: %v", res.Err)
+	}
+	if res.Latency < delay || res.Latency > res.Duration {
+		t.Fatalf("Latency = %v, Duration = %v; want delay %v <= Latency <= Duration", res.Latency, res.Duration, delay)
+	}
+	if res.Duration-res.Latency < delay/2 {
+		t.Fatalf("Duration %v should include the body wait after headers (Latency %v)", res.Duration, res.Latency)
+	}
+}
+
+func TestFetchLatencyZeroOnConnectionFailure(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(http.ResponseWriter, *http.Request) {}))
+	url := srv.URL
+	srv.Close()
+	res := New(Config{Timeout: time.Second}).Fetch(context.Background(), "r1", url, 0, 9)
+	if res.Success || res.Latency != 0 {
+		t.Fatalf("Success=%v Latency=%v; want failure with zero latency", res.Success, res.Latency)
+	}
+}

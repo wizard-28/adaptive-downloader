@@ -139,6 +139,7 @@ func TestContextValidateRejectsNegative(t *testing.T) {
 		{"throughput", Context{Throughput: -0.1}},
 		{"aggregate throughput", Context{AggregateThroughput: -0.1}},
 		{"request duration", Context{RequestDuration: -time.Second}},
+		{"latency", Context{Latency: -time.Millisecond}},
 		{"bytes", Context{BytesTransferred: -1}},
 		{"successful", Context{SuccessfulRequests: -1}},
 		{"failed", Context{FailedRequests: -1}},

@@ -1,0 +1,392 @@
+{
+ "label": "controlled experiment; one constructed server model",
+ "invalid": [],
+ "scenarios": {
+  "CAP8": {
+   "geo_mean_s": {
+    "aria2": 52.27842072989278,
+    "fixed_16_1M_NT_split": 76.84955923429976,
+    "fixed_4_1M_NT_split": 88.18927760104953,
+    "online_tuner": 93.11357117228025
+   },
+   "n_valid": {
+    "aria2": 8,
+    "fixed_16_1M_NT_split": 8,
+    "fixed_4_1M_NT_split": 8,
+    "online_tuner": 8
+   },
+   "T1_vs_each": [
+    {
+     "num": "online_tuner",
+     "den": "fixed_16_1M_NT_split",
+     "n_blocks": 8,
+     "geo_ratio": 1.211634420548784,
+     "ci95": [
+      1.1797085254731716,
+      1.2480828750806892
+     ],
+     "verdict": "slower",
+     "wins": 0,
+     "dropped_blocks": []
+    },
+    {
+     "num": "online_tuner",
+     "den": "fixed_4_1M_NT_split",
+     "n_blocks": 8,
+     "geo_ratio": 1.0558377810226225,
+     "ci95": [
+      1.0282432720465222,
+      1.0871227871105225
+     ],
+     "verdict": "slower",
+     "wins": 0,
+     "dropped_blocks": []
+    }
+   ],
+   "T1_vs_best_stationary": {
+    "num": "online_tuner",
+    "den": "fixed_16_1M_NT_split",
+    "n_blocks": 8,
+    "geo_ratio": 1.211634420548784,
+    "ci95": [
+     1.1797085254731716,
+     1.2480828750806892
+    ],
+    "verdict": "slower",
+    "wins": 0,
+    "dropped_blocks": [],
+    "best_stationary": "fixed_16_1M_NT_split"
+   },
+   "T2_vs_aria2": {
+    "num": "online_tuner",
+    "den": "aria2",
+    "n_blocks": 8,
+    "geo_ratio": 1.7811091052916583,
+    "ci95": [
+     1.7175268333817315,
+     1.843809725819667
+    ],
+    "verdict": "slower",
+    "wins": 0,
+    "dropped_blocks": []
+   },
+   "tuner_trajectory": {
+    "runs": [
+     {
+      "block": 0,
+      "final_n": 13,
+      "moves": 41,
+      "n_seen": [
+       4,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 1,
+      "final_n": 16,
+      "moves": 42,
+      "n_seen": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 2,
+      "final_n": 7,
+      "moves": 41,
+      "n_seen": [
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 3,
+      "final_n": 15,
+      "moves": 43,
+      "n_seen": [
+       4,
+       8,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 4,
+      "final_n": 14,
+      "moves": 40,
+      "n_seen": [
+       4,
+       8,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 5,
+      "final_n": 12,
+      "moves": 42,
+      "n_seen": [
+       4,
+       8,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 6,
+      "final_n": 3,
+      "moves": 41,
+      "n_seen": [
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     {
+      "block": 7,
+      "final_n": 5,
+      "moves": 41,
+      "n_seen": [
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     }
+    ],
+    "median_final_n": 12.5,
+    "median_moves": 41.0
+   }
+  },
+  "HEALTHY": {
+   "geo_mean_s": {
+    "aria2": 51.940077287247576,
+    "fixed_16_1M_NT_split": 18.399245186502284,
+    "fixed_4_1M_NT_split": 69.5510884834148,
+    "online_tuner": 22.45008765953834
+   },
+   "n_valid": {
+    "aria2": 8,
+    "fixed_16_1M_NT_split": 8,
+    "fixed_4_1M_NT_split": 8,
+    "online_tuner": 8
+   },
+   "T1_vs_each": [
+    {
+     "num": "online_tuner",
+     "den": "fixed_16_1M_NT_split",
+     "n_blocks": 8,
+     "geo_ratio": 1.2201635138819582,
+     "ci95": [
+      1.203060779640423,
+      1.2317464880141922
+     ],
+     "verdict": "slower",
+     "wins": 0,
+     "dropped_blocks": []
+    },
+    {
+     "num": "online_tuner",
+     "den": "fixed_4_1M_NT_split",
+     "n_blocks": 8,
+     "geo_ratio": 0.32278556883968534,
+     "ci95": [
+      0.3212314953310659,
+      0.3243087878629942
+     ],
+     "verdict": "faster",
+     "wins": 8,
+     "dropped_blocks": []
+    }
+   ],
+   "T1_vs_best_stationary": {
+    "num": "online_tuner",
+    "den": "fixed_16_1M_NT_split",
+    "n_blocks": 8,
+    "geo_ratio": 1.2201635138819582,
+    "ci95": [
+     1.203060779640423,
+     1.2317464880141922
+    ],
+    "verdict": "slower",
+    "wins": 0,
+    "dropped_blocks": [],
+    "best_stationary": "fixed_16_1M_NT_split"
+   },
+   "T2_vs_aria2": {
+    "num": "online_tuner",
+    "den": "aria2",
+    "n_blocks": 8,
+    "geo_ratio": 0.4322305401160873,
+    "ci95": [
+     0.41605459405371115,
+     0.45183385162386114
+    ],
+    "verdict": "faster",
+    "wins": 8,
+    "dropped_blocks": []
+   },
+   "tuner_trajectory": {
+    "runs": [
+     {
+      "block": 0,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 1,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 2,
+      "final_n": 14,
+      "moves": 4,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 3,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 4,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 5,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 6,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     },
+     {
+      "block": 7,
+      "final_n": 16,
+      "moves": 3,
+      "n_seen": [
+       4,
+       8,
+       12,
+       16
+      ]
+     }
+    ],
+    "median_final_n": 16.0,
+    "median_moves": 3.0
+   }
+  }
+ }
+}

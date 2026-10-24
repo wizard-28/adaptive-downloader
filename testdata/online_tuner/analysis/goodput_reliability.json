@@ -1,0 +1,77 @@
+{
+ "cells": {
+  "online_tuner/CAP8/aria2": {
+   "n": 8,
+   "goodput_mbs_geo": 10.27,
+   "requests_mean": 19.1,
+   "server_failed_mean": 2.8,
+   "wasted_frac_mean": null,
+   "failed_attempts_mean": null,
+   "retries_mean": null
+  },
+  "online_tuner/CAP8/fixed_16_1M_NT_split": {
+   "n": 8,
+   "goodput_mbs_geo": 6.99,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  },
+  "online_tuner/CAP8/fixed_4_1M_NT_split": {
+   "n": 8,
+   "goodput_mbs_geo": 6.09,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  },
+  "online_tuner/CAP8/online_tuner": {
+   "n": 8,
+   "goodput_mbs_geo": 5.77,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  },
+  "online_tuner/HEALTHY/aria2": {
+   "n": 8,
+   "goodput_mbs_geo": 10.34,
+   "requests_mean": 21.5,
+   "server_failed_mean": 4.5,
+   "wasted_frac_mean": null,
+   "failed_attempts_mean": null,
+   "retries_mean": null
+  },
+  "online_tuner/HEALTHY/fixed_16_1M_NT_split": {
+   "n": 8,
+   "goodput_mbs_geo": 29.18,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  },
+  "online_tuner/HEALTHY/fixed_4_1M_NT_split": {
+   "n": 8,
+   "goodput_mbs_geo": 7.72,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  },
+  "online_tuner/HEALTHY/online_tuner": {
+   "n": 8,
+   "goodput_mbs_geo": 23.91,
+   "requests_mean": 512,
+   "server_failed_mean": 0,
+   "wasted_frac_mean": 0.0,
+   "failed_attempts_mean": 0,
+   "retries_mean": 0
+  }
+ },
+ "invalid_runs": {}
+}

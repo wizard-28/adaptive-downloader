@@ -17,7 +17,8 @@ type Record struct {
 	RangeEnd   int64
 	Bytes      int64
 	Duration   time.Duration
-	Throughput float64 // bytes per second
+	Latency    time.Duration // time until response headers arrived; 0 if none
+	Throughput float64       // bytes per second
 	Success    bool
 	StatusCode int
 	Attempt    int // 1 for the first attempt, 2 for the first retry, ...
