@@ -77,3 +77,10 @@ with a 95 % percentile bootstrap (10,000 resamples, seed 20261025).
 - No ranking beyond these comparisons. This is one constructed server model,
   and one tuner configuration chosen before any run. It was not tuned
   afterwards.
+
+## Amendment A1 (2026-10-24, before any data run)
+
+The harness selects a policy with `-policy`, not `-mode`. Because of this the
+two smoke runs exited with a flag error before downloading anything, and no
+run produced data. The manifest now passes `-policy online`. Nothing else
+changes. The failed smoke attempts are kept in `index_smoke_attempt1_flagerror.jsonl`.

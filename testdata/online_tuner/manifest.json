@@ -40,7 +40,7 @@
    "1048576",
    "-no-request-timeout",
    "-split",
-   "-mode",
+   "-policy",
    "online",
    "-online-interval",
    "2s",

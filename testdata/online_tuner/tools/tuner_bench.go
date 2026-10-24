@@ -1,5 +1,5 @@
 // Command tuner_bench is a copy of testdata/split_ablation/tools/split_bench.go
-// with one additive mode, -mode online (policy.OnlineTunerPolicy, flags
+// with one additive policy, -policy online (policy.OnlineTunerPolicy, flags
 // -online-*). split_bench itself copies the frozen ns_bench.go and adds
 // -split (downloader.Config.SplitStragglers) and
 // -no-request-timeout (downloader.Config.NoRequestTimeout, so a request is
@@ -443,7 +443,7 @@ func fail(res result, out, msg string) {
 
 func main() {
 	system := flag.String("system", "ours", "ours|aria2|curl|wget")
-	mode := flag.String("policy", "none", "none|classifier|drop|band")
+	mode := flag.String("policy", "none", "none|classifier|drop|band|online")
 	n := flag.Int("n", 16, "initial concurrency")
 	chunk := flag.Int64("chunk", 1<<20, "initial chunk size bytes")
 	healthyN := flag.Int("healthy-n", 16, "classifier healthy target N")
