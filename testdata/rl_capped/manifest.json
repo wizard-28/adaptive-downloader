@@ -1,0 +1,109 @@
+{
+ "study": "rl_capped",
+ "seed": 20261026,
+ "blocks": 5,
+ "harness": "testdata/rl_capped/tools/rl_bench.go (copy of tuner_bench.go + -policy dqn6)",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  }
+ },
+ "arms": {
+  "dqn6_start16": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqn6",
+   "-window",
+   "4"
+  ],
+  "dqn6_start1": [
+   "-system",
+   "ours",
+   "-n",
+   "1",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqn6",
+   "-window",
+   "4"
+  ],
+  "fixed_16_1M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_16_32M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "33554432",
+   "-max-chunk",
+   "33554432",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "aria2": [
+   "-system",
+   "aria2"
+  ]
+ },
+ "scenario_arms": {
+  "CAP8": [
+   "dqn6_start16",
+   "dqn6_start1",
+   "fixed_16_1M_NT_split",
+   "fixed_16_32M_NT_split",
+   "aria2"
+  ],
+  "HEALTHY": [
+   "dqn6_start16",
+   "dqn6_start1",
+   "fixed_16_1M_NT_split",
+   "fixed_16_32M_NT_split",
+   "aria2"
+  ]
+ },
+ "scenario_order": [
+  "CAP8",
+  "HEALTHY"
+ ]
+}
