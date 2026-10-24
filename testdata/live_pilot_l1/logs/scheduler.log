@@ -19,3 +19,4 @@
 2026-10-19T15:34:29Z waiting for S5 at 2026-10-20T08:00 IST
 2026-10-20T02:30:00Z start S5 servers=all
 2026-10-20T02:35:15Z operator: S5 stopped after 8 records (internet outage ~08:00-08:04 IST, operator-reported); scheduler 13472 and runner 216696 killed by PID; one in-flight kcdn curl run lost without record; restarting as S5R
+2026-10-24T08:45:00Z note (reconstructed, added after the fact): S5R scheduler stdout was redirected to /dev/null by operator error, so its start/end lines were not written. From raw/S5R.jsonl: first run start 2026-10-20T02:36:00Z, last run start 2026-10-20T03:38:40Z, 80 records, 80 valid; logs/S5R.log ends at [S5R 80/80].
