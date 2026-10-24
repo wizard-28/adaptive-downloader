@@ -565,6 +565,161 @@
    "value": 5,
    "tol": 0,
    "where": "\u00a74.2"
+  },
+  "lp1.runs": {
+   "value": 350,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.valid": {
+   "value": 328,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.tuna_403_invalid": {
+   "value": 16,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.s5_invalid": {
+   "value": 6,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.max_MBps": {
+   "value": 2.43,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.servers_top_changed": {
+   "value": 4,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.servers": {
+   "value": 4,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.kedge_N4_min": {
+   "value": 1.37,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.kedge_N4_max": {
+   "value": 1.71,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.global_is_N8_S1M": {
+   "value": true,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.headroom_pct": {
+   "value": 3.7,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1.boot_lo_pct": {
+   "value": 1.0,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1.boot_hi_pct": {
+   "value": 4.8,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1.n_cond": {
+   "value": 16,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.near": {
+   "value": 11,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1.global_max_pct": {
+   "value": 15.3,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1.cv_min": {
+   "value": 0.11,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.cv_max": {
+   "value": 0.29,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.aria2_min": {
+   "value": 1.0,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1.aria2_max": {
+   "value": 1.26,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1x.runs": {
+   "value": 80,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1x.valid": {
+   "value": 68,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1x.max_MBps": {
+   "value": 12.3,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1x.cv_min": {
+   "value": 1.16,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1x.cv_max": {
+   "value": 1.77,
+   "tol": 0.005,
+   "where": "\u00a78a"
+  },
+  "lp1x.global_is_N8_S1M": {
+   "value": true,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1x.headroom_pct": {
+   "value": 7.2,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1x.boot_lo_pct": {
+   "value": 1.2,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1x.boot_hi_pct": {
+   "value": 12.2,
+   "tol": 0.05,
+   "where": "\u00a78a"
+  },
+  "lp1x.n_cond": {
+   "value": 4,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "lp1x.near": {
+   "value": 2,
+   "tol": 0,
+   "where": "\u00a78a"
   }
  }
 }

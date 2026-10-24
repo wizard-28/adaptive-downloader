@@ -1,0 +1,312 @@
+{
+  "conditions": [
+    {
+      "aria2_over_best_fixed": 1.1727607218287774,
+      "best_cell": "ours_N16_S1M",
+      "best_s": 11.78248924801692,
+      "cells_within_5pct": [
+        "ours_N16_S1M"
+      ],
+      "curl_over_best_fixed": 1.868936780205953,
+      "invalid_runs": 4,
+      "ranking": [
+        "ours_N16_S1M",
+        "ours_N8_S1M",
+        "ours_N8_S4M",
+        "ours_N1_S4M",
+        "ours_N16_S4M",
+        "ours_N4_S1M",
+        "ours_N1_S1M",
+        "ours_N4_S4M"
+      ],
+      "server": "kcdn",
+      "slot": "S3",
+      "spread_max_over_min": 3.534224144547476,
+      "status": "OK",
+      "time_s": {
+        "ours_N16_S1M": 11.78248924801692,
+        "ours_N16_S4M": 26.711589466000003,
+        "ours_N1_S1M": 38.97054823500001,
+        "ours_N1_S4M": 23.362245328999997,
+        "ours_N4_S1M": 35.374634548227554,
+        "ours_N4_S4M": 41.641957983212436,
+        "ours_N8_S1M": 13.743324567401578,
+        "ours_N8_S4M": 17.278504637317372
+      },
+      "valid_runs": 16
+    },
+    {
+      "aria2_over_best_fixed": 0.95567539585087,
+      "best_cell": "ours_N4_S1M",
+      "best_s": 7.923902342999999,
+      "cells_within_5pct": [
+        "ours_N4_S1M"
+      ],
+      "curl_over_best_fixed": 2.054857489426785,
+      "invalid_runs": 4,
+      "ranking": [
+        "ours_N4_S1M",
+        "ours_N8_S1M",
+        "ours_N16_S1M",
+        "ours_N16_S4M",
+        "ours_N4_S4M",
+        "ours_N1_S4M",
+        "ours_N8_S4M",
+        "ours_N1_S1M"
+      ],
+      "server": "kedge",
+      "slot": "S3",
+      "spread_max_over_min": 7.898514285700239,
+      "status": "OK",
+      "time_s": {
+        "ours_N16_S1M": 10.871912208,
+        "ours_N16_S4M": 11.729605623,
+        "ours_N1_S1M": 62.587055854679086,
+        "ours_N1_S4M": 24.925193046298684,
+        "ours_N4_S1M": 7.923902342999999,
+        "ours_N4_S4M": 23.162911401467543,
+        "ours_N8_S1M": 8.554992577484965,
+        "ours_N8_S4M": 26.607145050573084
+      },
+      "valid_runs": 16
+    },
+    {
+      "aria2_over_best_fixed": 1.66071537471783,
+      "best_cell": "ours_N8_S1M",
+      "best_s": 5.367847677,
+      "cells_within_5pct": [
+        "ours_N8_S1M"
+      ],
+      "curl_over_best_fixed": 3.362990973709777,
+      "invalid_runs": 3,
+      "ranking": [
+        "ours_N8_S1M",
+        "ours_N8_S4M",
+        "ours_N16_S4M",
+        "ours_N16_S1M",
+        "ours_N4_S1M",
+        "ours_N1_S4M",
+        "ours_N4_S4M",
+        "ours_N1_S1M"
+      ],
+      "server": "riken",
+      "slot": "S3",
+      "spread_max_over_min": 7.493141173128323,
+      "status": "OK",
+      "time_s": {
+        "ours_N16_S1M": 18.28870581926995,
+        "ours_N16_S4M": 13.738448723618196,
+        "ours_N1_S1M": 40.22204043960993,
+        "ours_N1_S4M": 34.93797416873581,
+        "ours_N4_S1M": 18.639042584042862,
+        "ours_N4_S4M": 39.283116973999995,
+        "ours_N8_S1M": 5.367847677,
+        "ours_N8_S4M": 11.31283968524612
+      },
+      "valid_runs": 17
+    },
+    {
+      "aria2_over_best_fixed": 1.1502212399552063,
+      "best_cell": "ours_N8_S4M",
+      "best_s": 14.745094158408888,
+      "cells_within_5pct": [
+        "ours_N8_S4M",
+        "ours_N8_S1M"
+      ],
+      "curl_over_best_fixed": 2.887093218914629,
+      "invalid_runs": 1,
+      "ranking": [
+        "ours_N8_S4M",
+        "ours_N8_S1M",
+        "ours_N16_S1M",
+        "ours_N16_S4M",
+        "ours_N4_S4M",
+        "ours_N4_S1M",
+        "ours_N1_S1M",
+        "ours_N1_S4M"
+      ],
+      "server": "tuna",
+      "slot": "S3",
+      "spread_max_over_min": 7.136053131111374,
+      "status": "OK",
+      "time_s": {
+        "ours_N16_S1M": 20.102143518027933,
+        "ours_N16_S4M": 33.8964962082294,
+        "ours_N1_S1M": 93.79062716712183,
+        "ours_N1_S4M": 105.22177533764577,
+        "ours_N4_S1M": 48.96529237889925,
+        "ours_N4_S4M": 36.04241148040897,
+        "ours_N8_S1M": 15.472093112846443,
+        "ours_N8_S4M": 14.745094158408888
+      },
+      "valid_runs": 19
+    }
+  ],
+  "fixed_cells": [
+    "ours_N1_S1M",
+    "ours_N1_S4M",
+    "ours_N4_S1M",
+    "ours_N4_S4M",
+    "ours_N8_S1M",
+    "ours_N8_S4M",
+    "ours_N16_S1M",
+    "ours_N16_S4M"
+  ],
+  "headroom_all_complete": {
+    "boot95_pct": [
+      1.2104556474691552,
+      12.219321039509756
+    ],
+    "conditions_within_5pct_of_best": 2,
+    "global_cell": "ours_N8_S1M",
+    "headroom_pct": 7.215900716654122,
+    "n_conditions": 4
+  },
+  "headroom_excluding_access_link_bound": {
+    "boot95_pct": [
+      1.2104556474691552,
+      12.219321039509756
+    ],
+    "conditions_within_5pct_of_best": 2,
+    "global_cell": "ours_N8_S1M",
+    "headroom_pct": 7.215900716654122,
+    "n_conditions": 4
+  },
+  "invalid_by_condition": {
+    "kcdn|S3": [
+      {
+        "arm": "ours_N1_S1M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+        "rep": 0
+      },
+      {
+        "arm": "ours_N16_S4M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [62914560,63798007] after 4 attempts",
+        "rep": 0
+      },
+      {
+        "arm": "curl",
+        "checksum_ok": false,
+        "err": "curl: exit status 6: curl: (6) Could not resolve host: cdn.kernel.org\n000",
+        "rep": 0
+      },
+      {
+        "arm": "ours_N1_S4M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [0,4194303] after 4 attempts",
+        "rep": 0
+      }
+    ],
+    "kedge|S3": [
+      {
+        "arm": "ours_N16_S1M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [2097152,3145727] after 4 attempts",
+        "rep": 0
+      },
+      {
+        "arm": "curl",
+        "checksum_ok": false,
+        "err": "curl: exit status 6: curl: (6) Could not resolve host: mirrors.edge.kernel.org\n000",
+        "rep": 0
+      },
+      {
+        "arm": "ours_N16_S4M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [33554432,37748735] after 4 attempts",
+        "rep": 0
+      },
+      {
+        "arm": "ours_N4_S1M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+        "rep": 0
+      }
+    ],
+    "riken|S3": [
+      {
+        "arm": "ours_N8_S1M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+        "rep": 0
+      },
+      {
+        "arm": "curl",
+        "checksum_ok": false,
+        "err": "curl: exit status 6: curl: (6) Could not resolve host: ftp.riken.jp\n000",
+        "rep": 0
+      },
+      {
+        "arm": "ours_N4_S4M",
+        "checksum_ok": false,
+        "err": "downloader: retry limit exceeded: range [12582912,16777215] after 4 attempts",
+        "rep": 1
+      }
+    ],
+    "tuna|S3": [
+      {
+        "arm": "curl",
+        "checksum_ok": false,
+        "err": "curl: exit status 6: curl: (6) Could not resolve host: mirrors.tuna.tsinghua.edu.cn\n000",
+        "rep": 0
+      }
+    ]
+  },
+  "label": "Descriptive",
+  "n_invalid": 12,
+  "n_records": 80,
+  "n_valid": 68,
+  "pilot": "live_pilot_l1",
+  "top_cell_stability": {
+    "distinct_top_cells_overall": [
+      "ours_N16_S1M",
+      "ours_N4_S1M",
+      "ours_N8_S1M",
+      "ours_N8_S4M"
+    ],
+    "per_server_distinct": {
+      "kcdn": 1,
+      "kedge": 1,
+      "riken": 1,
+      "tuna": 1
+    },
+    "per_server_top_cells": {
+      "kcdn": [
+        "ours_N16_S1M"
+      ],
+      "kedge": [
+        "ours_N4_S1M"
+      ],
+      "riken": [
+        "ours_N8_S1M"
+      ],
+      "tuna": [
+        "ours_N8_S4M"
+      ]
+    }
+  },
+  "within_run_variability": {
+    "kcdn": {
+      "median_cv": 1.7009474485150082,
+      "median_frac_below_half_median": 0.0,
+      "runs": 13
+    },
+    "kedge": {
+      "median_cv": 1.2783711130879931,
+      "median_frac_below_half_median": 0.109375,
+      "runs": 12
+    },
+    "riken": {
+      "median_cv": 1.7698195167040225,
+      "median_frac_below_half_median": 0.0,
+      "runs": 11
+    },
+    "tuna": {
+      "median_cv": 1.1602232132452945,
+      "median_frac_below_half_median": 0.2649350649350649,
+      "runs": 16
+    }
+  }
+}

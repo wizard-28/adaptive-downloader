@@ -69,15 +69,24 @@ path, the best N is "enough connections to fill the pipe". When capacity
 changes, you go faster or slower, but the same setting stays best. Where real
 headroom existed, a simple rule that detects one change captured it.
 
-## Live-internet pilot (in progress, descriptive)
+## Live-internet pilot (complete, descriptive)
 
 - **Design:** four public kernel.org mirrors (CDN, origin, Japan, China),
   reached over the author's own broadband. 8 fixed (N, S) cells plus aria2
-  and curl, 2 reps each, in several time-of-day slots
-  (`testdata/live_pilot_l1/`).
-- **First slot:** one global setting, 16 connections × 1 MiB, was within about
-  1.6 % of each server's own best. Enough connections saturate the access
-  link. *Final numbers: [fill Tuesday].*
+  and curl, 2 reps each, in four time-of-day slots on the primary (Tata)
+  network (`testdata/live_pilot_l1/`).
+- **Result:** 328 of 350 runs were valid, giving 16 complete conditions. One
+  global setting, 8 connections × 1 MiB, was on average 3.7 % slower than
+  each condition's own best (bootstrap 95 % [1.0, 4.8]). The upper bound is
+  below the predeclared 5 % line. The setting was within 5 % of the best in
+  11 of 16 conditions, and at most 15.3 % slower in any one.
+- **What mattered:** "enough connections for this server". The origin mirror
+  needed N ≥ 8, and N = 4 was 1.37–1.71× slower there. The access link, at
+  about 2.4 MB/s, capped every server.
+- **Other network:** one morning slot ran on a second network by accident. It
+  is reported separately: 7.2 % headroom [1.2, 12.2] over 4 conditions. That
+  is inconclusive, but it is the one hint that the best setting can move
+  more.
 - **Side finding:** the Tsinghua mirror rejects Go's default User-Agent with
   HTTP 403.
 
@@ -88,7 +97,8 @@ headroom existed, a simple rule that detects one change captured it.
 - The cellular traces were replayed, not measured on live mobile networks.
 - Two learner families were tested.
 - One aria2 version was tested.
-- Live internet is covered only by the small pilot.
+- Live internet is covered only by the small pilot (one client, one primary
+  network).
 
 ## Takeaway
 

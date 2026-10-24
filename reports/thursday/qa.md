@@ -63,10 +63,14 @@ constructed concurrency cap was the one case where it paid.
 
 - The cellular results use recorded real traces (Winstein et al., NSDI 2013),
   replayed through Mahimahi so they are reproducible.
-- The live-internet pilot covers four public kernel.org mirrors across
-  several times of day. *Result: [fill Tuesday]*. In the first slot, one
-  global setting (16 × 1 MiB) was within about 1.6 % of each server's best.
-- It is a descriptive pilot with one client and one access network, not a
+- The live-internet pilot covers four public mirrors (kernel.org CDN and
+  origin, Japan, China) across four time-of-day slots. One global setting,
+  8 × 1 MiB, was on average 3.7 % from each condition's best (bootstrap
+  [1.0, 4.8]; 16 conditions). That is under the predeclared 5 % line.
+- One slot accidentally ran on a second network. There the headroom was
+  7.2 % [1.2, 12.2] over only 4 conditions, which is inconclusive and
+  reported separately.
+- It is a descriptive pilot with one client and one primary access network, not a
   validation.
 
 **8. Is the 62.4 % win over aria2 real?**

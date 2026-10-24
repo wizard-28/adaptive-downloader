@@ -7374,9 +7374,9 @@ time-varying per-response pacing schedule.
 
 ---
 
-### 22.106 Live-internet pilot L-P1 + Thursday-review materials (started 2026-10-18; IN PROGRESS)
+### 22.106 Live-internet pilot L-P1 + Thursday-review materials (2026-10-18 to 2026-10-20; analysed 2026-10-24; COMPLETE)
 
-**Status: `LIVE_PILOT_RUNNING` (descriptive; no RL, no adaptive policy run
+**Status: `LIVE_PILOT_COMPLETE` (descriptive; no RL, no adaptive policy run
 live).** Branch `exp/live-pilot-l1` (not merged). Protocol frozen before S1
 in commit 3e643d2: `testdata/live_pilot_l1/protocol.md`, `manifest.json`,
 `stage0_probe.txt`.
@@ -7431,33 +7431,63 @@ in commit 3e643d2: `testdata/live_pilot_l1/protocol.md`, `manifest.json`,
   - S3 (other network): 68 of 80 valid. Its DNS and retry failures cluster
     between about 08:08 and 08:40 IST, and its peaks reach about 12 MB/s.
   - S4: 80 of 80 valid (peaks about 2.43 MB/s, the Tata ceiling).
-  - Preliminary S1, three complete servers: global cell N16/S1M, headroom
-    1.6 % (bootstrap [0.0, 2.6]); `kedge` single-connection is 5.7× slower
-    than its best cell.
+  - S5: 8 records, 2 valid (outage, A4). S5R: 80 of 80 valid.
+  - The S5R scheduler's output was sent to /dev/null by operator error, so a
+    reconstructed note is in `logs/scheduler.log`.
+- **Results (`analysis/summary.json`, `analysis_other_network/summary.json`;
+  recomputed by `tools/claims_check.py`, `lp1.*`/`lp1x.*`):**
+  - **Primary (Tata):** 350 records, 328 valid (16 `tuna`/S1 403 runs, 6 S5
+    outage runs). 16 complete conditions (4 servers × S1/S1T(tuna)/S2/S4/S5R).
+    - Global cell 8 × 1 MiB, headroom **3.7 %**, bootstrap 95 % [1.0, 4.8].
+      The upper bound is below the predeclared 5 % line, so by the protocol
+      rule "one fixed configuration was near-best", which supports but does
+      not prove the thesis.
+    - The global cell was within 5 % of the best in 11 of 16 conditions, and
+      at most 15.3 % slower.
+    - No condition is ACCESS_LINK_BOUND, because N = 1 was always more than
+      5 % slower.
+    - The top cell changed across slots on all 4 servers, but it always had
+      N ≥ 8 except for N = 4 cells three times. On `kedge`, N = 4 was
+      1.37–1.71× slower than the best, so "enough connections" is
+      server-dependent.
+    - aria2 over the best fixed cell: 1.00–1.26. Within-run CV: 0.11–0.29.
+  - **Other network (S3, A3):** 68 of 80 valid, headroom 7.2 % [1.2, 12.2]
+    over 4 conditions (global cell also 8 × 1 MiB), CV 1.16–1.77. Inconclusive,
+    and reported separately.
+  - **Correction:** an in-session remark (2026-10-18) that "every N ≥ 4 cell
+    is close to best" was wrong for `kedge`.
 - **Paper:**
-  - `reports/paper_draft.md` §8a pre-written as a DRAFT with `[PLACEHOLDER]`s.
+  - `reports/paper_draft.md` §8a is filled with final numbers and no longer
+    labeled DRAFT.
   - The §10 limitation now names the pilot.
   - New verified citations (Mahimahi, Sprout/Saturator trace provenance,
     LinUCB, DQN, Double DQN, tc-netem) are in `reports/references.bib` and
     `reports/references.md`.
   - Still open (human): the redistribution terms for the Mahimahi-bundled
     traces.
-  - `tools/claims_check.py`: 113/113, 0 unverified tokens.
+  - `tools/claims_check.py`: 144/144, 0 unverified tokens. It now has a live
+    pilot block, and `paper_numbers.json`/`number_sources.json` are
+    extended.
 - **Thursday materials:**
-  - Slide deck (15 slides, private claude.ai artifact; slide 11 holds pilot
-    placeholders)
+  - Slide deck (15 slides, private claude.ai artifact
+    https://claude.ai/artifact/J58HhzS8nh749ErfPn6U3S). Slide 11 **still
+    holds the pilot placeholders**; it was not republished after the
+    analysis.
   - `reports/thursday/project_summary.md`
   - `reports/thursday/qa.md`
-- **Immediate next step:** after S5R (started Tue 08:06 IST, about 1 h), run
-  `python3 tools/analyze_live_pilot.py` (primary, Tata) and
-  `python3 tools/analyze_live_pilot.py --raw testdata/live_pilot_l1/raw_other_network --out testdata/live_pilot_l1/analysis_other_network`
-  (supplementary, S3). Then:
-  - fill §8a, deck slide 11 and the summary and Q&A placeholders from
-    `analysis/summary.json`;
-  - extend `tools/claims_check.py` to recompute the §8a numbers from
-    `testdata/live_pilot_l1/raw/`;
-  - record the results here and drop the IN PROGRESS label.
-  - Do not rank modes; follow the protocol's interpretation rules.
+- **Tests (2026-10-24):** build, vet, gofmt (outside frozen `testdata/` and
+  `.claude/`), `go test ./...`, `-p 1`, `-race -p 1`, pytest 70 + 5, the
+  claims self-test and claims 144/144 all pass. `go test -count=5 -p 1
+  ./...` failed once in `TestAnchorCalibration`, with a **new failure mode**:
+  the warm-up replay returned `DOWNLOADER_START_FAILED`, meaning the mm-link
+  child exited non-zero. That is different from the documented wall-clock
+  residual. It passed in 6 of 6 isolated reruns and in a separate
+  `-count=5` of the package. No Go code changed since the last green
+  `-count=5`. It is treated as load-sensitivity of the replay test and is
+  not investigated further.
+- **Immediate next step:** human review of §8a and the amendments A1–A4.
+  Decide whether to merge `exp/live-pilot-l1` into `main`, and whether the
+  deck's slide 11 should be filled. Do not rank modes.
 
 ### 22.105 Finalization cycle: paper-rc1, hardened claims check, bounded model-based controller attempt (executed 2026-10-12)
 
