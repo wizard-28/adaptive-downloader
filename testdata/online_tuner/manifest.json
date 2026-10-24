@@ -1,0 +1,97 @@
+{
+ "study": "online_tuner",
+ "seed": 20261025,
+ "blocks": 8,
+ "harness": "testdata/online_tuner/tools/tuner_bench.go (copy of split_bench.go + -mode online)",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  }
+ },
+ "arms": {
+  "online_tuner": [
+   "-system",
+   "ours",
+   "-n",
+   "4",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-mode",
+   "online",
+   "-online-interval",
+   "2s",
+   "-online-step",
+   "4",
+   "-online-penalty",
+   "1.0",
+   "-online-tol",
+   "0.05"
+  ],
+  "fixed_16_1M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_4_1M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "4",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "aria2": [
+   "-system",
+   "aria2"
+  ]
+ },
+ "scenario_arms": {
+  "CAP8": [
+   "online_tuner",
+   "fixed_16_1M_NT_split",
+   "fixed_4_1M_NT_split",
+   "aria2"
+  ],
+  "HEALTHY": [
+   "online_tuner",
+   "fixed_16_1M_NT_split",
+   "fixed_4_1M_NT_split",
+   "aria2"
+  ]
+ },
+ "scenario_order": [
+  "CAP8",
+  "HEALTHY"
+ ]
+}
