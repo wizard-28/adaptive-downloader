@@ -54,6 +54,7 @@ type policyRunner struct {
 type attemptSample struct {
 	bytes    int64
 	duration time.Duration
+	latency  time.Duration
 	// end is the wall-clock time the attempt was observed to complete. It is
 	// used only to compute the aggregate (wall-clock) throughput over the
 	// window; start is derived as end-duration.
@@ -118,18 +119,28 @@ func (r *policyRunner) observe(rec metrics.Record) {
 		r.retries++
 	}
 
-	r.recent = append(r.recent, attemptSample{bytes: rec.Bytes, duration: rec.Duration, end: r.now()})
+	r.recent = append(r.recent, attemptSample{bytes: rec.Bytes, duration: rec.Duration, latency: rec.Latency, end: r.now()})
 	if len(r.recent) > r.window {
 		r.recent = r.recent[len(r.recent)-r.window:]
 	}
 
 	var (
-		bytes   int64
-		elapsed time.Duration
+		bytes      int64
+		elapsed    time.Duration
+		latencySum time.Duration
+		latencyN   int64
 	)
 	for _, s := range r.recent {
 		bytes += s.bytes
 		elapsed += s.duration
+		if s.latency > 0 {
+			latencySum += s.latency
+			latencyN++
+		}
+	}
+	var latency time.Duration
+	if latencyN > 0 {
+		latency = latencySum / time.Duration(latencyN)
 	}
 	var throughput float64
 	if elapsed > 0 {
@@ -142,6 +153,7 @@ func (r *policyRunner) observe(rec metrics.Record) {
 		Throughput:          throughput,
 		AggregateThroughput: r.aggregateThroughput(),
 		RequestDuration:     rec.Duration,
+		Latency:             latency,
 		BytesTransferred:    rec.Bytes,
 		SuccessfulRequests:  r.successful,
 		FailedRequests:      r.failed,

@@ -277,6 +277,7 @@ func (p *workerPool) processTask(ctx context.Context, t *task) bool {
 			RangeEnd:   end,
 			Bytes:      res.Bytes,
 			Duration:   res.Duration,
+			Latency:    res.Latency,
 			Throughput: res.Throughput,
 			Success:    res.Success,
 			StatusCode: res.StatusCode,

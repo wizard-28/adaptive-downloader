@@ -7374,9 +7374,85 @@ time-varying per-response pacing schedule.
 
 ---
 
-### 22.107 Study audit (2026-10-24): engine flaws behind "aria2 wins under the cap"; opt-in straggler splitting; split ablation (IN PROGRESS)
+### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (IN PROGRESS)
 
-**Status: `SPLIT_ABLATION_PENDING`.** Branch `exp/live-pilot-l1`. The user
+**Status: `ONLINE_TUNER_RUNNING`.** The user compared the work against the
+Review 1 proposal (`Computer_Networks_Lab_Submission` docx, Assessment 8) and
+asked to close the gaps before submitting Review 2 and Review 3 on
+2026-10-24 (target 23:00 IST); physical review Thu 2026-10-29. Anything not yet
+verified must be verified by Thursday morning.
+
+- **Rationale found in the repo for Review 1 deviations:**
+  - Joint RL dropped: DQN v2 fragmented ranges (32-128 KiB); v3's simulator
+    rewarded larger chunks the live server did not, so v4+ learn N only with
+    S = 1 MiB (§22.27-§22.28). v6 is concurrency-only.
+  - No PPO: Double DQN was chosen after the LinUCB lock-in diagnosis (§22.12,
+    §22.22); no recorded reason against PPO beyond scope.
+  - Per-request decisions instead of a fixed interval T: the live runner
+    decides per completed attempt; v6 pinned the simulator to it (§22.33).
+  - FastBioDL / Falcon: the paper's related work positions them as online
+    concurrency optimizers but none was run as a baseline (now added).
+  - Liu et al. 2018 "Toward a smart data transfer node" (FGCS 89:10-18) IS
+    real: Crossref confirms DOI 10.1016/j.future.2018.06.033. The earlier
+    `reports/references.md` note calling it unresolved is wrong.
+- **Code (tested):**
+  - `internal/policy/online.go` `OnlineTunerPolicy`: FastBioDL/Falcon-style
+    online concurrency tuner (aggregate throughput over fixed windows,
+    U = T / K^N, reverse + halve step on a >tol drop, clamp at bounds, S
+    untouched). Tests `online_test.go` (7, injected clock).
+  - `cmd/downloader`: probe with `Range: bytes=0-0` (requires 206 and a total
+    in Content-Range) when `-size` is 0; `-sha256` verification; `run()` split
+    out for tests (`main_test.go`, 5 tests).
+- **Metrics change (response latency):** `fetcher.Result.Latency` = time from
+  sending the request until response headers arrived (0 when none arrived);
+  copied to `metrics.Record.Latency`; `policy.Context.Latency` = mean over the
+  recent window of attempts that got a response (`policyRunner`). Additive: no
+  existing field or decision changes. Tests: `TestFetchRecordsLatency`,
+  `TestFetchLatencyZeroOnConnectionFailure`, `TestPolicyRunnerLatencyIsWindowMean`,
+  Context validation case. Closes the Review 1 "network monitor" latency gap.
+- **Adaptation speed:** `tools/adaptation_speed.py` (from decision logs):
+  causal controller cuts N 1.5 s after the 8 s cap; selector classifies at ~4 s.
+- **Analyses:**
+  - `tools/goodput_reliability.py` -> `testdata/split_ablation/analysis/
+    goodput_reliability.json`: 230/230 ablation runs had 0 failed attempts,
+    0 retries, 0 wasted bytes.
+  - `tools/old_grid_reliability.py` -> `.../old_grid_reliability.json`
+    (read-only over the frozen grid): under the 30 s whole-request timeout,
+    11 of 50 cells had failures; capped 16 x 32 MiB re-downloaded 112 % of the
+    file and aborted.
+- **Online tuner experiment:** `testdata/online_tuner/` (protocol frozen in
+  commit 7b438e4 before runs; amendment A1 fixed the `-policy` flag name after
+  the first smoke attempt failed with a flag error, no data). 2 scenarios
+  (CAP8, HEALTHY) x 4 arms x 8 blocks = 64 runs; harness `tools/
+  tuner_bench.go`; analysis `tools/analyze_online_tuner.py`.
+- **Reports:** `reports/review2/review2.tex` (-> `reports/
+  Review2_Project_Review.pdf`) and `reports/review3/review3.tex` (figures from
+  `reports/review3/make_figs.py`). Both are LaTeX, built with latexmk.
+- **Immediate next step:** analyse the tuner runs; run the full section 11
+  test suite (lo is busy while the tuner runs); capture the test screenshot;
+  rebuild both PDFs. By Thursday: fold the ablation and tuner results into
+  `reports/paper_draft.md` (abstract (iii), section 6/7, conclusion, claim
+  map) and extend `tools/claims_check.py` to recompute them.
+
+### 22.107 Study audit (2026-10-24): engine flaws behind "aria2 wins under the cap"; opt-in straggler splitting; split ablation (COMPLETE)
+
+**Status: `SPLIT_ABLATION_COMPLETE`.** 230/230 runs valid (commit f258df7).
+Results by the protocol's rules (`testdata/split_ablation/analysis/summary.json`):
+  - C2 splitting at CAP0: 16 x 32 MiB with split / without = 0.599
+    [0.598, 0.601].
+  - C3 vs aria2: CAP0 best ours (16 x 32 MiB, split) 0.995 [0.992, 0.999]
+    (level; statement replaced by the engine explanation). CAP8 best ours
+    1.016 [1.006, 1.029] (aria2 still 1.6 % faster; statement kept with the
+    gap quantified). HEALTHY 0.344, D2 0.370 (ours faster).
+  - C4: CAP8 causal_joint_NT_split / best stationary (16 x 32 MiB split)
+    1.071 [1.054, 1.085] slower; CAP0 selector / best stationary 1.229
+    slower. Replication of the published claim: causal_joint_T30 /
+    fixed_16_1M_T30 0.767. So once the engine is fixed, a stationary
+    configuration beats the adaptive controllers in both capped scenarios.
+  - C5 no harm: HEALTHY 0.981 [0.931, 1.011], D2 0.995.
+  - The paper revision required by these rules is still pending (§22.108).
+
+Earlier status: `SPLIT_ABLATION_PENDING`. Branch `exp/live-pilot-l1`. The user
 asked for an audit of mistakes that keep us from beating aria2, then asked
 for all flaws to be fixed by Wed 2026-10-28. The user chose opt-in splitting
 over an explanation-only fix.

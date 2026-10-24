@@ -216,6 +216,10 @@ type Result struct {
 	StartTime  time.Time
 	EndTime    time.Time
 	Duration   time.Duration
+	// Latency is the time from sending the request until its response
+	// headers arrived (a time-to-first-byte measure). Zero when no response
+	// arrived.
+	Latency    time.Duration
 	Throughput float64 // bytes per second
 	Success    bool
 	Err        error
@@ -336,6 +340,7 @@ func (f *Fetcher) FetchLimited(ctx context.Context, requestID, rawURL string, st
 	}
 	defer resp.Body.Close()
 
+	res.Latency = time.Since(res.StartTime)
 	res.StatusCode = resp.StatusCode
 
 	expected := res.Range.Length()

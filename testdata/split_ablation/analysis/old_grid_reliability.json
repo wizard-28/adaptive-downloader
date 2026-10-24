@@ -1,0 +1,302 @@
+{
+ "capped/N1/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N1/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N1/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N1/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 1.0,
+  "wasted_frac_mean": 0.0355224609375
+ },
+ "capped/N1/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N16/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N16/S16384KiB": {
+  "runs": 1,
+  "valid": 0,
+  "failed_attempts_mean": 61.0,
+  "wasted_frac_mean": 0.4820556640625
+ },
+ "capped/N16/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N16/S32768KiB": {
+  "runs": 1,
+  "valid": 0,
+  "failed_attempts_mean": 36.0,
+  "wasted_frac_mean": 1.116302490234375
+ },
+ "capped/N16/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N2/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N2/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N2/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N2/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 2.0,
+  "wasted_frac_mean": 0.07086181640625
+ },
+ "capped/N2/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N4/S1024KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N4/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N4/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N4/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 4.0,
+  "wasted_frac_mean": 0.141357421875
+ },
+ "capped/N4/S4096KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N8/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N8/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N8/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "capped/N8/S32768KiB": {
+  "runs": 1,
+  "valid": 0,
+  "failed_attempts_mean": 32.0,
+  "wasted_frac_mean": 0.61102294921875
+ },
+ "capped/N8/S4096KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N1/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N1/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N1/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N1/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 1.0,
+  "wasted_frac_mean": 0.035491943359375
+ },
+ "healthy/N1/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N16/S1024KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N16/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N16/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N16/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 16.0,
+  "wasted_frac_mean": 0.56561279296875
+ },
+ "healthy/N16/S4096KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N2/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N2/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N2/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N2/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 2.0,
+  "wasted_frac_mean": 0.07086181640625
+ },
+ "healthy/N2/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N4/S1024KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N4/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N4/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N4/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 4.0,
+  "wasted_frac_mean": 0.1417236328125
+ },
+ "healthy/N4/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N8/S1024KiB": {
+  "runs": 3,
+  "valid": 3,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N8/S16384KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N8/S256KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ },
+ "healthy/N8/S32768KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 8.0,
+  "wasted_frac_mean": 0.283050537109375
+ },
+ "healthy/N8/S4096KiB": {
+  "runs": 1,
+  "valid": 1,
+  "failed_attempts_mean": 0.0,
+  "wasted_frac_mean": 0.0
+ }
+}

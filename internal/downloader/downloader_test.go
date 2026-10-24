@@ -2838,3 +2838,26 @@ func TestDownloaderInvalidRewardConfig(t *testing.T) {
 		t.Fatal("New with invalid reward config = nil, want error")
 	}
 }
+
+// TestPolicyRunnerLatencyIsWindowMean checks that Context.Latency is the mean
+// response-header latency over the recent window, ignoring attempts that got
+// no response (latency 0).
+func TestPolicyRunnerLatencyIsWindowMean(t *testing.T) {
+	conc, err := concurrency.New(1, 4)
+	if err != nil {
+		t.Fatalf("concurrency.New = %v", err)
+	}
+	rec := &testPolicy{}
+	r := newPolicyRunner(rec, conc, nil, 64, 3, nil, nil) // window of 3 attempts
+	r.now = func() time.Time { return time.Unix(0, 0) }
+	for _, l := range []time.Duration{100 * time.Millisecond, 0, 200 * time.Millisecond, 400 * time.Millisecond} {
+		r.observe(metrics.Record{Bytes: 10, Duration: time.Second, Latency: l, Success: l > 0, Attempt: 1})
+	}
+	ctxs, _, _ := rec.snapshot()
+	want := []time.Duration{100 * time.Millisecond, 100 * time.Millisecond, 150 * time.Millisecond, 300 * time.Millisecond}
+	for i, w := range want {
+		if ctxs[i].Latency != w {
+			t.Fatalf("observation %d: Latency = %v, want %v", i, ctxs[i].Latency, w)
+		}
+	}
+}
