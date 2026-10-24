@@ -1,0 +1,67 @@
+\documentclass[11pt,a4paper]{report}
+
+% ---------------------------------------------------------------- details to fill in
+\newcommand{\Institute}{Vellore Institute of Technology, Vellore}
+\newcommand{\School}{[School name]}
+\newcommand{\CourseName}{Computer Networks Lab}
+\newcommand{\CourseCode}{[Course code]}
+\newcommand{\GuideName}{[Faculty guide name]}
+\newcommand{\SubmitDate}{October 2026}
+\newcommand{\MemberA}{Sourajyoti Basak} \newcommand{\RegA}{24BCE0774}
+\newcommand{\MemberB}{Shwetank Shrijan} \newcommand{\RegB}{24BDS0141}
+\newcommand{\MemberC}{Ayush Konar} \newcommand{\RegC}{24BDS0107}
+% -----------------------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,skip=6pt]{caption}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforechapskip}{5pt}
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\titleformat{\chapter}[hang]{\normalfont\sffamily\huge\bfseries}{\thechapter.}{0.6em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\sffamily\large\bfseries}{\thesubsection}{0.6em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily When Does Adapting N and S Help?}
+\fancyhead[R]{\small\sffamily Review 3 -- Final Project}
+\fancyfoot[C]{\small\sffamily Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\sffamily Page \thepage\ of \pageref{LastPage}}\renewcommand{\headrulewidth}{0pt}}
+
+\lstset{basicstyle=\ttfamily\small,backgroundcolor=\color{gray!8},frame=single,
+  rulecolor=\color{gray!40},framesep=6pt,xleftmargin=8pt,xrightmargin=8pt,
+  keywordstyle=\color{NavyBlue}\bfseries,commentstyle=\color{gray}\itshape,
+  columns=fullflexible,keepspaces=true,showstringspaces=false}
+\lstdefinelanguage{Go}{morekeywords={type,interface,func,return,struct},
+  sensitive=true,morecomment=[l]{//}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\fig}[3]{\begin{figure}[H]\centering\includegraphics[width=#2\linewidth]{#1}\caption{#3}\label{fig:#1}\end{figure}}
+
+\renewcommand{\bibname}{References}

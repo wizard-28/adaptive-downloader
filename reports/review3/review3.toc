@@ -1,0 +1,27 @@
+\contentsline {chapter}{Abstract}{1}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Complete Working Project}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Final System Architecture}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Complete Implementation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Key Algorithms}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Live Demonstration}{8}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Results}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Reliability}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Goodput}{11}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Performance Analysis}{12}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Experimental Setup}{12}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Engine Ablation (230 runs)}{14}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Does Adaptation Help?}{15}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Adaptation Speed}{15}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Online Concurrency Tuner}{16}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Other Searches for an Adaptation Opportunity}{17}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Real Networks}{17}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Limitations}{18}{section.6.8}%
+\contentsline {chapter}{\numberline {7}Comparison with Existing System}{20}{chapter.7}%
+\contentsline {section}{\numberline {7.1}What the Comparison Shows}{20}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Achievement of Objectives}{21}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Deviations from the Review 1 Plan}{22}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Use of Prior Work}{23}{section.8.2}%
+\contentsline {chapter}{\numberline {9}Innovation and Real-World Application}{24}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Future Enhancement}{25}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Outcome}{26}{chapter.11}%
+\contentsline {chapter}{References}{27}{chapter*.34}%

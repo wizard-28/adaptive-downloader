@@ -1,0 +1,14 @@
+\begin{table}[H]\centering
+\caption{Adaptation speed: median seconds, with the range over runs}\label{tab:adapt}
+\small
+\begin{tabularx}{\linewidth}{@{}llLrr@{}}
+\toprule
+\textbf{Controller} & \textbf{Scenario} & \textbf{Measured} & \textbf{Seconds} & \textbf{Runs}\\
+\midrule
+Causal drop controller & Cap switches on at 8~s & first $N$ cut after the cap & 1.5 [1.5, 1.7] & 10\\
+Online tuner & Cap switches on at 8~s & first $N$ cut after the cap & 2.1 [2.1, 2.3] & 8\\
+Workload selector & Cap from the start & first move (classification) & 4.0 [4.0, 4.2] & 10\\
+Online tuner & No cap & climb from $N=4$ to $N=16$ & 8.1 [8.0, 8.2] & 8\\
+\bottomrule
+\end{tabularx}
+\end{table}

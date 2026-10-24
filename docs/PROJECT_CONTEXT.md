@@ -7376,7 +7376,19 @@ time-varying per-response pacing schedule.
 
 ### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (IN PROGRESS)
 
-**Status: `ONLINE_TUNER_RUNNING`.** The user compared the work against the
+**Status: `ONLINE_TUNER_COMPLETE; REPORTS_BUILT`.** Online tuner: 64/64 valid
+(commit 093a10b). By the frozen rule the tuner was slower than the best
+stationary arm in both scenarios: CAP8 1.212 [1.180, 1.248], HEALTHY 1.220
+[1.203, 1.232] (vs fixed_16_1M_NT_split); vs aria2 1.781 (CAP8) and 0.432
+(HEALTHY). Adaptation speed (`testdata/online_tuner/analysis/adaptation_speed.json`):
+causal 1.5 s, tuner 2.1 s after the 8 s cap; selector classifies at 4.0 s;
+tuner climbs 4->16 in 8.1 s without a cap. Test functions now 549 in 29
+packages. Review 2/3 PDFs: `reports/Review2_Project_Review.pdf`,
+`reports/Review3_Final_Report.pdf` (an independent reviewer subagent's 40-item
+critique was applied: wording '62.4 % less time', RL design + results table,
+ablation arm table, limitations incl. no request timeout and fairness,
+definitions of selector/causal/tuner, live-pilot sessions, curl reference).
+Earlier status: `ONLINE_TUNER_RUNNING`. The user compared the work against the
 Review 1 proposal (`Computer_Networks_Lab_Submission` docx, Assessment 8) and
 asked to close the gaps before submitting Review 2 and Review 3 on
 2026-10-24 (target 23:00 IST); physical review Thu 2026-10-29. Anything not yet

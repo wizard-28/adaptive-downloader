@@ -1,0 +1,17 @@
+The online tuner (Section~3.1) was compared with two fixed settings on the same engine and with aria2. The protocol was written down before the first run: 2 scenarios $\times$ 4 arms $\times$ 8 blocks, with 0 invalid runs.
+
+\IfFileExists{figs/tuner.png}{\fig{tuner.png}{0.9}{Online concurrency tuner against fixed settings and aria2 (8 blocks per scenario).}}{}
+
+\begin{table}[H]\centering
+\caption{Online tuner results; ratios are tuner / other}\label{tab:tuner}
+\small
+\begin{tabularx}{\linewidth}{@{}lrlLLr@{}}
+\toprule
+\textbf{Scenario} & \textbf{Tuner (s)} & \textbf{Best fixed (s)} & \textbf{vs best fixed} & \textbf{vs aria2} & \textbf{Final $N$}\\
+\midrule
+Cap from 8~s & 93.1 & 16~$\times$~1~MiB, 76.8 & 1.212 [1.180, 1.248] (slower) & 1.781 [1.718, 1.844] (slower) & 12.5\\
+No cap & 22.5 & 16~$\times$~1~MiB, 18.4 & 1.220 [1.203, 1.232] (slower) & 0.432 [0.416, 0.452] (faster) & 16\\
+\bottomrule
+\end{tabularx}
+\end{table}
+The tuner was not faster than the best fixed setting in either scenario. So an online tuner of the kind used in prior work also did not beat a well-chosen fixed setting on this platform.

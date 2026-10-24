@@ -1,0 +1,118 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {chapter}{Abstract}{1}{chapter*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}System Architecture}{2}{chapter.1}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network.}}{2}{figure.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:architecture.png}{{1.1}{2}{System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Layers}{2}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Technology Stack}{3}{section.1.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Technology stack}}{3}{table.caption.6}\protected@file@percent }
+\newlabel{tab:stack}{{1.1}{3}{Technology stack}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Detailed Design}{4}{chapter.2}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Components and their responsibilities}}{4}{table.caption.7}\protected@file@percent }
+\newlabel{tab:components}{{2.1}{4}{Components and their responsibilities}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Range Conventions}{4}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Range Lifecycle}{4}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Controller Independence}{4}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Policy Interface}{5}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Configuration}{5}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Methodology and Algorithm}{6}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Download Algorithm}{6}{section.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Algorithm flowchart for one worker (\texttt  {internal/downloader/worker\_pool.go}).}}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:flowchart.png}{{3.1}{6}{Algorithm flowchart for one worker (\code {internal/downloader/worker\_pool.go})}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Control Policies}{6}{section.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Experimental Method}{7}{section.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Experiment scenarios}}{7}{table.caption.9}\protected@file@percent }
+\newlabel{tab:scenarios}{{3.1}{7}{Experiment scenarios}{table.caption.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Platform}}{7}{table.caption.10}\protected@file@percent }
+\newlabel{tab:platform}{{3.2}{7}{Platform}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Paced Test Server}{8}{section.3.4}\protected@file@percent }
+\newlabel{sec:paced}{{3.4}{8}{Paced Test Server}{section.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}}{8}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:schedule.png}{{3.2}{8}{Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes}{figure.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Pacing schedules used in the sweep (rates per response)}}{8}{table.caption.12}\protected@file@percent }
+\newlabel{tab:schedules}{{3.3}{8}{Pacing schedules used in the sweep (rates per response)}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}UML and Data-Flow Diagrams}{9}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}UML Class Diagram}{9}{section.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces UML class diagram of the main types. The Downloader owns its parts; every policy implements the same interface.}}{9}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:classdiagram.png}{{4.1}{9}{UML class diagram of the main types. The Downloader owns its parts; every policy implements the same interface}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}UML State Diagram}{10}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces UML state diagram for one byte range in the RangeTracker.}}{10}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:state.png}{{4.2}{10}{UML state diagram for one byte range in the RangeTracker}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Data-Flow Diagram (Level 1)}{10}{section.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Level-1 data-flow diagram of one download.}}{10}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:dfd.png}{{4.3}{10}{Level-1 data-flow diagram of one download}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Run Record (Data Store D3)}{11}{section.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Fields of the per-run JSON record}}{11}{table.caption.16}\protected@file@percent }
+\newlabel{tab:record}{{4.1}{11}{Fields of the per-run JSON record}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Module Development}{12}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Modules and status}}{12}{table.caption.17}\protected@file@percent }
+\newlabel{tab:modules}{{5.1}{12}{Modules and status}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Working Prototype}{13}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Features}{13}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Prototype on the Live Internet}{13}{section.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Throughput of a live download from \texttt  {cdn.kernel.org} (8 connections, 1~MiB ranges), per second.}}{14}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:live.png}{{6.1}{14}{Throughput of a live download from \code {cdn.kernel.org} (8 connections, 1~MiB ranges), per second}{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Terminal capture: live download and checksum verification.}}{14}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:shot_live.png}{{6.2}{14}{Terminal capture: live download and checksum verification}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Terminal capture: the automated test suite passing.}}{15}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:shot_tests.png}{{6.3}{15}{Terminal capture: the automated test suite passing}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Implementation Progress}{16}{chapter.7}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Milestones}}{16}{table.caption.21}\protected@file@percent }
+\newlabel{tab:progress}{{7.1}{16}{Milestones}{table.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Engineering Challenges Addressed}{16}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Planned for Review 3}{16}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Test Cases}{17}{chapter.8}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Test types}}{17}{table.caption.22}\protected@file@percent }
+\newlabel{tab:testtypes}{{8.1}{17}{Test types}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8.2}{\ignorespaces Representative test cases}}{17}{table.caption.23}\protected@file@percent }
+\newlabel{tab:cases}{{8.2}{17}{Representative test cases}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8.3}{\ignorespaces Verification commands and results}}{18}{table.caption.24}\protected@file@percent }
+\newlabel{tab:commands}{{8.3}{18}{Verification commands and results}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Initial Results}{19}{chapter.9}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Choosing the Setting}{19}{section.9.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Completion time in seconds for all 40 $(N, S)$ settings on the paced server.}}{19}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:grid.png}{{9.1}{19}{Completion time in seconds for all 40 $(N, S)$ settings on the paced server}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Why It Is Faster}{19}{section.9.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces Data received over time in one paired run, reconstructed from per-request server logs.}}{20}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:progress.png}{{9.2}{20}{Data received over time in one paired run, reconstructed from per-request server logs}{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Other Pacing Schedules}{20}{section.9.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces Mean completion time of ours and aria2 under six pacing schedules.}}{20}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:pacing.png}{{9.3}{20}{Mean completion time of ours and aria2 under six pacing schedules}{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}What This Result Does and Does Not Show}{21}{section.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Individual Contribution}{22}{chapter.10}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces Team members}}{22}{table.caption.28}\protected@file@percent }
+\newlabel{tab:team}{{10.1}{22}{Team members}{table.caption.28}{}}
+\bibcite{rfc9110}{1}
+\bibcite{aria2}{2}
+\bibcite{netem}{3}
+\bibcite{mahimahi}{4}
+\bibcite{go}{5}
+\@writefile{toc}{\contentsline {chapter}{References}{23}{chapter*.29}\protected@file@percent }
+\newlabel{LastPage}{{10}{23}{Individual Contribution}{page.23}{}}
+\gdef\lastpage@lastpage{23}
+\gdef\lastpage@lastpageHy{23}
+\gdef \@abspage@last{27}

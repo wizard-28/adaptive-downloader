@@ -1,0 +1,27 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Implemented modules}}{5}{table.caption.8}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Verification summary}}{10}{table.caption.13}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Test cases for the final additions}}{10}{table.caption.14}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Goodput in MB/s (geometric mean of 10 runs; fixed engine)}}{11}{table.caption.16}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Platform}}{12}{table.caption.17}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Server scenarios}}{12}{table.caption.18}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Engine-ablation arms. ``T30'': original 30~s whole-request deadline, no splitting. ``fixed'': no deadline, splitting on.}}{14}{table.caption.20}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Adaptation speed: median seconds, with the range over runs}}{16}{table.caption.23}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Online tuner results; ratios are tuner / other}}{16}{table.caption.25}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Studies that looked for a benefit from adaptation (``Testbed'': local server and emulated network)}}{17}{table.caption.26}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Learned-policy evaluations (ratio $>1$: slower than the comparison)}}{18}{table.caption.28}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Ours (best fixed setting, fixed engine) against aria2}}{20}{table.caption.29}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Review 1 objectives and outcomes}}{21}{table.caption.30}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Deviations and their reasons}}{22}{table.caption.31}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Techniques from the Review 1 literature survey and how this project used them}}{23}{table.caption.32}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {11.1}{\ignorespaces Publication plan}}{26}{table.caption.33}%

@@ -1,0 +1,531 @@
+\documentclass[11pt,a4paper]{report}
+
+% ---------------------------------------------------------------- details to fill in
+\newcommand{\Institute}{Vellore Institute of Technology, Vellore}
+\newcommand{\School}{[School name]}
+\newcommand{\CourseName}{Computer Networks Lab}
+\newcommand{\CourseCode}{[Course code]}
+\newcommand{\GuideName}{[Faculty guide name]}
+\newcommand{\SubmitDate}{October 2026}
+\newcommand{\MemberA}{Sourajyoti Basak} \newcommand{\RegA}{24BCE0774}
+\newcommand{\MemberB}{Shwetank Shrijan} \newcommand{\RegB}{24BDS0141}
+\newcommand{\MemberC}{Ayush Konar} \newcommand{\RegC}{24BDS0107}
+% -----------------------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,skip=6pt]{caption}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforechapskip}{5pt}
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\titleformat{\chapter}[hang]{\normalfont\sffamily\huge\bfseries}{\thechapter.}{0.6em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\sffamily\large\bfseries}{\thesubsection}{0.6em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily When Does Adapting N and S Help?}
+\fancyhead[R]{\small\sffamily Review 2 -- Project Progress}
+\fancyfoot[C]{\small\sffamily Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\sffamily Page \thepage\ of \pageref{LastPage}}\renewcommand{\headrulewidth}{0pt}}
+
+\lstset{basicstyle=\ttfamily\small,backgroundcolor=\color{gray!8},frame=single,
+  rulecolor=\color{gray!40},framesep=6pt,xleftmargin=8pt,xrightmargin=8pt,
+  keywordstyle=\color{NavyBlue}\bfseries,commentstyle=\color{gray}\itshape,
+  columns=fullflexible,keepspaces=true,showstringspaces=false}
+\lstdefinelanguage{Go}{morekeywords={type,interface,func,return,struct},
+  sensitive=true,morecomment=[l]{//}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\fig}[3]{\begin{figure}[H]\centering\includegraphics[width=#2\linewidth]{figs/#1}\caption{#3}\label{fig:#1}\end{figure}}
+
+\renewcommand{\bibname}{References}
+\begin{document}
+
+% ================================================================= title page
+\begin{titlepage}
+\centering\sffamily
+\vspace*{0.5cm}
+{\Large\bfseries \Institute\par}
+\vspace{0.2cm}
+{\large \School\par}
+\vspace{1.6cm}
+{\large \CourseName\ (\CourseCode)\par}
+\vspace{0.3cm}
+{\large\bfseries Review 2 -- Research Project Progress Report\par}
+\vspace{2.0cm}
+\rule{\linewidth}{0.8pt}\par\vspace{0.4cm}
+{\huge\bfseries When Does Adapting Concurrency and Range Size Help?\par}
+\vspace{0.3cm}
+{\Large A Controlled Study of Parallel HTTP Range Downloads\par}
+\vspace{0.4cm}\rule{\linewidth}{0.8pt}\par
+\vspace{2.2cm}
+{\large Submitted by\par}
+\vspace{0.4cm}
+\begin{tabular}{ll}
+\toprule
+\textbf{Name} & \textbf{Registration number}\\
+\midrule
+\MemberA & \RegA\\
+\MemberB & \RegB\\
+\MemberC & \RegC\\
+\bottomrule
+\end{tabular}
+\vspace{1.6cm}
+
+{\large Under the guidance of\par}
+\vspace{0.2cm}
+{\large\bfseries \GuideName\par}
+\vfill
+{\large \SubmitDate\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage\listoffigures
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+
+% ================================================================= abstract
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Download managers speed up large downloads by fetching a file as several byte ranges over parallel HTTP connections. Two settings decide how well this works: the number of parallel connections, $N$, and the size of each requested range, $S$. This research project asks when changing $N$ and $S$ during a download actually helps. To answer it, we built an instrumented segmented HTTP range downloader in Go, whose $N$ and $S$ a control policy can change while a download is running, and a reproducible test platform around it: a local server with configurable rate pacing, Linux network emulation, and an automated benchmark against aria2, a widely used open-source download manager.
+
+This report covers the system architecture, detailed design, algorithm, module development, working prototype, implementation progress, testing and initial results. In the first benchmark, on a 512~MiB file with server-side rate pacing, our downloader with 16 connections and 4~MiB ranges took 62.4\,\% less time than aria2 (time ratio 0.376), and was faster in 30 of 30 paired runs. Controls trace most of this gap to how request start times interact with per-response rate limiting, not to a general advantage over aria2. The project has 549 automated test functions, and all of them pass.
+
+% ================================================================= 1
+\chapter{System Architecture}
+This is a research project: it studies when changing the number of connections $N$ and the range size $S$ during a download actually helps. The system below is the instrument for that study, a Go HTTP range downloader for one file from one server. It splits the file into byte ranges, fetches them over $N$ parallel HTTP/1.1 connections, and lets a policy change $N$ and the range size $S$ during the download. Figure~\ref{fig:architecture.png} shows the components and how they call each other.
+
+\fig{architecture.png}{0.95}{System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network.}
+
+The worker pool asks the RangeTracker for the next range at the current size $S$, and the Fetcher downloads it. The Assembler writes it into the output file and Metrics records the attempt. After each attempt the policy runner asks the policy for an action and applies it to the controllers, which the pool reads on its next allocation.
+
+\section{Layers}
+\begin{itemize}
+\item \textbf{Interface layer.} Command-line programs in \code{cmd/} parse flags and build a \code{downloader.Config}. The same engine runs every experiment, so the tool we measure is the tool a user runs.
+\item \textbf{Engine layer.} The Downloader and its five parts. Every part has one job and is tested on its own.
+\item \textbf{Control layer.} Controllers hold the current $N$ and $S$ targets, and policies decide changes. A policy only returns an action; it never touches the controllers directly.
+\item \textbf{Environment layer.} The HTTP server and the network. In experiments these are a local test server and Linux network emulation, so every run sees the same conditions.
+\end{itemize}
+
+\section{Technology Stack}
+\begin{table}[H]\centering
+\caption{Technology stack}\label{tab:stack}
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+\textbf{Part} & \textbf{Technology} & \textbf{Purpose}\\
+\midrule
+Downloader and test server & Go 1.27 (\code{net/http}, HTTP/1.1) & Concurrency with goroutines\\
+Linear algebra (LinUCB learner) & Gonum v0.17 & Only external Go dependency\\
+Network conditions & Linux \code{tc netem} & Delay and packet loss on the link\\
+Recorded cellular traces & Mahimahi & Replays real mobile traces\\
+External baseline & aria2 1.37 & Existing download manager\\
+Training and analysis & Python 3, PyTorch 2.9, NumPy & DQN training, statistics\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ================================================================= 2
+\chapter{Detailed Design}
+The design rests on three rules: one HTTP request fetches one contiguous byte range, a range is never resized while it is downloading (an opt-in straggler-splitting mode is the one exception), and concurrency ($N$) and range size ($S$) are controlled separately. Table~\ref{tab:components} lists the components.
+
+\begin{table}[H]\centering
+\caption{Components and their responsibilities}\label{tab:components}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Component} & \textbf{Responsibility}\\
+\midrule
+RangeTracker & Splits the file into pending, in-flight and completed ranges\\
+Fetcher & Sends one HTTP Range request and checks the \code{206} reply\\
+Assembler & Writes each finished range at its offset in the output file\\
+Worker pool & Runs $N$ workers; a failed range is retried with the same bounds\\
+Controllers and policy runner & Hold the $N$ and $S$ targets; apply one policy decision at a time\\
+Metrics & Stores one record per request attempt\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Range Conventions}
+The RangeTracker stores half-open ranges $[s, e)$, so a range's length is simply $e - s$. HTTP uses inclusive ranges, so the downloader converts at one point only:
+\begin{equation}
+[s,\, e) \;\longmapsto\; \texttt{Range: bytes=}s\texttt{-}(e-1)
+\end{equation}
+For example, the tracker range $[0, 4194304)$ becomes the header \code{Range: bytes=0-4194303}. Keeping the conversion in one place removes the usual off-by-one errors.
+
+\section{Range Lifecycle}
+A range moves from \emph{pending} to \emph{in flight} when a worker allocates it, and to \emph{completed} once its bytes are written (Figure~\ref{fig:state.png}). If a request fails, the worker retries the same range with the same boundaries, up to \code{MaxRetries} times. A range is never resized while it is in flight, so a change to $S$ affects only ranges allocated later.
+
+\section{Controller Independence}
+Concurrency and range size are separate controls. Raising $N$ starts more workers. Lowering $N$ never cancels a running request: extra workers retire after their current range finishes. Changing $S$ changes only the size of the next allocation.
+
+\section{Policy Interface}
+Every policy, rule-based or learned, implements the same Go interface, so one engine runs them all:
+\begin{lstlisting}[language=Go]
+type Policy interface {
+    // sees N, S, recent throughput, latency and request counts
+    SelectAction(ctx Context) Action
+    Update(ctx Context, action Action, reward float64)
+}
+// Actions: none, +/- concurrency, +/- chunk size
+\end{lstlisting}
+The policy runner holds a lock, so only one decision happens at a time, even when many requests finish together.
+
+\section{Configuration}
+One \code{downloader.Config} structure holds the URL, output path, file size, $N$, $S$, timeouts, the retry limit and optional minimum and maximum bounds for adaptive $N$. Invalid combinations are rejected before any request is sent.
+
+% ================================================================= 3
+\chapter{Methodology and Algorithm}
+\section{Download Algorithm}
+Each worker repeats one loop: take the next range of size $S$, download it, record the attempt, write it to the file, and let the policy adjust $N$ or $S$ (Figure~\ref{fig:flowchart.png}).
+
+\fig{flowchart.png}{0.95}{Algorithm flowchart for one worker (\code{internal/downloader/worker\_pool.go}).}
+
+\begin{enumerate}
+\item Read the current range size $S$ and allocate the next range $[s, s+S)$ from the RangeTracker. If nothing is left, the worker stops.
+\item Send \code{GET} with \code{Range: bytes=$s$-$(s+S-1)$}.
+\item Record one metrics entry for the attempt and pass it to the policy runner, which may change $N$ or $S$.
+\item If the reply is \code{206} with the full length, write the bytes at offset $s$ and mark the range complete. Otherwise retry the same range, up to \code{MaxRetries} times.
+\end{enumerate}
+
+\section{Control Policies}
+The policies compared are fixed $(N, S)$ settings, simple throughput rules that step $N$ or $S$ up or down, and aria2 1.37 as the external baseline. After each request the throughput rule computes the recent throughput $T_{\text{now}}$ over the last 8 attempts, and compares it with $T_{\text{prev}}$, the value at the previous decision:
+\begin{equation}
+\Delta = \frac{T_{\text{now}} - T_{\text{prev}}}{T_{\text{prev}}}, \qquad
+\text{action} =
+\begin{cases}
+\text{increase } N \text{ (or } S) & \text{if } \Delta \ge \theta_{\text{up}}\\
+\text{decrease } N \text{ (or } S) & \text{if } \Delta \le -\theta_{\text{down}}\\
+\text{no change} & \text{otherwise}
+\end{cases}
+\end{equation}
+In our runs both thresholds were 10\,\% ($\theta_{\text{up}} = \theta_{\text{down}} = 0.10$). The joint policy alternates between changing $N$ and changing $S$, and switches to the other dimension when one reaches its bound.
+
+\section{Experimental Method}
+Experiments use a local HTTP server with configurable rate limiting, and Linux \code{tc netem} adding an 80~ms round trip and 0.4\,\% packet loss. Every run uses a fresh server and output file. Table~\ref{tab:scenarios} lists the scenarios.
+
+\begin{table}[H]\centering
+\caption{Experiment scenarios}\label{tab:scenarios}
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+\textbf{Scenario} & \textbf{Server behaviour} & \textbf{What it tests}\\
+\midrule
+Paced (D2) & 640~KiB/s per response, 160~KiB/s from 2~s, 2{,}500~KiB/s from 4~s & Timing of request starts against rate changes\\
+Pacing sweep & Six variants of the schedule above & Whether the result depends on one schedule\\
+Stock NGINX & \code{limit\_rate} per connection & A real web server instead of our test server\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]\centering
+\caption{Platform}\label{tab:platform}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Item} & \textbf{Configuration}\\
+\midrule
+Host (project machine) & AMD Ryzen 5 5500U laptop (6 cores, 12 threads); client and test server on the same machine\\
+Operating system & Ubuntu 24.04 container on a Linux 7.x kernel\\
+Software & Go 1.27.1, aria2 1.37.0, Python 3.14\\
+Network emulation & \code{tc netem} on loopback: 40~ms each way (80~ms round trip), 0.4\,\% loss each way\\
+Test file & 512~MiB, deterministic content, verified byte for byte\\
+aria2 settings & \code{-x16 -s16 -k1M}, the same in every run\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Baseline.} We compare against aria2 because it is the standard open-source segmented downloader on Linux; IDM runs only on Windows.
+
+Each pair runs our downloader and aria2 back to back in random order. With $t_i$ the completion time in pair $i$, the result is the geometric mean of the per-pair time ratios,
+\begin{equation}
+R = \exp\!\left(\frac{1}{n}\sum_{i=1}^{n}\ln\frac{t_i^{\text{ours}}}{t_i^{\text{aria2}}}\right),
+\end{equation}
+reported with a 95\,\% percentile bootstrap interval from 10{,}000 resamples. $R < 1$ means ours was faster. Each protocol is written down before its first run, later amendments are dated and disclosed, and every run is kept, including failures.
+
+\section{Paced Test Server}\label{sec:paced}
+The main test server is written in Go and is part of this project. It serves a 512~MiB file with deterministic content, honours HTTP Range requests, and paces every response at a set rate. Three rules define its behaviour:
+\begin{enumerate}
+\item Each response is sent at the server's rate \emph{at the moment the request arrives}, and keeps that rate until the response finishes.
+\item A schedule changes the rate at fixed times. A change affects only requests that start afterwards, not ones already running.
+\item Rates are per response, with no shared limit, so opening more connections adds bandwidth.
+\end{enumerate}
+This makes the server a controlled stand-in for per-connection rate limiting, such as NGINX's \code{limit\_rate}, combined with a rate change during the download. Because the rule is explicit, any result can be traced back to it. Figure~\ref{fig:schedule.png} shows the reference schedule, D2.
+\fig{schedule.png}{0.9}{Reference pacing schedule D2. A request that starts in the first 4~s keeps its slow rate until it finishes.}
+
+\begin{table}[H]\centering
+\caption{Pacing schedules used in the sweep (rates per response)}\label{tab:schedules}
+\begin{tabularx}{\linewidth}{@{}llL@{}}
+\toprule
+\textbf{Schedule} & \textbf{Rates over time} & \textbf{What it varies}\\
+\midrule
+S0 D2 reference & 640~KiB/s; 160 from 2~s; 2{,}500 from 4~s & Reference: short slow phase\\
+S1 No dip & 640~KiB/s; 2{,}500 from 2~s & No extra-slow dip\\
+S2 Long dip & 640~KiB/s; 160 from 2~s; 2{,}500 from 8~s & Slow phase twice as long\\
+S3 Partial recovery & 640~KiB/s; 160 from 2~s; 1{,}280 from 4~s & Recovery to half speed\\
+S4 Constant fast & 2{,}500~KiB/s throughout & No rate change\\
+S5 Constant slow & 640~KiB/s throughout & No rate change\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The same server can also switch on a soft concurrency cap and inject faults, such as error statuses or failing ranges. Those features are used in later experiments and in the failure-handling tests.
+
+% ================================================================= 4
+\chapter{UML and Data-Flow Diagrams}
+The project has no database. Download state lives in memory, and results are written as JSON and JSONL files under \code{testdata/}, one record per run.
+
+\section{UML Class Diagram}
+\fig{classdiagram.png}{0.95}{UML class diagram of the main types. The Downloader owns its parts; every policy implements the same interface.}
+Only the policy runner calls a policy, and a policy changes nothing directly: it returns an action that the runner applies to the controllers.
+
+\section{UML State Diagram}
+\fig{state.png}{0.95}{UML state diagram for one byte range in the RangeTracker.}
+A range never changes size while in flight. The only exception is an opt-in split, which turns one range into two. The tracker also supports returning a failed range to pending, which is tested, but the downloader retries a failed range in place instead, so its boundaries never change.
+
+\section{Data-Flow Diagram (Level 1)}
+\fig{dfd.png}{0.95}{Level-1 data-flow diagram of one download.}
+The loop on the right is the adaptive part: each attempt's result reaches the policy, which can change $N$ and $S$ for the next allocations. D1--D3 are the data stores: range state in memory, the output file, and the run records.
+
+\section{Run Record (Data Store D3)}
+Each run writes one JSON record (Table~\ref{tab:record}). The analysis scripts read only these files, so every reported number can be traced to a run.
+\begin{table}[H]\centering
+\caption{Fields of the per-run JSON record}\label{tab:record}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Field} & \textbf{Meaning}\\
+\midrule
+\code{run\_id}, \code{system}, \code{config} & Which run, which downloader (ours or aria2), and its $N$ and $S$\\
+\code{completion\_ms} & Wall-clock time to finish the download\\
+\code{output\_sha256}, \code{content\_verified} & Checksum of the output, and whether it matches the source\\
+\code{coverage\_no\_missing}, \code{coverage\_no\_duplicates} & Every byte fetched exactly once\\
+\code{netem\_status} & Whether the network emulation was applied successfully\\
+\code{server\_requests} & Per-request start, end, rate and byte range from the server log\\
+\code{client\_requests}, \code{client\_retries} & Request counts seen by the downloader\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ================================================================= 5
+\chapter{Module Development}
+\begin{table}[H]\centering
+\caption{Modules and status}\label{tab:modules}
+\begin{tabularx}{\linewidth}{@{}lLl@{}}
+\toprule
+\textbf{Module} & \textbf{Purpose} & \textbf{Status}\\
+\midrule
+\code{rangetracker}, \code{fetcher}, \code{assembler} & Core download engine & Done\\
+\code{downloader} & Worker pool, policy runner, coordination & Done\\
+\code{concurrency}, \code{chunksize}, \code{policy} & Controllers and rule-based policies & Done\\
+\code{metrics} & Per-attempt measurements & Done\\
+\code{experiment} & Test server and netem control & Done\\
+\code{rl} & Learned (RL) policies & Implemented; evaluated in Review 3\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The modules depend on each other in this order:
+\begin{enumerate}
+\item \textbf{RangeTracker} is the base, because every other part depends on its rules. It keeps pending ranges sorted and merges neighbours, and a single lock makes it safe for many workers at once.
+\item \textbf{Fetcher} sends one Range request and rejects any reply that is not a \code{206} with the expected \code{Content-Range} and length. It uses a dedicated HTTP/1.1 transport, so each connection carries exactly one request at a time.
+\item \textbf{Assembler} writes each range with \code{WriteAt} at its own offset, so ranges can finish in any order. The file is sized to its final length up front.
+\item \textbf{Worker pool and Downloader} connect the parts. A manager goroutine starts and retires workers to match the target $N$, and every attempt is recorded exactly once, whether it succeeds or fails.
+\item \textbf{Controllers and policies} sit on top of the fixed engine and never touch it directly. Each controller clamps its target to configured bounds.
+\item \textbf{Experiment platform:} a test server with configurable per-response pacing, \code{tc netem} control that records whether the shaping actually applied, and runners that write one JSON record per run.
+\end{enumerate}
+Each module has its own tests, and the whole suite also runs under Go's race detector.
+
+% ================================================================= 6
+\chapter{Working Prototype}
+The downloader runs as a command-line tool and produces a byte-identical copy of the file. It first checks that the server supports Range requests and reads the file size, and it can verify the result against an expected SHA-256:
+\begin{lstlisting}[language=bash]
+go build ./...
+go run ./cmd/downloader -url <URL> -out file.bin \
+    -concurrency 8 -chunk 1048576 -sha256 <expected hash>
+\end{lstlisting}
+The program \code{cmd/aria2-benchmark} runs our downloader and aria2 on the same test server for a side-by-side comparison.
+
+\section{Features}
+\begin{itemize}
+\item Downloads a single file from one server over HTTP/1.1 Range requests, using $N$ parallel connections (resume, authentication and HTTP/2 are out of scope).
+\item Lets a policy change $N$ and $S$ during the download without cancelling any running request.
+\item Verifies every reply (status \code{206}, \code{Content-Range}, length) and retries failed ranges with the same bounds.
+\item Writes ranges straight to their offsets, so the finished file is byte-identical to the source.
+\item Records one measurement per request attempt for later analysis.
+\end{itemize}
+
+\section{Prototype on the Live Internet}
+Figure~\ref{fig:live.png} shows the prototype downloading the Linux 3.0 source archive from \code{cdn.kernel.org}. The file's SHA-256 matched the checksum published by kernel.org. The terminal capture below is a separate run of the same download, so its time differs slightly.
+\fig{live.png}{0.95}{Throughput of a live download from \code{cdn.kernel.org} (8 connections, 1~MiB ranges), per second.}
+
+\IfFileExists{figs/shot_live.png}{\fig{shot_live.png}{0.95}{Terminal capture: live download and checksum verification.}}{}
+\IfFileExists{figs/shot_tests.png}{\fig{shot_tests.png}{0.95}{Terminal capture: the automated test suite passing.}}{}
+
+% ================================================================= 7
+\chapter{Implementation Progress}
+All planned modules are built and tested. The work so far covers the engine, the control layer, the test platform and the first benchmark against aria2 (Table~\ref{tab:progress}).
+\begin{table}[H]\centering
+\caption{Milestones}\label{tab:progress}
+\begin{tabularx}{\linewidth}{@{}Ll@{}}
+\toprule
+\textbf{Milestone} & \textbf{Status}\\
+\midrule
+Core engine, controllers, rule-based policies & Done\\
+Test server, network emulation, benchmark harness & Done\\
+Baseline benchmark against aria2 (30 paired runs) & Done\\
+Pacing-schedule screen and stock NGINX check & Done\\
+Recorded cellular-trace replay platform (Mahimahi) & Implemented; evaluated in Review 3\\
+Learned policies (LinUCB, DQN) & Implemented; evaluated in Review 3\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Engineering Challenges Addressed}
+\begin{itemize}
+\item \textbf{Off-by-one range errors:} avoided by doing the half-open to inclusive conversion in a single place.
+\item \textbf{Retry semantics:} a failed range is retried with its original boundaries, never re-split, so accounting and offsets stay stable.
+\item \textbf{Silent network-emulation failures:} each run records whether \code{tc netem} actually applied; runs where it did not are excluded and reported.
+\item \textbf{Fair comparisons:} both downloaders get the same file, the same server, a fresh output, and a random order within each pair.
+\end{itemize}
+
+\section{Planned for Review 3}
+\begin{itemize}
+\item Adaptive control under a server whose speed changes during a download.
+\item Results of the learned policies (LinUCB, DQN).
+\item Recorded cellular-trace replay and a live-internet study on public mirrors.
+\item Performance analysis and the full comparison with aria2.
+\end{itemize}
+
+% ================================================================= 8
+\chapter{Test Cases}
+The project has \textbf{549 automated test functions in 29 Go packages}, and all of them pass. No test needs internet access: each one starts its own local HTTP server, so results do not depend on outside conditions. Table~\ref{tab:testtypes} summarises the test types.
+
+\begin{table}[H]\centering
+\caption{Test types}\label{tab:testtypes}
+\begin{tabularx}{\linewidth}{@{}lLl@{}}
+\toprule
+\textbf{Type} & \textbf{What it covers} & \textbf{Examples}\\
+\midrule
+Unit & One module alone: allocation, reply checks, file writes, controller bounds & RangeTracker, Fetcher\\
+Integration & Full download against a local server, then a byte-for-byte check & Downloader, 1 to $N$ workers\\
+Failure handling & Server errors, short bodies, wrong headers, \code{200} instead of \code{206} & Fetcher, retry tests\\
+Concurrency & Many workers at once, under Go's race detector & Worker pool, policy runner\\
+Policy & Decisions for rising, falling and flat throughput, and at bounds & Throughput, joint policies\\
+Experiment platform & Server pacing, netem commands, run-record format & \code{internal/experiment}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]\centering
+\caption{Representative test cases}\label{tab:cases}
+\begin{tabularx}{\linewidth}{@{}cLLc@{}}
+\toprule
+\textbf{No.} & \textbf{Test case} & \textbf{Expected result} & \textbf{Status}\\
+\midrule
+1 & Allocate a 100-byte file in 10-byte ranges & Ranges in order, none overlapping & Pass\\
+2 & Server ignores Range and returns \code{200} & Request rejected as an error & Pass\\
+3 & Body shorter than the requested range & Request rejected as an error & Pass\\
+4 & Ranges written out of order & Output file is byte-identical & Pass\\
+5 & First attempt fails, second succeeds & Same range retried; file correct & Pass\\
+6 & Range keeps failing & Download stops after the retry limit & Pass\\
+7 & Policy lowers $N$ mid-download & No request is cancelled & Pass\\
+8 & Many workers finish at once & Policy decisions run one at a time & Pass\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]\centering
+\caption{Verification commands and results}\label{tab:commands}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Command} & \textbf{Result}\\
+\midrule
+\code{go build ./...} & Builds cleanly\\
+\code{go vet ./...} & No issues\\
+\code{gofmt -l .} & No unformatted files\\
+\code{go test ./...} & All 549 test functions pass\\
+\code{go test -race ./...} & Pass; no data races found\\
+\code{go test -count=5 ./...} & Pass on 5 repeated runs\\
+\bottomrule
+\end{tabular}
+\end{table}
+In one earlier repeated run, the trace-replay test \code{TestAnchorCalibration} failed once under heavy machine load. It passed in all 11 reruns and is tracked as load-sensitive rather than hidden.
+
+% ================================================================= 9
+\chapter{Initial Results}
+On a 512~MiB file with server-side rate pacing, our downloader with 16 connections and 4~MiB ranges took \textbf{62.4\,\% less time than aria2}: it was faster in 30 of 30 paired runs, with a time ratio of $R = 0.376$ (95\,\% interval [0.373, 0.379]). These 30 pairs were new runs, separate from the selection grid below.
+
+\section{Choosing the Setting}
+We first ran all 40 combinations of $N$ and $S$ on the paced server (Figure~\ref{fig:grid.png}). More connections always helped, and at every $N$ a 4~MiB range size was fastest or tied for fastest. We stopped at $N = 16$ to match aria2's 16-connection setting. Each cell is one discovery run.
+\fig{grid.png}{0.95}{Completion time in seconds for all 40 $(N, S)$ settings on the paced server.}
+
+\section{Why It Is Faster}
+The server sends slowly for the first 4 seconds, then speeds up, and each request keeps the rate it started with. aria2 starts all its pieces in the first second, so they stay slow. Our smaller ranges keep starting new requests after the speed-up (Figure~\ref{fig:progress.png}).
+\fig{progress.png}{0.95}{Data received over time in one paired run, reconstructed from per-request server logs.}
+
+\section{Other Pacing Schedules}
+A screening run over six pacing schedules (5 pairs each, 60 runs, all content-verified) found ours faster in 28 of 30 pairs (Figure~\ref{fig:pacing.png}). The two were level only when the server sent at one constant slow rate.
+
+\textbf{A server we did not write.} To check that the direction does not depend on our own server, we repeated the comparison against stock NGINX~1.24 in two configurations: \code{limit\_rate 640k} per response, and the same with the first 1~MiB of each response unthrottled (\code{limit\_rate\_after 1m}). Ours was faster in 10 of 10 pairs ($R = 0.863$ and $0.597$). With 5 pairs per configuration, this is a screen, not a confirmation.
+\fig{pacing.png}{0.95}{Mean completion time of ours and aria2 under six pacing schedules.}
+
+\section{What This Result Does and Does Not Show}
+This is not evidence that our downloader is better than aria2 in general. The gap comes from one specific interaction:
+\begin{itemize}
+\item The test server fixes each response's rate when the request starts. A request that starts during the slow phase stays slow until it finishes.
+\item With 16 connections, aria2 splits a 512~MiB file into pieces of about 32~MiB and starts them all in the first second. In a separate side check, outside the benchmark, raising its \code{-{}-split} setting did not give smaller first pieces.
+\item With 4~MiB ranges, 112 of our 128 requests started after the server sped up.
+\end{itemize}
+Two controls support this reading. When our downloader used aria2-like piece sizes, the gap shrank from $R = 0.376$ to $R = 0.862$ [0.834, 0.890]. At a constant slow rate the two were level ($R = 0.998$). Not all of the gap is explained: ours stayed 14\,\% faster with aria2-like pieces, and was also faster at a constant fast rate with no rate change (15.4~s against 27.1~s). We did not isolate that residual. The fair conclusion is narrower: \emph{on servers that rate-limit per response, smaller ranges that start more requests over time finish sooner than aria2's large initial pieces.} These results come from one machine with emulated network conditions; Review 3 adds a live-internet study and recorded cellular traces. The next stage tests whether adaptive control adds anything beyond a well-chosen fixed setting.
+
+% ================================================================= 10
+\chapter{Individual Contribution}
+\begin{table}[H]\centering
+\caption{Team members}\label{tab:team}
+\begin{tabularx}{\linewidth}{@{}p{3.2cm}p{2.1cm}L@{}}
+\toprule
+\textbf{Member} & \textbf{Reg. no.} & \textbf{Contribution}\\
+\midrule
+\MemberA & \RegA & Downloader architecture and core implementation; adaptive concurrency and range management; test server and Linux network experiments; system integration and validation\\
+\MemberB & \RegB & Downloader development and testing of assigned components; monitoring and experiment automation; baseline and heuristic evaluation\\
+\MemberC & \RegC & LinUCB; RL state, action and reward design; Python/PyTorch models; integration of the learned policy with the Go downloader; ML/RL evaluation\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Responsibilities follow the division of work set out in the Review 1 proposal.
+
+% ================================================================= refs
+\begin{thebibliography}{9}
+\addcontentsline{toc}{chapter}{References}
+\bibitem{rfc9110} R.~Fielding, M.~Nottingham and J.~Reschke, ``HTTP Semantics,'' RFC~9110, IETF, 2022. (Range requests, Section~14.)
+\bibitem{aria2} aria2 project, ``aria2: The ultra fast download utility,'' version 1.37. \url{https://aria2.github.io/}
+\bibitem{netem} Linux Foundation, ``netem: Network Emulator,'' \code{tc-netem}(8) manual page.
+\bibitem{mahimahi} R.~Netravali et al., ``Mahimahi: Accurate Record-and-Replay for HTTP,'' USENIX ATC, 2015.
+\bibitem{go} The Go Authors, ``The Go Programming Language,'' \url{https://go.dev/}
+\end{thebibliography}
+
+\end{document}
