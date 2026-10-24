@@ -7388,7 +7388,21 @@ packages. Review 2/3 PDFs: `reports/Review2_Project_Review.pdf`,
 critique was applied: wording '62.4 % less time', RL design + results table,
 ablation arm table, limitations incl. no request timeout and fairness,
 definitions of selector/causal/tuner, live-pilot sessions, curl reference).
-Earlier status: `ONLINE_TUNER_RUNNING`. The user compared the work against the
+Earlier status: `ONLINE_TUNER_RUNNING`.
+- **rl_capped (commit 2b6e1ae protocol, 13297fe data):** frozen DQN v6 on the
+  fixed engine, 512 MiB, CAP8/HEALTHY, 5 blocks, 50/50 valid. vs best fixed:
+  CAP8 start16 1.356 [1.252, 1.472], start1 1.706; HEALTHY start16 1.031,
+  start1 1.194. start16 vs fixed_16_1M (same S) at CAP8 0.931 [0.879, 1.016].
+  Median ~412 N moves per run at CAP8, final N 2.
+- **Independent verifier pass (subagent) applied:** CLI scope wording (the CLI
+  has no policy/split flags; experiments use harness programs), Content-Range
+  checked only when present (wording softened; making it mandatory is a
+  possible follow-up), gofmt scoped to internal/ and cmd/ (3 testdata tools
+  files unformatted), paper draft does NOT yet contain the ablation/tuner/
+  rl_capped results (to fold in before Thursday), v5 N<=4 disclosed.
+- **Next (before Thu 2026-10-29):** retrain DQN on the capped-server model
+  (sim parity check, 3-5 seeds, frozen protocol, 10 blocks); add axel/wget2/
+  lftp baselines; delay/loss sweep; fold results into paper_draft + claims_check. The user compared the work against the
 Review 1 proposal (`Computer_Networks_Lab_Submission` docx, Assessment 8) and
 asked to close the gaps before submitting Review 2 and Review 3 on
 2026-10-24 (target 23:00 IST); physical review Thu 2026-10-29. Anything not yet
