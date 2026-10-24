@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792853942.70681 "review2.tex" "review2.pdf" "review2" 1792853943.48063 0
+["pdflatex"] 1792858859.43293 "review2.tex" "review2.pdf" "review2" 1792858860.24256 0
   "/etc/texmf/web2c/texmf.cnf" 1791894223.49644 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm" 1136768653 1292 3059476c50a24578715759f22652f3d0 ""
@@ -163,12 +163,12 @@
   "figs/shot_live.png" 1792851137.00839 104654 c2d21376bed3bdedebc134071fad01f4 ""
   "figs/shot_tests.png" 1792853603.84195 153379 9484983009c6e0dc1d829eea15a1ba44 ""
   "figs/state.png" 1792847873.10615 46166 11848a51eda5413d71ac737731d27bd0 ""
-  "review2.aux" 1792853943.38566 12507 2402701b52ed9173b72fe7d0bf734afc "pdflatex"
-  "review2.lof" 1792853943.38766 2166 7bc0b4d290038e7397abc9a3948fc045 "pdflatex"
-  "review2.lot" 1792853943.38766 1468 8422b5493594912e709e34d82a0dabbb "pdflatex"
-  "review2.out" 1792853943.38666 5432 3a3a136581852294541f3a1cedeeb416 "pdflatex"
-  "review2.tex" 1792853942.61364 37124 dbba6cf749253abaa940acc65eca91f3 ""
-  "review2.toc" 1792853943.38766 2772 6b3a9f5ac476d41eae72f256fe346fd3 "pdflatex"
+  "review2.aux" 1792858860.14139 12580 748c6a3ae5b0cd9d75cc9c3c33dc0e82 "pdflatex"
+  "review2.lof" 1792858860.14339 2166 7bc0b4d290038e7397abc9a3948fc045 "pdflatex"
+  "review2.lot" 1792858860.14339 1468 8422b5493594912e709e34d82a0dabbb "pdflatex"
+  "review2.out" 1792858860.14239 5432 3a3a136581852294541f3a1cedeeb416 "pdflatex"
+  "review2.tex" 1792858859.32563 37413 c99911deeb919b08c86430e1d3dd185d ""
+  "review2.toc" 1792858860.14339 2772 6b3a9f5ac476d41eae72f256fe346fd3 "pdflatex"
   (generated)
   "review2.aux"
   "review2.lof"

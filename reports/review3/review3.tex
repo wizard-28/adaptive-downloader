@@ -10,7 +10,6 @@
 \vspace*{0.5cm}
 {\Large\bfseries \Institute\par}
 \vspace{0.2cm}
-{\large \School\par}
 \vspace{1.6cm}
 {\large \CourseName\ (\CourseCode)\par}
 \vspace{0.3cm}
@@ -35,9 +34,7 @@
 \end{tabular}
 \vspace{1.6cm}
 
-{\large Under the guidance of\par}
-\vspace{0.2cm}
-{\large\bfseries \GuideName\par}
+
 \vfill
 {\large \SubmitDate\par}
 \end{titlepage}
@@ -54,7 +51,7 @@
 \addcontentsline{toc}{chapter}{Abstract}
 Segmented download managers fetch a file as byte ranges over parallel HTTP connections. Their speed depends on two settings: the number of connections, $N$, and the range size, $S$. This research project asks when changing $N$ and $S$ during a download actually helps. To answer it, we built an instrumented Go downloader whose $N$ and $S$ a policy can change mid-download, a reproducible test platform around it, and a controlled evaluation against aria2. The policies compared were fixed settings, rule-based controllers, a contextual bandit (LinUCB), deep reinforcement learning (DQN) and an online concurrency tuner in the style of prior work.
 
-The main finding is that \textbf{a well-chosen fixed setting was nearly always enough}. On a server with per-response rate pacing, a fixed 16~$\times$~4~MiB setting took 62.4\,\% less time than aria2 (time ratio 0.376 over 30 paired runs), a gap we trace mainly to request timing rather than a general advantage. On public mirrors, one fixed setting was within 3.7\,\% [1.0, 4.8] of the best per-condition choice. In recorded cellular traces, a clairvoyant oracle found no exploitable concurrency headroom. Rule-based, selector, learned and online-tuned controllers did not beat the best fixed setting in the comparisons we ran. A 230-run engine ablation showed that aria2's earlier lead on a concurrency-capped server came from two engine differences, a whole-request timeout and the lack of straggler splitting. Once both were fixed, our downloader matched aria2 or came within 1.6\,\% of it, and the best fixed setting beat the causal controller, the workload selector and the online tuner. No learned policy outperformed the baselines in the comparisons we ran.
+The main finding is that \textbf{a well-chosen fixed setting was nearly always enough}. On a server with per-response rate pacing, a fixed 16~$\times$~4~MiB setting took 62.4\,\% less time than aria2 (time ratio 0.376 over 30 paired runs), a gap we trace mainly to request timing rather than a general advantage. On public mirrors, one fixed setting was within 3.7\,\% [1.0, 4.8] of the best per-condition choice. In recorded cellular traces, a clairvoyant oracle found no exploitable concurrency headroom. On the fixed engine, the rule-based, selector, learned and online-tuned controllers did not beat the best fixed setting in the comparisons we ran. A 230-run engine ablation showed that aria2's earlier lead on a concurrency-capped server came from two engine differences, a whole-request timeout and the lack of straggler splitting. Once both were fixed, our downloader matched aria2 or came within 1.6\,\% of it, and the best fixed setting beat the causal controller, the workload selector and the online tuner. No learned policy outperformed the baselines in the comparisons we ran.
 
 \chapter*{Terms and Abbreviations}
 \addcontentsline{toc}{chapter}{Terms and Abbreviations}
@@ -117,9 +114,9 @@ IDM & Internet Download Manager, a Windows-only commercial download manager.\\
 This is a research project. Its question is when changing the number of connections $N$ and the range size $S$ during a download actually helps. Answering it needed a working experimental system, which has four parts, all working and tested:
 \begin{enumerate}
 \item \textbf{Downloader.} A Go command-line tool that downloads a single file from one server over HTTP/1.1 Range requests (resume, authentication and HTTP/2 are out of scope). It probes the server for range support and file size, fetches ranges over $N$ parallel HTTP/1.1 connections, writes them at their offsets, and checks the result against an expected SHA-256.
-\item \textbf{Control layer.} Concurrency and range-size controllers driven by a common policy interface. Implemented policies: fixed; throughput rules for $N$, $S$ and both; a workload selector; a causal drop controller; an online concurrency tuner; LinUCB; and DQN agents.
+\item \textbf{Control layer.} Concurrency and range-size controllers driven by a common policy interface. Implemented policies: fixed; throughput rules for $N$, $S$ and both; an online concurrency tuner; LinUCB; and DQN agents. The workload selector and causal drop controller implement the same interface inside the experiment programs.
 \item \textbf{Test platform.} A local HTTP server with configurable per-response pacing, a soft concurrency cap and fault injection; Linux \code{tc netem} for delay and loss; Mahimahi replay of recorded cellular traces; and a runner for live downloads from public mirrors.
-\item \textbf{Evidence pipeline.} Every run writes a JSON record. Each protocol was written down before its first run, with later amendments dated and disclosed. A claims checker recomputes all 144 numbers in the accompanying research-paper draft from the raw records; the numbers in this report come from the same analysis files.
+\item \textbf{Evidence pipeline.} Every run writes a JSON record. Each protocol was written down before its first run, with later amendments dated and disclosed. A claims checker recomputes all 144 numbers in the existing sections of the accompanying research-paper draft from the raw records. The numbers in this report come from the analysis scripts stored with each experiment.
 \end{enumerate}
 
 
@@ -146,7 +143,7 @@ Beyond the core engine described in Review 2, the final architecture includes th
 \textbf{Module} & \textbf{Contents}\\
 \midrule
 \code{rangetracker} & Half-open range allocation, completion, failure, and splitting of in-flight ranges\\
-\code{fetcher} & One HTTP/1.1 Range request per call; checks status, \code{Content-Range} and length; a shrinkable end for splitting\\
+\code{fetcher} & One HTTP/1.1 Range request per call; checks status, length and \code{Content-Range} when present; a shrinkable end for splitting\\
 \code{assembler} & Writes ranges at their offsets with \code{WriteAt}\\
 \code{downloader} & Worker pool, serialized policy runner, retries with unchanged bounds, opt-in straggler splitting\\
 \code{concurrency}, \code{chunksize} & Bounded target controllers for $N$ and $S$\\
@@ -175,7 +172,7 @@ and fetches $[m, e)$ itself. Bytes already received stay with the original reque
 
 \textbf{Workload selector.} It starts at 16~$\times$~1~MiB, watches per-request throughput for the first 20 samples, classifies the server as capped or not by a predeclared threshold, and then moves once to that class's predeclared target.
 
-\textbf{Learned policies.} LinUCB is a contextual bandit over the five generic actions (none, $\pm N$, $\pm S$). Its context is 10 normalised features: $N$, $S$, per-request and aggregate throughput, request duration, bytes, and success, failure, retry and attempt counts. Its reward combines aggregate throughput and its change, minus penalties for latency, retries, failures and actions. The DQN agents are Double DQN networks trained in PyTorch on a simulator of the download process, with 13 features (adding remaining bytes and throughput trend, volatility and time-since-change) and reward $r_t = -\Delta t$, so the episode return is the negative completion time. Versions v2 and v3 acted on both $N$ and $S$. From v4 on, the agent acts on $N$ only, for the reasons in Table~\ref{tab:deviations}. The trained network runs inside Go for live decisions.
+\textbf{Learned policies.} LinUCB is a contextual bandit over the five generic actions (none, $\pm N$, $\pm S$). Its context is 10 normalised features: $N$, $S$, per-request and aggregate throughput, request duration, bytes, and success, failure, retry and attempt counts. Its reward combines aggregate throughput and its change, minus penalties for request duration, retries, failures and actions. The DQN agents are Double DQN networks trained in PyTorch on a simulator of the download process, with their own 13-feature state (including remaining bytes, throughput trend and volatility, and time since the last change) and reward $r_t = -\Delta t$, so the episode return is the negative completion time. Versions v2 and v3 acted on both $N$ and $S$. From v4 on, the agent acts on $N$ only, for the reasons in Table~\ref{tab:deviations}. The trained network runs inside Go for live decisions.
 
 % ================================================================= 4
 \chapter{Live Demonstration}
@@ -192,7 +189,7 @@ The demonstration has three steps. The captures below are real terminal output f
 % ================================================================= 5
 \chapter{Test Results}
 \IfFileExists{test_results.tex}{\input{test_results.tex}}{%
-The project has 549 automated Go test functions in 29 packages. They cover range allocation, reply validation, out-of-order writes, retries, concurrency changes, policy decisions, straggler splitting, the online tuner and the CLI probe. No test needs internet access.}
+The project has 549 automated Go test functions in 29 packages. They cover range allocation, reply validation, out-of-order writes, retries, concurrency changes, policy decisions, straggler splitting, the online tuner and the CLI probe. No test needs internet access. Tests that need root, \code{tc} or Mahimahi skip themselves when those are unavailable.}
 
 \begin{table}[H]\centering
 \caption{Verification summary}\label{tab:verify}
@@ -202,9 +199,9 @@ The project has 549 automated Go test functions in 29 packages. They cover range
 \midrule
 Unit and integration tests (\code{go test ./...}) & All pass\\
 Race detector (\code{go test -race ./...}) & No data races\\
-Repeated runs (\code{go test -count=5 ./...}) & Pass\\
-Static checks (\code{go vet}, \code{gofmt}) & Clean\\
-Paper claims (\code{tools/claims\_check.py}) & 144 of 144 numbers match the raw data\\
+Repeated runs (\code{go test -count=5 ./...}) & Pass; one timing-sensitive trace-replay test failed once in an earlier repeated run under heavy load and passed in all 11 reruns\\
+Static checks (\code{go vet}; \code{gofmt} on \code{internal/} and \code{cmd/}) & Clean\\
+Paper claims (\code{tools/claims\_check.py}) & 144 of 144 numbers in the existing paper sections match the raw data\\
 Experiment validity, engine ablation & 230 of 230 runs valid and content-verified\\
 Experiment validity, live-internet pilot & every run SHA-256 checked; invalid runs kept and reported\\
 \bottomrule
@@ -236,7 +233,7 @@ Figure~\ref{fig:waste.png} shows the reliability problem the final evaluation un
 \fig{waste.png}{0.9}{Extra bytes re-downloaded under the original 30~s whole-request timeout (capped server, 32~MiB ranges).}
 
 \section{Goodput}
-Goodput is the useful data delivered per second: the file size divided by the completion time. Transfer efficiency is the useful bytes divided by all bytes transferred. On the fixed engine, efficiency was 100\,\% in every run. On the original engine with 32~MiB ranges it fell as low as 47\,\% (112\,\% extra bytes, Figure~\ref{fig:waste.png}). Table~\ref{tab:goodput} gives goodput for our best fixed setting and for aria2 in each ablation scenario.
+Goodput is the useful data delivered per second: the file size divided by the completion time. Transfer efficiency is the useful bytes divided by all bytes the downloader received. Requests that the downloader shortened when splitting, which the server logs as closed early, are not counted as waste. On the fixed engine, efficiency was 100\,\% in every run. On the original engine with 32~MiB ranges it fell as low as 47\,\% (112\,\% extra bytes, Figure~\ref{fig:waste.png}). Table~\ref{tab:goodput} gives goodput for our best fixed setting and for aria2 in each ablation scenario.
 \begin{table}[H]\centering
 \caption{Goodput in MB/s (geometric mean of 10 runs; fixed engine)}\label{tab:goodput}
 \begin{tabular}{@{}llrr@{}}
@@ -306,7 +303,7 @@ so the total falls slightly as more connections are opened. The model imitates s
 
 \textbf{Real-network studies.}
 \begin{itemize}
-\item \emph{Live internet:} \code{linux-3.0.tar.xz} (63.8~MB), downloaded from four public mirrors: the kernel.org CDN and edge mirror, RIKEN (Japan) and TUNA (Tsinghua University, China). The client was on a residential broadband link. Eight fixed $(N, S)$ settings ($N \in \{1, 4, 8, 16\}$, $S \in \{1, 4\}$~MiB), aria2 and curl were each run twice per condition, and every run was checked against the published SHA-256.
+\item \emph{Live internet:} \code{linux-3.0.tar.xz} (63.8~MB), downloaded from four public mirrors: the kernel.org CDN and edge mirror, RIKEN (Japan) and TUNA (Tsinghua University, China). The client was on the team's broadband connection (Tata Teleservices). Eight fixed $(N, S)$ settings ($N \in \{1, 4, 8, 16\}$, $S \in \{1, 4\}$~MiB), aria2 and curl were each run twice per condition, and every run was checked against the published SHA-256.
 \item \emph{Recorded cellular traces:} five Mahimahi traces (Verizon EVDO and LTE, AT\&T LTE, T-Mobile LTE and UMTS), replayed through \code{mm-link}.
 \end{itemize}
 
@@ -336,7 +333,7 @@ Paced (D2) & aria2; 16$\times$4~MiB T30 and fixed & 30\\
 \end{itemize}
 
 \section{Does Adaptation Help?}\label{sec:adhelp}
-In an earlier predeclared comparison, a causal controller was 23.4\,\% faster than the best of three fixed settings when the cap switched on at 8~s. That result replicated here ($R = 0.767$). Most of the gain came from the $N$ move: an $N$-only version reached 0.808 of the fixed setting's time, while an $S$-only version was slower than not adapting at all (1.070). But those three fixed settings used small ranges (1--4~MiB) on the original engine. Against the best fixed setting on the fixed engine (16~$\times$~32~MiB), the causal controller was 7\,\% \emph{slower}, and the workload selector was 23\,\% slower (Figure~\ref{fig:adaptive.png}).
+In an earlier predeclared comparison, a causal controller was 23.4\,\% faster than the best of three fixed settings when the cap switched on at 8~s. That result replicated here ($R = 0.767$). Most of the gain came from the $N$ move: an $N$-only version reached 0.808 of the fixed setting's time, while an $S$-only version was slower than not adapting at all (1.070). But those three fixed settings used small ranges (1--4~MiB) on the original engine. Against the best fixed setting on the fixed engine (16~$\times$~32~MiB), the causal controller was 7\,\% \emph{slower} with the cap from 8~s, and the workload selector was 23\,\% slower with the cap from the start (Figure~\ref{fig:adaptive.png}).
 
 \textbf{What ``best fixed setting'' means.} The best fixed setting in each comparison is chosen after the fact, which an adaptive method cannot do. Two results show when this matters. On the live mirrors, one setting chosen for all conditions (8~$\times$~1~MiB) was within 3.7\,\% of the per-condition best, so knowing the conditions in advance was worth little. Between servers with and without a cap, no single setting works: 16~$\times$~1~MiB is best without the cap (18.4~s) but slow with it (115.2~s). There, a one-time choice made from early measurements did as well as knowing the workload in advance: the workload selector matched the per-workload best ($R = 0.999$ [0.969, 1.029], measured on the original engine).
 \fig{adaptive.png}{0.95}{Adaptive controllers against the best fixed setting.}
@@ -370,7 +367,7 @@ Adaptive $S$, adaptive $N$, joint pacing and correlated-loss mechanisms & Simula
 \end{table}
 
 \section{Real Networks}
-\textbf{Live internet.} Across 16 conditions on four public mirrors, one fixed setting (8~$\times$~1~MiB) was within 3.7\,\% [1.0, 4.8] of the best setting chosen separately for each condition. It was within 5\,\% in 11 of 16 conditions, where a condition is one mirror in one of four measurement sessions (Figure~\ref{fig:live.png}). Within these eight settings, choosing per condition instead of one global setting gained at most 3.7\,\% on average. Parallel connections clearly mattered: a single curl connection took 1.03 to 6.5 times as long as the best setting, depending on the mirror. But once several connections were used, the exact choice mattered little, partly because the client's access link (about 2.4~MB/s) became the limit.
+\textbf{Live internet.} Across 16 conditions on four public mirrors, one fixed setting (8~$\times$~1~MiB) was within 3.7\,\% [1.0, 4.8] of the best setting chosen separately for each condition. It was within 5\,\% in 11 of 16 conditions, where a condition is one mirror in one of four measurement sessions (Figure~\ref{fig:live.png}). Within these eight settings, choosing per condition instead of one global setting gained 3.7\,\% on average (95\,\% interval up to 4.8\,\%). Parallel connections clearly mattered: a single curl connection took 1.03 to 6.5 times as long as the best setting, depending on the mirror. But once several connections were used, the exact choice mattered little.
 \fig{live.png}{0.95}{Live-internet pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}
 
 \textbf{Recorded cellular traces.} Replaying five recorded traces, a clairvoyant oracle found no exploitable concurrency headroom: the one-sided 95\,\% lower bound was $-0.26$\,\%, against a predeclared 10\,\% bar.
@@ -385,16 +382,16 @@ Adaptive $S$, adaptive $N$, joint pacing and correlated-loss mechanisms & Simula
 \midrule
 LinUCB (joint $N$, $S$) & 300 runs, 5 scenarios, against fixed and rule-based modes & Locked onto one action after warm-up; no ranking possible\\
 DQN v2 (joint $N$, $S$) & 240 pairs against aria2 (4~MiB files, aria2 with 4 connections) & 1.757 [1.672, 1.847]\\
-DQN v5 ($N$ only) & 240 pairs against aria2, 16~MiB files & 2.322 [2.230, 2.417]\\
+DQN v5 ($N$ only, at most 4 connections) & 240 pairs against aria2 (16 connections), 16~MiB files & 2.322 [2.230, 2.417]\\
 DQN v6 ($N$ only, 1--16) & 150 pairs against aria2, 16~MiB files & 1.456 [1.305, 1.624]\\
 DQN v6, longer files & 16/128/512~MiB against aria2 & 1.81 / 1.06 / 0.91 (512~MiB interval includes 1)\\
 \bottomrule
 \end{tabularx}
 \end{table}
-LinUCB locked onto a single action after warm-up. The DQN agents (v2, v5, v6) were slower than aria2 overall in the head-to-heads we ran. Those comparisons used small files (4--16~MiB), and v6 started from one connection while aria2 opened 16 at once, so they test the agents' start-up behaviour more than their steady-state control. A follow-up with longer downloads (16, 128 and 512~MiB) gave pooled DQN/aria2 ratios of 1.81, 1.06 and 0.91. The 512~MiB value has an interval that includes 1 and is driven by one of three scenarios; in the other two, DQN fell further behind as files grew. The head-to-heads compared DQN with aria2. In v5's live tests, the fixed 4-connection setting was fastest in every tested condition.
+LinUCB locked onto a single action after warm-up. The DQN agents (v2, v5, v6) were slower than aria2 overall in the head-to-heads we ran. Those comparisons used small files (4--16~MiB), and v6 started from one connection while aria2 opened 16 at once, so they test the agents' start-up behaviour more than their steady-state control. A follow-up with longer downloads (16, 128 and 512~MiB) gave pooled DQN/aria2 ratios of 1.81, 1.06 and 0.91. The 512~MiB value has an interval that includes 1 and is driven by one of three scenarios; in the other two, DQN fell further behind as files grew. The head-to-heads compared DQN with aria2. In v5's live tests, where the agent could use at most 4 connections, the fixed 4-connection setting, its maximum, was fastest in every tested condition. v6 raised the limit to 16.
 
 \IfFileExists{rl_results.tex}{\textbf{A fairer test of the learned agent.} \input{rl_results.tex}}{}
-Starting at 16 connections helped: with the cap from 8~s, the agent was 7\,\% quicker than the fixed setting with its own 1~MiB range size, though not distinguishably so (0.931 [0.879, 1.016], faster in 4 of 5 blocks). It remained 36\,\% slower than 16~$\times$~32~MiB, because large ranges started before the cap keep their higher rate, and an agent that only changes $N$ cannot use that.
+The agent changed $N$ several hundred times per download (median 412 decisions that moved $N$ with the cap, ending at $N = 2$), so it reacted constantly rather than settling. Starting at 16 connections helped: with the cap from 8~s, the agent was 7\,\% quicker than the fixed setting with its own 1~MiB range size, though not distinguishably so (0.931 [0.879, 1.016], faster in 4 of 5 blocks). It remained 36\,\% slower than 16~$\times$~32~MiB, because large ranges started before the cap keep their higher rate, and an agent that only changes $N$ cannot use that.
 
 \section{Limitations}\label{sec:limits}
 \begin{itemize}
@@ -403,17 +400,17 @@ Starting at 16 connections helped: with the cap from 8~s, the agent was 7\,\% qu
 \item \textbf{Live pilot scope.} The pilot used one client, one access link, four mirrors and two runs per setting, and ran fixed settings only. It bounds what adaptation could gain on that link; it is not a survey of networks.
 \item \textbf{Learned agents trained in simulation.} The DQN agents were trained on a simulator and then evaluated live, including on the capped server, without retraining for each server.
 \item \textbf{One configuration per controller.} Each adaptive controller and the online tuner ran with one configuration, fixed before its runs. Other parameters might do better, though the small headroom found in every study limits how much.
-\item \textbf{Sample sizes and statistics.} The main comparisons use 8--30 paired blocks. The pacing sweep and the NGINX check (5 pairs each) are screens, not confirmations. Because the testbed is nearly deterministic, intervals are narrow and reflect testbed noise, not real-world variability. No correction was applied across the many comparisons.
-\item \textbf{No request timeout in the fixed engine.} Removing the whole-request deadline means a connection that stalls completely would wait until the run is stopped. A stall-based timeout is future work.
+\item \textbf{Sample sizes and statistics.} The main comparisons use 8--30 paired blocks; the capped-server learned-agent test used 5. The pacing sweep and the NGINX check (5 pairs each) are screens, not confirmations. Because the testbed is nearly deterministic, intervals are narrow and reflect testbed noise, not real-world variability. No correction was applied across the many comparisons.
+\item \textbf{No request timeout in the fixed engine.} Removing the whole-request deadline means a connection that stalls completely would wait until the run is stopped; in the experiments, each run was bounded by the benchmark harness. The command-line tool still uses a 30~s timeout. A stall-based timeout is future work.
 \item \textbf{Fairness.} Opening 16 connections takes a larger share of a shared link from other flows, and places more load on public mirrors. We measured speed, not fairness.
 \end{itemize}
 
 % ================================================================= 7
 \chapter{Comparison with Existing System}
-The existing system is aria2 1.37, run with the same flags throughout (\code{-x16 -s16 -k1M}). We chose aria2 because it is the standard open-source segmented downloader on Linux. curl was run as a single-connection reference in the live pilot, and IDM runs only on Windows.
+The existing system is aria2 1.37, run with the same flags throughout (\code{-x16 -s16 -k1M}). We chose aria2 because it is the standard open-source segmented downloader on Linux. Its flags were chosen once, from a discovery sweep of its split settings (1, 2, 4, 8 and 16), and not re-tuned per scenario. curl was run as a single-connection reference in the live pilot, and IDM runs only on Windows.
 
 \begin{table}[H]\centering
-\caption{Ours (best fixed setting, fixed engine) against aria2}\label{tab:aria2}
+\caption{Ours against aria2}\label{tab:aria2}
 \begin{tabularx}{\linewidth}{@{}LlL@{}}
 \toprule
 \textbf{Scenario} & \textbf{Ratio $R$} & \textbf{Verdict}\\
@@ -428,10 +425,12 @@ Live public mirrors (16 conditions) & aria2 1.00--1.26 $\times$ per-condition be
 \end{tabularx}
 \end{table}
 
+The paced-server row comes from the engine ablation (10 blocks, fixed engine). The 30-pair benchmark on the original engine gave $R = 0.376$; the two agree. The NGINX and live-mirror rows come from earlier studies on the original engine without splitting, with the global 8~$\times$~1~MiB setting for the mirrors.
+
 \section{What the Comparison Shows}
 These results do not show a general advantage over aria2. Our large wins come from servers that set each response's rate when it starts. There, our smaller ranges keep starting new requests after the server speeds up, while aria2's 32~MiB first pieces stay at the slow starting rate. Not all of the gap is explained: with a constant fast rate and no rate change, ours was still faster (15.4~s against 27.1~s), and with aria2-like piece sizes ours remained 14\,\% faster. We did not isolate that residual. When the conditions remove the timing effect, the two are level or close: at a constant slow rate, under the cap once our engine splits stragglers too (level from the start, aria2 1.6\,\% faster when the cap starts at 8~s), and on public mirrors.
 
-\textbf{Functional differences.} Unlike aria2, our downloader can change $N$ and $S$ during a download through a policy, records every request attempt, and verifies each reply's \code{Content-Range}. aria2 supports many more protocols and features (BitTorrent, Metalink, multiple sources), which are outside this project's scope. IDM was not evaluated because it runs only on Windows.
+\textbf{Functional differences.} Unlike aria2, our downloader can change $N$ and $S$ during a download through a policy, records every request attempt, and checks each reply's status, length and, when present, its \code{Content-Range}. aria2 supports many more protocols and features (BitTorrent, Metalink, multiple sources), which are outside this project's scope. IDM was not evaluated: it is closed source, so its segmentation cannot be logged or controlled, and it runs only on Windows, outside our Linux testbed.
 
 % ================================================================= 8
 \chapter{Achievement of Objectives}
@@ -510,7 +509,8 @@ Adapting connections and range size is an established idea. FastBioDL~\cite{fast
 % ================================================================= 10
 \chapter{Future Enhancement}
 \begin{itemize}
-\item \textbf{Ongoing extension: an agent trained for the capped server.} The learned policies have been evaluated in every scenario, including the frozen DQN agent on the capped server (learned-policy results, Table~\ref{tab:rl}). As a further check, we are training a DQN agent specifically on the capped-server model, the scenario with the most room for adaptation, and evaluating it under the same frozen-protocol method.
+\item \textbf{Next extension: an agent trained for the capped server.} The learned policies have been evaluated in every scenario, including the frozen DQN agent on the capped server (learned-policy results, Table~\ref{tab:rl}). The next step is to train a DQN agent specifically on the capped-server model, the scenario with the most room for adaptation, and to evaluate it under the same frozen-protocol method.
+\item \textbf{Next extension: more baselines in the same testbed.} Adding other open-source segmented downloaders that run in our controlled testbed, such as \code{axel}, \code{wget2} and \code{lftp}'s parallel download, under the same frozen-protocol method. IDM was not included because it is closed source, cannot run inside the Linux testbed, and is hard to script for hundreds of randomised runs.
 \item \textbf{Joint learning on harder environments.} Joint learned control was built and evaluated here, but our servers offered little for it to exploit. A natural next step is to retrain it for environments where the best $(N, S)$ changes often and by a lot, such as servers with shifting per-connection limits; the capped-server model is the first candidate.
 \item \textbf{Broader live study.} More networks, client locations and mirrors, including mobile networks.
 \item \textbf{HTTP/2 and multiple sources.} Download one file from several mirrors at once, as MDTP does.
@@ -520,7 +520,7 @@ Adapting connections and range size is an established idea. FastBioDL~\cite{fast
 
 % ================================================================= 11
 \chapter{Outcome}
-A research paper, \emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation}, is being prepared for submission to \emph{IEEE Access}. The manuscript is complete in draft, and all 144 of its numerical claims are verified against the raw data by an automated checker.
+A research paper, \emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation}, is being prepared for submission to \emph{IEEE Access}. Its existing sections are complete in draft, and all 144 of their numerical claims are verified against the raw data by an automated checker. The draft is being revised to include the engine-ablation, online-tuner and capped-server learned-agent results in this report.
 
 \begin{table}[H]\centering
 \caption{Publication plan}\label{tab:outcome}
@@ -528,7 +528,7 @@ A research paper, \emph{Request granularity and concurrency adaptation for HTTP 
 \toprule
 \textbf{Item} & \textbf{Status}\\
 \midrule
-Manuscript & Complete draft; all 144 numerical claims checked automatically against the raw data\\
+Manuscript & Draft; 144 numerical claims in the existing sections checked automatically against the raw data; being revised to add this report's final results\\
 Target venue & \emph{IEEE Access} (journal); manuscript being formatted to its template\\
 Status & Preparing for submission; final results being incorporated\\
 Data and code & Raw runs, frozen protocols and analysis scripts, to be archived with a DOI alongside the submission\\

@@ -117,7 +117,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.121 \chapter
+l.118 \chapter
               *{Terms and Abbreviations} [1] [2] [3]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [4 <./figs/architect
@@ -160,7 +160,7 @@ s/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symb
 ol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on review2.pdf (30 pages, 1269200 bytes).
+Output written on review2.pdf (30 pages, 1269875 bytes).
 Transcript written on review2.log.
 Latexmk: Getting log file 'review2.log'
 Latexmk: Examining 'review2.fls'

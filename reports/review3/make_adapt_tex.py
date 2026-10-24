@@ -17,7 +17,7 @@ for key, who, sc, what in ROWS:
     v = d.get(key)
     if not v or v["median"] is None:
         continue
-    lines.append(f"{who} & {sc} & {what} & {v['median']:.1f} [{v['min']:.1f}, {v['max']:.1f}] & {v['n']}\\\\")
+    lines.append(f"{who} & {sc} & {what} & {v['median']:.2f} [{v['min']:.2f}, {v['max']:.2f}] & {v['n']}\\\\")
 tex = r"""\begin{table}[H]\centering
 \caption{Adaptation speed: median seconds, with the range over runs}\label{tab:adapt}
 \small

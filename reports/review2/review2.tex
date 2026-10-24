@@ -4,7 +4,7 @@
 \newcommand{\Institute}{Vellore Institute of Technology, Vellore}
 \newcommand{\School}{[School name]}
 \newcommand{\CourseName}{Computer Networks Lab}
-\newcommand{\CourseCode}{[Course code]}
+\newcommand{\CourseCode}{BCSE308P}
 \newcommand{\GuideName}{[Faculty guide name]}
 \newcommand{\SubmitDate}{October 2026}
 \newcommand{\MemberA}{Sourajyoti Basak} \newcommand{\RegA}{24BCE0774}
@@ -72,7 +72,6 @@
 \vspace*{0.5cm}
 {\Large\bfseries \Institute\par}
 \vspace{0.2cm}
-{\large \School\par}
 \vspace{1.6cm}
 {\large \CourseName\ (\CourseCode)\par}
 \vspace{0.3cm}
@@ -97,9 +96,7 @@
 \end{tabular}
 \vspace{1.6cm}
 
-{\large Under the guidance of\par}
-\vspace{0.2cm}
-{\large\bfseries \GuideName\par}
+
 \vfill
 {\large \SubmitDate\par}
 \end{titlepage}
@@ -165,7 +162,7 @@ The worker pool asks the RangeTracker for the next range at the current size $S$
 
 \section{Layers}
 \begin{itemize}
-\item \textbf{Interface layer.} Command-line programs in \code{cmd/} parse flags and build a \code{downloader.Config}. The same engine runs every experiment, so the tool we measure is the tool a user runs.
+\item \textbf{Interface layer.} Command-line programs in \code{cmd/} parse flags and build a \code{downloader.Config}. The user-facing downloader and every experiment program use the same engine packages; the experiment programs also expose the policy and engine options.
 \item \textbf{Engine layer.} The Downloader and its five parts. Every part has one job and is tested on its own.
 \item \textbf{Control layer.} Controllers hold the current $N$ and $S$ targets, and policies decide changes. A policy only returns an action; it never touches the controllers directly.
 \item \textbf{Environment layer.} The HTTP server and the network. In experiments these are a local test server and Linux network emulation, so every run sees the same conditions.
@@ -181,7 +178,7 @@ The worker pool asks the RangeTracker for the next range at the current size $S$
 Downloader and test server & Go 1.27 (\code{net/http}, HTTP/1.1) & Concurrency with goroutines\\
 Linear algebra (LinUCB learner) & Gonum v0.17 & Only external Go dependency\\
 Network conditions & Linux \code{tc netem} & Delay and packet loss on the link\\
-Recorded cellular traces & Mahimahi & Replays real mobile traces\\
+Recorded cellular traces & Mahimahi~\cite{mahimahi} & Replays real mobile traces\\
 External baseline & aria2 1.37 & Existing download manager\\
 Training and analysis & Python 3, PyTorch 2.9, NumPy & DQN training, statistics\\
 \bottomrule
@@ -209,7 +206,7 @@ Metrics & Stores one record per request attempt\\
 \end{table}
 
 \section{Range Conventions}
-The RangeTracker stores half-open ranges $[s, e)$, so a range's length is simply $e - s$. HTTP uses inclusive ranges, so the downloader converts at one point only:
+The RangeTracker stores half-open ranges $[s, e)$, so a range's length is simply $e - s$. HTTP uses inclusive ranges~\cite{rfc9110}, so the downloader converts at one point only:
 \begin{equation}
 [s,\, e) \;\longmapsto\; \texttt{Range: bytes=}s\texttt{-}(e-1)
 \end{equation}
@@ -230,6 +227,7 @@ type Policy interface {
     Update(ctx Context, action Action, reward float64)
 }
 // Actions: none, +/- concurrency, +/- chunk size
+// (an action may carry a step count)
 \end{lstlisting}
 The policy runner holds a lock, so only one decision happens at a time, even when many requests finish together.
 
@@ -264,7 +262,7 @@ The policies compared are fixed $(N, S)$ settings, simple throughput rules that 
 In our runs both thresholds were 10\,\% ($\theta_{\text{up}} = \theta_{\text{down}} = 0.10$). The joint policy alternates between changing $N$ and changing $S$, and switches to the other dimension when one reaches its bound.
 
 \section{Experimental Method}
-Experiments use a local HTTP server with configurable rate limiting, and Linux \code{tc netem} adding an 80~ms round trip and 0.4\,\% packet loss. Every run uses a fresh server and output file. Table~\ref{tab:scenarios} lists the scenarios.
+Experiments use a local HTTP server with configurable rate limiting, and Linux \code{tc netem}~\cite{netem} adding an 80~ms round trip and 0.4\,\% packet loss. Every run uses a fresh server and output file. Table~\ref{tab:scenarios} lists the scenarios.
 
 \begin{table}[H]\centering
 \caption{Experiment scenarios}\label{tab:scenarios}
@@ -274,7 +272,7 @@ Experiments use a local HTTP server with configurable rate limiting, and Linux \
 \midrule
 Paced (D2) & 640~KiB/s per response, 160~KiB/s from 2~s, 2{,}500~KiB/s from 4~s & Timing of request starts against rate changes\\
 Pacing sweep & Six variants of the schedule above & Whether the result depends on one schedule\\
-Stock NGINX & \code{limit\_rate} per connection & A real web server instead of our test server\\
+Stock NGINX & \code{limit\_rate} per response & A real web server instead of our test server\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -295,7 +293,7 @@ aria2 settings & \code{-x16 -s16 -k1M}, the same in every run\\
 \end{tabularx}
 \end{table}
 
-\textbf{Baseline.} We compare against aria2 because it is the standard open-source segmented downloader on Linux; IDM runs only on Windows.
+\textbf{Baseline.} We compare against aria2~\cite{aria2} because it is the standard open-source segmented downloader on Linux; IDM runs only on Windows. Its flags were chosen once, from a discovery sweep of its split settings, and kept the same in every run.
 
 Each pair runs our downloader and aria2 back to back in random order. With $t_i$ the completion time in pair $i$, the result is the geometric mean of the per-pair time ratios,
 \begin{equation}
@@ -321,7 +319,7 @@ This makes the server a controlled stand-in for per-connection rate limiting, su
 \midrule
 S0 D2 reference & 640~KiB/s; 160 from 2~s; 2{,}500 from 4~s & Reference: short slow phase\\
 S1 No dip & 640~KiB/s; 2{,}500 from 2~s & No extra-slow dip\\
-S2 Long dip & 640~KiB/s; 160 from 2~s; 2{,}500 from 8~s & Slow phase twice as long\\
+S2 Long dip & 640~KiB/s; 160 from 2~s; 2{,}500 from 8~s & Dip lasts 6~s instead of 2~s\\
 S3 Partial recovery & 640~KiB/s; 160 from 2~s; 1{,}280 from 4~s & Recovery to half speed\\
 S4 Constant fast & 2{,}500~KiB/s throughout & No rate change\\
 S5 Constant slow & 640~KiB/s throughout & No rate change\\
@@ -387,7 +385,7 @@ Each run writes one JSON record (Table~\ref{tab:record}). The analysis scripts r
 The modules depend on each other in this order:
 \begin{enumerate}
 \item \textbf{RangeTracker} is the base, because every other part depends on its rules. It keeps pending ranges sorted and merges neighbours, and a single lock makes it safe for many workers at once.
-\item \textbf{Fetcher} sends one Range request and rejects any reply that is not a \code{206} with the expected \code{Content-Range} and length. It uses a dedicated HTTP/1.1 transport, so each connection carries exactly one request at a time.
+\item \textbf{Fetcher} sends one Range request and rejects any reply that is not a \code{206} of the expected length, or whose \code{Content-Range}, when present, does not match. It uses a dedicated HTTP/1.1 transport, so each connection carries exactly one request at a time.
 \item \textbf{Assembler} writes each range with \code{WriteAt} at its own offset, so ranges can finish in any order. The file is sized to its final length up front.
 \item \textbf{Worker pool and Downloader} connect the parts. A manager goroutine starts and retires workers to match the target $N$, and every attempt is recorded exactly once, whether it succeeds or fails.
 \item \textbf{Controllers and policies} sit on top of the fixed engine and never touch it directly. Each controller clamps its target to configured bounds.
@@ -408,8 +406,8 @@ The program \code{cmd/aria2-benchmark} runs our downloader and aria2 on the same
 \section{Features}
 \begin{itemize}
 \item Downloads a single file from one server over HTTP/1.1 Range requests, using $N$ parallel connections (resume, authentication and HTTP/2 are out of scope).
-\item Lets a policy change $N$ and $S$ during the download without cancelling any running request.
-\item Verifies every reply (status \code{206}, \code{Content-Range}, length) and retries failed ranges with the same bounds.
+\item The engine lets a policy change $N$ and $S$ during the download without cancelling any running request (used through the experiment programs).
+\item Checks every reply's status (\code{206}), length and, when present, \code{Content-Range}, and retries failed ranges with the same bounds.
 \item Writes ranges straight to their offsets, so the finished file is byte-identical to the source.
 \item Records one measurement per request attempt for later analysis.
 \end{itemize}
@@ -502,7 +500,7 @@ Experiment platform & Server pacing, netem commands, run-record format & \code{i
 \midrule
 \code{go build ./...} & Builds cleanly\\
 \code{go vet ./...} & No issues\\
-\code{gofmt -l .} & No unformatted files\\
+\code{gofmt -l internal cmd} & No unformatted files\\
 \code{go test ./...} & All 549 test functions pass\\
 \code{go test -race ./...} & Pass; no data races found\\
 \code{go test -count=5 ./...} & Pass on 5 repeated runs\\
@@ -520,7 +518,7 @@ We first ran all 40 combinations of $N$ and $S$ on the paced server (Figure~\ref
 \fig{grid.png}{0.95}{Completion time in seconds for all 40 $(N, S)$ settings on the paced server.}
 
 \section{Why It Is Faster}
-The server sends slowly for the first 4 seconds, then speeds up, and each request keeps the rate it started with. aria2 starts all its pieces in the first second, so they stay slow. Our smaller ranges keep starting new requests after the speed-up (Figure~\ref{fig:progress.png}).
+The server sends slowly for the first 4 seconds, then speeds up, and each request keeps the rate it started with. aria2 starts all its pieces within the first 2~seconds, so they stay slow. Our smaller ranges keep starting new requests after the speed-up (Figure~\ref{fig:progress.png}).
 \fig{progress.png}{0.95}{Data received over time in one paired run, reconstructed from per-request server logs.}
 
 \section{Other Pacing Schedules}
@@ -533,7 +531,7 @@ A screening run over six pacing schedules (5 pairs each, 60 runs, all content-ve
 This is not evidence that our downloader is better than aria2 in general. The gap comes from one specific interaction:
 \begin{itemize}
 \item The test server fixes each response's rate when the request starts. A request that starts during the slow phase stays slow until it finishes.
-\item With 16 connections, aria2 splits a 512~MiB file into pieces of about 32~MiB and starts them all in the first second. In a separate side check, outside the benchmark, raising its \code{-{}-split} setting did not give smaller first pieces.
+\item With 16 connections, aria2 splits a 512~MiB file into pieces of about 32~MiB and starts them all within the first 2~seconds. In a separate side check, outside the benchmark, raising its \code{-{}-split} setting did not give smaller first pieces.
 \item With 4~MiB ranges, 112 of our 128 requests started after the server sped up.
 \end{itemize}
 Two controls support this reading. When our downloader used aria2-like piece sizes, the gap shrank from $R = 0.376$ to $R = 0.862$ [0.834, 0.890]. At a constant slow rate the two were level ($R = 0.998$). Not all of the gap is explained: ours stayed 14\,\% faster with aria2-like pieces, and was also faster at a constant fast rate with no rate change (15.4~s against 27.1~s). We did not isolate that residual. The fair conclusion is narrower: \emph{on servers that rate-limit per response, smaller ranges that start more requests over time finish sooner than aria2's large initial pieces.} These results come from one machine with emulated network conditions; Review 3 adds a live-internet study and recorded cellular traces. The next stage tests whether adaptive control adds anything beyond a well-chosen fixed setting.

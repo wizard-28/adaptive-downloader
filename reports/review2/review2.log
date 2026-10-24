@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.13)  24 OCT 2026 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.13)  24 OCT 2026 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,15 +706,15 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.24796pt on input line 73.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 75.
+(Font)              scaled to size 11.03998pt on input line 76.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.03998pt on input line 79.
+(Font)              scaled to size 11.03998pt on input line 78.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 19.08076pt on input line 82.
+(Font)              scaled to size 19.08076pt on input line 81.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 19.08076pt on input line 82.
+(Font)              scaled to size 19.08076pt on input line 81.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 89.
+ 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -724,37 +724,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 89.
+ 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 89.
+ 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 89.
+ 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 8
-9.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.07397pt on input line 91.
+(Font)              scaled to size 10.07397pt on input line 90.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
@@ -763,7 +763,7 @@ st/fonts/enc/dvips/base/8r.enc}] (./review2.toc)
 \openout4 = `review2.toc'.
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 109.
+(Font)              scaled to size 9.19998pt on input line 106.
  [1
 
 ] [2] (./review2.lof
@@ -796,15 +796,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.121 \chapter
+l.118 \chapter
               *{Terms and Abbreviations} [1
 
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 126.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 126.
  [2
 
 ] [3]
@@ -812,10 +812,10 @@ Chapter 1.
 <figs/architecture.png, id=294, 1349.04pt x 1106.1325pt>
 File: figs/architecture.png Graphic file (type png)
 <use figs/architecture.png>
-Package pdftex.def Info: figs/architecture.png  used on input line 162.
+Package pdftex.def Info: figs/architecture.png  used on input line 159.
 (pdftex.def)             Requested size: 432.48051pt x 354.59413pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-68.
+65.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [4
@@ -826,41 +826,41 @@ Chapter 2.
 
 ]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 228.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 225.
  [7]
 Chapter 3.
-<figs/flowchart.png, id=329, 1349.04pt x 758.835pt>
+<figs/flowchart.png, id=336, 1349.04pt x 758.835pt>
 File: figs/flowchart.png Graphic file (type png)
 <use figs/flowchart.png>
-Package pdftex.def Info: figs/flowchart.png  used on input line 244.
+Package pdftex.def Info: figs/flowchart.png  used on input line 242.
 (pdftex.def)             Requested size: 432.48051pt x 243.26057pt.
 [8
 
  <./figs/flowchart.png (PNG copy)>] [9]
-<figs/schedule.png, id=352, 520.344pt x 209.583pt>
+<figs/schedule.png, id=363, 520.344pt x 209.583pt>
 File: figs/schedule.png Graphic file (type png)
 <use figs/schedule.png>
-Package pdftex.def Info: figs/schedule.png  used on input line 314.
+Package pdftex.def Info: figs/schedule.png  used on input line 312.
 (pdftex.def)             Requested size: 409.71692pt x 165.03148pt.
  [10 <./figs/schedule.png>]
 Chapter 4.
-<figs/classdiagram.png, id=363, 1349.04pt x 1007.765pt>
+<figs/classdiagram.png, id=374, 1349.04pt x 1007.765pt>
 File: figs/classdiagram.png Graphic file (type png)
 <use figs/classdiagram.png>
-Package pdftex.def Info: figs/classdiagram.png  used on input line 339.
+Package pdftex.def Info: figs/classdiagram.png  used on input line 337.
 (pdftex.def)             Requested size: 432.48051pt x 323.06035pt.
-<figs/state.png, id=364, 1349.04pt x 411.5375pt>
+<figs/state.png, id=375, 1349.04pt x 411.5375pt>
 File: figs/state.png Graphic file (type png)
 <use figs/state.png>
-Package pdftex.def Info: figs/state.png  used on input line 343.
+Package pdftex.def Info: figs/state.png  used on input line 341.
 (pdftex.def)             Requested size: 432.48051pt x 131.92703pt.
 [11
 
  <./figs/classdiagram.png (PNG copy)>]
-<figs/dfd.png, id=370, 1349.04pt x 778.91pt>
+<figs/dfd.png, id=381, 1349.04pt x 778.91pt>
 File: figs/dfd.png Graphic file (type png)
 <use figs/dfd.png>
-Package pdftex.def Info: figs/dfd.png  used on input line 347.
+Package pdftex.def Info: figs/dfd.png  used on input line 345.
 (pdftex.def)             Requested size: 432.48051pt x 249.69604pt.
  [12 <./figs/state.png (PNG copy)> <./figs/dfd.png (PNG copy)>] [13]
 Chapter 5.
@@ -874,23 +874,23 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-<figs/live.png, id=395, 1349.04pt x 616.3025pt>
+<figs/live.png, id=406, 1349.04pt x 616.3025pt>
 File: figs/live.png Graphic file (type png)
 <use figs/live.png>
-Package pdftex.def Info: figs/live.png  used on input line 419.
+Package pdftex.def Info: figs/live.png  used on input line 417.
 (pdftex.def)             Requested size: 432.48051pt x 197.56877pt.
  [15
 
 ]
-<figs/shot_live.png, id=405, 1696.3375pt x 562.1pt>
+<figs/shot_live.png, id=417, 1696.3375pt x 562.1pt>
 File: figs/shot_live.png Graphic file (type png)
 <use figs/shot_live.png>
-Package pdftex.def Info: figs/shot_live.png  used on input line 421.
+Package pdftex.def Info: figs/shot_live.png  used on input line 419.
 (pdftex.def)             Requested size: 432.48051pt x 143.30357pt.
-<figs/shot_tests.png, id=406, 1696.3375pt x 1110.1475pt>
+<figs/shot_tests.png, id=418, 1696.3375pt x 1110.1475pt>
 File: figs/shot_tests.png Graphic file (type png)
 <use figs/shot_tests.png>
-Package pdftex.def Info: figs/shot_tests.png  used on input line 422.
+Package pdftex.def Info: figs/shot_tests.png  used on input line 420.
 (pdftex.def)             Requested size: 432.48051pt x 283.02458pt.
  [16 <./figs/live.png (PNG copy)> <./figs/shot_live.png (PNG copy)>] [17 <./fig
 s/shot_tests.png (PNG copy)>]
@@ -903,23 +903,23 @@ Chapter 8.
 
 ] [20]
 Chapter 9.
-<figs/grid.png, id=437, 1349.04pt x 722.7pt>
+<figs/grid.png, id=448, 1349.04pt x 722.7pt>
 File: figs/grid.png Graphic file (type png)
 <use figs/grid.png>
-Package pdftex.def Info: figs/grid.png  used on input line 520.
+Package pdftex.def Info: figs/grid.png  used on input line 518.
 (pdftex.def)             Requested size: 432.48051pt x 231.67674pt.
-<figs/progress.png, id=439, 1349.04pt x 722.7pt>
+<figs/progress.png, id=450, 1349.04pt x 722.7pt>
 File: figs/progress.png Graphic file (type png)
 <use figs/progress.png>
-Package pdftex.def Info: figs/progress.png  used on input line 524.
+Package pdftex.def Info: figs/progress.png  used on input line 522.
 (pdftex.def)             Requested size: 432.48051pt x 231.67674pt.
 [21
 
  <./figs/grid.png (PNG copy)>]
-<figs/pacing.png, id=446, 1349.04pt x 722.7pt>
+<figs/pacing.png, id=457, 1349.04pt x 722.7pt>
 File: figs/pacing.png Graphic file (type png)
 <use figs/pacing.png>
-Package pdftex.def Info: figs/pacing.png  used on input line 530.
+Package pdftex.def Info: figs/pacing.png  used on input line 528.
 (pdftex.def)             Requested size: 432.48051pt x 231.67674pt.
  [22 <./figs/progress.png (PNG copy)> <./figs/pacing.png (PNG copy)>] [23]
 Chapter 10.
@@ -938,11 +938,11 @@ Package rerunfilecheck Info: File `review2.out' has not changed.
 (rerunfilecheck)             Checksum: 3A3A136581852294541F3A1CEDEEB416;5432.
  ) 
 Here is how much of TeX's memory you used:
- 17825 strings out of 476106
- 277314 string characters out of 5793932
+ 17829 strings out of 476106
+ 277352 string characters out of 5793932
  1941975 words of memory out of 5000000
  39088 multiletter control sequences out of 15000+600000
- 642492 words of font info for 334 fonts, out of 8000000 for 9000
+ 642619 words of font info for 336 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  75i,12n,79p,1004b,1251s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -957,10 +957,10 @@ share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
 utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on review2.pdf (30 pages, 1269200 bytes).
+Output written on review2.pdf (30 pages, 1269875 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 486 compressed objects within 5 object streams
- 126 named destinations out of 1000 (max. 500000)
+ 573 PDF objects out of 1000 (max. 8388607)
+ 492 compressed objects within 5 object streams
+ 127 named destinations out of 1000 (max. 500000)
  94045 words of extra memory for PDF output out of 106986 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.13)  24 OCT 2026 15:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.13)  24 OCT 2026 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,15 +706,15 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.24796pt on input line 11.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 13.
+(Font)              scaled to size 11.03998pt on input line 14.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.03998pt on input line 17.
+(Font)              scaled to size 11.03998pt on input line 16.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 19.08076pt on input line 20.
+(Font)              scaled to size 19.08076pt on input line 19.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 19.08076pt on input line 20.
+(Font)              scaled to size 19.08076pt on input line 19.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 27.
+ 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -724,37 +724,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 27.
+ 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 27.
+ 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 27.
+ 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
-7.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 26.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 26.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 26.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.07397pt on input line 29.
+(Font)              scaled to size 10.07397pt on input line 28.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
@@ -763,7 +763,7 @@ st/fonts/enc/dvips/base/8r.enc}] (./review3.toc)
 \openout4 = `review3.toc'.
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 47.
+(Font)              scaled to size 9.19998pt on input line 44.
  [1
 
 ] (./review3.lof
@@ -796,15 +796,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.59 \chapter
+l.56 \chapter
              *{Terms and Abbreviations} [1
 
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
  [2
 
 ] [3] [4]
@@ -817,10 +817,10 @@ Chapter 2.
 File: ../review2/figs/architecture.png Graphic file (type png)
 <use ../review2/figs/architecture.png>
 Package pdftex.def Info: ../review2/figs/architecture.png  used on input line 1
-28.
+25.
 (pdftex.def)             Requested size: 432.48051pt x 354.59413pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-32.
+29.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
@@ -828,12 +828,12 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 File: ../review2/figs/classdiagram.png Graphic file (type png)
 <use ../review2/figs/classdiagram.png>
 Package pdftex.def Info: ../review2/figs/classdiagram.png  used on input line 1
-37.
+34.
 (pdftex.def)             Requested size: 432.48051pt x 323.06035pt.
 <../review2/figs/dfd.png, id=284, 1349.04pt x 778.91pt>
 File: ../review2/figs/dfd.png Graphic file (type png)
 <use ../review2/figs/dfd.png>
-Package pdftex.def Info: ../review2/figs/dfd.png  used on input line 138.
+Package pdftex.def Info: ../review2/figs/dfd.png  used on input line 135.
 (pdftex.def)             Requested size: 409.71692pt x 236.56291pt.
  [6
 
@@ -843,7 +843,7 @@ Chapter 3.
 <../review2/figs/flowchart.png, id=296, 1349.04pt x 758.835pt>
 File: ../review2/figs/flowchart.png Graphic file (type png)
 <use ../review2/figs/flowchart.png>
-Package pdftex.def Info: ../review2/figs/flowchart.png  used on input line 164.
+Package pdftex.def Info: ../review2/figs/flowchart.png  used on input line 161.
 
 (pdftex.def)             Requested size: 386.96027pt x 217.65968pt.
 [8
@@ -853,19 +853,19 @@ Chapter 4.
 <../review2/figs/shot_live.png, id=320, 1696.3375pt x 562.1pt>
 File: ../review2/figs/shot_live.png Graphic file (type png)
 <use ../review2/figs/shot_live.png>
-Package pdftex.def Info: ../review2/figs/shot_live.png  used on input line 188.
+Package pdftex.def Info: ../review2/figs/shot_live.png  used on input line 185.
 
 (pdftex.def)             Requested size: 432.48051pt x 143.30357pt.
 <../review2/figs/shot_bench.png, id=321, 1696.3375pt x 730.73pt>
 File: ../review2/figs/shot_bench.png Graphic file (type png)
 <use ../review2/figs/shot_bench.png>
-Package pdftex.def Info: ../review2/figs/shot_bench.png  used on input line 189
+Package pdftex.def Info: ../review2/figs/shot_bench.png  used on input line 186
 .
 (pdftex.def)             Requested size: 432.48051pt x 186.29465pt.
 <../review2/figs/shot_tests.png, id=322, 1696.3375pt x 1110.1475pt>
 File: ../review2/figs/shot_tests.png Graphic file (type png)
 <use ../review2/figs/shot_tests.png>
-Package pdftex.def Info: ../review2/figs/shot_tests.png  used on input line 190
+Package pdftex.def Info: ../review2/figs/shot_tests.png  used on input line 187
 .
 (pdftex.def)             Requested size: 432.48051pt x 283.02458pt.
 [11
@@ -876,7 +876,7 @@ Chapter 5.
 <figs/waste.png, id=338, 520.344pt x 202.356pt>
 File: figs/waste.png Graphic file (type png)
 <use figs/waste.png>
-Package pdftex.def Info: figs/waste.png  used on input line 236.
+Package pdftex.def Info: figs/waste.png  used on input line 233.
 (pdftex.def)             Requested size: 409.71692pt x 159.34074pt.
 [13
 
@@ -888,19 +888,19 @@ Chapter 6.
 <../review2/figs/schedule.png, id=361, 520.344pt x 209.583pt>
 File: ../review2/figs/schedule.png Graphic file (type png)
 <use ../review2/figs/schedule.png>
-Package pdftex.def Info: ../review2/figs/schedule.png  used on input line 297.
+Package pdftex.def Info: ../review2/figs/schedule.png  used on input line 294.
 (pdftex.def)             Requested size: 386.96027pt x 155.86609pt.
  [16 <../review2/figs/schedule.png>]
 <figs/ablation.png, id=375, 520.344pt x 245.718pt>
 File: figs/ablation.png Graphic file (type png)
 <use figs/ablation.png>
-Package pdftex.def Info: figs/ablation.png  used on input line 331.
+Package pdftex.def Info: figs/ablation.png  used on input line 328.
 (pdftex.def)             Requested size: 432.48051pt x 204.23833pt.
  [17 <./figs/ablation.png>]
 <figs/adaptive.png, id=383, 520.344pt x 209.583pt>
 File: figs/adaptive.png Graphic file (type png)
 <use figs/adaptive.png>
-Package pdftex.def Info: figs/adaptive.png  used on input line 342.
+Package pdftex.def Info: figs/adaptive.png  used on input line 339.
 (pdftex.def)             Requested size: 432.48051pt x 174.20328pt.
 
 (./adapt_results.tex) [18 <./figs/adaptive.png>] (./tuner_results.tex
@@ -913,7 +913,7 @@ Package pdftex.def Info: figs/tuner.png  used on input line 3.
 <figs/live.png, id=401, 520.344pt x 216.81pt>
 File: figs/live.png Graphic file (type png)
 <use figs/live.png>
-Package pdftex.def Info: figs/live.png  used on input line 374.
+Package pdftex.def Info: figs/live.png  used on input line 371.
 (pdftex.def)             Requested size: 432.48051pt x 180.21028pt.
  [20] (./rl_results.tex [21 <./figs/live.png>]) [22] [23]
 Chapter 7.
@@ -949,12 +949,12 @@ Package rerunfilecheck Info: File `review3.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  17508 strings out of 476106
- 275517 string characters out of 5793932
+ 275523 string characters out of 5793932
  1952975 words of memory out of 5000000
  38738 multiletter control sequences out of 15000+600000
- 640725 words of font info for 353 fonts, out of 8000000 for 9000
+ 640817 words of font info for 353 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 80i,13n,82p,1107b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,13n,82p,1132b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
@@ -966,7 +966,7 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on review3.pdf (35 pages, 1385815 bytes).
+Output written on review3.pdf (35 pages, 1387500 bytes).
 PDF statistics:
  580 PDF objects out of 1000 (max. 8388607)
  485 compressed objects within 5 object streams

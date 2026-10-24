@@ -17,7 +17,7 @@
 \contentsline {table}{\numberline {6.7}{\ignorespaces Learned-policy evaluations (ratio $>1$: slower than the comparison)}}{21}{table.caption.29}%
 \contentsline {table}{\numberline {6.8}{\ignorespaces Frozen DQN agent on the capped and uncapped server (512~MiB; ratios are agent / other)}}{22}{table.caption.30}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Ours (best fixed setting, fixed engine) against aria2}}{24}{table.caption.31}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces Ours against aria2}}{24}{table.caption.31}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {8.1}{\ignorespaces Review 1 objectives and outcomes}}{25}{table.caption.32}%
 \contentsline {table}{\numberline {8.2}{\ignorespaces Deviations and their reasons}}{26}{table.caption.33}%
