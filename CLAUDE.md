@@ -3,6 +3,19 @@
 Read `AGENTS.md` first; it holds the repository's working rules. This file
 adds instructions specific to Claude Code sessions.
 
+## Maintain the work queue (`queue.md`)
+
+`queue.md` at the repository root is the running work queue: open tasks in
+priority order, each marked `[x]` done, `[~]` in progress or `[ ]` not
+started, with commit hashes for finished steps.
+
+- Read it at the start of a session and after a context compaction, before
+  choosing what to do next.
+- Update it whenever a task starts, finishes, is blocked, or is added or
+  dropped (with the reason), including tasks the user adds mid-conversation.
+- Keep it short. Details belong in `docs/PROJECT_CONTEXT.md`; the queue
+  points there.
+
 ## Keep the main context clean: delegate to subagents
 
 Hand self-contained side investigations to a subagent instead of doing them
