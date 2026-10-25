@@ -153,9 +153,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     plus `reference_arms` switch), tests pass (5b360b2)
   - [x] Protocol, manifest (60 runs) and analysis frozen
     (`testdata/live_mirror_check`, 5b360b2). No-harm check, descriptive.
-  - [~] Running since 21:51 UTC (riken is slow; about 1-1.5 h): `live-pilot -manifest
+  - [x] Slot M1 aborted by a client-side outage from 22:10 UTC (20/60 valid);
+    amendment A2 (77e19f9). M1's valid runs show v2 ending near N = 4 on
+    uncapped mirrors and slower than fixed 8x1 MiB in 4/4 pairs (to test).
+  - [~] Slot M2 started about 23:10 UTC after the link gate passed. Then
+    `analyze.py M2` and paper §8a. Command: `live-pilot -manifest
     testdata/live_mirror_check/manifest.json -slot M1 -out
-    testdata/live_mirror_check/raw/M1.jsonl` (about 45 min)
+    testdata/live_mirror_check/raw/M2.jsonl -slot M2` (about 1 h)
   - Uses the internet link, not the loopback.
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
