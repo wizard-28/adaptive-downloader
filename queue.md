@@ -98,7 +98,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     against 150k ε decay, so final ε was near 0.75. Amendment A1: kept as
     train_A0/ and not evaluated live. (Protocol error: the budget was set in
     episodes, carried over from the 1 MiB study.)
-  - [~] Retraining with --episodes 11000 (about 450k steps per seed)
+  - [~] Retraining with --episodes 11000 (about 450k steps per seed, about
+    26 min per seed). The first attempt was stopped by Claude Code for low
+    system memory after seeds 0–1 (kept in train_A1_partial_killed/).
+    Restarted with all 5 seeds and 2 workers, after the user freed memory.
+    About 65–80 min.
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
 - [x] Engine-fix audit of the network-side studies (Haiku subagent): the
