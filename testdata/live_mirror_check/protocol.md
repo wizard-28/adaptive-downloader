@@ -78,7 +78,7 @@ The protocol did not say how many attempts the range probe allows. It is
 now fixed at up to 3 attempts of 20 s each, with any `206` passing. No run
 data existed when this was written.
 
-Probe results at 21:5x UTC:
+Probe results at about 21:50 UTC:
 - `kcdn`: `206`;
 - `riken`: `206`;
 - `kedge`: timed out on the first attempt, then returned `206` in 9.8 s
