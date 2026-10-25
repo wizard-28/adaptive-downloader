@@ -7374,9 +7374,9 @@ time-varying per-response pacing schedule.
 
 ---
 
-### 22.109 DQN retrained for the capped server, with simulator parity and held-out generalization (2026-10-25, IN PROGRESS)
+### 22.109 DQN retrained for the capped server, with simulator parity and held-out generalization (2026-10-25, RETRAIN COMPLETE; follow-ups in progress)
 
-**Status: `PROTOCOL_FROZEN (9b6b5f3); A2_PARITY_RUNNING`.** Protocol
+**Status: `COMPLETE` for the retrain (A2 1ef2c77, B 9b4e45f, C f510dd5, D a68d511).** Protocol
 `testdata/rl_cap_train/protocol.md` (stages A simulator parity, B training,
 C live evaluation, D held-out generalization; wording rules fixed in advance).
 
@@ -7411,13 +7411,35 @@ C live evaluation, D held-out generalization; wording rules fixed in advance).
   `testdata/rl_capped/tools/rl_bench.go`.
 - **Do not run training while live runs are in progress** (CPU load distorts
   live timing).
-- **Immediate next step:** finish A2 -> analyze A2 -> (pass) train ->
-  Go parity test -> Stage C (120 runs) -> Stage D (80 runs) -> fold into
-  reports/paper. Other Thursday gaps (from reading the submitted reports):
-  paper_draft.md lacks the ablation/tuner/rl_capped results and claims_check
-  does not cover them; IEEE template conversion not started though Review 3
-  says it is being formatted; axel/wget2/lftp not installed; reports/thursday/
-  qa.md lacks the 22.107-22.109 results.
+- **Results (rl_cap_train):**
+  - A2 blind live parity PASS: all 4 fixed-N predictions within 1.4 %.
+  - B: seed 0 selected (validation 1.076). Simulator gates: G1 pass, G2
+    FAIL (HEALTHY 1.080), G3 pass. Go/Python parity passes; model sha
+    be70c7ab.
+  - C (120/120 valid), primary: CAP8 retrained agent vs 16x1 MiB = 0.907
+    [0.893, 0.921], FASTER (simulator 0.912). Against 16x32 MiB 1.298 and
+    aria2 1.310, slower; against v6 0.949, not distinguishable. HEALTHY 1.108
+    slower. Start at N = 1 slower in both scenarios. The agent settles at
+    N ~ 7 after the cap (oracle 3-4).
+  - D (65/65 valid; protocol said 80, amendment A1): faster than the best
+    fixed 1 MiB in 0 of 3 held-out scenarios. G_C16 1.177 slower; G_RTT
+    1.016 and G_D2 1.015 (vs 4x1 MiB) not distinguishable. Frozen wording:
+    beat the best fixed 1 MiB setting on the server it was trained for, but
+    did not generalize.
+- **Follow-ups (see queue.md):**
+  - baselines_ext: axel, lftp, aria2, ours. wget2 removed by amendment A2
+    (upstream issue #195: one thread per file).
+  - netem_sweep: delay x loss grid, ours vs aria2.
+  - rl_joint: joint N+S DQN on `sim_env_joint`, plus a live-rate control
+    server (`Server.SetLiveRate`, opt-in, default off). Its simulator
+    headroom comes from the arrival-time rate rule, and the protocol makes
+    the reports say so.
+- **Process files:** `queue.md` (work queue) and `CLAUDE.md` (delegate side
+  investigations to subagents; maintain the queue).
+- **Immediate next step:** see queue.md. The live chain is E -> S -> joint
+  A2 -> joint training; then write the joint simulator-prediction amendment
+  before joint C and L. Fold everything into paper_draft.md and extend
+  claims_check.
 
 ### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (COMPLETE; reports submitted 2026-10-24)
 
