@@ -92,7 +92,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Protocol frozen (`testdata/rl_joint/protocol.md`): A2 blind parity (8
     runs), B training, C 150 runs (10 blocks), L 40 runs on the live-rate
     server (5 blocks)
-  - [ ] A2, then training: chained after the sweep (no live overlap)
+  - [x] A2 blind parity PASS, 8/8 valid. Errors +1.5 %, +4.5 %, +3.4 %,
+    **+7.0 %** (HEALTHY 16×17 MiB; the limit is 8 %). The simulator is
+    consistently optimistic, more so for long ranges, so read the
+    predictions for a large-range agent as optimistic.
+  - [~] Training (started ~11:35 UTC, about 35 min)
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
 - [x] Engine-fix audit of the network-side studies (Haiku subagent): the

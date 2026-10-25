@@ -1,0 +1,6 @@
+{'scenario': 'CAP8', 'arm': 'fixed_16_9M', 'predicted_s': 81.69, 'live_gm_s': 82.95562341049752, 'n': 2, 'rel_err': 0.015493002944026557, 'within_8pct': True}
+{'scenario': 'CAP0', 'arm': 'fixed_8_17M', 'predicted_s': 80.04, 'live_gm_s': 83.66186359490324, 'n': 2, 'rel_err': 0.0452506696014896, 'within_8pct': True}
+{'scenario': 'D2', 'arm': 'fixed_16_5M', 'predicted_s': 20.3, 'live_gm_s': 20.986830414360625, 'n': 2, 'rel_err': 0.03383401055963664, 'within_8pct': True}
+{'scenario': 'HEALTHY', 'arm': 'fixed_16_17M', 'predicted_s': 34.13, 'live_gm_s': 36.53014105027414, 'n': 2, 'rel_err': 0.07032349986153341, 'within_8pct': True}
+PASS
+invalid: 0

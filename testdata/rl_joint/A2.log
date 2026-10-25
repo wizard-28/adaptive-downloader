@@ -1,0 +1,9 @@
+[1/8] CAP8_b00_fixed_16_9M 83.0s valid=True
+[2/8] CAP8_b01_fixed_16_9M 83.0s valid=True
+[3/8] CAP0_b00_fixed_8_17M 83.7s valid=True
+[4/8] CAP0_b01_fixed_8_17M 83.7s valid=True
+[5/8] D2_b00_fixed_16_5M 21.0s valid=True
+[6/8] D2_b01_fixed_16_5M 21.0s valid=True
+[7/8] HEALTHY_b00_fixed_16_17M 36.6s valid=True
+[8/8] HEALTHY_b01_fixed_16_17M 36.4s valid=True
+qdisc noqueue 0: root refcnt 2 
