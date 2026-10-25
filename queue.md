@@ -156,7 +156,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Slot M1 aborted by a client-side outage from 22:10 UTC (20/60 valid);
     amendment A2 (77e19f9). M1's valid runs show v2 ending near N = 4 on
     uncapped mirrors and slower than fixed 8x1 MiB in 4/4 pairs (to test).
-  - [~] Slot M2 started about 23:10 UTC after the link gate passed. Then
+  - [~] Slot M2 started at 23:05 UTC after the link gate passed. Then
     `analyze.py M2` and paper §8a. Command: `live-pilot -manifest
     testdata/live_mirror_check/manifest.json -slot M1 -out
     testdata/live_mirror_check/raw/M2.jsonl -slot M2` (about 1 h)
