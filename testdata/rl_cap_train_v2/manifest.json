@@ -63,6 +63,44 @@
     "120"
    ],
    "uses_cap": false
+  },
+  "A_CAP0_80": {
+   "extra": [
+    "-cap-at",
+    "0",
+    "-netem-latency-ms",
+    "80"
+   ],
+   "uses_cap": true
+  },
+  "A_HEALTHY_80": {
+   "extra": [
+    "-netem-latency-ms",
+    "80"
+   ],
+   "uses_cap": false
+  },
+  "A_CAP8_120": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "120"
+   ],
+   "uses_cap": true
+  },
+  "A_D2custom_120": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "120",
+    "-schedule",
+    "custom",
+    "-schedule-spec",
+    "2:163840,4:2560000"
+   ],
+   "uses_cap": true
   }
  },
  "arms": {
@@ -81,6 +119,26 @@
    "ours",
    "-n",
    "4",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_8_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "8",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_12_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "12",
    "-chunk",
    "1048576",
    "-no-request-timeout",
@@ -125,7 +183,32 @@
      "fixed_4_1M"
     ]
    }
+  },
+  "A": {
+   "seed": 20261031,
+   "blocks": 2,
+   "scenario_order": [
+    "A_CAP0_80",
+    "A_HEALTHY_80",
+    "A_CAP8_120",
+    "A_D2custom_120"
+   ],
+   "scenario_arms": {
+    "A_CAP0_80": [
+     "fixed_8_1M"
+    ],
+    "A_HEALTHY_80": [
+     "fixed_8_1M"
+    ],
+    "A_CAP8_120": [
+     "fixed_12_1M"
+    ],
+    "A_D2custom_120": [
+     "fixed_16_1M"
+    ]
+   },
+   "predictions": "predictions_A.json"
   }
  },
- "note": "Stages A, C and D are added by amendment before they run (protocol.md)."
+ "note": "Stages C and D are added by amendment before they run (protocol.md)."
 }

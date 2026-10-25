@@ -558,7 +558,7 @@ func main() {
 	stop := make(chan struct{})
 	events := make(chan string, 8)
 	// per-response pacing schedule
-	phases := []schedPhase{{2 * time.Second, 160 << 10}, {4 * time.Second, 2500 << 10}}
+	phases := d2Phases
 	if *schedule == "custom" {
 		var err error
 		if phases, err = parseScheduleSpec(*scheduleSpec); err != nil {
@@ -820,6 +820,9 @@ func main() {
 		os.Exit(3)
 	}
 }
+
+// d2Phases is the built-in d2 schedule (640 KiB/s, then these phases).
+var d2Phases = []schedPhase{{2 * time.Second, 160 << 10}, {4 * time.Second, 2500 << 10}}
 
 type schedPhase struct {
 	at   time.Duration

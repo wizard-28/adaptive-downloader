@@ -1,0 +1,34 @@
+{
+ "calibration": [
+  "testdata/rl_cap_train_v2/calibration_20.json",
+  "testdata/rl_cap_train_v2/calibration_40.json",
+  "testdata/rl_cap_train_v2/calibration_80.json",
+  "testdata/rl_cap_train_v2/calibration_120.json"
+ ],
+ "predictions": {
+  "A_CAP0_8x1M_80": {
+   "n": 8,
+   "gm_s": 93.31717506114124,
+   "p5_s": 92.87809771383853,
+   "p95_s": 93.7198068707815
+  },
+  "A_HEALTHY_8x1M_80": {
+   "n": 8,
+   "gm_s": 43.99194548792293,
+   "p5_s": 43.59004234413845,
+   "p95_s": 44.27310240004957
+  },
+  "A_CAP8_12x1M_120": {
+   "n": 12,
+   "gm_s": 94.82417355120137,
+   "p5_s": 92.31010582435185,
+   "p95_s": 96.63167462353329
+  },
+  "A_D2custom_16x1M_120": {
+   "n": 16,
+   "gm_s": 103.00391811734994,
+   "p5_s": 96.80313825388342,
+   "p95_s": 106.22813006076017
+  }
+ }
+}
