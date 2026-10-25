@@ -1,0 +1,131 @@
+{
+ "study": "rl_cap_train_v2",
+ "harness": "testdata/rl_cap_train_v2/tools/v2_bench.go",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8_20": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "20"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY_20": {
+   "extra": [
+    "-netem-latency-ms",
+    "20"
+   ],
+   "uses_cap": false
+  },
+  "CAP8_80": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "80"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY_80": {
+   "extra": [
+    "-netem-latency-ms",
+    "80"
+   ],
+   "uses_cap": false
+  },
+  "CAP8_120": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "120"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY_120": {
+   "extra": [
+    "-netem-latency-ms",
+    "120"
+   ],
+   "uses_cap": false
+  }
+ },
+ "arms": {
+  "fixed_16_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_4_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "4",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ]
+ },
+ "stages": {
+  "K": {
+   "seed": 20261028,
+   "blocks": 2,
+   "scenario_order": [
+    "CAP8_20",
+    "HEALTHY_20",
+    "CAP8_80",
+    "HEALTHY_80",
+    "CAP8_120",
+    "HEALTHY_120"
+   ],
+   "scenario_arms": {
+    "CAP8_20": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ],
+    "HEALTHY_20": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ],
+    "CAP8_80": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ],
+    "HEALTHY_80": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ],
+    "CAP8_120": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ],
+    "HEALTHY_120": [
+     "fixed_16_1M",
+     "fixed_4_1M"
+    ]
+   }
+  }
+ },
+ "note": "Stages A, C and D are added by amendment before they run (protocol.md)."
+}

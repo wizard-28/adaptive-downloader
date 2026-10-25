@@ -136,3 +136,46 @@ def test_multi_phase_schedule():
     assert c.base_rate(0.5) == 640 * 1024
     assert c.base_rate(2.5) == 160 * 1024
     assert c.base_rate(5.0) == 2500 * 1024
+
+
+# ---- v2 options (testdata/rl_cap_train_v2/protocol.md) ----
+def test_multi_calibration_with_one_table_equals_single():
+    import copy
+    from rl.sim_env_cap import load_calibration
+    root = os.path.join(os.path.dirname(__file__), "..", "..")
+    one = load_calibration(os.path.join(root, "testdata/rl_cap_train/calibration.json"))
+    multi = {"rate_class_threshold_bytes_per_s": one["rate_class_threshold_bytes_per_s"], "tables": [copy.deepcopy(one)]}
+    for sc in ("CAP8", "HEALTHY"):
+        a = run_policy(live_condition(sc, one), 16, lambda s, e: 0, seed=3).completion_s()
+        b = run_policy(live_condition(sc, multi), 16, lambda s, e: 0, seed=3).completion_s()
+        assert abs(a - b) < 1e-9, (sc, a, b)
+
+
+def test_multi_calibration_interpolates_between_delays():
+    import random as _r
+    def table(owd, ce):
+        cls = {"excess": {"q": [0.0] * 101}, "client_extra": {"q": [ce] * 101}}
+        return {"measured_owd_s": owd, "rate_class_threshold_bytes_per_s": 2 * MIB, "hi": cls, "lo": cls}
+    multi = {"rate_class_threshold_bytes_per_s": 2 * MIB, "tables": [table(0.02, 0.05), table(0.12, 0.30)]}
+    # tails: 0.05 - 0.04 = 0.01 and 0.30 - 0.24 = 0.06; at owd 0.07, w = 0.5 -> tail 0.035
+    c = Condition(owd_s=0.07, calib=multi)
+    _, leg = c.sample(_r.Random(0), 3 * MIB)
+    assert abs(leg - (0.035 + 0.07)) < 1e-12
+    _, leg_hi = Condition(owd_s=0.2, calib=multi).sample(_r.Random(0), 3 * MIB)
+    assert abs(leg_hi - (0.06 + 0.2)) < 1e-12  # clamped to the 120 ms table's tail
+
+
+def test_v2_distribution_off_by_default_and_covers_new_ranges():
+    from rl.sim_env_cap import SimConfig, SimEnv
+    a = SimEnv(SimConfig(), seed=5).sample_condition()
+    b = SimEnv(SimConfig(v2_dist=False), seed=5).sample_condition()
+    assert a == b
+    e = SimEnv(SimConfig(v2_dist=True), seed=5)
+    conds = [e.sample_condition() for _ in range(2000)]
+    assert max(c.cap_c for c in conds) > 20 * MIB
+    assert max(c.owd_s for c in conds) > 0.11 and min(c.owd_s for c in conds) < 0.02
+    assert all(abs(c.client_start_s - 2 * c.owd_s) < 1e-12 for c in conds)
+    late = [c for c in conds if c.schedule and len(c.schedule) == 4]
+    early = [c for c in conds if c.schedule and len(c.schedule) == 3]
+    assert 0.2 < len(late) / len(conds) < 0.3 and 0.2 < len(early) / len(conds) < 0.3
+    assert all(all(x[0] < y[0] for x, y in zip(c.schedule, c.schedule[1:])) for c in late + early)
