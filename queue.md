@@ -103,8 +103,15 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     system memory after seeds 0–1 (kept in train_A1_partial_killed/).
     Restarted with all 5 seeds and 2 workers, after the user freed memory.
     About 65–80 min.
-  - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
-    and apply the wording rules
+  - [x] Retrained (747k–824k steps per seed). Simulator: CAP8 1.513 of the
+    best fixed, so the agent did NOT learn the large-range behaviour; J1 and
+    J2 fail, J3 passes. Go parity passes. Predictions frozen in amendment A2
+    (cc7c87f).
+  - [~] Stage C (150 runs) then L (40 runs), started ~13:45 UTC, about 2.7 h
+  - [ ] Analyse C and L and apply the wording rules. Likely outcome: "a joint
+    agent trained on a checked simulator did not beat the best fixed setting
+    live". The simulator headroom (scripted rule 0.352) was not found by the
+    learner.
 - [x] Engine-fix audit of the network-side studies (Haiku subagent): the
   Mahimahi five-trace gate ran with no request deadline (all arms the same),
   so it is unaffected. M3, the live pilot and the §22.91 queueing gate are
