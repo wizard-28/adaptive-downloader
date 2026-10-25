@@ -1,0 +1,19 @@
+condition GOOD: running 20 cells x 10 seeds...
+  optimum: {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.58162248995984, 'second_key': '16/4194304', 'second_completion': 53.009622489959845, 'margin': 0.008074005810568989, 'viable_cells': 20}  (margin 0.8%)
+condition BAD: running 20 cells x 10 seeds...
+  optimum: {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 59.48162248995983, 'second_key': '16/4194304', 'second_completion': 60.00962248995985, 'margin': 0.008798588927773361, 'viable_cells': 20}  (margin 0.9%)
+
+=== stationary optima ===
+  GOOD (N*,S*) = (16,16777216)  completion 52.6s  margin +0.8%
+  BAD  (N*,S*) = (16,16777216)  completion 59.5s  margin +0.9%
+=== S-retry exposure (failure rate per request) ===
+  GOOD S=256K: 0.0000  S=1024K: 0.0000  S=4096K: 0.0000  S=16384K: 0.0000  (spearman +1.00)
+  BAD  S=256K: 0.0000  S=1024K: 0.0000  S=4096K: 0.0000  S=16384K: 0.0000  (spearman +1.00)
+=== N (min completion across S) ===
+  GOOD N=1: 838s  N=2: 419s  N=4: 210s  N=8: 105s  N=16: 53s  monotone=True N*=16
+  BAD  N=1: 962s  N=2: 471s  N=4: 234s  N=8: 117s  N=16: 59s  monotone=True N*=16
+=== gate ===
+  condition 1 (N* differs): False
+  condition 2 (S* differs): False
+  condition 3 (joint differs): False
+VERDICT: NO_JOINT_N+S_OPPORTUNITY_UNDER_CORRELATED_LOSS

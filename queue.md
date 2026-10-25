@@ -91,13 +91,15 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [ ] A2, then training: chained after the sweep (no live overlap)
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
-- [~] Engine-fix audit of the network-side studies (Haiku subagent): the
+- [x] Engine-fix audit of the network-side studies (Haiku subagent): the
   Mahimahi five-trace gate ran with no request deadline (all arms the same),
   so it is unaffected. M3, the live pilot and the §22.91 queueing gate are
   unaffected (no deadline, or zero retries).
-  - [~] §22.92 correlated-loss screen: its abort and S-shift findings come
-    from the modelled 30 s deadline. Re-simulating without it (Sonnet
-    subagent; analytic; frozen tool left untouched).
+  - [x] §22.92 correlated-loss screen re-simulated without the deadline
+    (`testdata/joint_ns_loss_mechanism/nodeadline/`; the copy reproduces the
+    frozen outputs byte for byte at 30 s). Verdict unchanged and stronger:
+    NO_JOINT_N+S_OPPORTUNITY; S* = 16M in 9/9 variants (the 16M→4M shift in
+    4/9 was a deadline artefact); 0 failures, 0 retries.
   - [x] netem sweep and split ablation "failed_requests": server-side writes
     aborted by straggler splits (0 without splitting, never above the
     splits; 0 client failures). Paper caveat: "zero wasted bytes" is
