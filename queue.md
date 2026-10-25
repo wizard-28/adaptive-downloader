@@ -131,7 +131,14 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [~] Retrain v2 for generalization (after the joint study). Protocol
   `testdata/rl_cap_train_v2/protocol.md`, frozen after an Opus review (new
   held-out H_C12, H_RTT110, H_DIP, H_C20 with 8-19 % sim headroom; headroom
-  gate; stop rule; 8 blocks). Stage K (24 calibration runs) next. Same learner,
+  gate; stop rule; 8 blocks).
+  - [x] Stage K 24/24 valid; amendment A1: four rate classes (b634a51).
+  - [x] Stage A blind parity PASS, +1.4/-3.3/+5.6/+5.6 % (8/8 valid).
+  - [x] Headroom gate: all 4 H kept, 9.9-17.4 % (A2, bc9917b).
+  - [~] Stage B training (5 seeds, 2 workers), started 17:25 UTC.
+  - [ ] Go parity, amendment A3 (sim predictions for C and D arms), then
+    live C (64 runs) and D (160 runs), about 4.5 h; then `analyze.py C`,
+    `D`, `verdict`. Same learner,
   action space and Go adapter as rl_cap_train.
   - The current Stage D result stands as final: faster in 0 of 3. The three
     G_* scenarios are reported as "used during v2 design" and are no longer
