@@ -14,10 +14,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] A2 blind live parity: PASS, all four checks within 1.4 % (1ef2c77)
 - [x] Stage B training: seed 0 selected; Go parity test passes (9b4e45f).
   Simulator gates: G1 pass, **G2 fail** (HEALTHY 1.080), G3 pass
-- [~] Stage C live evaluation: 120 runs (CAP8, HEALTHY × 6 arms × 10 blocks).
-  Started 2026-10-25 ~05:45 UTC, about 2 h
-- [ ] Analyse C (`tools/analyze.py C`) and commit
-- [ ] Stage D held-out live runs: 80 runs (G_C16, G_RTT, G_D2), about 1.5 h
+- [x] Stage C live: 120/120 valid. Primary result: CAP8 dqnc_start16 vs
+  16×1 MiB = 0.907 [0.893, 0.921], FASTER (simulator 0.912). Against
+  16×32 MiB 1.298 and aria2 1.310, slower; against v6 0.949, not
+  distinguishable. HEALTHY 1.108, slower (simulator 1.080). Start 1 slower
+  in both scenarios.
+- [~] Stage D held-out live runs: 80 runs (G_C16, G_RTT, G_D2), started
+  ~07:20 UTC, about 1.5 h
 - [ ] Analyse D, apply the frozen wording rules, commit
 
 ## 2. Extra baselines and network sweep
