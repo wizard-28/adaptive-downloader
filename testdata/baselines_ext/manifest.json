@@ -1,0 +1,149 @@
+{
+ "study": "baselines_ext",
+ "harness": "testdata/baselines_ext/tools/ext_bench.go (copy of rl_bench.go + axel/wget2/lftp; HEAD answered at once)",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "CAP0": {
+   "extra": [
+    "-cap-at",
+    "0"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  },
+  "D2": {
+   "extra": [
+    "-schedule",
+    "d2"
+   ],
+   "uses_cap": false
+  }
+ },
+ "arms": {
+  "axel": [
+   "-system",
+   "axel"
+  ],
+  "wget2": [
+   "-system",
+   "wget2"
+  ],
+  "lftp": [
+   "-system",
+   "lftp"
+  ],
+  "aria2": [
+   "-system",
+   "aria2"
+  ],
+  "ours_16_32M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "33554432",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "ours_16_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "ours_16_4M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "4194304",
+   "-no-request-timeout",
+   "-split"
+  ]
+ },
+ "ours_arm": {
+  "CAP8": "ours_16_32M",
+  "CAP0": "ours_16_32M",
+  "HEALTHY": "ours_16_1M",
+  "D2": "ours_16_4M"
+ },
+ "tool_versions": {
+  "axel": "2.17.13",
+  "wget2": "2.1.0",
+  "lftp": "4.9.2",
+  "aria2c": "1.37.0"
+ },
+ "stages": {
+  "E": {
+   "seed": 20261028,
+   "blocks": 5,
+   "scenario_order": [
+    "CAP8",
+    "CAP0",
+    "HEALTHY",
+    "D2"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "axel",
+     "wget2",
+     "lftp",
+     "aria2",
+     "ours_16_32M"
+    ],
+    "CAP0": [
+     "axel",
+     "wget2",
+     "lftp",
+     "aria2",
+     "ours_16_32M"
+    ],
+    "HEALTHY": [
+     "axel",
+     "wget2",
+     "lftp",
+     "aria2",
+     "ours_16_1M"
+    ],
+    "D2": [
+     "axel",
+     "wget2",
+     "lftp",
+     "aria2",
+     "ours_16_4M"
+    ]
+   }
+  }
+ }
+}
