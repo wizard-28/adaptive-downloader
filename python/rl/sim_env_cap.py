@@ -93,11 +93,41 @@ class Condition:
         """(server excess, response-leg delay) for one request."""
         if self.calib is None:
             return self.excess(rate), self.owd_s
+        if "tables" in self.calib:
+            return self._sample_multi(rng, rate)
         cls = self.calib["hi" if rate >= self.calib["rate_class_threshold_bytes_per_s"] else "lo"]
         ex = _inv_cdf(cls["excess"]["q"], rng.random())
         ce = _inv_cdf(cls["client_extra"]["q"], rng.random())
         # client_extra was measured at owd 0.040 each way: keep its tail, move its base
         return ex, max(0.0, ce - 2 * self.calib["measured_owd_s"]) + self.owd_s
+
+    def _sample_multi(self, rng: random.Random, rate: float) -> tuple[float, float]:
+        """Delay-dependent calibration (v2): interpolate the inverse CDFs of the
+        two tables whose measured delays bracket owd_s, clamping outside them.
+        Draws the same two uniforms as the single-table path."""
+        tables = self.calib["tables"]  # sorted by measured_owd_s
+        lo, hi = tables[0], tables[-1]
+        for a, b in zip(tables, tables[1:]):
+            if a["measured_owd_s"] <= self.owd_s <= b["measured_owd_s"]:
+                lo, hi = a, b
+                break
+        else:
+            if self.owd_s > tables[-1]["measured_owd_s"]:
+                lo = hi
+            else:
+                hi = lo
+        span = hi["measured_owd_s"] - lo["measured_owd_s"]
+        w = 0.0 if span <= 0 else (self.owd_s - lo["measured_owd_s"]) / span
+        key = "hi" if rate >= self.calib["rate_class_threshold_bytes_per_s"] else "lo"
+        u_ex, u_ce = rng.random(), rng.random()
+
+        def comp(t, name, u):
+            return _inv_cdf(t[key][name]["q"], u)
+
+        ex = (1 - w) * comp(lo, "excess", u_ex) + w * comp(hi, "excess", u_ex)
+        tail_lo = comp(lo, "client_extra", u_ce) - 2 * lo["measured_owd_s"]
+        tail_hi = comp(hi, "client_extra", u_ce) - 2 * hi["measured_owd_s"]
+        return ex, max(0.0, (1 - w) * tail_lo + w * tail_hi) + self.owd_s
 
     def base_rate(self, t: float) -> float:
         if self.schedule:
@@ -122,6 +152,15 @@ def load_calibration(path: str) -> dict:
         return json.load(f)
 
 
+def load_calibration_multi(paths: list[str]) -> dict:
+    """Combine single-delay calibration files into one delay-dependent table set."""
+    tables = sorted((load_calibration(p) for p in paths), key=lambda t: t["measured_owd_s"])
+    thr = {t["rate_class_threshold_bytes_per_s"] for t in tables}
+    if len(thr) != 1:
+        raise ValueError("calibration tables use different rate-class thresholds")
+    return {"rate_class_threshold_bytes_per_s": thr.pop(), "tables": tables}
+
+
 def live_condition(name: str, calib: dict | None = None) -> Condition:
     """The two live scenarios of testdata/rl_capped (t1 schedule, 512 MiB)."""
     if name == "CAP8":
@@ -137,6 +176,16 @@ def live_condition(name: str, calib: dict | None = None) -> Condition:
         return Condition(cap_at=8.0, owd_s=0.080, client_start_s=0.16, calib=calib)
     if name == "G_D2":
         return Condition(cap_at=8.0, schedule=[(0.0, 640 * KIB), (2.0, 160 * KIB), (4.0, 2500 * KIB)], calib=calib)
+    # v2 held-out scenarios (testdata/rl_cap_train_v2/protocol.md).
+    if name == "H_C12":
+        return Condition(cap_at=6.0, cap_c=12.0 * MIB, calib=calib)
+    if name == "H_RTT110":
+        return Condition(cap_at=12.0, owd_s=0.110, client_start_s=0.22, calib=calib)
+    if name == "H_DIP":
+        return Condition(cap_at=6.0, schedule=[(0.0, 640 * KIB), (1.0, 2500 * KIB), (30.0, 400 * KIB),
+                                               (40.0, 2500 * KIB)], calib=calib)
+    if name == "H_C20":
+        return Condition(cap_at=4.0, cap_c=20.0 * MIB, owd_s=0.020, client_start_s=0.04, calib=calib)
     raise ValueError(name)
 
 
@@ -161,6 +210,12 @@ class SimConfig:
     rand_cap_c_mib: tuple[float, float] = (4.0, 12.0)
     rand_cap_gamma: tuple[float, float] = (0.02, 0.10)
     rand_owd_s: tuple[float, float] = (0.02, 0.06)
+    # v2 distribution (testdata/rl_cap_train_v2/protocol.md). Off by default,
+    # so v1 training draws the same random sequence as before.
+    v2_dist: bool = False
+    v2_cap_c_mib: tuple[float, float] = (4.0, 24.0)
+    v2_owd_s: tuple[float, float] = (0.010, 0.120)
+    v2_sched_mix: tuple[float, float, float] = (0.50, 0.25, 0.25)  # two-phase, early dip, late dip
 
     def to_json(self) -> dict:
         d = asdict(self)
@@ -189,6 +244,8 @@ class SimEnv:
 
     # ---- training distribution ----
     def sample_condition(self) -> Condition:
+        if self.cfg.v2_dist:
+            return self._sample_condition_v2()
         c, r = self.cfg, self.rng
         u = r.random()
         if u < c.rand_cap_mode[0]:
@@ -206,6 +263,39 @@ class SimEnv:
             cap_c=r.uniform(*c.rand_cap_c_mib) * MIB,
             cap_gamma=r.uniform(*c.rand_cap_gamma),
             owd_s=r.uniform(*c.rand_owd_s),
+            calib=c.calib,
+        )
+
+    def _sample_condition_v2(self) -> Condition:
+        c, r = self.cfg, self.rng
+        u = r.random()
+        if u < c.rand_cap_mode[0]:
+            cap_at = None
+        elif u < c.rand_cap_mode[0] + c.rand_cap_mode[1]:
+            cap_at = 0.0
+        else:
+            cap_at = r.uniform(*c.rand_cap_at_s)
+        rate0 = r.randint(*c.rand_rate0_kib) * KIB
+        rate1 = r.randint(*c.rand_rate1_kib) * KIB
+        switch_at = r.uniform(*c.rand_switch_s)
+        owd = r.uniform(*c.v2_owd_s)
+        v = r.random()
+        if v < c.v2_sched_mix[0]:
+            schedule = None
+        elif v < c.v2_sched_mix[0] + c.v2_sched_mix[1]:
+            dip_at = r.uniform(1.0, 4.0)
+            schedule = [(0.0, rate0), (dip_at, r.randint(100, 400) * KIB), (dip_at + r.uniform(1.0, 4.0), rate1)]
+        else:
+            dip_at = max(switch_at + 0.5, r.uniform(5.0, 25.0))
+            schedule = [(0.0, rate0), (switch_at, rate1), (dip_at, r.randint(200, 800) * KIB),
+                        (dip_at + r.uniform(2.0, 10.0), rate1)]
+        return Condition(
+            file_size=r.randint(*c.rand_file_mib) * MIB,
+            rate0=rate0, rate1=rate1, switch_at=switch_at, schedule=schedule,
+            cap_at=cap_at,
+            cap_c=r.uniform(*c.v2_cap_c_mib) * MIB,
+            cap_gamma=r.uniform(*c.rand_cap_gamma),
+            owd_s=owd, client_start_s=2 * owd,
             calib=c.calib,
         )
 

@@ -128,7 +128,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     aborted by straggler splits (0 without splitting, never above the
     splits; 0 client failures). Paper caveat: "zero wasted bytes" is
     client-side.
-- [ ] Retrain v2 for generalization (after the joint study). Same learner,
+- [~] Retrain v2 for generalization (after the joint study). Protocol
+  `testdata/rl_cap_train_v2/protocol.md`, frozen after an Opus review (new
+  held-out H_C12, H_RTT110, H_DIP, H_C20 with 8-19 % sim headroom; headroom
+  gate; stop rule; 8 blocks). Stage K (24 calibration runs) next. Same learner,
   action space and Go adapter as rl_cap_train.
   - The current Stage D result stands as final: faster in 0 of 3. The three
     G_* scenarios are reported as "used during v2 design" and are no longer
