@@ -74,7 +74,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 
 ## 5. After the above, if time allows before Thursday
 
-- [~] Joint N + range-size agent on the capped server.
+- [x] Joint N + range-size agent on the capped server.
   - [x] Simulator `python/rl/sim_env_joint.py` (variable S, splitting, v1
     observables). It equals sim_env_cap exactly at 1 MiB. Retrospective
     live check on 8 configurations (split ablation) within 5.3 %; long
@@ -107,11 +107,14 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     best fixed, so the agent did NOT learn the large-range behaviour; J1 and
     J2 fail, J3 passes. Go parity passes. Predictions frozen in amendment A2
     (cc7c87f).
-  - [~] Stage C (150 runs) then L (40 runs), started ~13:45 UTC, about 2.7 h
-  - [ ] Analyse C and L and apply the wording rules. Likely outcome: "a joint
-    agent trained on a checked simulator did not beat the best fixed setting
-    live". The simulator headroom (scripted rule 0.352) was not found by the
-    learner.
+  - [x] Stage C (150/150 valid, fd7130e): CAP8 agent 1.471 [1.405, 1.546]
+    of 16x32 MiB, slower (primary not faster). HEALTHY 1.081, CAP0 1.359,
+    D2 1.372, all slower; vs aria2 CAP8 1.422 slower, HEALTHY 0.388 faster.
+    Live within -1..+5 % of the A2 predictions. Agent still at 1 MiB at 8 s.
+  - [x] Stage L (40/40 valid, 5e2acee): CAP8L 1.029 [0.989, 1.081], not
+    distinguishable; HEALTHYL 1.128 slower.
+  - [x] Frozen wording: "a joint agent trained on a checked simulator did
+    not beat the best fixed setting live". See PROJECT_CONTEXT §22.109.
 - [x] Engine-fix audit of the network-side studies (Haiku subagent): the
   Mahimahi five-trace gate ran with no request deadline (all arms the same),
   so it is unaffected. M3, the live pilot and the §22.91 queueing gate are

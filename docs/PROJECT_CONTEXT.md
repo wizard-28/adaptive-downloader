@@ -7440,16 +7440,31 @@ C live evaluation, D held-out generalization; wording rules fixed in advance).
   - baselines_ext: axel, lftp, aria2, ours. wget2 removed by amendment A2
     (upstream issue #195: one thread per file).
   - netem_sweep: delay x loss grid, ours vs aria2.
-  - rl_joint: joint N+S DQN on `sim_env_joint`, plus a live-rate control
-    server (`Server.SetLiveRate`, opt-in, default off). Its simulator
-    headroom comes from the arrival-time rate rule, and the protocol makes
-    the reports say so.
+  - rl_joint (COMPLETE; C fd7130e, L 5e2acee; protocol
+    `testdata/rl_joint/protocol.md`): joint N+S DQN on `sim_env_joint`, plus
+    a live-rate control server (`Server.SetLiveRate`, opt-in, default off).
+    A2 blind parity passed (+1.5 to +7.0 %). Retrained under A1 (747k-824k
+    steps per seed); simulator CAP8 1.513 of best fixed, J1/J2 fail, J3
+    passes, although a scripted 1 MiB -> 33 MiB rule scores 0.352.
+    - Stage C (150/150 valid): CAP8 dqnj 74.8 s vs 16x32 MiB 50.9 s, ratio
+      1.471 [1.405, 1.546], SLOWER; HEALTHY 1.081, CAP0 1.359, D2 1.372 (vs
+      16x5 MiB), all slower. vs aria2: CAP8 1.422 slower, HEALTHY 0.388
+      faster. Live medians within -1 to +5 % of the frozen A2 predictions.
+      The agent was still at 1 MiB at 8 s in every scenario and grew ranges
+      to 33 MiB only after the cap.
+    - Stage L (40/40 valid): CAP8L 1.029 [0.989, 1.081] vs 16x32 MiB, not
+      distinguishable; HEALTHYL 1.128 slower. Without the arrival rule,
+      16x32 MiB under the cap slows from 50.9 s to 67.4 s.
+    - Frozen wording: "a joint agent trained on a checked simulator did not
+      beat the best fixed setting live". The simulator was accurate; the
+      learner did not find the available headroom (as with the one-threshold
+      rule earlier), which motivates the v2 drop-rule arm.
 - **Process files:** `queue.md` (work queue) and `CLAUDE.md` (delegate side
   investigations to subagents; maintain the queue).
-- **Immediate next step:** see queue.md. The live chain is E -> S -> joint
-  A2 -> joint training; then write the joint simulator-prediction amendment
-  before joint C and L. Fold everything into paper_draft.md and extend
-  claims_check.
+- **Immediate next step:** see queue.md. Baselines, sweep and joint study
+  are done; next is the v2 retrain for generalization (with the drop-rule
+  arm), then the real-server mirror check. Fold everything into
+  paper_draft.md and extend claims_check.
 
 ### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (COMPLETE; reports submitted 2026-10-24)
 
