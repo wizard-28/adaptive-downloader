@@ -19,7 +19,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   16×32 MiB 1.298 and aria2 1.310, slower; against v6 0.949, not
   distinguishable. HEALTHY 1.108, slower (simulator 1.080). Start 1 slower
   in both scenarios.
-- [~] Stage D held-out live runs: 80 runs (G_C16, G_RTT, G_D2), started
+- [~] Stage D held-out live runs: 65 runs (protocol said 80; arithmetic slip, amendment A1) (G_C16, G_RTT, G_D2), started
   ~07:20 UTC, about 1.5 h
 - [ ] Analyse D, apply the frozen wording rules, commit
 

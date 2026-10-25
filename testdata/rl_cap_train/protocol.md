@@ -239,3 +239,10 @@ learned for CAP8 therefore does not transfer automatically.
 - **Nothing here supports superiority** on real servers, other cap
   mechanisms, or other downloaders. The reports say so in the Limitations
   section.
+
+## Amendment A1 (2026-10-25, during Stage D, no design change): run count
+
+Stage D's run total was misstated as "80 runs". The arms and blocks as
+specified (G_C16 4 arms, G_RTT 4, G_D2 5, × 5 blocks) give 65 runs. That is
+what the manifest schedules and what was run. No arm, block or scenario was
+changed.
