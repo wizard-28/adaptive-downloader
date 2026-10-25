@@ -222,11 +222,60 @@ The result supports only the statement that the direction of the comparison
 (ours faster) was also observed on a stock server under per-response rate
 control in this setup.
 
+### 4.3 Other segmented downloaders (axel, lftp)
+
+A frozen screen (`testdata/baselines_ext/protocol.md`) added axel and lftp
+`pget` next to aria2, all at 16 connections, on the same server models and
+netem. HEAD requests were answered at once, so no tool paid for a paced
+probe. 5 blocks per scenario, 80 runs, all valid. wget2 was planned and
+then removed (amendment A2): it fetches one file over a single connection
+however it is configured. We confirmed this in its source; upstream issue
+#195 describes the same behaviour.
+
+| Scenario | Ours (setting) | ours ÷ axel | ours ÷ lftp | ours ÷ aria2 |
+|---|---|---|---|---|
+| HEALTHY (t1, no cap) | 16 × 1 MiB | 0.345 [0.344, 0.347] | 0.345 [0.344, 0.346] | 0.357 [0.344, 0.371] |
+| D2 | 16 × 4 MiB | 0.375 [0.373, 0.378] | 0.374 [0.369, 0.377] | 0.375 [0.373, 0.377] |
+| CAP8 | 16 × 32 MiB | 1.003 [0.965, 1.026] | 1.001 [0.963, 1.024] | 0.996 [0.960, 1.017] |
+| CAP0 | 16 × 32 MiB | 1.025 [1.021, 1.029] | 0.597 [0.594, 0.599] | 0.995 [0.992, 0.998] |
+
+- **Reading.** axel and lftp split the file into 16 equal parts at the
+  start, as aria2 does. They gain nothing from a pacing schedule that rises
+  after the first second, so the §4 gap is not specific to aria2: it applies
+  to tools that split the file once, up front.
+- **Under the cap, all four were level** at about 53 s. With the cap from
+  the start, lftp took 114 s because it never re-splits a slow part (our
+  engine without splitting behaved the same way, §7a), and axel was 2.5 %
+  faster than ours.
+- **Screen only:** 5 blocks on constructed server models.
+
+### 4.4 Delay and loss sweep (screen)
+
+A frozen sweep (`testdata/netem_sweep/protocol.md`) repeated two
+comparisons over a grid of one-way delays (10, 40, 100 ms) and loss rates
+(0, 0.4, 2 %). It used 3 blocks per cell, 108 runs, all valid.
+
+- **D2 (16 × 4 MiB against aria2):** ours was faster in every block of all
+  9 cells, with cell geometric means from 0.362 to 0.457. The direction
+  holds across the grid, by the predeclared rule.
+- **CAP8 (16 × 32 MiB against aria2):** the direction does not hold.
+  - 5 cells were mixed, and 2 had aria2 faster in every block: 10 ms with
+    2 % loss (1.073) and 40 ms with 0.4 % loss (1.035).
+  - At 100 ms, ours was faster with 0 and 0.4 % loss (0.769 and 0.955) and
+    mixed with 2 % loss.
+  - So under the cap the two are near parity, and the sign depends on the
+    network.
+- **Screen only:** 3 blocks per cell on one machine. No claim about real
+  networks.
+
 ## 5. When does adaptation help? Mechanism screens
 
 Predeclared screens, each closed before policy work: static rate+RTT (chunk size
 moves, no causal switching gain; analytical), live queueing (work-conserving; no
-joint opportunity), correlated loss (S fragile, N monotone), failure-based
+joint opportunity), correlated loss (no joint opportunity; N monotone. An
+earlier "S fragile" reading was an artefact of a modelled 30 s request
+deadline: re-simulated without it, S* = 16 MiB in all 9 variants, with no
+failures), failure-based
 N-dependent throttling (abort cliff), and adaptive-N degradation (interior
 optimum analytically; live mismatch). Existing adaptive heuristics on D2 adapt
 but lose to the fixed optimum (joint 2.32× slower). **Conclusion:** within-download
@@ -341,7 +390,9 @@ default off; a split needs at least 2 MiB unreceived) and tested in a
 predeclared ablation (`testdata/split_ablation/protocol.md`): four scenarios
 (cap from the start, CAP0; cap from 8 s, CAP8; no cap; the D2 pacing workload)
 × 10 shuffled blocks, 230 runs, all valid, with zero failed attempts, retries
-or wasted bytes.
+or wasted bytes on the client side. (The server logs do show aborted
+requests. These are the unreceived tails of ranges that were split, cut off
+when the client closes them; the client discards no bytes it received.)
 
 - **Splitting was the main cause (Confirmed, 10 blocks).** Under CAP0 the same
   16 × 32 MiB configuration took 40 % less time with splitting (0.599
@@ -566,6 +617,54 @@ simulator of the capped server (`python/rl/sim_env_cap.py`).
   to held-out conditions of the same family, and it did not beat the best
   fixed setting overall. This is one trained candidate; the result says
   nothing about real servers.
+
+### 9c. Joint concurrency and range-size agent
+
+A predeclared study (`testdata/rl_joint/protocol.md`) let the same learner
+also set the range size: 5 actions (none, ±1 connection, ±4 MiB), from 1 to
+33 MiB. The aim was to test whether a learned agent finds the large-range
+behaviour that wins under the cap.
+
+- **Headroom existed in the simulator.** A hand-written rule scored 0.352
+  of the best fixed time under CAP8: 1 MiB ranges until the rate rises,
+  then 33 MiB ranges.
+  - That headroom comes from the server's arrival-time rate rule. Large
+    ranges that start before the cap keep the faster rate for their whole
+    length.
+  - The protocol therefore added a control: a server mode that re-checks
+    the rate during each response.
+- **Simulator check (Confirmed, 8 blind runs).** Four new fixed settings
+  came within +1.5 % to +7.0 % of their predictions. The simulator is
+  optimistic for long ranges.
+- **Training.**
+  - The first run was undertrained: its ε schedule ended near 0.75
+    (amendment A1). The retrain ran 747,503–823,821 steps per seed.
+  - Even so, the selected agent scored 1.513 of the best fixed time under
+    CAP8 in the simulator. It did change the range size, but too late.
+- **Live, arrival-rule server (Confirmed, 10 blocks, 150 runs, all
+  valid).** The agent was slower than the best fixed setting in every
+  scenario:
+  - CAP8: 1.471 [1.405, 1.546] against 16 × 32 MiB (the primary
+    comparison);
+  - HEALTHY: 1.081 [1.037, 1.116] against 16 × 1 MiB;
+  - CAP0: 1.359 [1.321, 1.399] against 16 × 32 MiB;
+  - D2: 1.372 [1.350, 1.397] against 16 × 5 MiB.
+  - Against aria2 it was slower under CAP8 (1.422 [1.367, 1.477]) and
+    faster without a cap (0.388 [0.375, 0.404]).
+  - Live times were within about −1 % to +5 % of the frozen simulator
+    predictions. At 8 s the agent was still on 1 MiB ranges in every
+    scenario.
+- **Live-rate control (Confirmed, 5 blocks, 40 runs, all valid).**
+  - Without the arrival rule, fixed 16 × 32 MiB under the cap slowed from
+    50.9 s to 67.4 s.
+  - The agent was not distinguishable from it (1.029 [0.989, 1.081]).
+  - Without a cap the agent was slower (1.128 [1.020, 1.259]).
+- **Reading, as frozen:** a joint agent trained on a checked simulator did
+  not beat the best fixed setting live.
+  - The simulator was accurate; what failed was the learner's search. A
+    simple rule found headroom the learner did not.
+  - Most of the large-range advantage under the cap comes from the
+    arrival-time rule.
 
 ## 10. Discussion, limitations, and threats to validity
 

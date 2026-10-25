@@ -436,6 +436,61 @@ _rep = J("rl_cap_train", "train", "report.json")
 for _sc, _row in _rep["test"].items():
     for _k in ("dqnc_start16_vs_best_fixed", "dqnc_start1_vs_best_fixed"):
         out[f"rct.sim.{_sc}.{_k}"] = _row[_k]
+
+
+class _Capture:
+    """Stands in for a study script's json module: keeps what main() would
+    write to its analysis file, so the checker recomputes without writing."""
+
+    def __init__(self):
+        self.data = None
+
+    def dump(self, obj, f, **kw):
+        self.data = obj
+
+    def __getattr__(self, name):
+        return getattr(json, name)
+
+
+def _run_main(name, argv):
+    spec = _ilu.spec_from_file_location(f"_main_{name}_{'_'.join(argv)}", os.path.join(T, name, "tools", "analyze.py"))
+    mod = _ilu.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    cap = _Capture()
+    mod.json = cap
+    saved, sys.argv = sys.argv, ["analyze.py"] + argv
+    try:
+        import contextlib, io
+        with contextlib.redirect_stdout(io.StringIO()):
+            mod.main()
+    finally:
+        sys.argv = saved
+    return cap.data
+
+
+# Other segmented downloaders (§4.3), delay x loss sweep (§4.4), joint agent (§9c).
+_bx = _run_main("baselines_ext", [])
+out["bx.invalid"] = len(_bx["invalid"])
+out["bx.runs"] = len(glob.glob(os.path.join(T, "baselines_ext", "runs_E", "*.json")))
+_flatten(_bx["scenarios"], "bx")
+_sw = _run_main("netem_sweep", [])
+out["sw.invalid"] = len(_sw["invalid"])
+out["sw.runs"] = len(glob.glob(os.path.join(T, "netem_sweep", "runs_S", "*.json")))
+for _k, _c in _sw["cells"].items():
+    for _f in ("geo_ratio", "min", "max", "ours_s", "aria2_s"):
+        out[f"sw.{_k}.{_f}"] = _c[_f]
+for _wl, _sides in _sw["by_side"].items():
+    for _side, _cells in _sides.items():
+        out[f"sw.{_wl}.{_side}.count"] = len(_cells)
+for _st in ("C", "L"):
+    _j = _run_main("rl_joint", [_st])
+    out[f"jnt.{_st}.invalid"] = len(_j["invalid"])
+    out[f"jnt.{_st}.runs"] = len(glob.glob(os.path.join(T, "rl_joint", f"runs_{_st}", "*.json")))
+    _flatten(_j["scenarios"], f"jnt.{_st}")
+_jrep = json.load(open(os.path.join(T, "rl_joint", "train", "report.json")))
+for _sc, _row in _jrep["test"].items():
+    if "agent_vs_best_fixed" in _row:
+        out[f"jnt.sim.{_sc}.agent_vs_best_fixed"] = _row["agent_vs_best_fixed"]
 with _tf.NamedTemporaryFile(suffix=".json") as _f:
     _sp.run([sys.executable, os.path.join(ROOT, "tools", "adaptation_speed.py"), _f.name],
             cwd=ROOT, check=True, capture_output=True)

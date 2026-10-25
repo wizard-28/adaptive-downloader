@@ -104,7 +104,8 @@
   "p2.joint_vs_fixed.geo": {
    "value": 0.766,
    "tol": 0.001,
-   "where": "Abstract,\u00a77"
+   "where": "Abstract,\u00a77",
+   "text": "0.766 [0.762, 0.769], 10/10"
   },
   "p2.joint_vs_fixed.wins": {
    "value": 10,
@@ -935,6 +936,92 @@
    "value": 0.93,
    "tol": 0.0005,
    "where": "\u00a79b (simulator prediction)"
+  },
+  "bx.runs": {
+   "value": 80,
+   "tol": 0,
+   "where": "\u00a74.3"
+  },
+  "bx.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a74.3"
+  },
+  "bx.HEALTHY.ours_vs.axel.geo": {
+   "value": 0.345,
+   "tol": 0.0005,
+   "where": "\u00a74.3",
+   "text": "0.345 [0.344, 0.347]"
+  },
+  "bx.CAP0.ours_vs.lftp.geo": {
+   "value": 0.597,
+   "tol": 0.0005,
+   "where": "\u00a74.3",
+   "text": "0.597 [0.594, 0.599]"
+  },
+  "sw.runs": {
+   "value": 108,
+   "tol": 0,
+   "where": "\u00a74.4"
+  },
+  "sw.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a74.4"
+  },
+  "sw.D2.ours_faster.count": {
+   "value": 9,
+   "tol": 0,
+   "where": "\u00a74.4"
+  },
+  "sw.CAP8.aria2_faster.count": {
+   "value": 2,
+   "tol": 0,
+   "where": "\u00a74.4"
+  },
+  "sw.CAP8_d10_l2.geo_ratio": {
+   "value": 1.073,
+   "tol": 0.0005,
+   "where": "\u00a74.4",
+   "text": "10 ms with\n    2 % loss (1.073)"
+  },
+  "jnt.C.runs": {
+   "value": 150,
+   "tol": 0,
+   "where": "\u00a79c"
+  },
+  "jnt.C.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a79c"
+  },
+  "jnt.C.CAP8.dqnj_vs_best_fixed.geo": {
+   "value": 1.471,
+   "tol": 0.0005,
+   "where": "\u00a79c",
+   "text": "1.471 [1.405, 1.546]"
+  },
+  "jnt.L.runs": {
+   "value": 40,
+   "tol": 0,
+   "where": "\u00a79c"
+  },
+  "jnt.L.CAP8L.dqnj_vs_best_fixed.geo": {
+   "value": 1.029,
+   "tol": 0.0005,
+   "where": "\u00a79c",
+   "text": "1.029 [0.989, 1.081]"
+  },
+  "jnt.L.CAP8L.geo_mean_s.fixed_16_32M": {
+   "value": 67.4,
+   "tol": 0.05,
+   "where": "\u00a79c",
+   "text": "50.9 s to 67.4 s"
+  },
+  "jnt.sim.CAP8.agent_vs_best_fixed": {
+   "value": 1.513,
+   "tol": 0.0005,
+   "where": "\u00a79c"
   }
  }
 }
