@@ -242,3 +242,36 @@ with the 5th–95th percentiles. Pass if each live geometric mean is within
 | HEALTHY, 8 × 1 MiB, 80 ms | 43.99 [43.59, 44.27] |
 | CAP8, 12 × 1 MiB, 120 ms | 94.82 [92.31, 96.63] |
 | D2 (custom spec), 16 × 1 MiB, 120 ms | 103.00 [96.80, 106.23] |
+
+## Amendment A2 (2026-10-25, after Stage A, before training): Stage A result and headroom gate
+
+**Stage A passed:** 8 of 8 runs valid, each geometric mean within ±8 %
+(`analysis_A.json`).
+
+| Configuration | Live vs prediction |
+|---|---|
+| CAP0, 8 × 1 MiB, 80 ms | +1.4 % |
+| HEALTHY, 8 × 1 MiB, 80 ms | −3.3 % |
+| CAP8, 12 × 1 MiB, 120 ms | +5.6 % |
+| D2 (custom), 16 × 1 MiB, 120 ms | +5.6 % |
+
+The host had a load average of 12–19 on 12 cores during these runs, from
+outside this container. The user removed that load before training.
+
+**Headroom gate** (`predictions_H.json`, calibrated v2 simulator, 10
+seeds; times in seconds):
+
+| Scenario | Best fixed N (s) | Fixed 16 | 16 → n oracle | Headroom | C=8-tuned drop rule | Kept |
+|---|---|---|---|---|---|---|
+| H_C12 | 9 (59.8) | 60.7 | n = 6, 49.4 | 17.4 % | 55.7 | yes |
+| H_RTT110 | 14 (80.3) | 82.6 | n = 6, 68.1 | 15.2 % | 97.4 | yes |
+| H_DIP | 14 (87.7) | 88.1 | n = 5, 76.1 | 13.2 % | 77.4 | yes |
+| H_C20 | 8 (39.0) | 42.2 | n = 7, 35.1 | 9.9 % | 53.2 | yes |
+| CAP8 (reference) | 16 (77.6) | 77.6 | n = 5, 60.8 | 21.7 % | 61.7 | – |
+| HEALTHY (reference) | 16 (19.0) | 19.0 | – | – | 19.0 | – |
+
+All four H scenarios pass the gate, so M = 4. The Stage D extra fixed arms
+are, from the simulator's best fixed N: `fixed_9_1M` (H_C12), `fixed_14_1M`
+(H_RTT110, H_DIP) and `fixed_8_1M` (H_C20). The drop rule's predicted time
+is worse than fixed 16 × 1 MiB in H_RTT110 and H_C20. As the protocol
+requires, those two are named in any rule comparison.

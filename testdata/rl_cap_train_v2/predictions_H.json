@@ -1,0 +1,77 @@
+{
+ "calibration": [
+  "testdata/rl_cap_train_v2/calibration_20.json",
+  "testdata/rl_cap_train_v2/calibration_40.json",
+  "testdata/rl_cap_train_v2/calibration_80.json",
+  "testdata/rl_cap_train_v2/calibration_120.json"
+ ],
+ "seeds": [
+  100,
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109
+ ],
+ "scenarios": {
+  "H_C12": {
+   "best_fixed_n": 9,
+   "best_fixed_s": 59.77839547808518,
+   "fixed_16_s": 60.70713403082623,
+   "drop_s": 55.6614302712876,
+   "oracle_s": 49.35467990249354,
+   "oracle_n": 6,
+   "headroom": 0.17437262228647454,
+   "kept": true
+  },
+  "H_RTT110": {
+   "best_fixed_n": 14,
+   "best_fixed_s": 80.32388785655468,
+   "fixed_16_s": 82.63436543990595,
+   "drop_s": 97.3514334336197,
+   "oracle_s": 68.10959346825084,
+   "oracle_n": 6,
+   "headroom": 0.1520630377119765,
+   "kept": true
+  },
+  "H_DIP": {
+   "best_fixed_n": 14,
+   "best_fixed_s": 87.68645463717165,
+   "fixed_16_s": 88.0581116287744,
+   "drop_s": 77.34967255682838,
+   "oracle_s": 76.09929674848958,
+   "oracle_n": 5,
+   "headroom": 0.13214307656327684,
+   "kept": true
+  },
+  "H_C20": {
+   "best_fixed_n": 8,
+   "best_fixed_s": 38.96781776511317,
+   "fixed_16_s": 42.15187882140477,
+   "drop_s": 53.21909947465814,
+   "oracle_s": 35.10962744540392,
+   "oracle_n": 7,
+   "headroom": 0.09900965825095231,
+   "kept": true
+  },
+  "CAP8": {
+   "best_fixed_n": 16,
+   "best_fixed_s": 77.57437537754575,
+   "fixed_16_s": 77.57437537754575,
+   "drop_s": 61.6523656630824,
+   "oracle_s": 60.76065202987086,
+   "oracle_n": 5,
+   "headroom": 0.21674326432980462
+  },
+  "HEALTHY": {
+   "best_fixed_n": 16,
+   "best_fixed_s": 19.042916821940807,
+   "fixed_16_s": 19.042916821940807,
+   "drop_s": 19.042916821940807
+  }
+ }
+}
