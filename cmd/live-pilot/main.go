@@ -49,7 +49,15 @@ type Manifest struct {
 	// UserAgent is sent by the project downloader (amendment A2); empty keeps
 	// the Go default. aria2 and curl keep their own defaults.
 	UserAgent string `json:"user_agent,omitempty"`
+	// PolicyArms are optional extra project-downloader arms that carry an
+	// opt-in policy (see policy.go). Absent in existing manifests.
+	PolicyArms []Arm `json:"policy_arms,omitempty"`
+	// ReferenceArms, when explicitly false, omits the aria2 and curl arms and
+	// allows an empty cell list if policy_arms are given. Absent means true.
+	ReferenceArms *bool `json:"reference_arms,omitempty"`
 }
+
+func (m Manifest) withReferenceArms() bool { return m.ReferenceArms == nil || *m.ReferenceArms }
 
 type File struct {
 	Name   string `json:"name"`
@@ -72,9 +80,31 @@ type Arm struct {
 	Kind string `json:"kind"` // "ours", "aria2", "curl"
 	N    int    `json:"n,omitempty"`
 	S    int64  `json:"s,omitempty"`
+	// Opt-in policy options (all optional; see policy.go). N and S are the
+	// initial concurrency and the fixed chunk size.
+	Policy           string  `json:"policy,omitempty"` // "dqn6" or "drop"
+	DQNModel         string  `json:"dqn_model,omitempty"`
+	Window           int     `json:"window,omitempty"`
+	CappedN          int     `json:"capped_n,omitempty"`
+	DropRatio        float64 `json:"drop_ratio,omitempty"`
+	NoRequestTimeout bool    `json:"no_request_timeout,omitempty"`
+	Split            bool    `json:"split,omitempty"`
 }
 
 func (a Arm) Name() string {
+	if a.Kind == "ours" && a.hasPolicyOptions() {
+		name := fmt.Sprintf("ours_N%d_S%dM", a.N, a.S>>20)
+		if a.Policy != "" {
+			name += "_" + a.Policy
+		}
+		if a.NoRequestTimeout {
+			name += "_nrt"
+		}
+		if a.Split {
+			name += "_split"
+		}
+		return name
+	}
 	if a.Kind == "ours" {
 		return fmt.Sprintf("ours_N%d_S%dM", a.N, a.S>>20)
 	}
@@ -113,6 +143,15 @@ type Record struct {
 	// RateLimited marks a 429/503 observation; the server is then skipped for
 	// the rest of the slot (protocol etiquette rule).
 	RateLimited bool `json:"rate_limited,omitempty"`
+	// Policy arms only.
+	Policy        string          `json:"policy,omitempty"`
+	DQNModel      string          `json:"dqn_model,omitempty"`
+	DQNModelSHA   string          `json:"dqn_model_sha256,omitempty"`
+	PolicyWindow  int             `json:"policy_window,omitempty"`
+	Decisions     []decisionTrace `json:"decisions,omitempty"`
+	FinalN        int             `json:"final_n,omitempty"`
+	NoReqTimeout  bool            `json:"no_request_timeout,omitempty"`
+	SplitStragglr bool            `json:"split,omitempty"`
 }
 
 func (r Record) key() string { return fmt.Sprintf("%s|%s|%d", r.Server, r.Arm, r.Rep) }
@@ -204,7 +243,7 @@ func (m Manifest) validate() error {
 		return errors.New("manifest: file.sha256 must be 64 hex chars")
 	case len(m.Servers) == 0:
 		return errors.New("manifest: no servers")
-	case len(m.Cells) == 0:
+	case len(m.Cells) == 0 && (m.withReferenceArms() || len(m.PolicyArms) == 0):
 		return errors.New("manifest: no cells")
 	case m.Reps <= 0:
 		return errors.New("manifest: reps must be positive")
@@ -224,6 +263,19 @@ func (m Manifest) validate() error {
 		if c.N <= 0 || c.S <= 0 {
 			return fmt.Errorf("manifest: bad cell %+v", c)
 		}
+	}
+	names := map[string]bool{}
+	for _, c := range m.Cells {
+		names[Arm{Kind: "ours", N: c.N, S: c.S}.Name()] = true
+	}
+	for _, a := range m.PolicyArms {
+		if err := a.validatePolicy(); err != nil {
+			return err
+		}
+		if names[a.Name()] {
+			return fmt.Errorf("manifest: duplicate arm name %q", a.Name())
+		}
+		names[a.Name()] = true
 	}
 	return nil
 }
@@ -249,12 +301,17 @@ type Planned struct {
 	Rep    int
 }
 
-// Arms returns the manifest's arms in canonical order: the fixed cells, then
-// aria2, then the curl single-stream reference.
+// Arms returns the manifest's arms in canonical order: the fixed cells, the
+// policy arms, then aria2 and the curl single-stream reference (unless
+// reference_arms is false).
 func Arms(m Manifest) []Arm {
 	var arms []Arm
 	for _, c := range m.Cells {
 		arms = append(arms, Arm{Kind: "ours", N: c.N, S: c.S})
+	}
+	arms = append(arms, m.PolicyArms...)
+	if !m.withReferenceArms() {
+		return arms
 	}
 	return append(arms, Arm{Kind: "aria2"}, Arm{Kind: "curl"})
 }
@@ -368,7 +425,7 @@ func finishChecksum(path string, want File, rec *Record) {
 
 func (r *runner) runOurs(ctx context.Context, p Planned, outPath string, start time.Time, rec *Record) error {
 	tl := NewTimeline(start, time.Duration(r.m.TimelineMs)*time.Millisecond)
-	dl, err := downloader.New(downloader.Config{
+	cfg := downloader.Config{
 		URL:              p.Server.URL,
 		OutputPath:       outPath,
 		TotalSize:        r.m.File.Size,
@@ -378,11 +435,28 @@ func (r *runner) runOurs(ctx context.Context, p Planned, outPath string, start t
 		MaxRetries:       r.m.MaxRetries,
 		ByteObserver:     tl,
 		UserAgent:        r.m.UserAgent,
-	})
+	}
+	var ap *armPolicy
+	if p.Arm.hasPolicyOptions() {
+		var perr error
+		if ap, perr = applyPolicy(&cfg, p.Arm, r.m.File.Size, start); perr != nil {
+			return perr
+		}
+		rec.Policy, rec.NoReqTimeout, rec.SplitStragglr = p.Arm.Policy, p.Arm.NoRequestTimeout, p.Arm.Split
+	}
+	dl, err := downloader.New(cfg)
 	if err != nil {
 		return err
 	}
 	runErr := dl.Download(ctx)
+	if ap != nil {
+		rec.FinalN = dl.Concurrency()
+		if ap.rec != nil {
+			rec.PolicyWindow = ap.window
+			rec.DQNModel, rec.DQNModelSHA = ap.modelPath, ap.modelSHA
+			rec.Decisions = ap.rec.decisions()
+		}
+	}
 	snap := dl.Metrics()
 	rec.Attempts = snap.Aggregate.TotalAttempts
 	rec.FailedAttempts = snap.Aggregate.FailedRequests
