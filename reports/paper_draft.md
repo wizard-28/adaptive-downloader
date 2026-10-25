@@ -1,4 +1,4 @@
-# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25)
+# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25; baselines, sweep, joint agent and DQN v2 added 2026-10-26)
 
 **Working title:** *Request granularity and concurrency adaptation for HTTP range
 downloads under controlled server-side pacing: a mechanism-first evaluation.*
@@ -62,8 +62,14 @@ head-to-heads we ran, and the frozen v6 agent was slower than the best fixed
 configuration on the capped server (1.356 [1.252, 1.472]); a DQN retrained on a
 simulator of that server, checked against blind live runs, beat the best fixed
 configuration with its own range size where it was trained (0.907 [0.893, 0.921])
-but in none of three held-out conditions (LinUCB was evaluated only
-descriptively). All results are scoped to the
+but in none of three held-out conditions outside its training ranges. Retrained
+on a broader distribution with delay-dependent calibration (v2), it was faster
+than the best fixed 1 MiB configuration in 3 of 4 new held-out scenarios inside
+its training ranges and slower in 1 (by 0.7 %); it cost about 5 % with no cap,
+and a simple drop rule tuned to the original cap was faster in its home scenarios.
+A joint agent that also set the range size did not beat the best fixed
+configuration live (1.471 [1.405, 1.546] under the cap). (LinUCB was evaluated
+only descriptively.) All results are scoped to the
 controlled mechanisms; none is a validation on live networks or production servers.
 
 ---
@@ -514,7 +520,7 @@ screening evidence that a fixed configuration with enough connections was
 near-best on the observed paths. It does not validate the findings across
 networks.
 
-## 9. Learned-policy experiments (inventory; none is a positive result)
+## 9. Learned-policy experiments (inventory; positive results only in §9b and §9d, both scoped)
 
 The learners are a LinUCB contextual bandit [li2010linucb] and Double DQN
 [vanhasselt2016ddqn] agents in the DQN family [mnih2015dqn], all acting through
@@ -666,14 +672,91 @@ behaviour that wins under the cap.
   - Most of the large-range advantage under the cap comes from the
     arrival-time rule.
 
+### 9d. DQN v2: broader training, tested on held-out scenarios
+
+A second predeclared study (`testdata/rl_cap_train_v2/protocol.md`) kept the
+learner, actions and state of §9b. It changed the training distribution
+and the calibration:
+- cap C 4–24 MiB/s;
+- one-way delay 10–120 ms;
+- early and late rate dips;
+- per-request timing calibrated at four delays.
+
+An independent review revised the protocol before it was frozen. Four new
+held-out scenarios lie **inside** the broadened ranges, as new
+combinations:
+- H_C12: C = 12 MiB/s from 6 s;
+- H_RTT110: 110 ms each way, cap from 12 s;
+- H_DIP: cap from 6 s plus a dip from 30 to 40 s;
+- H_C20: C = 20 MiB/s from 4 s, 20 ms each way.
+
+Each had 10–17 % simulator headroom between the best fixed N and a 16 → n
+oracle.
+
+- **Calibration and blind check (Confirmed for the simulator).**
+  - 24 calibration runs showed client overhead rising with delay.
+  - Pooled rate classes mispredicted one in-sample cell. Four classes were
+    adopted before the blind check (amendment A1).
+  - All four blind predictions at 80 and 120 ms came within ±8 % (+1.4 %,
+    −3.3 %, +5.6 %, +5.6 %), including one that ran through the new
+    custom-schedule path.
+- **Training.**
+  - 5 seeds of about 320,000 steps each. Seed 1 was selected on validation
+    alone.
+  - Disclosed before any live run (amendment A3): the other four seeds were
+    mostly at or above the best fixed time on the held-out scenarios.
+- **In distribution (Confirmed, 8 blocks, 64 runs, all valid).**
+  - CAP8: v2 took 0.845 [0.840, 0.850] of the time of fixed 16 × 1 MiB, and
+    0.929 [0.917, 0.944] of v1.
+  - Without a cap it was slower than fixed 16 × 1 MiB (1.047 [1.043,
+    1.052]).
+  - The C=8-tuned drop rule was faster than v2 in both scenarios (CAP8:
+    v2 ÷ drop 1.048).
+- **Held out (Confirmed, 8 blocks, 160 runs, all valid).** v2 against the
+  better fixed arm:
+  - H_C12: 0.882 [0.877, 0.886], faster;
+  - H_RTT110: 0.819 [0.795, 0.848], faster;
+  - H_DIP: 0.952 [0.945, 0.958], faster;
+  - H_C20: 1.007 [1.000, 1.014], slower by the bootstrap. The t-interval
+    [0.998, 1.016] does not separate it from 1, and by the protocol the less
+    favourable verdict counts.
+  - v1 on the same four was faster in 1 and slower in 2. v2 was faster than
+    v1 in all 6 live scenarios.
+  - In H_RTT110, v2 was 10 % faster live than the simulator predicted
+    (68.6 s against 76.4 s), while the fixed arms were 4 % slower. That
+    advantage is larger than the simulator supports, and is not explained
+    here.
+- **Against the C=8-tuned drop rule:** v2 was faster in 3 scenarios
+  (H_C12 0.968, H_RTT110 0.746, H_C20 0.743), slower in 2 (CAP8, HEALTHY)
+  and not distinguishable in 1 (H_DIP). The rule's simulated time was
+  already worse than fixed 16 × 1 MiB in H_RTT110 and H_C20, so two of
+  those three wins reflect the rule's tuning to C = 8 MiB/s more than
+  learning.
+- **Reading, as frozen:**
+  - "v2 generalized partially: faster in 3, slower in 1 of 4 held-out
+    scenarios, all inside the v2 training ranges (v1 on the same scenarios:
+    faster in 1, slower in 2)".
+  - "Learned control adds something over a C=8-tuned drop rule: faster in
+    3, slower in 2 of 6 scenarios", with the caveat above.
+- **Scope.** The comparison is with the best fixed setting at the same
+  1 MiB range size, under server-side changes, on one server model. It is
+  not with 16 × 32 MiB, aria2 or real servers. This is one selected seed
+  from a procedure that is not reliably good across seeds. It costs about
+  5 % when nothing changes.
+
 ## 10. Discussion, limitations, and threats to validity
 
 - **Constructed environment.** The positive adaptive results hold under a server
   model we designed and selected (72-candidate search). They show conditions under
   which adaptation can help, not that real servers behave this way.
 - **Request-start rate semantics** drive both the D2 mechanism and the
-  advantage of large ranges under the cap (§7a); a server that re-evaluates
-  rates during a response would change both.
+  advantage of large ranges under the cap (§7a). The §9c control confirmed
+  this for the cap: on a server that re-checks rates during each response,
+  fixed 16 × 32 MiB slowed from 50.9 s to 67.4 s.
+- **Learned-policy generalization is narrow.** The v2 result (§9d) holds for
+  held-out scenarios inside the training ranges, for one seed selected on
+  validation from a procedure that was not reliably good across seeds, and
+  against the best fixed setting at the same range size only.
 - **Engine before policy.** On our server models, the request deadline and
   straggler splitting mattered more than any adaptive policy (§7a). Earlier
   adaptive results measured against the original engine (§6, §7) should be
@@ -710,7 +793,12 @@ headroom. Adaptive control helps within a download only under a server model in
 which rate depends on concurrency, and only against small-range fixed
 configurations on the original engine; once a request deadline and straggler
 splitting were corrected, the best fixed configuration matched or came within
-1.6 % of aria2 and beat the adaptive controllers and an online tuner; a cross-workload selector matches the
+1.6 % of aria2 and beat the adaptive controllers and an online tuner. A DQN
+trained on a blind-checked simulator beat the best fixed setting at its own
+range size where it was trained, and, with broader training, on 3 of 4 held-out
+scenarios inside its training ranges, while a simple drop rule remained
+competitive and a joint range-size agent did not find the larger gains its
+simulator offered; a cross-workload selector matches the
 per-workload best on average but a consistent advantage over a single
 family-wide configuration is not established; learned policies were slower than
 aria2. These results delimit when adaptation is worth its complexity; they do not
@@ -765,5 +853,11 @@ the NGINX check are committed before their runs.
 | A DQN retrained on a checked capped-server simulator beats the best fixed 1 MiB setting where it was trained | Confirmed (0.907, 10 blocks) | §9b |
 | …and generalizes to held-out conditions | **Not supported** (faster in 0 of 3) | §9b |
 | …and beats the best fixed setting overall or aria2 | **Not supported** (1.298; 1.310) | §9b |
+| Our 1 MiB / 4 MiB fixed settings beat axel and lftp, not only aria2, without a cap and on D2 | Screen (5 blocks; 0.345–0.375) | §4.3 |
+| The D2 advantage over aria2 holds across delay and loss | Screen (3 blocks per cell; 9 of 9 cells) | §4.4 |
+| …and the capped-server parity does | **Not established** (sign varies by cell) | §4.4 |
+| A joint N and range-size agent beats the best fixed setting | **Not supported** (CAP8 1.471; slower in 4 of 4) | §9c |
+| A broadly trained DQN (v2) beats the best fixed 1 MiB setting on held-out scenarios inside its training ranges | **Partial** (faster in 3, slower in 1 of 4; one selected seed) | §9d |
+| …and beats a simple drop rule | **Mixed** (faster in 3, slower in 2 of 6; two wins reflect the rule's tuning) | §9d |
 | On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
 | …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |

@@ -492,6 +492,40 @@ for _st in ("C", "L"):
     out[f"jnt.{_st}.invalid"] = len(_j["invalid"])
     out[f"jnt.{_st}.runs"] = len(glob.glob(os.path.join(T, "rl_joint", f"runs_{_st}", "*.json")))
     _flatten(_j["scenarios"], f"jnt.{_st}")
+# DQN v2 (§9d): live C and D from the raw runs; Stage A parity from the raw
+# runs against the frozen predictions; simulator numbers from its outputs.
+for _st in ("C", "D"):
+    _v = _run_main("rl_cap_train_v2", [_st])
+    out[f"r2.{_st}.invalid"] = len(_v["invalid"])
+    out[f"r2.{_st}.runs"] = len(glob.glob(os.path.join(T, "rl_cap_train_v2", f"runs_{_st}", "*.json")))
+    for _sc, _o in _v["scenarios"].items():
+        for _a in ("v2", "v1", "drop"):
+            for _k in ("vs_best_fixed", "vs_v1", "vs_drop"):
+                _r = (_o.get(_a) or {}).get(_k)
+                if _r:
+                    _p = f"r2.{_st}.{_sc}.{_a}.{_k}"
+                    out[_p + ".geo"] = _r["geo_ratio"]
+                    out[_p + ".lo"], out[_p + ".hi"] = _r["ci95"]
+                    out[_p + ".tlo"], out[_p + ".thi"] = _r["t_ci95"]
+        for _a, _g in _o["geo_mean_s"].items():
+            out[f"r2.{_st}.{_sc}.geo_mean_s.{_a}"] = _g
+_pa = json.load(open(os.path.join(T, "rl_cap_train_v2", "predictions_A.json")))["predictions"]
+_live = {}
+for _f in glob.glob(os.path.join(T, "rl_cap_train_v2", "runs_A", "*.json")):
+    _r = json.load(open(_f))
+    if _r.get("content_verified") is True and not _r.get("err"):
+        _live.setdefault("_".join(_r["run_id"].split("_")[:3]), []).append(_r["completion_ms"] / 1000)
+for _sc, _key in (("A_CAP0_80", "A_CAP0_8x1M_80"), ("A_HEALTHY_80", "A_HEALTHY_8x1M_80"),
+                  ("A_CAP8_120", "A_CAP8_12x1M_120"), ("A_D2custom_120", "A_D2custom_16x1M_120")):
+    out[f"r2.A.{_sc}.rel_err_pct"] = (geo(_live[_sc]) / _pa[_key]["gm_s"] - 1) * 100
+_pcd = json.load(open(os.path.join(T, "rl_cap_train_v2", "predictions_CD.json")))["predictions_s"]
+for _sc, _row in _pcd.items():
+    for _a, _v in _row.items():
+        out[f"r2.pred.{_sc}.{_a}"] = _v
+_pH = json.load(open(os.path.join(T, "rl_cap_train_v2", "predictions_H.json")))["scenarios"]
+for _sc, _row in _pH.items():
+    if "headroom" in _row:
+        out[f"r2.headroom.{_sc}.pct"] = _row["headroom"] * 100
 _jrep = json.load(open(os.path.join(T, "rl_joint", "train", "report.json")))
 for _sc, _row in _jrep["test"].items():
     if "agent_vs_best_fixed" in _row:

@@ -1022,6 +1022,84 @@
    "value": 1.513,
    "tol": 0.0005,
    "where": "\u00a79c"
+  },
+  "r2.C.runs": {
+   "value": 64,
+   "tol": 0,
+   "where": "\u00a79d"
+  },
+  "r2.C.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a79d"
+  },
+  "r2.D.runs": {
+   "value": 160,
+   "tol": 0,
+   "where": "\u00a79d"
+  },
+  "r2.D.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a79d"
+  },
+  "r2.C.CAP8.v2.vs_best_fixed.geo": {
+   "value": 0.845,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "0.845 [0.840, 0.850]"
+  },
+  "r2.C.HEALTHY.v2.vs_best_fixed.geo": {
+   "value": 1.047,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "1.047 [1.043,\n    1.052]"
+  },
+  "r2.D.H_C12.v2.vs_best_fixed.geo": {
+   "value": 0.882,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "H_C12: 0.882 [0.877, 0.886], faster"
+  },
+  "r2.D.H_RTT110.v2.vs_best_fixed.geo": {
+   "value": 0.819,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "H_RTT110: 0.819 [0.795, 0.848], faster"
+  },
+  "r2.D.H_DIP.v2.vs_best_fixed.geo": {
+   "value": 0.952,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "H_DIP: 0.952 [0.945, 0.958], faster"
+  },
+  "r2.D.H_C20.v2.vs_best_fixed.geo": {
+   "value": 1.007,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "H_C20: 1.007 [1.000, 1.014], slower"
+  },
+  "r2.D.H_C20.v2.vs_best_fixed.thi": {
+   "value": 1.016,
+   "tol": 0.0005,
+   "where": "\u00a79d",
+   "text": "[0.998, 1.016]"
+  },
+  "r2.D.H_RTT110.geo_mean_s.v2": {
+   "value": 68.6,
+   "tol": 0.05,
+   "where": "\u00a79d",
+   "text": "(68.6 s against 76.4 s)"
+  },
+  "r2.pred.H_RTT110.v2": {
+   "value": 76.4,
+   "tol": 0.05,
+   "where": "\u00a79d (simulator prediction)"
+  },
+  "r2.A.A_D2custom_120.rel_err_pct": {
+   "value": 5.6,
+   "tol": 0.05,
+   "where": "\u00a79d"
   }
  }
 }
