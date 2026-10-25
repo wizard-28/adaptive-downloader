@@ -33,8 +33,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   4 scenarios × 5 blocks = 80 runs
 - [ ] Run baselines_ext stage E (after Stage D), about 1.5 h
 - [ ] Analyse E and commit
-- [ ] Delay and loss sweep: write and freeze its protocol (delay × loss grid,
-  ours best fixed vs aria2, few blocks), then run and analyse. Not started.
+- [x] Delay and loss sweep protocol frozen (`testdata/netem_sweep`): D2 and
+  CAP8, delay {10, 40, 100} ms × loss {0, 0.4, 2} %, ours vs aria2, 3 blocks,
+  108 runs
+- [ ] Run netem_sweep stage S (after stage E), about 80 min; analyse; commit
 
 ## 3. Fold results into the paper and the number check
 
