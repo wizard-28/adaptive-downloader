@@ -1,0 +1,423 @@
+{
+ "label": "descriptive; one client, one access link",
+ "invalid": [],
+ "servers": {
+  "kcdn": {
+   "geo_mean_s": {
+    "drop": 15.021416037394923,
+    "fixed_8_1M": 13.510978315637521,
+    "v2": 18.720282570673135,
+    "fixed_16_1M": 13.357633755159625
+   },
+   "n_valid": {
+    "drop": 5,
+    "fixed_8_1M": 5,
+    "v2": 5,
+    "fixed_16_1M": 5
+   },
+   "best_fixed": "fixed_16_1M",
+   "v2_vs_best_fixed": {
+    "num": "v2",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.4014669749005577,
+    "ci95": [
+     1.1022026525893431,
+     1.7731408566603781
+    ],
+    "t_ci95": [
+     0.9500672511632182,
+     2.0673375272457353
+    ],
+    "verdict_used": "slower"
+   },
+   "v2_vs_each": {
+    "fixed_16_1M": {
+     "num": "v2",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.4014669749005577,
+     "ci95": [
+      1.1022026525893431,
+      1.7731408566603781
+     ],
+     "t_ci95": [
+      0.9500672511632182,
+      2.0673375272457353
+     ],
+     "verdict_used": "slower"
+    },
+    "fixed_8_1M": {
+     "num": "v2",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.385560847877788,
+     "ci95": [
+      1.2326276195627912,
+      1.5924778082875337
+     ],
+     "t_ci95": [
+      1.1318747046686695,
+      1.6961054569496605
+     ],
+     "verdict_used": "slower"
+    }
+   },
+   "drop_vs_best_fixed": {
+    "num": "drop",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.1245566627092638,
+    "ci95": [
+     0.8683299513765724,
+     1.456390725252503
+    ],
+    "t_ci95": [
+     0.7455025611425984,
+     1.696342512499969
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "drop_vs_each": {
+    "fixed_16_1M": {
+     "num": "drop",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.1245566627092638,
+     "ci95": [
+      0.8683299513765724,
+      1.456390725252503
+     ],
+     "t_ci95": [
+      0.7455025611425984,
+      1.696342512499969
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "drop",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.111793364364239,
+     "ci95": [
+      0.8385175872041726,
+      1.400023844787457
+     ],
+     "t_ci95": [
+      0.7352866466916043,
+      1.6810919803944093
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "v2_vs_drop": {
+    "num": "v2",
+    "den": "drop",
+    "n_blocks": 5,
+    "geo_ratio": 1.2462395372094155,
+    "ci95": [
+     0.9695646874813416,
+     1.6030146606583113
+    ],
+    "t_ci95": [
+     0.8510637400306686,
+     1.824907948784154
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "descriptive": {
+    "v2": {
+     "median_final_n": 6,
+     "median_moves": 51,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 16,
+     "median_moves": 0,
+     "drop_switched_runs": 1
+    }
+   }
+  },
+  "kedge": {
+   "geo_mean_s": {
+    "fixed_16_1M": 11.13120018379707,
+    "fixed_8_1M": 11.239878954219813,
+    "v2": 18.41545421674146,
+    "drop": 11.830428768473558
+   },
+   "n_valid": {
+    "fixed_16_1M": 5,
+    "fixed_8_1M": 5,
+    "v2": 5,
+    "drop": 5
+   },
+   "best_fixed": "fixed_16_1M",
+   "v2_vs_best_fixed": {
+    "num": "v2",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.6543996974870316,
+    "ci95": [
+     0.8730000023821493,
+     2.8494763051014838
+    ],
+    "t_ci95": [
+     0.6576538826884015,
+     4.161821941743175
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "v2_vs_each": {
+    "fixed_16_1M": {
+     "num": "v2",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.6543996974870316,
+     "ci95": [
+      0.8730000023821493,
+      2.8494763051014838
+     ],
+     "t_ci95": [
+      0.6576538826884015,
+      4.161821941743175
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "v2",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.638403250759894,
+     "ci95": [
+      1.0592184615882898,
+      2.585534535186126
+     ],
+     "t_ci95": [
+      0.7973459816128402,
+      3.3666253721762778
+     ],
+     "verdict_used": "slower"
+    }
+   },
+   "drop_vs_best_fixed": {
+    "num": "drop",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.0628169984485865,
+    "ci95": [
+     0.8240546807066815,
+     1.5533832060620396
+    ],
+    "t_ci95": [
+     0.6268252111222384,
+     1.8020653160534428
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "drop_vs_each": {
+    "fixed_16_1M": {
+     "num": "drop",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.0628169984485865,
+     "ci95": [
+      0.8240546807066815,
+      1.5533832060620396
+     ],
+     "t_ci95": [
+      0.6268252111222384,
+      1.8020653160534428
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "drop",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.0525405848816574,
+     "ci95": [
+      0.5311789774795672,
+      1.7577952697301633
+     ],
+     "t_ci95": [
+      0.40363274040231784,
+      2.7446774553491093
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "v2_vs_drop": {
+    "num": "v2",
+    "den": "drop",
+    "n_blocks": 5,
+    "geo_ratio": 1.5566176490421109,
+    "ci95": [
+     0.9877276677371496,
+     2.4574367179965533
+    ],
+    "t_ci95": [
+     0.752726031361782,
+     3.2190443858115976
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "descriptive": {
+    "v2": {
+     "median_final_n": 7,
+     "median_moves": 47,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 4,
+     "median_moves": 1,
+     "drop_switched_runs": 4
+    }
+   }
+  },
+  "riken": {
+   "geo_mean_s": {
+    "v2": 8.399127690397618,
+    "fixed_16_1M": 6.913090550514148,
+    "fixed_8_1M": 9.494573274793057,
+    "drop": 9.208572429872307
+   },
+   "n_valid": {
+    "v2": 5,
+    "fixed_16_1M": 5,
+    "fixed_8_1M": 5,
+    "drop": 5
+   },
+   "best_fixed": "fixed_16_1M",
+   "v2_vs_best_fixed": {
+    "num": "v2",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.2149598835752196,
+    "ci95": [
+     0.7190480220269615,
+     1.8991880967145975
+    ],
+    "t_ci95": [
+     0.566634186402988,
+     2.6050802336294177
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "v2_vs_each": {
+    "fixed_16_1M": {
+     "num": "v2",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.2149598835752196,
+     "ci95": [
+      0.7190480220269615,
+      1.8991880967145975
+     ],
+     "t_ci95": [
+      0.566634186402988,
+      2.6050802336294177
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "v2",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 0.8846240317820587,
+     "ci95": [
+      0.6824502744045147,
+      1.160960783254419
+     ],
+     "t_ci95": [
+      0.5686985469370822,
+      1.3760535908190443
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "drop_vs_best_fixed": {
+    "num": "drop",
+    "den": "fixed_16_1M",
+    "n_blocks": 5,
+    "geo_ratio": 1.332048576911442,
+    "ci95": [
+     0.9166929851106997,
+     2.01706616598248
+    ],
+    "t_ci95": [
+     0.7152286402081243,
+     2.4808198546628097
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "drop_vs_each": {
+    "fixed_16_1M": {
+     "num": "drop",
+     "den": "fixed_16_1M",
+     "n_blocks": 5,
+     "geo_ratio": 1.332048576911442,
+     "ci95": [
+      0.9166929851106997,
+      2.01706616598248
+     ],
+     "t_ci95": [
+      0.7152286402081243,
+      2.4808198546628097
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "drop",
+     "den": "fixed_8_1M",
+     "n_blocks": 5,
+     "geo_ratio": 0.9698774408661369,
+     "ci95": [
+      0.818257445876319,
+      1.1331414551417311
+     ],
+     "t_ci95": [
+      0.7480137809829802,
+      1.2575466845876868
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "v2_vs_drop": {
+    "num": "v2",
+    "den": "drop",
+    "n_blocks": 5,
+    "geo_ratio": 0.9120987812563784,
+    "ci95": [
+     0.6733176745661057,
+     1.3781735789271294
+    ],
+    "t_ci95": [
+     0.5120573751047108,
+     1.6246698655580347
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "descriptive": {
+    "v2": {
+     "median_final_n": 14,
+     "median_moves": 42,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 4,
+     "median_moves": 1,
+     "drop_switched_runs": 4
+    }
+   }
+  }
+ },
+ "sentences": {
+  "kcdn.v2": "slower than the best fixed setting on kcdn by 40.1 %",
+  "kcdn.drop": "slower than the best fixed setting on kcdn by 12.5 %",
+  "kedge.v2": "slower than the best fixed setting on kedge by 65.4 %",
+  "kedge.drop": "slower than the best fixed setting on kedge by 6.3 %",
+  "riken.v2": "slower than the best fixed setting on riken by 21.5 %",
+  "riken.drop": "slower than the best fixed setting on riken by 33.2 %"
+ },
+ "summary": "On 0 of 3 public mirrors, the v2 agent showed no harm against the best fixed 1 MiB setting (and the drop rule on 0 of 3)."
+}
