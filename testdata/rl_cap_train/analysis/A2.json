@@ -1,0 +1,48 @@
+{
+ "stage": "A2",
+ "label": "controlled experiment; one constructed server model",
+ "invalid": [],
+ "rows": [
+  {
+   "scenario": "CAP8",
+   "arm": "fixed_3_1M",
+   "predicted_s": 93.76,
+   "live_gm_s": 93.32824134388898,
+   "n": 2,
+   "rel_err": -0.004604934472173916,
+   "within_8pct": true
+  },
+  {
+   "scenario": "CAP8",
+   "arm": "fixed_8_1M",
+   "predicted_s": 82.01,
+   "live_gm_s": 80.90309322076152,
+   "n": 2,
+   "rel_err": -0.01349721715935237,
+   "within_8pct": true
+  },
+  {
+   "scenario": "CAP0",
+   "arm": "fixed_3_1M",
+   "predicted_s": 93.78,
+   "live_gm_s": 93.25962599892279,
+   "n": 2,
+   "rel_err": -0.005548880369771969,
+   "within_8pct": true
+  },
+  {
+   "scenario": "CAP0",
+   "arm": "fixed_16_1M_NT_split",
+   "predicted_s": 114.69,
+   "live_gm_s": 115.08007530667496,
+   "n": 2,
+   "rel_err": 0.00340112744506893,
+   "within_8pct": true
+  }
+ ],
+ "ordering": {
+  "CAP0_N3_faster_than_N16": true,
+  "CAP8_N8_faster_than_N3": true
+ },
+ "pass": true
+}
