@@ -64,10 +64,18 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 
 ## 5. After the above, if time allows before Thursday
 
-- [ ] Joint N + range-size agent on the capped server. Needs simulator
-  support for variable range size and straggler splitting (≥ 2 MiB
-  unreceived), a new parity check against live runs, and a new frozen
-  protocol. About 1 day.
+- [~] Joint N + range-size agent on the capped server.
+  - [x] Simulator `python/rl/sim_env_joint.py` (variable S, splitting, v1
+    observables). It equals sim_env_cap exactly at 1 MiB. Retrospective
+    live check on 8 configurations (split ablation) within 5.3 %; long
+    ranges come out up to 5 % fast.
+  - Finding: the sim headroom is large (scripted "1 MiB, then 33 MiB once the
+    rate rises": CAP8 0.352 of the best fixed) but comes from the
+    arrival-time rate rule; a server that re-checks rates during a response
+    would remove most of it.
+  - [ ] **Ask the user** whether to proceed with that framing, plus a control
+    server variant that re-checks rates. Then: tests, protocol, blind live
+    parity, training, live evaluation.
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
   `reports/ieee_access/README.md`.
