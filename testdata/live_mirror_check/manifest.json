@@ -1,0 +1,92 @@
+{
+ "pilot": "live_mirror_check",
+ "seed": 20261101,
+ "client": {
+  "location": "Katpadi, IN",
+  "access_network": "AS45820 Tata Teleservices (user's broadband; ~2.4 MB/s single-stream to cdn.kernel.org at Stage 0)",
+  "host": "devcontainer on the author's machine"
+ },
+ "file": {
+  "name": "linux-3.0.tar.xz",
+  "size": 63798008,
+  "sha256": "ef5e8c2dedb20a6eab01bb379e9982cd7d47cf95bd87c9ee3e872272e85c24b6",
+  "checksum_source": "https://cdn.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc"
+ },
+ "servers": [
+  {
+   "id": "kcdn",
+   "url": "https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz"
+  },
+  {
+   "id": "kedge",
+   "url": "https://mirrors.edge.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz"
+  },
+  {
+   "id": "riken",
+   "url": "https://ftp.riken.jp/Linux/kernel.org/linux/kernel/v3.x/linux-3.0.tar.xz"
+  }
+ ],
+ "cells": [],
+ "policy_arms": [
+  {
+   "kind": "ours",
+   "n": 16,
+   "s": 1048576,
+   "no_request_timeout": true,
+   "split": true,
+   "policy": "dqn6",
+   "dqn_model": "testdata/rl_cap_train_v2/model/dqn_cap_v2_candidate.json",
+   "window": 16
+  },
+  {
+   "kind": "ours",
+   "n": 16,
+   "s": 1048576,
+   "no_request_timeout": true,
+   "split": true,
+   "policy": "drop",
+   "window": 3,
+   "capped_n": 4,
+   "drop_ratio": 0.5
+  },
+  {
+   "kind": "ours",
+   "n": 16,
+   "s": 1048576,
+   "no_request_timeout": true,
+   "split": true
+  },
+  {
+   "kind": "ours",
+   "n": 8,
+   "s": 1048576,
+   "no_request_timeout": true,
+   "split": true
+  }
+ ],
+ "reference_arms": false,
+ "aria2_args": [
+  "--no-conf",
+  "--file-allocation=none",
+  "--allow-overwrite=true",
+  "--auto-file-renaming=false",
+  "--enable-color=false",
+  "--summary-interval=0",
+  "--console-log-level=notice",
+  "--max-connection-per-server=16",
+  "--split=16",
+  "--min-split-size=1048576",
+  "--max-tries=3",
+  "--retry-wait=1",
+  "--timeout=60",
+  "--connect-timeout=30",
+  "--http-accept-gzip=false",
+  "--conditional-get=false"
+ ],
+ "reps": 5,
+ "gap_s": 5,
+ "run_timeout_s": 900,
+ "max_retries": 3,
+ "timeline_ms": 100,
+ "user_agent": "adaptivedl-research-pilot/1.0 (live_mirror_check)"
+}
