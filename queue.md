@@ -147,10 +147,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   (kernel.org CDN, origin, riken), 64 MB file, arms v2 agent / drop rule /
   fixed 8×1 MiB / 16×1 MiB, about 3 mirrors × 5 reps (about 4 GB), with the
   live-pilot etiquette (User-Agent, ≤16 connections, abort on 429/503).
-  - [ ] Opt-in `-policy` support in `cmd/live-pilot` (additive) and tests
-  - [ ] Frozen protocol. Stated in advance: these mirrors showed little
-    headroom (3.7 %), so the check mainly tests "no harm on unlike
-    servers"; descriptive, one client and one access link
+  - [x] Opt-in policy arms in `cmd/live-pilot` (Sonnet subagent, reviewed;
+    plus `reference_arms` switch), tests pass (5b360b2)
+  - [x] Protocol, manifest (60 runs) and analysis frozen
+    (`testdata/live_mirror_check`, 5b360b2). No-harm check, descriptive.
+  - [ ] Run after v2 Stage D: range probe, then `live-pilot -manifest
+    testdata/live_mirror_check/manifest.json -slot M1 -out
+    testdata/live_mirror_check/raw/M1.jsonl` (about 45 min)
   - Uses the internet link, not the loopback.
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
