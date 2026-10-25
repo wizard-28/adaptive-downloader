@@ -55,9 +55,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   Q15–Q20 added). Fill in the `[RESULTS]` and `[STATUS]` placeholders
   (Q17, Q20, and wget2 in Q20)
 - [ ] Update `reports/thursday/project_summary.md` with the newest results
-- [ ] Demo run-through: live download with the CLI (probe and `-sha256`),
-  one benchmark run, the test suite. Write the exact commands into a demo
-  script and time it
+- [~] Demo script written (`reports/thursday/demo.md`: live CLI download
+  with probe and `-sha256`, capped-server run with the retrained agent, tests
+  and checker). Still to do: run it end to end and fill in the timings, after
+  the live studies finish (it uses the loopback)
 - [ ] Rehearse the hardest questions: generalization, "tuned to the test",
   why no range-size action, aria2 gap, wget2 exclusion, IEEE status
 
