@@ -173,3 +173,41 @@ kept unchanged in `train_A0/` and `model_A0/`, and it is not evaluated live.
 the ε schedule completes three times over. The actual step counts are
 reported. Everything else in Stage B is unchanged, including the seeds,
 selection, test sets and gates. The A2 parity result stands.
+
+## Amendment A2 (2026-10-25, after Stage B, before any Stage C or L run): predictions and Stage B outcome
+
+**Stage B, retrained under A1.** Each seed ran 747,503–823,821 steps, so the
+ε schedule completed. Seed 0 was selected on validation. Its sha256 prefix is
+c421d5358c8c, and the Go parity test passes.
+
+Simulator test, agent ÷ best fixed (N, S):
+
+| Scenario | Ratio |
+|---|---|
+| CAP8 | 1.513 |
+| HEALTHY | 1.070 |
+| CAP0 | 1.333 |
+| D2 | 1.375 |
+| G_C16 | 1.002 |
+| G_RTT | 1.458 |
+| G_D2 | 1.845 |
+| Out-of-distribution | 2.19, faster in 0 of 20 |
+
+Gates J1 and J2 fail and J3 passes. As frozen, the live stages run
+regardless of the gates.
+
+**Predictions for Stage C:** simulator geometric means over seeds 100–109,
+in seconds (`predictions_C.json`).
+
+| Scenario | dqnj | 16×1 MiB | 16×32 MiB | 16×5 MiB |
+|---|---|---|---|---|
+| CAP8 | 73.30 | 77.43 | 51.54 | – |
+| HEALTHY | 20.37 | 19.03 | 51.54 | – |
+| CAP0 | 88.16 | 114.77 | 66.65 | – |
+| D2 | 28.10 | 26.20 | 51.54 | 20.44 |
+
+**Caveat from A2.** The simulator was optimistic by +1.5 % to +7.0 % in the
+blind check, and more so for long ranges, so the 16×32 MiB predictions are
+likely a few percent fast. There are no predictions for the live-rate
+scenarios (CAP8L, HEALTHYL), because the simulator does not model live-rate
+mode.

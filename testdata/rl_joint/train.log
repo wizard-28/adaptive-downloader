@@ -1,0 +1,16 @@
+trained [(0, 1588.1), (1, 1586.8), (2, 1522.7), (3, 1477.0), (4, 1514.2)]
+seed 0 validation score 1.1401
+seed 1 validation score 1.2262
+seed 2 validation score 1.1628
+seed 3 validation score 1.1703
+seed 4 validation score 1.2607
+CAP8 {'best_fixed_n': 16, 'best_fixed_s_mib': 33, 'best_fixed_s': 48.46, 'fixed_16x1MiB_s': 77.428, 'fixed_16x33MiB_s': 48.46, 'agent_s': 73.304, 'agent_vs_best_fixed': 1.513, 'agent_moves_median': 27, 'agent_chunk_moves_median': 18}
+HEALTHY {'best_fixed_n': 16, 'best_fixed_s_mib': 1, 'best_fixed_s': 19.031, 'fixed_16x1MiB_s': 19.031, 'fixed_16x33MiB_s': 48.296, 'agent_s': 20.366, 'agent_vs_best_fixed': 1.07, 'agent_moves_median': 17, 'agent_chunk_moves_median': 12}
+CAP0 {'best_fixed_n': 16, 'best_fixed_s_mib': 33, 'best_fixed_s': 66.13, 'fixed_16x1MiB_s': 114.772, 'fixed_16x33MiB_s': 66.13, 'agent_s': 88.155, 'agent_vs_best_fixed': 1.333, 'agent_moves_median': 65, 'agent_chunk_moves_median': 12}
+G_C16 {'best_fixed_n': 16, 'best_fixed_s_mib': 17, 'best_fixed_s': 41.688, 'fixed_16x1MiB_s': 42.887, 'fixed_16x33MiB_s': 48.296, 'agent_s': 41.757, 'agent_vs_best_fixed': 1.002, 'agent_moves_median': 24, 'agent_chunk_moves_median': 17}
+G_RTT {'best_fixed_n': 16, 'best_fixed_s_mib': 33, 'best_fixed_s': 48.813, 'fixed_16x1MiB_s': 82.931, 'fixed_16x33MiB_s': 48.813, 'agent_s': 71.15, 'agent_vs_best_fixed': 1.458, 'agent_moves_median': 30, 'agent_chunk_moves_median': 12}
+G_D2 {'best_fixed_n': 16, 'best_fixed_s_mib': 33, 'best_fixed_s': 48.46, 'fixed_16x1MiB_s': 114.328, 'fixed_16x33MiB_s': 48.46, 'agent_s': 89.397, 'agent_vs_best_fixed': 1.845, 'agent_moves_median': 58, 'agent_chunk_moves_median': 10}
+D2 {'best_fixed_n': 16, 'best_fixed_s_mib': 5, 'best_fixed_s': 20.438, 'fixed_16x1MiB_s': 26.201, 'fixed_16x33MiB_s': 48.296, 'agent_s': 28.104, 'agent_vs_best_fixed': 1.375, 'agent_moves_median': 37, 'agent_chunk_moves_median': 12}
+OOD {'n': 20, 'gm_ratio_agent': 2.1928070819671546, 'agent_faster_than_best_fixed': 0}
+gates (reported, never block) {'J1_cap8_agent_at_least_3pct_faster_than_best_fixed': False, 'J2_healthy_within_5pct_of_best_fixed': False, 'J3_changes_s_in_cap8': True}
+selected seed 0 sha c421d5358c8c wall 4590s
