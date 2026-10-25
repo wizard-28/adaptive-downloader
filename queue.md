@@ -56,17 +56,19 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - Note: the token scan weakens as recomputed values grow (0.763 = 1/1.310
   slipped through). Give every headline number a `text` anchor in
   `paper_numbers.json`.
-- [ ] Add baselines_ext and sweep results
-- [ ] Extend `tools/claims_check.py` and `paper_numbers.json` for the new
-  results; rerun the self-test
-- [ ] Update the abstract, limitations, conclusion and claim map
+- [x] §4.3 axel/lftp, §4.4 sweep, §9c joint, wasted-bytes caveat, loss
+  re-check correction; checker 199/199, 0 unverified; self-test 9/9 after
+  anchoring P2 (ee912a7)
+- [ ] §9d v2 (after Stage D); then abstract, limitations, conclusion and
+  claim map
 
 ## 4. Viva preparation
 
 - [~] `reports/thursday/qa.md` aligned with Review 3 (Q9, Q11 fixed;
   Q15–Q20 added). Fill in the `[RESULTS]` and `[STATUS]` placeholders
   (Q17, Q20, and wget2 in Q20)
-- [~] `reports/thursday/project_summary.md` updated (findings 5–6, takeaway); fill in the sweep (Stage D and baselines are in qa.md; summary still needs the baselines)
+- [~] `reports/thursday/project_summary.md`: baselines, sweep and joint
+  (finding 7) added; v2 pending
 - [x] Demo run end to end and timed (`reports/thursday/demo.md`): about
   2.5 min in all; every step OK
 - [ ] Rehearse the hardest questions: generalization, "tuned to the test",
@@ -137,31 +139,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Headroom gate: all 4 H kept, 9.9-17.4 % (A2, bc9917b).
   - [x] Stage B: seed 1 selected (27657be2), Go parity passes; sim H
     0.891/0.951/0.945/1.025, but only seed 1 is good on H (A3, 1492f23).
-  - [~] Live C (64 runs) then D (160 runs), started ~18:00 UTC, about 4.5 h.
-  - [ ] `analyze.py C`, `D`, `verdict`; then paper, PROJECT_CONTEXT, viva. Same learner,
-  action space and Go adapter as rl_cap_train.
-  - The current Stage D result stands as final: faster in 0 of 3. The three
-    G_* scenarios are reported as "used during v2 design" and are no longer
-    held out.
-  - [ ] Broaden the training distribution: C up to about 24 MiB/s, one-way
-    delay up to about 120 ms, multi-phase schedules with dips.
-  - [ ] Calibrate across delay: collect request-timing logs at 2–3 delays
-    (for example 20, 80 and 120 ms); delay-dependent jitter in sim_env_cap
-    (as a new module or an opt-in option, keeping the frozen study
-    reproducible).
-  - [ ] Blind live parity at 80 and 120 ms.
-  - [ ] Choose and freeze NEW held-out scenarios before training (for
-    example C = 12 or 20 MiB/s, 120 ms, a different dip schedule).
-  - [ ] Frozen protocol, 5 seeds, validation-only selection, live
-    in-distribution and held-out stages. About 5–6 h including live runs.
-  - [ ] **Rule arm** in every v2 live stage: the causal drop rule
-    (`-policy drop`, N-only, 1 MiB, corrected engine), in-distribution and
-    on the fresh held-out scenarios. Wording rule, fixed in advance: if v2
-    beats the rule, "learned control adds something"; if it only matches,
-    "learning reached what a simple rule does".
-  - Claim scope if v2 wins: the best fixed setting *with the same range
-    size*, under server-side changes (a cap switching on). Report v1 and v2
-    both.
+  - [~] Live D (160 runs), about 21:50 UTC.
+  - [x] Stage C 64/64 valid: CAP8 v2 0.845 faster than fixed 16x1 MiB, vs
+    v1 0.929 faster, vs drop 1.048 slower; HEALTHY 1.047 slower (2368d56).
+  - [ ] `analyze.py D`, `verdict`; then paper §9d, PROJECT_CONTEXT, viva.
 - [ ] Real-server check (after v2): public mirrors from the live pilot
   (kernel.org CDN, origin, riken), 64 MB file, arms v2 agent / drop rule /
   fixed 8×1 MiB / 16×1 MiB, about 3 mirrors × 5 reps (about 4 GB), with the

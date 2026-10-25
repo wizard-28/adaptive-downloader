@@ -38,6 +38,13 @@ actually something for adaptation to exploit?**
    and phase-locked pacing: it shrinks to 0.862 when granularity is matched.
    In screens, ours was faster in 28 of 30 pairs across six pacing schedules
    and in 10 of 10 against stock NGINX rate limiting.
+   - **Not specific to aria2:** axel and lftp split the file into 16 equal
+     parts up front too. Ours took 0.345–0.375 of their time without a cap
+     and on D2. Under the cap from 8 s, all four tools were level. (wget2
+     was dropped because it uses one connection per file.)
+   - **Delay and loss sweep:** the D2 advantage held in all 9 cells (10–100 ms
+     one-way delay, 0–2 % loss; 0.36–0.46). Under the cap, ours and aria2
+     were near parity, and the sign varied by cell.
 2. **Variability is not opportunity.** The Mahimahi cellular traces swing
    5–27× in capacity. Even so, an oracle that knows the future and switches
    concurrency optimally gains only 0.41 % on average over five traces. The
@@ -84,6 +91,15 @@ actually something for adaptation to exploit?**
    - in three held-out scenarios outside the training ranges it was faster
      in none (1.177 slower; 1.016 and 1.015 not distinguishable): it learned
      the server it was trained on, and did not generalize.
+7. **A joint agent that also sets the range size did not beat the best fixed
+   setting** (`testdata/rl_joint`):
+   - in the simulator, a hand-written rule took 0.352 of the best fixed time
+     under the cap, but the trained agent did not find that behaviour;
+   - live over 10 blocks it was slower in all four scenarios (CAP8 1.471
+     against 16 × 32 MiB), within about 5 % of the simulator's predictions;
+   - on a control server that re-checks rates during each response, fixed
+     16 × 32 MiB lost most of its edge (50.9 s became 67.4 s). So the
+     large-range advantage under the cap depends on that server rule.
 
 ## Why reinforcement learning did not win
 
