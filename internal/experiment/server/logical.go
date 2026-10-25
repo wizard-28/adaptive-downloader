@@ -59,6 +59,10 @@ func (l logicalContent) write(ctx context.Context, w http.ResponseWriter, start,
 	return true
 }
 
+func (l logicalContent) writeLive(ctx context.Context, w http.ResponseWriter, start, end int64, rate func() int64) bool {
+	return writePacedLive(ctx, w, start, end, rate, fillLogical)
+}
+
 // NewLogical returns a Server backed by a deterministic generated logical
 // object of exactly size bytes. The object is never allocated: every range is
 // generated on demand, so memory use is independent of size, and the same

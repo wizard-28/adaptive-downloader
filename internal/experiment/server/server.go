@@ -123,6 +123,9 @@ type contentSource interface {
 	// (bytes per second; <= 0 means unlimited). It must write exactly
 	// end-start+1 bytes and reports false on client/context failure.
 	write(ctx context.Context, w http.ResponseWriter, start, end, rate int64) bool
+	// writeLive paces like write but reads the rate from rate() before every
+	// chunk (live-rate mode).
+	writeLive(ctx context.Context, w http.ResponseWriter, start, end int64, rate func() int64) bool
 }
 
 // finiteContent serves a private in-memory byte slice (the original behavior).
@@ -132,6 +135,10 @@ func (f finiteContent) size() int64 { return int64(len(f.data)) }
 
 func (f finiteContent) write(ctx context.Context, w http.ResponseWriter, start, end int64, rate int64) bool {
 	return writeThrottled(w, ctx, f.data[start:end+1], rate)
+}
+
+func (f finiteContent) writeLive(ctx context.Context, w http.ResponseWriter, start, end int64, rate func() int64) bool {
+	return writePacedLive(ctx, w, start, end, rate, func(buf []byte, off int64) { copy(buf, f.data[off:]) })
 }
 
 // Server is a controllable HTTP range server. It is safe for concurrent use.
@@ -163,6 +170,14 @@ type Server struct {
 
 	// activeRequests counts requests currently being served (cap accounting).
 	activeRequests atomic.Int64
+
+	// Opt-in live-rate mode (experimental, default off). When set, a response
+	// body's rate is re-read before every 16 KiB chunk from the current base
+	// rate and, when the cap is active, the cap at the current number of
+	// in-flight requests. Every request then counts towards k, including ones
+	// that arrived before the cap switched on. Off, a response keeps the rate
+	// fixed when it arrived (the default model).
+	liveRate bool
 
 	// now returns the current wall-clock time. It is injectable so tests can
 	// exercise wall-clock schedules deterministically without sleeping.
@@ -275,6 +290,54 @@ func (s *Server) SetConcurrencyCap(C int64, gamma float64) error {
 	s.capActive = true
 	s.mu.Unlock()
 	return nil
+}
+
+// SetLiveRate turns live-rate mode on or off (see Server.liveRate). Off is
+// the default and keeps every existing behaviour.
+func (s *Server) SetLiveRate(on bool) {
+	s.mu.Lock()
+	s.liveRate = on
+	s.mu.Unlock()
+}
+
+// liveRateNow is the rate a live-rate response uses for its next chunk: the
+// current base rate, lowered to the cap at the current number of in-flight
+// requests when the cap is active. <= 0 means unlimited.
+func (s *Server) liveRateNow() int64 {
+	s.mu.Lock()
+	base := s.currentRateLocked(s.clock())
+	capOn, c, g := s.capActive, s.capC, s.capGamma
+	s.mu.Unlock()
+	if capOn {
+		cr := concurrencyCapRate(c, g, s.activeRequests.Load())
+		if base <= 0 || cr < base {
+			return cr
+		}
+	}
+	return base
+}
+
+// writePacedLive streams [start, end] in 16 KiB chunks, sleeping chunk/rate()
+// before each chunk, with rate() read afresh every time.
+func writePacedLive(ctx context.Context, w http.ResponseWriter, start, end int64, rate func() int64, fill func(buf []byte, off int64)) bool {
+	buf := make([]byte, logicalChunkSize)
+	for off := start; off <= end; {
+		n := int64(len(buf))
+		if remaining := end - off + 1; n > remaining {
+			n = remaining
+		}
+		if r := rate(); r > 0 {
+			if !sleepContext(ctx, time.Duration(float64(n)/float64(r)*float64(time.Second))) {
+				return false
+			}
+		}
+		fill(buf[:n], off)
+		if _, err := w.Write(buf[:n]); err != nil {
+			return false
+		}
+		off += n
+	}
+	return true
 }
 
 // ClearConcurrencyCap removes the concurrency cap (default behavior).
@@ -471,7 +534,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	baseRate := s.currentRateLocked(s.clock())
 	rate := baseRate
 	var capRate, k int64
-	if s.capActive {
+	live := s.liveRate
+	if live {
+		k = s.activeRequests.Add(1)
+		if s.capActive {
+			capRate = concurrencyCapRate(s.capC, s.capGamma, k)
+			if baseRate <= 0 || capRate < baseRate {
+				rate = capRate
+			}
+		}
+	} else if s.capActive {
 		k = s.activeRequests.Add(1)
 		capRate = concurrencyCapRate(s.capC, s.capGamma, k)
 		if baseRate <= 0 || capRate < baseRate {
@@ -532,7 +604,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Length", strconv.FormatInt(length, 10))
 	w.WriteHeader(statusCode)
 
-	if !s.content.write(r.Context(), w, start, end, rate) {
+	var ok bool
+	if live {
+		ok = s.content.writeLive(r.Context(), w, start, end, s.liveRateNow)
+	} else {
+		ok = s.content.write(r.Context(), w, start, end, rate)
+	}
+	if !ok {
 		s.recordFailure()
 		return
 	}
