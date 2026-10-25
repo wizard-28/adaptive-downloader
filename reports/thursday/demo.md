@@ -56,7 +56,7 @@ the `-cap-*` flags to run fixed 16 × 1 MiB on the uncapped server.
 
 ```bash
 go test -count=1 ./internal/... 2>&1 | tail -15   # -count=1: run for real, not cached
-python3 tools/claims_check.py | tail -2   # 183 numbers recomputed from raw runs
+python3 tools/claims_check.py | tail -2   # 199 numbers recomputed from raw runs
 ```
 
 Point out:
@@ -75,6 +75,6 @@ Measured on 2026-10-25 (devcontainer, home broadband):
   verified, and the final N was 6. N held at 14–16 before the cap and fell
   to 6 by 15.8 s, after the cap at 8 s.
 - **Step 3:** about 30 s for the uncached internal tests (18 packages OK),
-  plus 8 s for the checker (183/183, 0 unverified).
+  plus 8 s for the checker (183/183, 0 unverified, on 2026-10-25; now 199).
 - **Total:** about 2.5 min plus talking. Afterwards `sudo -n tc qdisc show
   dev lo` showed `noqueue` (clean).
