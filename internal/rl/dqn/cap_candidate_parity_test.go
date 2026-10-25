@@ -1,6 +1,7 @@
 package dqn
 
-// Parity test for the capped-server candidate (testdata/rl_cap_train): every
+// Parity test for the capped-server candidates (testdata/rl_cap_train and
+// testdata/rl_cap_train_v2): every
 // fixture case holds a raw observation from the Python simulator together with
 // the Python features and greedy action. Go must build the same features and
 // pick the same action from the exported model, so the agent evaluated in the
@@ -44,10 +45,20 @@ type capFixture struct {
 func secs(s float64) time.Duration { return time.Duration(math.Round(s * float64(time.Second))) }
 
 func TestCapCandidateMatchesPythonInference(t *testing.T) {
-	dir := filepath.Join("..", "..", "..", "testdata", "rl_cap_train", "model")
-	modelPath := filepath.Join(dir, "dqn_cap_candidate.json")
+	checkCapCandidate(t, "rl_cap_train", "dqn_cap_candidate.json", "python/train_cap.py")
+}
+
+// The v2 candidate (testdata/rl_cap_train_v2) uses the same layout and adapter.
+func TestCapV2CandidateMatchesPythonInference(t *testing.T) {
+	checkCapCandidate(t, "rl_cap_train_v2", "dqn_cap_v2_candidate.json", "python/train_cap_v2.py")
+}
+
+func checkCapCandidate(t *testing.T, study, model, script string) {
+	t.Helper()
+	dir := filepath.Join("..", "..", "..", "testdata", study, "model")
+	modelPath := filepath.Join(dir, model)
 	if _, err := os.Stat(modelPath); err != nil {
-		t.Skipf("capped-server candidate not present at %s (run python/train_cap.py)", modelPath)
+		t.Skipf("candidate not present at %s (run %s)", modelPath, script)
 	}
 	raw, err := os.ReadFile(modelPath)
 	if err != nil {

@@ -101,6 +101,57 @@
     "2:163840,4:2560000"
    ],
    "uses_cap": true
+  },
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  },
+  "H_C12": {
+   "extra": [
+    "-cap-at",
+    "6",
+    "-cap-c",
+    "12582912"
+   ],
+   "uses_cap": true
+  },
+  "H_RTT110": {
+   "extra": [
+    "-cap-at",
+    "12",
+    "-netem-latency-ms",
+    "110"
+   ],
+   "uses_cap": true
+  },
+  "H_DIP": {
+   "extra": [
+    "-cap-at",
+    "6",
+    "-schedule",
+    "custom",
+    "-schedule-spec",
+    "1:2560000,30:409600,40:2560000"
+   ],
+   "uses_cap": true
+  },
+  "H_C20": {
+   "extra": [
+    "-cap-at",
+    "4",
+    "-cap-c",
+    "20971520",
+    "-netem-latency-ms",
+    "20"
+   ],
+   "uses_cap": true
   }
  },
  "arms": {
@@ -139,6 +190,76 @@
    "ours",
    "-n",
    "12",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "v2": [
+   "-system",
+   "ours",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-n",
+   "16",
+   "-policy",
+   "dqn6",
+   "-dqn-model",
+   "testdata/rl_cap_train_v2/model/dqn_cap_v2_candidate.json",
+   "-window",
+   "16"
+  ],
+  "v1": [
+   "-system",
+   "ours",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-n",
+   "16",
+   "-policy",
+   "dqn6",
+   "-dqn-model",
+   "testdata/rl_cap_train/model/dqn_cap_candidate.json",
+   "-window",
+   "16"
+  ],
+  "drop": [
+   "-system",
+   "ours",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-n",
+   "16",
+   "-policy",
+   "drop",
+   "-capped-n",
+   "4",
+   "-capped-s",
+   "1048576",
+   "-drop",
+   "0.5"
+  ],
+  "fixed_9_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "9",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_14_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "14",
    "-chunk",
    "1048576",
    "-no-request-timeout",
@@ -208,7 +329,69 @@
     ]
    },
    "predictions": "predictions_A.json"
+  },
+  "C": {
+   "seed": 20261029,
+   "blocks": 8,
+   "scenario_order": [
+    "CAP8",
+    "HEALTHY"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M"
+    ],
+    "HEALTHY": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M"
+    ]
+   }
+  },
+  "D": {
+   "seed": 20261030,
+   "blocks": 8,
+   "scenario_order": [
+    "H_C12",
+    "H_RTT110",
+    "H_DIP",
+    "H_C20"
+   ],
+   "scenario_arms": {
+    "H_C12": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M",
+     "fixed_9_1M"
+    ],
+    "H_RTT110": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M",
+     "fixed_14_1M"
+    ],
+    "H_DIP": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M",
+     "fixed_14_1M"
+    ],
+    "H_C20": [
+     "v2",
+     "v1",
+     "drop",
+     "fixed_16_1M",
+     "fixed_8_1M"
+    ]
+   }
   }
  },
- "note": "Stages C and D are added by amendment before they run (protocol.md)."
+ "note": "Stages C and D frozen in amendment A2/A3 before they run (protocol.md)."
 }
