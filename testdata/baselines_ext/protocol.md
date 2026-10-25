@@ -105,3 +105,28 @@ against wget2's documentation and source.
   configured, and its peak concurrency is reported. The reports must call
   wget2 "single connection in this configuration (documented as
   multithreaded)", never "slow".
+
+## Amendment A2 (2026-10-25, before any data run): wget2 removed
+
+wget2 is removed from the screen. It cannot download a single file over
+parallel connections, so it cannot serve as a segmented-download baseline.
+
+- **Cause, confirmed at the v2.1.0 tag.** In `process_head_response`, the
+  chunk path attaches the chunks to the existing job (`job->metalink =
+  metalink; job->done = 0;`). It does not queue one job per chunk.
+- `queue_size()` counts jobs: `qsize++` appears only in `host_add_job`, once
+  per job. The main loop starts threads only while
+  `nthreads < config.max_threads && nthreads < queue_size()`. For one URL,
+  that means one thread fetches every chunk in turn.
+- The same loop is unchanged in v2.3.0.
+- **Upstream.** The open issue
+  [gnuwget/wget2#195](https://gitlab.com/gnuwget/wget2/-/issues/195),
+  "Refactoring: Treat chunks/parts as normal jobs", says `queue_size()` "does
+  not work correctly (returns just 1)" and "the parts are not downloaded in
+  parallel (just 1 thread is started)".
+- **Measured.** No variant gave more than one request in flight on the
+  independent server (`tools/wget2_concurrency_check.py`). The variants tried
+  were `-O`, the same URL given twice, `--no-http-keep-alive`, and two
+  distinct URLs.
+- **New design.** 4 systems (axel, lftp, aria2, ours) × 4 scenarios × 5
+  blocks = 80 runs. The `wget2` case stays in `ext_bench.go` but is not run.

@@ -117,33 +117,32 @@
    "scenario_arms": {
     "CAP8": [
      "axel",
-     "wget2",
      "lftp",
      "aria2",
      "ours_16_32M"
     ],
     "CAP0": [
      "axel",
-     "wget2",
      "lftp",
      "aria2",
      "ours_16_32M"
     ],
     "HEALTHY": [
      "axel",
-     "wget2",
      "lftp",
      "aria2",
      "ours_16_1M"
     ],
     "D2": [
      "axel",
-     "wget2",
      "lftp",
      "aria2",
      "ours_16_4M"
     ]
    }
   }
+ },
+ "excluded_arms": {
+  "wget2": "amendment A2: cannot download one file over parallel connections (upstream issue #195)"
  }
 }
