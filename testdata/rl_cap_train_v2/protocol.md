@@ -275,3 +275,60 @@ are, from the simulator's best fixed N: `fixed_9_1M` (H_C12), `fixed_14_1M`
 (H_RTT110, H_DIP) and `fixed_8_1M` (H_C20). The drop rule's predicted time
 is worse than fixed 16 × 1 MiB in H_RTT110 and H_C20. As the protocol
 requires, those two are named in any rule comparison.
+
+## Amendment A3 (2026-10-25, after Stage B, before any Stage C or D run): Stage B outcome and predictions
+
+**Training.** 5 seeds, 316,221–325,667 steps each, so the ε schedule
+(150,000 steps) completed. Mean return per episode rose from −37.5 to −41.1
+over the first 100 episodes, to −25.2 to −29.0 over the last 100 (curves in
+`train/report.json`). Wall time 1,915 s.
+
+**Selection.** Validation scores were 1.2027, 1.0965, 1.1262, 1.1447 and
+1.1265 for seeds 0–4. **Seed 1 was selected** (sha256 prefix 27657be21038).
+The Go parity test (`TestCapV2CandidateMatchesPythonInference`) passes.
+
+**Simulator test** (reported only; v2 ÷ best fixed N at 1 MiB):
+
+| Scenario | v2 | v1 |
+|---|---|---|
+| CAP8 | 0.835 | 0.903 |
+| HEALTHY | 1.028 | 1.085 |
+| CAP0 | 1.078 | 1.049 |
+| G_C16 | 0.923 | 1.208 |
+| G_RTT | 0.869 | 0.946 |
+| G_D2 | 1.005 | 1.041 |
+| H_C12 | 0.891 | 0.961 |
+| H_RTT110 | 0.951 | 1.100 |
+| H_DIP | 0.945 | 0.973 |
+| H_C20 | 1.025 | 1.146 |
+| v1 OOD set (gm of 20) | 1.039 (8 of 20 below 1) | 1.102 |
+
+**Seed variance (disclosed before live runs).** On the H scenarios, v2 ÷
+best fixed by seed:
+
+| Scenario | Seed 0 | Seed 1 (selected) | Seed 2 | Seed 3 | Seed 4 |
+|---|---|---|---|---|---|
+| H_C12 | 1.060 | 0.891 | 1.023 | 1.011 | 1.016 |
+| H_RTT110 | 0.963 | 0.951 | 1.025 | 1.042 | 1.027 |
+| H_DIP | 1.055 | 0.945 | 1.010 | 1.012 | 1.004 |
+| H_C20 | 1.070 | 1.025 | 1.098 | 1.137 | 1.082 |
+
+Only the selected seed is below 1 on three H scenarios. Selection used
+validation only, but the training procedure is not reliably good across
+seeds, and any live result must be reported with this table.
+
+**Stage C and D predictions** (`predictions_CD.json`; simulator geometric
+means over seeds 100–109, in seconds; the simulator is about +1 % to +6 %
+optimistic at high delay, per Stage A):
+
+| Scenario | v2 | v1 | drop | fixed 16 × 1 MiB | Extra fixed arm |
+|---|---|---|---|---|---|
+| CAP8 | 64.76 | 70.02 | 61.65 | 77.57 | – |
+| HEALTHY | 19.57 | 20.66 | 19.04 | 19.04 | – |
+| H_C12 | 53.24 | 57.44 | 55.66 | 60.71 | N = 9: 59.78 |
+| H_RTT110 | 76.36 | 88.36 | 97.35 | 82.63 | N = 14: 80.32 |
+| H_DIP | 82.82 | 85.31 | 77.35 | 88.06 | N = 14: 87.69 |
+| H_C20 | 39.96 | 44.67 | 53.22 | 42.15 | N = 8: 38.97 |
+
+In the simulator, the C=8-tuned drop rule beats v2 in CAP8, HEALTHY and
+H_DIP, and loses in H_C12, H_RTT110 and H_C20.
