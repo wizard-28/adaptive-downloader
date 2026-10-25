@@ -222,3 +222,21 @@ in its source).
 So the 62.4 % mechanism is not aria2-specific; it applies to every
 segmented tool that splits the file once at the start.
 
+
+**21. Why not let the agent choose the range size as well as the number of connections?**
+
+We tried that, under a protocol frozen in advance (`testdata/rl_joint`). The
+simulator showed real headroom: a hand-written rule (1 MiB ranges, then
+33 MiB once the rate rises) took 0.352 of the best fixed time under the cap.
+The Double DQN agent did not find it. Live, over 10 blocks, it took 1.471 of
+the time of fixed 16 × 32 MiB under the cap (slower), and it was slower than
+the best fixed setting in all four scenarios. The simulator predicted every
+live arm to within about 5 %, so the problem is the learner, not the model of
+the network. The agent was still on 1 MiB ranges when the cap arrived at 8 s.
+
+A control run on a server that re-checks rates during each response showed
+something else. There, fixed 16 × 32 MiB lost most of its advantage (50.9 s
+became 67.4 s), and the agent was level with it (1.029, not distinguishable).
+So the large-range win depends on that server's arrival-time rate rule. Our
+honest conclusion: a joint agent trained on a checked simulator did not beat
+the best fixed setting live.
