@@ -7459,12 +7459,37 @@ C live evaluation, D held-out generalization; wording rules fixed in advance).
       beat the best fixed setting live". The simulator was accurate; the
       learner did not find the available headroom (as with the one-threshold
       rule earlier), which motivates the v2 drop-rule arm.
+  - rl_cap_train_v2 (COMPLETE; protocol `testdata/rl_cap_train_v2/protocol.md`,
+    frozen 4b3076c after an Opus review; A1 b634a51, A2 bc9917b, A3 1492f23;
+    C 2368d56, D 3515a44). Broader training (C 4-24 MiB/s, delay 10-120 ms,
+    early/late dips), calibration at 20/40/80/120 ms with four rate classes
+    (A1: pooled classes mispredicted CAP8 120 ms N=16 in-sample; residual
+    -7.7 % disclosed). Blind A at 80/120 ms passed (+1.4/-3.3/+5.6/+5.6 %).
+    New held-out H_C12, H_RTT110, H_DIP, H_C20 inside the ranges, sim
+    headroom 9.9-17.4 %. Seed 1 selected (27657be21038); other seeds mostly
+    >= 1 on H (disclosed in A3).
+    - C (64/64): CAP8 v2 0.845 [0.840, 0.850] vs fixed 16x1 MiB, faster;
+      vs v1 0.929; vs drop 1.048 slower; HEALTHY 1.047 slower.
+    - D (160/160): H_C12 0.882, H_RTT110 0.819, H_DIP 0.952 faster; H_C20
+      1.007 [1.000, 1.014] slower (t-interval n.d.; less favourable used).
+      v1: faster 1, slower 2. v2 faster than v1 in 6/6. vs C=8-tuned drop:
+      faster 3 (two where the rule's tuning was wrong), slower 2, n.d. 1.
+      H_RTT110 v2 live 68.6 s vs sim 76.4 s (unexplained).
+    - Frozen verdict (`analysis/verdict.json`): "v2 generalized partially:
+      faster in 3, slower in 1 of 4 held-out scenarios, all inside the v2
+      training ranges"; "learned control adds something over a C=8-tuned
+      drop rule" (3 vs 2).
+  - live_mirror_check (frozen 5b360b2; A1 probe attempts): v2, drop, fixed
+    16x1 and 8x1 MiB on kcdn, kedge, riken, 5 blocks; no-harm check. Running.
+  - claims_check incident (2026-10-25): `_run_main` captured json.dump but the
+    analysis scripts open their output with "w" first, truncating four
+    committed analysis files; committed by a `git commit -a` (ee87a2f),
+    restored byte-identical (452bb6b) and the checker now redirects open().
 - **Process files:** `queue.md` (work queue) and `CLAUDE.md` (delegate side
   investigations to subagents; maintain the queue).
-- **Immediate next step:** see queue.md. Baselines, sweep and joint study
-  are done; next is the v2 retrain for generalization (with the drop-rule
-  arm), then the real-server mirror check. Fold everything into
-  paper_draft.md and extend claims_check.
+- **Immediate next step:** see queue.md. Baselines, sweep, joint study and
+  v2 are done and in the paper (§4.3, §4.4, §9c, §9d; checker 213/213). The
+  mirror check is running; then analyse it, add it to §8a, and rehearse.
 
 ### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (COMPLETE; reports submitted 2026-10-24)
 
