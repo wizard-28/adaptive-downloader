@@ -50,6 +50,18 @@
   "lp1.*, lp1x.*": [
    "testdata/live_pilot_l1/raw/*.jsonl (primary, Tata)",
    "testdata/live_pilot_l1/raw_other_network/S3.jsonl (amendment A3); bootstrap and timeline CVs via tools/analyze_live_pilot.py"
+  ],
+  "abl.*, tun.*, rlc.*": [
+   "testdata/{split_ablation,online_tuner,rl_capped}/runs/*.json via each study's tools/analyze_*.py"
+  ],
+  "speed.*": [
+   "tools/adaptation_speed.py over split_ablation and online_tuner runs"
+  ],
+  "rct.A2.*, rct.C.*, rct.D.*": [
+   "testdata/rl_cap_train/runs_{A2,C,D}/*.json via testdata/rl_cap_train/tools/analyze.py"
+  ],
+  "rct.sim.*": [
+   "testdata/rl_cap_train/train/report.json (simulator output of python/train_cap.py, not live data)"
   ]
  }
 }
