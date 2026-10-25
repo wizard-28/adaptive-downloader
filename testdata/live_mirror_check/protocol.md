@@ -71,3 +71,18 @@ ratios. Where the two disagree, the less favourable verdict is used.
 - **Scope:** descriptive; one client, one access link, one time window, 5
   blocks. The servers' behaviour is opaque and may change. This does not
   test whether adaptation helps on real servers in general.
+
+## Amendment A1 (2026-10-25, before any run): range-probe attempts
+
+The protocol did not say how many attempts the range probe allows. It is
+now fixed at up to 3 attempts of 20 s each, with any `206` passing. No run
+data existed when this was written.
+
+Probe results at 21:5x UTC:
+- `kcdn`: `206`;
+- `riken`: `206`;
+- `kedge`: timed out on the first attempt, then returned `206` in 9.8 s
+  on the second.
+
+All three are kept. kedge's slow first response is disclosed here, and its
+results are read with that in mind.
