@@ -1,0 +1,254 @@
+{
+ "study": "rl_joint",
+ "harness": "testdata/rl_joint/tools/joint_bench.go (rl_bench + -policy dqnj + -live-rate)",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  },
+  "CAP0": {
+   "extra": [
+    "-cap-at",
+    "0"
+   ],
+   "uses_cap": true
+  },
+  "D2": {
+   "extra": [
+    "-schedule",
+    "d2"
+   ],
+   "uses_cap": false
+  },
+  "CAP8L": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-live-rate"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHYL": {
+   "extra": [
+    "-live-rate"
+   ],
+   "uses_cap": false
+  }
+ },
+ "arms": {
+  "dqnj": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqnj",
+   "-dqn-model",
+   "testdata/rl_joint/model/dqn_joint_candidate.json",
+   "-window",
+   "16",
+   "-min-chunk",
+   "1048576",
+   "-max-chunk",
+   "34603008",
+   "-chunk-step",
+   "4194304"
+  ],
+  "fixed_16_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_16_32M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "33554432",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_16_5M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "5242880",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_4_4M": [
+   "-system",
+   "ours",
+   "-n",
+   "4",
+   "-chunk",
+   "4194304",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_16_9M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "9437184",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_8_17M": [
+   "-system",
+   "ours",
+   "-n",
+   "8",
+   "-chunk",
+   "17825792",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "fixed_16_17M": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "17825792",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "aria2": [
+   "-system",
+   "aria2"
+  ]
+ },
+ "stages": {
+  "A2": {
+   "seed": 20261025,
+   "blocks": 2,
+   "scenario_order": [
+    "CAP8",
+    "CAP0",
+    "D2",
+    "HEALTHY"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "fixed_16_9M"
+    ],
+    "CAP0": [
+     "fixed_8_17M"
+    ],
+    "D2": [
+     "fixed_16_5M"
+    ],
+    "HEALTHY": [
+     "fixed_16_17M"
+    ]
+   }
+  },
+  "C": {
+   "seed": 20261026,
+   "blocks": 10,
+   "scenario_order": [
+    "CAP8",
+    "HEALTHY",
+    "CAP0",
+    "D2"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M",
+     "aria2"
+    ],
+    "HEALTHY": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M",
+     "aria2"
+    ],
+    "CAP0": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M"
+    ],
+    "D2": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M",
+     "fixed_16_5M"
+    ]
+   }
+  },
+  "L": {
+   "seed": 20261027,
+   "blocks": 5,
+   "scenario_order": [
+    "CAP8L",
+    "HEALTHYL"
+   ],
+   "scenario_arms": {
+    "CAP8L": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M",
+     "fixed_4_4M"
+    ],
+    "HEALTHYL": [
+     "dqnj",
+     "fixed_16_1M",
+     "fixed_16_32M",
+     "fixed_4_4M"
+    ]
+   }
+  }
+ }
+}

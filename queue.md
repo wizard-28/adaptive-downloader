@@ -73,9 +73,16 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     rate rises": CAP8 0.352 of the best fixed) but comes from the
     arrival-time rate rule; a server that re-checks rates during a response
     would remove most of it.
-  - [ ] **Ask the user** whether to proceed with that framing, plus a control
-    server variant that re-checks rates. Then: tests, protocol, blind live
-    parity, training, live evaluation.
+  - [x] User chose: run with a live-rate control.
+  - [x] Server opt-in live-rate mode with 4 tests (e71d4b0); harness
+    `testdata/rl_joint/tools/joint_bench.go` (`-policy dqnj`, `-live-rate`);
+    simulator tests (8); `python/train_joint.py`; Go parity test
+  - [x] Protocol frozen (`testdata/rl_joint/protocol.md`): A2 blind parity (8
+    runs), B training, C 150 runs (10 blocks), L 40 runs on the live-rate
+    server (5 blocks)
+  - [ ] A2, then training: chained after the sweep (no live overlap)
+  - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
+    and apply the wording rules
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
   `reports/ieee_access/README.md`.
