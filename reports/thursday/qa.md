@@ -178,7 +178,12 @@ training or live run) has two parts:
   memorised for CAP8 does not transfer by accident.
 We say "generalizes within this server family" only if it wins all three.
 Nothing here supports claims about real servers.
-[RESULTS: fill from testdata/rl_cap_train/analysis/C.json and D.json]
+**Results.** In-distribution (CAP8, 10 blocks), it took 0.907 [0.893, 0.921]
+of fixed 16 × 1 MiB's time, close to the simulator's 0.912. Without a cap it
+was slower (1.108). Held out, it was faster than the best fixed 1 MiB setting
+in 0 of 3 scenarios: C = 16 MiB/s slower (1.177), and 80 ms delay (1.016) and
+the d2 schedule (1.015) not distinguishable. So it learned the server it was
+trained on and did not generalize. We say that plainly.
 
 **18. Why did the first DQN do badly on the capped server?**
 

@@ -81,7 +81,9 @@ actually something for adaptation to exploit?**
      predicted in advance: large ranges started before the cap keep the
      faster rate, which a 1 MiB agent cannot do;
    - without a cap it was slower than fixed 16 × 1 MiB (1.108);
-   - held-out scenarios outside the training ranges: [RESULTS: Stage D].
+   - in three held-out scenarios outside the training ranges it was faster
+     in none (1.177 slower; 1.016 and 1.015 not distinguishable): it learned
+     the server it was trained on, and did not generalize.
 
 ## Why reinforcement learning did not win
 
