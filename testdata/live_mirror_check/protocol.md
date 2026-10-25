@@ -86,3 +86,41 @@ Probe results at about 21:50 UTC:
 
 All three are kept. kedge's slow first response is disclosed here, and its
 results are read with that in mind.
+
+## Amendment A2 (2026-10-25, after slot M1): client-side outage; M1 aborted, fresh slot M2
+
+**What happened.** Slot M1 (`raw/M1.jsonl`, started 21:51 UTC) recorded all
+60 planned runs, but only 20 are valid.
+- From 22:10 UTC to the end at 22:56, every run on every server failed.
+  Each failed run ended "retry limit exceeded" after 60 s, with every
+  attempt getting no HTTP response (status 0).
+- All three servers, including the CDN, failed at the same moment, so the
+  cause was the client's own link, not a server or an arm.
+- At 23:03 the link was back, but slow to set up connections: 6 s to reach
+  google.com and kedge.
+- Blocks 0 and 1 are valid apart from riken in block 1. Block 0 already
+  shows erratic times (kcdn fixed 8 × 1 MiB took 51.0 s in block 0 and
+  15.0 s in block 1).
+
+**Decision, made before any further run.** M1 is reported in full as
+"aborted by a client-side outage". It is not used for the predeclared
+comparisons. The check is rerun as a fresh slot M2, with the same manifest
+and schedule rules, and its own seeded order (the slot label changes the
+order).
+
+**Link gate.** M2 starts only when all of these hold at the start:
+- each of the three range probes and a fetch of google.com respond within
+  3 s;
+- an 8 MB single-stream fetch from kcdn reaches at least 1.5 MB/s.
+
+If more than 10 of M2's runs fail with all-status-0 attempts, the
+predeclared comparisons are reported only for servers with at least 4
+complete paired blocks.
+
+**Analysis.** `tools/analyze.py` takes the slot as an optional argument
+(`analyze.py M2`). With no argument it reads every slot, as before.
+
+**Descriptive note on M1's valid runs, reported now, before M2:** on kcdn
+and kedge the v2 agent ended at a median N of about 4. These servers have
+no cap. It was slower than fixed 8 × 1 MiB in all four paired runs there.
+This is a possible harm signal, to be tested by M2.

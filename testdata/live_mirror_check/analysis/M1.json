@@ -1,0 +1,606 @@
+{
+ "label": "descriptive; one client, one access link",
+ "invalid": [
+  {
+   "server": "riken",
+   "arm": "fixed_16_1M",
+   "rep": 1,
+   "err": "downloader: retry limit exceeded: range [2097152,3145727] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "drop",
+   "rep": 1,
+   "err": "downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "v2",
+   "rep": 1,
+   "err": "downloader: retry limit exceeded: range [2097152,3145727] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_8_1M",
+   "rep": 1,
+   "err": "downloader: retry limit exceeded: range [2097152,3145727] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "drop",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [13631488,14680063] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "v2",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [9437184,10485759] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_8_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [5242880,6291455] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_16_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [15728640,16777215] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_8_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [6291456,7340031] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "v2",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [6291456,7340031] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_16_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [12582912,13631487] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "drop",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [3145728,4194303] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_16_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [9437184,10485759] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "drop",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [10485760,11534335] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "v2",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [10485760,11534335] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_8_1M",
+   "rep": 2,
+   "err": "downloader: retry limit exceeded: range [3145728,4194303] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "v2",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [10485760,11534335] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "drop",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_8_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_16_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [13631488,14680063] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "drop",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [12582912,13631487] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "v2",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_8_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [6291456,7340031] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_16_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [12582912,13631487] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "v2",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_8_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "drop",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [14680064,15728639] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_16_1M",
+   "rep": 3,
+   "err": "downloader: retry limit exceeded: range [7340032,8388607] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_8_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [0,1048575] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "fixed_16_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [10485760,11534335] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "drop",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [13631488,14680063] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "riken",
+   "arm": "v2",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "v2",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [4194304,5242879] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "drop",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [7340032,8388607] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_16_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [7340032,8388607] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kcdn",
+   "arm": "fixed_8_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [5242880,6291455] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_16_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [11534336,12582911] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "v2",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [14680064,15728639] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "drop",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [1048576,2097151] after 4 attempts",
+   "rate_limited": false
+  },
+  {
+   "server": "kedge",
+   "arm": "fixed_8_1M",
+   "rep": 4,
+   "err": "downloader: retry limit exceeded: range [2097152,3145727] after 4 attempts",
+   "rate_limited": false
+  }
+ ],
+ "servers": {
+  "kcdn": {
+   "geo_mean_s": {
+    "fixed_16_1M": 33.410869609268126,
+    "fixed_8_1M": 27.64187322779448,
+    "v2": 55.08144000367847,
+    "drop": 18.48776185140606
+   },
+   "n_valid": {
+    "fixed_16_1M": 2,
+    "fixed_8_1M": 2,
+    "v2": 2,
+    "drop": 2
+   },
+   "best_fixed": "fixed_8_1M",
+   "v2_vs_best_fixed": {
+    "num": "v2",
+    "den": "fixed_8_1M",
+    "n_blocks": 2,
+    "geo_ratio": 1.9926811598387952,
+    "ci95": [
+     1.5989025875332255,
+     2.483439726558059
+    ],
+    "t_ci95": [
+     0.12149078576240538,
+     32.68378074812996
+    ],
+    "verdict_used": "slower"
+   },
+   "v2_vs_each": {
+    "fixed_16_1M": {
+     "num": "v2",
+     "den": "fixed_16_1M",
+     "n_blocks": 2,
+     "geo_ratio": 1.6486083914559035,
+     "ci95": [
+      1.2156716305649826,
+      2.2357267867768496
+     ],
+     "t_ci95": [
+      0.0343635601948253,
+      79.09278354656927
+     ],
+     "verdict_used": "slower"
+    },
+    "fixed_8_1M": {
+     "num": "v2",
+     "den": "fixed_8_1M",
+     "n_blocks": 2,
+     "geo_ratio": 1.9926811598387952,
+     "ci95": [
+      1.5989025875332255,
+      2.483439726558059
+     ],
+     "t_ci95": [
+      0.12149078576240538,
+      32.68378074812996
+     ],
+     "verdict_used": "slower"
+    }
+   },
+   "drop_vs_best_fixed": {
+    "num": "drop",
+    "den": "fixed_8_1M",
+    "n_blocks": 2,
+    "geo_ratio": 0.6688317285536288,
+    "ci95": [
+     0.3746852754158843,
+     1.1938976801890913
+    ],
+    "t_ci95": [
+     0.00042447186049035805,
+     1053.8646321649298
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "drop_vs_each": {
+    "fixed_16_1M": {
+     "num": "drop",
+     "den": "fixed_16_1M",
+     "n_blocks": 2,
+     "geo_ratio": 0.5533457245386268,
+     "ci95": [
+      0.28487930613474755,
+      1.0748112771671445
+     ],
+     "t_ci95": [
+      0.00012006148645293861,
+      2550.2890219937285
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "drop",
+     "den": "fixed_8_1M",
+     "n_blocks": 2,
+     "geo_ratio": 0.6688317285536288,
+     "ci95": [
+      0.3746852754158843,
+      1.1938976801890913
+     ],
+     "t_ci95": [
+      0.00042447186049035805,
+      1053.8646321649298
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "v2_vs_drop": {
+    "num": "v2",
+    "den": "drop",
+    "n_blocks": 2,
+    "geo_ratio": 2.979346036929252,
+    "ci95": [
+     2.080111024392583,
+     4.267321649505744
+    ],
+    "t_ci95": [
+     0.031013262757464802,
+     286.21634805675154
+    ],
+    "verdict_used": "slower"
+   },
+   "descriptive": {
+    "v2": {
+     "median_final_n": 4.0,
+     "median_moves": 42.5,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 10.0,
+     "median_moves": 0.5,
+     "drop_switched_runs": 1
+    }
+   }
+  },
+  "kedge": {
+   "geo_mean_s": {
+    "drop": 9.707736406176316,
+    "fixed_8_1M": 12.349628394096836,
+    "v2": 27.894944436016686,
+    "fixed_16_1M": 17.309282080983046
+   },
+   "n_valid": {
+    "drop": 2,
+    "fixed_8_1M": 2,
+    "v2": 2,
+    "fixed_16_1M": 2
+   },
+   "best_fixed": "fixed_8_1M",
+   "v2_vs_best_fixed": {
+    "num": "v2",
+    "den": "fixed_8_1M",
+    "n_blocks": 2,
+    "geo_ratio": 2.2587679196363957,
+    "ci95": [
+     1.3786858585571826,
+     3.7006490514945085
+    ],
+    "t_ci95": [
+     0.004262116239089458,
+     1197.0655487961317
+    ],
+    "verdict_used": "slower"
+   },
+   "v2_vs_each": {
+    "fixed_16_1M": {
+     "num": "v2",
+     "den": "fixed_16_1M",
+     "n_blocks": 2,
+     "geo_ratio": 1.6115598732233751,
+     "ci95": [
+      1.4246045610886158,
+      1.8230499156896844
+     ],
+     "t_ci95": [
+      0.336366917559127,
+      7.721107782626143
+     ],
+     "verdict_used": "slower"
+    },
+    "fixed_8_1M": {
+     "num": "v2",
+     "den": "fixed_8_1M",
+     "n_blocks": 2,
+     "geo_ratio": 2.2587679196363957,
+     "ci95": [
+      1.3786858585571826,
+      3.7006490514945085
+     ],
+     "t_ci95": [
+      0.004262116239089458,
+      1197.0655487961317
+     ],
+     "verdict_used": "slower"
+    }
+   },
+   "drop_vs_best_fixed": {
+    "num": "drop",
+    "den": "fixed_8_1M",
+    "n_blocks": 2,
+    "geo_ratio": 0.7860751835105129,
+    "ci95": [
+     0.6075348946703298,
+     1.0170842852843685
+    ],
+    "t_ci95": [
+     0.029768258381280777,
+     20.75748558134159
+    ],
+    "verdict_used": "not distinguishable"
+   },
+   "drop_vs_each": {
+    "fixed_16_1M": {
+     "num": "drop",
+     "den": "fixed_16_1M",
+     "n_blocks": 2,
+     "geo_ratio": 0.5608399216534682,
+     "ci95": [
+      0.29928977946719776,
+      1.0509594356353293
+     ],
+     "t_ci95": [
+      0.0001920061367517282,
+      1638.18419057607
+     ],
+     "verdict_used": "not distinguishable"
+    },
+    "fixed_8_1M": {
+     "num": "drop",
+     "den": "fixed_8_1M",
+     "n_blocks": 2,
+     "geo_ratio": 0.7860751835105129,
+     "ci95": [
+      0.6075348946703298,
+      1.0170842852843685
+     ],
+     "t_ci95": [
+      0.029768258381280777,
+      20.75748558134159
+     ],
+     "verdict_used": "not distinguishable"
+    }
+   },
+   "v2_vs_drop": {
+    "num": "v2",
+    "den": "drop",
+    "n_blocks": 2,
+    "geo_ratio": 2.8734756763965277,
+    "ci95": [
+     1.3555276376841408,
+     6.091253496645016
+    ],
+    "t_ci95": [
+     0.00020532911957894267,
+     40212.81774243411
+    ],
+    "verdict_used": "slower"
+   },
+   "descriptive": {
+    "v2": {
+     "median_final_n": 3.5,
+     "median_moves": 43.5,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 16.0,
+     "median_moves": 0.0,
+     "drop_switched_runs": 0
+    }
+   }
+  },
+  "riken": {
+   "geo_mean_s": {
+    "drop": 167.884158548,
+    "fixed_16_1M": 95.02859180199997,
+    "fixed_8_1M": 147.730271924,
+    "v2": 151.67186865900007
+   },
+   "n_valid": {
+    "drop": 1,
+    "fixed_16_1M": 1,
+    "fixed_8_1M": 1,
+    "v2": 1
+   },
+   "best_fixed": "fixed_16_1M",
+   "v2_vs_best_fixed": null,
+   "v2_vs_each": {
+    "fixed_16_1M": null,
+    "fixed_8_1M": null
+   },
+   "drop_vs_best_fixed": null,
+   "drop_vs_each": {
+    "fixed_16_1M": null,
+    "fixed_8_1M": null
+   },
+   "v2_vs_drop": null,
+   "descriptive": {
+    "v2": {
+     "median_final_n": 1,
+     "median_moves": 45,
+     "drop_switched_runs": null
+    },
+    "drop": {
+     "median_final_n": 4,
+     "median_moves": 1,
+     "drop_switched_runs": 1
+    }
+   }
+  }
+ },
+ "sentences": {
+  "kcdn.v2": "slower than the best fixed setting on kcdn by 99.3 %",
+  "kcdn.drop": "no harm detected on kcdn",
+  "kedge.v2": "slower than the best fixed setting on kedge by 125.9 %",
+  "kedge.drop": "no harm detected on kedge",
+  "riken.v2": "no comparison on riken",
+  "riken.drop": "no comparison on riken"
+ },
+ "summary": "On 0 of 3 public mirrors, the v2 agent showed no harm against the best fixed 1 MiB setting (and the drop rule on 2 of 3)."
+}

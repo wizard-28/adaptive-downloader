@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Predeclared analysis of live_mirror_check (protocol.md). Standard library only.
 
-Usage: python3 testdata/live_mirror_check/tools/analyze.py   (from the repository root)
-Reads raw/*.jsonl, writes analysis/M.json and prints the predeclared comparisons
+Usage: python3 testdata/live_mirror_check/tools/analyze.py [SLOT]   (from the repository root)
+Reads raw/<SLOT>.jsonl (every slot if omitted; amendment A2), writes analysis/<SLOT or M>.json and prints the predeclared comparisons
 and the frozen no-harm sentences.
 """
-import glob, json, math, os, random, statistics
+import glob, json, math, os, random, statistics, sys
 
 BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BOOT, SEED = 10000, 1
@@ -43,7 +43,8 @@ def ratio(t, num, den):
 
 def main():
     tab, invalid, desc = {}, [], {}
-    for p in sorted(glob.glob(os.path.join(BASE, "raw", "*.jsonl"))):
+    slot = sys.argv[1] if len(sys.argv) > 1 else None
+    for p in sorted(glob.glob(os.path.join(BASE, "raw", (slot or "*") + ".jsonl"))):
         for line in open(p):
             r = json.loads(line)
             arm = ARMS.get(r["arm"])
@@ -88,7 +89,7 @@ def main():
     res = {"label": "descriptive; one client, one access link", "invalid": invalid, "servers": out,
            "sentences": sentences, "summary": summary}
     os.makedirs(os.path.join(BASE, "analysis"), exist_ok=True)
-    json.dump(res, open(os.path.join(BASE, "analysis", "M.json"), "w"), indent=1)
+    json.dump(res, open(os.path.join(BASE, "analysis", (slot or "M") + ".json"), "w"), indent=1)
     for srv, o in out.items():
         print(srv, {k: round(v, 2) for k, v in o["geo_mean_s"].items()}, "best", o["best_fixed"])
         for k in ("v2_vs_best_fixed", "drop_vs_best_fixed", "v2_vs_drop"):
