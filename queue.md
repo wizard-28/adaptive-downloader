@@ -59,8 +59,8 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] §4.3 axel/lftp, §4.4 sweep, §9c joint, wasted-bytes caveat, loss
   re-check correction; checker 199/199, 0 unverified; self-test 9/9 after
   anchoring P2 (ee912a7)
-- [ ] §9d v2 (after Stage D); then abstract, limitations, conclusion and
-  claim map
+- [x] §9d v2, abstract, limitations, conclusion, claim map (4714611)
+- [ ] §8a: add the mirror check when it finishes
 
 ## 4. Viva preparation
 
@@ -130,7 +130,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     aborted by straggler splits (0 without splitting, never above the
     splits; 0 client failures). Paper caveat: "zero wasted bytes" is
     client-side.
-- [~] Retrain v2 for generalization (after the joint study). Protocol
+- [x] Retrain v2 for generalization (after the joint study). Protocol
   `testdata/rl_cap_train_v2/protocol.md`, frozen after an Opus review (new
   held-out H_C12, H_RTT110, H_DIP, H_C20 with 8-19 % sim headroom; headroom
   gate; stop rule; 8 blocks).
@@ -139,10 +139,12 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Headroom gate: all 4 H kept, 9.9-17.4 % (A2, bc9917b).
   - [x] Stage B: seed 1 selected (27657be2), Go parity passes; sim H
     0.891/0.951/0.945/1.025, but only seed 1 is good on H (A3, 1492f23).
-  - [~] Live D (160 runs), about 21:50 UTC.
   - [x] Stage C 64/64 valid: CAP8 v2 0.845 faster than fixed 16x1 MiB, vs
     v1 0.929 faster, vs drop 1.048 slower; HEALTHY 1.047 slower (2368d56).
-  - [ ] `analyze.py D`, `verdict`; then paper §9d, PROJECT_CONTEXT, viva.
+  - [x] Stage D 160/160: H faster 3, slower 1 (H_C20 1.007); verdict
+    "generalized partially"; vs drop 3 faster, 2 slower (3515a44). Paper §9d,
+    abstract, limitations, conclusion, claim map; checker 213/213 (4714611);
+    PROJECT_CONTEXT, qa Q22, summary finding 8.
 - [ ] Real-server check (after v2): public mirrors from the live pilot
   (kernel.org CDN, origin, riken), 64 MB file, arms v2 agent / drop rule /
   fixed 8×1 MiB / 16×1 MiB, about 3 mirrors × 5 reps (about 4 GB), with the
@@ -151,7 +153,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     plus `reference_arms` switch), tests pass (5b360b2)
   - [x] Protocol, manifest (60 runs) and analysis frozen
     (`testdata/live_mirror_check`, 5b360b2). No-harm check, descriptive.
-  - [ ] Run after v2 Stage D: range probe, then `live-pilot -manifest
+  - [~] Running since 21:51 UTC (riken is slow; about 1-1.5 h): `live-pilot -manifest
     testdata/live_mirror_check/manifest.json -slot M1 -out
     testdata/live_mirror_check/raw/M1.jsonl` (about 45 min)
   - Uses the internet link, not the loopback.

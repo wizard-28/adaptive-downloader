@@ -100,6 +100,14 @@ actually something for adaptation to exploit?**
    - on a control server that re-checks rates during each response, fixed
      16 × 32 MiB lost most of its edge (50.9 s became 67.4 s). So the
      large-range advantage under the cap depends on that server rule.
+8. **Broader training made the learned agent generalize partially**
+   (`testdata/rl_cap_train_v2`). Trained across cap strengths, delays and
+   rate dips, with the simulator checked blind at 80 and 120 ms, the v2 agent
+   was faster than the best fixed 1 MiB setting in 3 of 4 held-out scenarios
+   inside its training ranges (0.882, 0.819, 0.952) and slower in 1 (1.007).
+   It was faster than v1 in all six scenarios, cost about 5 % with no cap,
+   and was beaten by a simple drop rule in that rule's home scenarios. It is
+   one seed selected on validation.
 
 ## Why reinforcement learning did not win
 

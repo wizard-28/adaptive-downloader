@@ -240,3 +240,29 @@ became 67.4 s), and the agent was level with it (1.029, not distinguishable).
 So the large-range win depends on that server's arrival-time rate rule. Our
 honest conclusion: a joint agent trained on a checked simulator did not beat
 the best fixed setting live.
+
+**22. Does the learned agent generalize?**
+
+Partly, and only within the range it was trained on. The first retrain (v1)
+beat the best fixed 1 MiB setting where it was trained (0.907). It was
+faster in none of three held-out conditions, all outside its training
+ranges. For v2 we froze a new protocol, reviewed adversarially before
+freezing:
+- broader training: cap 4–24 MiB/s, delay 10–120 ms, rate dips;
+- calibration at four delays, checked blind at 80 and 120 ms;
+- four new held-out scenarios inside those ranges.
+
+Live, over 8 blocks:
+- **Held out:** v2 was faster than the best fixed setting in 3 of them
+  (0.882, 0.819, 0.952) and slower in 1, by 0.7 %.
+- **Against v1:** faster in all 6 scenarios.
+- **Without a cap:** it still costs about 5 %.
+
+Three caveats, all stated in advance:
+- **One seed:** it is one seed chosen on validation, and the other seeds
+  were not as good.
+- **Drop rule:** the simple drop rule beat v2 in the scenarios it was tuned
+  for. Two of v2's three wins over it came where the rule's tuning was
+  wrong.
+- **Scope:** "generalizes" here means new combinations inside the training
+  envelope, not new kinds of conditions or real servers.
