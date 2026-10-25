@@ -9,7 +9,7 @@ BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 M = json.load(open(os.path.join(BASE, "manifest.json")))
 BOOT, SEED = 10000, 1
 RID = re.compile(r"^(.*)_b(\d\d)_(.*)$")
-TOOLS = ["axel", "wget2", "lftp"]
+TOOLS = ["axel", "lftp"]  # wget2 removed by amendment A2
 
 
 def geo(xs):
