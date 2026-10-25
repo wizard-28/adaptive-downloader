@@ -91,6 +91,17 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [ ] A2, then training: chained after the sweep (no live overlap)
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
+- [~] Engine-fix audit of the network-side studies (Haiku subagent): the
+  Mahimahi five-trace gate ran with no request deadline (all arms the same),
+  so it is unaffected. M3, the live pilot and the §22.91 queueing gate are
+  unaffected (no deadline, or zero retries).
+  - [~] §22.92 correlated-loss screen: its abort and S-shift findings come
+    from the modelled 30 s deadline. Re-simulating without it (Sonnet
+    subagent; analytic; frozen tool left untouched).
+  - [x] netem sweep and split ablation "failed_requests": server-side writes
+    aborted by straggler splits (0 without splitting, never above the
+    splits; 0 client failures). Paper caveat: "zero wasted bytes" is
+    client-side.
 - [ ] Retrain v2 for generalization (after the joint study). Same learner,
   action space and Go adapter as rl_cap_train.
   - The current Stage D result stands as final: faster in 0 of 3. The three
