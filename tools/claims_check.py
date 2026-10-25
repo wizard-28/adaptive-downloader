@@ -490,6 +490,15 @@ for k, spec in exp.items():
     if not ok:
         print(f"MISMATCH {k}: recomputed {v!r} vs paper {want!r} (tol {tol})  [{spec.get('where','')}]")
         bad += 1
+# Optional text anchors bind a named number to the exact wording in the paper
+# (whitespace-normalised), so an edit that happens to match some other
+# recomputed value is still caught.
+_norm = lambda t: " ".join(t.split())
+_ptext = _norm(open(paper_path).read())
+for k, spec in exp.items():
+    if "text" in spec and _norm(spec["text"]) not in _ptext:
+        print(f"ANCHOR MISSING {k}: {spec['text']!r} not found in paper  [{spec.get('where','')}]")
+        bad += 1
 print(f"checked {len(exp)} numbers: {len(exp) - bad} ok, {bad} failed")
 consts_path = os.path.join(ROOT, "tools", "paper_constants.json")
 consts = json.load(open(consts_path)) if os.path.exists(consts_path) else {}

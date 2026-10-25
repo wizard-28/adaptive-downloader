@@ -30,10 +30,12 @@ with tempfile.TemporaryDirectory() as d:
                             ("0.766 [0.762, 0.769]" if "0.766 [0.762, 0.769]" in paper else "0.766", "0.716", "P2 ratio"),
                             ("28 of 30", "29 of 30", "sweep win count"),
                             ("0.863", "0.763", "NGINX ratio"),
-                            ("0.770", "0.670", "family ratio")):
+                            ("0.770", "0.670", "family ratio"),
+                            ("(0.599\n  [0.598, 0.601])", "(0.699\n  [0.598, 0.601])", "engine ablation splitting ratio"),
+                            ("1.356 [1.252, 1.472]", "1.256 [1.252, 1.472]", "frozen DQN on capped server")):
         if old not in paper:
             expect(False, f"{label}: anchor {old!r} not found in paper"); continue
         pp = os.path.join(d, "p.md"); open(pp, "w").write(paper.replace(old, new, 1))
         r = run(["--paper", pp])
-        expect(r.returncode != 0 and "UNVERIFIED" in r.stdout, f"paper edit rejected: {label} {old} -> {new}")
+        expect(r.returncode != 0 and ("UNVERIFIED" in r.stdout or "ANCHOR MISSING" in r.stdout), f"paper edit rejected: {label} {old} -> {new}")
 sys.exit(1 if fail else 0)

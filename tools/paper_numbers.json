@@ -734,12 +734,14 @@
   "abl.CAP0.comparisons.C2.geo": {
    "value": 0.599,
    "tol": 0.0005,
-   "where": "\u00a77a"
+   "where": "\u00a77a",
+   "text": "(0.599 [0.598, 0.601])"
   },
   "abl.CAP0.comparisons.C3.fixed_16_32M_NT_split.geo": {
    "value": 0.995,
    "tol": 0.0005,
-   "where": "\u00a77a,abstract"
+   "where": "\u00a77a,abstract",
+   "text": "0.995 [0.992, 0.999]"
   },
   "abl.CAP0.geo_mean_s.fixed_16_32M_NT_split": {
    "value": 68.2,
@@ -754,12 +756,14 @@
   "abl.CAP8.comparisons.C1.geo": {
    "value": 0.711,
    "tol": 0.0005,
-   "where": "\u00a77a"
+   "where": "\u00a77a",
+   "text": "0.711 [0.703, 0.719]"
   },
   "abl.CAP8.comparisons.C3.fixed_16_32M_NT_split.geo": {
    "value": 1.016,
    "tol": 0.0005,
-   "where": "\u00a77a,abstract"
+   "where": "\u00a77a,abstract",
+   "text": "1.016 [1.006, 1.029]"
   },
   "abl.CAP8.geo_mean_s.fixed_16_32M_NT_split": {
    "value": 54.4,
@@ -774,17 +778,20 @@
   "abl.CAP8.comparisons.C4.published_replication.geo": {
    "value": 0.767,
    "tol": 0.0005,
-   "where": "\u00a77a"
+   "where": "\u00a77a",
+   "text": "0.767 [0.764, 0.769]"
   },
   "abl.CAP8.comparisons.C4.vs_best_stationary.geo": {
    "value": 1.071,
    "tol": 0.0005,
-   "where": "\u00a77a,abstract"
+   "where": "\u00a77a,abstract",
+   "text": "1.071 [1.054, 1.085]"
   },
   "abl.CAP0.comparisons.C4.vs_best_stationary.geo": {
    "value": 1.229,
    "tol": 0.0005,
-   "where": "\u00a77a,abstract"
+   "where": "\u00a77a,abstract",
+   "text": "1.229 [1.223, 1.234]"
   },
   "tun.runs": {
    "value": 64,
@@ -799,12 +806,14 @@
   "tun.CAP8.T1_vs_best_stationary.geo": {
    "value": 1.212,
    "tol": 0.0005,
-   "where": "\u00a77b,abstract"
+   "where": "\u00a77b,abstract",
+   "text": "1.212 [1.180, 1.248]"
   },
   "tun.HEALTHY.T1_vs_best_stationary.geo": {
    "value": 1.22,
    "tol": 0.0005,
-   "where": "\u00a77b,abstract"
+   "where": "\u00a77b,abstract",
+   "text": "1.220 [1.203, 1.232]"
   },
   "speed.online_tuner.CAP8.online_tuner.median": {
    "value": 2.1,
@@ -829,12 +838,14 @@
   "rlc.CAP8.dqn6_start16.vs_best_fixed.geo": {
    "value": 1.356,
    "tol": 0.0005,
-   "where": "\u00a79a,abstract"
+   "where": "\u00a79a,abstract",
+   "text": "1.356 [1.252, 1.472]"
   },
   "rlc.CAP8.dqn6_start16.vs_each_fixed.fixed_16_1M_NT_split.geo": {
    "value": 0.931,
    "tol": 0.0005,
-   "where": "\u00a79a"
+   "where": "\u00a79a",
+   "text": "0.931 [0.879, 1.016]"
   },
   "rlc.HEALTHY.dqn6_start16.vs_best_fixed.geo": {
    "value": 1.031,
