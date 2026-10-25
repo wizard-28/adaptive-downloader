@@ -417,6 +417,25 @@ for _tag, _name, _script in (("abl", "split_ablation", "analyze_split_ablation.p
     out[f"{_tag}.invalid"] = len(_res["invalid"])
     out[f"{_tag}.runs"] = len(glob.glob(os.path.join(T, _name, "runs", "*.json")))
     _flatten(_res["scenarios"], _tag)
+# DQN retrained for the capped server (§9b): live numbers from the raw runs via
+# the study's frozen analysis functions; simulator predictions from its
+# training report (simulator output, not live data).
+_spec = _ilu.spec_from_file_location("_an_rl_cap_train", os.path.join(T, "rl_cap_train", "tools", "analyze.py"))
+_rct = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_rct)
+_tab, _inv, _ = _rct.load("A2")
+out["rct.A2.invalid"] = len(_inv)
+for _r in _rct.stage_a2(_tab)["rows"]:
+    out[f"rct.A2.{_r['scenario']}.{_r['arm']}.rel_err_pct"] = _r["rel_err"] * 100
+for _st in ("C", "D"):
+    _tab, _inv, _traj = _rct.load(_st)
+    out[f"rct.{_st}.invalid"] = len(_inv)
+    out[f"rct.{_st}.runs"] = len(glob.glob(os.path.join(T, "rl_cap_train", f"runs_{_st}", "*.json")))
+    _flatten(_rct.stage_cd(_tab, _traj), f"rct.{_st}")
+_rep = J("rl_cap_train", "train", "report.json")
+for _sc, _row in _rep["test"].items():
+    for _k in ("dqnc_start16_vs_best_fixed", "dqnc_start1_vs_best_fixed"):
+        out[f"rct.sim.{_sc}.{_k}"] = _row[_k]
 with _tf.NamedTemporaryFile(suffix=".json") as _f:
     _sp.run([sys.executable, os.path.join(ROOT, "tools", "adaptation_speed.py"), _f.name],
             cwd=ROOT, check=True, capture_output=True)

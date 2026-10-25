@@ -59,8 +59,11 @@ than the causal controller (1.071 [1.054, 1.085]) and the workload selector
 of FastBioDL was also slower than the best fixed configuration (1.212 and 1.220).
 (iv) The DQN policies (v2, v5, v6) were slower than aria2 overall in the
 head-to-heads we ran, and the frozen v6 agent was slower than the best fixed
-configuration on the capped server (1.356 [1.252, 1.472]) (LinUCB was evaluated
-only descriptively). All results are scoped to the
+configuration on the capped server (1.356 [1.252, 1.472]); a DQN retrained on a
+simulator of that server, checked against blind live runs, beat the best fixed
+configuration with its own range size where it was trained (0.907 [0.893, 0.921])
+but in none of three held-out conditions (LinUCB was evaluated only
+descriptively). All results are scoped to the
 controlled mechanisms; none is a validation on live networks or production servers.
 
 ---
@@ -523,10 +526,46 @@ not retrained.
   configuration even with a fair start, a long file and a scenario built so
   that the best setting changes.
 
-A retrained agent for this server, with a simulator checked against live runs
-and held-out generalization scenarios, is in progress under a protocol frozen
-before training (`testdata/rl_cap_train/protocol.md`); no result from it is
-reported here.
+### 9b. DQN retrained for the capped server
+
+A predeclared study (`testdata/rl_cap_train/protocol.md`) retrained the same
+learner, with the same action space and state layout as v6, on a new
+simulator of the capped server (`python/rl/sim_env_cap.py`).
+
+- **What the v6 simulator got wrong.** It had no cap fixed at request
+  arrival. Its aggregate-throughput observable also did not match the live
+  runner's: live, it is the bytes of the last `-window` attempts over their
+  span. With window 4 that value barely changes above N = 4, so the new agent
+  uses window 16 in both training and live runs.
+- **Calibration.** Per-request server excess and client overhead are drawn
+  from the rl_capped request logs. Completion times were not used.
+- **Blind live check (Confirmed for the simulator, 8 runs).** Four fixed
+  settings were predicted before they were run, and all four came within
+  1.4 % (the largest error was −1.35 %).
+- **In distribution (Confirmed, 10 blocks, 120 runs, all valid).**
+  - With the cap from 8 s, the agent starting at N = 16 took 0.907
+    [0.893, 0.921] of the time of fixed 16 × 1 MiB, the best fixed setting
+    with its own range size. The simulator had predicted 0.912.
+  - It remained slower than 16 × 32 MiB (1.298 [1.274, 1.321]) and aria2
+    (1.310 [1.287, 1.331]), as the protocol stated in advance: those large
+    ranges all start before the cap and keep the pre-cap rate, which a 1 MiB
+    agent cannot do.
+  - Against frozen v6 it was not distinguishable (0.949 [0.889, 1.012]).
+  - Without a cap it was slower than 16 × 1 MiB (1.108 [1.093, 1.121]).
+  - Starting at N = 1 it was slower in both scenarios.
+- **Held out (Confirmed, 5 blocks per scenario, 65 runs, all valid).** Three
+  live scenarios each lie outside the training ranges on one axis.
+  - The agent was faster than the best fixed 1 MiB setting in none of them.
+  - Cap C = 16 MiB/s: 1.177 [1.074, 1.245], slower.
+  - 80 ms each way: 1.016 [0.998, 1.043], not distinguishable. The
+    simulator had predicted 0.930; its jitter was calibrated at 40 ms.
+  - The d2 schedule, against 4 × 1 MiB: 1.015 [0.998, 1.039], not
+    distinguishable.
+- **Reading.** The retrained agent beat the best fixed setting with the same
+  range size on the server model it was trained for. It did not generalize
+  to held-out conditions of the same family, and it did not beat the best
+  fixed setting overall. This is one trained candidate; the result says
+  nothing about real servers.
 
 ## 10. Discussion, limitations, and threats to validity
 
@@ -624,5 +663,8 @@ the NGINX check are committed before their runs.
 | Adaptive controllers beat the best fixed configuration on the corrected engine | **Not supported** (causal 1.071; selector 1.229) | §7a |
 | An online concurrency tuner beats the best fixed configuration | **Not supported** (1.212; 1.220) | §7b |
 | The frozen DQN v6 beats the best fixed configuration on the capped server | **Not supported** (1.356; screen, 5 blocks) | §9a |
+| A DQN retrained on a checked capped-server simulator beats the best fixed 1 MiB setting where it was trained | Confirmed (0.907, 10 blocks) | §9b |
+| …and generalizes to held-out conditions | **Not supported** (faster in 0 of 3) | §9b |
+| …and beats the best fixed setting overall or aria2 | **Not supported** (1.298; 1.310) | §9b |
 | On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
 | …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |
