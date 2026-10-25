@@ -107,6 +107,23 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     example C = 12 or 20 MiB/s, 120 ms, a different dip schedule).
   - [ ] Frozen protocol, 5 seeds, validation-only selection, live
     in-distribution and held-out stages. About 5–6 h including live runs.
+  - [ ] **Rule arm** in every v2 live stage: the causal drop rule
+    (`-policy drop`, N-only, 1 MiB, corrected engine), in-distribution and
+    on the fresh held-out scenarios. Wording rule, fixed in advance: if v2
+    beats the rule, "learned control adds something"; if it only matches,
+    "learning reached what a simple rule does".
+  - Claim scope if v2 wins: the best fixed setting *with the same range
+    size*, under server-side changes (a cap switching on). Report v1 and v2
+    both.
+- [ ] Real-server check (after v2): public mirrors from the live pilot
+  (kernel.org CDN, origin, riken), 64 MB file, arms v2 agent / drop rule /
+  fixed 8×1 MiB / 16×1 MiB, about 3 mirrors × 5 reps (about 4 GB), with the
+  live-pilot etiquette (User-Agent, ≤16 connections, abort on 429/503).
+  - [ ] Opt-in `-policy` support in `cmd/live-pilot` (additive) and tests
+  - [ ] Frozen protocol. Stated in advance: these mirrors showed little
+    headroom (3.7 %), so the check mainly tests "no harm on unlike
+    servers"; descriptive, one client and one access link
+  - Uses the internet link, not the loopback.
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
   `reports/ieee_access/README.md`.
