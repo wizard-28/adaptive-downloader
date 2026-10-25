@@ -5,7 +5,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from rl.sim_env_cap import (  # noqa: E402
-    MIB, NUM_ACTIONS, Condition, SimConfig, SimEnv, _inv_cdf, cap_spec, live_condition, run_policy,
+    KIB, MIB, NUM_ACTIONS, Condition, SimConfig, SimEnv, _inv_cdf, cap_spec, live_condition, run_policy,
 )
 from rl.state_v6 import FEATURE_NAMES  # noqa: E402
 
@@ -179,3 +179,16 @@ def test_v2_distribution_off_by_default_and_covers_new_ranges():
     early = [c for c in conds if c.schedule and len(c.schedule) == 3]
     assert 0.2 < len(late) / len(conds) < 0.3 and 0.2 < len(early) / len(conds) < 0.3
     assert all(all(x[0] < y[0] for x, y in zip(c.schedule, c.schedule[1:])) for c in late + early)
+
+
+def test_multi_calibration_rate_classes():
+    import random as _r
+    def cls(ce):
+        return {"excess": {"q": [0.0] * 101}, "client_extra": {"q": [ce] * 101}}
+    t = {"measured_owd_s": 0.04, "rate_class_thresholds_bytes_per_s": [MIB // 2, 2 * MIB],
+         "classes": ["c0", "c1", "c2"], "c0": cls(0.09), "c1": cls(0.18), "c2": cls(0.28)}
+    multi = {"rate_class_thresholds_bytes_per_s": [MIB // 2, 2 * MIB], "classes": ["c0", "c1", "c2"], "tables": [t]}
+    c = Condition(owd_s=0.04, calib=multi)
+    for rate, tail in ((100 * KIB, 0.01), (MIB, 0.10), (3 * MIB, 0.20)):
+        _, leg = c.sample(_r.Random(0), rate)
+        assert abs(leg - (tail + 0.04)) < 1e-12, (rate, leg)

@@ -118,7 +118,10 @@ class Condition:
                 hi = lo
         span = hi["measured_owd_s"] - lo["measured_owd_s"]
         w = 0.0 if span <= 0 else (self.owd_s - lo["measured_owd_s"]) / span
-        key = "hi" if rate >= self.calib["rate_class_threshold_bytes_per_s"] else "lo"
+        if "classes" in self.calib:  # v2 amendment A1: several rate classes
+            key = self.calib["classes"][sum(rate >= t for t in self.calib["rate_class_thresholds_bytes_per_s"])]
+        else:
+            key = "hi" if rate >= self.calib["rate_class_threshold_bytes_per_s"] else "lo"
         u_ex, u_ce = rng.random(), rng.random()
 
         def comp(t, name, u):
@@ -155,6 +158,12 @@ def load_calibration(path: str) -> dict:
 def load_calibration_multi(paths: list[str]) -> dict:
     """Combine single-delay calibration files into one delay-dependent table set."""
     tables = sorted((load_calibration(p) for p in paths), key=lambda t: t["measured_owd_s"])
+    if "classes" in tables[0]:
+        keys = {(tuple(t["rate_class_thresholds_bytes_per_s"]), tuple(t["classes"])) for t in tables}
+        if len(keys) != 1:
+            raise ValueError("calibration tables use different rate classes")
+        thr, classes = keys.pop()
+        return {"rate_class_thresholds_bytes_per_s": list(thr), "classes": list(classes), "tables": tables}
     thr = {t["rate_class_threshold_bytes_per_s"] for t in tables}
     if len(thr) != 1:
         raise ValueError("calibration tables use different rate-class thresholds")

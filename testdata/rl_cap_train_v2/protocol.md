@@ -202,3 +202,43 @@ shuffled within each block (seed 20261030).
   32 MiB, aria2 or real servers. v1 and v2 are both reported.
 - If HEALTHY is slower for `v2`, the reports state the cost alongside any
   win.
+
+## Amendment A1 (2026-10-25, after Stage K, before any Stage A run): rate classes and Stage A predictions
+
+**Stage K:** 24 of 24 runs valid. Client overhead beyond the round trip
+grows with delay. In the ≥ 2 MiB/s class the mean client_extra was 0.044,
+0.102, 0.195 and 0.321 s at 20, 40, 80 and 120 ms one-way delay. Server
+excess grew from 0.024 to 0.055 s. So a single 40 ms table understates
+timing at high delay.
+
+**In-sample check (diagnostic, on the K runs themselves).** With the two
+v1 rate classes, 10 of 12 K cells were within 2 %. CAP8 at 120 ms was off:
+−13.1 % at N = 16 and +3.7 % at N = 4. The cause was the pooled class below
+2 MiB/s, which mixed three regimes:
+- capped requests under 0.5 MiB/s (N = 16; mean client_extra 0.25 s);
+- start-up requests at 640 KiB/s (2.26 s at 120 ms);
+- capped requests at about 1.74 MiB/s (k = 4).
+
+**Change.** Calibration uses four rate classes: below 0.5 MiB/s, 0.5–1,
+1–2 and ≥ 2 MiB/s, in `tools/calibrate.py` and `sim_env_cap`'s multi-table
+path. The 40 ms table is rebuilt from the v1 source runs with the same
+classes. The per-request components and their extraction are unchanged.
+With four classes, 13 of 14 in-sample cells are within 3 %. The residual,
+CAP8 at 120 ms with N = 16, is −7.7 %. It is disclosed here and not tuned
+further, because Stage A is the out-of-sample test. A three-class version
+was tried first (N = 4 at 120 ms became +11.1 %) and rejected on the same
+in-sample check.
+
+**Custom-schedule check.** `tools/v2_bench_test.go` confirms that
+`-schedule-spec 2:163840,4:2560000` equals the built-in d2 phases.
+
+**Stage A predictions** (`predictions_A.json`): 20-seed geometric means,
+with the 5th–95th percentiles. Pass if each live geometric mean is within
+±8 %.
+
+| Configuration | Predicted (s) |
+|---|---|
+| CAP0, 8 × 1 MiB, 80 ms | 93.32 [92.88, 93.72] |
+| HEALTHY, 8 × 1 MiB, 80 ms | 43.99 [43.59, 44.27] |
+| CAP8, 12 × 1 MiB, 120 ms | 94.82 [92.31, 96.63] |
+| D2 (custom spec), 16 × 1 MiB, 120 ms | 103.00 [96.80, 106.23] |
