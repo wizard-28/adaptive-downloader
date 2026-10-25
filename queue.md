@@ -87,6 +87,22 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [ ] A2, then training: chained after the sweep (no live overlap)
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
+- [ ] Retrain v2 for generalization (after the joint study). Same learner,
+  action space and Go adapter as rl_cap_train.
+  - The current Stage D result stands as final: faster in 0 of 3. The three
+    G_* scenarios are reported as "used during v2 design" and are no longer
+    held out.
+  - [ ] Broaden the training distribution: C up to about 24 MiB/s, one-way
+    delay up to about 120 ms, multi-phase schedules with dips.
+  - [ ] Calibrate across delay: collect request-timing logs at 2–3 delays
+    (for example 20, 80 and 120 ms); delay-dependent jitter in sim_env_cap
+    (as a new module or an opt-in option, keeping the frozen study
+    reproducible).
+  - [ ] Blind live parity at 80 and 120 ms.
+  - [ ] Choose and freeze NEW held-out scenarios before training (for
+    example C = 12 or 20 MiB/s, 120 ms, a different dip schedule).
+  - [ ] Frozen protocol, 5 seeds, validation-only selection, live
+    in-distribution and held-out stages. About 5–6 h including live runs.
 - [ ] IEEE Access template conversion. Review 3 says the paper is "being
   formatted"; the template conversion is still open in
   `reports/ieee_access/README.md`.
