@@ -1,0 +1,15 @@
+trained [(0, 673.2), (1, 664.8), (2, 621.6), (3, 619.6), (4, 619.5)]
+seed 0 validation score 1.0757
+seed 1 validation score 1.1066
+seed 2 validation score 1.0884
+seed 3 validation score 1.1163
+seed 4 validation score 1.1316
+CAP8 {'best_fixed_n': 16, 'best_fixed_s': 77.428, 'dqnc_start1_s': 73.385, 'dqnc_start1_moves_median': 32, 'dqnc_start1_vs_best_fixed': 0.948, 'dqnc_start16_s': 70.617, 'dqnc_start16_moves_median': 48, 'dqnc_start16_vs_best_fixed': 0.912, 'dqn6_start16_s': 77.632, 'oracle': (60.96983957655457, 4)}
+HEALTHY {'best_fixed_n': 16, 'best_fixed_s': 19.031, 'dqnc_start1_s': 21.079, 'dqnc_start1_moves_median': 29, 'dqnc_start1_vs_best_fixed': 1.108, 'dqnc_start16_s': 20.548, 'dqnc_start16_moves_median': 47, 'dqnc_start16_vs_best_fixed': 1.08, 'dqn6_start16_s': 19.468}
+CAP0 {'best_fixed_n': 4, 'best_fixed_s': 88.5, 'dqnc_start1_s': 94.592, 'dqnc_start1_moves_median': 98, 'dqnc_start1_vs_best_fixed': 1.069, 'dqnc_start16_s': 92.868, 'dqnc_start16_moves_median': 95, 'dqnc_start16_vs_best_fixed': 1.049, 'dqn6_start16_s': 110.598}
+G_C16 {'best_fixed_n': 16, 'best_fixed_s': 42.887, 'dqnc_start1_s': 51.792, 'dqnc_start1_moves_median': 121, 'dqnc_start1_vs_best_fixed': 1.208, 'dqnc_start16_s': 51.323, 'dqnc_start16_moves_median': 125, 'dqnc_start16_vs_best_fixed': 1.197, 'dqn6_start16_s': 46.31, 'oracle': (36.294993990643036, 7)}
+G_RTT {'best_fixed_n': 16, 'best_fixed_s': 82.931, 'dqnc_start1_s': 78.552, 'dqnc_start1_moves_median': 36, 'dqnc_start1_vs_best_fixed': 0.947, 'dqnc_start16_s': 77.141, 'dqnc_start16_moves_median': 57, 'dqnc_start16_vs_best_fixed': 0.93, 'dqn6_start16_s': 88.984, 'oracle': (66.91942107719979, 5)}
+G_D2 {'best_fixed_n': 5, 'best_fixed_s': 95.388, 'dqnc_start1_s': 102.723, 'dqnc_start1_moves_median': 95, 'dqnc_start1_vs_best_fixed': 1.077, 'dqnc_start16_s': 98.198, 'dqnc_start16_moves_median': 94, 'dqnc_start16_vs_best_fixed': 1.029, 'dqn6_start16_s': 110.495, 'oracle': (89.51170645452189, 4)}
+OOD {'n': 20, 'gm_ratio_dqnc': 1.1040088517848012, 'gm_ratio_dqn6': 1.3144859166694014, 'dqnc_faster_than_best_fixed': 4}
+gates {'G1_cap8_start16_at_least_3pct_faster': True, 'G2_healthy_start16_within_5pct': False, 'G3_changes_n_in_cap8': True}
+selected seed 0 sha be70c7ab183f wall 1935s
