@@ -1,0 +1,246 @@
+{
+ "study": "rl_cap_train",
+ "harness": "testdata/rl_capped/tools/rl_bench.go (unchanged)",
+ "common_args": [
+  "-schedule",
+  "t1",
+  "-netem-latency-ms",
+  "40",
+  "-netem-loss",
+  "0.4"
+ ],
+ "cap_args": [
+  "-cap-c",
+  "8388608",
+  "-cap-gamma",
+  "0.05"
+ ],
+ "scenarios": {
+  "CAP8": {
+   "extra": [
+    "-cap-at",
+    "8"
+   ],
+   "uses_cap": true
+  },
+  "CAP0": {
+   "extra": [
+    "-cap-at",
+    "0"
+   ],
+   "uses_cap": true
+  },
+  "HEALTHY": {
+   "extra": [],
+   "uses_cap": false
+  },
+  "G_C16": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-cap-c",
+    "16777216"
+   ],
+   "uses_cap": true
+  },
+  "G_RTT": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-netem-latency-ms",
+    "80"
+   ],
+   "uses_cap": true
+  },
+  "G_D2": {
+   "extra": [
+    "-cap-at",
+    "8",
+    "-schedule",
+    "d2"
+   ],
+   "uses_cap": true
+  }
+ },
+ "arms": {
+  "fixed_3_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "3",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_8_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "8",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_16_1M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ],
+  "fixed_16_32M_NT_split": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "33554432",
+   "-no-request-timeout",
+   "-split",
+   "-max-chunk",
+   "33554432"
+  ],
+  "dqnc_start16": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqn6",
+   "-dqn-model",
+   "testdata/rl_cap_train/model/dqn_cap_candidate.json",
+   "-window",
+   "16"
+  ],
+  "dqnc_start1": [
+   "-system",
+   "ours",
+   "-n",
+   "1",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqn6",
+   "-dqn-model",
+   "testdata/rl_cap_train/model/dqn_cap_candidate.json",
+   "-window",
+   "16"
+  ],
+  "dqn6_start16": [
+   "-system",
+   "ours",
+   "-n",
+   "16",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split",
+   "-policy",
+   "dqn6",
+   "-window",
+   "4"
+  ],
+  "aria2": [
+   "-system",
+   "aria2"
+  ],
+  "fixed_4_1M": [
+   "-system",
+   "ours",
+   "-n",
+   "4",
+   "-chunk",
+   "1048576",
+   "-no-request-timeout",
+   "-split"
+  ]
+ },
+ "stages": {
+  "A2": {
+   "seed": 20261025,
+   "blocks": 2,
+   "scenario_order": [
+    "CAP8",
+    "CAP0"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "fixed_3_1M",
+     "fixed_8_1M"
+    ],
+    "CAP0": [
+     "fixed_3_1M",
+     "fixed_16_1M_NT_split"
+    ]
+   }
+  },
+  "C": {
+   "seed": 20261025,
+   "blocks": 10,
+   "scenario_order": [
+    "CAP8",
+    "HEALTHY"
+   ],
+   "scenario_arms": {
+    "CAP8": [
+     "dqnc_start16",
+     "dqnc_start1",
+     "dqn6_start16",
+     "fixed_16_1M_NT_split",
+     "fixed_16_32M_NT_split",
+     "aria2"
+    ],
+    "HEALTHY": [
+     "dqnc_start16",
+     "dqnc_start1",
+     "dqn6_start16",
+     "fixed_16_1M_NT_split",
+     "fixed_16_32M_NT_split",
+     "aria2"
+    ]
+   }
+  },
+  "D": {
+   "seed": 20261027,
+   "blocks": 5,
+   "scenario_order": [
+    "G_C16",
+    "G_RTT",
+    "G_D2"
+   ],
+   "scenario_arms": {
+    "G_C16": [
+     "dqnc_start16",
+     "dqn6_start16",
+     "fixed_16_1M_NT_split",
+     "fixed_16_32M_NT_split"
+    ],
+    "G_RTT": [
+     "dqnc_start16",
+     "dqn6_start16",
+     "fixed_16_1M_NT_split",
+     "fixed_16_32M_NT_split"
+    ],
+    "G_D2": [
+     "dqnc_start16",
+     "dqn6_start16",
+     "fixed_16_1M_NT_split",
+     "fixed_16_32M_NT_split",
+     "fixed_4_1M"
+    ]
+   }
+  }
+ },
+ "note": "Later flags win (Go flag package): scenario extra args override common/cap args."
+}
