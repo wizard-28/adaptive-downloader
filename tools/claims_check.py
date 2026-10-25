@@ -440,7 +440,8 @@ for _sc, _row in _rep["test"].items():
 
 class _Capture:
     """Stands in for a study script's json module: keeps what main() would
-    write to its analysis file, so the checker recomputes without writing."""
+    write to its analysis file, so the checker recomputes without writing
+    (with the module-level open() redirect in _run_main)."""
 
     def __init__(self):
         self.data = None
@@ -458,6 +459,10 @@ def _run_main(name, argv):
     spec.loader.exec_module(mod)
     cap = _Capture()
     mod.json = cap
+    # The script opens its analysis file for writing before json.dump; give it
+    # a throwaway buffer so the committed file is never truncated.
+    import builtins, io as _io
+    mod.open = lambda f, mode="r", *a, **k: _io.StringIO() if "w" in mode else builtins.open(f, mode, *a, **k)
     saved, sys.argv = sys.argv, ["analyze.py"] + argv
     try:
         import contextlib, io
