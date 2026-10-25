@@ -153,3 +153,23 @@ All comparisons are paired by block, using the geometric-mean ratio with a
   server model, not general superiority.
 - This is one trained candidate and one server family. Nothing here supports
   claims about real servers.
+
+## Amendment A1 (2026-10-25, before any Stage C or L run): training budget
+
+**Problem.** The Stage B budget was stated in episodes (1,000 per seed). That
+figure was carried over from `rl_cap_train`, whose 1 MiB episodes have about
+320 decisions. Joint episodes with large ranges have about 40. The first
+training run therefore gave each seed only 39,368–43,130 steps, while ε
+decays over 150,000 steps. Training ended with ε near 0.75, and |Q| ≤ 0.82
+against returns near −5. By a criterion that does not depend on
+performance, an incomplete ε schedule, that candidate is undertrained.
+
+**Disclosure.** Its simulator test results were seen before this amendment.
+In CAP8 it scored 1.022 of the best fixed time, and gates J1 and J2 failed.
+The decision here rests only on the ε-schedule criterion. Its outputs are
+kept unchanged in `train_A0/` and `model_A0/`, and it is not evaluated live.
+
+**Change.** Retrain with `--episodes 11000`, about 450,000 steps per seed, so
+the ε schedule completes three times over. The actual step counts are
+reported. Everything else in Stage B is unchanged, including the seeds,
+selection, test sets and gates. The A2 parity result stands.

@@ -96,7 +96,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     **+7.0 %** (HEALTHY 16×17 MiB; the limit is 8 %). The simulator is
     consistently optimistic, more so for long ranges, so read the
     predictions for a large-range agent as optimistic.
-  - [~] Training (started ~11:35 UTC, about 35 min)
+  - [x] First training run was undertrained: about 40k steps per seed
+    against 150k ε decay, so final ε was near 0.75. Amendment A1: kept as
+    train_A0/ and not evaluated live. (Protocol error: the budget was set in
+    episodes, carried over from the 1 MiB study.)
+  - [~] Retraining with --episodes 11000 (about 450k steps per seed)
   - [ ] Write the simulator-prediction amendment, then run C and L, analyse,
     and apply the wording rules
 - [x] Engine-fix audit of the network-side studies (Haiku subagent): the
