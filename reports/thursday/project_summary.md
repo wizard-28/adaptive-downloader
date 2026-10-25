@@ -108,6 +108,11 @@ actually something for adaptation to exploit?**
    It was faster than v1 in all six scenarios, cost about 5 % with no cap,
    and was beaten by a simple drop rule in that rule's home scenarios. It is
    one seed selected on validation.
+9. **On real public mirrors, adapting cost time.** In a frozen no-harm check
+   on three kernel mirrors (60 of 60 valid after a run lost to a link
+   outage), both the v2 agent (1.2–1.65×) and the drop rule (1.06–1.33×) were
+   slower than the best fixed setting. They read throughput noise as a
+   cap.
 
 ## Why reinforcement learning did not win
 

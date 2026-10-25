@@ -266,3 +266,18 @@ Three caveats, all stated in advance:
   wrong.
 - **Scope:** "generalizes" here means new combinations inside the training
   envelope, not new kinds of conditions or real servers.
+
+**23. Did you run the adaptive agents on real servers?**
+
+Yes, as a frozen no-harm check on three public kernel mirrors. The first
+attempt was lost to an outage on our own link, and we report it rather than
+hide it. On the clean rerun (60 of 60 valid) neither the v2 agent nor the
+drop rule passed the no-harm rule on any of the three mirrors:
+- v2 took 1.2–1.65× the best fixed time (only kcdn clearly);
+- the drop rule took 1.06–1.33×.
+
+The mirrors have no cap, but their throughput is noisy. The agents read the
+noise as a cap and cut their connections; the drop rule switched in 4 of 5
+runs on two mirrors. This is the cost side of adaptation. Where there is no
+headroom (3.7 % in our pilot), adapting to noise can only lose. It is the
+same lesson as the cellular traces: variability is not opportunity.

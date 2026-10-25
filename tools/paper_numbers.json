@@ -1100,6 +1100,44 @@
    "value": 5.6,
    "tol": 0.05,
    "where": "\u00a79d"
+  },
+  "mc.M1.invalid": {
+   "value": 40,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "mc.M2.runs": {
+   "value": 60,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "mc.M2.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a78a"
+  },
+  "mc.M2.kcdn.v2_vs_best_fixed.geo": {
+   "value": 1.401,
+   "tol": 0.0005,
+   "where": "\u00a78a",
+   "text": "kcdn: 1.401 [1.102, 1.773], slower"
+  },
+  "mc.M2.kedge.v2_vs_best_fixed.geo": {
+   "value": 1.654,
+   "tol": 0.0005,
+   "where": "\u00a78a",
+   "text": "kedge: 1.654 [0.873, 2.849]"
+  },
+  "mc.M2.riken.v2_vs_best_fixed.geo": {
+   "value": 1.215,
+   "tol": 0.0005,
+   "where": "\u00a78a",
+   "text": "riken: 1.215 [0.719, 1.899]"
+  },
+  "mc.M2.riken.drop_vs_best_fixed.geo": {
+   "value": 1.332,
+   "tol": 0.0005,
+   "where": "\u00a78a"
   }
  }
 }

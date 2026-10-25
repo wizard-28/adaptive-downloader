@@ -7479,8 +7479,16 @@ C live evaluation, D held-out generalization; wording rules fixed in advance).
       faster in 3, slower in 1 of 4 held-out scenarios, all inside the v2
       training ranges"; "learned control adds something over a C=8-tuned
       drop rule" (3 vs 2).
-  - live_mirror_check (frozen 5b360b2; A1 probe attempts): v2, drop, fixed
-    16x1 and 8x1 MiB on kcdn, kedge, riken, 5 blocks; no-harm check. Running.
+  - live_mirror_check (COMPLETE; frozen 5b360b2; A1 probe attempts; A2
+    outage, 77e19f9; M2 a4c6666): v2, drop, fixed 16x1 and 8x1 MiB on kcdn,
+    kedge, riken, 5 blocks; no-harm check. Slot M1 lost to a client-side
+    outage from 22:10 UTC (20/60 valid; reported, not used). Slot M2 after a
+    link gate: 60/60 valid. v2 vs best fixed: kcdn 1.401 [1.102, 1.773]
+    slower, kedge 1.654, riken 1.215 (n.d.); drop 1.125, 1.063, 1.332. Frozen
+    sentence: "On 0 of 3 public mirrors, the v2 agent showed no harm against
+    the best fixed 1 MiB setting (and the drop rule on 0 of 3)." v2 ended at
+    median N 6-7 on kcdn/kedge; drop false-tripped 4/5 on kedge and riken.
+    Paper §8a.
   - claims_check incident (2026-10-25): `_run_main` captured json.dump but the
     analysis scripts open their output with "w" first, truncating four
     committed analysis files; committed by a `git commit -a` (ee87a2f),
@@ -7489,7 +7497,8 @@ C live evaluation, D held-out generalization; wording rules fixed in advance).
   investigations to subagents; maintain the queue).
 - **Immediate next step:** see queue.md. Baselines, sweep, joint study and
   v2 are done and in the paper (§4.3, §4.4, §9c, §9d; checker 213/213). The
-  mirror check is running; then analyse it, add it to §8a, and rehearse.
+  mirror check is done (§8a; checker 220/220). Remaining: rehearsal and the
+  IEEE Access conversion.
 
 ### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (COMPLETE; reports submitted 2026-10-24)
 

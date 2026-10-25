@@ -526,6 +526,12 @@ _pH = json.load(open(os.path.join(T, "rl_cap_train_v2", "predictions_H.json")))[
 for _sc, _row in _pH.items():
     if "headroom" in _row:
         out[f"r2.headroom.{_sc}.pct"] = _row["headroom"] * 100
+# Adaptive arms on public mirrors (§8a): slot M2 from the raw JSONL.
+for _slot in ("M1", "M2"):
+    _m = _run_main("live_mirror_check", [_slot])
+    out[f"mc.{_slot}.invalid"] = len(_m["invalid"])
+    out[f"mc.{_slot}.runs"] = sum(1 for _ in open(os.path.join(T, "live_mirror_check", "raw", _slot + ".jsonl")))
+    _flatten(_m["servers"], f"mc.{_slot}")
 _jrep = json.load(open(os.path.join(T, "rl_joint", "train", "report.json")))
 for _sc, _row in _jrep["test"].items():
     if "agent_vs_best_fixed" in _row:
