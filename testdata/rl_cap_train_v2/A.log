@@ -1,0 +1,9 @@
+[1/8] A_CAP0_80_b00_fixed_8_1M 94.8s valid=True
+[2/8] A_CAP0_80_b01_fixed_8_1M 94.5s valid=True
+[3/8] A_HEALTHY_80_b00_fixed_8_1M 42.7s valid=True
+[4/8] A_HEALTHY_80_b01_fixed_8_1M 42.4s valid=True
+[5/8] A_CAP8_120_b00_fixed_12_1M 101.1s valid=True
+[6/8] A_CAP8_120_b01_fixed_12_1M 99.1s valid=True
+[7/8] A_D2custom_120_b00_fixed_16_1M 110.4s valid=True
+[8/8] A_D2custom_120_b01_fixed_16_1M 107.2s valid=True
+qdisc noqueue 0: root refcnt 2 
