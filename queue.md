@@ -67,10 +67,8 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   Q15–Q20 added). Fill in the `[RESULTS]` and `[STATUS]` placeholders
   (Q17, Q20, and wget2 in Q20)
 - [~] `reports/thursday/project_summary.md` updated (findings 5–6, takeaway); fill in the sweep (Stage D and baselines are in qa.md; summary still needs the baselines)
-- [~] Demo script written (`reports/thursday/demo.md`: live CLI download
-  with probe and `-sha256`, capped-server run with the retrained agent, tests
-  and checker). Still to do: run it end to end and fill in the timings, after
-  the live studies finish (it uses the loopback)
+- [x] Demo run end to end and timed (`reports/thursday/demo.md`): about
+  2.5 min in all; every step OK
 - [ ] Rehearse the hardest questions: generalization, "tuned to the test",
   why no range-size action, aria2 gap, wget2 exclusion, IEEE status
 
