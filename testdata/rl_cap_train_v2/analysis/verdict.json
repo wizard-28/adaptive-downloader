@@ -1,0 +1,17 @@
+{
+ "generalization": "v2 generalized partially: faster in 3, slower in 1 of 4 held-out scenarios, all inside the v2 training ranges (v1 on the same scenarios: faster in 1, slower in 2)",
+ "in_distribution": "v2 beat the best fixed 1 MiB setting on CAP8 (HEALTHY: slower)",
+ "v2_vs_v1": "v2 faster than v1 in 6, slower in 0 of 6 scenarios",
+ "against_rule": "learned control adds something over a C=8-tuned drop rule: v2 faster in 3, slower in 2 of 6 scenarios; the rule's predicted time was worse than fixed 16 x 1 MiB in H_RTT110 and H_C20 (amendment A2)",
+ "counts": {
+  "k": 3,
+  "m": 1,
+  "M": 4,
+  "k_v1": 1,
+  "m_v1": 2,
+  "rule_faster": 3,
+  "rule_slower": 2,
+  "v1_faster": 6,
+  "v1_slower": 0
+ }
+}
