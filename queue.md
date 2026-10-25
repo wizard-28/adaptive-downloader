@@ -135,10 +135,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Stage K 24/24 valid; amendment A1: four rate classes (b634a51).
   - [x] Stage A blind parity PASS, +1.4/-3.3/+5.6/+5.6 % (8/8 valid).
   - [x] Headroom gate: all 4 H kept, 9.9-17.4 % (A2, bc9917b).
-  - [~] Stage B training (5 seeds, 2 workers), started 17:25 UTC.
-  - [ ] Go parity, amendment A3 (sim predictions for C and D arms), then
-    live C (64 runs) and D (160 runs), about 4.5 h; then `analyze.py C`,
-    `D`, `verdict`. Same learner,
+  - [x] Stage B: seed 1 selected (27657be2), Go parity passes; sim H
+    0.891/0.951/0.945/1.025, but only seed 1 is good on H (A3, 1492f23).
+  - [~] Live C (64 runs) then D (160 runs), started ~18:00 UTC, about 4.5 h.
+  - [ ] `analyze.py C`, `D`, `verdict`; then paper, PROJECT_CONTEXT, viva. Same learner,
   action space and Go adapter as rl_cap_train.
   - The current Stage D result stands as final: faster in 0 of 3. The three
     G_* scenarios are reported as "used during v2 design" and are no longer
