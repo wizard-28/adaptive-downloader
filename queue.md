@@ -43,7 +43,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] §7a engine ablation, §7b online tuner, §9a frozen DQN on the capped
   server; checker at 168/168 with text anchors; self-test passes
   (36b9217, 8133250)
-- [ ] Add retrain results (§9b: Stage C and D, parity, simulator gates)
+- [x] §9b retrain (blind parity, C, D), abstract and claim map; checker
+  183/183; self-test 9/9 (40c2a2f and next)
+- Note: the token scan weakens as recomputed values grow (0.763 = 1/1.310
+  slipped through). Give every headline number a `text` anchor in
+  `paper_numbers.json`.
 - [ ] Add baselines_ext and sweep results
 - [ ] Extend `tools/claims_check.py` and `paper_numbers.json` for the new
   results; rerun the self-test

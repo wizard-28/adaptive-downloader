@@ -539,7 +539,8 @@
   "nginx.N1_constant.geo": {
    "value": 0.863,
    "tol": 0.0006,
-   "where": "\u00a74.2"
+   "where": "\u00a74.2",
+   "text": "| 50.3 | 58.3 | 0.863 | [0.811, 0.901] | 5/5 |"
   },
   "nginx.N1_constant.n": {
    "value": 5,
