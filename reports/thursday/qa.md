@@ -208,6 +208,17 @@ against the best fixed setting with the same 1 MiB range size.
 
 IDM is closed source, runs only on Windows, and cannot be scripted for
 hundreds of randomised runs in our Linux testbed. axel, wget2 and lftp are
-open source and are the next baselines (Review 3, Section 10).
-[STATUS: update if run before Thursday]
+open source. We ran axel and lftp in the same testbed (80 runs, 5 blocks per
+scenario, all valid). wget2 was excluded: it downloads one file over a single
+connection however it is configured (upstream issue #195, which we confirmed
+in its source).
+- **No cap and the paced D2 workload:** ours took 0.345–0.375 of each tool's
+  time. Like aria2, axel and lftp split the file into 16 equal 32 MiB parts at
+  the start, so all of them are stuck at the slow starting rate.
+- **Cap from 8 s:** all four were level, at about 53 s.
+- **Cap from the start:** lftp took 114 s, because it never re-splits a slow
+  part, which is what our engine did without splitting. axel was 2.5 % faster
+  than ours there.
+So the 62.4 % mechanism is not aria2-specific; it applies to every
+segmented tool that splits the file once at the start.
 

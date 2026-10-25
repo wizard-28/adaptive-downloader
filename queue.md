@@ -31,8 +31,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   (upstream issue #195, confirmed in the v2.1.0 source)
 - [x] `testdata/baselines_ext` protocol frozen (87d546b, A1, A2): 4 systems ×
   4 scenarios × 5 blocks = 80 runs
-- [ ] Run baselines_ext stage E (after Stage D), about 1.5 h
-- [ ] Analyse E and commit
+- [x] baselines_ext E: 80/80 valid. HEALTHY and D2: ours 0.345–0.375 of
+  every tool's time (all three open 16 × 32 MiB at the start, pinned at
+  640 KiB/s). CAP8: all level (~53 s). CAP0: lftp 114 s (16 requests, no
+  re-splitting, like our no-split engine); axel 2.5 % faster than ours (41
+  requests); aria2 0.995.
 - [x] Delay and loss sweep protocol frozen (`testdata/netem_sweep`): D2 and
   CAP8, delay {10, 40, 100} ms × loss {0, 0.4, 2} %, ours vs aria2, 3 blocks,
   108 runs
