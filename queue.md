@@ -19,9 +19,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   16×32 MiB 1.298 and aria2 1.310, slower; against v6 0.949, not
   distinguishable. HEALTHY 1.108, slower (simulator 1.080). Start 1 slower
   in both scenarios.
-- [~] Stage D held-out live runs: 65 runs (protocol said 80; arithmetic slip, amendment A1) (G_C16, G_RTT, G_D2), started
-  ~07:20 UTC, about 1.5 h
-- [ ] Analyse D, apply the frozen wording rules, commit
+- [x] Stage D held-out: 65/65 valid (protocol said 80; arithmetic slip,
+  amendment A1). Faster than the best fixed 1 MiB in **0 of 3**: G_C16 1.177
+  slower; G_RTT 1.016 and G_D2 1.015 (vs 4×1 MiB) not distinguishable
+  (a68d511). The simulator was too optimistic for G_RTT (0.930).
 
 ## 2. Extra baselines and network sweep
 
@@ -61,7 +62,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [~] `reports/thursday/qa.md` aligned with Review 3 (Q9, Q11 fixed;
   Q15–Q20 added). Fill in the `[RESULTS]` and `[STATUS]` placeholders
   (Q17, Q20, and wget2 in Q20)
-- [~] `reports/thursday/project_summary.md` updated (findings 5–6, takeaway); fill in Stage D, baselines and sweep
+- [~] `reports/thursday/project_summary.md` updated (findings 5–6, takeaway); fill in the sweep (Stage D and baselines are in qa.md; summary still needs the baselines)
 - [~] Demo script written (`reports/thursday/demo.md`: live CLI download
   with probe and `-sha256`, capped-server run with the retrained agent, tests
   and checker). Still to do: run it end to end and fill in the timings, after
