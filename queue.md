@@ -40,7 +40,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] Delay and loss sweep protocol frozen (`testdata/netem_sweep`): D2 and
   CAP8, delay {10, 40, 100} ms × loss {0, 0.4, 2} %, ours vs aria2, 3 blocks,
   108 runs
-- [ ] Run netem_sweep stage S (after stage E), about 80 min; analyse; commit
+- [x] netem_sweep S: 108/108 valid. D2: ours faster in every block of all
+  9 cells (0.36–0.46), so the direction holds across the grid. CAP8: does
+  NOT hold; near parity. Reference cell (40 ms, 0.4 %) aria2 faster in 3/3
+  (1.035); 5 mixed; aria2 faster at 10 ms/2 % (1.073); ours faster at 100 ms
+  with 0 % (0.769) and 0.4 % (0.955).
 
 ## 3. Fold results into the paper and the number check
 
