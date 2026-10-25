@@ -54,7 +54,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [~] `reports/thursday/qa.md` aligned with Review 3 (Q9, Q11 fixed;
   Q15–Q20 added). Fill in the `[RESULTS]` and `[STATUS]` placeholders
   (Q17, Q20, and wget2 in Q20)
-- [ ] Update `reports/thursday/project_summary.md` with the newest results
+- [~] `reports/thursday/project_summary.md` updated (findings 5–6, takeaway); fill in Stage D, baselines and sweep
 - [~] Demo script written (`reports/thursday/demo.md`: live CLI download
   with probe and `-sha256`, capped-server run with the retrained agent, tests
   and checker). Still to do: run it end to end and fill in the timings, after
