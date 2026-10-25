@@ -7236,6 +7236,16 @@ N ∈ {1,2,4,8,16}; S ∈ {256K,1M,4M,16M}; 10 seeds/cell.
 
 ---
 
+
+**Re-check without the request deadline (2026-10-25).**
+`tools/loss_sim_nodeadline.py` is a copy of the frozen `loss_sim.py` with a
+configurable deadline. At 30 s it reproduces `analytical_gate/
+stationary_screen.json` and `robustness_sweep.json` byte for byte. With no
+deadline (`nodeadline/no_deadline/`), N* = 16 and S* = 16 MiB in both states
+in all 9 variants, with 0 failures and retries. The S-retry amplification
+(32.7 % per-attempt failure, 48 % aborts, +36.3 %) and the 16M→4M shift in
+4/9 variants were artefacts of the modelled 30 s deadline. The verdict is
+unchanged: NO_JOINT_N+S_OPPORTUNITY_UNDER_CORRELATED_LOSS.
 ### 22.93 Track 1 fresh joint N+S D2 benchmark (executed 2026-09-29, LIVE): BEATS_ARIA2_ONLY
 
 **Status: `JOINT_ADAPTIVE_BEATS_ARIA2_BUT_NOT_FIXED` — classification

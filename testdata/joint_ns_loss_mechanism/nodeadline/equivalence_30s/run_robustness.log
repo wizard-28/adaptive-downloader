@@ -1,0 +1,19 @@
+primary          GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.38162248995984} monotone_N=True
+primary          BAD  optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 57.50962248995985} monotone_N=True
+T_B=1_p_B=1.0    GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 54.181622489959835} monotone_N=True
+T_B=1_p_B=1.0    BAD  optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 54.181622489959835} monotone_N=True
+T_B=5            GOOD optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 63.90962248995984} monotone_N=True
+T_B=5            BAD  optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 63.90962248995984} monotone_N=True
+T_G=10           GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.98162248995984} monotone_N=True
+T_G=10           BAD  optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 64.00962248995985} monotone_N=True
+T_G=60           GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.08162248995984} monotone_N=True
+T_G=60           BAD  optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 55.88162248995984} monotone_N=True
+g=0.25           GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.31456143422197} monotone_N=True
+g=0.25           BAD  optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 56.61547508012174} monotone_N=True
+g=0.5            GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 52.247500378484126} monotone_N=True
+g=0.5            BAD  optimum {'key': '16/4194304', 'N': 16, 'S': 4194304, 'completion': 55.690971155824954} monotone_N=True
+R=1250K          GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 26.995678714859437} monotone_N=True
+R=1250K          BAD  optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 30.795678714859438} monotone_N=True
+R=2500K          GOOD optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 13.535839357429719} monotone_N=True
+R=2500K          BAD  optimum {'key': '16/16777216', 'N': 16, 'S': 16777216, 'completion': 16.635839357429717} monotone_N=True
+sweep written

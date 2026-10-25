@@ -1,0 +1,2728 @@
+{
+  "variants": {
+    "primary": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1016.4139598392957,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 880.0459598393618,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 844.753959839356,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 836.4059598393573,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 507.8569799196966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 439.8729799196791,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 422.8769799196795,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 418.65297991967867,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 253.87848995983978,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 220.0864899598385,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 211.7384899598391,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 209.6264899598393,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 126.83924497991862,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 109.84324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 105.61924497991961,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 104.56324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 63.46962248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 55.02162248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 52.909622489959844,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 52.38162248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 52.38162248995984
+        },
+        "min_completion_by_N": {
+          "1": 836.4059598393573,
+          "2": 418.65297991967867,
+          "4": 209.6264899598393,
+          "8": 104.56324497991966,
+          "16": 52.38162248995984
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1149.6139598392822,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 984.0459598393618,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 946.9539598393549,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "2/262144": {
+            "median_completion": 558.8569799196878,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 485.47297991967935,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 468.5769799196797,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 611.7529799196785,
+            "failures": 2,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 282.2784899598414,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 245.28648995983843,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 236.33848995983908,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 319.07648995983936,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 139.7392449799188,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 120.34324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 115.4192449799196,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 165.66324497991963,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 69.86962248995977,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 59.62162248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 57.50962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 82.98162248995982,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 57.50962248995985
+        },
+        "min_completion_by_N": {
+          "1": 946.9539598393549,
+          "2": 468.5769799196797,
+          "4": 236.33848995983908,
+          "8": 115.4192449799196,
+          "16": 57.50962248995985
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "T_B=1_p_B=1.0": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 1.0,
+          "t_bad": 1.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1077.0139598392889,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 928.4459598393616,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 887.3539598393552,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 969.9559598393569,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 530.4569799196933,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 460.0729799196792,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 442.4769799196796,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 464.5529799196787,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 265.0784899598404,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 230.7864899598385,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 221.9384899598391,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 231.7764899598393,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 132.63924497991866,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 114.04324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 109.81924497991962,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 108.76324497991965,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 66.2696224899598,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 56.821622489959836,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 54.70962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 54.181622489959835,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 54.181622489959835
+        },
+        "min_completion_by_N": {
+          "1": 887.3539598393552,
+          "2": 442.4769799196796,
+          "4": 221.9384899598391,
+          "8": 108.76324497991965,
+          "16": 54.181622489959835
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 1.0,
+          "t_bad": 1.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1077.0139598392889,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 928.4459598393616,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 887.3539598393552,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 969.9559598393569,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 530.4569799196933,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 460.0729799196792,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 442.4769799196796,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 464.5529799196787,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 265.0784899598404,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 230.7864899598385,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 221.9384899598391,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 231.7764899598393,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 132.63924497991866,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 114.04324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 109.81924497991962,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 108.76324497991965,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 66.2696224899598,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 56.821622489959836,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 54.70962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 54.181622489959835,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 54.181622489959835
+        },
+        "min_completion_by_N": {
+          "1": 887.3539598393552,
+          "2": 442.4769799196796,
+          "4": 221.9384899598391,
+          "8": 108.76324497991965,
+          "16": 54.181622489959835
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "T_B=5": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 5.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1376.9139598392715,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 1163.195959839362,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 1139.2039598393537,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "2/262144": {
+            "median_completion": 649.6069799196732,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 566.8729799196797,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 553.8269799196794,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "4/262144": {
+            "median_completion": 334.32848995984403,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 292.7364899598389,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 287.3384899598393,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "8/262144": {
+            "median_completion": 166.1392449799194,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 139.04324497991956,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 134.81924497991957,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 179.81324497991966,
+            "failures": 2,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 88.86962248995962,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 66.02162248995982,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 63.90962248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 111.78162248995982,
+            "failures": 1,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 63.90962248995984
+        },
+        "min_completion_by_N": {
+          "1": 1139.2039598393537,
+          "2": 553.8269799196794,
+          "4": 287.3384899598393,
+          "8": 134.81924497991957,
+          "16": 63.90962248995984
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 5.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1376.9139598392715,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 1163.195959839362,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 1139.2039598393537,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "2/262144": {
+            "median_completion": 649.6069799196732,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 566.8729799196797,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 553.8269799196794,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "4/262144": {
+            "median_completion": 334.32848995984403,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 292.7364899598389,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 287.3384899598393,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "8/262144": {
+            "median_completion": 166.1392449799194,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 139.04324497991956,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 134.81924497991957,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 179.81324497991966,
+            "failures": 2,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 88.86962248995962,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 66.02162248995982,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 63.90962248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 111.78162248995982,
+            "failures": 1,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 63.90962248995984
+        },
+        "min_completion_by_N": {
+          "1": 1139.2039598393537,
+          "2": 553.8269799196794,
+          "4": 287.3384899598393,
+          "8": 134.81924497991957,
+          "16": 63.90962248995984
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "T_G=10": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 10.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1032.3139598392954,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 893.9459598393628,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 859.7539598393566,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 851.205959839358,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 515.456979919696,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 446.372979919679,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 428.5769799196794,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 423.7529799196785,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 257.2784899598398,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 222.98648995983848,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 214.43848995983905,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 212.32648995983925,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 128.73924497991862,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 111.74324497991967,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 107.51924497991963,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 106.46324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 64.36962248995982,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 55.62162248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 53.50962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 52.98162248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 52.98162248995984
+        },
+        "min_completion_by_N": {
+          "1": 851.205959839358,
+          "2": 423.7529799196785,
+          "4": 212.32648995983925,
+          "8": 106.46324497991966,
+          "16": 52.98162248995984
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 10.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1320.0139598392748,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 1140.1459598393624,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 1105.953959839354,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "2/262144": {
+            "median_completion": 652.6569799196753,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 551.9729799196796,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 531.7769799196797,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "4/262144": {
+            "median_completion": 310.4784899598428,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 268.98648995983854,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 260.13848995983915,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": null,
+            "failures": 4,
+            "seeds": 4,
+            "viable": false
+          },
+          "8/262144": {
+            "median_completion": 156.93924497991918,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 136.84324497991958,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 132.6192449799196,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 169.56324497991966,
+            "failures": 3,
+            "seeds": 4,
+            "viable": false
+          },
+          "16/262144": {
+            "median_completion": 77.16962248995961,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 66.42162248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 64.00962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 81.68162248995984,
+            "failures": 3,
+            "seeds": 4,
+            "viable": false
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 64.00962248995985
+        },
+        "min_completion_by_N": {
+          "1": 1105.953959839354,
+          "2": 531.7769799196797,
+          "4": 260.13848995983915,
+          "8": 132.6192449799196,
+          "16": 64.00962248995985
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "T_G=60": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 60.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1007.3139598392961,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 871.9459598393614,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 837.7539598393555,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 829.2059598393569,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 503.4569799196965,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 435.572979919679,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 418.67697991967947,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 414.4529799196787,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 251.97848995983978,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 218.18648995983855,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 209.73848995983911,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 207.62648995983932,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 125.93924497991863,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 109.14324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 104.91924497991963,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 103.76324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 63.16962248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 54.72162248995983,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 52.60962248995985,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 52.08162248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 52.08162248995984
+        },
+        "min_completion_by_N": {
+          "1": 829.2059598393569,
+          "2": 414.4529799196787,
+          "4": 207.62648995983932,
+          "8": 103.76324497991966,
+          "16": 52.08162248995984
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 60.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1040.6139598392915,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 903.7459598393615,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 867.8539598393552,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 931.7059598393566,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 520.2569799196951,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 449.4729799196792,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 431.4769799196796,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 478.8529799196787,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 261.5784899598402,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 227.7864899598385,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 219.3384899598391,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 241.02648995983932,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 130.03924497991864,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 113.14324497991964,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 108.9192449799196,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 119.81324497991966,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 66.96962248995978,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 58.521622489959825,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 56.409622489959844,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 55.88162248995984,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 55.88162248995984
+        },
+        "min_completion_by_N": {
+          "1": 867.8539598393552,
+          "2": 431.4769799196796,
+          "4": 219.3384899598391,
+          "8": 108.9192449799196,
+          "16": 55.88162248995984
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "g=0.25": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.25,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1014.5862930507972,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 878.1288024849423,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 843.645563895787,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 835.1930148854885,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 506.9077317026761,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 439.22317600599376,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 422.2431679010266,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 418.01916790102587,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 253.26602315157714,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 219.5872780922497,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 211.2337798568941,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 209.22119499954368,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 126.60296054801395,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 109.72056122316422,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 105.49656122316419,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 104.44056122316422,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 63.41195307593924,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 54.95456143422197,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 52.84256143422199,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 52.31456143422197,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 52.31456143422197
+        },
+        "min_completion_by_N": {
+          "1": 835.1930148854885,
+          "2": 418.01916790102587,
+          "4": 209.22119499954368,
+          "8": 104.44056122316422,
+          "16": 52.31456143422197
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.25,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1079.383705889316,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 951.6272465748309,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 922.0309528663322,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 1166.8738142067325,
+            "failures": 3,
+            "seeds": 4,
+            "viable": false
+          },
+          "2/262144": {
+            "median_completion": 535.57018942227,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 471.87497908315277,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 459.1521817421068,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 612.4663616313724,
+            "failures": 1,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 268.11708566123576,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 237.00779161660483,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 231.29241069470802,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 304.626132273758,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 133.0501049336707,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 117.83893458604571,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 113.78346155651397,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 165.24229537485178,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 65.79487480312969,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 57.798231720982486,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 56.61547508012174,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 82.78314076139253,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 56.61547508012174
+        },
+        "min_completion_by_N": {
+          "1": 922.0309528663322,
+          "2": 459.1521817421068,
+          "4": 231.29241069470802,
+          "8": 113.78346155651397,
+          "16": 56.61547508012174
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "g=0.5": {
+      "GOOD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.5,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1012.2845834588899,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 876.7574751457491,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 842.4280699316184,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 833.9800699316198,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 506.00761698601,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 438.3646149673091,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 421.6093558823738,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 417.3853558823731,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 252.96641034375665,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 219.273791420666,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 210.9279000392479,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 208.8159000392481,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 126.64988666361606,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 109.59787746640879,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 105.37387746640877,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 104.31787746640882,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 63.34867287476252,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 54.88750037848412,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 52.775500378484125,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 52.247500378484126,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 52.247500378484126
+        },
+        "min_completion_by_N": {
+          "1": 833.9800699316198,
+          "2": 417.3853558823731,
+          "4": 208.8159000392481,
+          "8": 104.31787746640882,
+          "16": 52.247500378484126
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 655360.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.5,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 1051.16592295442,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 920.1083769384052,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 894.6493142676944,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 1047.9157965218099,
+            "failures": 1,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 522.9975150889225,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 459.817540627577,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 446.3208434194664,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 562.601288785665,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 261.9797380675634,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 231.05647962322195,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 224.08662828145881,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 275.59225599156804,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 130.10266712768635,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 114.10023082352004,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 112.16744343821797,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 151.53091963112593,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 64.95037686225785,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 56.49053780445478,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 55.690971155824954,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 69.67526924955003,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/4194304",
+          "N": 16,
+          "S": 4194304,
+          "completion": 55.690971155824954
+        },
+        "min_completion_by_N": {
+          "1": 894.6493142676944,
+          "2": 446.3208434194664,
+          "4": 224.08662828145881,
+          "8": 112.16744343821797,
+          "16": 55.690971155824954
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "R=1250K": {
+      "GOOD": {
+        "params": {
+          "rate": 1280000.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 608.2388594377829,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 472.3708594377505,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 438.4788594377526,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 429.9308594377515,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 304.66942971887704,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 236.38542971887313,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 219.38942971887548,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 215.2654297188754,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 152.23471485943483,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 118.04271485943761,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 109.49471485943778,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 107.38271485943773,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 76.46735742971833,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 58.97135742971899,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 54.84735742971888,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 53.79135742971888,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 38.28367871485946,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 29.535678714859465,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 27.523678714859436,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 26.995678714859437,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 26.995678714859437
+        },
+        "min_completion_by_N": {
+          "1": 429.9308594377515,
+          "2": 215.2654297188754,
+          "4": 107.38271485943773,
+          "8": 53.79135742971888,
+          "16": 26.995678714859437
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 1280000.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 672.4388594377779,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 522.0708594377504,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 484.0788594377527,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 475.6308594377516,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 336.8694297188823,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 261.3854297188731,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 244.58942971887552,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 240.36542971887542,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 169.43471485943462,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 130.94271485943753,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 119.99471485943778,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 117.18271485943772,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 86.06735742971813,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 63.47135742971899,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 59.44735742971889,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 58.39135742971888,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 42.283678714859434,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 33.235678714859475,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 31.32367871485944,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 30.795678714859438,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 30.795678714859438
+        },
+        "min_completion_by_N": {
+          "1": 475.6308594377516,
+          "2": 240.36542971887542,
+          "4": 117.18271485943772,
+          "8": 58.39135742971888,
+          "16": 30.795678714859438
+        },
+        "monotone_decreasing_in_N": true
+      }
+    },
+    "R=2500K": {
+      "GOOD": {
+        "params": {
+          "rate": 2560000.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 0.15,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 395.5814297189023,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 259.1134297188711,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 225.0214297188753,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 216.67342971887547,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 198.09071485943736,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 129.50671485943633,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 112.41071485943775,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 107.98671485943771,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 98.79535742971731,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 64.80335742971903,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 56.25535742971894,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 54.14335742971888,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 49.547678714859316,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 32.4516787148595,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 28.227678714859437,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 27.17167871485944,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 24.923839357429678,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 16.37583935742972,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 14.063839357429716,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 13.535839357429719,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 13.535839357429719
+        },
+        "min_completion_by_N": {
+          "1": 216.67342971887547,
+          "2": 107.98671485943771,
+          "4": 54.14335742971888,
+          "8": 27.17167871485944,
+          "16": 13.535839357429719
+        },
+        "monotone_decreasing_in_N": true
+      },
+      "BAD": {
+        "params": {
+          "rate": 2560000.0,
+          "p_good": 0.004,
+          "t_good": 20.0,
+          "p_bad": 0.5,
+          "t_bad": 2.0,
+          "g_bad": 0.0,
+          "timeout": 30.0,
+          "max_attempts": 3,
+          "retry_delay": 0.1,
+          "h": 0.088
+        },
+        "cells": {
+          "1/262144": {
+            "median_completion": 437.7814297189066,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/1048576": {
+            "median_completion": 287.21342971887236,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/4194304": {
+            "median_completion": 250.2214297188753,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "1/16777216": {
+            "median_completion": 241.77342971887555,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/262144": {
+            "median_completion": 223.19071485943815,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/1048576": {
+            "median_completion": 142.30671485943606,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/4194304": {
+            "median_completion": 123.11071485943773,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "2/16777216": {
+            "median_completion": 117.8867148594377,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/262144": {
+            "median_completion": 108.89535742971705,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/1048576": {
+            "median_completion": 71.20335742971892,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/4194304": {
+            "median_completion": 60.85535742971895,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "4/16777216": {
+            "median_completion": 58.743357429718884,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/262144": {
+            "median_completion": 54.24767871485931,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/1048576": {
+            "median_completion": 36.3516787148595,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/4194304": {
+            "median_completion": 32.02767871485944,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "8/16777216": {
+            "median_completion": 30.971678714859436,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/262144": {
+            "median_completion": 28.723839357429668,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/1048576": {
+            "median_completion": 19.57583935742973,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/4194304": {
+            "median_completion": 17.163839357429715,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          },
+          "16/16777216": {
+            "median_completion": 16.635839357429717,
+            "failures": 0,
+            "seeds": 4,
+            "viable": true
+          }
+        },
+        "optimum": {
+          "key": "16/16777216",
+          "N": 16,
+          "S": 16777216,
+          "completion": 16.635839357429717
+        },
+        "min_completion_by_N": {
+          "1": 241.77342971887555,
+          "2": 117.8867148594377,
+          "4": 58.743357429718884,
+          "8": 30.971678714859436,
+          "16": 16.635839357429717
+        },
+        "monotone_decreasing_in_N": true
+      }
+    }
+  },
+  "seeds": [
+    1,
+    2,
+    3,
+    4
+  ]
+}
