@@ -56,7 +56,7 @@ the `-cap-*` flags to run fixed 16 × 1 MiB on the uncapped server.
 
 ```bash
 go test -count=1 ./internal/... 2>&1 | tail -15   # -count=1: run for real, not cached
-python3 tools/claims_check.py | tail -2   # 168 numbers recomputed from raw runs
+python3 tools/claims_check.py | tail -2   # 183 numbers recomputed from raw runs
 ```
 
 Point out:
