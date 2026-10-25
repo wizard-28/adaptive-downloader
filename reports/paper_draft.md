@@ -1,4 +1,4 @@
-# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11)
+# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25)
 
 **Working title:** *Request granularity and concurrency adaptation for HTTP range
 downloads under controlled server-side pacing: a mechanism-first evaluation.*
@@ -48,9 +48,19 @@ that cap; across six predeclared workloads a frozen workload selector is not
 distinguishable from the per-workload best fixed configuration on average
 (geometric ratio 0.999 [0.969, 1.029]) and a consistent improvement over a single
 family-wide configuration is **not** established (point estimate 0.770,
-workload-level interval [0.455, 1.304]). (iv) The DQN policies (v2, v5, v6) were
-slower than aria2 overall in the head-to-heads we ran (LinUCB was evaluated only
-descriptively). All results are scoped to the
+workload-level interval [0.455, 1.304]). A 230-run engine ablation then showed
+that aria2's lead under that cap came from two engine differences in our
+downloader, a whole-request timeout and the absence of straggler splitting;
+with both fixed, our best fixed configuration matched aria2 with the cap from
+the start (ratio 0.995 [0.992, 0.999]) and was within 1.6 % of it with the cap
+from 8 s (1.016 [1.006, 1.029]), and the best fixed configuration was faster
+than the causal controller (1.071 [1.054, 1.085]) and the workload selector
+(1.229 [1.223, 1.234]). A re-implemented online concurrency tuner in the style
+of FastBioDL was also slower than the best fixed configuration (1.212 and 1.220).
+(iv) The DQN policies (v2, v5, v6) were slower than aria2 overall in the
+head-to-heads we ran, and the frozen v6 agent was slower than the best fixed
+configuration on the capped server (1.356 [1.252, 1.472]) (LinUCB was evaluated
+only descriptively). All results are scoped to the
 controlled mechanisms; none is a validation on live networks or production servers.
 
 ---
@@ -312,6 +322,60 @@ constructed cap, not within-download adaptation.
 
 - Block-level CIs here are very narrow because the emulated server is nearly
   deterministic; they quantify emulator noise, not population variability.
+- **Superseded explanation of the aria2 gap.** §7a shows that the gap came
+  mainly from two engine details of our downloader, not from aria2's piece
+  timing alone, and that against the best fixed configuration on the corrected
+  engine the causal controller is slower.
+
+## 7a. Engine ablation: why aria2 led under the cap
+
+An audit found two engine differences between our downloader and aria2:
+(a) every request had a 30 s whole-request deadline, which aborts a large range
+that is slow but progressing, and (b) in-flight ranges were never split, while
+aria2 lets an idle connection take half of the slowest segment's remaining
+bytes. Both were made opt-in options (`NoRequestTimeout`, `SplitStragglers`,
+default off; a split needs at least 2 MiB unreceived) and tested in a
+predeclared ablation (`testdata/split_ablation/protocol.md`): four scenarios
+(cap from the start, CAP0; cap from 8 s, CAP8; no cap; the D2 pacing workload)
+× 10 shuffled blocks, 230 runs, all valid, with zero failed attempts, retries
+or wasted bytes.
+
+- **Splitting was the main cause (Confirmed, 10 blocks).** Under CAP0 the same
+  16 × 32 MiB configuration took 40 % less time with splitting (0.599
+  [0.598, 0.601]) and then matched aria2: 68.2 s against 68.5 s, 0.995
+  [0.992, 0.999], detectable but practically negligible.
+- **Large ranges need the deadline removed (Confirmed).** Under CAP8,
+  16 × 32 MiB without the deadline took 0.711 [0.703, 0.719] of the time of
+  the earlier best fixed configuration (16 × 1 MiB), and was within 1.6 % of
+  aria2 (54.4 s against 53.5 s, 1.016 [1.006, 1.029]).
+- **No harm elsewhere.** With no cap and on D2 the corrected and original
+  engines were not distinguishable (0.981 [0.931, 1.011]; 0.995 [0.987, 1.003]),
+  and ours remained much faster than aria2 there (0.344 and 0.370).
+- **Adaptation against the corrected baseline.** The causal controller of §7
+  replicated against its original comparison set (0.767 [0.764, 0.769]), but
+  against the best fixed configuration on the corrected engine (16 × 32 MiB)
+  it was slower (1.071 [1.054, 1.085]); under CAP0 the workload selector of §6
+  was slower than 16 × 32 MiB (1.229 [1.223, 1.234]).
+- **Mechanism.** The server fixes a response's rate when the request arrives.
+  Under CAP8, 16 × 32 MiB starts all 16 ranges before the cap, so every range
+  keeps the pre-cap rate; splitting then hands the tail to idle connections.
+  This is a property of our server model; a server that re-evaluates rates
+  during a response could change it.
+
+## 7b. Online concurrency tuning (prior-work re-implementation)
+
+FastBioDL-style online tuning [swargo2025fastbiodl] was re-implemented as a project
+policy (not their code): aggregate throughput T over 2 s windows, utility
+U = T/K^N, keep the step direction while U improves, reverse and halve on a
+drop above 5 %, clamp at N in 1–16, S untouched. Predeclared protocol
+(`testdata/online_tuner/protocol.md`): CAP8 and no cap, 8 shuffled blocks, 64
+runs, all valid, corrected engine.
+
+- **Slower than the best fixed configuration in both scenarios (Confirmed).**
+  CAP8: 1.212 [1.180, 1.248] against 16 × 1 MiB; no cap: 1.220 [1.203, 1.232].
+- **Adaptation speed (Descriptive).** It cut N 2.1 s after the cap (the causal
+  controller 1.5 s), but needed 8.1 s to climb from N = 4 to N = 16 without a
+  cap, and that ramp is where most of the loss occurs.
 
 ## 8. Recorded cellular traces replayed in a controlled setup
 
@@ -441,14 +505,42 @@ for n=30 and slightly conservative for n=150 and n=240 (and too narrow for
 n=15), so its stored intervals differ in the third decimal. The frozen
 artifacts were not modified.
 
+### 9a. Frozen DQN v6 on the capped server
+
+To remove the short-file and ramped-start handicaps above, the frozen v6 agent
+was run on the capped server with a 512 MiB file on the corrected engine,
+starting at N = 1 (as trained) or N = 16 (as aria2 opens), in a predeclared
+5-block screen (`testdata/rl_capped/protocol.md`; 50 runs, all valid). It was
+not retrained.
+
+- With the cap from 8 s, starting at 16 it was slower than the best fixed
+  configuration (16 × 32 MiB): 1.356 [1.252, 1.472]; starting at 1, 1.706
+  [1.612, 1.806]. Without a cap it was slower than 16 × 1 MiB (1.031
+  [1.010, 1.063]; start 1: 1.194 [1.176, 1.219]).
+- Against 16 × 1 MiB, the fixed configuration with its own range size, it was
+  not distinguishable under the cap (0.931 [0.879, 1.016]).
+- **Descriptive (screen).** The frozen agent did not beat a well-chosen fixed
+  configuration even with a fair start, a long file and a scenario built so
+  that the best setting changes.
+
+A retrained agent for this server, with a simulator checked against live runs
+and held-out generalization scenarios, is in progress under a protocol frozen
+before training (`testdata/rl_cap_train/protocol.md`); no result from it is
+reported here.
+
 ## 10. Discussion, limitations, and threats to validity
 
 - **Constructed environment.** The positive adaptive results hold under a server
   model we designed and selected (72-candidate search). They show conditions under
   which adaptation can help, not that real servers behave this way.
-- **Request-start rate semantics** drive both the D2 mechanism and the aria2
-  "cap escape"; a server that re-evaluates rates during a response would change
-  both.
+- **Request-start rate semantics** drive both the D2 mechanism and the
+  advantage of large ranges under the cap (§7a); a server that re-evaluates
+  rates during a response would change both.
+- **Engine before policy.** On our server models, the request deadline and
+  straggler splitting mattered more than any adaptive policy (§7a). Earlier
+  adaptive results measured against the original engine (§6, §7) should be
+  read with that comparison in mind. Removing the deadline means a fully stalled
+  connection would wait for the run limit; a stall-based timeout is future work.
 - **Single machine, single aria2 version (1.37.0), loopback + netem** for every
   controlled result. Real paths appear only in the descriptive live pilot of
   §8a: one client, one primary access network (plus one accidental slot on a
@@ -477,8 +569,10 @@ matched, and a five-pair screen across six pacing schedules shows the direction
 holds in all but a constant slow-rate schedule where the two are at parity. On recorded cellular
 traces replayed in a controlled setup there is no exploitable concurrency
 headroom. Adaptive control helps within a download only under a server model in
-which rate depends on concurrency, where it improves on the best stationary
-configuration but not on aria2; a cross-workload selector matches the
+which rate depends on concurrency, and only against small-range fixed
+configurations on the original engine; once a request deadline and straggler
+splitting were corrected, the best fixed configuration matched or came within
+1.6 % of aria2 and beat the adaptive controllers and an online tuner; a cross-workload selector matches the
 per-workload best on average but a consistent advantage over a single
 family-wide configuration is not established; learned policies were slower than
 aria2. These results delimit when adaptation is worth its complexity; they do not
@@ -526,5 +620,9 @@ the NGINX check are committed before their runs.
 | Selector matches per-workload best fixed on average | Descriptive (interval includes 1; not an equivalence test) | 0.999 [0.969, 1.029]; workload-level [0.873, 1.143] |
 | Selector improves on a single family-wide fixed config | **Not established** | 0.770 point; workload-level [0.455, 1.304]; loses W5/W6 |
 | Learned policies beat aria2 | **Not supported** | §9 |
+| aria2's lead under the cap came from the request deadline and missing straggler splitting | Confirmed (230 runs, 10 blocks per scenario) | §7a; CAP0 0.599 with splitting; then 0.995 vs aria2 |
+| Adaptive controllers beat the best fixed configuration on the corrected engine | **Not supported** (causal 1.071; selector 1.229) | §7a |
+| An online concurrency tuner beats the best fixed configuration | **Not supported** (1.212; 1.220) | §7b |
+| The frozen DQN v6 beats the best fixed configuration on the capped server | **Not supported** (1.356; screen, 5 blocks) | §9a |
 | On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
 | …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |

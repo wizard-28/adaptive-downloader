@@ -720,6 +720,126 @@
    "value": 2,
    "tol": 0,
    "where": "\u00a78a"
+  },
+  "abl.runs": {
+   "value": 230,
+   "tol": 0,
+   "where": "\u00a77a,abstract"
+  },
+  "abl.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a77a"
+  },
+  "abl.CAP0.comparisons.C2.geo": {
+   "value": 0.599,
+   "tol": 0.0005,
+   "where": "\u00a77a"
+  },
+  "abl.CAP0.comparisons.C3.fixed_16_32M_NT_split.geo": {
+   "value": 0.995,
+   "tol": 0.0005,
+   "where": "\u00a77a,abstract"
+  },
+  "abl.CAP0.geo_mean_s.fixed_16_32M_NT_split": {
+   "value": 68.2,
+   "tol": 0.05,
+   "where": "\u00a77a"
+  },
+  "abl.CAP0.geo_mean_s.aria2": {
+   "value": 68.5,
+   "tol": 0.05,
+   "where": "\u00a77a"
+  },
+  "abl.CAP8.comparisons.C1.geo": {
+   "value": 0.711,
+   "tol": 0.0005,
+   "where": "\u00a77a"
+  },
+  "abl.CAP8.comparisons.C3.fixed_16_32M_NT_split.geo": {
+   "value": 1.016,
+   "tol": 0.0005,
+   "where": "\u00a77a,abstract"
+  },
+  "abl.CAP8.geo_mean_s.fixed_16_32M_NT_split": {
+   "value": 54.4,
+   "tol": 0.05,
+   "where": "\u00a77a"
+  },
+  "abl.CAP8.geo_mean_s.aria2": {
+   "value": 53.5,
+   "tol": 0.05,
+   "where": "\u00a77a"
+  },
+  "abl.CAP8.comparisons.C4.published_replication.geo": {
+   "value": 0.767,
+   "tol": 0.0005,
+   "where": "\u00a77a"
+  },
+  "abl.CAP8.comparisons.C4.vs_best_stationary.geo": {
+   "value": 1.071,
+   "tol": 0.0005,
+   "where": "\u00a77a,abstract"
+  },
+  "abl.CAP0.comparisons.C4.vs_best_stationary.geo": {
+   "value": 1.229,
+   "tol": 0.0005,
+   "where": "\u00a77a,abstract"
+  },
+  "tun.runs": {
+   "value": 64,
+   "tol": 0,
+   "where": "\u00a77b"
+  },
+  "tun.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a77b"
+  },
+  "tun.CAP8.T1_vs_best_stationary.geo": {
+   "value": 1.212,
+   "tol": 0.0005,
+   "where": "\u00a77b,abstract"
+  },
+  "tun.HEALTHY.T1_vs_best_stationary.geo": {
+   "value": 1.22,
+   "tol": 0.0005,
+   "where": "\u00a77b,abstract"
+  },
+  "speed.online_tuner.CAP8.online_tuner.median": {
+   "value": 2.1,
+   "tol": 0.05,
+   "where": "\u00a77b"
+  },
+  "speed.online_tuner.HEALTHY.online_tuner.median": {
+   "value": 8.1,
+   "tol": 0.05,
+   "where": "\u00a77b"
+  },
+  "rlc.runs": {
+   "value": 50,
+   "tol": 0,
+   "where": "\u00a79a"
+  },
+  "rlc.invalid": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a79a"
+  },
+  "rlc.CAP8.dqn6_start16.vs_best_fixed.geo": {
+   "value": 1.356,
+   "tol": 0.0005,
+   "where": "\u00a79a,abstract"
+  },
+  "rlc.CAP8.dqn6_start16.vs_each_fixed.fixed_16_1M_NT_split.geo": {
+   "value": 0.931,
+   "tol": 0.0005,
+   "where": "\u00a79a"
+  },
+  "rlc.HEALTHY.dqn6_start16.vs_best_fixed.geo": {
+   "value": 1.031,
+   "tol": 0.0005,
+   "where": "\u00a79a"
   }
  }
 }

@@ -378,6 +378,53 @@ for _tag, _dir in (("lp1", "raw"), ("lp1x", "raw_other_network")):
         out["lp1.kedge_N4_min"], out["lp1.kedge_N4_max"] = min(_k4), max(_k4)
 
 
+# Engine ablation, online tuner and capped-server learned agents (§7a-§7b,
+# §9a): recomputed from the raw runs by each study's frozen analysis script.
+import importlib.util as _ilu
+import subprocess as _sp
+import tempfile as _tf
+
+
+def _study(name, script):
+    spec = _ilu.spec_from_file_location(f"_an_{name}", os.path.join(T, name, "tools", script))
+    mod = _ilu.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.analyze(os.path.join(T, name, "runs"))
+
+
+def _flatten(o, prefix):
+    if isinstance(o, dict):
+        if "geo_ratio" in o:
+            out[prefix + ".geo"] = o["geo_ratio"]
+            out[prefix + ".lo"], out[prefix + ".hi"] = o["ci95"]
+            out[prefix + ".n"] = o["n_blocks"]
+            return
+        for k, v in o.items():
+            if k in ("runs", "invalid", "label"):
+                continue
+            _flatten(v, f"{prefix}.{k}")
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            _flatten(v, f"{prefix}.{v.get('den', i) if isinstance(v, dict) else i}")
+    elif isinstance(o, (int, float)) and not isinstance(o, bool):
+        out[prefix] = o
+
+
+for _tag, _name, _script in (("abl", "split_ablation", "analyze_split_ablation.py"),
+                             ("tun", "online_tuner", "analyze_online_tuner.py"),
+                             ("rlc", "rl_capped", "analyze_rl_capped.py")):
+    _res = _study(_name, _script)
+    out[f"{_tag}.invalid"] = len(_res["invalid"])
+    out[f"{_tag}.runs"] = len(glob.glob(os.path.join(T, _name, "runs", "*.json")))
+    _flatten(_res["scenarios"], _tag)
+with _tf.NamedTemporaryFile(suffix=".json") as _f:
+    _sp.run([sys.executable, os.path.join(ROOT, "tools", "adaptation_speed.py"), _f.name],
+            cwd=ROOT, check=True, capture_output=True)
+    for _k, _v in json.load(open(_f.name)).items():
+        if _v["median"] is not None:
+            out["speed." + _k.replace("/", ".") + ".median"] = _v["median"]
+
+
 def scan_paper(text, out, consts):
     """Every decimal number, percentage and a/b fraction in the manuscript must
     be reproduced by a recomputed value (within one unit of its last digit) or be

@@ -7374,7 +7374,52 @@ time-varying per-response pacing schedule.
 
 ---
 
-### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (IN PROGRESS)
+### 22.109 DQN retrained for the capped server, with simulator parity and held-out generalization (2026-10-25, IN PROGRESS)
+
+**Status: `PROTOCOL_FROZEN (9b6b5f3); A2_PARITY_RUNNING`.** Protocol
+`testdata/rl_cap_train/protocol.md` (stages A simulator parity, B training,
+C live evaluation, D held-out generalization; wording rules fixed in advance).
+
+- **Why v6 could not do well live on the capped server:** its simulator
+  (`sim_env_v6`) had no arrival-time soft cap, and its aggregate observable
+  was C·n/svc, while the live `policyRunner.aggregateThroughput` is bytes of
+  the last `-window` attempts over their span. With `-window 4` the live value
+  saturates near N = 4 (HEALTHY N = 4/16: 4.4/6.3 MiB/s vs 6.2/14.8 at
+  window 16). The new agent uses `-window 16` in training and live runs.
+- **Simulator:** `python/rl/sim_env_cap.py` (tests
+  `python/tests/test_sim_env_cap.py`, 13). Event-driven: rate fixed at server
+  arrival, k = capped requests in service (pre-cap requests not counted), one
+  decision per completed attempt, increase starts one worker, decrease retires
+  the next completer, observables built exactly as `policyRunner.observe` +
+  `LivePolicy.observeV5`. 1 MiB ranges never split (needs 2 MiB unreceived).
+  Jitter: per-request server excess and client overhead sampled from
+  `testdata/rl_cap_train/calibration.json` (percentiles from rl_capped request
+  logs; completion times not used). Retrospective parity: fixed 16x1 MiB CAP8
+  77.7 sim vs 76.6 live, HEALTHY 18.8 vs 18.4; v6 closed loop within 3 %
+  except CAP8 start16 (79.7 vs 71.3; live runs inside the sim range).
+- **Headroom (sim):** CAP8 best fixed N at 1 MiB is 16 (76.9 s); a 16->3
+  switch at the cap gives 64.0 s. 16x32 MiB (52.6 s live) is out of reach for
+  any concurrency-only 1 MiB agent because its ranges all start pre-cap.
+- **Held-out live scenarios (Stage D):** G_C16 (C = 16 MiB/s), G_RTT (80 ms
+  each way), G_D2 (d2 schedule), all outside the training ranges; each needs
+  a different post-cap N (7, 5, 4).
+- **Tooling:** `python/train_cap.py` (5 seeds, selection on validation only,
+  evaluation through the exported model's numpy forward pass, exports model +
+  `parity_fixture.json`), `internal/rl/dqn/cap_candidate_parity_test.go`
+  (Go features and actions must match Python), `testdata/rl_cap_train/tools/
+  run.py STAGE`, `tools/analyze.py STAGE`. Harness: unchanged
+  `testdata/rl_capped/tools/rl_bench.go`.
+- **Do not run training while live runs are in progress** (CPU load distorts
+  live timing).
+- **Immediate next step:** finish A2 -> analyze A2 -> (pass) train ->
+  Go parity test -> Stage C (120 runs) -> Stage D (80 runs) -> fold into
+  reports/paper. Other Thursday gaps (from reading the submitted reports):
+  paper_draft.md lacks the ablation/tuner/rl_capped results and claims_check
+  does not cover them; IEEE template conversion not started though Review 3
+  says it is being formatted; axel/wget2/lftp not installed; reports/thursday/
+  qa.md lacks the 22.107-22.109 results.
+
+### 22.108 Review 1 gap closure (2026-10-24): online tuner, CLI probe/checksum, goodput + reliability, Review 2/3 reports (COMPLETE; reports submitted 2026-10-24)
 
 **Status: `ONLINE_TUNER_COMPLETE; REPORTS_BUILT`.** Online tuner: 64/64 valid
 (commit 093a10b). By the frozen rule the tuner was slower than the best
@@ -7454,12 +7499,8 @@ verified must be verified by Thursday morning.
 - **Reports:** `reports/review2/review2.tex` (-> `reports/
   Review2_Project_Review.pdf`) and `reports/review3/review3.tex` (figures from
   `reports/review3/make_figs.py`). Both are LaTeX, built with latexmk.
-- **Immediate next step:** analyse the tuner runs; run the full section 11
-  test suite (lo is busy while the tuner runs); capture the test screenshot;
-  rebuild both PDFs. By Thursday: fold the ablation and tuner results into
-  `reports/paper_draft.md` (abstract (iii), section 6/7, conclusion, claim
-  map) and extend `tools/claims_check.py` to recompute them.
-
+- **Immediate next step (superseded):** done — tuner analysed, suite run,
+  PDFs rebuilt and submitted. Remaining Thursday items are tracked in §22.109.
 ### 22.107 Study audit (2026-10-24): engine flaws behind "aria2 wins under the cap"; opt-in straggler splitting; split ablation (COMPLETE)
 
 **Status: `SPLIT_ABLATION_COMPLETE`.** 230/230 runs valid (commit f258df7).
@@ -9329,6 +9370,9 @@ byte-identical.
 ---
 
 ## 27. Current next step
+
+> **Current (2026-10-25):** see §22.109 for the live next step. The text
+> below this note is the historical LinUCB-era record and is kept unchanged.
 
 LinUCB (the first learner) and the first `RewardCalculator` are implemented and
 unit-tested behind `rl.Policy` and `policyRunner` respectively (§20.6, §20.7,

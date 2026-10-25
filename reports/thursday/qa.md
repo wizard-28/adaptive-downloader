@@ -1,7 +1,9 @@
 # Likely questions and prepared answers (Thursday review)
 
 Short answers first, then supporting detail. Every number here appears in
-`reports/paper_draft.md` or `testdata/live_pilot_l1/`.
+`reports/paper_draft.md`, `reports/Review3_Final_Report.pdf` or the study
+folders under `testdata/` (split_ablation, online_tuner, rl_capped,
+live_pilot_l1, rl_cap_train). Updated 2026-10-25 to match Review 3.
 
 ---
 
@@ -21,7 +23,9 @@ There are three reasons:
 - Simulator gains did not transfer. L4 showed 17.6 % headroom in simulation,
   but the live server did not penalise excess concurrency.
 - Where real headroom existed, a one-threshold rule captured it (+23.4 % over
-  the best of three fixed settings).
+  the best of three small-range fixed settings on the original engine,
+  replicated at R = 0.767). On the fixed engine, though, the best fixed
+  setting (16 × 32 MiB) beat it by 7 %; see Q15.
 
 A better learner cannot beat a near-zero ceiling.
 
@@ -45,8 +49,9 @@ computed before training, not on exhausting learners.
 The framework is intuitive: adaptation needs a moving optimum, and a single
 flow gains little from extra connections. These findings were not obvious:
 - capacity varied 5–27× but the oracle headroom stayed under 1 %;
-- request-start rate locking created a 62.4 % benchmark gap, and reversed
-  direction under the cap;
+- request-start rate locking created a 62.4 % benchmark gap;
+- aria2's lead under the cap came from two engine details (a whole-request
+  timeout and no straggler splitting), not from smarter control;
 - simulator headroom disappeared live;
 - a one-rule controller captured the real headroom.
 
@@ -57,7 +62,8 @@ capacity drops, everything slows down, but the same setting is still about
 right. Adaptation pays only when *too much concurrency has a cost that changes
 over time*, such as a server that throttles per client. We screened
 shared-bottleneck queueing and correlated loss and found no opportunity. The
-constructed concurrency cap was the one case where it paid.
+constructed concurrency cap was the one case where it paid, and only against
+small-range fixed settings on the original engine (Q15).
 
 **7. What about real networks? Everything is loopback.**
 
@@ -83,10 +89,17 @@ mechanism result, and we present it as one.
 
 **9. aria2 beat you under the cap. Doesn't that undermine the adaptive result?**
 
-No. The claim is improvement over the best *stationary* configuration (+23.4 %),
-not superiority over aria2. aria2 wins there because its early pieces start
-while concurrency is low and keep that higher rate. It is the same
-request-start mechanism, in reverse.
+We investigated it, and it changed the conclusion. A 230-run engine ablation
+traced aria2's lead to two engine differences in our downloader, not to
+aria2's control:
+- **No straggler splitting.** With the cap on from the start, 16 × 32 MiB
+  took 40 % less time with splitting (R = 0.599) and then matched aria2
+  (68.2 s against 68.5 s, R = 0.995).
+- **The 30 s whole-request timeout** cut off large, slow ranges. Without it,
+  our best setting with the cap from 8 s came within 1.6 % of aria2 (54.4 s
+  against 53.5 s, R = 1.016, a small but real gap).
+On the fixed engine, the best fixed setting also beat our adaptive
+controllers, so we say plainly that adaptation did not win there.
 
 **10. You built the server model yourselves. Isn't the positive result rigged?**
 
@@ -99,7 +112,8 @@ includes 1.
 
 **11. How do we know the numbers are right?**
 
-`tools/claims_check.py` recomputes all 113 paper numbers from the raw runs and
+`tools/claims_check.py` recomputes all 144 numbers in the existing paper
+sections from the raw runs and
 fails on any number it cannot reproduce. It caught real errors in our own
 frozen scripts, such as a fixed t value used for every n. Those were corrected
 in the paper, and the frozen artifacts were left untouched.
@@ -129,3 +143,66 @@ Two things:
 - **The live pilot's side finding.** A major public mirror (Tsinghua) rejects
   Go's default User-Agent with HTTP 403, so a stock Go downloader is locked
   out.
+
+**15. You fixed the engine. Did adaptation still help?**
+
+Not against the best fixed setting on the fixed engine:
+- The causal controller was 7 % slower than 16 × 32 MiB with the cap from
+  8 s (R = 1.071).
+- The workload selector was 23 % slower with the cap from the start.
+The earlier +23.4 % holds against small-range fixed settings on the original
+engine, and we report both. The honest summary is "engine before policy":
+splitting and the timeout semantics mattered more than any controller.
+
+**16. You cite FastBioDL. Did you compare against it?**
+
+We re-implemented its online-tuning idea (aggregate throughput over 2 s
+windows, U = T/K^N, reverse and halve the step on a drop) as a project policy
+and ran it under a frozen protocol, 64 runs. It was 1.212 (cap from 8 s) and
+1.220 (no cap) times the best fixed setting's time. It reacted to the cap in
+2.1 s but spent 8.1 s climbing from N = 4 to 16 without a cap. We did not use
+FastBioDL's code.
+
+**17. You now trained the DQN for the capped server. Isn't that tuning to
+the test?**
+
+That is why the study (testdata/rl_cap_train, protocol frozen before any
+training or live run) has two parts:
+- **In-distribution (Stage C):** the live CAP8 and HEALTHY scenarios, which
+  lie inside the training ranges. A win there shows only that the agent
+  learned this server model.
+- **Held out (Stage D):** three live scenarios, each outside the training
+  ranges on one axis: cap C = 16 MiB/s (trained 4–12), 80 ms each way
+  (trained 20–60), and the three-phase d2 schedule (never trained). Each
+  needs a different N after the cap (7, 5, 4, against 3 for CAP8), so a rule
+  memorised for CAP8 does not transfer by accident.
+We say "generalizes within this server family" only if it wins all three.
+Nothing here supports claims about real servers.
+[RESULTS: fill from testdata/rl_cap_train/analysis/C.json and D.json]
+
+**18. Why did the first DQN do badly on the capped server?**
+
+We found two simulator–live mismatches before retraining:
+- The v6 simulator had no arrival-time cap.
+- Its throughput feature did not match what the live runner measures. Live
+  throughput is the bytes of the last 4 attempts over their time span, which
+  barely changes above N = 4. The agent could hardly see the effect of extra
+  connections.
+The new simulator copies the live runner's measurements and was checked
+against fresh live runs, with predictions written down before the runs.
+
+**19. Can the retrained agent beat 16 × 32 MiB?**
+
+We said in advance that it cannot. 16 × 32 MiB wins under the cap because all
+16 ranges start before the cap and keep the pre-cap rate. An agent that only
+changes N with 1 MiB ranges cannot do that. Even the perfect switch in our
+simulator (64 s) is slower than 16 × 32 MiB live (52.6 s). The fair test is
+against the best fixed setting with the same 1 MiB range size.
+
+**20. Why not IDM, axel or wget2?**
+
+IDM is closed source, runs only on Windows, and cannot be scripted for
+hundreds of randomised runs in our Linux testbed. axel, wget2 and lftp are
+open source and are the next baselines (Review 3, Section 10).
+[STATUS: update if run before Thursday]
+
