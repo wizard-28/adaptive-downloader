@@ -74,3 +74,34 @@ All comparisons are paired by block, using the geometric-mean ratio with a
   or ranges started before a rate change.
 - No general ranking of the tools is claimed. The tools were run at one
   configuration each, and other flags could change the results.
+
+## Amendment A1 (2026-10-25, before any data run): wget2 single-connection behaviour verified
+
+The single-connection observation was checked outside our harness and
+against wget2's documentation and source.
+
+- **Independent reproduction.** `tools/wget2_concurrency_check.py` is a
+  throttled Python range server, about 2 MiB/s per response, that logs the
+  number of requests in flight. With
+  `wget2 --no-config --max-threads=16 --chunk-size=1M -O out.bin <url> -d`
+  (16 MiB), wget2 sent one HEAD and then 16 range GETs. All 16 used the same
+  client port, and the in-flight count never exceeded 1. In the debug log,
+  only downloader thread `[0]` acts, and the chunks are dequeued one at a time
+  ("dequeue chunk 1/16", then "2/16", and so on).
+- **Documentation.** The wget2 manual (`docs/wget2.md`) describes
+  `--chunk-size` as "Download large files in multithreaded chunks" and
+  `--max-threads` as "the maximum number of concurrent download threads for
+  a resource" (default 5). So parallel chunks are the documented intent.
+- **Source (`src/wget.c`, master).** The main loop starts downloader threads
+  only while `nthreads < config.max_threads && nthreads < queue_size()`. The
+  chunk path after the HEAD response only signals existing workers
+  (`wget_thread_cond_signal(worker_cond)`) and does not start threads. At
+  start-up the queue holds one job, so one thread is started. In our runs that
+  one thread then fetched every chunk. We infer that the chunks did not raise
+  `queue_size()` enough to start more threads. This is our reading of the
+  code, not a confirmed upstream bug report. No matching issue was found in
+  the wget2 tracker.
+- **Consequence for the screen (unchanged design).** wget2 runs as
+  configured, and its peak concurrency is reported. The reports must call
+  wget2 "single connection in this configuration (documented as
+  multithreaded)", never "slow".
