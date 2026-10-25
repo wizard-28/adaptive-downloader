@@ -1,8 +1,8 @@
 # When does adaptive downloading help? A one-page summary
 
-*Prepared 2026-10-18 for the Thursday 2026-10-22 project review. Numbers are
-from `reports/paper_draft.md` (verified by `tools/claims_check.py`) unless
-marked as live-pilot results.*
+*Prepared 2026-10-18; updated 2026-10-25 for the Thursday 2026-10-29 viva.
+Numbers are from `reports/paper_draft.md` (verified by `tools/claims_check.py`)
+or from the named study folder under `testdata/`.*
 
 ## Question
 
@@ -27,7 +27,7 @@ actually something for adaptation to exploit?**
   output.
 - **Method.** Preregistered gates and stop rules, frozen hashed artifacts, an
   oracle headroom bound computed before training any learner, and a claims
-  checker that recomputes all 113 paper numbers from raw runs.
+  checker that recomputes all 168 checked paper numbers from raw runs.
 
 ## Findings
 
@@ -49,7 +49,7 @@ actually something for adaptation to exploit?**
    - a one-threshold causal controller beat the best of three fixed settings
      by 23.4 % (58.7 s vs 76.7 s, 10 of 10 blocks);
    - the N move carries the gain;
-   - aria2 was still faster, because its early pieces start before the cap.
+   - aria2 was still faster; finding 5 explains why.
 
    Across six predeclared workloads, a frozen selector matched the
    per-workload best fixed setting on average (0.999).
@@ -61,6 +61,27 @@ actually something for adaptation to exploit?**
      any training. One showed 17.6 % headroom in simulation that did not
      reproduce live.
    - A model-based attempt met 0 of 6 feasibility criteria.
+
+5. **Engine before policy.** A 230-run ablation traced aria2's lead under the
+   cap to two engine details in our downloader: a 30 s whole-request timeout
+   and no straggler splitting. With both fixed:
+   - our best fixed setting matched aria2 with the cap from the start
+     (0.995) and came within 1.6 % with the cap from 8 s (1.016);
+   - the best fixed setting (16 × 32 MiB) then beat the causal controller
+     (1.071) and the selector (1.229);
+   - a re-implemented FastBioDL-style online tuner was also slower than the
+     best fixed setting (1.212 and 1.220).
+6. **A DQN retrained for the capped server beat the fixed setting with the
+   same range size, where it was trained** (`testdata/rl_cap_train`):
+   - the new simulator copies the live runner's measurements and passed a
+     blind live check (all 4 predictions within 1.4 %);
+   - over 10 blocks with the cap from 8 s it took 0.907 [0.893, 0.921] of the
+     time of fixed 16 × 1 MiB, close to the simulator's 0.912;
+   - it stayed slower than 16 × 32 MiB (1.298) and aria2 (1.310), as
+     predicted in advance: large ranges started before the cap keep the
+     faster rate, which a 1 MiB agent cannot do;
+   - without a cap it was slower than fixed 16 × 1 MiB (1.108);
+   - held-out scenarios outside the training ranges: [RESULTS: Stage D].
 
 ## Why reinforcement learning did not win
 
@@ -102,9 +123,12 @@ headroom existed, a simple rule that detects one change captured it.
 
 ## Takeaway
 
-> Fixed configurations cannot adapt. On the conditions we tested, they did not
-> need to. Adaptation pays when concurrency has a cost that changes over
-> time, and there a simple rule was enough.
+> Fixed configurations cannot adapt. On the conditions we tested, they mostly
+> did not need to. Adaptation pays when concurrency has a cost that changes
+> over time, and even there engine details (timeouts, straggler splitting)
+> mattered more than the controller. A learned agent can win only on the
+> server model it was trained for, and only against fixed settings that share
+> its range size.
 
 **Future work:** action spaces with delayed, changing costs, such as
 multi-mirror scheduling, restarting slow requests, straggler hedging, and live
