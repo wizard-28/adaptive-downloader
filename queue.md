@@ -60,7 +60,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   re-check correction; checker 199/199, 0 unverified; self-test 9/9 after
   anchoring P2 (ee912a7)
 - [x] §9d v2, abstract, limitations, conclusion, claim map (4714611)
-- [ ] §8a: add the mirror check when it finishes
+- [x] §8a: mirror check added
 
 ## 4. Viva preparation
 
@@ -145,7 +145,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
     "generalized partially"; vs drop 3 faster, 2 slower (3515a44). Paper §9d,
     abstract, limitations, conclusion, claim map; checker 213/213 (4714611);
     PROJECT_CONTEXT, qa Q22, summary finding 8.
-- [ ] Real-server check (after v2): public mirrors from the live pilot
+- [x] Real-server check (after v2): public mirrors from the live pilot
   (kernel.org CDN, origin, riken), 64 MB file, arms v2 agent / drop rule /
   fixed 8×1 MiB / 16×1 MiB, about 3 mirrors × 5 reps (about 4 GB), with the
   live-pilot etiquette (User-Agent, ≤16 connections, abort on 429/503).
@@ -156,8 +156,8 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   - [x] Slot M1 aborted by a client-side outage from 22:10 UTC (20/60 valid);
     amendment A2 (77e19f9). M1's valid runs show v2 ending near N = 4 on
     uncapped mirrors and slower than fixed 8x1 MiB in 4/4 pairs (to test).
-  - [~] Slot M2 started at 23:05 UTC after the link gate passed. Then
-    `analyze.py M2` and paper §8a. Command: `live-pilot -manifest
+  - [x] Slot M2 (60/60 valid): no harm on 0 of 3 for v2 and the drop rule
+    (a4c6666). Paper §8a, limitations, claim map; checker 220/220. Command: `live-pilot -manifest
     testdata/live_mirror_check/manifest.json -slot M1 -out
     testdata/live_mirror_check/raw/M2.jsonl -slot M2` (about 1 h)
   - Uses the internet link, not the loopback.

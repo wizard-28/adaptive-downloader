@@ -520,6 +520,39 @@ screening evidence that a fixed configuration with enough connections was
 near-best on the observed paths. It does not validate the findings across
 networks.
 
+**Adaptive arms on the same mirrors (descriptive no-harm check,
+`testdata/live_mirror_check/protocol.md`).** After the loopback studies, the
+v2 agent of §9d and the C=8-tuned drop rule ran on three of these mirrors
+(kcdn, kedge, riken). Each was compared with fixed 16 × 1 MiB and 8 × 1 MiB:
+the same corrected engine, 5 blocks, 64 MB.
+
+- **The first slot was lost to the client's own link.** From 22:10 UTC
+  every attempt to all three servers failed with no response, and only 20
+  of 60 runs were valid. It is reported in full and not used (amendment
+  A2).
+- **The second slot ran after a predeclared link check, and 60 of 60 runs
+  were valid.** v2 against the better fixed arm:
+  - kcdn: 1.401 [1.102, 1.773], slower;
+  - kedge: 1.654 [0.873, 2.849];
+  - riken: 1.215 [0.719, 1.899].
+  The drop rule against the better fixed arm:
+  - kcdn: 1.125;
+  - kedge: 1.063;
+  - riken: 1.332.
+  Only the kcdn v2 interval excludes 1. Under the frozen rule, "no harm"
+  needs a ratio of at most 1.05 that is not slower, and both arms showed
+  no harm on 0 of 3 mirrors.
+- **Why.** The mirrors have no cap, but their per-request throughput is
+  noisy. v2 ended at a median N of 6–7 on kcdn and kedge. The drop rule
+  read a dip as a cap and switched to N = 4 in 4 of 5 runs on kedge and on
+  riken.
+- **Reading.** The agents adapt to signals that, on these servers, do not
+  mean what they meant on the server model they were built for. Adaptation
+  carried a cost here, with no headroom to pay for it (3.7 % in the pilot).
+  This matches §8, where variability did not mean opportunity. It is one
+  client, one evening and 5 blocks of a noisy link, so it is descriptive
+  only.
+
 ## 9. Learned-policy experiments (inventory; positive results only in §9b and §9d, both scoped)
 
 The learners are a LinUCB contextual bandit [li2010linucb] and Double DQN
@@ -765,7 +798,9 @@ oracle.
 - **Single machine, single aria2 version (1.37.0), loopback + netem** for every
   controlled result. Real paths appear only in the descriptive live pilot of
   §8a: one client, one primary access network (plus one accidental slot on a
-  second), public mirrors, and fixed cells only, with no adaptive or learned controller run live. That pilot is not a
+  second), public mirrors, and fixed cells only; the later no-harm check ran
+  the v2 agent and the drop rule on three of those mirrors (5 blocks; both
+  were slower than the best fixed setting there). That pilot is not a
   validation across networks. The only stock-server check is
   the NGINX per-response rate-limit screen of §4.2 (n=5 per configuration), and
   it exercised neither a shared cap nor a connection limit, so the adaptive
@@ -861,3 +896,4 @@ the NGINX check are committed before their runs.
 | …and beats a simple drop rule | **Mixed** (faster in 3, slower in 2 of 6; two wins reflect the rule's tuning) | §9d |
 | On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
 | …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |
+| The v2 agent and the drop rule do no harm on public mirrors | **Not supported** (no harm on 0 of 3 for both; v2 1.215–1.654) | §8a; `testdata/live_mirror_check` |
