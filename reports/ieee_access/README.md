@@ -10,7 +10,8 @@
 | AI-use disclosure | manuscript "Declarations" | **HUMAN: confirm wording against publisher policy** |
 | Data DOI | `docs/ARCHIVE_PLAN.md` | **HUMAN/archive: not issued** |
 | IEEE template conversion | — | **HUMAN: convert to the current IEEE Access Word/LaTeX template** |
-| Mahimahi, trace-dataset, LinUCB/DQN/netem citations | `../references.md` | **UNRESOLVED: add after verification** |
+| Mahimahi, trace-dataset, LinUCB/DQN/Double DQN/netem citations | `../references.md` | verified 2026-10-18; Liu 2018 (smart DTN) and Swargo & Arifuzzaman (elastic) remain unresolved and are not cited |
+| Redistribution terms for the Mahimahi-bundled traces | `DATA_LICENSE.md` | **HUMAN: confirm** |
 
 Nothing here has been submitted. Do not treat the package as complete while
 any HUMAN item above is open.
