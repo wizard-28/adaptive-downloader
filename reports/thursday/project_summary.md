@@ -27,7 +27,7 @@ actually something for adaptation to exploit?**
   output.
 - **Method.** Preregistered gates and stop rules, frozen hashed artifacts, an
   oracle headroom bound computed before training any learner, and a claims
-  checker that recomputes all 168 checked paper numbers from raw runs.
+  checker that recomputes all 220 checked paper numbers from raw runs.
 
 ## Findings
 
