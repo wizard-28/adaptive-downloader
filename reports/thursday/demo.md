@@ -23,8 +23,9 @@ sudo -n tc qdisc show dev lo          # must show "noqueue": no shaping left ove
 Point out:
 - `-size` is omitted, so the CLI probes the size with `Range: bytes=0-0` and
   requires a 206 response.
-- 8 × 1 MiB is the setting that was within 3.7 % of the best per-condition
-  choice in the live pilot.
+- 8 × 1 MiB is the global setting that was on average 3.7 % slower than
+  each condition's best in the live pilot (within 5 % in 11 of 16
+  conditions; at most 15.3 %).
 - The SHA-256 is checked against kernel.org's published checksum; a mismatch
   fails the download.
 

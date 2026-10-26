@@ -276,8 +276,10 @@ drop rule passed the no-harm rule on any of the three mirrors:
 - v2 took 1.2–1.65× the best fixed time (only kcdn clearly);
 - the drop rule took 1.06–1.33×.
 
-The mirrors have no cap, but their throughput is noisy. The agents read the
-noise as a cap and cut their connections; the drop rule switched in 4 of 5
-runs on two mirrors. This is the cost side of adaptation. Where there is no
-headroom (3.7 % in our pilot), adapting to noise can only lose. It is the
-same lesson as the cellular traces: variability is not opportunity.
+The mirrors have no cap, but their throughput is noisy. Both arms cut their
+connections on these uncapped servers (the drop rule switched in 4 of 5
+runs on two mirrors); our reading is that they took noise for a cap, though
+we did not analyse the traces to show it. This is the cost side of
+adaptation: with little headroom to pay for it (3.7 % selection headroom in
+our pilot), adapting carried a cost. It is the same lesson as the cellular
+traces: variability is not opportunity.
