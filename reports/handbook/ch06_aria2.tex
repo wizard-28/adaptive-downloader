@@ -1,0 +1,107 @@
+\chapter{Results I: Fixed Settings Against aria2 and Other Tools}\label{ch:aria2}
+
+\section{Early aria2 comparisons and the granularity confound}
+The first aria2 runs (\code{benchmark\_aria2}, aria2 at 4 connections on the 4\,MiB LinUCB-era scenarios, 50 of 50 valid) were confounded by request granularity: aria2 made 1 unranged request plus 3 ranges of 1\,MiB with at most 4 in flight, which is not how our benchmark modes split the file (PROJECT\_CONTEXT §22.16--22.17). A granularity-matched internal control (our engine fixed at $4\times1$\,MiB, \code{cmd/granularity-study}) was needed before any comparison meant anything. This taught the lesson that shaped the rest of the project: \emph{when comparing downloaders, match or explicitly vary granularity}. aria2 was later recalibrated on a validation set to ``config F'' (16 connections, split 16, min split 1\,MiB), used in every later study.
+
+\section{The D2 benchmark: 62.4\,\% less time (Confirmed)}
+\textbf{Workload D2:} 512\,MiB; per-response pacing 640\,KiB/s, 160\,KiB/s from 2\,s, 2{,}500\,KiB/s from 4\,s; netem 40\,ms each way + 0.4\,\% loss. Both systems receive the same object.
+
+\textbf{Selection (discovery):} all 40 $(N,S)$ combinations were run once (the top three at $N=16$ three times) (Figure~\ref{fig:grid.png}). More connections always helped; at every $N$ a 4\,MiB range was fastest or tied; we stopped at $N=16$ to match aria2. aria2's full split frontier (1/2/4/8/16) was also run.
+\fig{grid.png}{0.9}{Discovery grid: completion time for all 40 $(N,S)$ settings on D2.}
+
+\textbf{Confirmation (30 fresh pairs):} ours ($16\times4$\,MiB) 20.12\,s vs aria2 53.56\,s (means); geometric ratio $\mathbf{0.3756}$, 95\,\% CI $[0.3726, 0.3787]$; 30 of 30 wins; all outputs content-verified.
+
+\subsection{The mechanism}
+From per-request server logs:
+\begin{itemize}
+\item aria2 issues 16 requests (one unranged probe plus $15\times32$\,MiB ranges), \textbf{all starting before 2\,s}, so all are held at 640\,KiB/s for their whole length.
+\item Ours issues $128\times4$\,MiB ranges: 16 start before 2\,s, and \textbf{112 start after 4\,s}, in the fast phase (3{,}840 ranged requests over 30 runs: 480 early, 3{,}360 late).
+\item aria2 cannot be configured to finer initial pieces: with \code{-x16}, \code{--split} of 16, 64 or 256 gave the same range-size distribution in a local probe.
+\end{itemize}
+\fig{progress.png}{0.88}{Data received over time in one paired run, reconstructed from per-request server logs.}
+
+\subsection{Controls}
+\begin{itemize}
+\item \textbf{Granularity-matched control:} our engine with aria2-like 32\,MiB pieces gave $R = 0.862\,[0.834, 0.890]$ (10 pairs). Most of the gap is granularity, but ours stays 14\,\% faster.
+\item \textbf{Constant 2.5\,MB/s schedule:} removes most of the 4\,MiB vs 32\,MiB difference inside our engine (2.3$\times$ $\rightarrow$ 1.1$\times$), yet ours is still faster than aria2 (15.3\,s vs 24.8\,s).
+\item So the phase-locked mechanism explains the \emph{size} of the D2 gap, not all of it. The residual is \textbf{unexplained}; a candidate is the finishing tail of 32\,MiB pieces, untested.
+\end{itemize}
+
+\begin{careful}
+This is a \emph{fixed-configuration} result. Neither system adapts during the transfer. Do not present it as ``adaptation beats aria2''. And it is one workload family on our own server, so it is a property of this pacing mechanism, not a general statement about aria2.
+\end{careful}
+
+\section{Pacing-schedule sensitivity (screen)}
+Same workload, systems and netem; only the server schedule varies; 5 pairs per schedule; 60 of 60 valid; protocol frozen with seed 20261011.
+\begin{table}[H]\centering\small
+\caption{Pacing sweep, ours ($16\times4$\,MiB) / aria2}\label{tab:sweep}
+\begin{tabular}{@{}lrrrlc@{}}
+\toprule
+\textbf{Schedule (KiB/s; switch times)} & \textbf{Ours (s)} & \textbf{aria2 (s)} & \textbf{Ratio} & \textbf{[min, max]} & \textbf{Ours faster}\\
+\midrule
+S0 D2 \code{640,160@2,2500@4} & 20.1 & 53.3 & 0.378 & [0.372, 0.389] & 5/5\\
+S1 no dip \code{640,2500@2} & 20.1 & 48.9 & 0.425 & [0.353, 0.751] & 5/5\\
+S2 long dip \code{640,160@2,2500@8} & 44.1 & 54.7 & 0.806 & [0.783, 0.827] & 5/5\\
+S3 partial \code{640,160@2,1280@4} & 31.6 & 54.3 & 0.583 & [0.559, 0.608] & 5/5\\
+S4 constant fast \code{2500} & 15.4 & 27.1 & 0.568 & [0.523, 0.618] & 5/5\\
+S5 constant slow \code{640} & 53.8 & 53.9 & 0.998 & [0.987, 1.008] & 3/5\\
+\bottomrule
+\end{tabular}
+\end{table}
+Both predeclared expectations held: S0 reproduces D2 (0.378 vs 0.3756) and S5 (one slow rate, 16 connections each) is at parity. The advantage is largest when the slow phase is short (S0, S1), shrinks when it is long (S2), and persists under constant fast pacing (S4) where no phase-locking exists; the S4 mechanism is a hypothesis.
+\fig{pacing.png}{0.85}{Mean completion time under the six schedules.}
+
+\section{Stock NGINX check (screen)}
+NGINX 1.24.0, same 512\,MiB object (deterministic AES-CTR stream), 5 pairs per configuration, 20 of 20 valid. It limits each response independently: no shared cap, no connection limit.
+\begin{itemize}
+\item N1 \code{limit\_rate 640k}: ours 50.3\,s, aria2 58.3\,s, $R=0.863$, 5/5.
+\item N2 \code{limit\_rate\_after 1m; limit\_rate 640k}: 33.7\,s vs 56.4\,s, $R=0.597$, 5/5.
+\end{itemize}
+The predeclared expectation for N1 was parity (as in S5). \textbf{It was not met}: ours was faster in all five pairs, for reasons not tested (NGINX pacing granularity, aria2's request handling, connection behaviour). It supports only the direction of the comparison on a stock server.
+\fig{fig1_ours_vs_aria2.png}{0.9}{Paired ratios ours/aria2: D2 benchmark, six sweep schedules, two NGINX configurations. Sweep and NGINX cells are screens ($n=5$).}
+
+\section{Other segmented downloaders: axel and lftp (screen)}
+Frozen protocol \code{baselines\_ext}; all tools at 16 connections; HEAD requests answered at once (no tool pays for a paced probe); 5 blocks per scenario; 80 of 80 valid. wget2 removed by amendment A2 (single connection per file).
+\begin{table}[H]\centering\small
+\caption{Ours against axel, lftp and aria2 (ratios; 95\,\% bootstrap)}\label{tab:baselines}
+\begin{tabular}{@{}llccc@{}}
+\toprule
+\textbf{Scenario} & \textbf{Ours} & \textbf{ours/axel} & \textbf{ours/lftp} & \textbf{ours/aria2}\\
+\midrule
+HEALTHY & $16\times1$\,MiB & 0.345 [0.344, 0.347] & 0.345 [0.344, 0.346] & 0.357 [0.344, 0.371]\\
+D2 & $16\times4$\,MiB & 0.375 [0.373, 0.378] & 0.374 [0.369, 0.377] & 0.375 [0.373, 0.377]\\
+CAP8 & $16\times32$\,MiB & 1.003 [0.965, 1.026] & 1.001 [0.963, 1.024] & 0.996 [0.960, 1.017]\\
+CAP0 & $16\times32$\,MiB & 1.025 [1.021, 1.029] & 0.597 [0.594, 0.599] & 0.995 [0.992, 0.998]\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
+\item axel and lftp split the file into 16 equal parts at the start, as aria2 does, so they gain nothing from a schedule that rises after the first second. \textbf{The D2 gap is not aria2-specific; it applies to tools that split once, up front.}
+\item Under CAP8 all four were level (about 53\,s). Under CAP0, lftp took 114\,s because it never re-splits a slow part (our engine without splitting behaved the same), and axel was 2.5\,\% faster than ours.
+\end{itemize}
+
+\section{Delay and loss sweep (screen)}
+Frozen protocol \code{netem\_sweep}: one-way delay $\in\{10, 40, 100\}$\,ms $\times$ loss $\in\{0, 0.4, 2\}$\,\%; 3 blocks per cell; 108 of 108 valid.
+\begin{itemize}
+\item \textbf{D2} ($16\times4$\,MiB vs aria2): ours faster in every block of all 9 cells; cell means 0.362--0.457. The direction holds across the grid.
+\item \textbf{CAP8} ($16\times32$\,MiB vs aria2): the direction does \emph{not} hold. 5 cells mixed; 2 had aria2 faster in every block: 10\,ms with 2\,\% loss (1.073) and 40\,ms with 0.4\,\% loss (1.035). At 100\,ms ours was faster with 0 and 0.4\,\% loss (0.769, 0.955) and mixed with 2\,\%. Under the cap the two are near parity and the sign depends on the network.
+\end{itemize}
+
+\section{Goodput with the fixed engine}
+\begin{table}[H]\centering\small
+\caption{Goodput in MB/s (geometric mean of 10 runs; ours on the fixed engine)}\label{tab:goodput}
+\begin{tabular}{@{}llrr@{}}
+\toprule
+\textbf{Scenario} & \textbf{Our best fixed setting} & \textbf{Ours} & \textbf{aria2}\\
+\midrule
+CAP0 & $16\times32$\,MiB, splitting & 7.87 & 7.83\\
+CAP8 & $16\times32$\,MiB, splitting & 9.87 & 10.03\\
+HEALTHY & $16\times1$\,MiB & 29.19 & 10.05\\
+D2 & $16\times4$\,MiB & 27.02 & 9.99\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keyidea}[What Chapter~\ref{ch:aria2} shows]
+Much of our large wins comes from servers that set a response's rate when it starts: small ranges keep starting new requests after the server speeds up, while split-once tools stay at the slow starting rate. Part is unexplained (constant fast pacing S4, NGINX N1). At a constant slow rate the tools are level, and under the cap with splitting within 1.6\,\%; on the public mirrors aria2 took 1.00--1.26$\times$ each condition's best fixed cell. None of this involves adaptation.
+\end{keyidea}

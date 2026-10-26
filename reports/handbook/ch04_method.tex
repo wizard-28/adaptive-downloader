@@ -1,0 +1,114 @@
+\chapter{Method and Statistics}\label{ch:method}
+The project's credibility rests on its method as much as its results. This chapter explains how every comparison was designed, measured and judged, with the formulas.
+
+\section{Run design: arms, blocks, pairs}
+\begin{itemize}
+\item An \textbf{arm} is one option in an experiment: a fixed setting, a controller, a learned agent, or an external tool.
+\item A \textbf{block} holds one run of each arm, in a random order fixed by a seed (for example \code{20261101} in the mirror check). In the loopback studies every run uses a fresh server, a fresh output file and a fresh netem setup; the live-internet studies use public servers and no netem.
+\item Arms are compared \textbf{paired by block}: the ratio is computed within each block, so slow drift of the machine or the network affects both arms in that block equally.
+\item A run is \textbf{valid} only if it exits cleanly, reports no error, and its output matches the source byte for byte (SHA-256). \textbf{Invalid runs are kept and reported}, never silently re-run or dropped.
+\end{itemize}
+
+\section{The time ratio and why it is geometric}
+For blocks $i = 1,\dots,n$ with completion times $t_i^{A}$ and $t_i^{B}$, the time ratio of $A$ to $B$ is
+\begin{equation}
+R = \exp\!\left(\frac{1}{n}\sum_{i=1}^{n}\ln\frac{t_i^{A}}{t_i^{B}}\right) = \left(\prod_{i=1}^{n} \frac{t_i^{A}}{t_i^{B}}\right)^{1/n}.
+\end{equation}
+$R<1$ means $A$ was faster. The percentage reduction in time is $(1-R)\times100\,\%$; for example $R=0.3756$ means 62.4\,\% less time.
+
+\fig{geomean.png}{0.72}{Ratios are averaged on the log scale because ``half the time'' and ``twice the time'' should cancel.}
+
+\begin{doubt}[``Why not just compare mean times?'']
+Times differ by scenario (18\,s here, 115\,s there), so an arithmetic mean is dominated by the slow scenarios. Ratios are scale-free, and the geometric mean treats $0.5$ and $2$ symmetrically: $\sqrt{0.5\times2}=1$, whereas the arithmetic mean $1.25$ would wrongly suggest $A$ is slower. Taking logs also makes the per-block values roughly symmetric, which the $t$-interval needs.
+\end{doubt}
+
+\section{Confidence intervals}
+\subsection{Percentile bootstrap (primary)}
+Let $d_i = \ln(t_i^A/t_i^B)$. Draw $n$ blocks with replacement from $\{d_1,\dots,d_n\}$, compute their mean $\bar d^{*}$, repeat $B=10{,}000$ times (the seed is fixed per study: 1 in the v2 study and the mirror check, 20261024 in the engine ablation, 20261025 in the tuner study), and take the 2.5th and 97.5th percentiles of $\exp(\bar d^{*})$:
+\begin{equation}
+\text{CI}_{95} = \Big[\exp\big(q_{0.025}(\bar d^{*})\big),\ \exp\big(q_{0.975}(\bar d^{*})\big)\Big].
+\end{equation}
+The bootstrap makes no normality assumption. (A few older headline intervals, e.g.\ the D2 benchmark's [0.3726, 0.3787], are $t$-intervals recomputed by the claims checker.)
+
+\subsection{Paired $t$-interval (sensitivity check)}
+With $\bar d$ the mean and $s_d$ the standard deviation of the $d_i$,
+\begin{equation}
+\text{CI}_{95}^{t} = \exp\!\left(\bar d \pm t_{0.975,\,n-1}\,\frac{s_d}{\sqrt n}\right).
+\end{equation}
+In the v2 study and the mirror check, both intervals were computed and \textbf{the less favourable verdict was used}. Example: H\_C20 had bootstrap $[1.000, 1.014]$ (``slower'') and $t$-interval $[0.998, 1.016]$ (``not distinguishable''); the reported verdict is ``slower''.
+
+\begin{doubt}[``Your intervals are tiny (0.840 to 0.850). Is that suspicious?'']
+No, but it must be read correctly. The emulated server is nearly deterministic, so block-to-block noise is small. The intervals quantify \emph{testbed} noise, not how results would vary across real servers or networks. We say this in the paper. Real-network intervals (mirror check) are wide: $[0.873, 2.849]$.
+\end{doubt}
+
+\subsection{Verdicts}
+\begin{equation}
+\text{verdict} = \begin{cases}
+\text{faster} & \text{upper bound} < 1,\\
+\text{slower} & \text{lower bound} > 1,\\
+\text{not distinguishable} & \text{otherwise.}
+\end{cases}
+\end{equation}
+``Not distinguishable'' is not ``equal'': it is not an equivalence test. The selector's $0.999\,[0.969, 1.029]$ means we cannot tell it apart from the per-workload best, not that it is proven equal.
+
+\subsection{Workload-level intervals}
+When a claim is about a \emph{family} of workloads (the six-workload selector study), the unit of generalisation is the workload, not the block. We then also compute a $t$-interval over the six workload means (df $=5$). It is much wider and is the primary interval for family-level claims: the selector's 0.770 against a single family-wide setting had a workload-level interval of $[0.455, 1.304]$, so that advantage is \emph{not established}.
+
+\section{Headroom gates: measure the opportunity before building the learner}
+Before training a learner in a new environment, we compute the oracle headroom $H$ (Chapter~\ref{ch:background}) and compare it with a bar fixed in advance. For the cellular traces, one trace is one observation ($n=5$, df $=4$), and the gate requires the one-sided 95\,\% lower bound
+\begin{equation}
+\text{LCB}_{95} = \bar H - t_{0.95,\,4}\,\frac{s_H}{\sqrt{5}} \;\ge\; 0.10 .
+\end{equation}
+With $\bar H = 0.00406$, $s_H = 0.00700$, $t_{0.95,4} = 2.132$: $\text{LCB}_{95} = 0.00406 - 2.132\times0.00700/\sqrt5 = -0.0026$. \textbf{Gate failed.}
+
+For the v2 study, each held-out scenario had to show at least 5\,\% \emph{simulator} headroom between the best fixed $N$ and a $16\to n$ oracle, or be dropped (not replaced): a held-out scenario where nothing can be gained cannot test generalization. All four passed, at 9.9--17.4\,\%.
+
+\begin{keyidea}[Why headroom gates matter]
+A learner that ``fails'' where $H\approx0$ tells you nothing about the learner. A gate separates ``the environment offers nothing'' from ``the learner could not find it''. This is how we can say the cellular result holds for \emph{any} concurrency-switching policy under the frozen trace model, not just ours.
+\end{keyidea}
+
+\section{Frozen protocols and amendments}
+Every study after the early era follows the same discipline:
+\begin{enumerate}
+\item \textbf{Protocol first.} A \code{protocol.md} states the question, arms, scenarios, blocks, seeds, validity rules, the analysis, the decision rules and the exact sentences that will be reported for each outcome. It is committed (hashed) \emph{before} any run.
+\item \textbf{Amendments, never edits.} Changes go at the end, dated (A1, A2, \dots), with the reason and whether any data existed when they were written. Example: the mirror check's A2 aborted slot M1 after a client-side outage and added a \emph{link gate} before slot M2.
+\item \textbf{Blind predictions.} Simulator predictions for live arms are written down before the live runs (``parity'' checks), so the simulator's accuracy is tested, not assumed.
+\item \textbf{Validation-only selection.} Among trained seeds, the candidate is chosen on validation scenarios only, never on test or held-out scenarios. Seed variance is disclosed (v2: the other four seeds were mostly at or above the best fixed time on held-out scenarios).
+\item \textbf{Stop rules.} Each protocol says when to stop: e.g.\ if the simulator fails its blind check, no live comparison is run.
+\item \textbf{Failed gates are reported as failed}, and the criterion is never relaxed after seeing results (the live mechanism gate's S-margin was 3.74\,\% against a 5\,\% bar and stayed failed).
+\end{enumerate}
+
+\begin{careful}[``Pre-registered''?]
+Protocols were written to logged documents with recorded SHA-256 hashes before their runs, but they were not deposited with an independent timestamping service; the repository history begins with one import commit (2026-10-11); and one manifest (W1--W6) was amended twice after design output had been seen, with the first version overwritten. So say \textbf{``predeclared in logged protocols''}, not ``pre-registered'' (\code{docs/PREREGISTRATION\_NOTE.md}).
+\end{careful}
+
+\section{Independent review before freezing}
+For the later studies an independent adversarial review (a separate AI reviewer instructed to attack the design) was run on the draft protocol. For v2 the protocol records that the draft was revised once before freezing, on held-out headroom, the drop rule's tuning (now labelled ``C=8-tuned'', with its simulator predictions recorded), wording coverage, the number of blocks (8, with the $t$-interval check) and a missing stop rule.
+
+\section{The claims checker}
+\code{tools/claims\_check.py} recomputes every number in the paper from the raw run files:
+\begin{itemize}
+\item 220 of 220 checked numbers pass; the paper scan finds 0 numeric tokens without a source.
+\item Each number has a \emph{text anchor} (the sentence it appears in), so a coincidental match elsewhere cannot hide an edit (this was found and fixed when a self-test showed 0.716 passing by coincidence).
+\item The self-test (9 of 9) feeds in deliberately wrong numbers and checks the checker rejects them.
+\item It caught real errors in our own frozen scripts: a fixed $t$ value of 2.045 used for every $n$ (correct only for $n=30$), and a normal value 1.96 in one analysis. The paper uses corrected values; frozen artifacts were left untouched.
+\end{itemize}
+
+\section{Metrics}
+\begin{itemize}
+\item \textbf{Completion time}: wall clock from start to verified file. Primary metric.
+\item \textbf{Goodput}: file size / completion time (MB/s, $10^6$ bytes).
+\item \textbf{Transfer efficiency}: useful bytes / all bytes received. 100\,\% on the fixed engine in every run; as low as 47\,\% (112\,\% extra bytes) in one aborted run of the earlier capped grid ($N=16$, 32\,MiB ranges, original engine).
+\item \textbf{Reliability}: failed attempts, retries, wasted bytes, \code{429}/\code{503} counts.
+\item \textbf{Adaptation speed}: time from an event (cap onset) to the controller's first move, from decision logs.
+\end{itemize}
+
+\section{Validity threats we controlled for}
+\begin{itemize}
+\item \textbf{Order effects}: seeded random order within each block.
+\item \textbf{Machine load}: timing-sensitive runs were not meant to share the machine with heavy jobs. One exception is disclosed: v2 Stage A (the live blind check) ran with a host load average of 12--19 from outside the container (amendment A2); the load was removed before training and the Stage C/D live runs.
+\item \textbf{Silent netem failure}: recorded per run.
+\item \textbf{Leftover shaping}: harness removes netem; \code{tc qdisc show dev lo} must show \code{noqueue}.
+\item \textbf{Content errors}: SHA-256 of every output.
+\item \textbf{Analysis bugs}: the claims checker and its self-test.
+\end{itemize}

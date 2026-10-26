@@ -1,0 +1,55 @@
+\chapter{Repository Map and How to Reproduce}\label{app:repo}
+
+\section{Top-level layout}
+\begin{lstlisting}
+AGENTS.md, CLAUDE.md      working rules for contributors (human or AI)
+queue.md                  running work queue
+go.mod                    module adaptivedl, Go 1.27.1 (only dependency: Gonum)
+cmd/                      command-line programs (below)
+internal/                 the engine, controllers, policies, RL, experiment platform
+python/                   training-only code (PyTorch): simulators, DQN, analysis
+testdata/<study>/         one folder per study (later ones: protocol.md, manifest, raw/, analysis/, tools/)
+tools/claims_check.py     recomputes every paper number from raw artifacts
+reports/                  paper draft, reviews, viva material, this handbook
+docs/                     PROJECT_CONTEXT.md (living log), REPRODUCING.md, notes
+\end{lstlisting}
+
+\section{\code{internal/} packages}
+\code{rangetracker}, \code{fetcher}, \code{assembler}, \code{metrics}, \code{concurrency}, \code{chunksize}, \code{downloader} (config, worker pool, policy runner), \code{policy}, \code{rl} (+ \code{rl/dqn}), \code{experiment} (+ \code{server}, \code{network}), \code{diagnostics}.
+
+\section{\code{cmd/} programs}
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{11.8cm}@{}}
+\toprule
+\textbf{Program} & \textbf{Purpose}\\
+\midrule
+\endhead
+\code{downloader} & User-facing CLI: probe with \code{bytes=0-0}, download, \code{-sha256} verification.\\
+\code{experiment} & Controlled 4-mode comparison and the formal matrix (incl.\ LinUCB modes).\\
+\code{calibration} & LinUCB calibration and reward diagnostics.\\
+\code{linucb-diagnostic}, \code{linucb-horizon} & Forced-action exploration diagnostic; post-warm-up decision count vs file size.\\
+\code{aria2-benchmark}, \code{aria2-wallclock} & aria2 on the controlled server; under the 1\,s wall-clock throttle.\\
+\code{aria2-calibration}, \code{-v2} & Choose one global aria2 config on a validation set (v2 selected config F).\\
+\code{granularity-study} & Our engine fixed at $4\times1$\,MiB to isolate granularity effects.\\
+\code{wallclock-throttle} & Six-mode 1\,s wall-clock throttle scenario.\\
+\code{dqn-transfer}, \code{dqn-live-v5}, \code{dqn-live-v6} & Live transfer validation of DQN candidates.\\
+\code{final-evaluation}, \code{-v5}, \code{-v6} & Frozen DQN head-to-heads against aria2.\\
+\code{l2-aria2-probe}, \code{l4-live-probe}, \code{t1-live-probe} & Environment-design live probes.\\
+\code{epoch-pilot}, \code{tau-injection}, \code{oracle}, \code{mm-replay}, \code{m3-replay} & Cellular trace replay, switching cost and oracle analysis.\\
+\code{live-pilot} & Live-internet runner (fixed cells, aria2, curl, policy arms).\\
+\bottomrule
+\end{longtable}
+\endgroup
+Each later study also has its own harness under \code{testdata/<study>/tools/} (e.g.\ \code{split\_bench.go}, \code{tuner\_bench.go}, \code{rl\_bench.go}, \code{joint\_bench.go}, \code{v2\_bench.go}).
+
+\section{Reproducing}
+\begin{lstlisting}[language=bash]
+go build ./... && go vet ./... && gofmt -l internal cmd
+go test ./...                      # add -race; -p 1 for replay tests
+pytest python/tests                # Python unit tests
+python3 tools/claims_check.py      # 220 numbers from raw artifacts
+python3 tools/test_claims_check.py # checker self-test
+python3 testdata/<study>/tools/analyze.py   # re-run one study's analysis
+python3 reports/handbook/make_figs.py       # this handbook's new figures
+\end{lstlisting}
+Live runs need root for \code{tc netem}, aria2 1.37.0 and (for traces) Mahimahi; see \code{docs/REPRODUCING.md}. Never run timing-sensitive experiments while the machine is loaded.

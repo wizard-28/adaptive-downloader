@@ -1,0 +1,51 @@
+\chapter{Numbers Cheat Sheet}\label{app:numbers}
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{7.4cm}>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{3.6cm}@{}}
+\toprule
+\textbf{What} & \textbf{Number} & \textbf{Study}\\
+\midrule
+\endhead
+D2: fixed $16\times4$\,MiB vs aria2 & 0.3756 [0.3726, 0.3787]; 30/30; 20.12\,s vs 53.56\,s & aria2\_competitive\_benchmark\\
+Granularity-matched control & 0.862 [0.834, 0.890] & same\\
+Ranges after the speed-up & 112 of 128 (3{,}360 of 3{,}840 over 30 runs) & same\\
+Pacing sweep & 28/30 pairs; 0.378--0.998 & d2\_pacing\_sweep\\
+NGINX & 0.863, 0.597; 10/10 & nginx\_limit\_rate\\
+axel/lftp (HEALTHY, D2) & 0.345--0.375 & baselines\_ext\\
+CAP0 lftp & 114\,s (never re-splits) & baselines\_ext\\
+Delay$\times$loss, D2 & 9 of 9 cells; 0.362--0.457 & netem\_sweep\\
+Track 1 joint heuristic vs fixed (D2) & 2.316 & joint\_ns\_d2\\
+Cellular oracle & mean 0.406\,\%; LCB $-0.26$\,\%; bar 10\,\% & final\_oracle\_analysis\\
+L4 simulated headroom & 17.6\,\% (not live) & diagnostics/l4\_environment\_design\\
+Cap gate S-margin & 3.74\,\% [3.09, 4.45] vs 5\,\% & n\_dependent\_server\_joint\_ns\\
+P2 causal joint vs best of 3 & 0.766; 58.7\,s vs 76.7\,s; aria2 53.6\,s & same\\
+$N$-only / $S$-only & 0.808 / 1.070 & same\\
+W1--W6 selector vs per-workload best & 0.999 [0.969, 1.029]; workload [0.873, 1.143] & same\\
+Selector vs family-best & 0.770; workload [0.455, 1.304] & same\\
+Splitting, CAP0 & 0.599; then vs aria2 0.995 & split\_ablation\\
+CAP8 $16\times32$ no deadline vs aria2 & 1.016; 54.4\,s vs 53.5\,s & split\_ablation\\
+Causal vs best fixed (fixed engine) & 1.071 & split\_ablation\\
+Selector vs $16\times32$ (CAP0) & 1.229 & split\_ablation\\
+Online tuner & 1.212 (CAP8), 1.220 (no cap); 2.1\,s cut; 8.1\,s climb & online\_tuner\\
+DQN v2 / v5 / v6 vs aria2 & 1.757 / 2.322 / 1.456 & final\_evaluation*\\
+v6 long files & 1.805 $\to$ 1.062 $\to$ 0.909 & diagnostics\\
+Frozen v6 on CAP8 (start 16) & 1.356 vs $16\times32$; 0.931 vs $16\times1$ & rl\_capped\\
+Model-based attempt & 0 of 6 criteria & model\_based\_ns (branch)\\
+Cap-trained v1, CAP8 & 0.907 [0.893, 0.921]; sim 0.912 & rl\_cap\_train\\
+v1 vs $16\times32$ / aria2 & 1.298 / 1.310 & rl\_cap\_train\\
+v1 held out & 1.177, 1.016, 1.015 (0 of 3) & rl\_cap\_train\\
+Joint sim headroom (hand rule) & 0.352 & rl\_joint\\
+Joint agent CAP8 & 1.471 [1.405, 1.546]; 4 of 4 slower & rl\_joint\\
+Live-rate control & 50.9\,s $\to$ 67.4\,s; agent 1.029 & rl\_joint\\
+v2 CAP8 & 0.845 [0.840, 0.850]; vs v1 0.929; vs drop 1.048 & rl\_cap\_train\_v2\\
+v2 HEALTHY & 1.047 & rl\_cap\_train\_v2\\
+v2 held out & 0.882, 0.819, 0.952, 1.007 (3 of 4) & rl\_cap\_train\_v2\\
+v2 blind check & +1.4, $-3.3$, +5.6, +5.6\,\% & rl\_cap\_train\_v2\\
+Live pilot headroom & 3.7\,\% [1.0, 4.8]; $8\times1$\,MiB; 11/16 within 5\,\%; max 15.3\,\% & live\_pilot\_l1\\
+Second network & 7.2\,\% [1.2, 12.2] & live\_pilot\_l1\\
+Mirror check v2 & 1.401 (kcdn, slower), 1.654, 1.215 & live\_mirror\_check\\
+Mirror check drop & 1.125, 1.063, 1.332; switched 4/5 on kedge and riken & live\_mirror\_check\\
+Claims checker & 220/220; self-test 9/9 & tools\\
+Test functions (Review 2) & 549 in 29 packages & ---\\
+\bottomrule
+\end{longtable}
+\endgroup

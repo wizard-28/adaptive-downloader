@@ -1,0 +1,71 @@
+\chapter{Glossary of Terms and Internal Labels}\label{app:glossary}
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{12.2cm}@{}}
+\toprule
+\textbf{Term} & \textbf{Meaning}\\
+\midrule
+\endhead
+\multicolumn{2}{@{}l}{\textbf{General}}\\
+$N$ & Number of parallel connections (range requests in flight).\\
+$S$ & Range size (chunk size): bytes asked for in one request.\\
+Range request, 206 & \code{Range: bytes=a-b}; a supporting server replies \code{206 Partial Content} with \code{Content-Range}.\\
+Half-open $[s,e)$ & Bytes $s$ to $e-1$; length $e-s$.\\
+RTT & Round-trip time. Our netem link: 40\,ms each way = 80\,ms RTT.\\
+KiB, MiB, MB/s & 1\,KiB $=1{,}024$\,B; 1\,MiB $=1{,}048{,}576$\,B; MB/s $=10^6$\,B/s.\\
+Arm & One option in an experiment (fixed setting, controller, agent, tool).\\
+Block & One run of every arm in seeded random order under the same conditions.\\
+Time ratio $R$ & Geometric mean of per-block time ratios; $R<1$: first option faster.\\
+Bootstrap interval & 95\,\% percentile interval from 10{,}000 resamples of blocks.\\
+Screen & A small experiment (3--5 blocks) to check a direction, not confirm.\\
+Protocol, amendment & The plan fixed before the first run; dated additions at its end.\\
+Headroom $H$ & Oracle's relative gain over the best fixed setting; an upper bound for any policy.\\
+Gate & A criterion fixed in advance that a stage must pass to continue.\\
+Oracle & Hypothetical controller that knows the future; not runnable.\\
+Goodput & File size / completion time.\\
+Transfer efficiency & Useful bytes / all bytes received.\\
+Straggler splitting & Idle worker takes half the unreceived bytes of the in-flight range with the most bytes left ($\ge2$\,MiB remaining).\\
+Request deadline (T30) & The original 30\,s whole-request timeout. \code{\_NT}: no deadline. \code{\_split}: splitting on.\\
+Original / fixed engine & With T30 and no splitting / without the deadline and with splitting.\\
+Best fixed setting & The fastest fixed $(N,S)$ in a scenario, chosen after the runs.\\
+\multicolumn{2}{@{}l}{\textbf{Server scenarios}}\\
+D2 & 512\,MiB; 640\,KiB/s, 160 from 2\,s, 2{,}500 from 4\,s; per response; netem 40\,ms + 0.4\,\%.\\
+HEALTHY / t1 & 640\,KiB/s rising to 2{,}500 from 1\,s; no cap.\\
+CAP0, CAP8 & Soft cap from the start; cap from 8\,s.\\
+Soft cap & $\min(\text{base}, C/(k(1+\gamma(k-1))))$, $k$ = active requests including the new one, $C=8$\,MiB/s, $\gamma=0.05$, fixed at arrival.\\
+Request-start (arrival-time) rule & A response keeps the rate in force when its request arrived.\\
+Live-rate mode & Server mode that re-evaluates a response's rate during the response (control in \code{rl\_joint}).\\
+S0--S5 & The six pacing-sweep schedules (S0 = D2).\\
+N1, N2 & NGINX \code{limit\_rate 640k}; \code{limit\_rate\_after 1m} + \code{limit\_rate 640k}.\\
+H\_C12, H\_RTT110, H\_DIP, H\_C20 & v2 held-out scenarios (Table~\ref{tab:scenarios}).\\
+G\_C16, G\_RTT, G\_D2 & v1 held-out scenarios: $C=16$\,MiB/s; 80\,ms each way; the d2 schedule.\\
+CAP8L, HEALTHYL & \code{rl\_joint} Stage L scenarios on the live-rate server.\\
+\multicolumn{2}{@{}l}{\textbf{Controllers and agents}}\\
+Causal drop controller / drop rule & Switch once to a preset target when windowed median per-request throughput falls below half its running max.\\
+C=8-tuned drop rule & $N$-only drop rule, $k=3$, ratio 0.5, capped $N=4$ (4 suits $C=8$\,MiB/s).\\
+Workload selector & Probe at $16\times1$\,MiB, classify after 20 samples, move once to the class target.\\
+Online tuner & FastBioDL-style: 2\,s windows, $U=T/K^N$ ($K=1$), reverse and halve on a $\ge5$\,\% drop.\\
+LinUCB & Linear contextual bandit with an upper-confidence exploration bonus.\\
+DQN v1--v6 & Successive Double DQN candidates; v2--v3 joint $N,S$; v4 onward $N$ only.\\
+aria2-F & aria2 \code{-x16 -s16 -k1M}, selected by calibration v2.\\
+Cap-trained v1 (\code{dqnc}) & DQN retrained on \code{sim\_env\_cap} (\code{rl\_cap\_train}).\\
+\code{dqnj} & Joint $N$ + range-size agent (\code{rl\_joint}).\\
+v2 (cap) & Broader-trained cap agent (\code{rl\_cap\_train\_v2}); not the same as early DQN v2.\\
+\multicolumn{2}{@{}l}{\textbf{Internal study labels}}\\
+U1--U8 & Eight wall-clock unstable profiles for DQN v2/v5 vs aria2.\\
+A2--E2 & v6 trajectories: A bandwidth collapse/recovery, B latency spike, C burst loss, D server throttle/release, E combined.\\
+L1--L4 & Environment designs for a ``v7'' DQN: L2 $-0.3$\,\%, L3 8.1\,\%, L4 17.6\,\% (simulator only).\\
+L-P1 / \code{live\_pilot\_l1} & The live-internet pilot (unrelated to L1 above).\\
+T1, T2 & Live probes: per-request throttle (no concurrency reversal); adaptive range size (no reversal).\\
+M1--M3 (traces) & Mobile-trace chain: audit, acquisition, envelope replay. (In the mirror check, M1/M2 are time slots.)\\
+Stage 0, Stage 0S & Mahimahi replay pilot for the oracle; S-protocol feasibility pilot (GO).\\
+tau & Measured transition cost of switching $N$ at an epoch boundary.\\
+S-protocol v7 (``salvage S'') & Frozen protocol for range-size adaptation on a static server (not DQN v7).\\
+Track 1 & Heuristic joint N+S on D2 (2.32$\times$ slower than fixed).\\
+Track 2 / 2-B & $N$-dependent server throttle: analytical pre-screen stopped / the soft cap built live.\\
+P1, P2 & Track 2-B experiments: cross-workload selector; within-download causal controller.\\
+W1--W6 & The six-workload family for the selector.\\
+Stages K, A, B, C, D & In the cap studies: calibration, blind parity, training, live in-distribution, live held-out.\\
+kcdn, kedge, riken, tuna & cdn.kernel.org, mirrors.edge.kernel.org, ftp.riken.jp, mirrors.tuna.tsinghua.edu.cn.\\
+\bottomrule
+\end{longtable}
+\endgroup

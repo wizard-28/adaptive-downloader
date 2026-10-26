@@ -1,0 +1,67 @@
+\chapter{Results V: Real Networks and Real Servers}\label{ch:real}
+
+\section{Live-internet pilot (\code{live\_pilot\_l1}, Descriptive)}
+\textbf{Question:} on real paths, does the best fixed $(N,S)$ change across servers and times of day, and how much would a clairvoyant per-condition choice gain over one global setting?
+
+\textbf{Design.} One client on residential broadband in India (Tata Teleservices) downloaded \code{linux-3.0.tar.xz} (63{,}798{,}008 bytes, checked against kernel.org's published SHA-256) from four public mirrors: \textbf{kcdn} (cdn.kernel.org, CDN), \textbf{kedge} (mirrors.edge.kernel.org, origin), \textbf{riken} (ftp.riken.jp, Japan), \textbf{tuna} (mirrors.tuna.tsinghua.edu.cn, China). Arms: 8 fixed cells ($N\in\{1,4,8,16\}\times S\in\{1,4\}$\,MiB), aria2 and a single-stream curl reference; 2 reps per cell per server; four time-of-day slots on the primary network (Sunday midday, Sunday evening, Monday evening, Tuesday morning). A \emph{condition} is one (server, slot) pair: 16 conditions. Tsinghua's midday condition comes from a supplementary re-run slot, S1T (amendment A2), because the first slot's Tsinghua runs were refused. Protocol frozen 18 Oct before the first slot; amendments logged.
+
+\textbf{Results.}
+\begin{itemize}
+\item \textbf{Validity:} 328 of 350 runs valid. Invalid: 16 runs the Tsinghua mirror refused with HTTP 403 in the first slot, and 6 during an internet drop (re-run in full, amendment A4). The fastest valid run reached 2.43\,MB/s, the access link's ceiling.
+\item \textbf{Best cell per condition:} no single cell was top everywhere, but the top cell always had $N\ge8$, except $4\times1$\,MiB on the CDN in two slots and $4\times4$\,MiB on Tsinghua in one. The top cell changed across slots on 4 of 4 servers. On the origin mirror the better $N=4$ cell was 1.37--1.71$\times$ slower than the best in every slot.
+\item \textbf{Selection headroom:} one global cell, $\mathbf{8\times1}$\,\textbf{MiB}, was on average \textbf{3.7\,\%} slower than each condition's clairvoyant best (bootstrap over conditions \textbf{[1.0, 4.8]}; 16 conditions). Within 5\,\% in 11 of 16 conditions; at most 15.3\,\% slower in any one. The upper bound is below the predeclared 5\,\% line.
+\item No condition was access-link-bound by the protocol's definition ($N=1$ was always $>5$\,\% slower than the best).
+\item Within-run variability: median coefficient of variation of 1\,s throughput bins 0.11--0.29 across servers.
+\item aria2's time over the condition's best fixed cell: 1.00--1.26.
+\end{itemize}
+\fig{live.png}{0.9}{Live pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}
+
+\textbf{The accidental second network.} One morning slot ran on a different, unidentified network (amendment A3), reported separately and never pooled: 68 of 80 valid (DNS and retry failures in about half an hour of instability); peak 12.3\,MB/s; much higher variability (median CV 1.16--1.77); $8\times1$\,MiB headroom \textbf{7.2\,\% [1.2, 12.2]} over 4 conditions. Inconclusive, but the one hint in the pilot that the best setting may move by more than 5\,\%.
+
+\textbf{Side finding.} The Tsinghua mirror rejects the Go standard library's default User-Agent with HTTP 403 for every range request, while accepting curl, aria2 and an identifying User-Agent. A stock Go downloader is locked out. From the second slot on, our runs used an explicit identifying User-Agent (amendment A2); in the first slot the other mirrors saw Go's default, an uncontrolled change the protocol records.
+
+\begin{careful}
+One client, one primary access network, about two days, two reps per cell, fixed cells only. It is screening evidence that a fixed setting with enough connections was near-best on the observed paths. It is not a validation across networks.
+\end{careful}
+
+\section{Adaptive arms on real mirrors (\code{live\_mirror\_check}, Descriptive)}
+\textbf{Question:} do the v2 agent and the drop rule \emph{cost} anything on public mirrors whose behaviour we did not design? With 3.7\,\% headroom, this is mainly a \textbf{no-harm check}, not a search for wins.
+
+\textbf{Design.} kcdn, kedge, riken; same file and etiquette as the pilot; corrected engine (no deadline, splitting) in every arm; 1\,MiB ranges. Arms: \code{v2} (start 16, window 16), \code{drop} (start 16, $k=3$, ratio 0.5, capped $N=4$), fixed $16\times1$\,MiB and $8\times1$\,MiB. 5 blocks per server, shuffled (seed 20261101): 60 runs per slot.
+
+\textbf{Rule fixed in advance:} ``no harm on server X'' if the arm's ratio against the better fixed arm is not ``slower'' \emph{and} its point estimate is at most 1.05. Summary sentence: ``On $k$ of 3 public mirrors, the v2 agent showed no harm against the best fixed 1\,MiB setting (and the drop rule on $j$ of 3).''
+
+\subsection{What happened}
+\begin{itemize}
+\item \textbf{Amendment A1:} range-probe attempts fixed at up to 3 of 20\,s; kedge timed out once, then answered \code{206} in 9.8\,s.
+\item \textbf{Slot M1 lost to a client-side outage.} From 22:10 UTC every attempt to all three servers (including the CDN) failed with no HTTP response; only 20 of 60 runs valid. Reported in full, not used (amendment A2).
+\item \textbf{Link gate (A2):} slot M2 starts only if all three probes and a google.com fetch respond within 3\,s and an 8\,MB single-stream kcdn fetch reaches 1.5\,MB/s. It passed at 23:05 UTC.
+\item \textbf{Slot M2: 60 of 60 valid.}
+\end{itemize}
+
+\begin{table}[H]\centering\small
+\caption{Mirror check slot M2 (ratios against the better fixed arm, $16\times1$\,MiB on all three; 95\,\% bootstrap)}\label{tab:mirror}
+\begin{tabular}{@{}lccll@{}}
+\toprule
+\textbf{Mirror} & \textbf{v2} & \textbf{drop rule} & \textbf{v2 median final $N$} & \textbf{drop switched}\\
+\midrule
+kcdn & 1.401 [1.102, 1.773] slower & 1.125 [0.868, 1.456] & 6 & 1 of 5\\
+kedge & 1.654 [0.873, 2.849] & 1.063 [0.824, 1.553] & 7 & 4 of 5\\
+riken & 1.215 [0.719, 1.899] & 1.332 [0.917, 2.017] & 14 & 4 of 5\\
+\bottomrule
+\end{tabular}
+\end{table}
+\fig{mirror.png}{0.85}{Real mirrors: both adaptive arms above the 1.05 no-harm line on all three.}
+
+\textbf{Frozen sentence:} ``On \textbf{0 of 3} public mirrors, the v2 agent showed no harm against the best fixed 1\,MiB setting (and the drop rule on \textbf{0 of 3}).'' Only the kcdn v2 bootstrap interval excludes 1 (its $t$-interval is [0.950, 2.067]; ``slower'' follows the predeclared less-favourable rule); the others fail the 1.05 point-estimate rule without being clearly slower.
+
+\subsection{Why}
+The mirrors have no cap, but their per-request throughput is noisy. v2 ended at a median $N$ of 6--7 on kcdn and kedge; the drop rule switched to $N=4$ in 4 of 5 runs on kedge and riken. The agents adapt to signals that, on these servers, do not mean what they meant on the server model they were built for. Adaptation carried a cost here, with little headroom to pay for it (3.7\,\% selection headroom in the pilot).
+
+\begin{careful}[``They mistook noise for a cap'']
+This is our interpretation. What was measured is that both arms cut connections on uncapped servers and lost time. We did not analyse the throughput traces to show that noise triggered each cut. One client, one evening, 5 blocks: descriptive only.
+\end{careful}
+
+\begin{doubt}[``Is v2's loss on the mirrors because it was trained badly?'']
+Partly, but not mainly. (1) The drop rule involves \emph{no} training and lost the same way. (2) The pilot found little selection headroom (3.7\,\%), so even a perfect agent had little to gain. (3) Where training does share the blame: v2 trained on uncapped episodes too, but only with timing noise calibrated on our loopback server, not the far noisier per-request throughput of public mirrors, so the mirrors were out of distribution. Better training (noisy uncapped scenarios, a ``hold unless the drop persists'' rule) could plausibly remove the harm, but it cannot create a win where there is no headroom.
+\end{doubt}

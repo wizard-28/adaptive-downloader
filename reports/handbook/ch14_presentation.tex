@@ -1,0 +1,73 @@
+\chapter{Presentation and Demo Guide}\label{ch:presentation}
+
+\section{Suggested slide flow (about 15 minutes)}
+\begin{table}[H]\centering\small
+\caption{Suggested slides, figures and presenter (by area of the work division)}\label{tab:slides}
+\begin{tabularx}{\linewidth}{@{}rP{3.6cm}LP{2.4cm}@{}}
+\toprule
+\# & \textbf{Slide} & \textbf{Content and figure} & \textbf{Presenter}\\
+\midrule
+1 & Title and question & ``When is there anything for adaptation to exploit?'' & any\\
+2 & Background & $N$, $S$, range requests; why adaptation is assumed to help & \MemberA\\
+3 & System & Figure~\ref{fig:architecture.png}; invariants; policy interface & \MemberA\\
+4 & Test platform & Paced server rules, the cap (Figure~\ref{fig:cap_curve.png}), netem, Mahimahi & \MemberA\\
+5 & Method & Blocks, geometric ratio, bootstrap, headroom gates, predeclared protocols, claims checker & \MemberB\\
+6 & Result 1: fixed vs aria2 & 62.4\,\%; mechanism (Figure~\ref{fig:progress.png}); axel/lftp, sweep & \MemberB\\
+7 & Result 2: no opportunity & Screens; cellular oracle (Figure~\ref{fig:oracle.png}) & \MemberC\\
+8 & Result 3: constructed cap & Causal $-23.4\,\%$; engine ablation (Figure~\ref{fig:ablation.png}); ``engine before policy'' & \MemberA / \MemberB\\
+9 & Result 4: learned agents & LinUCB, DQN v2--v6; v1 0.907; joint 1.471; v2 3 of 4 (Figure~\ref{fig:v2.png}) & \MemberC\\
+10 & Result 5: real networks & Live pilot 3.7\,\%; mirror check 0 of 3 (Figure~\ref{fig:mirror.png}) & \MemberB\\
+11 & Summary & Forest plot (Figure~\ref{fig:forest.png}); why RL did not win & \MemberC\\
+12 & Novelty and limits & Section~\ref{sec:novelty}; top 5 limitations & any\\
+13 & Demo & Three steps below & \MemberA / \MemberB\\
+\bottomrule
+\end{tabularx}
+\end{table}
+The presenter column is a suggestion that follows the Review~2 work division; adjust as you agree.
+
+\section{Demo script (about 2.5 minutes plus talking)}
+Build once beforehand so no compile time is spent in the viva:
+\begin{lstlisting}[language=bash]
+go build -o /tmp/dl ./cmd/downloader
+go build -o /tmp/rl_bench ./testdata/rl_capped/tools/
+sudo -n tc qdisc show dev lo     # must show "noqueue": no shaping left over
+\end{lstlisting}
+
+\textbf{Step 1: live download from a public mirror (about 30\,s).}
+\begin{lstlisting}[language=bash]
+/tmp/dl -url https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.0.tar.xz \
+  -out /tmp/linux-3.0.tar.xz -concurrency 8 -chunk 1048576 \
+  -sha256 ef5e8c2dedb20a6eab01bb379e9982cd7d47cf95bd87c9ee3e872272e85c24b6
+\end{lstlisting}
+Point out: \code{-size} omitted, so the CLI probes with \code{Range: bytes=0-0} and requires 206; $8\times1$\,MiB was on average 3.7\,\% slower than the per-condition best in the pilot; the checksum is kernel.org's published value. Fallback without internet: skip to step 2.
+\fig{shot_live.png}{0.9}{Terminal capture of step 1.}
+
+\textbf{Step 2: the capped server with the retrained agent (about 70\,s).}
+\begin{lstlisting}[language=bash]
+/tmp/rl_bench -system ours -n 16 -chunk 1048576 -no-request-timeout -split \
+  -policy dqn6 -dqn-model testdata/rl_cap_train/model/dqn_cap_candidate.json -window 16 \
+  -schedule t1 -cap-c 8388608 -cap-gamma 0.05 -cap-at 8 \
+  -netem-latency-ms 40 -netem-loss 0.4 -run-id demo -out /tmp/demo.json
+\end{lstlisting}
+Point out: the cap switches on at 8\,s; the agent sees request times jump and lowers $N$ (measured on 25 Oct: $N$ 14--16 before the cap, 6 by 15.8\,s; 69.2\,s, content verified). Over 10 blocks this agent took 0.907 of fixed $16\times1$\,MiB, but is slower than $16\times32$\,MiB and aria2, because large ranges started before the cap keep the faster rate. Afterwards show \code{sudo -n tc qdisc show dev lo}. Shorter fallback (about 18\,s): drop the policy and cap flags to run fixed $16\times1$\,MiB uncapped.
+
+\textbf{Step 3: tests and the number checker (about 2 min).}
+\begin{lstlisting}[language=bash]
+go test -count=1 ./internal/... 2>&1 | tail -15
+python3 tools/claims_check.py | tail -2    # 220 numbers recomputed from raw runs
+\end{lstlisting}
+Point out: no test needs internet; the checker recomputes every number and fails on any it cannot reproduce; its self-test (\code{python3 tools/test\_claims\_check.py}) shows it rejects wrong numbers.
+\fig{shot_tests.png}{0.9}{Terminal capture: the test suite passing.}
+
+\begin{vivatip}[Demo hygiene]
+Do not run anything heavy on the laptop during the demo (timing-sensitive). If the internet is down, say so and skip step 1. If something fails, say what failed; never hide it. The whole project's value is honesty.
+\end{vivatip}
+
+\section{Five sentences everyone should be able to say}
+\begin{enumerate}
+\item ``We asked when adapting connections and range size during a download actually beats a well-chosen fixed setting.''
+\item ``A fixed setting beat aria2 by 62\,\% on a paced server, but that is request timing, not adaptation.''
+\item ``Even an oracle that knows the future gains under half a percent on average on replayed cellular traces.''
+\item ``Adaptation helped only on a server we built where concurrency has a time-varying cost, and fixing two engine details mattered more than any controller.''
+\item ``Learned agents won only against same-range-size fixed settings on servers like the one they were trained on, and on real mirrors adapting cost time.''
+\end{enumerate}

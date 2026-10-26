@@ -1,0 +1,71 @@
+\chapter{The Project in One Page}\label{ch:overview}
+
+\section{The question}
+Segmented download managers such as aria2 and IDM fetch one file as many byte ranges over parallel HTTP connections. Two settings decide how they do it: $N$, the number of connections, and $S$, the range size. The usual story is: \emph{networks change, fixed settings cannot adapt, so an adaptive or learned controller should win.} Our project asked a narrower, testable question:
+
+\begin{keyidea}[Research question]
+\textbf{When is there actually something for adaptation to exploit?} That is: under which network and server conditions does changing $N$ and $S$ \emph{during} a download beat a well-chosen fixed setting, and can a learned (reinforcement-learning) controller find that benefit?
+\end{keyidea}
+
+The project started (Review~1) as ``build an RL-based adaptive download manager''. Early results showed that well-chosen fixed settings were almost always close to optimal, so the central question became \emph{when adaptation pays}, and every learned controller had to beat the best fixed setting, not just a weak baseline.
+
+\section{The answer in ten findings}
+\begin{enumerate}
+\item \textbf{A fixed setting beat aria2 by 62.4\,\%, and adaptation was not the reason.} On one paced workload (D2), fixed $16\times4$\,MiB had $R = 0.3756$ against aria2 (30 of 30 pairs). Much of the gap comes from range granularity interacting with the server's request-start rate rule (it shrinks to 0.862 with matched granularity); a residual is unexplained. Ours was also faster than axel and lftp (0.345--0.375), in all 9 cells of a $3\times3$ delay--loss grid, under 5 of 6 pacing schedules (28 of 30 pairs; parity at a constant slow rate) and against stock NGINX (10 of 10 pairs).
+\item \textbf{Variability is not opportunity.} Recorded cellular traces swing about 5--27$\times$ in capacity (p90/p10 over the Mahimahi set), yet a clairvoyant oracle that switches $N$ optimally gains only 0.41\,\% on average; the one-sided 95\,\% lower bound was $-0.26$\,\% against a predeclared 10\,\% bar (\emph{Failed gate}). Under the frozen counterfactual model, this bounds \emph{any} concurrency-switching policy on these traces.
+\item \textbf{Adaptation helps when concurrency has a cost that changes over time.} On a server we built, where per-request rate falls with concurrency and the cap switches on mid-download, a one-threshold causal controller beat the best of three fixed settings by 23.4\,\% (58.7\,s vs 76.7\,s, 10 of 10 blocks); aria2 was still faster (53.6\,s).
+\item \textbf{A workload selector matched the per-workload best on average} across six predeclared workloads ($R = 0.999$ [0.969, 1.029]); an advantage over one family-wide setting was \emph{not established}.
+\item \textbf{Engine before policy.} A 230-run ablation traced aria2's lead under the cap to two engine details in our downloader: a 30\,s whole-request timeout and no straggler splitting. With both fixed, our best fixed setting matched aria2 with the cap from the start (0.995) and came within 1.6\,\% with the cap from 8\,s (1.016), and beat the causal controller (1.071) and the selector (1.229). A FastBioDL-style online tuner was slower than the better of two fixed 1\,MiB settings (1.212, 1.220).
+\item \textbf{Every early learned policy lost.} LinUCB locked onto one arm; the September DQN candidates v2, v5 and v6 took 1.757$\times$, 2.322$\times$ and 1.456$\times$ as long as aria2 (in head-to-heads that are not comparable with each other; this early ``v2'' is not the capped-server v2 of finding 9); a model-based controller failed its feasibility gate (0 of 6 criteria); one environment design showed 17.6\,\% headroom in simulation that did not reproduce live.
+\item \textbf{A DQN retrained for the capped server (v1) beat the fixed setting with its own range size where it was trained} (0.907 [0.893, 0.921] vs $16\times1$\,MiB), stayed slower than $16\times32$\,MiB and aria2 (1.298, 1.310), and was faster in 0 of 3 held-out scenarios outside its training ranges.
+\item \textbf{A joint agent that also set the range size did not beat the best fixed setting} (1.471 under CAP8, slower in 4 of 4 scenarios), although a hand-written rule had shown large headroom (0.352) in the simulator. A control server that re-checks rates during each response removed most of the large-range advantage (50.9\,s became 67.4\,s).
+\item \textbf{Broader training made the agent generalize partially (v2).} Faster than the best fixed 1\,MiB setting in 3 of 4 held-out scenarios inside its training ranges (0.882, 0.819, 0.952), slower in 1 (1.007); faster than v1 in all 6; about 5\,\% slower with no cap; beaten by a simple drop rule in that rule's home scenarios. One seed, selected on validation.
+\item \textbf{On real public mirrors, adapting cost time.} In a frozen no-harm check on three kernel mirrors (60 of 60 valid), both v2 (1.215--1.654) and the drop rule (1.063--1.332) were slower than the best fixed setting: no harm on 0 of 3 mirrors for both. Separately, a live pilot found one fixed setting ($8\times1$\,MiB) on average 3.7\,\% [1.0, 4.8] slower than each condition's best (within 5\,\% in 11 of 16 conditions; at most 15.3\,\%).
+\end{enumerate}
+
+\section{The logic of the project}
+Figure~\ref{fig:logic} shows how the studies connect. Each arrow is a question the previous result raised.
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[
+  node distance=5mm and 4mm,
+  box/.style={draw=#1!70!black,fill=#1!8,rounded corners=2pt,align=center,font=\sffamily\footnotesize,text width=3.35cm,minimum height=1.25cm},
+  box/.default=NavyBlue,
+  arr/.style={-{Stealth[length=2.2mm]},thick,gray!70!black}]
+\node[box] (a) {\textbf{Build instrument}\\downloader, paced server, netem, harness};
+\node[box,right=of a] (b) {\textbf{Fixed vs aria2}\\D2: $R=0.376$\\mechanism: request-start rate};
+\node[box,right=of b] (c) {\textbf{Search for opportunity}\\screens, cellular oracle\\headroom $\approx 0$};
+\node[box=ForestGreen,below=of c] (d) {\textbf{Construct one}\\soft concurrency cap\\causal ctl $-23.4\,\%$};
+\node[box=BrickRed,left=of d] (e) {\textbf{Why does aria2 win?}\\engine ablation:\\timeout + splitting};
+\node[box=BrickRed,left=of e] (f) {\textbf{Fixed engine}\\best fixed beats\\all controllers};
+\node[box=Plum,below=of f] (g) {\textbf{Learned agents}\\LinUCB, DQN v2/v5/v6\\all lose};
+\node[box=Plum,right=of g] (h) {\textbf{Retrain for cap}\\v1: 0.907 in-dist.\\0/3 held out};
+\node[box=Plum,right=of h] (i) {\textbf{Joint N+S, v2}\\joint loses 4/4\\v2: 3 of 4 held out};
+\node[box=BurntOrange,below=of i] (j) {\textbf{Real mirrors}\\pilot: 3.7\,\% headroom\\no harm: 0 of 3};
+\node[box=gray,left=of j,text width=7.2cm] (k) {\textbf{Conclusion:} the opportunity, not the learner, was the bottleneck. Adaptation pays only where concurrency has a time-varying cost, and engine details come first.};
+\draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d); \draw[arr] (d)--(e); \draw[arr] (e)--(f);
+\draw[arr] (f)--(g); \draw[arr] (g)--(h); \draw[arr] (h)--(i); \draw[arr] (i)--(j); \draw[arr] (j)--(k);
+\end{tikzpicture}
+\caption{The chain of studies. Blue: instrument and first benchmark; green: the constructed opportunity; red: the engine finding; purple: learned controllers; orange: real servers.}\label{fig:logic}
+\end{figure}
+
+\section{What we built}
+\begin{itemize}
+\item \textbf{Go downloader} (module \code{adaptivedl}): range tracker, fetcher, assembler, worker pool, $N$ and $S$ controllers, and one policy interface that fixed rules, LinUCB and DQN agents all plug into.
+\item \textbf{Controlled server}: per-response pacing, wall-clock rate schedules, fault injection, a soft concurrency cap, and (added later) an opt-in live-rate mode.
+\item \textbf{Harness}: \code{tc netem} delay and loss, Mahimahi replay of recorded cellular traces, aria2, axel, lftp, curl and NGINX baselines, SHA-256 verification of every output, and a live-pilot runner for public mirrors.
+\item \textbf{Learners}: LinUCB (Go, Gonum), Double DQN trained in PyTorch on simulators, run live through Go inference.
+\item \textbf{Method}: frozen protocols with dated amendments, oracle headroom gates computed \emph{before} training any learner, blind simulator predictions, and a claims checker that recomputes all 220 numbers in the paper from raw runs.
+\end{itemize}
+
+\section{What is novel, in one paragraph}
+We do not propose a new tuning algorithm. The novelty is in measuring \emph{when} adaptation can help at all, with oracle headroom bounds computed before training any learner; in explaining a large gap against aria2 mechanistically (request timing, not adaptation); in showing that two engine details mattered more than any controller; in exposing the request-start rate rule behind large-range wins, with a live-rate control; and in an honest, predeclared inventory of learned controllers with held-out tests and a real-server no-harm check. Full statement: Section~\ref{sec:novelty}.
+
+\section{The takeaway}
+\begin{keyidea}[Takeaway (the summary's, extended with the post-review studies)]
+Fixed configurations cannot adapt. On the conditions we tested, they mostly did not need to. Adaptation pays when concurrency has a cost that changes over time, and even there engine details (timeouts, straggler splitting) mattered more than the controller. A learned agent can win only on the server model it was trained for, and only against fixed settings that share its range size; with broader training it generalized partially, within its training envelope; on real mirrors, adapting to noise cost time.
+\end{keyidea}
+
+\begin{careful}
+Never say ``RL does not work for downloading'' or ``our downloader is better than aria2''. Say: ``on the conditions we tested, the opportunity was small; where we built one, a simple rule captured it; learned agents won only against fixed settings at the same range size on the server they were trained for.'' Never say the work is ``pre-registered'' in the formal sense; say ``predeclared in logged, hashed protocols'' (Chapter~\ref{ch:method}).
+\end{careful}

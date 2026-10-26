@@ -1,0 +1,114 @@
+\chapter{Results IV: Every Learned Policy}\label{ch:learned}
+The learners act through the same policy interface as the rule-based controllers. Status words used here: \textbf{valid} (internally consistent, reproducible); \textbf{stale} (produced before a later simulator correction); \textbf{non-comparable} (different workload, file size or aria2 configuration, so ratios must not be pooled).
+
+\section{LinUCB}
+\begin{itemize}
+\item Five- and six-mode 4\,MiB benchmarks (benchmarks v1--v5, 256\,KiB files at first, 4\,MiB from v3; up to 300 runs; 5 scenarios: baseline, server throttle, latency, loss, combined).
+\item In the first formal benchmark LinUCB chose ``no action'' 100\,\% of the time (exploration lock-in). After an exploration fix, small files left only about 2 learned decisions, so the file was raised to 4\,MiB (32--122 learned decisions). Standard LinUCB still locked onto one arm; periodic exploration changed coverage but not the dominant preference.
+\item Outcome: \emph{descriptive}; no ranking was made. This motivated moving to Double DQN, which assigns credit over time.
+\end{itemize}
+
+\section{DQN versions v1--v6}
+\begin{table}[H]\centering\small
+\caption{DQN candidates (Double DQN, trained in simulation, run live in Go)}\label{tab:dqn}
+\begin{tabularx}{\linewidth}{@{}P{2.0cm}P{4.3cm}LP{2.0cm}@{}}
+\toprule
+\textbf{Version} & \textbf{Design} & \textbf{Outcome} & \textbf{Status}\\
+\midrule
+v1 & Simulator train/validate/test + 25-run live transfer & Superseded; trained on an environment later corrected & stale\\
+v2 & Joint $N$, $S$; 240 pairs vs aria2 \code{-x4 -s4}, profiles U1--U8, 4\,MiB & 75.7\,\% slower ($R=1.757\,[1.672, 1.847]$); faster in 31/240; fragmented ranges into 32--128\,KiB & valid; non-comparable\\
+v3 & Simulator + live vs v2 & Fixed fragmentation, but its simulator rewarded large ranges the server did not & valid (negative)\\
+v4 & $N$ only, $S=1$\,MiB; 25-run live transfer & Live matched simulator; 4\,MiB file gave only a four-request horizon & valid; no head-to-head\\
+v5 & $N\in1..4$; 240 pairs vs aria2-F (16 conn), 16\,MiB, U1--U8 & $R=2.322\,[2.230, 2.417]$; faster in 1/240; structural 4-vs-16 connection asymmetry & valid; model stale (later simulator fix)\\
+v6 & $N\in1..16$; 150 pairs vs aria2-F, trajectories A2--E2, 16\,MiB & pooled $R=1.456\,[1.305, 1.624]$; faster in 37/150; E2 not slower (0.948 [0.897, 1.002]); D2 5.47$\times$ slower & valid\\
+v6 long files & 16/128/512\,MiB, 5 pairs per cell & pooled 1.805 $\to$ 1.062 $\to$ 0.909 (512\,MiB CI [0.750, 1.102] includes 1), driven by D2; A2 and E2 got worse with size & exploratory\\
+\bottomrule
+\end{tabularx}
+\end{table}
+Two handicaps worked against these agents regardless of learning: \textbf{short downloads} (4--16\,MiB, a few seconds) and a \textbf{ramped start} (v6 started at 1 connection; aria2 opens all at once). The trajectories A2--E2 are 3-phase wall-clock scenarios: A bandwidth collapse/recovery, B latency spike, C burst loss, D server throttle/release, E combined.
+
+\section{Frozen v6 on the capped server (screen)}
+To remove both handicaps: 512\,MiB, corrected engine, start $N=1$ (as trained) or 16 (as aria2), not retrained; 5 blocks, 50 of 50 valid.
+\begin{table}[H]\centering\small
+\caption{Frozen DQN v6 on the capped and uncapped server}\label{tab:v6cap}
+\begin{tabular}{@{}llrll@{}}
+\toprule
+\textbf{Scenario} & \textbf{Agent} & \textbf{Time (s)} & \textbf{vs best fixed} & \textbf{vs aria2}\\
+\midrule
+CAP8 & start 16 & 71.3 & 1.356 [1.252, 1.472] ($16\times32$) & 1.367\\
+CAP8 & start 1 & 89.7 & 1.706 [1.612, 1.806] & 1.720\\
+HEALTHY & start 16 & 19.0 & 1.031 [1.010, 1.063] ($16\times1$) & 0.359\\
+HEALTHY & start 1 & 22.0 & 1.194 [1.176, 1.219] & 0.416\\
+\bottomrule
+\end{tabular}
+\end{table}
+Against $16\times1$\,MiB (its own range size) under the cap: not distinguishable, 0.931 [0.879, 1.016]. It changed $N$ several hundred times per download (median 412 $N$-moving decisions under the cap), ending at $N=2$.
+
+\section{Cap-trained DQN v1 (\code{rl\_cap\_train})}
+\textbf{What the v6 simulator got wrong:} no cap fixed at request arrival; and its aggregate-throughput observable did not match the live runner's (live: bytes of the last \code{window} attempts over their span; with window 4 this barely changes above $N=4$). The new simulator (\code{sim\_env\_cap.py}) fixes both and uses window 16; per-request server excess and client overhead are drawn from live request logs.
+
+\begin{itemize}
+\item \textbf{Blind live check (Confirmed for the simulator, 8 runs):} 4 fixed settings predicted before running; all within 1.4\,\% (largest $-1.35$\,\%).
+\item \textbf{In distribution (Confirmed, 10 blocks, 120 runs):} CAP8, start 16: $\mathbf{0.907\,[0.893, 0.921]}$ of $16\times1$\,MiB (simulator predicted 0.912). Slower than $16\times32$\,MiB (1.298) and aria2 (1.310), as stated in advance. Not distinguishable from frozen v6 (0.949). HEALTHY: slower than $16\times1$\,MiB (1.108). Start 1: slower in both.
+\item \textbf{Held out (Confirmed, 5 blocks each, 65 runs):} each scenario outside the training ranges on one axis. Cap $C=16$\,MiB/s (trained 4--12): 1.177, slower. 80\,ms each way (trained 20--60): 1.016, n.d.\ (simulator predicted 0.930; jitter calibrated at 40\,ms only). d2 schedule vs $4\times1$\,MiB: 1.015, n.d. \textbf{Faster in 0 of 3.} (In G\_C16 the old frozen v6 was not distinguishable from best fixed, 0.993, and v1 was slower than v6, 1.186.)
+\item \textbf{Reading:} it learned the server it was trained on; it did not generalize.
+\end{itemize}
+
+\section{Joint concurrency and range-size agent (\code{rl\_joint})}
+5 actions (none, $\pm1$ connection, $\pm4$\,MiB), range 1--33\,MiB. Aim: can a learner find the large-range behaviour that wins under the cap?
+\begin{itemize}
+\item \textbf{Headroom existed in the simulator:} a hand-written rule (1\,MiB ranges until the rate rises, then 33\,MiB) scored \textbf{0.352} of the best fixed time under CAP8. That headroom comes from the arrival-time rule, so the protocol added a \textbf{live-rate control server}.
+\item \textbf{Simulator check (8 blind runs):} within +1.5 to +7.0\,\%; optimistic for long ranges.
+\item \textbf{Training:} first run undertrained ($\varepsilon$ ended near 0.75; amendment A1); retrain 747{,}503--823{,}821 steps per seed. The selected agent still scored 1.513 of best fixed under CAP8 in simulation: it changed range size, but too late.
+\item \textbf{Live, arrival-rule server (Confirmed, 10 blocks, 150 runs):} slower than the best fixed setting in every scenario: CAP8 \textbf{1.471 [1.405, 1.546]} vs $16\times32$\,MiB; HEALTHY 1.081 vs $16\times1$; CAP0 1.359 vs $16\times32$; D2 1.372 vs $16\times5$\,MiB. Vs aria2: CAP8 1.422 slower, HEALTHY 0.388 faster. Live within about $-1$ to $+5$\,\% of predictions. At 8\,s it was still on 1\,MiB ranges in every scenario.
+\item \textbf{Live-rate control (Confirmed, 5 blocks, 40 runs):} fixed $16\times32$\,MiB under the cap slowed from 50.9\,s to 67.4\,s; the agent was not distinguishable from it (1.029 [0.989, 1.081]); without a cap slower (1.128).
+\item \textbf{Reading:} the simulator was accurate; the learner's search failed. A simple rule found headroom the learner did not. Most of the large-range advantage under the cap comes from the arrival-time rule.
+\end{itemize}
+\fig{joint.png}{0.85}{Joint N + range-size agent against the best fixed setting per scenario (arrival-rule server, 10 blocks).}
+
+\section{DQN v2: broader training, held-out scenarios inside the ranges (\code{rl\_cap\_train\_v2})}
+\textbf{Question:} with a training distribution that covers the axes v1 failed on, and timing calibrated across delay, does the agent beat the best fixed setting on new scenarios it was not trained or selected on?
+
+\textbf{Training distribution:} cap $C$ 4--24\,MiB/s; one-way delay 10--120\,ms; early and late rate dips; per-request timing calibrated at four delays (20, 40, 80, 120\,ms) with four rate classes. Learner, actions and state unchanged from v1. 5 seeds of about 320{,}000 steps each; \textbf{seed 1 selected on validation alone}; disclosed before any live run that the other seeds were mostly at or above the best fixed time on held-out scenarios.
+
+\textbf{Held-out scenarios} (inside the ranges, new combinations, each with 10--17\,\% simulator headroom): H\_C12 ($C=12$ from 6\,s); H\_RTT110 (110\,ms each way, cap from 12\,s); H\_DIP (cap from 6\,s + dip 30--40\,s); H\_C20 ($C=20$ from 4\,s, 20\,ms each way).
+
+\textbf{Calibration and blind check:} 24 calibration runs showed client overhead rising with delay; pooled rate classes mispredicted one in-sample cell, so four classes were adopted before the blind check; all four blind predictions at 80 and 120\,ms within $\pm8$\,\% (+1.4, $-3.3$, +5.6, +5.6\,\%).
+
+\begin{table}[H]\centering\small
+\caption{v2 study results (8 blocks; ratios against the better fixed 1\,MiB arm)}\label{tab:v2}
+\begin{tabular}{@{}llccc@{}}
+\toprule
+\textbf{Scenario} & \textbf{Best fixed} & \textbf{v2} & \textbf{v1} & \textbf{drop rule}\\
+\midrule
+CAP8 (in dist.) & $16\times1$ & 0.845 [0.840, 0.850] & 0.910 & 0.807\\
+HEALTHY & $16\times1$ & 1.047 [1.043, 1.052] & 1.096 & 1.002\\
+H\_C12 & $9\times1$ & 0.882 [0.877, 0.886] & 0.970 & 0.911\\
+H\_RTT110 & $14\times1$ & 0.819 [0.795, 0.848] & 1.137 & 1.097\\
+H\_DIP & $14\times1$ & 0.952 [0.945, 0.958] & 0.966 & 0.916\\
+H\_C20 & $8\times1$ & 1.007 [1.000, 1.014] & 1.125 & 1.355\\
+\bottomrule
+\end{tabular}
+\end{table}
+\fig{v2.png}{0.92}{The v2 study: v1, v2 and the drop rule against the best fixed 1\,MiB arm.}
+\begin{itemize}
+\item \textbf{Held out:} v2 faster in 3 (H\_C12, H\_RTT110, H\_DIP), slower in 1 (H\_C20, 1.007; $t$-interval [0.998, 1.016] would say n.d., but the less favourable verdict counts). v1 on the same four: faster in 1, slower in 2. \textbf{v2 faster than v1 in all 6 live scenarios.}
+\item \textbf{In distribution:} CAP8 0.845 vs $16\times1$, 0.929 of v1. HEALTHY 1.047 (about 5\,\% cost).
+\item \textbf{Against the C=8-tuned drop rule:} v2 faster in 3 (H\_C12 0.968, H\_RTT110 0.746, H\_C20 0.743), slower in 2 (CAP8 1.048, HEALTHY), n.d.\ in 1 (H\_DIP). The rule's simulated time was already worse than fixed $16\times1$ in H\_RTT110 and H\_C20, so two of those wins reflect the rule's tuning more than learning.
+\item \textbf{Unexplained:} in H\_RTT110, v2 ran 68.6\,s live against a predicted 76.4\,s (10\,\% faster than the simulator supports), while the fixed arms were 3--4\,\% slower than predicted.
+\item \textbf{Frozen verdict:} ``v2 generalized partially: faster in 3, slower in 1 of 4 held-out scenarios, all inside the v2 training ranges (v1 on the same scenarios: faster in 1, slower in 2)''. ``Learned control adds something over a C=8-tuned drop rule: faster in 3, slower in 2 of 6 scenarios'', with the caveat above.
+\end{itemize}
+
+\begin{careful}[Scope of the v2 claim]
+The comparison is with the best fixed setting at the same 1\,MiB range size, under server-side changes, on one server model. Not $16\times32$\,MiB, not aria2, not real servers. One selected seed from a procedure that is not reliably good across seeds. It costs about 5\,\% when nothing changes. ``Generalizes'' means new combinations inside the training envelope, not new kinds of conditions.
+\end{careful}
+
+\section{v2 against aria2 and large ranges (cross-study, not paired)}
+The v2 study did not run aria2 or $16\times32$\,MiB (not among its Stage C/D arms; the protocol's claim scope excludes them). The joint study ran them on the same server and corrected engine, and its fixed $16\times1$\,MiB time matched v2's (76.6\,s vs 76.7\,s), so the studies line up:
+\fig{cap8_times.png}{0.88}{CAP8 completion times from the joint and v2 studies.}
+Under CAP8, v2 (64.8\,s) was about 23--27\,\% slower than aria2 (52.6\,s) and $16\times32$\,MiB (50.9\,s). With no cap, v2 ($\approx$19.2\,s) was far faster than aria2 (51.9\,s).
+
+\section{Model-based controller attempt (Failed gate)}
+Online system identification followed by a single within-download joint $(N,S)$ choice. The predeclared identifiability gate failed \textbf{0 of 6} criteria in simulation (560 rows): median regret vs grid oracle 0.54 (bar 0.05), median predicted-time error 0.46 (bar 0.10), total cost incl.\ probing 1.77$\times$ oracle (bar 1.25$\times$), fallback to the healthy config in 64\,\% of rows (bar 30\,\%); an ablation with the \emph{true} server concurrency also failed. No live evaluation was run; nothing was tuned afterwards.
+
+\fig{forest.png}{0.9}{Selected adaptive and learned arms (primary CAP8-type comparisons) against their comparison fixed setting. Held-out and no-cap results are in the tables above.}

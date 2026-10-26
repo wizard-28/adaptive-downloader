@@ -1,0 +1,64 @@
+\chapter{Inventory of Every Study Folder}\label{app:studies}
+Every folder under \code{testdata/}, in roughly chronological order. ``PC'' is the section of \code{docs/PROJECT\_CONTEXT.md} that documents it. Ratios are ours/reference time unless stated.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{4.8cm}>{\raggedright\arraybackslash}p{4.8cm}>{\raggedright\arraybackslash}p{2.0cm}@{}}
+\toprule
+\textbf{Folder} & \textbf{Question and design} & \textbf{Outcome} & \textbf{Status (PC)}\\
+\midrule
+\endhead
+\multicolumn{4}{@{}l}{\textbf{Early LinUCB and benchmark era}}\\
+\code{baseline} & Reference 4-mode matrix: 5 scenarios $\times$ 4 modes $\times$ 10 reps = 200 runs & Baseline measurements; no mode claimed superior & Descriptive (18)\\
+\code{calibration} & Is the LinUCB reward sensible? 5 scenarios (stable, throttle, latency, failure, combined) & Diagnostic only & Descriptive (22.1--22.3)\\
+\code{benchmark} & First 5-mode benchmark, 250 runs, 256\,KiB file & LinUCB chose ``none'' 100\,\%: exploration lock-in & Superseded (22.6)\\
+\code{benchmark\_v2} & Same after an exploration fix, 250 runs & Only $\sim$2 learned decisions: horizon too short & Descriptive (22.9--22.10)\\
+\code{benchmark\_v3} & Same with a 4\,MiB file, 250 runs & 32--122 learned decisions; lock-in persists & Descriptive (22.11)\\
+\code{benchmark\_v4} & Standard vs periodic-exploration LinUCB, 100 runs & Periodic exploration gave effective actions, scenario-dependent & Descriptive (22.14)\\
+\code{benchmark\_v5} & Six-mode 4\,MiB benchmark, 300 runs & No winner claimed & Descriptive (22.15)\\
+\code{benchmark\_aria2} & aria2 (4 conn) on the v5 scenarios, 50 runs & Confounded by request granularity & Descriptive (22.16--22.17)\\
+\code{benchmark\_v6} & 1\,s wall-clock throttle, 6 modes, 60 runs & Concurrency-adaptive 1324.5\,ms vs fixed 2057.9\,ms; LinUCB-periodic 1323.4 & Descriptive (22.18)\\
+\code{benchmark\_aria2\_v2} & aria2 under the same throttle, 10 runs & With a granularity-matched control & Descriptive (22.19--22.20)\\
+\code{final\_research\_audit} & Deterministic audit of the frozen chain & All counts re-derived; no discrepancy & Synthesis (22.21)\\
+\multicolumn{4}{@{}l}{\textbf{DQN era}}\\
+\code{diagnostics} & About 40 sub-studies: LinUCB diagnostics, DQN v1--v6 training/validation/live, aria2 calibration (configs C and F), granularity, L2--L4, T1/T2, M2/M3, long-duration & See Chapters~\ref{ch:opportunity} and \ref{ch:learned} & Mixed (22.7--22.51)\\
+\code{final\_evaluation} & DQN v2 vs aria2 v1 (4 conn), U1--U8 $\times$ 30 pairs, 4\,MiB & 1.757; faster in 31/240 & Negative (22.26)\\
+\code{final\_evaluation\_v5} & v5 vs aria2-F, 240 pairs, 16\,MiB & 2.322; 1/240 & Negative; model stale (22.32, 22.102)\\
+\code{final\_evaluation\_v6} & v6 vs aria2-F, A2--E2 $\times$ 30 pairs & 1.456; 37/150; E2 0.948 & Negative (22.35)\\
+\code{*\_smoke} & Harness smoke tests for v5 and v6 & Not data & Smoke\\
+\code{external} & Real mobile traces (UGent/imec, NYU-METS, Mahimahi set) & Data only & Data (22.49)\\
+\multicolumn{4}{@{}l}{\textbf{Cellular oracle chain (Sep 26--28)}}\\
+\code{oracle\_preregistration\_v2} & Oracle protocol 1 (120\,s epochs, ladder 1--16, signed tau) & Signed tau broke the oracle; superseded & Superseded (22.71--22.72)\\
+\code{oracle\_preregistration\_v3} & Oracle protocol 2 (non-negative tau) & EVDO 1.61\,\%, LTE 0.03\,\% (2 traces) & Descriptive (22.73--22.74)\\
+\code{oracle\_preregistration\_v4} & Final 5-trace gate protocol & Executed as Stages A (15 replays) and B (88 taus) & Executed (22.75--22.79)\\
+\code{final\_oracle\_analysis} & Does headroom reach 10\,\%? $n=5$ traces & Mean 0.41\,\%; LCB $-0.26$\,\% & \textbf{Failed gate} (22.80)\\
+\multicolumn{4}{@{}l}{\textbf{Range-size and mechanism screens (Sep 28--29)}}\\
+\code{salvage\_s\_protocol\_v7} & Frozen protocol: S adaptation, static server, 512\,MiB, $N=4$ & Ready for Stage 0S & Protocol (22.81--22.83)\\
+\code{salvage\_s\_stage0s} & Feasibility pilot, 32 runs, 4 fixed arms & 4/4 criteria pass: GO & Feasibility (22.84)\\
+\code{salvage\_s\_scaling\_analysis} & Does a larger file raise S headroom? Analytical & All switches $\le0$; best +0.35\,\% vs 5\,\% & Failed screen (22.85)\\
+\code{salvage\_s\_mechanism\_pivot} & Any mechanism moving preferred S? 8 + 23 traces & No robust opportunity & Failed screen (22.86)\\
+\code{adaptive\_n\_mechanism\_screen} & Any mechanism for adaptive $N$? & Only \code{degrade} (+6.66\,\%), rejected live & Failed screen (22.87)\\
+\code{final\_project\_synthesis} & What can the paper claim (as of Sep 28)? & Later overtaken by the aria2 result & Synthesis (22.88)\\
+\code{aria2\_competitive\_benchmark} & Fixed $16\times4$\,MiB vs strongest aria2 on D2; 30 final pairs & 0.3756; control 0.862 & \textbf{Confirmed} (22.89)\\
+\code{joint\_ns\_phase\_pacing\_screen} & Causal joint N+S under phase pacing (analytical) & +3.7\,\% vs 5\,\% & Failed screen (22.90)\\
+\code{live\_joint\_ns\_queueing} & Shared bottleneck + \code{iperf3}, 45 runs & No interior $N$ optimum & Failed gate (22.91)\\
+\code{joint\_ns\_loss\_mechanism} & Correlated loss + retry (analytical); no-deadline re-check & $N^*=16$ in 9/9; S shift was a deadline artefact & Failed screen (22.92)\\
+\code{joint\_ns\_d2} & Track 1: heuristic joint N+S on D2, 80 runs & 2.316 vs best fixed & Negative (22.93)\\
+\code{n\_dependent\_server\_joint\_ns} & Track 2/2-B: pre-screen; soft cap; gate; P1, P2; S-only; timeout screen; W1--W6 (240 runs) & Gate failed S-margin; P2 0.766; selector 0.999 / 0.770 & Mixed; capped claims superseded by split\_ablation (22.94--22.101)\\
+\multicolumn{4}{@{}l}{\textbf{Publication readiness and live internet (Oct 11--24)}}\\
+\code{d2\_pacing\_sweep} & Six schedules S0--S5, 60 runs & 28/30 pairs ours faster & Screen (22.104)\\
+\code{nginx\_limit\_rate} & Stock NGINX, 20 runs & 0.863, 0.597; parity expectation not met & Screen (22.104)\\
+\code{live\_pilot\_l1} & 4 mirrors $\times$ slots, 8 cells + aria2 + curl & 3.7\,\% [1.0, 4.8]; second network 7.2\,\% & Descriptive (22.106)\\
+\code{split\_ablation} & Engine ablation, 4 scenarios $\times$ 10 blocks, 230 runs & Splitting 0.599; vs aria2 0.995 / 1.016; causal 1.071 & \textbf{Confirmed} (22.107)\\
+\code{online\_tuner} & FastBioDL-style tuner, 64 runs & 1.212, 1.220 & Negative (22.108)\\
+\code{rl\_capped} & Frozen v6 on the capped server, 50 runs & 1.356 (start 16) & Negative screen (22.108)\\
+\multicolumn{4}{@{}l}{\textbf{After the reviews (Oct 25)}}\\
+\code{rl\_cap\_train} & Cap-trained DQN v1: parity, training, live 120, held out 65 & 0.907; 0 of 3 held out & Confirmed in-dist.; generalization failed (22.109)\\
+\code{baselines\_ext} & axel, lftp vs ours and aria2, 80 runs & 0.345--0.375; level under CAP8 & Screen (22.109)\\
+\code{netem\_sweep} & $3\times3$ delay--loss grid, 108 runs & D2 9/9; CAP8 sign varies & Screen (22.109)\\
+\code{rl\_joint} & Joint N + range-size agent: parity 8, live 150, live-rate 40 & 1.471; 4 of 4 slower; 50.9\,s $\to$ 67.4\,s & Negative (22.109)\\
+\code{rl\_cap\_train\_v2} & Broader training + drop rule: K 24, A 8, C 64, D 160 & 0.845; 3 of 4 held out & Confirmed, partial (22.109)\\
+\code{live\_mirror\_check} & v2 and drop rule on 3 mirrors; M1 aborted, M2 60/60 & No harm on 0 of 3 for both & Descriptive (22.109)\\
+\bottomrule
+\end{longtable}
+\endgroup

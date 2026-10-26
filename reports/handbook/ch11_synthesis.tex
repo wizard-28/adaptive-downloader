@@ -1,0 +1,91 @@
+\chapter{Synthesis: What It All Means}\label{ch:synthesis}
+
+\section{Why reinforcement learning did not win}
+\begin{keyidea}
+\textbf{The learner was not the bottleneck; the opportunity was.}
+\end{keyidea}
+\begin{enumerate}
+\item \textbf{The ceiling was low.} On one bottleneck path the best $N$ is ``enough connections to fill the pipe''. When capacity changes you go faster or slower, but the same setting stays best. The cellular oracle (0.41\,\% mean, lower bound $-0.26$\,\%) bounds any concurrency-switching policy, learned or not, under the frozen trace model; the live pilot bounds per-condition selection among fixed cells (3.7\,\%).
+\item \textbf{Simulator gains did not always transfer.} L4 showed 17.6\,\% headroom in simulation that the live server did not reproduce. Every later simulator was checked blind; where it was accurate (joint study), the learner still failed to find the headroom a simple rule found.
+\item \textbf{Where real headroom existed, a one-threshold rule captured it.} The causal joint controller (23.4\,\% less time than small-range fixed settings on the original engine; its $N$-only version 0.808) and, in v2's study, the C=8-tuned drop rule (0.807 in CAP8) did at least as well as learners in their home scenarios.
+\item \textbf{Engine details came first.} Removing the 30\,s deadline and adding straggler splitting changed the ranking more than any controller did.
+\item \textbf{Learned agents were narrow.} v1 learned its training server and did not generalize; v2 generalized partially within its envelope; on real mirrors both learned and rule-based adaptation cost time.
+\end{enumerate}
+
+\section{What we claim and what we do not}
+{\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{11.6cm}>{\raggedright\arraybackslash}p{4.0cm}@{}}
+\caption{Claim map (from the paper; ``label'' is the evidence strength)}\label{tab:claims}\\
+\toprule
+\textbf{Claim} & \textbf{Label}\\
+\midrule
+\endhead
+Fixed $16\times4$\,MiB beats aria2 by 62.4\,\% on D2 (30/30, 0.3756) & Confirmed (one workload)\\
+The D2 gap is partly granularity $\times$ request-start timing $\times$ pacing & Confirmed for 0.862; residual unexplained\\
+Ours faster than aria2 across six schedules except constant slow (parity) & Descriptive screen (28/30)\\
+Ours faster than aria2 against stock NGINX per-response limits & Descriptive screen (10/10); N1 parity expectation not met\\
+Our 1/4\,MiB settings beat axel and lftp too (no cap, D2) & Screen (0.345--0.375)\\
+D2 advantage holds across delay and loss & Screen (9 of 9 cells)\\
+\dots and the capped-server parity does & \textbf{Not established}\\
+No exploitable concurrency headroom on replayed cellular traces & Confirmed under frozen model; Failed gate\\
+Soft cap creates a state-dependent joint optimum (live) & Descriptive; \textbf{Failed gate} (S-margin)\\
+Causal controller beats best stationary config within a download & Confirmed (best of 3, original engine)\\
+\dots and beats aria2 & \textbf{Not supported} (1.096)\\
+Selector matches per-workload best fixed on average & Descriptive (0.999; not equivalence)\\
+Selector improves on one family-wide config & \textbf{Not established}\\
+aria2's lead under the cap came from the deadline and no splitting & Confirmed (230 runs)\\
+Adaptive controllers beat best fixed on the corrected engine & \textbf{Not supported} (1.071; 1.229)\\
+Online tuner beats best fixed & \textbf{Not supported} (1.212; 1.220)\\
+Frozen v6 beats best fixed on the capped server & \textbf{Not supported} (1.356)\\
+Cap-trained DQN beats best fixed 1\,MiB where trained & Confirmed (0.907)\\
+\dots generalizes to held-out conditions & \textbf{Not supported} (0 of 3)\\
+\dots beats best fixed overall or aria2 & \textbf{Not supported} (1.298; 1.310)\\
+Joint N + range-size agent beats best fixed & \textbf{Not supported} (1.471; 4 of 4 slower)\\
+Broadly trained v2 beats best fixed 1\,MiB on held-out scenarios inside its ranges & \textbf{Partial} (3 of 4; one seed)\\
+\dots and beats a simple drop rule & \textbf{Mixed} (3 vs 2 of 6)\\
+One fixed cell ($8\times1$\,MiB) near-best on live mirrors & Descriptive pilot; criterion met (4.8\,\% $<$ 5\,\%)\\
+\dots on a second access network & Descriptive, inconclusive (7.2\,\%)\\
+v2 and the drop rule do no harm on public mirrors & \textbf{Not supported} (0 of 3)\\
+Learned policies beat aria2 & \textbf{Not supported}\\
+\bottomrule
+\end{longtable}
+}
+
+\section{What is novel in this project}\label{sec:novelty}
+\begin{careful}[Start with what is \emph{not} new]
+Adaptive concurrency and segment sizing are established (FastBioDL, Falcon, direct search, Liu et al.'s deep RL, aria2/IDM segment splitting). We do \textbf{not} claim a new algorithm, and we do not claim adaptive segmented downloading is our invention. Review~1 positioned the project ``as an engineering and experimental contribution rather than a claim of inventing adaptive segmented downloading'', and Review~3 says the same.
+\end{careful}
+
+Our novelty is in the \textbf{question, the method and the findings}:
+\begin{enumerate}
+\item \textbf{A different question.} Prior work asks ``how do we tune $N$ online?''. We ask ``\emph{when is there anything for any controller to exploit?}'' and answer it with oracle bounds, so within the action space and model each oracle covers, the answer holds for every policy, not only ours.
+\item \textbf{Headroom gates before learners.} In the trace study and the later learner studies we computed clairvoyant headroom against a bar fixed in advance, \emph{before} training, and blind-checked the simulators' fixed-setting predictions against live runs (L4 showed why: its simulated headroom did not exist live). This separates ``the environment offers nothing'' from ``the learner failed''. The cellular result ($-0.26$\,\% lower bound with 5--27$\times$ capacity swings) is a learner-independent negative result.
+\item \textbf{A partly mechanism-explained comparison with aria2.} Much of the 62.4\,\% gap is traced, with per-request server logs and controls, to an interaction between range granularity, request-start timing and per-response pacing (matched-granularity control 0.862; a residual is unexplained). The direction also held against axel and lftp (screen, 5 blocks) and across a $3\times3$ delay--loss grid (screen, 3 blocks per cell). We show it is \emph{not} adaptation.
+\item \textbf{``Engine before policy''.} A 230-run ablation shows that two engine details (a whole-request timeout and missing straggler splitting) explained aria2's lead under a concurrency cap, and that once fixed, the best fixed setting beat the adaptive controllers tested in the ablation (causal 1.071, selector 1.229), while a re-implemented FastBioDL-style tuner lost even to fixed 1\,MiB settings (1.212, 1.220). We are not aware of prior download-tuning work that isolates engine details from policy this way; say ``to our knowledge'' in the viva.
+\item \textbf{The request-start rate rule as a hidden confounder.} Both headline effects (D2, and large ranges under the cap) depend on a server fixing a response's rate on arrival. We built a live-rate control server to test it: fixed $16\times32$\,MiB under the cap slowed from 50.9\,s to 67.4\,s. Anyone benchmarking downloaders against rate-limited servers should know this.
+\item \textbf{A complete, honest inventory of learned controllers.} The early ones (LinUCB, DQN v1--v6) are reported as negative or descriptive; the later ones (cap-trained v1, joint, v2) were each tested against the best fixed setting with frozen protocols, blind simulator checks, validation-only seed selection and held-out scenarios with headroom, and v2 also against a simple rule. Failed gates are reported as failed. Positive results (v1 0.907, v2 3 of 4) are reported with their exact scope.
+\item \textbf{Real-server no-harm testing of adaptive arms}, showing the cost side of adaptation: on three uncapped mirrors both adaptive arms failed the predeclared no-harm rule (point estimates 1.06--1.65 against fixed $16\times1$\,MiB; only kcdn v2 clearly slower; one client, one evening, 5 blocks).
+\item \textbf{A reusable platform and a verifiable evidence chain}: an instrumented downloader with one policy interface, a server with explicit rate rules, and a claims checker that recomputes all 220 paper numbers from raw artifacts and rejects wrong numbers in a self-test.
+\end{enumerate}
+
+\begin{vivatip}[The 20-second novelty answer]
+``We don't propose a new tuning algorithm. Our contribution is to measure \emph{when} adaptation can help at all, with oracle bounds computed before training, and to explain the results mechanistically. We found the opportunity is usually near zero; that a large gap against aria2 is a request-timing effect, not adaptation; that engine details mattered more than any controller; and that learned agents win only narrowly, inside their training envelope.''
+\end{vivatip}
+
+\section{Practical lessons}
+\begin{itemize}
+\item \textbf{For download-manager builders:} pick enough connections for the server (in the pilot $8\times1$\,MiB was near-best on the mirrors we measured, though in the later mirror check $16\times1$\,MiB was faster on all three); use straggler splitting; use a stall-based timeout, not a whole-request deadline; small-enough ranges keep you responsive to rate changes. Adaptive control is unlikely to pay unless the server penalises concurrency in a way that changes over time.
+\item \textbf{For researchers:} measure headroom first; compare against the best fixed setting and a simple rule, not a weak default; check simulators blind; make server rate semantics explicit.
+\end{itemize}
+
+\section{Future work}
+\begin{itemize}
+\item Action spaces with delayed, changing costs: multi-mirror scheduling, restarting slow requests, straggler hedging. Each must pass a headroom gate first and beat both the best static setting and a strong myopic heuristic.
+\item Live measurements across many clients, networks and mobile paths.
+\item Training on noisy, uncapped server behaviour (from the mirror check), and a ``hold unless the drop persists'' guard.
+\item Make straggler splitting the default and add a stall-based timeout, after validation on real servers.
+\item HTTP/2 and multi-source downloads; a PPO hybrid; IDM on Windows.
+\end{itemize}
+
+\section{Publication status}
+The paper (\emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation}) targets \emph{IEEE Access}. The content is complete in \code{reports/paper\_draft.md} and all 220 numbers are verified. Still open: conversion to the IEEE Access LaTeX template; author block, affiliations, ORCID, funding and conflict-of-interest statements; confirming the AI-use disclosure wording against the publisher's policy; a data DOI; and the redistribution terms for the Mahimahi-bundled traces. (The Mahimahi, Sprout, LinUCB, DQN, Double DQN and netem citations were verified on 18 Oct; the IEEE package README is out of date on this.) Nothing has been submitted.

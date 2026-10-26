@@ -1,0 +1,35 @@
+\chapter*{How to Use This Handbook}
+\addcontentsline{toc}{chapter}{How to Use This Handbook}
+\markboth{How to use this handbook}{}
+
+This handbook is written for the three of us to prepare for the viva and the presentation. It tries to contain \emph{everything}: what the project asked, what we built, how we measured, every study and its numbers, what we claim and what we do not, and the questions an examiner is likely to ask. It is deliberately long. If you are using an AI assistant to study, give it this PDF and ask it to quiz you chapter by chapter.
+
+\section*{Reading paths}
+\begin{itemize}
+\item \textbf{One hour before the viva:} Chapter~\ref{ch:overview} (the project in one page), Chapter~\ref{ch:synthesis} (why RL did not win, and what we claim), Appendix~\ref{app:numbers} (numbers cheat sheet), and skim Chapter~\ref{ch:viva} (questions).
+\item \textbf{To understand the project properly:} read Chapters~\ref{ch:background}--\ref{ch:method} first (background, system, method), then the five results chapters (\ref{ch:aria2}--\ref{ch:real}) in order. The results chapters follow the story of the project.
+\item \textbf{To present:} Chapter~\ref{ch:presentation} has a suggested slide flow, the demo script, and who presents what.
+\end{itemize}
+
+\section*{Conventions}
+\begin{itemize}
+\item $N$ is the number of parallel connections (requests in flight). $S$ is the range size, the number of bytes asked for in one request.
+\item A \textbf{time ratio} $R$ is the completion time of the first option divided by the second's, averaged geometrically over paired blocks. $R<1$ means the first option was \emph{faster}. $R = 0.845$ means it took 84.5\,\% of the time, i.e.\ 15.5\,\% less time.
+\item Intervals in square brackets, such as $[0.840, 0.850]$, are 95\,\% percentile bootstrap intervals over blocks unless stated otherwise.
+\item ``Faster'', ``slower'' and ``not distinguishable'' are verdicts: faster if the whole interval is below 1, slower if it is above 1, not distinguishable if it contains 1.
+\item \textbf{Evidence labels} (used in the paper and here): \emph{Confirmed} = reproduced from raw runs with the stated $n$; \emph{Descriptive} = a point estimate without an inferential claim; \emph{Screen} = a small run (often 3--5 blocks) to check a direction; \emph{Failed gate} = a criterion fixed in advance that was not met; \emph{Not supported} / \emph{Not established} = a claim we do \emph{not} make.
+\item Scenario names: \textbf{HEALTHY} (no cap), \textbf{CAP0} (soft concurrency cap from the start), \textbf{CAP8} (cap switching on at 8\,s), \textbf{D2} (the reference paced workload). They are explained in Chapter~\ref{ch:system}.
+\end{itemize}
+
+\begin{keyidea}[The one sentence to remember]
+Fixed configurations cannot adapt; on the conditions we tested, they mostly did not need to. Adaptation pays only when using more concurrency has a cost that changes over time, and even there, engine details (timeouts, straggler splitting) mattered more than the controller.
+\end{keyidea}
+
+\section*{Where things are}
+\begin{itemize}
+\item The paper draft: \code{reports/paper\_draft.md}. The submitted reviews: \code{reports/Review2\_Project\_Review.pdf}, \code{reports/Review3\_Final\_Report.pdf}.
+\item Viva material: \code{reports/thursday/} (one-page summary, Q\&A, demo script).
+\item The full living project log (about 10{,}000 lines): \code{docs/PROJECT\_CONTEXT.md}.
+\item Each study has its own folder under \code{testdata/}; the later ones have \code{protocol.md}, a manifest, raw run records and \code{analysis/}.
+\item This handbook's source: \code{reports/handbook/} (\code{make\_figs.py} draws the new figures from the committed analysis files).
+\end{itemize}

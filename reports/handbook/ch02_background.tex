@@ -1,0 +1,139 @@
+\chapter{Background You Need}\label{ch:background}
+This chapter explains the networking and learning ideas the rest of the handbook assumes. Most of it is textbook material; the parts specific to our project are marked.
+
+\section{HTTP range requests}
+HTTP lets a client ask for \emph{part} of a resource with a \code{Range} header (RFC~9110, Section~14). The server answers \code{206 Partial Content} with a \code{Content-Range} header saying which bytes it sent:
+\begin{lstlisting}
+GET /pub/linux/kernel/v3.x/linux-3.0.tar.xz HTTP/1.1
+Host: cdn.kernel.org
+Range: bytes=0-1048575
+
+HTTP/1.1 206 Partial Content
+Content-Range: bytes 0-1048575/63798008
+Content-Length: 1048576
+\end{lstlisting}
+HTTP ranges are \emph{inclusive}: \code{bytes=0-1048575} is exactly 1\,MiB. A server that ignores \code{Range} replies \code{200 OK} with the whole file; a correct client must treat that as an error when it asked for a range. Our CLI, when not given the file size, probes support first with \code{Range: bytes=0-0} and requires a \code{206}.
+
+\subsection*{Half-open vs inclusive ranges (project-specific)}
+Inside the downloader, ranges are stored \emph{half-open}, $[s, e)$: bytes from $s$ up to but not including $e$, length $e-s$. Conversion to HTTP happens at exactly one place:
+\begin{equation}
+[s,\,e) \;\longmapsto\; \texttt{Range: bytes=}s\texttt{-}(e-1).
+\end{equation}
+For example $[0, 4194304)$ becomes \code{bytes=0-4194303}. Keeping one conversion point removes off-by-one errors, a classic bug source in downloaders.
+
+\section{Segmented (parallel) downloading}
+A segmented downloader splits a file of size $F$ into ranges and fetches up to $N$ of them at once over separate TCP connections. Two settings matter:
+\begin{itemize}
+\item $N$, the \textbf{concurrency}: how many requests are in flight.
+\item $S$, the \textbf{range size} (``chunk size''): bytes per request. A file of size $F$ needs $\lceil F/S\rceil$ requests.
+\end{itemize}
+
+\subsection{Why more connections can help}
+A single TCP flow's steady-state throughput is limited by its congestion window and the round-trip time. A well-known approximation (Mathis et al.) for a loss-limited flow is
+\begin{equation}
+T_{\text{flow}} \approx \frac{\text{MSS}}{\text{RTT}}\cdot\frac{\sqrt{3/2}}{\sqrt{p}},
+\end{equation}
+where MSS is the segment size and $p$ the loss rate. With $N$ flows on a path whose bottleneck is not yet full, aggregate throughput grows roughly as $N\cdot T_{\text{flow}}$ until it hits the bottleneck capacity. Servers that limit \emph{each connection} (for example NGINX \code{limit\_rate}) make this even more direct: $N$ connections get $N$ times the per-connection rate. This is why download managers open many connections.
+
+\subsection{Why more connections can hurt}
+\begin{itemize}
+\item Once the bottleneck is full, extra connections only add overhead and queueing.
+\item Some servers share a fixed budget per client, or penalise many parallel connections. Our \emph{soft concurrency cap} (Chapter~\ref{ch:system}) models this.
+\item Fairness: $N$ connections take a larger share of a shared link from other users. We measured speed, not fairness.
+\end{itemize}
+
+\subsection{Why range size matters}
+\begin{itemize}
+\item \textbf{Small $S$}: many requests, each paying a request overhead (about one RTT before the first byte); fine-grained load balancing; quick reaction to changing conditions.
+\item \textbf{Large $S$}: few requests, low overhead, but a long tail at the end (the last big range finishes alone), and a ``commitment'': whatever rate a request starts with, it may keep for a long time. This last point is central to our results (the \emph{request-start rate rule}, Chapter~\ref{ch:system}).
+\end{itemize}
+
+\subsection{Straggler splitting}
+When nothing is left to allocate, an idle connection can take over half of the remaining bytes of a slow in-flight range. aria2 does this; our engine picks the in-flight range with the most unreceived bytes. Our engine originally did not, and learning that this was the main reason aria2 led under the cap was one of the project's key findings (Chapter~\ref{ch:cap}).
+
+\section{The tools we compared against}
+\begin{table}[H]\centering\small
+\caption{External downloaders and how they segment}\label{tab:tools}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Tool} & \textbf{How it works, and how we ran it}\\
+\midrule
+aria2 1.37.0 & Open-source, widely used. Run with \code{-x16 -s16 -k1M} (up to 16 connections per server, split into 16 pieces, minimum piece 1\,MiB). For a 512\,MiB file it issues one unranged probe plus 15 ranges of about 32\,MiB, all near the start; it splits the slowest piece when a connection is idle. Flags chosen once from a discovery sweep of its split settings (1/2/4/8/16) and never re-tuned.\\
+axel & Splits the file into $N$ equal parts at the start; run at 16 connections.\\
+lftp \code{pget} & Same up-front split; never re-splits a slow part. Run at 16 connections.\\
+curl & Single connection; used as a single-stream reference in the live pilot.\\
+wget2 & Planned, then removed: it fetches one file over a single connection however configured (confirmed in its source; upstream issue \#195).\\
+IDM & Not evaluated: closed source, Windows-only, cannot be scripted for hundreds of randomised runs in our Linux testbed.\\
+NGINX 1.24.0 & Not a downloader: a stock \emph{server} with \code{limit\_rate} and \code{limit\_rate\_after}, used to check our results on a server we did not write.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Network emulation and trace replay}
+\begin{itemize}
+\item \textbf{\code{tc netem}} is the Linux network emulator. We apply it to the loopback interface: in most studies \code{delay 40ms loss 0.4\%}, which applies in \emph{both} directions, so the round trip is 80\,ms (measured 80.1\,ms). Early drafts wrongly said ``40\,ms RTT''; it is 40\,ms each way.
+\item \textbf{Mahimahi} (\code{mm-link}) replays recorded packet-delivery traces, so a download sees the capacity a real cellular network had over time. We used five driving traces recorded with the Saturator tool by Winstein et al.\ (Sprout, NSDI 2013) and distributed with Mahimahi: Verizon EVDO, Verizon LTE, AT\&T LTE, T-Mobile LTE, T-Mobile UMTS. This is \emph{replay}, not a live mobile network.
+\end{itemize}
+
+\section{Reinforcement learning in five minutes}
+\subsection{The setting}
+An agent observes a \textbf{state} $s_t$, picks an \textbf{action} $a_t$, gets a \textbf{reward} $r_t$ and a new state $s_{t+1}$. The goal is a \textbf{policy} $\pi(a\mid s)$ maximising the discounted return $G_t = \sum_{k\ge0}\gamma^k r_{t+k}$ with discount $\gamma\in[0,1)$. This is a Markov decision process (MDP).
+
+In our agents: the state is 13 measurements of the download (Chapter~\ref{ch:system}), the actions are \{none, $+1$ connection, $-1$ connection\} (and, for the joint agent, $\pm4$\,MiB range size), a decision is taken after each completed request, and the reward is $r_t = -\Delta t$, the negative time elapsed since the last decision. With $\gamma=1$ the episode return is exactly minus the completion time; with $\gamma=0.99$ (the cap-trained agents, one step per completed MiB) it approximates it. Either way, maximising reward means finishing sooner.
+
+\subsection{Q-learning and DQN}
+The action-value $Q^\pi(s,a)$ is the expected return from taking $a$ in $s$ and following $\pi$. The optimal $Q^*$ satisfies the Bellman equation
+\begin{equation}
+Q^*(s,a) = \mathbb{E}\left[r + \gamma \max_{a'} Q^*(s', a')\right].
+\end{equation}
+A Deep Q-Network (DQN; Mnih et al., 2015) approximates $Q$ with a neural network $Q_\theta$ and trains it on transitions $(s,a,r,s')$ sampled from a \textbf{replay buffer}, minimising (shown here as a squared error; our implementation uses the Huber loss with gradient clipping at 10)
+\begin{equation}
+\mathcal{L}(\theta) = \mathbb{E}\left[\left(y - Q_\theta(s,a)\right)^2\right], \qquad y = r + \gamma\,\max_{a'} Q_{\theta^-}(s',a'),
+\end{equation}
+where $\theta^-$ is a periodically copied \textbf{target network}. Actions are chosen $\varepsilon$-greedily: random with probability $\varepsilon$ (decayed from 1.0 to 0.05), otherwise $\arg\max_a Q_\theta(s,a)$.
+
+\subsection{Double DQN}
+Plain DQN overestimates values because the same network both selects and evaluates the max. Double DQN (van Hasselt et al., 2016) decouples them:
+\begin{equation}
+y^{\text{DDQN}} = r + \gamma\, Q_{\theta^-}\!\Big(s',\ \arg\max_{a'} Q_\theta(s',a')\Big).
+\end{equation}
+All our DQN agents are Double DQN with a multilayer perceptron of two hidden layers of 64 (ReLU). The cap-trained agents (v1 and v2 of the capped server) use 3 outputs, $\gamma=0.99$, learning rate $5\times10^{-4}$, replay 100{,}000, batch 64, $\varepsilon$ from 1.0 to 0.05 over 150{,}000 steps, target sync every 1{,}000 steps, training starting at 2{,}000 steps. The joint agent has 5 outputs, $\gamma=1.0$ and rewards scaled by 1/10. The early candidates (to v6) used the library defaults: $\gamma=1.0$, learning rate $10^{-3}$, replay 20{,}000, $\varepsilon$ decay over 5{,}000 steps, target sync every 200, training start 500. Training runs in Python/PyTorch on a simulator; the trained weights are exported as JSON and run inside Go for live decisions.
+
+\subsection{Contextual bandits and LinUCB}
+A contextual bandit is RL without long-term consequences: each decision's reward is treated as immediate. LinUCB (Li et al., 2010) models each action's expected reward as linear in the context $x$, $\mathbb{E}[r\mid x,a] = x^\top\theta_a$, keeps $A_a = I + \sum x x^\top$ and $b_a = \sum r\,x$, and picks
+\begin{equation}
+a_t = \arg\max_a\ \left( x_t^\top \hat\theta_a + \alpha\sqrt{x_t^\top A_a^{-1} x_t}\right), \qquad \hat\theta_a = A_a^{-1}b_a .
+\end{equation}
+The second term is an exploration bonus. In our project LinUCB had 5 actions (none, $\pm N$, $\pm S$) and 10 normalised features, and \emph{locked onto a single action} after warm-up (Chapter~\ref{ch:learned}). This is why we moved to Double DQN, which handles credit over time.
+
+\section{Oracles and headroom (project-specific idea)}
+An \textbf{oracle} is a hypothetical controller that knows the future and always picks the best setting at each moment (subject to the same switching costs). It is not a policy anyone can run. Its value is that it gives an \emph{upper bound}: no real adaptive policy can beat it. We define the \textbf{headroom} as the oracle's relative gain over the best fixed setting:
+\begin{equation}
+H = \frac{T_{\text{best fixed}} - T_{\text{oracle}}}{T_{\text{best fixed}}}.
+\end{equation}
+If $H$ is near zero, \emph{no} learner can help, however good. Computing $H$ \emph{before} training any learner is one of the main methodological ideas of the project (a \emph{headroom gate}, Chapter~\ref{ch:method}).
+
+\begin{doubt}[``Isn't an oracle unfair to adaptive methods?'']
+It is the opposite: it is generous to them. The oracle is the best \emph{any} adaptive method could possibly do. If even the oracle gains under 1\,\%, adaptation has nothing to offer in that environment.
+\end{doubt}
+
+\section{Related work in one table}
+\begin{table}[H]\centering\small
+\caption{Prior work we cite and how we used it}\label{tab:related}
+\begin{tabularx}{\linewidth}{@{}P{4.0cm}P{2.1cm}L@{}}
+\toprule
+\textbf{Work} & \textbf{Used?} & \textbf{How, or why not}\\
+\midrule
+Balaprakash et al.\ 2016 (direct search for GridFTP streams) & Context & Online tuning of parallel streams on production links.\\
+Falcon (Arifuzzaman et al., TPDS 2023) & Context & Utility $T/K^N$ with online search for science networks.\\
+FastBioDL (Swargo et al., 2025, arXiv) & Re-implemented & Gradient-style online concurrency tuning for genomic downloads; we wrote our own version and tested it (Chapter~\ref{ch:cap}).\\
+Liu et al.\ 2018 (smart data transfer node) & Reviews only & Cited in Review~1 and Review~3 as the idea behind our DQN agents, but the paper's reference log could not verify it, so the paper does not cite it.\\
+Swargo \& Arifuzzaman 2025 (heuristics + PPO) & No & Cited in the reviews; not verified in the paper's log, so not cited there. One learner (DQN) was carried through; a PPO hybrid is future work.\\
+MDTP (Abdollah et al., 2025) & No & Multi-source chunk allocation; we are single-source.\\
+BOLA (Spiteri et al., 2016) & Analogy & Video bitrate decisions without bandwidth prediction.\\
+DeLoad (Liu et al., 2025) & No & Short-video preloading; a different objective.\\
+aria2, IDM & aria2 baseline; IDM not & Dynamic segmentation (straggler splitting) is what closed aria2's lead.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\textbf{Our position:} a mechanism-first, controlled evaluation with explicit failed gates and a practical baseline comparison, not a new tuning algorithm.

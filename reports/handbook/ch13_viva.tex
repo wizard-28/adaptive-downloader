@@ -1,0 +1,231 @@
+\chapter{Doubt Clearing: Viva Questions and Model Answers}\label{ch:viva}
+Answers are short first, then detail. Practise saying the first sentence of each answer out loud. Numbers are from the paper and study folders.
+
+\section{The basics}
+\Q{In one minute, what is your project?}
+\A We built an instrumented segmented HTTP downloader in Go whose connection count $N$ and range size $S$ a policy can change mid-download, plus a controlled test platform, and asked \emph{when} adapting $N$ and $S$ actually beats a well-chosen fixed setting. Answer: rarely. A fixed setting beat aria2 by 62.4\,\% on a paced server for a request-timing reason, not adaptation; recorded cellular traces showed almost no headroom even for an oracle; adaptation helped only on a server we built where concurrency has a time-varying cost, and even there engine fixes mattered more; learned agents won only narrowly against same-range-size fixed settings on the server they were trained for, and cost time on real mirrors.
+
+\Q{What are $N$ and $S$, and why these two?}
+\A $N$ is the number of parallel range requests; $S$ is the bytes per request. They are \emph{the} dials of segmented downloaders (aria2's \code{-x}, \code{-s}, \code{-k}; IDM's connection count). Narrow scope is what lets a controlled study attribute effects.
+
+\Q{What is a range request? What does your downloader check?}
+\A \code{Range: bytes=a-b}; the server must reply \code{206} with \code{Content-Range}. We reject \code{200}, wrong length, or mismatched \code{Content-Range}; we probe with \code{bytes=0-0} first; we verify the final SHA-256.
+
+\Q{Why half-open ranges internally?}
+\A Length is $e-s$, adjacency is $e_1=s_2$, and there is one conversion point to HTTP's inclusive form, which removes off-by-one errors.
+
+\Q{What happens when a request fails?}
+\A The same range is retried with the same bounds up to \code{MaxRetries}; ranges are never resized in flight except by an opt-in straggler split.
+
+\Q{What happens if the policy lowers $N$ mid-download?}
+\A Nothing is cancelled: extra workers retire after their current range finishes.
+
+\section{Method and statistics}
+\Q{Why the geometric mean of ratios?}
+\A Ratios are scale-free, and the geometric mean treats ``half the time'' and ``twice the time'' symmetrically; the arithmetic mean of 0.5 and 2 is a misleading 1.25.
+
+\Q{What is a block? Why paired?}
+\A One run of every arm in a seeded random order under the same conditions. Pairing within blocks cancels slow drift of the machine and network.
+
+\Q{How are intervals computed?}
+\A 95\,\% percentile bootstrap over blocks, 10{,}000 resamples with a seed fixed per study, on the log ratios. (The D2 headline interval is a $t$-interval.) In later studies also a paired $t$-interval, and the less favourable verdict is used.
+
+\Q{Your intervals are extremely narrow. Isn't that suspicious?}
+\A The emulated server is nearly deterministic, so the intervals measure testbed noise, not real-world variability. We say so. On the real mirrors the intervals are wide, e.g.\ [0.873, 2.849].
+
+\Q{``Not distinguishable'' means equal, right?}
+\A No. It means the interval contains 1. It is not an equivalence test.
+
+\Q{Did you pre-register?}
+\A We predeclared every study in a logged protocol with recorded hashes before its runs, with dated amendments. They were not deposited with an independent timestamping service, and one manifest (W1--W6) was amended twice after design output was seen. So we say ``predeclared'', not formally ``pre-registered''.
+
+\Q{How do we know your numbers are right?}
+\A \code{tools/claims\_check.py} recomputes all 220 numbers in the paper from raw run files, each tied to its sentence, and a self-test shows it rejects wrong numbers. It caught real errors in our frozen scripts (a fixed $t$ value for every $n$), which the paper corrects.
+
+\Q{No multiple-comparison correction?}
+\A Not in the later studies (the v5 head-to-head used Holm across 8 conditions), and we state it as a limitation. Confirmatory claims are few and predeclared; most others are labelled screens or descriptive.
+
+\section{The aria2 result}
+\Q{Is the 62.4\,\% win real?}
+\A Yes on that workload: 30 of 30 pairs, $R=0.3756\,[0.3726, 0.3787]$. It comes mostly from range granularity and the server's request-start rate rule: aria2's 32\,MiB pieces all start in the slow phase and stay slow; 112 of our 128 4\,MiB ranges start after the speed-up. With matched granularity the ratio is 0.862.
+
+\Q{So your downloader is better than aria2?}
+\A No. It is a fixed-configuration result on one server mechanism. Where the timing effect is absent (constant slow rate, the cap with splitting, public mirrors) the tools are level or close.
+
+\Q{Why not configure aria2 with smaller pieces?}
+\A With \code{-x16}, \code{--split} of 16, 64 or 256 gave the same range-size distribution in our probe. aria2's flags were chosen once from a discovery sweep and kept fixed.
+
+\Q{Is this specific to aria2?}
+\A No: axel and lftp split the file once up front too, and ours took 0.345--0.375 of their time without a cap and on D2. Under CAP8 all four were level.
+
+\Q{Why not IDM or wget2?}
+\A IDM is closed source and Windows-only, and cannot be scripted for hundreds of randomised runs in our Linux testbed. wget2 fetches one file over a single connection however it is configured (its source, and upstream issue \#195).
+
+\Q{Did you check a server you did not write?}
+\A Yes, stock NGINX \code{limit\_rate}: ours faster in 10 of 10 pairs (0.863, 0.597). Our predeclared parity expectation for constant per-response limits was \emph{not} met, and we did not find why.
+
+\Q{What part of the gap is unexplained?}
+\A With aria2-like pieces ours is still 14\,\% faster, and at constant fast pacing 15.4\,s vs 27.1\,s. A candidate is the finishing tail of 32\,MiB pieces, untested.
+
+\section{The search for an opportunity}
+\Q{Networks change all the time. Why don't fixed settings lose?}
+\A On one bottleneck path the best $N$ is ``enough to fill the pipe''. When capacity drops, everything slows, but the same setting is still about right. Adaptation pays only when \emph{too much concurrency has a cost that changes over time}.
+
+\Q{Explain the cellular-trace result.}
+\A The recorded traces swing about 5--27$\times$ in capacity (p90/p10 across the Mahimahi set). A clairvoyant oracle switching $N$ at epoch boundaries, with measured switching costs, gains 0.41\,\% on average over the best fixed $N$; the one-sided 95\,\% lower bound is $-0.26$\,\% against a predeclared 10\,\% bar. Since the oracle is the best any policy could do, this bounds every concurrency-switching policy under that model.
+
+\Q{Isn't it replay, not a real network?}
+\A Yes, replay of real recorded traces through Mahimahi, which makes it reproducible. We say it is not a live mobile measurement.
+
+\Q{What other mechanisms did you screen?}
+\A Static rate + RTT, shared-bottleneck queueing with background traffic, correlated loss, per-request throttling, failure-based throttling, range size across phases, joint phase pacing. None produced a state-dependent optimum that survived live grounding, except the soft cap we constructed.
+
+\Q{What was L4?}
+\A An environment design with 17.6\,\% simulated headroom that passed its gate; a live sweep showed high concurrency is not penalised live, so the headroom was a simulator artefact. We stopped instead of training on it.
+
+\section{The capped server and the engine}
+\Q{You built the server model yourselves. Isn't the positive result rigged?}
+\A It is constructed, and we say so: it shows the conditions under which adaptation \emph{can} help, not that real servers behave this way. The family was selected from 72 candidates, the amendments are disclosed, the gate's S-margin failed and stayed failed, and the cross-family claim is not established.
+
+\Q{Explain the cap formula.}
+\A A new request gets $\min(\text{base}, C/(k(1+\gamma(k-1))))$, where $k$ counts the active requests including itself, $C=8$\,MiB/s, $\gamma=0.05$. The implied total $C/(1+\gamma(k-1))$ falls with $k$ (about 7.3\,MiB/s at $k=3$, 4.6 at 16), so extra connections cost. The rate is fixed at arrival.
+
+\Q{What did the causal controller achieve?}
+\A With the cap from 8\,s, 58.7\,s vs 76.7\,s for the best of three fixed settings ($R=0.766$, 10/10). The $N$ move carried it ($N$-only 0.808; $S$-only 1.070, worse than not switching). aria2 was faster (53.6\,s).
+
+\Q{aria2 beat you under the cap. Doesn't that undermine the result?}
+\A We investigated and it changed the conclusion. A 230-run ablation traced aria2's lead to two engine details in our downloader: no straggler splitting (with splitting, $16\times32$\,MiB took 0.599 of the time and matched aria2, 0.995) and the 30\,s whole-request timeout (without it, within 1.6\,\% of aria2 with the cap from 8\,s).
+
+\Q{You fixed the engine. Did adaptation still help?}
+\A Not against the best fixed setting on the fixed engine: the causal controller was 7\,\% slower than $16\times32$\,MiB (1.071), the selector 23\,\% slower under CAP0 (1.229). The +23.4\,\% holds only against small-range fixed settings on the original engine. ``Engine before policy.''
+
+\Q{Why does $16\times32$\,MiB win under the cap?}
+\A It starts all 16 ranges before the cap at 8\,s, and each keeps the pre-cap rate for its whole length; splitting then hands the tail to idle connections. With 1\,MiB ranges almost every request starts after the cap.
+
+\Q{Isn't that a quirk of your server?}
+\A Yes, and we tested it: on a live-rate server that re-checks rates during each response, $16\times32$\,MiB under the cap slowed from 50.9\,s to 67.4\,s.
+
+\Q{Why did the online tuner lose?}
+\A It reacted to the cap in 2.1\,s, but needed 8.1\,s to climb from $N=4$ to 16 without a cap; that ramp is most of its loss (1.212 and 1.220 of the better fixed 1\,MiB setting).
+
+\Q{Was slow reaction the problem?}
+\A No: the rule controllers we timed reacted within seconds (causal 1.5\,s and tuner 2.1\,s after the cap; the selector classified at 4.0\,s). The limit is what reacting can gain.
+
+\section{Reinforcement learning}
+\Q{So RL failed. Why should we care?}
+\A The question was never ``can RL win?'' but ``when is there anything for any controller to exploit?''. Our strongest negative results are learner-independent oracle bounds. That is useful for anyone designing adaptive downloaders.
+
+\Q{Why did RL lose?}
+\A Low ceiling (oracle bounds), simulator gains that did not transfer (L4), and a one-threshold rule capturing the real headroom where it existed. A better learner cannot beat a near-zero ceiling.
+
+\Q{Describe your DQN.}
+\A (Cap-trained agents.) Double DQN, MLP $13\to64\to64\to3$ (ReLU), 13 download features, actions \{none, $\pm1$ connection\}, decision after each completed request, reward $-\Delta t$ (return $\approx$ minus completion time), $\gamma=0.99$, lr $5\times10^{-4}$, replay 100k, batch 64, $\varepsilon$ 1.0$\to$0.05 over 150k steps, target sync 1{,}000, Huber loss with gradient clipping. The joint agent had 5 actions and $\gamma=1$. Trained in PyTorch on a simulator; weights exported to JSON; inference in Go; a parity test checks Go matches Python.
+
+\Q{Why Double DQN and not PPO?}
+\A After LinUCB locked onto one action, we needed credit assignment over time; Double DQN reduces overestimation and was carried through to live evaluation. PPO is future work; we tested two learner families, not all.
+
+\Q{Why did LinUCB lock onto one arm?}
+\A With small files there were very few decisions after warm-up, and with a myopic reward one action quickly dominated; periodic exploration changed coverage but not the preference. It was descriptive only.
+
+\Q{Why did DQN v2/v5/v6 lose to aria2?}
+\A Short files (4--16\,MiB) made start-up dominate, and v6 started from 1 connection while aria2 opened 16 at once. v5 was limited to 4 connections against aria2's 16 (v2 was compared with aria2 at 4 connections). In v6's long-file diagnostic the pooled gap shrank (1.805 $\to$ 0.909) but A2 and E2 got worse.
+
+\Q{Why not let the agent choose range size too?}
+\A We did, under a frozen protocol (\code{rl\_joint}). A hand rule took 0.352 of the best fixed time under CAP8 in simulation; the agent did not find it, and was slower than the best fixed setting in all four live scenarios (CAP8 1.471). The simulator predicted live times within about 5\,\%, so the learner, not the model, failed.
+
+\Q{You trained the DQN for the capped server. Isn't that tuning to the test?}
+\A That is why each study has in-distribution and held-out stages, predeclared. v1 won in distribution (0.907) but in 0 of 3 held-out scenarios outside its training ranges. v2 was then trained more broadly and tested on four new held-out scenarios inside its ranges, each with 10--17\,\% headroom, selected on validation only.
+
+\Q{Does the learned agent generalize?}
+\A Partly, within its training envelope: v2 was faster than the best fixed 1\,MiB setting in 3 of 4 held-out scenarios (0.882, 0.819, 0.952), slower in 1 (1.007); faster than v1 in all 6; about 5\,\% slower with no cap. Caveats: one seed, the drop rule beat it in its home scenarios, and ``generalizes'' means new combinations inside the envelope.
+
+\Q{Can the agent beat $16\times32$\,MiB or aria2?}
+\A We said in advance it cannot: a 1\,MiB $N$-only agent cannot keep pre-cap rates. Even the perfect switch in our simulator (64\,s) is slower than the 52.6\,s reference for $16\times32$\,MiB written in that protocol (53.7\,s live in that study). Cross-study, v2 under CAP8 (64.8\,s) was about 23--27\,\% slower than aria2 and $16\times32$\,MiB.
+
+\Q{Did v2 beat aria2 and the fixed settings on your synthetic server?}
+\A It beat the best fixed setting at its own range size in its training scenario and in 3 of 4 held-out ones. It does not beat aria2 or large ranges under the cap; with no cap it is far faster than aria2 (19.2\,s vs 51.9\,s), as every 1\,MiB setting is.
+
+\Q{Why compare against the best fixed setting, which no one knows in advance?}
+\A It is the strongest honest baseline: if adaptation cannot beat the setting a sensible engineer would pick, it is not worth its complexity. On the mirrors, one global setting was on average 3.7\,\% slower than the per-condition best, so knowing conditions in advance was worth little anyway.
+
+\section{Real networks}
+\Q{What about real networks? Everything is loopback.}
+\A Two real-network studies. The live pilot (four public mirrors, four time slots): one global setting, $8\times1$\,MiB, was on average 3.7\,\% [1.0, 4.8] slower than each condition's best (at most 15.3\,\%). The mirror check ran v2 and the drop rule on three mirrors: both showed no harm on 0 of 3 (point estimates 1.06--1.65); only v2 on kcdn was clearly slower (1.401 [1.102, 1.773]). Both are descriptive (one client, one primary network).
+
+\Q{Did you run the adaptive agents on real servers?}
+\A Yes, a frozen no-harm check. The first slot was lost to an outage on our own link and is reported. On the clean rerun (60 of 60 valid), no harm on 0 of 3 mirrors for both: v2 1.2--1.65$\times$ (only kcdn clearly), drop rule 1.06--1.33$\times$. The agents cut connections on uncapped servers whose throughput is noisy.
+
+\Q{Is that because v2 was not trained properly?}
+\A Partly, not mainly. The untrained drop rule failed the same way; with about 3.7\,\% selection headroom even a perfect agent had little to gain. v2 trained on uncapped episodes, but only with our loopback server's timing noise, so the mirrors were out of distribution; better training could remove the harm, not create a win.
+
+\Q{What surprised you most?}
+\A The cellular traces (massive capacity swings, almost no headroom) and that a major mirror (Tsinghua) rejects Go's default User-Agent with HTTP 403, so a stock Go downloader is locked out.
+
+\section{Novelty and value}
+\Q{What is novel here?}
+\A Not a new algorithm. The novelty is measuring \emph{when} adaptation can help at all with oracle bounds computed before training; a mechanism-explained aria2 comparison; showing engine details mattered more than any controller; exposing the request-start rate rule as the driver of large-range wins (with a live-rate control); and an honest, predeclared inventory of learned controllers with held-out tests and real-server no-harm checks. See Section~\ref{sec:novelty}.
+
+\Q{Isn't this obvious?}
+\A The framework is intuitive, but the findings were not: about 5--27$\times$ capacity swings with under 1\,\% mean oracle headroom; a 62.4\,\% gap from request timing; aria2's cap lead from two engine details; simulator headroom vanishing live; a one-rule controller capturing the real headroom.
+
+\Q{Is a negative result publishable?}
+\A Yes, with this rigour: predeclared protocols, failed gates reported as failed, reproducible numbers. It suits venues that judge soundness, such as IEEE Access. The framing is ``when does adaptive downloading help?'', not ``RL for downloading''.
+
+\Q{Is the paper submitted?}
+\A Not yet. The content is complete and number-checked; the IEEE Access template conversion and the author-provided items (author block, ORCID, funding, COI, AI-use wording, data DOI) are open.
+
+\Q{What would you do with more time?}
+\A Action spaces with delayed, changing costs (multi-mirror scheduling, restarting slow requests, hedging), live measurements at scale, noisy-server training. Each must pass a headroom gate first and beat both the best static setting and a strong myopic heuristic.
+
+\Q{Did you use AI tools?}
+\A Yes, an AI coding assistant was used to write and modify code and analysis scripts, run experiments and tests, audit results against raw data and draft text; it generated no data except by running the specified programs, and every number is recomputed from raw runs. The disclosure is in the paper's declarations; answer honestly.
+
+\section{Design choices examiners like to probe}
+\Q{Client and server run on the same laptop. Doesn't CPU contention bias the results?}
+\A It can add noise, which is why arms are interleaved in seeded random order within blocks (both arms in a block see the same machine state), heavy jobs were kept off the machine during timing-sensitive runs, and one exception (v2 Stage A under external load) is disclosed. It is listed as a limitation: one machine, loopback.
+
+\Q{Review~1 promised resume support and a fixed control interval $T$. Why were they dropped?}
+\A Resume was outside the evaluated scope (every experiment needs a fresh download). Decisions happen after each completed request instead of every $T$ seconds because the live runner decides per attempt; the DQN simulator was aligned to that cadence after a mismatch in v5. Both are listed as deviations.
+
+\Q{Why HTTP/1.1 and not HTTP/2?}
+\A Scope fixed in Review~1: one request per connection makes $N$ a clean, controllable variable. HTTP/2 multiplexing and multi-source downloading are future work.
+
+\Q{Why 8--10 blocks? How did you choose sample sizes?}
+\A The testbed is nearly deterministic, so 8--10 paired blocks give intervals far narrower than the effects of interest; screens used 3--5 blocks and are labelled screens. The v2 study used 8 blocks plus a $t$-interval sensitivity check. No formal power analysis was done; say so if asked.
+
+\Q{Why reward $-\Delta t$ and not throughput?}
+\A Completion time is the objective, and summing $-\Delta t$ over an episode gives minus the completion time (exactly with $\gamma=1$). Throughput rewards can be gamed by short bursts; Review~1 also proposed penalty terms, which LinUCB's reward kept.
+
+\Q{How was the oracle's switching cost measured?}
+\A With a separate switch-injection campaign on the replayed traces (``tau''): the extra time caused by changing $N$ at an epoch boundary, aggregated per trace and floored at zero (an earlier signed version was rejected because it let the cost-aware oracle beat the cost-free one). The oracle pays tau at every switch.
+
+\Q{What about reliability, not just speed?}
+\A On the corrected engine all 230 ablation runs had zero failed attempts, retries or wasted bytes, and transfer efficiency was 100\,\%. On the original engine, the 30\,s deadline re-downloaded up to 112\,\% of the file in one aborted capped run.
+
+\Q{Why a 512\,MiB file and a maximum of 16 connections?}
+\A 512\,MiB makes downloads long enough (tens of seconds) for a controller to act many times and for a mid-download cap at 8\,s to matter; earlier 4--16\,MiB files left the learners almost no decisions. 16 matches aria2's per-server maximum and our etiquette limit for public mirrors.
+
+\Q{Is opening 16 connections fair to other users?}
+\A Not necessarily: $N$ TCP flows take roughly $N$ shares of a shared bottleneck. We measured speed, not fairness, and list it as a limitation.
+
+\section{Hostile or tricky questions}
+\Q{You changed your title from RL to ``when does it help''. Isn't that moving the goalposts?}
+\A Review~1 already framed the project as an investigation (``whether jointly selecting $(N,S)$ provides a measurable advantage'') and said evaluation ``does not depend exclusively on successful RL convergence''. The system, scope and policies stayed as planned; the evidence changed the emphasis.
+
+\Q{Isn't comparing to the best fixed setting chosen after the fact unfair?}
+\A It is generous to fixed settings, yes, which is why we also report one \emph{global} setting (live pilot: 3.7\,\% from per-condition best) and a selector that chooses online (0.999 vs per-workload best).
+
+\Q{Your v2 win is one seed. Couldn't it be luck?}
+\A It could be partly. We selected seed 1 on validation only, disclosed before the live runs that other seeds were worse, and report the result as ``one selected seed from a procedure that is not reliably good across seeds''.
+
+\Q{Why did v2 do better live than its simulator predicted in H\_RTT110?}
+\A We do not know: 68.6\,s live vs 76.4\,s predicted, while the fixed arms ran 4\,\% slower than predicted. We report it as unexplained.
+
+\Q{If the drop rule beats v2 at home, why learn at all?}
+\A In our data a simple rule is the bar a learner has to clear. v2 beat it in 3 scenarios (two where the rule's tuning was wrong), lost in 2. Learning added robustness across cap strengths but not a clear win over a well-tuned rule.
+
+\Q{Removing the request timeout is dangerous. Would you ship that?}
+\A Not as is. A fully stalled connection would wait forever; the CLI keeps 30\,s. The right fix is a stall-based timeout (no progress for $x$ seconds), which is future work.
+
+\Q{16 connections to a public mirror is impolite.}
+\A We capped at 16 per server, left 5\,s between runs, sent an identifying User-Agent, and would abort a server on any 429/503. We note fairness as unmeasured.

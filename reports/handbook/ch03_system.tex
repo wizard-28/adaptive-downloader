@@ -1,0 +1,226 @@
+\chapter{What We Built: The System}\label{ch:system}
+The system is the \emph{instrument} for the study. It has four parts: the downloader, the control layer, the test platform, and the evidence pipeline.
+
+\section{Architecture}
+\fig{architecture.png}{0.92}{System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network; policies act only through the controllers.}
+
+\begin{itemize}
+\item \textbf{Interface layer.} Command-line programs in \code{cmd/} parse flags and build a \code{downloader.Config}. The user-facing CLI (\code{cmd/downloader}) and every experiment program use the same engine packages.
+\item \textbf{Engine layer.} The Downloader and its parts (Table~\ref{tab:components}). Each part has one job and its own tests.
+\item \textbf{Control layer.} Controllers hold the current $N$ and $S$ targets within bounds; policies decide changes. A policy only returns an action; it never touches the controllers directly.
+\item \textbf{Environment layer.} The HTTP server and the network: in experiments, our local test server plus \code{tc netem} or Mahimahi; in the live pilot, public mirrors.
+\end{itemize}
+
+\begin{table}[H]\centering
+\caption{Technology stack}\label{tab:stack}
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+\textbf{Part} & \textbf{Technology} & \textbf{Purpose}\\
+\midrule
+Downloader and test server & Go 1.27.1 (\code{net/http}, HTTP/1.1) & Concurrency with goroutines\\
+Linear algebra (LinUCB) & Gonum v0.17.0 & The only external Go dependency (zero transitive dependencies)\\
+Network conditions & Linux \code{tc netem} & Delay and packet loss on loopback\\
+Recorded cellular traces & Mahimahi (\code{mm-link}) & Replays real mobile traces\\
+External baselines & aria2 1.37.0, axel, lftp, curl, NGINX 1.24.0 & Comparison points\\
+Training and analysis & Python 3.14, PyTorch 2.9 (CPU), NumPy & DQN training, simulators, statistics\\
+Host & AMD Ryzen 5 5500U laptop (6 cores, 12 threads); Ubuntu 24.04 container on Linux 7.x & Client and server on the same machine\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{The download engine}
+\begin{table}[H]\centering
+\caption{Components and responsibilities}\label{tab:components}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Package} & \textbf{Responsibility}\\
+\midrule
+\code{rangetracker} & Splits the file into pending, in-flight and completed half-open ranges; keeps pending ranges sorted and merged; one lock makes it safe for many workers; supports splitting an in-flight range.\\
+\code{fetcher} & Sends one HTTP/1.1 Range request; rejects anything that is not a \code{206} of the expected length, or whose \code{Content-Range} (when present) does not match; dedicated transport so each connection carries one request at a time; a shrinkable end for splitting.\\
+\code{assembler} & Writes each finished range with \code{WriteAt} at its own offset, so ranges may finish in any order; the file is sized to its final length up front.\\
+\code{downloader} & Worker pool, serialized policy runner, retries with unchanged bounds, opt-in straggler splitting, opt-in removal of the request deadline.\\
+\code{concurrency}, \code{chunksize} & Bounded target controllers for $N$ and $S$.\\
+\code{policy} & The \code{Policy} interface; fixed, throughput, chunk-size, joint and online-tuner policies.\\
+\code{rl}, \code{rl/dqn} & State/action/reward contracts, LinUCB, DQN inference in Go (e.g.\ \code{NewLiveConcurrencyPolicyV6}).\\
+\code{metrics} & One record per attempt: bytes, duration, time to first byte, status; aggregates.\\
+\code{experiment} & Test server (pacing, cap, faults, live-rate mode), netem control, trace replay, runners.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\fig{classdiagram.png}{0.92}{UML class diagram. The Downloader owns its parts; every policy implements the same interface.}
+
+\subsection{Design rules (the invariants)}
+\begin{enumerate}
+\item \textbf{One request fetches one contiguous byte range.}
+\item \textbf{A range is never resized while in flight}, with one opt-in exception: a straggler split, which turns one range into two.
+\item \textbf{A failed range is retried with the same bounds}, up to \code{MaxRetries}, so offsets and accounting stay stable.
+\item \textbf{$N$ and $S$ are controlled separately.} Raising $N$ starts more workers. Lowering $N$ never cancels a running request: extra workers retire after their current range. Changing $S$ affects only ranges allocated later.
+\item \textbf{One policy decision at a time.} The policy runner holds a lock, even when many requests finish together.
+\end{enumerate}
+
+\fig{state.png}{0.85}{UML state diagram of one byte range in the RangeTracker.}
+
+\subsection{The worker algorithm}
+\fig{flowchart.png}{0.85}{Worker loop (\code{internal/downloader/worker\_pool.go}).}
+\begin{enumerate}
+\item Read the current $S$ and allocate the next range $[s, s+S)$. If nothing is left: with splitting on, try to split a straggler; otherwise stop.
+\item Send \code{GET} with \code{Range: bytes=$s$-$(s+S-1)$}.
+\item Record one metrics entry and pass it to the policy runner, which may change $N$ or $S$.
+\item On a full-length \code{206}, write at offset $s$ and mark the range complete; otherwise retry the same range.
+\end{enumerate}
+
+\subsection{Straggler splitting (added after Review~2's audit)}
+When the tracker has nothing left to allocate, an idle worker picks the in-flight range with the most unreceived bytes. If $b$ bytes of $[s,e)$ have arrived, the unreceived remainder is $r = e-(s+b)$. If $r \ge 2$\,MiB (so each half is at least 1\,MiB and worth a new request), the original request's end is moved to
+\begin{equation}
+m = s + b + \left\lfloor r/2 \right\rfloor,
+\end{equation}
+and the idle worker fetches $[m, e)$ itself. Bytes already received stay with the original request. The client discards nothing it received; the server logs the cut-off tail as an aborted request, which is not waste. Splitting is \emph{off by default} (\code{SplitStragglers}), so every earlier result is unchanged.
+
+\subsection{The request deadline}
+The original engine put a 30\,s deadline on each whole request. On the capped server, a 32\,MiB range can take longer than 30\,s while still making progress, so the deadline aborted it and it restarted from zero: up to 112\,\% of the file was downloaded again. The option \code{NoRequestTimeout} removes the deadline. A stalled connection would then wait until the run limit; a stall-based timeout is future work. The CLI still uses 30\,s.
+\fig{waste.png}{0.8}{Extra bytes re-downloaded under the original 30\,s whole-request timeout (capped server, 32\,MiB ranges).}
+
+\section{The control layer}
+\subsection{The policy interface}
+Every controller, from a fixed setting to a DQN agent, implements one Go interface:
+\begin{lstlisting}[language=Go]
+type Policy interface {
+    // sees N, S, recent throughput, latency and request counts
+    SelectAction(ctx Context) Action
+    Update(ctx Context, action Action, reward float64)
+}
+// Actions: none, +/- concurrency, +/- chunk size (an action may carry a step count)
+\end{lstlisting}
+The \code{Context} holds: current $N$ and $S$; windowed \emph{per-request} throughput (bytes over request durations for the last window of attempts, roughly independent of $N$); windowed \emph{aggregate} throughput (bytes of the last window of attempts over their wall-clock span, sensitive to $N$); last request duration; mean time to first byte; and success, failure, retry and attempt counters.
+
+\begin{doubt}[Per-request vs aggregate throughput]
+Per-request throughput tells you how fast \emph{one} request goes: it drops when a cap starts, so it is what the drop rule watches. Aggregate throughput tells you how fast the \emph{whole download} goes. Over a window of 4 attempts the aggregate figure barely changes above $N=4$; that mismatch is one reason the frozen v6 agent could hardly ``see'' extra connections, and why the cap-trained agents use a window of 16.
+\end{doubt}
+
+\subsection{Rule-based controllers}
+\begin{itemize}
+\item \textbf{Fixed:} constant $(N, S)$.
+\item \textbf{Throughput rule:} compares recent per-request throughput $T_{\text{now}}$ (over a window of recent attempts: 4 in Track~1; the engine falls back to 8 if none is set) with the value at the previous decision:
+\begin{equation}
+\Delta = \frac{T_{\text{now}} - T_{\text{prev}}}{T_{\text{prev}}},\qquad
+\text{action} = \begin{cases}\text{increase } N \text{ (or } S) & \Delta \ge 0.10\\ \text{decrease } N \text{ (or } S) & \Delta \le -0.10\\ \text{none} & \text{otherwise.}\end{cases}
+\end{equation}
+The joint version alternates between $N$ and $S$.
+\item \textbf{Causal drop controller (``drop rule'').} Tracks the running maximum of the median of the last $k$ per-request throughputs; the first time the median falls below half that maximum, it switches \emph{once} to a preset target and stays. On the capped-server studies the target was $(4, 4\,\text{MiB})$ joint, $(4, 1\,\text{MiB})$ $N$-only or $(16, 4\,\text{MiB})$ $S$-only; the later $N$-only drop rule uses $k=3$, ratio 0.5, capped $N=4$ (``C=8-tuned'', because 4 suits a cap of 8\,MiB/s).
+\item \textbf{Workload selector.} Starts at $16\times1$\,MiB, watches per-request throughput for the first 20 samples, classifies the server as capped or not by a predeclared threshold, then moves once to that class's predeclared target.
+\item \textbf{Online tuner (FastBioDL-style re-implementation).} Every $\Delta t = 2$\,s it measures aggregate throughput $T$ (bytes completed in the window over $\Delta t$) and scores $U = T/K^N$ with $K=1$, so $U=T$. If $U$ is at least 5\,\% worse than the previous window it reverses direction and halves its step; otherwise it keeps going. Starts at $N=4$ with step 4, within $[1,16]$; $S$ untouched.
+\end{itemize}
+
+\subsection{Learned controllers}
+\begin{itemize}
+\item \textbf{LinUCB}: 5 actions (none, $\pm N$, $\pm S$); 10 normalised features ($N$, $S$, per-request and aggregate throughput, request duration, bytes, success/failure/retry/attempt counts); reward combining aggregate throughput and its change minus penalties for duration, retries, failures and actions.
+\item \textbf{Double DQN} (v1--v6, then the cap-trained v1, joint, v2): every version has a 13-feature state; Table~\ref{tab:features} is the v6 / cap-trained layout (v1--v4 and the joint agent use \code{state.py}, with range-size features instead of the last two; v5 has its own layout). v2 and v3 acted on both $N$ and $S$; from v4 on, $N$ only, with $S$ fixed at 1\,MiB (v2 fragmented ranges into 32--128\,KiB pieces; v3's simulator rewarded large ranges the real server did not). The joint agent of the later study added $\pm4$\,MiB range actions (1--33\,MiB).
+\end{itemize}
+
+\begin{table}[H]\centering\small
+\caption{The 13 DQN state features of v6 and the cap-trained agents (\code{python/rl/state\_v6.py})}\label{tab:features}
+\begin{tabularx}{\linewidth}{@{}rlL@{}}
+\toprule
+\# & \textbf{Feature} & \textbf{Meaning}\\
+\midrule
+1 & \code{concurrency\_norm} & current $N$, normalised\\
+2 & \code{remaining\_bytes\_frac} & remaining bytes / total\\
+3 & \code{aggregate\_throughput\_norm} & current aggregate throughput / scale\\
+4 & \code{aggregate\_throughput\_ewma\_norm} & EWMA of aggregate throughput\\
+5 & \code{aggregate\_throughput\_slope} & change since previous observation\\
+6 & \code{aggregate\_throughput\_volatility} & EWMA of $|\Delta|$\\
+7 & \code{request\_duration\_norm} & request duration / scale\\
+8 & \code{request\_duration\_slope} & change in duration\\
+9 & \code{recent\_failure\_rate} & failures / attempts in the window\\
+10 & \code{recent\_retry\_rate} & retries / attempts in the window\\
+11 & \code{since\_concurrency\_change\_norm} & time since the last effective $N$ change\\
+12 & \code{recent\_completed\_norm} & completed requests in the window / window size\\
+13 & \code{throughput\_improvement} & signed relative throughput change, in $[-1,1]$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{The test platform}
+\subsection{The paced test server}
+Our own Go server serves a 512\,MiB object with deterministic content (verifiable byte for byte), honours Range requests, and paces every response. Three rules define it:
+\begin{enumerate}
+\item \textbf{Request-start rate rule:} each response is sent at the server's rate \emph{at the moment the request arrives}, and keeps that rate until it finishes.
+\item A schedule changes the rate at fixed wall-clock times; a change affects only requests that start afterwards.
+\item Without the cap, rates are per response with no shared limit, so more connections add bandwidth.
+\end{enumerate}
+\fig{schedule.png}{0.8}{Reference schedule D2: 640\,KiB/s, a dip to 160\,KiB/s from 2\,s to 4\,s, then 2{,}500\,KiB/s. A request that starts in the first 4\,s keeps its slow rate.}
+
+\subsection{The soft concurrency cap}
+To create a case where the best setting changes, we added a cap. When a request arrives, let $k$ be the number of active requests \emph{including} the new one; the new request gets
+\begin{equation}\label{eq:cap}
+\text{rate} = \min\!\left(\text{base},\; \frac{C}{k\,\bigl(1+\gamma\,(k-1)\bigr)}\right),\qquad C = 8~\text{MiB/s},\ \gamma = 0.05 .
+\end{equation}
+If all $k$ requests ran at that rate the total would be $C/(1+\gamma(k-1))$, which \emph{falls} as $k$ grows: about 7.3\,MiB/s at $k=3$ but 4.6\,MiB/s at $k=16$ (Figure~\ref{fig:cap_curve.png}). It imitates a server that shares a budget across a client's connections and penalises many parallel ones. $C$ and $\gamma$ were chosen during design from an exploratory screen of 27 (schedule, cap) pairs, of which exactly one passed the selection rule (the later six-workload family was chosen from 72 analytic candidates); this is a constructed environment and we always say so.
+\fig{cap_curve.png}{0.85}{The soft cap: a new request's rate and the implied total, against the number of active requests.}
+
+\begin{keyidea}[The request-start rule drives two headline results]
+Because a request keeps the rate it had on arrival: (1) on D2, aria2's large pieces all start during the slow phase and stay slow, while our small ranges keep starting after the speed-up (the 62.4\,\% result); (2) under CAP8, $16\times32$\,MiB starts all its ranges \emph{before} the cap and keeps the fast rate for their whole length, which a 1\,MiB agent cannot copy (Figure~\ref{fig:arrival_rule.png}). The \textbf{live-rate} server mode, added for the joint study, re-evaluates each response's rate during the response from the current $k$. On it, fixed $16\times32$\,MiB under the cap slowed from 50.9\,s to 67.4\,s.
+\end{keyidea}
+\fig{arrival_rule.png}{0.95}{Schematic of the arrival-time rule under CAP8.}
+
+\begin{table}[H]\centering\small
+\caption{Server scenarios used throughout}\label{tab:scenarios}
+\begin{tabularx}{\linewidth}{@{}P{3.4cm}L@{}}
+\toprule
+\textbf{Scenario} & \textbf{Server behaviour}\\
+\midrule
+D2 (paced) & 640\,KiB/s; 160\,KiB/s from 2\,s; 2{,}500\,KiB/s from 4\,s; per response\\
+HEALTHY / ``no cap'' / t1 & 640\,KiB/s rising to 2{,}500\,KiB/s from 1\,s; no cap\\
+CAP0 & HEALTHY plus the soft cap from the start\\
+CAP8 & HEALTHY with the cap switching on at 8\,s\\
+Held-out (v1 study) & cap $C=16$\,MiB/s; 80\,ms each way; the three-phase d2 schedule\\
+Held-out (v2 study) & H\_C12 ($C=12$ from 6\,s); H\_RTT110 (110\,ms each way, cap from 12\,s); H\_DIP (cap from 6\,s + a dip 30--40\,s); H\_C20 ($C=20$ from 4\,s, 20\,ms each way)\\
+Pacing sweep S0--S5 & Six variants of D2 (Table~\ref{tab:sweep})\\
+Stock NGINX N1, N2 & \code{limit\_rate 640k}; \code{limit\_rate\_after 1m} + \code{limit\_rate 640k}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The server also injects faults (error statuses, failing ranges, delayed headers), used in failure-handling tests.
+
+\subsection{Network emulation, trace replay, live runner}
+\begin{itemize}
+\item \textbf{netem}: applied and removed by the harness; each run records whether shaping actually applied (silent netem failures were an early engineering problem); runs where it did not are excluded and reported.
+\item \textbf{Mahimahi}: \code{mm-link} replays five cellular traces; \code{cmd/mm-replay} and \code{cmd/oracle} drive it.
+\item \textbf{Live runner} (\code{cmd/live-pilot}): reads a manifest of servers, files and checksums; runs fixed cells, aria2, curl and (later) policy arms (\code{dqn6}, \code{drop}) in seeded random order; enforces etiquette (identifying User-Agent, $\le 16$ connections per server, 5\,s gap between runs, abort a server after any \code{429}/\code{503}); writes one JSONL record per run with a 100\,ms throughput timeline.
+\end{itemize}
+
+\section{The simulators}
+DQN agents are trained in simulation (thousands of episodes would take months live). The simulators are event-driven models of the download:
+\begin{itemize}
+\item \code{sim\_env\_v5}, \code{sim\_env\_v6}: earlier simulators. v6 had \emph{no} arrival-time cap, and its aggregate-throughput observable did not match the live runner's, which is why the frozen v6 agent did badly on the capped server.
+\item \code{sim\_env\_cap.py}: the capped-server simulator. It copies the live runner's measurements (window 16), models the cap at request arrival, and draws per-request server excess and client overhead from live request logs (completion times were \emph{not} used for calibration). For v2 it interpolates calibration across four delays (20, 40, 80, 120\,ms) and four rate classes.
+\item Each simulator was checked \emph{blind}: predictions for fixed settings were written down before the live runs (Chapter~\ref{ch:method}).
+\end{itemize}
+
+\section{The evidence pipeline}
+\begin{itemize}
+\item Every run writes a JSON record (fields vary by harness): typically \code{run\_id}, system, config, \code{completion\_ms}, output SHA-256 and \code{content\_verified}, and per-request logs; the main benchmark records also hold coverage checks and \code{netem\_status}.
+\item The later studies (from the pacing sweep on) have a \code{protocol.md} frozen before any run, a manifest with the run list and seed, raw run records and an \code{analysis/} folder; earlier folders vary in layout.
+\item \code{tools/claims\_check.py} recomputes every number in the paper from the raw records (220 of 220 pass) and scans the paper for unverified numeric tokens (0). Its self-test (9 of 9) shows it rejects deliberately wrong numbers.
+\end{itemize}
+
+\section{Testing}
+The Review~2 count was 549 automated Go test functions in 29 packages; more were added since (live-pilot policy arms, live-rate server, cap/joint DQN parity tests). No test needs internet access: each starts its own local server. Tests needing root, \code{tc} or Mahimahi skip themselves when unavailable.
+\begin{table}[H]\centering\small
+\caption{Verification commands}\label{tab:verify}
+\begin{tabularx}{\linewidth}{@{}lL@{}}
+\toprule
+\textbf{Command} & \textbf{Result}\\
+\midrule
+\code{go build ./...}, \code{go vet ./...}, \code{gofmt -l} & clean\\
+\code{go test ./...} & all pass\\
+\code{go test -race ./...} & no data races\\
+\code{go test -count=5 ./...} & pass (one load-sensitive trace test failed once under heavy load, passed 11 reruns)\\
+\code{pytest python/tests} & pass\\
+\code{python3 tools/claims\_check.py} & 220 of 220 numbers; 0 unverified tokens\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\textbf{Parity tests}: a Go test checks that Go inference of each exported DQN model matches Python inference on fixtures (\code{internal/rl/dqn/cap\_candidate\_parity\_test.go}); it must pass before any live run of that model.

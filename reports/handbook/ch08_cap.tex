@@ -1,0 +1,96 @@
+\chapter{Results III: The Capped Server, Adaptive Control and the Engine}\label{ch:cap}
+Since no screened mechanism offered an opportunity, we \emph{constructed} one: the soft concurrency cap (Equation~\ref{eq:cap}). Under it, too many connections cost something, and if the cap switches on mid-download, the best setting changes during the download.
+
+\section{The live mechanism gate (Failed gate, 5 of 6 checks passed)}
+Family: healthy server vs capped server ($C=8$\,MiB/s, $\gamma=0.05$). Stationary optima: $(16, 1\,\text{MiB})$ healthy vs $(4, 4\,\text{MiB})$ capped. Six predeclared checks:
+\begin{itemize}
+\item $N^*$ moved $16\to4$ and $S^*$ moved $1\to4$\,MiB (N-margin 5.75\,\%, just above its 5\,\% bar);
+\item cross-state penalties were material: +31.8\,\% using the healthy optimum under the cap; +254.4\,\% using the capped optimum when healthy;
+\item \textbf{the local $S$-margin was 3.74\,\%} (95\,\% bootstrap [3.09\,\%, 4.45\,\%], after four extra replicates) against 5\,\%: \textbf{failed}, and the criterion was not changed.
+\end{itemize}
+Three high-$N$/large-$S$ capped cells aborted at the 30\,s request timeout and are kept as invalid. The adaptive runs on this platform are therefore \emph{exploratory} for the $S$-side mechanism.
+
+\section{Workload selection}
+\subsection{Two workloads (P1)}
+Selector: probe at $(16, 1\,\text{MiB})$, classify after $\ge20$ samples, apply the predeclared $(N,S)$, no further switching. Live, 10 blocks per workload:
+\begin{itemize}
+\item healthy: 19.1\,s vs fixed $(16,1\text{M})$ 19.0\,s ($R=1.006\,[0.931, 1.082]$); vs aria2 53.9\,s ($R=0.353$, 10/10);
+\item capped: 84.2\,s vs fixed $(16,1\text{M})$ 115.3\,s ($R=0.730$, 10/10); vs aria2 68.3\,s ($R=1.232$, 0/10: aria2 faster).
+\end{itemize}
+
+\subsection{Six-workload family W1--W6 (Descriptive)}
+Six predeclared workloads (W1 healthy; W2--W6 cap/schedule/transition variants) were chosen by a predeclared rule from 72 analytic candidates (13 qualified). Two amendments were made after design output and before any live run; the first manifest was overwritten. Live validation: 5 of 6 model optima matched; \textbf{W5 mismatched} (live argmin $(16,16\text{M})$ 85.4\,s; the model's target $(4,4\text{M})$ 95.9\,s). 10 paired blocks per workload, 240 runs, 0 invalid.
+
+\begin{table}[H]\centering\small
+\caption{Selector across W1--W6}\label{tab:w16}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Selector vs \dots} & \textbf{Pooled ratio} & \textbf{Block CI} & \textbf{Workload-level CI} & \textbf{Blocks won}\\
+\midrule
+per-workload best fixed & 0.999 & [0.969, 1.029] & [0.873, 1.143] & 24/60\\
+family-best single fixed $(4,4\text{M})$ & 0.770 & [0.684, 0.859] & [0.455, 1.304] & 40/60\\
+aria2 & 1.660 & [1.360, 1.990] & [0.707, 3.901] & 10/60\\
+\bottomrule
+\end{tabular}
+\end{table}
+The workload-level interval is primary (the unit of generalisation is the workload) and includes 1 for all three. The 0.770 is driven by W1 (0.286); over W2--W6 the geometric mean is 0.94 and the selector loses on W5 (1.058) and W6 (1.090). W4's 0.808 against its per-workload best is probe-phase timing (the selector runs the fast config until the cap appears), not better selection.
+\fig{fig2_six_workload_selector.png}{0.9}{Selector ratios per workload; the shaded band is the workload-level 95\,\% interval.}
+
+\section{Within-download adaptation (P2): 23.4\,\% less time (Confirmed on the original engine)}
+Schedule: no cap on $[0, 8\,\text{s})$, cap from 8\,s. Controller: the causal drop rule, switching once to a predeclared target. 10 paired blocks, 0 invalid.
+\begin{itemize}
+\item \textbf{Causal joint} (target $(4,4\text{M})$): 58.7\,s vs the best of the three stationary configurations run, $(16,1\text{M})$ 76.7\,s: $R=0.766\,[0.762, 0.769]$, 10/10 (23.4\,\% less time). The comparison set was $\{(16,1\text{M}), (4,1\text{M}), (4,4\text{M})\}$; no full grid was run under this schedule.
+\item \textbf{Ablation:} $N$-only 62.0\,s ($R=0.808$); joint vs $N$-only 0.947; \textbf{$S$-only 82.1\,s, worse than not switching} (1.070, 0/10). The $N$ move carries the gain.
+\item \textbf{aria2 was faster:} 53.6\,s vs 58.7\,s ($R=1.096$, 0/10).
+\end{itemize}
+\fig{fig3_within_download_controller.png}{0.85}{P2 completion times (10 blocks).}
+
+\section{The engine ablation: why aria2 led under the cap (Confirmed)}
+An audit (24 Oct) found two engine differences between our downloader and aria2: (a) a 30\,s whole-request deadline that aborts large ranges that are slow but progressing; (b) no straggler splitting. Both were made opt-in (\code{NoRequestTimeout}, \code{SplitStragglers}) and tested in a predeclared ablation: CAP0, CAP8, HEALTHY, D2 $\times$ 10 shuffled blocks, \textbf{230 runs, all valid}, zero failed attempts, retries or wasted bytes on the client side.
+\fig{ablation.png}{0.92}{Completion time before and after the engine fix, and aria2.}
+\begin{itemize}
+\item \textbf{Splitting was the main cause.} CAP0: $16\times32$\,MiB with splitting took 40\,\% less time ($R=0.599\,[0.598, 0.601]$) and matched aria2 (68.2\,s vs 68.5\,s, $R=0.995\,[0.992, 0.999]$, detectable but negligible).
+\item \textbf{Large ranges need the deadline removed.} CAP8: $16\times32$\,MiB without the deadline took $0.711\,[0.703, 0.719]$ of the earlier best fixed (16$\times$1\,MiB) and was within 1.6\,\% of aria2 (54.4\,s vs 53.5\,s, $R=1.016\,[1.006, 1.029]$).
+\item \textbf{No harm elsewhere.} HEALTHY and D2: corrected vs original engine not distinguishable (0.981, 0.995); ours still far faster than aria2 there (0.344, 0.370).
+\item \textbf{Adaptation against the corrected baseline.} The causal controller replicated against its original set (0.767) but was \textbf{slower than the best fixed setting on the corrected engine}, $16\times32$\,MiB: $R=1.071\,[1.054, 1.085]$. Under CAP0 the selector was slower than $16\times32$\,MiB: 1.229.
+\end{itemize}
+\fig{adaptive.png}{0.9}{Adaptive controllers against the best fixed setting on the corrected engine.}
+
+\begin{keyidea}[Engine before policy]
+On our server models, two engine details (timeout semantics and straggler splitting) mattered more than any adaptive policy. The earlier +23.4\,\% holds only against small-range fixed settings on the original engine; we report both.
+\end{keyidea}
+
+\section{Online concurrency tuner (prior-work re-implementation)}
+FastBioDL-style tuner (Chapter~\ref{ch:system}); predeclared protocol; CAP8 and HEALTHY $\times$ 4 arms (tuner, fixed $16\times1$\,MiB, fixed $4\times1$\,MiB, aria2) $\times$ 8 blocks; 64 of 64 valid; corrected engine. The tuner keeps $S=1$\,MiB, so it is compared with fixed settings at the same range size; under CAP8, $16\times32$\,MiB (54.4\,s, engine ablation) was faster still.
+\begin{table}[H]\centering\small
+\caption{Online tuner (ratios tuner/other)}\label{tab:tuner}
+\begin{tabular}{@{}lrlccr@{}}
+\toprule
+\textbf{Scenario} & \textbf{Tuner (s)} & \textbf{Better fixed 1\,MiB arm (s)} & \textbf{vs best fixed} & \textbf{vs aria2} & \textbf{Final $N$}\\
+\midrule
+CAP8 & 93.1 & $16\times1$\,MiB, 76.8 & 1.212 [1.180, 1.248] & 1.781 & 12.5\\
+HEALTHY & 22.5 & $16\times1$\,MiB, 18.4 & 1.220 [1.203, 1.232] & 0.432 & 16\\
+\bottomrule
+\end{tabular}
+\end{table}
+It cut $N$ 2.1\,s after the cap (the causal controller 1.5\,s), but needed 8.1\,s to climb from $N=4$ to 16 with no cap, and that ramp is where most of its loss occurs.
+\fig{tuner.png}{0.82}{Online tuner against fixed settings and aria2.}
+
+\section{Adaptation speed}
+\begin{table}[H]\centering\small
+\caption{Adaptation speed (median seconds, range over runs)}\label{tab:adapt}
+\begin{tabularx}{\linewidth}{@{}llLrr@{}}
+\toprule
+\textbf{Controller} & \textbf{Scenario} & \textbf{Measured} & \textbf{Seconds} & \textbf{Runs}\\
+\midrule
+Causal drop controller & CAP8 & first $N$ cut after the cap & 1.52 [1.49, 1.74] & 10\\
+Online tuner & CAP8 & first $N$ cut after the cap & 2.14 [2.06, 2.32] & 8\\
+Workload selector & CAP0 & first move (classification) & 3.99 [3.98, 4.25] & 10\\
+Online tuner & HEALTHY & climb from $N=4$ to 16 & 8.08 [8.00, 8.25] & 8\\
+\bottomrule
+\end{tabularx}
+\end{table}
+Every controller reacted within a few seconds, so \emph{slow reaction is not why adaptation failed to pay}. The limit is what reacting can gain.
+
+\section{Why does $16\times32$\,MiB win under the cap?}
+Under CAP8, $16\times32$\,MiB starts all 16 ranges before the cap at 8\,s, so every range keeps the pre-cap rate for its whole length (the request-start rule). Under CAP8 splitting adds almost nothing (54.43\,s without, 54.37\,s with); splitting was decisive under CAP0, where ranges start under the cap. A 1\,MiB controller, however clever, starts almost every request after the cap and gets the capped rate (Figure~\ref{fig:arrival_rule.png}). This is a property of our server model; the live-rate control server (Chapter~\ref{ch:learned}) confirms it: there, $16\times32$\,MiB slowed from 50.9\,s to 67.4\,s.

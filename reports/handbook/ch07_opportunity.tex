@@ -1,0 +1,68 @@
+\chapter{Results II: Searching for an Adaptation Opportunity}\label{ch:opportunity}
+After the D2 result, the natural question was: \emph{is there any condition where changing $N$ or $S$ during a download beats the best fixed setting?} We searched systematically. Almost everything came back negative, and each negative result is informative.
+
+\section{Rule-based adaptation on D2 (Track 1)}
+Live, 20 blocks $\times$ 4 modes (fixed, $N$-only, $S$-only, joint heuristics), 80 of 80 valid. The joint heuristic took $\mathbf{2.316}\times$ as long as the best fixed setting ($R=2.316\,[2.302, 2.329]$, 0 of 20 wins), though it was still faster than frozen aria2 (0.876). The heuristics adapt, but adapting costs more than it gains on D2. Outcome label: ``beats aria2 only''.
+
+\section{Mechanism screens}
+\begin{table}[H]\centering\small
+\caption{Screens that looked for a state-dependent optimum (all closed before policy work)}\label{tab:screens}
+\begin{tabularx}{\linewidth}{@{}P{4.4cm}P{2.0cm}L@{}}
+\toprule
+\textbf{Screen} & \textbf{Type} & \textbf{Result}\\
+\midrule
+Static rate + RTT (S-protocol v7, Stage 0S, scaling) & Live pilot + analysis & Range size has a real service-cost effect (Stage 0S GO, 32 of 32 runs) but every frozen switch had non-positive headroom (best exploratory +0.35\,\% vs 5\,\% bar)\\
+S mechanism pivot (8 Mahimahi + 23 throughput traces, 4 service models) & Analytical & No robust causal opportunity; only a fragile clairvoyant gain\\
+Adaptive-$N$ mechanisms (eight candidate models, incl.\ direct, fair, fair+background, cap, degrade) & Analytical & $\ge5$\,\% causal gain only in the \code{degrade} model (up to +6.66\,\%), which live grounding rejected\\
+Joint N+S under phase pacing & Analytical (calibrated to D2, 40/40 configs within 3\,\%) & $N^*=16$ everywhere; best causal bound +3.4\,\% (oracle-tuned ramp +3.7\,\%) vs 5\,\% bar; the primary one-switch causal controllers lost 16--28\,\%\\
+Shared bottleneck + \code{iperf3} background traffic & Live, 45 runs & No interior $N$ optimum: flat in the light states (margins $<5$\,\%), and under heavy contention $N=16$ won by a lot\\
+Correlated loss + range retry (Gilbert--Elliott) & Analytical & $N^*=16$ in 9 of 9 variants. An earlier ``$S$ fragile'' reading was an artefact of a modelled 30\,s request deadline: without it $S^*=16$\,MiB in all 9, no failures\\
+Per-request server throttling (T1) & Live & No concurrency reversal at equal 1\,MiB granularity\\
+Adaptive range size across server phases (T2) & Live & Monotone toward the largest range; no reversal\\
+Failure-based $N$-dependent throttling & Analytical & An abort cliff, not a tunable optimum\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{keyidea}
+\textbf{Conclusion of the screens:} within-download adaptation needs a mechanism whose optimum moves in $N$ and $S$ and is causally observable. None was found in the screened mechanisms other than the constructed soft cap of Chapter~\ref{ch:cap}. The screens searched a space of server behaviours (72 cap candidates alone), so results in the capped chapters are \emph{existence demonstrations in a selected environment}, not prevalence estimates.
+\end{keyidea}
+
+\section{Recorded cellular traces: the oracle gate (Confirmed; Failed gate)}
+Five recorded driving traces (Verizon EVDO and LTE, AT\&T LTE, T-Mobile LTE and UMTS) were replayed through \code{mm-link}. Capacity in the Mahimahi traces swings about 5--27$\times$ (p90/p10). A per-trace counterfactual oracle, with switching costs (``tau'') measured in a separate injection campaign, estimates how much faster switching $N$ at 120\,s epoch boundaries (ladder 1$\leftrightarrow$2$\leftrightarrow$4$\leftrightarrow$8$\leftrightarrow$16) could be than the best fixed $N$.
+
+\begin{table}[H]\centering\small
+\caption{Oracle headroom per trace (\code{testdata/final\_oracle\_analysis})}\label{tab:oracle}
+\begin{tabular}{@{}lrlr@{}}
+\toprule
+\textbf{Trace} & \textbf{Best fixed (s)} & \textbf{Best $N$} & \textbf{Headroom $H$}\\
+\midrule
+Verizon EVDO & 543.98 & 8 & 1.641\,\%\\
+Verizon LTE & 68.52 & 16 & 0.019\,\%\\
+AT\&T LTE & 53.18 & 4 & 0.016\,\%\\
+T-Mobile LTE & 12.17 & 4 & 0.061\,\%\\
+T-Mobile UMTS & 173.11 & 2 & 0.294\,\%\\
+\midrule
+Mean & & & 0.406\,\%\\
+One-sided 95\,\% lower bound ($n=5$, df $=4$) & & & $-0.26$\,\%\\
+Predeclared bar & & & 10\,\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+\fig{oracle.png}{0.85}{Oracle headroom per trace against the 10\,\% bar.}
+
+\begin{doubt}[``Capacity changes 27$\times$ and there is no headroom? How?'']
+On one bottleneck path, the best $N$ is roughly ``enough connections to fill the pipe''. When capacity drops, every setting slows down together; the \emph{same} $N$ stays about best. Adaptation pays only if the \emph{best setting moves}, not if the speed moves. The oracle measures exactly that, and it found the best setting barely moves. Hence: \textbf{variability is not opportunity.}
+\end{doubt}
+
+\begin{careful}
+This is trace \emph{replay} on a controlled host under a frozen counterfactual model, not measurement on live mobile networks. And an oracle is not a policy: the bound applies to any concurrency-switching policy \emph{under that model}.
+\end{careful}
+
+\section{Simulated headroom that was not real (L2--L4)}
+Before retraining DQN (``v7''), three environment designs were tested for headroom in the simulator:
+\begin{itemize}
+\item L2: headroom $-0.3$\,\%; L3: 8.1\,\% ($<10$\,\% gate, stop).
+\item L4: \textbf{17.6\,\%} simulated headroom (best static $C16 = 174.0$\,s vs an action-constrained oracle 143.4\,s), passing the 10\,\% gate. But a small live sweep showed that high concurrency is \emph{not} penalised live (degraded regime: C16 3.57\,MiB/s, the fastest). The headroom came from a simulator-only mechanism. Also, the phases where C16 was worse carried 47.1\,\% of bytes, just under a predeclared $\ge50$\,\% rule (strictly, \code{NOT\_READY\_PHASE\_WEIGHTING}). Outcome: \code{NOT\_READY\_LIVE\_MISMATCH}; another training iteration was not justified.
+\end{itemize}
+\textbf{Lesson:} simulator headroom must be confirmed live before training on it. This is why every later simulator was checked blind against live runs.

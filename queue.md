@@ -71,6 +71,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   (finding 7) added; v2 pending
 - [x] Demo run end to end and timed (`reports/thursday/demo.md`): about
   2.5 min in all; every step OK
+- [x] Team handbook (`reports/handbook/`, LaTeX → `handbook.pdf`, 93 pp.):
+  every study, method, novelty, per-member work division (from Review 2;
+  the Review 1 docx has none), viva Q&A, demo guide. Three Opus fact-checks
+  (~810 claims); all findings fixed before commit
 - [ ] Rehearse the hardest questions: generalization, "tuned to the test",
   why no range-size action, aria2 gap, wget2 exclusion, IEEE status
 

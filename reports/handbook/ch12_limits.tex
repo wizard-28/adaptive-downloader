@@ -1,0 +1,30 @@
+\chapter{Limitations and Threats to Validity}\label{ch:limits}
+Know these by heart: an examiner who finds a limitation you already state loses the point.
+
+\begin{enumerate}
+\item \textbf{Constructed environment.} The positive adaptive results hold under a server model we designed and selected (72-candidate search). They show conditions under which adaptation can help, not that real servers behave this way.
+\item \textbf{Request-start rate semantics} drive both the D2 mechanism and the large-range advantage under the cap. The live-rate control confirmed the cap case (50.9\,s $\to$ 67.4\,s).
+\item \textbf{One machine, loopback + netem, one aria2 version (1.37.0)} for every controlled result. Client and server share a laptop.
+\item \textbf{Real paths only in descriptive studies:} the live pilot (one client, one primary network, plus one accidental slot on a second; fixed cells only) and the mirror check (three mirrors, one evening, 5 blocks). Not a validation across networks.
+\item \textbf{Stock servers:} only the NGINX per-response screen ($n=5$), which exercises neither a shared cap nor a connection limit. The adaptive results have no stock-server counterpart.
+\item \textbf{Traces are replayed}, not live mobile networks; the oracle bound holds under a frozen counterfactual model.
+\item \textbf{Learned-policy generalization is narrow:} v2 holds inside its training ranges, for one seed selected on validation from a procedure not reliably good across seeds, and only against fixed settings at the same range size.
+\item \textbf{Engine before policy:} earlier adaptive results (P1, P2, W1--W6) were measured on the original engine. Removing the deadline means a fully stalled connection would wait for the run limit; a stall-based timeout is future work.
+\item \textbf{Statistics:} block-level intervals reflect emulator noise; workload-level intervals are primary for family claims; $n=5$ screens are screening only; no multiplicity correction was applied across the many comparisons.
+\item \textbf{Multiplicity and amendments:} W1--W6 was selected from 72 analytic candidates and amended twice before live runs; protocols are predeclared and hashed but not independently timestamped.
+\item \textbf{One configuration per controller}, fixed before its runs; other parameters might do better, though the small headroom limits how much.
+\item \textbf{Fairness:} 16 connections take more of a shared link and load public mirrors more; we measured speed, not fairness.
+\item \textbf{Two learner families} (LinUCB, Double DQN). No PPO; no model-based control beyond the gated system-identification attempt (which was not RL).
+\item \textbf{Unexplained residuals:} ours is 14\,\% faster than aria2 even with matched granularity, and faster at constant fast pacing; v2 beat its simulator prediction by 10\,\% in H\_RTT110 (fixed arms 3--4\,\% slower than predicted). We say these are unexplained.
+\end{enumerate}
+
+\section{Incidents we disclose}
+\begin{itemize}
+\item \textbf{Mirror slot M1} lost to a client-side outage; reported, not used; a link gate added for M2.
+\item \textbf{Live pilot}: an internet drop (re-run in full), the Tsinghua 403, and the accidental second network.
+\item \textbf{Joint study}: the first training run was undertrained (ended at $\varepsilon\approx0.75$); retrained by amendment, not evaluated.
+\item \textbf{v1 study Stage D}: the protocol said 80 runs; 65 were run (an arithmetic slip, amendment A1).
+\item \textbf{Checker incident}: during the final paper update the claims checker briefly truncated four committed analysis files on disk (they were committed empty, then restored byte-identical from the previous commit, and the checker was fixed). No results changed.
+\item \textbf{Frozen analysis scripts} used a fixed $t=2.045$ for every $n$ and once a normal 1.96; the paper reports corrected intervals; the frozen artifacts were not modified.
+\item \textbf{Early wording}: ``40\,ms RTT'' was wrong (it is 40\,ms each way, 80\,ms RTT); corrected.
+\end{itemize}

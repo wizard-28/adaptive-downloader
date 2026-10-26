@@ -7384,6 +7384,29 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.110 Team handbook (2026-10-26, COMPLETE)
+
+`reports/handbook/handbook.tex` → `handbook.pdf` (93 pages, LaTeX, pdflatex):
+a study guide for the viva and presentation covering background, system,
+method, timeline and reviews, all results (incl. the post-review studies),
+novelty, limitations, ~70 viva Q&As, the demo, a glossary, a numbers cheat
+sheet and an inventory of every `testdata/` folder. New figures are drawn by
+`reports/handbook/make_figs.py` from committed analysis JSON; others are
+copied from reports/review2, review3 and ieee_access. Work division is the
+Review 2 "Individual Contribution" table (the Review 1 docx has no
+per-member table). Three independent fact-check passes (~810 claims) found
+wrong facts and overclaims that were fixed before commit; notable
+corrections also relevant elsewhere:
+- `reports/thursday/demo.md` says 8×1 MiB was "within 3.7 %" of the best:
+  it was *on average* 3.7 % slower (11/16 within 5 %, max 15.3 %).
+- `reports/ieee_access/README.md` lists Mahimahi/trace/LinUCB/DQN/netem
+  citations as unresolved; `reports/references.md` shows them verified
+  2026-10-18. Liu 2018 and Swargo & Arifuzzaman (elastic) remain unresolved
+  and are cited only in the reviews.
+- The soft cap's k includes the arriving request (server.go `activeRequests.Add(1)`).
+- C = 8 MiB/s, γ = 0.05 came from a 27-pair exploratory screen; the 72
+  analytic candidates were the W1–W6 design.
+
 ### 22.109 DQN retrained for the capped server, with simulator parity and held-out generalization (2026-10-25, RETRAIN COMPLETE; follow-ups in progress)
 
 **Status: `COMPLETE` for the retrain (A2 1ef2c77, B 9b4e45f, C f510dd5, D a68d511).** Protocol
