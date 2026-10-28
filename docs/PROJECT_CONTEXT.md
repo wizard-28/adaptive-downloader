@@ -7414,6 +7414,15 @@ slide "220 numbers" -> 231; "v2" removed from the limitations notes; label
 collisions fixed in five charts (`make_deck_figs.py`: fig1, trace_capacity,
 joint, live, forest). Deck republished; checker still 231/231.
 
+Paper and deck, later on 2026-10-28: the paper is built in the IEEE Access
+template (`python3 tools/paper_to_ieee.py` -> `reports/paper/paper_access.pdf`,
+official class in `reports/ieee_access/template/`), with a question-first title,
+a short abstract (the old one is kept as "Extended abstract" in the Markdown),
+the answer to the central question as contribution 1, and figures 4-8
+(`reports/ieee_access/make_paper_figs.py`). The deck gained slide 12, "Other
+download tools" (axel, lftp; wget2 and IDM excluded), so it has 32 slides.
+Checker still 231/231.
+
 ### 22.110 Team handbook (2026-10-26, COMPLETE)
 
 `reports/handbook/handbook.tex` → `handbook.pdf` (93 pages, LaTeX, pdflatex):

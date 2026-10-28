@@ -177,6 +177,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   r4b, r5, summary), live chart now grouped by server. Republished.
 - [x] IEEE Access template conversion: `tools/paper_to_ieee.py` builds `reports/paper/paper_access.pdf` (13 pp.) with the official class in `reports/ieee_access/template/`. Open: author ORCID/funding/COI, corresponding author, DOI.
 
+- [x] Deck: new slide "Other download tools" (r1c, axel and lftp, chart
+  `tools.png` from `make_deck_figs.py`); deck now 32 slides, footers renumbered.
+- [x] Paper: question-first title, answer-first contributions, figures 4-8
+  (`reports/ieee_access/make_paper_figs.py`).
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
