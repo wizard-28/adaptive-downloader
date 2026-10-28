@@ -532,6 +532,12 @@ for _slot in ("M1", "M2"):
     out[f"mc.{_slot}.invalid"] = len(_m["invalid"])
     out[f"mc.{_slot}.runs"] = sum(1 for _ in open(os.path.join(T, "live_mirror_check", "raw", _slot + ".jsonl")))
     _flatten(_m["servers"], f"mc.{_slot}")
+# Track 1 joint heuristic vs frozen aria2 (§10a) and the trace capacity swing (§8).
+out["t1.joint_vs_aria2.geo"] = json.load(open(os.path.join(
+    T, "joint_ns_d2", "analysis", "track1_analysis.json")))["comparisons"]["joint_vs_frozen_aria2"]["geo_ratio"]
+_tsw = json.load(open(os.path.join(T, "final_oracle_analysis", "trace_swing.json")))
+for _t, _r in _tsw["traces"].items():
+    out[f"trace.{_t}.swing"] = _r["p90_over_p10"]
 _jrep = json.load(open(os.path.join(T, "rl_joint", "train", "report.json")))
 for _sc, _row in _jrep["test"].items():
     if "agent_vs_best_fixed" in _row:
