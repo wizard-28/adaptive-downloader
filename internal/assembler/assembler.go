@@ -35,6 +35,12 @@ type Assembler struct {
 // New creates or truncates the file at path and prepares it to hold size
 // bytes. The file is extended to its final size immediately, so ranges may be
 // written at any offset in any order.
+//
+// Truncating to the full size up front (rather than appending) is what makes
+// out-of-order writes a plain WriteAt, and it also means a run that dies early
+// leaves a full-size file with holes rather than a short file: the size check in
+// Download would then pass only if every range really completed, which the
+// tracker verifies separately.
 func New(path string, size int64) (*Assembler, error) {
 	if size < 0 {
 		return nil, fmt.Errorf("%w: %d", ErrInvalidSize, size)
@@ -61,6 +67,9 @@ func (a *Assembler) Size() int64 { return a.size }
 //
 // It returns ErrInvalidRange for a range outside [0, Size), ErrLengthMismatch
 // unless len(data) == end-start+1, and ErrClosed after Close.
+//
+// Example: WriteRange(32, 63, data[:32]) writes those 32 bytes at offset 32,
+// regardless of whether [0,32) has been written yet.
 func (a *Assembler) WriteRange(start, end int64, data []byte) error {
 	if a.closed {
 		return ErrClosed

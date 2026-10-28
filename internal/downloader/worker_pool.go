@@ -18,7 +18,16 @@ import (
 //
 // Workers are never killed mid-request. A worker only stops between ranges:
 // when no work remains, when the run is aborted, or when the active count
-// exceeds the target (draining).
+// exceeds the target (draining). That is why a planned concurrency decrease
+// costs at most one in-flight request per retiring worker, and never truncates
+// a request that is already running.
+//
+// Control protocol: every state change calls signal(), which pokes a
+// capacity-1 channel. run() wakes on that channel, calls reconcile(), and
+// sleeps again. Signals coalesce (several changes between two wake-ups cause
+// one reconcile), so the manager is edge-triggered but never misses a state
+// that is still true when it looks: reconcile always reads the current target,
+// active count and pending bytes under mu.
 type workerPool struct {
 	d          *Downloader
 	tracker    *rangetracker.Tracker
@@ -107,6 +116,12 @@ func (p *workerPool) run(ctx context.Context) {
 
 // reconcile starts workers until the target is met or no pending work remains.
 // It reports true when there is no work left and no active worker.
+//
+// Two conditions are deliberate:
+//   - workers are started only while PendingBytes() > 0, so a target larger
+//     than the remaining work does not spawn workers that would exit at once;
+//   - "done" requires active == 0 as well as no pending bytes, so a worker that
+//     is still finishing a request keeps the pool alive.
 func (p *workerPool) reconcile(ctx context.Context) bool {
 	p.mu.Lock()
 	defer p.mu.Unlock()
@@ -176,6 +191,17 @@ func (p *workerPool) worker(ctx context.Context) {
 // and, if at least 2*SplitMinBytes remain, moves its end to the middle of
 // the unreceived part and returns the second half as a new task. Bytes
 // already received stay with the original request.
+//
+// The order of operations matters:
+//  1. choose the victim and the split point at := start + received + rem/2;
+//  2. shrink the live request to at-1 first, so the reader can never hand bytes
+//     at or beyond `at` to the head request (Shrink refuses a point the reader
+//     has already passed);
+//  3. only then split the tracker entry and update the victim's boundaries.
+//
+// Example: range [0, 8 MiB) with 3 MiB received leaves rem = 5 MiB, so the
+// split point is 3 MiB + 2.5 MiB = 5.5 MiB: the head keeps [0, 5.5 MiB) (its
+// 3 MiB are already in hand) and the new task fetches [5.5 MiB, 8 MiB).
 func (p *workerPool) splitStraggler() (*task, bool) {
 	p.splitMu.Lock()
 	defer p.splitMu.Unlock()
@@ -210,19 +236,30 @@ func (p *workerPool) splitStraggler() (*task, bool) {
 	return t, true
 }
 
-// processRange fetches r and, on failure, retries the SAME range with its
-// original boundaries until it succeeds or the retry limit is reached. The
-// chunk-size target may change between retries, but a failed range is never
-// resized or replaced by a differently-sized allocation. The one exception is
-// opt-in straggler splitting, where another worker may shorten the range's
-// end (never below the bytes already received); a retry then uses the
-// shortened boundaries.
-//
-// It returns false when the worker must stop (fatal error or cancellation).
+// processRange is processTask for a freshly allocated range. See processTask
+// for the retry and conversion rules.
 func (p *workerPool) processRange(ctx context.Context, r rangetracker.Range) bool {
 	return p.processTask(ctx, &task{r: r})
 }
 
+// processTask fetches a task's range and, on failure, retries the SAME range
+// with its current boundaries until it succeeds or the retry limit is reached.
+// The chunk-size target may change between retries, but a failed range is never
+// resized or replaced by a differently-sized allocation. The one exception is
+// opt-in straggler splitting, where another worker may shorten the range's end
+// (never below the bytes already received); a retry then uses the shortened
+// boundaries.
+//
+// Per attempt, in this order:
+//   - convert the half-open tracker range to inclusive bounds: end = End-1;
+//   - count the attempt against the range's start offset (bounded by
+//     MaxRetries+1) and build the request id "a<attempt>-r<n>";
+//   - fetch (with a fetcher.Limit when splitting is on);
+//   - record exactly one metrics.Record, then run one policy decision;
+//   - on success: verify the byte count, assemble, mark the tracker range
+//     complete; on failure: retry, unless the run is being cancelled.
+//
+// It returns false when the worker must stop (fatal error or cancellation).
 func (p *workerPool) processTask(ctx context.Context, t *task) bool {
 	split := p.d.cfg.SplitStragglers
 	if split {

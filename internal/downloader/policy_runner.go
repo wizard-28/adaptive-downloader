@@ -22,6 +22,21 @@ const defaultPolicyWindow = 8
 // SelectAction/Update call happens under mu, so the sequence
 // observe -> SelectAction -> apply -> Update is atomic from the policy's view.
 // This is the single decision path for all ActionKinds.
+//
+// Timeline for one completed attempt (the arrows are the same goroutine):
+//
+//	worker: fetch done -> metrics.Record -> observe(rec)
+//	  observe: update counters/window -> build Context
+//	         -> Update(prevContext, prevAction, reward)   // outcome of the PREVIOUS action
+//	         -> SelectAction(current Context)             // choose for the NEXT interval
+//	         -> applyAction(action)                       // controllers change here
+//	worker: next allocation reads the chunk-size controller; the pool may be
+//	        resized by the notification.
+//
+// Why the reward belongs to the previous action: the attempt that just finished
+// started before the new action could have any effect, so crediting the new
+// action with it would leak the future into the present. The first decision
+// therefore produces no Update (havePrevAction is false).
 type policyRunner struct {
 	policy          policy.Policy
 	controller      *concurrency.Controller
@@ -105,6 +120,11 @@ func (r *policyRunner) currentChunkSize() int64 {
 //     start). With overlapping requests the wall-clock span stays near one
 //     request duration while the bytes add up, so this reflects achieved
 //     parallelism and responds to concurrency changes.
+//
+// Example: four 1 MiB attempts that each took 2 s but overlapped almost
+// completely over one 2 s span. Per-request throughput is 4 MiB / 8 s = 0.5
+// MiB/s; aggregate throughput is 4 MiB / 2 s = 2 MiB/s. Only the second number
+// can tell a policy that concurrency helped.
 func (r *policyRunner) observe(rec metrics.Record) {
 	r.mu.Lock()
 	defer r.mu.Unlock()
@@ -214,6 +234,10 @@ func (r *policyRunner) aggregateThroughput() float64 {
 // change between the previous and current observations. It returns 0 when no
 // reward calculator is configured or when the previous action is not part of
 // the RL action space (the deterministic policies ignore reward entirely).
+//
+// Both Contexts are converted with the runner's own bounds (rewarderConfig), so
+// the learner's normalized features and the reward's normalization always agree
+// with the controllers actually in use.
 func (r *policyRunner) calculateReward(current policy.Context) float64 {
 	if r.rewarder == nil {
 		return 0
@@ -277,6 +301,18 @@ func actionStep(a policy.Action) int {
 // Each ActionKind affects only its corresponding controller: concurrency
 // actions never touch chunk size, and chunk-size actions never touch
 // concurrency. Explicit-target actions remain reserved and are ignored.
+//
+// Table (the effect is bounded by each controller's [min, max]):
+//
+//	ActionNone                 nothing
+//	Increase/DecreaseConcurrency  N += step  (step = Value clamped to 1..16; <=0 means 1)
+//	Increase/DecreaseChunkSize    S += one configured chunk step
+//	SetConcurrency/SetChunkSize   ignored (reserved)
+//	anything else                 ignored
+//
+// Only concurrency changes notify the worker pool: the pool reads the chunk-size
+// controller at each allocation, so a new chunk-size target takes effect on the
+// next allocation without waking anything.
 func (r *policyRunner) applyAction(action policy.Action) {
 	switch action.Kind {
 	case policy.ActionNone:

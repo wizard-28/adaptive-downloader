@@ -82,6 +82,16 @@ func (t *Tracker) TotalSize() int64 { return t.totalSize }
 // It returns the allocated range and true on success. It returns a zero Range
 // and false when nothing is pending or chunkSize is not positive. Allocated
 // ranges never overlap and never extend beyond TotalSize.
+//
+// Allocation is always from the front (lowest Start) and deliberately
+// deterministic: the same chunk-size sequence always produces the same ranges,
+// which is what lets tests assert an exact request list. It never touches a
+// range that is already in flight, so a chunk-size change cannot resize work in
+// progress.
+//
+// Example: TotalSize = 100, Allocate(32) three times yields [0,32), [32,64) and
+// [64,100) — the last one is shorter because only 36 bytes remain, and a fourth
+// call returns false.
 func (t *Tracker) Allocate(chunkSize int64) (Range, bool) {
 	if chunkSize <= 0 {
 		return Range{}, false
@@ -129,6 +139,12 @@ func (t *Tracker) Complete(r Range) error {
 // Fail returns an in-flight range to the pending set so it can be retried.
 // The range is merged with any adjacent pending ranges. It returns
 // ErrRangeNotInFlight if r is not currently in flight.
+//
+// The worker pool does not actually use this on a failed attempt: it retries the
+// same range in place (see processTask) so a changed chunk-size target cannot
+// re-split it. Fail exists for callers that want the range returned to the
+// general pool; merging with neighbours is why a returned range can disappear
+// as a separate entry.
 func (t *Tracker) Fail(r Range) error {
 	t.mu.Lock()
 	defer t.mu.Unlock()
@@ -225,6 +241,10 @@ func (t *Tracker) InFlightBytes() int64 {
 // mergeRange inserts r into ranges, keeping the result sorted by Start and
 // merging overlapping or adjacent ranges. ranges must already be sorted,
 // disjoint, and non-adjacent.
+//
+// Two ranges are adjacent when cur.End == r.Start (half-open ends), so
+// [0,32) and [32,64) collapse into [0,64). This is what keeps the pending set
+// compact after a failed range is returned between two untouched neighbours.
 func mergeRange(ranges []Range, r Range) []Range {
 	if r.Empty() {
 		return ranges

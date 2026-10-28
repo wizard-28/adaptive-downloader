@@ -1,9 +1,40 @@
-// Package downloader implements a fixed-concurrency HTTP range downloader built
-// on the rangetracker, fetcher, assembler, and metrics packages.
+// Package downloader implements an HTTP range downloader with a scalable
+// worker count and an optional adaptive chunk size for future allocations.
 //
-// The number of active workers can be scaled at runtime through a concurrency
-// Controller, either explicitly or via an optional policy. Chunk size remains
-// fixed.
+// The control loop is:
+//
+//	request completion -> metrics.Record -> policyRunner.observe
+//	  -> (optional) policy decision -> controller change -> next allocation
+//
+// # How one run works
+//
+//   - New builds the concurrency controller (and, when MaxChunkSize > 0, the
+//     chunk-size controller) and a dedicated fetcher. It starts nothing.
+//   - Download creates a rangetracker over the whole file, an assembler over the
+//     output file, and a fresh metrics collector, then starts a workerPool.
+//   - Each worker repeatedly asks the tracker for a range (the chunk-size
+//     controller is read at that moment), fetches it with the fetcher, records
+//     one metrics.Record, writes it with the assembler, and marks it completed.
+//   - An optional policy is consulted after every completed attempt by the
+//     serialized policyRunner, which turns a policy.Action into controller
+//     changes. Concurrency changes also notify the worker pool.
+//
+// # Conventions (deliberate, and visible at every seam)
+//
+//   - rangetracker ranges are half-open [Start, End).
+//   - fetcher, assembler, metrics and the HTTP Range header are inclusive
+//     [Start, End]. The worker pool performs the conversion once, at the point
+//     where a range becomes a request: end := r.End - 1.
+//   - An in-flight range is never resized by a chunk-size change; the new
+//     target applies to future allocations only. The one opt-in exception is
+//     straggler splitting (Config.SplitStragglers), which may shorten an
+//     in-flight range's end, never below the bytes already received.
+//   - A failed range retries with its own current boundaries, never re-split
+//     from the current chunk-size target.
+//
+// Example: a 100-byte file with a 32-byte chunk size yields the tracker ranges
+// [0,32), [32,64), [64,100), which become the HTTP requests bytes=0-31,
+// bytes=32-63 and bytes=64-99.
 package downloader
 
 import (
@@ -76,10 +107,15 @@ type Config struct {
 	// Empty keeps the Go default.
 	UserAgent string
 
-	// Policy optionally drives concurrency changes. When nil the downloader
-	// behaves exactly as the fixed/adaptive-concurrency baseline. Policies are
-	// consulted once per completed attempt, and only concurrency actions are
-	// applied.
+	// Policy optionally drives changes to concurrency and, when adaptive chunk
+	// sizes are configured, to the chunk-size target. When nil the downloader
+	// behaves exactly as the fixed/adaptive-concurrency baseline.
+	//
+	// The policy is consulted once per completed attempt, inside the serialized
+	// policyRunner (never concurrently), after the attempt's metrics.Record and
+	// before the next range allocation. The action kinds that act on
+	// concurrency and chunk size are listed in policyRunner.applyAction;
+	// explicit-target kinds are reserved and ignored.
 	Policy policy.Policy
 	// PolicyWindowSize is the number of most recent attempts used to compute
 	// recent throughput for policy.Context. Zero uses a sensible default.
@@ -190,6 +226,17 @@ type Downloader struct {
 
 // New validates cfg and returns a Downloader. It has no side effects; the
 // output file is created by Download.
+//
+// Controller setup, which the rest of the run depends on:
+//   - fixed mode (MaxConcurrency == 0): min = max = Concurrency, so every
+//     increase/decrease is a clamped no-op and N is constant;
+//   - adaptive mode: the controller is bounded by [MinConcurrency,
+//     MaxConcurrency] and set to Concurrency, so the configured start value is
+//     clamped into range.
+//
+// The chunk-size controller exists only when MaxChunkSize > 0; without it,
+// Config.ChunkSize is used for every allocation and chunk-size actions are
+// no-ops.
 func New(cfg Config) (*Downloader, error) {
 	if err := cfg.validate(); err != nil {
 		return nil, err
@@ -273,6 +320,7 @@ func (d *Downloader) Splits() int64 {
 }
 
 // splitMinBytes returns the smallest piece a straggler split may create.
+// Config.SplitMinBytes overrides the default; 1 MiB matches aria2's -k1M.
 func (d *Downloader) splitMinBytes() int64 {
 	if d.cfg.SplitMinBytes > 0 {
 		return d.cfg.SplitMinBytes
@@ -302,9 +350,22 @@ func (d *Downloader) SetConcurrency(target int) int {
 // OutputPath. It returns nil only when every range completed and the output
 // file has the expected size.
 //
+// Sequence: open+truncate the output to TotalSize, install a fresh metrics
+// collector (so Metrics() describes this run only), build the pool at the
+// controller's current target, attach the policy runner when a policy is
+// configured, then serve until `no work and no active worker`.
+//
+// The outcome is reported in this order, so a failure is not hidden by a later
+// check: the first fatal worker error (retry limit, assembly, split), then
+// context cancellation, then incomplete tracking, then an output-size check.
+//
 // If ctx is cancelled, workers stop taking new ranges, in-flight requests
 // observe the cancellation, and the context error is returned. The Assembler
 // is closed exactly once on every path.
+//
+// Example failure: MaxRetries = 3 allows at most 4 attempts for one range's
+// start offset; the fifth attempt fails the run with ErrRetryLimitExceeded
+// rather than looping forever.
 func (d *Downloader) Download(ctx context.Context) (err error) {
 	tracker := rangetracker.New(d.cfg.TotalSize)
 	asm, err := assembler.New(d.cfg.OutputPath, d.cfg.TotalSize)
@@ -381,6 +442,12 @@ func (d *Downloader) Download(ctx context.Context) (err error) {
 
 // runState holds shared per-download state: retry counters and the first fatal
 // error, which cancels the run so other workers stop promptly.
+//
+// Attempts are counted per range START offset, which is the identity a range
+// keeps across retries (its boundaries are immutable unless opt-in straggler
+// splitting shortens them, in which case the split tail has its own start and
+// therefore its own counter). That is what makes "retry the same range" bounded
+// by MaxRetries rather than unbounded.
 type runState struct {
 	mu          sync.Mutex
 	attempts    map[int64]int

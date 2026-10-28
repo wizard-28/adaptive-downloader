@@ -72,6 +72,12 @@ type Collector struct {
 func New() *Collector { return &Collector{} }
 
 // Record stores one completed request. It is safe to call concurrently.
+//
+// Exactly one Record is stored per attempt, including failures, cancellations
+// and incomplete bodies: the worker records before it decides success, so the
+// attempt history is complete. Failed attempts still count towards TotalBytes
+// and TotalRequests (bytes actually received), but not towards the throughput
+// statistics, which describe successful transfers only.
 func (c *Collector) Record(r Record) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
@@ -104,6 +110,11 @@ func (c *Collector) Record(r Record) {
 
 // Snapshot returns a copy of the collected records and aggregate measurements.
 // Mutating the returned Snapshot never affects the Collector.
+//
+// AverageThroughput is byte-weighted (successful bytes / successful elapsed
+// time), not the mean of the per-request throughputs, so one long request does
+// not dominate the average. MinThroughput/MaxThroughput are over successful
+// attempts only, and stay 0 when no successful attempt reported a rate.
 func (c *Collector) Snapshot() Snapshot {
 	c.mu.Lock()
 	defer c.mu.Unlock()

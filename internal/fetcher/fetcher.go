@@ -231,6 +231,11 @@ type Result struct {
 // reading once the current end is reached and closes the connection. Shrink
 // and the body reader synchronize on the same mutex, so bytes already
 // accepted are never given away.
+//
+// Example: a request for bytes=0-8388607 whose Limit is shrunk to 5767167 after
+// 3 MiB have been read stops at byte 5767167 and reports that range as its
+// result; the caller then hands [5767168, 8388608) to another worker. The
+// server keeps sending the original body, but those bytes are never read.
 type Limit struct {
 	mu       sync.Mutex
 	start    int64
@@ -279,6 +284,24 @@ func (l *Limit) accept(buf, p []byte) ([]byte, bool) {
 //
 // It returns a Result whose Success field reports the outcome; a non-nil Err
 // accompanies every failure. Fetch never retries and never writes to disk.
+//
+// A request succeeds only after all of these checks pass:
+//  1. the request can be built and sent (network errors are classified, timeouts
+//     as ErrTimeout);
+//  2. the status is 206 Partial Content (200 means the server ignored the Range
+//     header -> ErrRangeNotSupported; anything else is ErrUnexpectedStatus);
+//  3. a Content-Range header, if present, matches the bytes we asked for
+//     exactly (start and requested end; a shrunk straggler tail is handled
+//     below);
+//  4. the body is exactly the requested length: fewer bytes is
+//     ErrIncompleteResponse, more is ErrUnexpectedLength.
+//
+// Example: Fetch(ctx, "a1-r7", url, 32, 63) sends "Range: bytes=32-63" and
+// expects "Content-Range: bytes 32-63/<total>" and exactly 32 body bytes.
+//
+// Timing is captured by the deferred block: Duration covers the whole request
+// (connect, headers, body), Latency is time to response headers, and Throughput
+// is bytes/duration for this request only (per-request, not aggregate).
 func (f *Fetcher) Fetch(ctx context.Context, requestID, rawURL string, start, end int64) (res Result) {
 	return f.FetchLimited(ctx, requestID, rawURL, start, end, nil)
 }
