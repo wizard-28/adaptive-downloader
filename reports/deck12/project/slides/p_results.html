@@ -1,29 +1,24 @@
 <section id="p_results" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:30px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Testing & results</p>
 <h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">Adapting rarely beat a well-chosen fixed setting</h2>
-<p style="font-size:26px;line-height:1.38;color:#4A5568"><b style="color:#14213D">Setup:</b> constructed servers, five recorded mobile traces and real mirrors. Ratios are our time ÷ other time: below 1 is faster.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-<div style="display:flex;flex-direction:column;gap:8px;background:#FCFCFA;padding:22px 30px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
-<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#2F6FD6">62.4 %</p>
-<p style="font-size:26px;line-height:1.35;color:#14213D">less time than aria2 with a <i>fixed</i> setting on a server that speeds up, largely because of request timing</p>
+<p style="font-size:26px;line-height:1.38;color:#4A5568"><b style="color:#14213D">Setup:</b> one download on a server whose cap switches on at 8 s; ratios elsewhere are our time ÷ other time (below 1 is faster)</p>
+<div style="display:flex;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<img src="/_blob/a8b71959d5695b5dd726254444fe3c62" alt="One download with the drop rule: speed of one request falls after the cap switches on at 8 s; the number of connections drops from 16 to 4 in one decision, then the piece size steps from 1 to 4 MiB" style="width:900px;height:450px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<p style="font-size:24px;line-height:1.35;color:#4A5568">The drop rule cuts N from 16 to 4, then raises S from 1 to 4 MiB. Average 58.7 s against 76.7 s for the best fixed setting.</p>
 </div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FCFCFA;padding:22px 30px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
-<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#2F6FD6">0.41 %</p>
-<p style="font-size:26px;line-height:1.35;color:#14213D">the most a perfect controller could gain on five recorded mobile traces, though speed swings 6.5–25×</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FCFCFA;padding:22px 30px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
-<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#B85A12">1.071</p>
-<p style="font-size:26px;line-height:1.35;color:#14213D">drop rule ÷ best fixed under a throttling server once the engine was fixed: still slower</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FCFCFA;padding:22px 30px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
-<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#B85A12">0.907</p>
-<p style="font-size:26px;line-height:1.35;color:#14213D">retrained agent ÷ fixed 1 MiB on the server it trained on: faster there, not on unseen conditions or real mirrors</p>
+<div style="width:700px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:18px;align-items:center"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1;color:#2F6FD6;width:190px">62.4 %</p><p style="flex:1;font-size:26px;line-height:1.3;color:#14213D">less time than aria2 with a <i>fixed</i> setting, largely request timing</p></div>
+<div style="display:flex;gap:18px;align-items:center"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1;color:#2F6FD6;width:190px">0.41 %</p><p style="flex:1;font-size:26px;line-height:1.3;color:#14213D">most a perfect controller could gain on five recorded mobile traces</p></div>
+<div style="display:flex;gap:18px;align-items:center"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1;color:#B85A12;width:190px">1.071</p><p style="flex:1;font-size:26px;line-height:1.3;color:#14213D">drop rule ÷ best fixed after the engine fix: slower</p></div>
+<div style="display:flex;gap:18px;align-items:center"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1;color:#B85A12;width:190px">0.907</p><p style="flex:1;font-size:26px;line-height:1.3;color:#14213D">retrained agent ÷ fixed 1 MiB where it trained; not on unseen conditions or real mirrors</p></div>
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b>Takeaway:</b> adapting works as designed, but a good fixed setting is hard to beat.</p>
 </div>
 </div>
-<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Takeaway:</b> a good fixed setting is hard to beat, and engine details mattered more than any controller.</p>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">549 Go test functions (Review 2) · race detector clean · files checked byte for byte · 231 numbers recomputed</p>
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">08</p>
-<aside>WHAT TO SAY: These are the four results to remember; the longer deck holds the full charts.
+<aside>WHAT TO SAY: The chart on the left shows adaptation happening in one real download, which is also our fallback if the live demo fails. The server’s cap switches on at 8 seconds, shown by the red dashed line. The top panel is the speed of one request: it holds near 2 MiB/s, collapses after the cap, and recovers once the controller reacts. The bottom panel shows the two dials. The drop rule notices the speed has fallen below half its recent best, about a second and a half after the cap, and cuts N from 16 to 4 in a single decision. Then it raises S, the piece size, one step at a time from 1 to 4 MiB. N and S are never changed in the same decision. Over ten paired runs this took 58.7 seconds on average, against 76.7 seconds for the best fixed setting we tried.
+The four numbers on the right are the results to remember; the longer deck holds the full charts.
 62.4 %: on a server that starts slow and then speeds up, our downloader on one fixed setting took 62.4 % less time than aria2. We explain most of that as a timing effect: its requests start after the speed-up, whereas aria2 starts its big pieces while the server is slow. It is not adaptation.
 0.41 %: we replayed five recorded mobile networks, whose speed swings by 6.5 to 25 times. Even a perfect controller that knows the future could save only 0.41 % on average, so there was almost nothing to gain.
 1.071: under a server that throttles when you open too many connections, our simple drop rule, once we fixed two engine weaknesses, was 7 % slower than the best fixed setting.

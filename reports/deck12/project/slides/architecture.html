@@ -32,7 +32,10 @@
 <p style="font-size:24px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Or a public mirror</b></p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Blue arrows: actions and requests · grey arrows: measurements back after every request · Go 1.27.1, one dependency (Gonum)</p>
+<div style="display:flex;gap:24px;align-items:center;background:#14213D;padding:20px 32px;border-radius:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#F0A35E;width:420px">How one decision is made</p>
+<p style="flex:1;font-size:26px;line-height:1.4;color:#E4E8F0">After every finished request the policy reads the recent speeds, picks <b>one</b> action (nothing, N up or down, S up or down) and later gets a reward. Blue arrows: actions; grey: measurements.</p>
+</div>
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">04</p>
 <aside>WHAT TO SAY: This is our system. It is written in Go. One Downloader object coordinates a few small parts, and each part has one job. The RangeTracker remembers which bytes are done, in progress or waiting. The Fetcher sends one HTTP range request and checks the answer is correct. The Assembler writes each piece into the right place in the output file. The worker pool runs N downloads at once. On top sits the control layer: a policy that can decide to change N or S.
 Only the Fetcher talks to the network, which keeps the design clean and testable. The machine-learning agents are trained in Python, but the trained model runs inside Go during a download.

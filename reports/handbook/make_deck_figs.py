@@ -187,6 +187,40 @@ ax.set_ylim(0, 135)
 ax.legend(handles=[Patch(color=c, label=l) for _, c, l in arms], frameon=False, loc="upper left", ncol=2)
 save(f, "tools.png")
 
+# --- p_results: one adaptive download, N and S over time (1040 x 500) ---------
+run = load(f"{T}/n_dependent_server_joint_ns/adaptive/p2_causal_joint_r00.json")
+dec = run["decisions"]
+tt = [d["time_ms"] / 1000 for d in dec]
+f, (ax1, ax2) = plt.subplots(2, 1, figsize=(1040 / DPI, 520 / DPI), sharex=True,
+                             gridspec_kw={"height_ratios": [1, 1], "hspace": 0.1})
+ax1.plot(tt, [d["throughput"] / MIB for d in dec], color=GREY, lw=1.2, zorder=1)
+ax1.scatter(tt, [d["throughput"] / MIB for d in dec], color=DARK, s=9, zorder=2)
+ax1.set_ylabel("one request\n(MiB/s)", fontsize=13)
+ax1.set_ylim(0, 2.6)
+ax1.set_yticks([0, 1, 2])
+ax2.step(tt, [d["concurrency"] for d in dec], where="post", color=BLUE, lw=3)
+ax2.set_ylabel("connections N", color=BLUE, fontsize=13)
+ax2.set_ylim(0, 19)
+ax2.set_yticks([4, 16])
+ax3 = ax2.twinx()
+ax3.step(tt, [d["chunk_size"] / MIB for d in dec], where="post", color=ORANGE, lw=3)
+ax3.set_ylabel("piece size S (MiB)", color=ORANGE, fontsize=13)
+ax3.set_ylim(0, 5.2)
+ax3.set_yticks([1, 4])
+ax3.spines["right"].set_visible(True)
+for ax in (ax1, ax2):
+    ax.axvline(8, color=RED, ls="--", lw=1.5)
+ax1.annotate("cap switches on at 8 s", xy=(8, 2.3), xytext=(12, 2.3), va="center", fontsize=13, color=RED,
+             arrowprops=dict(arrowstyle="->", color=RED))
+t_drop = next(d["time_ms"] for d in dec if d["concurrency"] == 4) / 1000
+ax2.annotate("N: 16 → 4 in one decision", xy=(t_drop, 4), xytext=(t_drop + 4, 9.5), fontsize=13, color=BLUE,
+             arrowprops=dict(arrowstyle="->", color=BLUE))
+ax2.set_xlabel("time since download start (s)")
+ax2.set_xlim(0, run["completion_ms"] / 1000)
+f.subplots_adjust(left=0.13, right=0.87, top=0.98, bottom=0.17)
+f.savefig(os.path.join(OUT, "timeline.png"), dpi=DPI)
+plt.close(f)
+
 # --- r2a: trace capacity (1100 x 590) ----------------------------------------
 TR = "mahimahi-clone-dir/mahimahi/traces"
 
