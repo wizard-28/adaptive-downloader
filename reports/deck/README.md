@@ -46,7 +46,7 @@ cover · question · answer · roadmap · background · architecture · engine �
 platform · method · r1 (62.4 % vs aria2) · r1b (other timetables, NGINX, delay and loss) · r1c (axel and lftp) ·
 r2a (mobile traces swing) · r2 (perfect controller gains 0.41 %) ·
 r2b (other conditions) · r3 (throttling server, drop rule) ·
-r3b (engine fixes) · r3c (fixed engine beats adaptive) · r4 (early AI) ·
+r3b (engine fixes) · r3c (fixed engine beats adaptive) · r4a (what the AI controllers see, do and are rewarded for) · r4 (early AI) ·
 r4b (retrained agents) · r4c (broadly trained agent) · r4d (all vs big pieces) ·
 r5 (live pilot) · r5b (real-server no-harm check) · vsaria2 (core answer) ·
 summary · whyrl · novelty · limits · team · demo · close

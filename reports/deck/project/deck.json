@@ -3,7 +3,7 @@
   "createdOnFiles": {"v": 1, "at": "2026-10-28T09:00:00Z"},
   "lists": "css",
   "title": "When Does Adapting N and S Help?",
-  "order": ["cover", "question", "answer", "roadmap", "background", "architecture", "engine", "platform", "method", "r1", "r1b", "r1c", "r2a", "r2", "r2b", "r3", "r3b", "r3c", "r4", "r4b", "r4c", "r4d", "r5", "r5b", "vsaria2", "summary", "whyrl", "novelty", "limits", "team", "demo", "close"],
+  "order": ["cover", "question", "answer", "roadmap", "background", "architecture", "engine", "platform", "method", "r1", "r1b", "r1c", "r2a", "r2", "r2b", "r3", "r3b", "r3c", "r4a", "r4", "r4b", "r4c", "r4d", "r5", "r5b", "vsaria2", "summary", "whyrl", "novelty", "limits", "team", "demo", "close"],
   "sections": {
     "intro": {"description": "The question and the answer in one slide", "start": "cover"},
     "build": {"description": "What we built and how we measured", "start": "background"},
