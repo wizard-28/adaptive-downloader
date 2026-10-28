@@ -644,6 +644,24 @@ The learners are a LinUCB contextual bandit [li2010linucb] and Double DQN
 [vanhasselt2016ddqn] agents in the DQN family [mnih2015dqn], all acting through
 the same serialized policy interface as the deterministic controllers.
 
+**What the learners see, do and are rewarded for.** One decision is taken after
+each completed request, through the serialized policy interface. A decision
+changes only the target for future requests; a request already in flight is
+never resized or cancelled.
+
+| learner | sees | can do | rewarded by |
+|---|---|---|---|
+| LinUCB | 10 normalised features: current N and S, per-request and aggregate throughput, request duration, bytes transferred, and the counts of successful requests, failures, retries and attempts | 5 actions: nothing, N up, N down, S up, S down | a weighted sum: aggregate throughput, its change since the previous decision, request latency, retries, failures, and a cost for an action that really changed a target |
+| DQN, cap-trained (§9b, §9d) | 13 features: N, remaining-bytes fraction, aggregate throughput with its smoothed value, slope and volatility, request duration and its slope, recent failure and retry rates, completed requests in the window, throughput change, time since the last change of N | 3 actions: nothing, N up, N down (range size fixed at 1 MiB) | minus the seconds between a decision and the next completed request, undiscounted, so the return of an episode approximates minus the download time |
+| DQN, joint (§9c) | the same family of features with the range size added | 5 actions: as LinUCB | as the cap-trained DQN |
+
+Aggregate (wall-clock) throughput is in every state because per-request
+throughput does not depend on N, so a learner could not tell what a change of N
+did; this was checked before any agent was benchmarked. The reward has no tuned
+weights for the DQN agents: failures and retries lower the return only by taking
+time. The DQN agents are trained in a simulator of the server and run inside the
+Go downloader; LinUCB runs inside it directly.
+
 **Naming.** "DQN v1–v6" in the table below are the early candidates. The
 agents of §9b and §9d are a separate pair retrained for the capped server,
 called the cap-trained v1 and cap-trained v2: the cap-trained v2 of §9d is not

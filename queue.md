@@ -182,6 +182,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] Paper: question-first title, answer-first contributions, figures 4-8
   (`reports/ieee_access/make_paper_figs.py`).
 
+- [x] Learner inputs/actions/reward: paper section in §9 (table) and deck slide
+  r4a (slide 19; deck now 33 slides).
+- [~] Gap review for viva questions (read-only subagent, started 2026-10-28):
+  fold its findings into the paper and speaker notes; no slide bloat.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
