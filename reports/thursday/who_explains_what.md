@@ -71,8 +71,8 @@ Slide count: Sourajyoti 7 (1 to 4, 6, 9, 10), Shwetank 4 (5, 8, 11, 13), Ayush 3
   comparison results; how every paper number is recomputed by a script; the limits of
   the study.
 - **Questions that are yours:** Q11 (are the numbers right), Q12 (publishable), Q16
-  (FastBioDL), Q18 (axel, lftp, wget2, IDM), Q22 (main answer against aria2), Q25
-  (limits).
+  (FastBioDL), Q18 (axel, lftp, wget2, IDM), Q22 (main answer against aria2), Q23
+  (how the drop rule decides), Q25 (limits).
 
 ### Ayush: the learning controllers
 - **Code you own:** `internal/rl` (state, action, reward, LinUCB, the DQN inference in
@@ -86,8 +86,10 @@ Slide count: Sourajyoti 7 (1 to 4, 6, 9, 10), Shwetank 4 (5, 8, 11, 13), Ayush 3
   on real mirrors; why a learner cannot beat a near-zero ceiling.
 - **Questions that are yours:** Q1 to Q4 (why learning failed, why only N and S, did you
   try everything), Q17 (is it tuned to the test), Q19 (piece size agent), Q20 (real
-  servers), Q23 and Q24 (how the controllers work and what they see), and the PPO part
-  of Q21.
+  servers), Q24 (what the learning controllers see and do), and the PPO part of Q21.
+
+**Anyone can take:** Q5 (isn't it obvious), Q13 (more time), Q14 (what surprised you),
+Q26 (what is new). Whoever is asked answers; the others add one sentence at most.
 
 ## Shared: everyone must know
 
