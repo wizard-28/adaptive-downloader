@@ -7384,6 +7384,30 @@ time-varying per-response pacing schedule.
 
 ---
 
+### 22.111 Paper update for the viva and the presentation deck (2026-10-28)
+
+`reports/paper_draft.md` now states the question as "does adapting N and S
+help when conditions are not optimal, against aria2 and other tools, and is
+the gain from adapting or from how the file is split" (abstract, §1), with a
+"what is not new" line and an updated contribution list. New §9e: adaptive
+arms against aria2 under changing conditions (faster only when the server rate
+rose, where our fixed configuration was faster still; slower whenever the
+server degraded). §8 now says the Mahimahi replay varied capacity only
+(mm-link alone, no mm-delay/mm-loss) and gives the per-trace downlink swing,
+p90/p10 6.5–25.3 (`tools/trace_swing.py` →
+`testdata/final_oracle_analysis/trace_swing.json`; the trace files themselves
+are not in git). Also: k includes the arriving request; C/γ from the 27-pair
+screen; live-rate mode; tuner compared with same-range-size fixed arms;
+mirror-check cause marked as interpretation; naming note (cap-trained v1/v2
+vs early DQN v1–v6); limitations (capacity-only traces, no live test with
+changing loss/delay, fairness); authors and contributions in Declarations.
+Checker: 231/231, 0 unverified (Track 1 aria2 ratio and trace swings added).
+`tools/paper_to_pdf.py` renders the draft to `reports/paper/paper_draft.pdf`
+(pdflatex; no pandoc here). Presentation deck: Slides artifact
+[private viva slide link removed] (30 slides; figures from
+`reports/handbook/make_deck_figs.py`). The handbook still quotes the earlier
+"about 5–27×" (p90/p10 over the 8-trace S-pivot set), which is a different set.
+
 ### 22.110 Team handbook (2026-10-26, COMPLETE)
 
 `reports/handbook/handbook.tex` → `handbook.pdf` (93 pages, LaTeX, pdflatex):

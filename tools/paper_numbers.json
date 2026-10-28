@@ -1138,6 +1138,72 @@
    "value": 1.332,
    "tol": 0.0005,
    "where": "\u00a78a"
+  },
+  "t1.joint_vs_aria2.geo": {
+   "value": 0.876,
+   "tol": 0.0005,
+   "where": "\u00a79e",
+   "text": "rule-based joint (Track 1) 0.876"
+  },
+  "rlc.HEALTHY.dqn6_start16.vs_aria2.geo": {
+   "value": 0.359,
+   "tol": 0.0005,
+   "where": "\u00a79e",
+   "text": "frozen DQN v6 0.359"
+  },
+  "tun.HEALTHY.T2_vs_aria2.geo": {
+   "value": 0.432,
+   "tol": 0.0005,
+   "where": "\u00a79e",
+   "text": "online tuner 0.432"
+  },
+  "jnt.C.HEALTHY.dqnj_vs_aria2.geo": {
+   "value": 0.388,
+   "tol": 0.0005,
+   "where": "\u00a79e",
+   "text": "joint agent 0.388"
+  },
+  "rlc.CAP8.dqn6_start16.vs_aria2.geo": {
+   "value": 1.367,
+   "tol": 0.0005,
+   "where": "\u00a79e",
+   "text": "frozen v6 1.367"
+  },
+  "tun.CAP8.T2_vs_aria2.geo": {
+   "value": 1.781,
+   "tol": 0.0005,
+   "where": "Abstract,\u00a79e",
+   "text": "online tuner 1.781"
+  },
+  "trace.Verizon-EVDO-driving.swing": {
+   "value": 24.2,
+   "tol": 0.06,
+   "where": "\u00a78",
+   "text": "Verizon EVDO 24.2"
+  },
+  "trace.Verizon-LTE-driving.swing": {
+   "value": 14.1,
+   "tol": 0.05,
+   "where": "\u00a78",
+   "text": "Verizon LTE 14.1"
+  },
+  "trace.ATT-LTE-driving.swing": {
+   "value": 6.6,
+   "tol": 0.05,
+   "where": "\u00a78",
+   "text": "AT&T LTE 6.6"
+  },
+  "trace.TMobile-LTE-driving.swing": {
+   "value": 6.5,
+   "tol": 0.05,
+   "where": "\u00a78",
+   "text": "T-Mobile LTE 6.5"
+  },
+  "trace.TMobile-UMTS-driving.swing": {
+   "value": 25.3,
+   "tol": 0.05,
+   "where": "\u00a78",
+   "text": "T-Mobile UMTS 25.3"
   }
  }
 }

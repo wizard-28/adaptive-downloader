@@ -1,4 +1,4 @@
-# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25; baselines, sweep, joint agent and DQN v2 added 2026-10-26)
+# Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25; baselines, sweep, joint agent and DQN v2 added 2026-10-26; framing, the adaptive-versus-aria2 synthesis, trace scope, authors and naming added 2026-10-28)
 
 **Working title:** *Request granularity and concurrency adaptation for HTTP range
 downloads under controlled server-side pacing: a mechanism-first evaluation.*
@@ -23,7 +23,12 @@ See `docs/PREREGISTRATION_NOTE.md`.
 ## Abstract (draft)
 
 Adaptive HTTP range downloaders choose concurrency (N) and range size (S), but it
-is rarely clear when adaptation has anything causal to exploit. We build a
+is rarely clear when adaptation has anything causal to exploit. We ask
+whether adapting N and S during a download helps when network or server
+conditions are not optimal, compared with aria2 and other segmented
+downloaders and with a well-chosen fixed configuration of the same engine,
+so that a gain from adapting can be told apart from a gain from how the file
+is split. We build a
 controlled single-server HTTP/1.1 range-download platform with per-response
 pacing, a soft concurrency-dependent throttle, and network impairment, and report
 four findings. (i) On one characterised workload (512 MiB; per-response pacing
@@ -56,7 +61,8 @@ the start (ratio 0.995 [0.992, 0.999]) and was within 1.6 % of it with the cap
 from 8 s (1.016 [1.006, 1.029]), and the best fixed configuration was faster
 than the causal controller (1.071 [1.054, 1.085]) and the workload selector
 (1.229 [1.223, 1.234]). A re-implemented online concurrency tuner in the style
-of FastBioDL was also slower than the best fixed configuration (1.212 and 1.220).
+of FastBioDL was slower even than the better of two fixed configurations with
+its own 1 MiB range size (1.212 and 1.220).
 (iv) The DQN policies (v2, v5, v6) were slower than aria2 overall in the
 head-to-heads we ran, and the frozen v6 agent was slower than the best fixed
 configuration on the capped server (1.356 [1.252, 1.472]); a DQN retrained on a
@@ -69,28 +75,58 @@ its training ranges and slower in 1 (by 0.7 %); it cost about 5 % with no cap,
 and a simple drop rule tuned to the original cap was faster in its home scenarios.
 A joint agent that also set the range size did not beat the best fixed
 configuration live (1.471 [1.405, 1.546] under the cap). (LinUCB was evaluated
-only descriptively.) All results are scoped to the
+only descriptively.) Against aria2 under changing conditions, our adaptive arms
+were faster only when the server rate rose during the download (0.36–0.88),
+where a fixed configuration of the same engine was faster still (0.344–0.376);
+when the server degraded, aria2 was faster than every adaptive arm
+(1.096–1.781). All results are scoped to the
 controlled mechanisms; none is a validation on live networks or production servers.
 
 ---
 
 ## 1. Introduction
 
-- Segmented range downloads; fixed vs adaptive N and S.
+- Segmented range downloads; fixed vs adaptive N and S. Tools such as aria2,
+  axel and lftp choose N and S once, at the start of a download.
+- **Question.** When network or server conditions are not optimal (the
+  server rate changes, the server starts throttling, delay and loss, a link
+  whose capacity swings), does adapting N and S during the download do better
+  than these tools? And is any gain due to adapting, or to how the file is
+  split? To separate the two, every adaptive arm is compared with aria2 and
+  with the best fixed configuration of the same engine.
 - Adaptation is useful only when the environment has a state-dependent optimum
   that a causal controller can observe.
+- **What is not new.** Online tuning of parallel streams (FastBioDL, Falcon,
+  direct search), deep RL for transfer parameters, and splitting slow
+  segments (aria2, IDM) are established; we propose no new tuning algorithm.
 - Contributions (each with its evidence label):
-  1. A controlled, instrumented platform (downloader, server, policies, harness).
+  1. A controlled, instrumented platform (downloader, server with explicit
+     rate rules, policies, harness) and a claims checker that recomputes every
+     number in this paper from raw artifacts.
   2. A partly mechanism-explained comparison with aria2 on one characterised workload
-     (**Confirmed**, single workload; sensitivity screen in §4.1).
-  3. A replay-based negative result on recorded cellular traces (**Confirmed**
+     (**Confirmed**, single workload; sensitivity screen in §4.1), whose
+     direction also held against axel and lftp and across a delay × loss grid
+     (screens, §4.3, §4.4).
+  3. A replay-based negative result on recorded cellular traces, with the
+     oracle headroom bounded before any learner was trained (**Confirmed**
      under the frozen counterfactual model; not a live-network validation).
   4. Existence results for adaptive (N,S) selection/control **under an explicitly
      constructed N-dependent server model** (§6, §7): within-download improvement
      over the best stationary configuration (**Confirmed**, n=10 blocks);
      cross-workload selection (**Descriptive**; consistency across the family not
      established).
-  5. An inventory of learned-policy experiments, all negative or mixed (§9).
+  5. An engine ablation showing that a whole-request timeout and missing
+     straggler splitting, not control, explained aria2's lead under the cap,
+     after which the best fixed configuration beat the adaptive controllers
+     (**Confirmed**, §7a); and a live-rate control server showing that the
+     large-range advantage depends on the server fixing a response's rate on
+     arrival (§9c).
+  6. An inventory of learned-policy experiments (§9): the early candidates are
+     negative or descriptive; agents retrained for the capped server beat the
+     fixed configuration with their own range size where trained, generalized
+     partially inside a broadened training envelope, and failed a no-harm
+     check on public mirrors (§8a).
+  7. A synthesis against aria2 under changing conditions (§9e).
 - Scope: controlled server/network mechanisms; not claims about production servers.
 
 ## 2. Related work
@@ -134,8 +170,12 @@ a new tuning algorithm.
   **request start and held for that response**; wall-clock rate schedules; fault
   injection; and a soft concurrency cap
   `rate_eff = min(base, C/(k*(1+gamma*(k-1))))` evaluated at request start with
-  k = concurrent requests. This request-start semantics is a property of the
-  server model and drives the aria2 results below.
+  k = concurrent requests including the arriving one (C = 8 MiB/s and
+  gamma = 0.05 were chosen in an exploratory screen of 27 schedule–cap pairs,
+  of which one met the selection rule). This request-start semantics is a
+  property of the server model and drives the aria2 results below. An opt-in
+  live-rate mode instead re-evaluates each response's rate during the response
+  from the current k; it serves as a control in §9c.
 - Harness: experiment matrix, aria2/curl/wget runners, SHA-256 content
   verification of every output, tc/netem [tcnetem], and Mahimahi mm-link
   trace replay [netravali2015mahimahi].
@@ -431,8 +471,11 @@ drop above 5 %, clamp at N in 1–16, S untouched. Predeclared protocol
 (`testdata/online_tuner/protocol.md`): CAP8 and no cap, 8 shuffled blocks, 64
 runs, all valid, corrected engine.
 
-- **Slower than the best fixed configuration in both scenarios (Confirmed).**
-  CAP8: 1.212 [1.180, 1.248] against 16 × 1 MiB; no cap: 1.220 [1.203, 1.232].
+- **Slower than the better of the two fixed 1 MiB configurations in both
+  scenarios (Confirmed).** CAP8: 1.212 [1.180, 1.248] against 16 × 1 MiB; no
+  cap: 1.220 [1.203, 1.232]. The tuner keeps the range size at 1 MiB, so these
+  are same-range-size comparisons; under CAP8 the corrected engine's best
+  fixed configuration (16 × 32 MiB, §7a) was faster still.
 - **Adaptation speed (Descriptive).** It cut N 2.1 s after the cap (the causal
   controller 1.5 s), but needed 8.1 s to climb from N = 4 to N = 16 without a
   cap, and that ramp is where most of the loss occurs.
@@ -450,6 +493,19 @@ over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
 ≥ 10 %; the bound was −0.26 % (**Failed gate**; n = 5, df = 4). Oracles are not
 policies; this bounds the benefit available to any concurrency-switching policy
 under the frozen model.
+
+**What the traces vary.** Each trace lists the times at which the recorded
+link could deliver one 1500-byte packet. In 1 s bins, downlink capacity swings
+by a 90th/10th percentile ratio of 6.5 to 25.3 across the five traces
+(Verizon EVDO 24.2, Verizon LTE 14.1, AT&T LTE 6.6, T-Mobile LTE 6.5,
+T-Mobile UMTS 25.3; `tools/trace_swing.py`). The replay ran `mm-link` with the
+trace alone, without `mm-delay` or `mm-loss`, so it varied capacity only: no
+added propagation delay, no random loss, and no server behaviour. Loss and
+delay were studied separately with netem (§4.4, §5). On one shared bottleneck
+whose capacity varies, the best N stays roughly "enough to fill the pipe",
+because every setting slows down together. A capacity trace cannot express a
+per-connection cost that changes over time, which is the mechanism §6–§7
+construct.
 
 ### 8a. Live-internet pilot (Descriptive)
 
@@ -542,13 +598,15 @@ the same corrected engine, 5 blocks, 64 MB.
   Only the kcdn v2 interval excludes 1. Under the frozen rule, "no harm"
   needs a ratio of at most 1.05 that is not slower, and both arms showed
   no harm on 0 of 3 mirrors.
-- **Why.** The mirrors have no cap, but their per-request throughput is
-  noisy. v2 ended at a median N of 6–7 on kcdn and kedge. The drop rule
-  read a dip as a cap and switched to N = 4 in 4 of 5 runs on kedge and on
-  riken.
+- **What happened.** The mirrors have no cap, but both arms cut their
+  connections: v2 ended at a median N of 6–7 on kcdn and kedge, and the drop
+  rule switched to N = 4 in 4 of 5 runs on kedge and on riken. Our reading,
+  not tested against the throughput traces, is that noisy per-request
+  throughput looked like a cap.
 - **Reading.** The agents adapt to signals that, on these servers, do not
   mean what they meant on the server model they were built for. Adaptation
-  carried a cost here, with no headroom to pay for it (3.7 % in the pilot).
+  carried a cost here, with little selection headroom to pay for it (3.7 % in
+  the pilot).
   This matches §8, where variability did not mean opportunity. It is one
   client, one evening and 5 blocks of a noisy link, so it is descriptive
   only.
@@ -558,6 +616,11 @@ the same corrected engine, 5 blocks, 64 MB.
 The learners are a LinUCB contextual bandit [li2010linucb] and Double DQN
 [vanhasselt2016ddqn] agents in the DQN family [mnih2015dqn], all acting through
 the same serialized policy interface as the deterministic controllers.
+
+**Naming.** "DQN v1–v6" in the table below are the early candidates. The
+agents of §9b and §9d are a separate pair retrained for the capped server,
+called the cap-trained v1 and cap-trained v2: the cap-trained v2 of §9d is not
+the early DQN v2 of the table.
 
 Status column: **valid** = the stated comparison is internally consistent and
 reproducible from its artifacts; **stale** = produced before a later correction
@@ -705,7 +768,7 @@ behaviour that wins under the cap.
   - Most of the large-range advantage under the cap comes from the
     arrival-time rule.
 
-### 9d. DQN v2: broader training, tested on held-out scenarios
+### 9d. Cap-trained DQN v2: broader training, tested on held-out scenarios
 
 A second predeclared study (`testdata/rl_cap_train_v2/protocol.md`) kept the
 learner, actions and state of §9b. It changed the training distribution
@@ -777,6 +840,37 @@ oracle.
   from a procedure that is not reliably good across seeds. It costs about
   5 % when nothing changes.
 
+### 9e. Synthesis: adaptive arms against aria2 under changing conditions
+
+This section answers the question of §1 directly, from results reported
+above. Each row is a scenario in which conditions change during the download.
+Ratios are time ÷ aria2's time; below 1, ours was faster.
+
+| What changes mid-download | Our adaptive arms ÷ aria2 | Our best fixed configuration ÷ aria2 |
+|---|---|---|
+| Server rate dips, then rises (D2) | rule-based joint (Track 1) 0.876 | 16 × 4 MiB 0.376 (§4) |
+| Rate rises at 1 s, no cap | frozen DQN v6 0.359; online tuner 0.432; joint agent 0.388 | 16 × 1 MiB 0.344 (§7a) |
+| Cap switches on at 8 s | causal 1.096 (original engine); cap-trained v1 1.310; frozen v6 1.367; joint agent 1.422; online tuner 1.781 | 16 × 32 MiB 1.016 (§7a) |
+| Bandwidth collapse, latency spike, burst loss, throttle (trajectories A2–E2) | DQN v6 1.456 (one of five trajectories not slower) | not run |
+| Six capped workloads (W1–W6) | workload selector 1.660 | not run |
+
+- **When the server rate rose,** every adaptive arm was faster than aria2,
+  and the fixed configuration with the same small ranges was faster still.
+  The gain over aria2 there comes from range granularity and request timing
+  (§4), not from adapting.
+- **When the server degraded,** aria2 was faster than every adaptive arm.
+  Its large pieces start before the cap and keep the pre-cap rate (§7a); on
+  the corrected engine our best fixed configuration came within 1.6 % of it.
+- **Comparability.** The rows come from different studies, files and aria2
+  configurations, as noted in the sections cited; the trajectory and W1–W6
+  rows used the original engine. The table is a guide to direction, not a
+  pooled estimate.
+- **Not tested.** No study changed loss or delay during a download on a
+  real path with adaptive arms running. In the correlated-loss screen the
+  best configuration did not move with loss (N* = 16 and, without the 30 s
+  deadline, S* = 16 MiB in all variants), so by the headroom-first method
+  there was nothing for a controller to track; a live test is future work.
+
 ## 10. Discussion, limitations, and threats to validity
 
 - **Constructed environment.** The positive adaptive results hold under a server
@@ -805,6 +899,14 @@ oracle.
   the NGINX per-response rate-limit screen of §4.2 (n=5 per configuration), and
   it exercised neither a shared cap nor a connection limit, so the adaptive
   results of §6-§7 have no stock-server counterpart.
+- **Replayed traces vary capacity only.** The cellular replays added no loss
+  or propagation delay and no server behaviour (§8). Loss and delay were
+  studied at fixed levels with netem, and changing them during a download was
+  covered only by the early trajectories on our own server; no live test with
+  loss or delay changing mid-download was run.
+- **Fairness.** Opening 16 connections takes a larger share of a shared link
+  from other flows and loads public mirrors more; we measured speed, not
+  fairness.
 - **Statistics:** block-level intervals reflect emulator noise; workload-level
   intervals are primary for cross-workload claims; n = 5 sweep pairs are
   screening only.
@@ -836,13 +938,33 @@ competitive and a joint range-size agent did not find the larger gains its
 simulator offered; a cross-workload selector matches the
 per-workload best on average but a consistent advantage over a single
 family-wide configuration is not established; learned policies were slower than
-aria2. These results delimit when adaptation is worth its complexity; they do not
-establish general superiority of adaptive downloading.
+aria2. Against aria2 under changing conditions, adaptive arms were faster only
+when the server rate rose, where a fixed configuration of the same engine was
+faster still, and slower whenever the server degraded. These results delimit when adaptation is worth its complexity; they do not
+establish general superiority of adaptive downloading. Future work: action
+spaces with delayed, changing costs (multi-mirror scheduling, restarting slow
+requests, straggler hedging), a live test with loss and delay changing during
+the download, and measurements across many clients and networks, each behind
+a headroom gate and against both the best static configuration and a strong
+myopic heuristic.
 
 ## Declarations
 
-**Authors, order, affiliations, ORCID, funding, conflicts of interest:** TO BE
-PROVIDED BY THE HUMAN AUTHORS (not filled by the preparer).
+**Authors.** Sourajyoti Basak, Shwetank Shrijan and Ayush Konar, Vellore
+Institute of Technology, Vellore, India (course project, Computer Networks Lab,
+BCSE308P).
+
+**Author contributions** (as recorded in the Review 2 report).
+S. Basak: downloader architecture and core implementation; adaptive
+concurrency and range management; test server and Linux network experiments;
+system integration and validation. S. Shrijan: downloader development and
+testing of assigned components; monitoring and experiment automation;
+baseline and heuristic evaluation. A. Konar: LinUCB; RL state, action and
+reward design; Python/PyTorch models; integration of the learned policy with
+the Go downloader; ML/RL evaluation.
+
+**Author order, corresponding author, ORCID, funding, conflicts of interest:**
+TO BE CONFIRMED BY THE AUTHORS.
 
 **Use of AI tools (draft; authors must confirm wording and scope).** An AI
 coding assistant (Anthropic Claude, run through the Claude Code CLI) was used
@@ -883,7 +1005,7 @@ the NGINX check are committed before their runs.
 | Learned policies beat aria2 | **Not supported** | §9 |
 | aria2's lead under the cap came from the request deadline and missing straggler splitting | Confirmed (230 runs, 10 blocks per scenario) | §7a; CAP0 0.599 with splitting; then 0.995 vs aria2 |
 | Adaptive controllers beat the best fixed configuration on the corrected engine | **Not supported** (causal 1.071; selector 1.229) | §7a |
-| An online concurrency tuner beats the best fixed configuration | **Not supported** (1.212; 1.220) | §7b |
+| An online concurrency tuner beats fixed configurations with its own 1 MiB range size | **Not supported** (1.212; 1.220) | §7b |
 | The frozen DQN v6 beats the best fixed configuration on the capped server | **Not supported** (1.356; screen, 5 blocks) | §9a |
 | A DQN retrained on a checked capped-server simulator beats the best fixed 1 MiB setting where it was trained | Confirmed (0.907, 10 blocks) | §9b |
 | …and generalizes to held-out conditions | **Not supported** (faster in 0 of 3) | §9b |
@@ -897,3 +1019,6 @@ the NGINX check are committed before their runs.
 | On live public mirrors, one fixed cell (8 × 1 MiB) is near-best across servers and time slots | Descriptive pilot; predeclared small-headroom criterion met (bootstrap upper bound 4.8 % < 5 %), one client and one primary network | §8a; `testdata/live_pilot_l1/analysis/summary.json` |
 | …and on a second access network | Descriptive, **inconclusive** (7.2 % [1.2, 12.2], 4 conditions, one slot) | §8a; amendment A3 |
 | The v2 agent and the drop rule do no harm on public mirrors | **Not supported** (no harm on 0 of 3 for both; v2 1.215–1.654) | §8a; `testdata/live_mirror_check` |
+| Adaptive arms beat aria2 when conditions change during the download | **Mixed**: faster only when the server rate rose, where a fixed configuration was faster still; slower whenever the server degraded | §9e (rows from separate studies) |
+| The replayed cellular traces cover changing loss and delay | **Not claimed**: they vary capacity only (6.5–25.3 swing) | §8 |
+| Adapting helps when loss or delay changes during a download on a real path | **Not tested**; the best configuration did not move with loss in the screen | §9e, §10 |

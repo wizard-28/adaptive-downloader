@@ -1,0 +1,38 @@
+{
+  "label": "downlink capacity, 1 s bins, p90/p10 per trace",
+  "source_dir": "mahimahi-clone-dir/mahimahi/traces",
+  "traces": {
+    "Verizon-EVDO-driving": {
+      "p10_mbps": 0.048,
+      "p90_mbps": 1.164,
+      "p90_over_p10": 24.249999999999996,
+      "seconds": 1063
+    },
+    "Verizon-LTE-driving": {
+      "p10_mbps": 1.668,
+      "p90_mbps": 23.544,
+      "p90_over_p10": 14.115107913669066,
+      "seconds": 1364
+    },
+    "ATT-LTE-driving": {
+      "p10_mbps": 1.308,
+      "p90_mbps": 8.628,
+      "p90_over_p10": 6.5963302752293576,
+      "seconds": 787
+    },
+    "TMobile-LTE-driving": {
+      "p10_mbps": 3.828,
+      "p90_mbps": 25.02,
+      "p90_over_p10": 6.536050156739812,
+      "seconds": 475
+    },
+    "TMobile-UMTS-driving": {
+      "p10_mbps": 0.156,
+      "p90_mbps": 3.948,
+      "p90_over_p10": 25.307692307692307,
+      "seconds": 929
+    }
+  },
+  "min_swing": 6.536050156739812,
+  "max_swing": 25.307692307692307
+}
