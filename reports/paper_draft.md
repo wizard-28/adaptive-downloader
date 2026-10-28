@@ -120,7 +120,7 @@ controlled mechanisms; none is a validation on live networks or production serve
 - Adaptation is useful only when the environment has a state-dependent optimum
   that a causal controller can observe.
 - **What is not new.** Online tuning of parallel streams (FastBioDL, Falcon,
-  direct search), deep RL for transfer parameters, and splitting slow
+  direct search), deep RL for download task sizing [liu2025deload], and splitting slow
   segments (aria2, IDM) are established; we propose no new tuning algorithm.
 - Contributions (each with its evidence label):
   1. The answer to the central question: a synthesis against aria2 and the best fixed setting under changing conditions (§9e, §10); adaptive arms won only when the server rate rose, where a fixed setting of ours won by more, and lost whenever the server degraded.
@@ -180,6 +180,15 @@ serves as an analogy for decision rules that need no throughput forecast.
 DeLoad [liu2025deload] (preprint) sizes download tasks for short-video
 preloading. Neither is a range-download concurrency study.
 
+**What we did not find in these works.** In the abstracts we read, and the full
+text for FastBioDL, we did not find a comparison that combines stock downloaders
+(aria2, axel, lftp) with the best fixed setting of the same engine; a headroom
+ceiling measured before the controller was built; a separation of controller
+gains from engine effects such as timeouts, splitting and request start times;
+or cases where adapting gave nothing. FastBioDL compares with other tools and
+with fixed concurrency levels, and MDTP compares with aria2 in multi-server mode.
+This is a statement about what we read, not about all prior work.
+
 **Position.** The contribution here is a mechanism-first, controlled
 evaluation with explicit failed gates and a practical baseline comparison, not
 a new tuning algorithm.
@@ -202,6 +211,26 @@ a new tuning algorithm.
 - Harness: experiment matrix, aria2/curl/wget runners, SHA-256 content
   verification of every output, tc/netem [tcnetem], and Mahimahi mm-link
   trace replay [netravali2015mahimahi].
+
+**Test setup.** The downloader speaks HTTP/1.1 only, with keep-alive and a pool
+of up to 16 connections; HTTP/2 and HTTP/3 are not used, because aria2, axel and
+lftp also open one HTTP/1.1 connection per segment, so N counts TCP connections
+for every tool. Client and server run on one machine over loopback, left at the
+default MTU (65,536 bytes) and the host's default congestion control (CUBIC),
+with delay and loss added by netem. The server's pacing, not TCP congestion
+control, is the bottleneck in these runs, and a loopback path with netem is not a
+real path; §8a therefore adds checks on real servers. The base pacing schedule
+(called t1 in the data) serves 640 KiB/s for the first second and 2500 KiB/s
+afterwards; "no cap" (HEALTHY in the data) is the server without the concurrency
+throttle.
+
+**Statistical analysis.** Comparisons are paired: a block runs every arm once, in
+randomised order, and the within-block time ratio is averaged geometrically.
+Intervals are 95 % t-intervals on the log ratio or percentile bootstraps over
+blocks, as stated for each result; where the two disagree the less favourable
+verdict is reported. No multiplicity correction and no power analysis were done;
+screens with 3–5 blocks are labelled as screens, and a claim needs the whole
+interval on one side of 1.
 
 ## 4. Phase-locked pacing and the aria2 comparison
 
@@ -513,7 +542,8 @@ and distributed with Mahimahi [netravali2015mahimahi], were replayed through
 mm-link on a controlled host; this is trace replay,
 not measurement on live mobile networks. A per-trace counterfactual oracle with
 transition costs estimates the completion-time headroom of switching concurrency
-over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
+(C in {1, 2, 4, 8, 16}, range size fixed at 1 MiB) between 120 s epochs of the
+trace, over the best fixed C. Headroom per trace: 1.64 %, 0.019 %, 0.016 %, 0.061 %,
 0.294 % (mean 0.406 %). The predeclared gate required a one-sided 95 % lower bound
 ≥ 10 %; the bound was −0.26 % (**Failed gate**; n = 5, df = 4). Oracles are not
 policies; this bounds the benefit available to any concurrency-switching policy
@@ -537,7 +567,8 @@ construct.
 ### 8a. Live-internet pilot (Descriptive)
 
 To check whether the trace-replay conclusion survives contact with real
-paths, we ran a small descriptive pilot (`testdata/live_pilot_l1/`; protocol
+paths (with at most 16 connections to any server, and any server that returned
+429 or 503 skipped for the rest of the slot), we ran a small descriptive pilot (`testdata/live_pilot_l1/`; protocol
 committed before the first slot, with amendments logged). One client on the
 author's residential broadband in India downloaded a kernel.org release
 tarball from four public mirrors: the kernel.org CDN, the kernel.org origin
@@ -922,7 +953,7 @@ Ratios are time ÷ aria2's time; below 1, ours was faster.
 
 ## 10. Discussion, limitations, and threats to validity
 
-![Every adaptive controller against the fixed setting named in its row, with 95 % intervals. Green: adaptive faster. Red: adaptive slower. Against the best fixed setting on the fixed engine, every adaptive controller was slower.](ieee_access/figures/fig8_all_controllers.png)
+![Every adaptive controller against the fixed setting named in its row, with 95 % intervals. Green: adaptive faster. Red: adaptive slower. Against the best fixed setting, wherever it was run (fixed engine, capped server), every adaptive controller was slower.](ieee_access/figures/fig8_all_controllers.png)
 
 - **Constructed environment.** The positive adaptive results hold under a server
   model we designed and selected (72-candidate search). They show conditions under
