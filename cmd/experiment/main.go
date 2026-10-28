@@ -1,6 +1,12 @@
 // Command experiment runs the controlled four-mode comparison (fixed,
 // concurrency-adaptive, chunk-size-adaptive, joint-adaptive) and prints the raw
 // per-run results and aggregate summaries. It does not rank the modes.
+//
+// Each mode runs inside the same scenario: the same server model, rate schedule,
+// fault injection and file size, with a fresh output and fresh policy state per
+// run, in randomised order across repetitions. That is what makes a per-run time
+// ratio meaningful. The opt-in learning modes (linucb, linucb-periodic) are not
+// part of AllModes() and must be selected explicitly.
 package main
 
 import (

@@ -353,7 +353,7 @@ func (d *Downloader) SetConcurrency(target int) int {
 // Sequence: open+truncate the output to TotalSize, install a fresh metrics
 // collector (so Metrics() describes this run only), build the pool at the
 // controller's current target, attach the policy runner when a policy is
-// configured, then serve until `no work and no active worker`.
+// configured, then serve until no work remains and no worker is active.
 //
 // The outcome is reported in this order, so a failure is not hidden by a later
 // check: the first fatal worker error (retry limit, assembly, split), then

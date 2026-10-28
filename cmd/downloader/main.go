@@ -1,3 +1,14 @@
+// Command downloader downloads one file with the internal range downloader.
+//
+// It is the demonstration entry point, not the experiment harness: it uses a
+// fixed concurrency and chunk size, verifies the result (size, optional SHA-256)
+// and reports timing. For adaptive policies, paired runs and controlled server
+// models, see cmd/experiment and the studies under testdata/.
+//
+// Example:
+//
+//	go run ./cmd/downloader -url http://127.0.0.1:8080/file.bin \
+//	    -out /tmp/file.bin -size 67108864 -concurrency 8 -chunk 1048576
 package main
 
 import (

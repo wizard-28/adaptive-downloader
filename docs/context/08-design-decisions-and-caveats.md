@@ -39,6 +39,11 @@
   `-modes linucb`). The learner reuses the existing Adapter/runner/reward path —
   no new downloader, runner, worker pool, or reward.
 - Network-unavailable runs excluded from valid aggregates.
+- **Documentation convention:** package docs carry the flow, the invariants and a
+  worked example where the arithmetic is non-obvious (range conversion, the two
+  throughput measures, the cap, the reward, LinUCB's score). Reasons live beside
+  the code, not only in reports; `reports/thursday/code_walkthrough.md` is the
+  navigable index for a code review, and it must stay true to the source.
 
 ---
 

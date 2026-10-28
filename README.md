@@ -46,7 +46,8 @@ Shwetank Shrijan, Ayush Konar.
   deck), source files for Claude Slides decks; each folder's README says how to
   republish. Charts come from `reports/handbook/make_deck_figs.py`.
 - Viva preparation: `reports/thursday/` (`qa.md` spoken answers, `qa_detailed.md`
-  exact numbers, `viva_cheatsheet.md`, `who_explains_what.md`, `demo.md`).
+  exact numbers, `viva_cheatsheet.md`, `who_explains_what.md`, `demo.md`, and
+  `code_walkthrough.md` for a line-by-line code review).
 - Reviews 1 to 3: `reports/Review2_Project_Review.pdf`,
   `reports/Review3_Final_Report.pdf`; team handbook: `reports/handbook/`.
 - Third-party files (IEEE templates, traces): see `THIRD_PARTY_NOTICES.md`.

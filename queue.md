@@ -75,6 +75,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   every study, method, novelty, per-member work division (from Review 2;
   the Review 1 docx has none), viva Q&A, demo guide. Three Opus fact-checks
   (~810 claims); all findings fixed before commit
+- [x] Code-review documentation pass (2026-10-28): package docs now carry the
+  run flow, invariants and worked examples (range conversion, two throughput
+  measures, split order, cap at k=1/4/16, reward 4.75, LinUCB score) and
+  `reports/thursday/code_walkthrough.md` maps file/function → explanation, with
+  20 "if they point at this line" answers. §22.112. Comments only; checks green.
 - [ ] Rehearse the hardest questions: generalization, "tuned to the test",
   why no range-size action, aria2 gap, wget2 exclusion, IEEE status
 

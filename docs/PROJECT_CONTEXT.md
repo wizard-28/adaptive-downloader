@@ -37,6 +37,7 @@ come before 22.96–22.108 inside 05g/05h); the current next step is in 09.
 | `docs/context/05f-status-22.70-to-22.81.md` | §22 running status log (oldest first, except 22.109–22.111 which precede 22.96–22.108): 22.70 … 22.81, 12 entries | 60 KB |
 | `docs/context/05g-status-22.82-to-22.95-and-22.109-to-22.111.md` | §22 running status log (oldest first, except 22.109–22.111 which precede 22.96–22.108): 22.82 … 22.109, 17 entries | 58 KB |
 | `docs/context/05h-status-22.96-to-22.108.md` | §22 running status log (oldest first, except 22.109–22.111 which precede 22.96–22.108): 22.108 … 22.96, 13 entries | 49 KB |
+| `docs/context/05i-status-22.112.md` | §22 running status log, newest entries: 22.112 (documentation pass for the viva code review) | 5 KB |
 | `docs/context/06-test-coverage.md` | §23 test coverage by subsystem | 15 KB |
 | `docs/context/07-completed-milestones.md` | §24 completed milestones | 58 KB |
 | `docs/context/08-design-decisions-and-caveats.md` | §25 important design decisions, §26 known caveats | 6 KB |
@@ -44,7 +45,8 @@ come before 22.96–22.108 inside 05g/05h); the current next step is in 09.
 
 Reassembling `docs/context/*.md` in name order gives back the former single
 `docs/PROJECT_CONTEXT.md` byte for byte (checked when it was split, 2026-10-28;
-the old file is in git history).
+the old file is in git history). `05i-status-22.112.md` was added after that
+split and holds only new entries.
 
 ## Where things stand (2026-10-28)
 
@@ -53,7 +55,9 @@ presentation material and answers. Open items: handbook swing wording ("about
 5–27×", change only when the user asks), IEEE author details (ORCID, funding,
 conflicts). Details and the latest entries: §22.109 (DQN retrained for the
 capped server and follow-ups), §22.110 (team handbook), §22.111 (paper, decks,
-IEEE templates). The work queue is `queue.md`; the presentation is two
+IEEE templates), §22.112 (documentation pass for the code review; see also
+`reports/thursday/code_walkthrough.md`). The work queue is `queue.md`; the
+presentation is two
 Slides decks (`reports/deck12/` the official 12 slides, `reports/deck/` the long
 deck); the paper is `reports/paper_draft.md` with PDFs from
 `tools/paper_to_pdf.py` and `tools/paper_to_ieee.py` (`--conf` for the
@@ -63,6 +67,7 @@ conference template).
 
 - Edit the file that holds the section you change. Add new status entries as
   new `### 22.N ...` headings at the end of the last `05*` file (start a new
-  `05i-...` file when it passes about 60 KB), and add the file to the table above.
+  `05j-...` file when the last one passes about 60 KB), and add the file to the
+table above.
 - Keep section numbers stable; do not renumber.
 - Keep this index short: it points, it does not repeat.
