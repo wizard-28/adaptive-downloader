@@ -11,8 +11,8 @@
 <p style="font-size:26px;line-height:1.4;color:#B85A12"><b>But aria2 was faster still: 53.6 s</b></p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The cap: past about 3 connections, the server’s total speed falls (slide 10) · our engine as it was before the fixes on the next slide</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">18</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The cap: past about 3 connections, the server’s total speed falls (slide 19) · our engine as it was before the fixes on the next slide</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">26</p>
 <aside>WHAT TO SAY: Since no natural condition gave adaptation a reason to exist, we built one: a server that is normal for 8 seconds, then switches on a cap, where too many connections hurts. Now the best setting really changes in the middle of the download.
 A very simple controller handled it well. We call it the drop rule: it watches how fast each request goes, and the first time that speed falls below half of its best, it switches once to fewer connections. It took 58.7 seconds against 76.7 for the best of the fixed settings we ran: 23.4 % less time, in all 10 rounds. Reducing the number of connections did almost all the work; changing piece size alone made it worse.
 But aria2, which does not adapt at all, was still faster: 53.6 seconds. Finding out why changed our whole conclusion.

@@ -3,16 +3,16 @@
   "createdOnFiles": {"v": 1, "at": "2026-10-28T09:00:00Z"},
   "lists": "css",
   "title": "When Does Adapting N and S Help?",
-  "order": ["cover", "question", "prior", "novelty", "answer", "roadmap", "background", "architecture", "engine", "platform", "method", "r1", "r1b", "r1c", "r2a", "r2", "r2b", "r3", "r3b", "r3c", "r4a", "r4", "r4b", "r4c", "r4d", "r5", "r5b", "vsaria2", "summary", "whyrl", "limits", "team", "demo", "close"],
+  "order": ["cover", "p_problem", "p_solution", "architecture", "method", "engine", "demo", "p_results", "vsaria2", "p_innovation", "p_conclusion", "p_future", "backup", "question", "prior", "answer", "roadmap", "background", "platform", "r1", "r1b", "r1c", "r2a", "r2", "r2b", "r3", "r3b", "r3c", "r4a", "r4", "r4b", "r4c", "r4d", "r5", "r5b", "summary", "whyrl", "novelty", "limits", "team"],
   "sections": {
-    "intro": {"description": "The question and the answer in one slide", "start": "cover"},
-    "build": {"description": "What we built and how we measured", "start": "background"},
-    "fixed": {"description": "Our downloader with fixed settings against aria2 and other tools", "start": "r1"},
-    "search": {"description": "Unstable mobile networks: is there anything to gain by adapting?", "start": "r2a"},
-    "cap": {"description": "A server that punishes too many connections, and what fixed the gap to aria2", "start": "r3"},
-    "learned": {"description": "The machine-learning controllers", "start": "r4"},
-    "real": {"description": "Real networks and real servers", "start": "r5"},
-    "wrap": {"description": "What it means, novelty, limits, team and demo", "start": "summary"}
+    "talk": {"description": "The 12-slide presentation: title, problem, solution, architecture, method, implementation, demo, results, comparison, innovation, conclusion, future work", "start": "cover"},
+    "backup": {"description": "Backup slides: details behind each result, for questions", "start": "backup"},
+    "fixed": {"description": "Backup: our downloader with fixed settings against aria2 and other tools", "start": "r1"},
+    "search": {"description": "Backup: unstable mobile networks, is there anything to gain by adapting?", "start": "r2a"},
+    "cap": {"description": "Backup: a server that punishes too many connections, and what fixed the gap to aria2", "start": "r3"},
+    "learned": {"description": "Backup: the machine-learning controllers", "start": "r4a"},
+    "real": {"description": "Backup: real networks and real servers", "start": "r5"},
+    "wrap": {"description": "Backup: what it means, limits and team", "start": "summary"}
   },
   "faces": {
     "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"},

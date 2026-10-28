@@ -10,7 +10,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Server cap switching on at 8 s · times from two experiments on the same setup (fixed 16 × 1 MiB: 76.6 s and 76.7 s), so a guide, not a strict head-to-head</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">25</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">33</p>
 <aside>WHAT TO SAY: How do the AI agents compare with aria2 and big pieces? This chart puts all the times for the cap-from-8-seconds test side by side. Big 32 MiB pieces took 50.9 seconds and aria2 52.6. The best AI agent took 64.8 seconds, and the simple drop rule 61.9.
 The reason is the server rule from earlier: a request keeps the speed it had when it started. Big pieces all start before the cap, so they keep the fast speed. An agent using 1 MiB pieces starts almost every request after the cap, so it always gets the slow speed, however cleverly it picks the number of connections.
 We checked that this is the reason: on a version of our server that re-checks the speed during each response, the big-piece setting slowed from 50.9 to 67.4 seconds.

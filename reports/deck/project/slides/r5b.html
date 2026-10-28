@@ -11,7 +11,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Dots: averages; lines: uncertainty ranges (wide, 5 rounds) · first attempt lost to an outage on our own link, reported, then rerun: 60 of 60 valid</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">27</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">35</p>
 <aside>WHAT TO SAY: Finally, we ran two adaptive controllers, the broadly trained AI agent and the simple drop rule, on three of those real servers. Our goal here was modest: check that adapting does no harm. We set the rule in advance: a controller passes if it is at most 5 % slower than the best fixed setting and not clearly slower.
 The first attempt was ruined by an outage on our own internet connection; we reported it and added a check that the connection was healthy before the second attempt. On the second attempt all 60 downloads worked. Both adaptive controllers failed the no-harm rule on all three servers: the agent took 1.2 to 1.65 times as long, the drop rule 1.06 to 1.33 times. Only one of these was clearly slower statistically; the uncertainty ranges are wide because the internet is noisy.
 What we saw: both cut their number of connections even though these servers have no cap. Our explanation, which we did not prove, is that normal ups and downs in internet speed looked like a cap to them.
