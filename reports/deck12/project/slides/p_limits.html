@@ -1,0 +1,32 @@
+<section id="p_limits" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Limitations & threats to validity</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15;color:#14213D">What these results do not show</h2>
+<div style="display:flex;gap:48px">
+<ul style="flex:1;font-size:28px;line-height:1.5;color:#4A5568;display:flex;flex-direction:column;gap:12px">
+<li><b style="color:#14213D">Constructed servers:</b> the positive adaptive results hold on a server model we designed</li>
+<li><b style="color:#14213D">One machine:</b> loopback with netem, one aria2 version (1.37.0)</li>
+<li><b style="color:#14213D">Small real-server study:</b> one client, one home connection</li>
+<li><b style="color:#14213D">Replayed traces,</b> capacity only; delay and loss never changed mid-download</li>
+</ul>
+<ul style="flex:1;font-size:28px;line-height:1.5;color:#4A5568;display:flex;flex-direction:column;gap:12px">
+<li><b style="color:#14213D">Narrow tests of learning:</b> two kinds of learner; our best agent is one chosen training run</li>
+<li><b style="color:#14213D">Testbed noise:</b> tight intervals measure the emulator, not the world</li>
+<li><b style="color:#14213D">Speed, not fairness:</b> 16 connections take more of a shared link</li>
+<li><b style="color:#14213D">Plans predeclared and hashed,</b> not independently registered; no correction for many comparisons</li>
+</ul>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Failed gates are reported as failed · no stall timeout yet in the fixed engine</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">13</p>
+<aside>WHAT TO SAY: Every study has limits, and it is better that we say them first.
+The servers where adapting helped are models we built; real servers may behave differently. All the controlled tests ran on one laptop, with the client and server on the same machine over loopback, with delay and loss added by a Linux tool, and one version of aria2. Our real-internet tests were small: one client on one home connection. The mobile tests replayed recordings of capacity only, not a live phone network, and we never changed delay or loss while a download was running. We tried two families of learning methods, and our best agent is one training run chosen on validation. Because our test server is very consistent, our uncertainty ranges are narrow; they show the noise of the test setup, not of the real world. With the 30-second limit removed, a completely stuck connection would wait forever; a smarter “no progress” timeout is future work. We measured speed, not fairness: 16 connections take a bigger share of a shared link from other users. Our plans were written and fingerprinted before the runs, but not registered with an outside service, and we did not correct for testing many comparisons; failed gates are reported as failed.
+
+IN SIMPLE WORDS: Our results are careful and honest, but they come from a controlled lab plus small real-world checks.
+
+TERMS ON THIS SLIDE:
+• Loopback: client and server on the same computer.
+• Replay: playing back a recording of a network’s speed.
+• Stall timeout: cancelling a request only when it stops making progress, instead of after a fixed time.
+• Fairness: how evenly bandwidth is shared between different users on the same link.
+• Predeclared: plans written and fingerprinted before running, though not registered with an outside service.
+• Multiple comparisons: when many tests are run, some look good by chance.</aside>
+</section>

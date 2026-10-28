@@ -226,6 +226,9 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   per study; 64 MB live-pilot file; why loopback over a real path; request-start
   pacing as a design choice; why t-interval vs bootstrap; no multiplicity correction.
 
+- [x] 12-slide deck extended to 15 (allowed maximum): added mobile-trace ceiling,
+  engine ablation and limitations slides; prior-art matrix on slide 2.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older

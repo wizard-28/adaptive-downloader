@@ -1,0 +1,28 @@
+<section id="p_ceiling" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Testing & results · unstable mobile networks</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15;color:#14213D">A perfect controller gains almost nothing on mobile links</h2>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Setup:</b> five recorded mobile-network traces replayed through a link emulator; a perfect controller that knows the future switches N between 120 s stretches, S fixed at 1 MiB</p>
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/af5784e86bf99638b052f2605e2a3754" alt="Most a perfect controller could gain over the best fixed number of connections, per recording: 1.64, 0.02, 0.02, 0.06 and 0.29 percent, all far below the 10 percent bar set in advance" style="width:1000px;height:436px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#B85A12">0.41 %</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">average gain over the best fixed setting, though speed swings 6.5–25×</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">The bar was 10 % set in advance; even the cautious lower estimate (−0.26 %) was below zero</p>
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b>Takeaway: a swinging network is not a reason to adapt</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Bars: the ceiling per recording · Verizon, AT&amp;T and T-Mobile drives · capacity-only replay, not a live mobile test</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">09</p>
+<aside>WHAT TO SAY: Mobile networks swing wildly: on our five recorded drives, the speed of a typical fast second is 6.5 to 25 times that of a typical slow one. So, does adapting help there? Instead of building a learning controller first, we asked: what is the most any controller could gain? We computed a perfect controller that knows the future and picks the best number of connections for each 120-second stretch of each recording, paying the real cost of each switch, with the piece size fixed at 1 MiB, in our trace-replay model. Even it was only 0.41 % faster on average than simply keeping the best fixed number. We had decided in advance that adaptation would only be worth pursuing if this ceiling was at least 10 %; run-to-run noise in our campaigns was about 1 to 5 %, so under 5 % counts as too weak and 10 % as meaningful. Even the cautious lower estimate was below zero, so the answer is no.
+The reason: when the network gets slower, every setting gets slower together. The best number of connections stays about the same, roughly “enough to fill the pipe”. We replayed capacity only: no delay, loss or server behaviour changes, so this is a replay, not a live mobile test.
+
+IN SIMPLE WORDS: The network changing a lot does not mean there is anything to gain by changing settings. Variability is not opportunity.
+
+THE CHART: each bar is one recording; its height is the most a perfect controller could gain, in percent. The red dashed line is the 10 % bar we set in advance.
+
+TERMS ON THIS SLIDE:
+• Perfect controller (“oracle”): imaginary, knows the future. It gives a ceiling: no real controller that switches N can beat it.
+• Ceiling (“headroom”): how much faster the perfect controller is than the best fixed setting.
+• Cautious lower estimate (“one-sided 95 % lower bound”): the value we can be fairly sure the gain is at least. It was −0.26 %, so we cannot even be sure the gain is above zero.
+• Recording (“trace”): a recorded second-by-second capacity of a real mobile network while driving, replayed through a link emulator.</aside>
+</section>
