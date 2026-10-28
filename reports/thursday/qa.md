@@ -1,367 +1,290 @@
-# Likely questions and prepared answers (Thursday review)
+# Viva questions, answered the way you would say them
 
-Short answers first, then supporting detail. Every number here appears in
-`reports/paper_draft.md`, `reports/Review3_Final_Report.pdf` or the study
-folders under `testdata/` (split_ablation, online_tuner, rl_capped,
-live_pilot_l1, rl_cap_train). Updated 2026-10-25 to match Review 3.
+Read these out loud. Each answer is short and uses round numbers, because
+nobody says "0.3756 with a 95 percent interval" in a conversation. If she wants
+exact numbers, they are in the paper and in `qa_detailed.md`. Use "learning
+controllers", not "AI". If you do not know something, say "we did not test that"
+and do not guess.
+
+Words used here: **N** is how many connections download at once. **S** is how
+big each piece of the file is. A **fixed setting** keeps the same N and S for the
+whole download. The **perfect controller** is an imaginary one that knows the
+future, so it shows the most any real controller could gain.
 
 ---
 
-**1. So reinforcement learning failed. Why should we care?**
+**1. So the learning controllers failed. Why should we care?**
 
-The question was never "can RL win?" It was "when is there anything for any
-adaptive controller to exploit?" The strongest negative results are
-learner-independent. On the cellular traces, even an oracle that knows the
-future gained 0.41 % on average, with a lower bound of −0.26 %. That oracle
-switches only N (1 to 16), between 120 s stretches of each trace, with S fixed at
-1 MiB, under our replay model. That says the
-environment offered almost nothing, which is useful for anyone designing
-adaptive downloaders.
+Our question was never "can machine learning win?" It was "is there anything for
+any adaptive controller to gain?" We measured that first. On recorded mobile
+networks, even a perfect controller that knows the future gained less than half
+a percent. So the answer is that there is almost nothing to gain, and that is
+useful to know before anyone builds a smarter downloader.
 
-**2. Why did RL lose?**
+**2. Why did the learning controllers lose?**
 
-There are three reasons:
-- The ceiling was low. Oracle bounds apply to every policy.
-- Simulator gains did not transfer. L4 showed 17.6 % headroom in simulation,
-  but the live server did not penalise excess concurrency.
-- Where real headroom existed, a one-threshold rule captured it (+23.4 % over
-  the best of three small-range fixed settings on the original engine,
-  replicated at R = 0.767). On the fixed engine, though, the best fixed
-  setting (16 × 32 MiB) beat it by 7 %; see Q15.
+Three reasons. First, the ceiling was very low, and no controller can beat the
+ceiling. Second, gains we saw in the simulator did not carry over to the real
+server. Third, where there was real room to gain, a very simple rule already got
+it, so the learner had nothing extra to find. A better learner cannot beat a
+ceiling that is close to zero.
 
-A better learner cannot beat a near-zero ceiling.
+**3. Why only N and S? Maybe another setting would work.**
 
-**3. Why only N and S? Maybe RL would win on another dial.**
+N and S are the two settings that segmented downloaders like aria2 actually
+expose. We fixed that scope before we started, because a narrow study lets you
+say what caused what. Other things, like choosing between mirrors or restarting
+slow requests, are a different question, and we list them as future work. We do
+not claim learning can never help downloading.
 
-N and S are *the* dials of segmented downloaders: aria2's `-x`, `-s` and `-k`,
-and IDM's connection count. The scope was fixed before the study, and narrow
-scope is what lets a controlled study attribute effects. Other dials, such as
-mirror choice, restarting slow requests, hedging or congestion control, are a
-different question, and they are listed as future work. We do not claim RL
-can never help downloading.
+**4. Did you explore reinforcement learning fully?**
 
-**4. Did you explore RL fully?**
-
-No, and we do not claim to. Two learner families were tested: a LinUCB bandit,
-and Double DQN through several versions. The conclusion rests on oracle bounds
-computed before training, not on exhausting learners.
+No, and we do not claim that. We tested two kinds of learner: a simple one
+called LinUCB, and a neural network called Double DQN, in several versions. Our
+conclusion rests mainly on the ceiling we measured before training anything, not
+on having tried every learner.
 
 **5. Isn't this obvious?**
 
-The framework is intuitive: adaptation needs a moving optimum, and a single
-flow gains little from extra connections. These findings were not obvious:
-- capacity varied 6.5–25.3× (p90/p10 per trace) but the oracle headroom stayed under 1 %;
-- request-start rate locking created a 62.4 % benchmark gap;
-- aria2's lead under the cap came from two engine details (a whole-request
-  timeout and no straggler splitting), not from smarter control;
-- simulator headroom disappeared live;
-- a one-rule controller captured the real headroom.
+The idea is intuitive: adapting only helps if the best setting moves around. But
+some of what we found was not obvious. Mobile network speed swings by 6 to 25
+times, yet the best setting hardly changes. Our big win over aria2 came from when
+requests start, not from adapting. And aria2's lead under the throttling server
+came from two weaknesses in our own downloader, not from smarter control.
 
 **6. Networks change all the time. Why don't fixed settings lose?**
 
-On one bottleneck path, the best N is roughly "enough to fill the pipe". When
-capacity drops, everything slows down, but the same setting is still about
-right. Adaptation pays only when *too much concurrency has a cost that changes
-over time*, such as a server that throttles per client. We screened
-shared-bottleneck queueing and correlated loss and found no opportunity. The
-constructed concurrency cap was the one case where it paid, and only against
-small-range fixed settings on the original engine (Q15).
+On one path, the best number of connections is roughly "enough to fill the pipe".
+When the network slows down, everything slows down together, and the same setting
+is still about right. Adapting only pays when too many connections carry a cost
+that changes over time, like a server that throttles each client. We checked
+shared links and bursty loss and found nothing to gain. Only the throttling server
+we built showed a real benefit.
 
-**7. What about real networks? Everything is loopback.**
+**7. What about real networks? Everything is on one laptop.**
 
-- The cellular results use recorded real traces (Winstein et al., NSDI 2013),
-  replayed through Mahimahi so they are reproducible.
-- The live-internet pilot covers four public mirrors (kernel.org CDN and
-  origin, Japan, China) across four time-of-day slots. One global setting,
-  8 × 1 MiB, was on average 3.7 % from each condition's best (bootstrap
-  [1.0, 4.8]; 16 conditions). That is under the predeclared 5 % line.
-- One slot accidentally ran on a second network. There the headroom was
-  7.2 % [1.2, 12.2] over only 4 conditions, which is inconclusive and
-  reported separately.
-- It is a descriptive pilot with one client and one primary access network, not a
-  validation.
+That is true, and we list it as a limit. We did three things about it. We used
+recorded real mobile traces, replayed so they are repeatable. We ran a small
+check on four real public servers, at different times of day, from one home
+connection. On average one simple fixed setting was within about 4 percent of the
+best setting for each case. That pilot is small and descriptive. It is not a
+proof.
 
-**8. Is the 62.4 % win over aria2 real?**
+**8. Is the big win over aria2 real?**
 
-Yes, on that workload: 30 of 30 pairs, geometric ratio 0.3756. It comes mostly
-from request granularity and the start-of-request rate mechanism, not from
-smarter control. With granularity matched, the ratio is 0.862. Screens across
-six pacing schedules and against stock NGINX point the same way. It is a
-mechanism result, and we present it as one.
+Yes, on that test: about 60 percent less time, so roughly a third of aria2's
+time, in every one of 30 paired runs. But it is not because we adapt. aria2
+starts its big pieces while the server is slow, and each piece keeps that slow
+speed. Our smaller pieces start later, after the server speeds up. Even when we
+match the piece sizes we are still faster by about 14 percent, and we cannot fully
+explain that part, and we say so.
 
-**9. aria2 beat you under the cap. Doesn't that undermine the adaptive result?**
+**9. aria2 beat you under the throttling server. Doesn't that undermine your result?**
 
-We investigated it, and it changed the conclusion. A 230-run engine ablation
-traced aria2's lead to two engine differences in our downloader, not to
-aria2's control:
-- **No straggler splitting.** With the cap on from the start, 16 × 32 MiB
-  took 40 % less time with splitting (R = 0.599) and then matched aria2
-  (68.2 s against 68.5 s, R = 0.995).
-- **The 30 s whole-request timeout** cut off large, slow ranges. Without it,
-  our best setting with the cap from 8 s came within 1.6 % of aria2 (54.4 s
-  against 53.5 s, R = 1.016, a small but real gap).
-On the fixed engine, the best fixed setting also beat our adaptive
-controllers, so we say plainly that adaptation did not win there.
+It taught us something. We found two weaknesses in our own downloader. One: a
+30-second time limit that cancelled slow but working requests. Two: no splitting
+of slow pieces near the end, which aria2 does. After fixing both, we matched aria2
+or came within about 2 percent of it. And on the fixed engine a good fixed setting
+also beat our adaptive controllers, so we say plainly that adapting did not win
+there.
 
-**10. You built the server model yourselves. Isn't the positive result rigged?**
+**10. You built the server yourselves. Isn't the positive result rigged?**
 
-It is a constructed environment, and we say so. It shows the conditions under
-which adaptation can help, not that real servers behave this way. The
-six-workload family was selected from 72 analytic candidates, with two
-amendments made before any live run, all disclosed. The cross-family claim
-over one fixed setting is *not* established: the workload-level interval
-includes 1.
+It is a server we designed, and we say so. We built it so that a case exists where
+the best setting changes, because otherwise adapting could never help. It shows
+when adapting can help, not that real servers behave this way. That is why we also
+tested on recorded mobile networks and real public servers.
 
-**11. How do we know the numbers are right?**
+**11. How do we know your numbers are right?**
 
-`tools/claims_check.py` recomputes all 231 numbers in the paper
-sections from the raw runs and
-fails on any number it cannot reproduce. It caught real errors in our own
-frozen scripts, such as a fixed t value used for every n. Those were corrected
-in the paper, and the frozen artifacts were left untouched.
+A script recomputes every number in our paper, more than two hundred of them, from
+the raw run files, and it fails if a number does not match. It even caught
+mistakes in our own earlier scripts, which we corrected. Every downloaded file is
+also checked byte for byte.
 
-**12. Is a negative result publishable?**
+**12. Is a negative result worth publishing?**
 
-Yes, especially with this level of rigour: predeclared hashed protocols (not an
-independent preregistration; one family of workloads was amended twice, and the paper says so), failed gates
-reported as failed, and reproducible numbers. It fits venues that judge
-soundness over novelty, such as measurement or reproducibility tracks,
-workshops, or journals like IEEE Access. The framing is "when does adaptive
-downloading help?", not "RL for downloading".
+Yes, when it is done carefully. Our plans were written down and fingerprinted
+before running, failed checks are reported as failed, and the numbers are
+reproducible. To be honest, that is not an independent registration, and one group
+of test workloads was changed twice before its runs. The paper says so.
 
 **13. What would you do with more time?**
 
-Test action spaces with delayed, changing costs, starting with multi-mirror
-scheduling and restarting slow requests, and run live measurements across
-many clients and networks. Each would first pass a headroom gate and have to
-beat both the best static setting and a strong myopic heuristic. Prior work
-already covers RL for parallel transfers, congestion control and video
-bitrate, so any new claim would be novel in scope, not technique.
+Try harder cases where the best action has a changing cost: sharing a download
+across several mirrors, restarting slow requests, and testing live on many more
+networks. Each would first have to show there is something to gain, and then beat
+the best fixed setting.
 
 **14. What surprised you most?**
 
-Two things:
-- **The cellular traces.** Capacity swung massively, yet an oracle could
-  barely improve on one fixed setting.
-- **The live pilot's side finding.** A major public mirror (Tsinghua) rejects
-  Go's default User-Agent with HTTP 403, so a stock Go downloader is locked
-  out.
+Two things. The mobile traces swing wildly, yet a perfect controller could barely
+improve on one fixed setting. And one big public mirror, in China, refuses
+downloads that come from Go's default client name, so a plain Go downloader is
+blocked there.
 
-**15. You fixed the engine. Did adaptation still help?**
+**15. You fixed the engine. Did adapting still help?**
 
-Not against the best fixed setting on the fixed engine:
-- The causal controller was 7 % slower than 16 × 32 MiB with the cap from
-  8 s (R = 1.071).
-- The workload selector was 23 % slower with the cap from the start.
-The earlier +23.4 % holds against small-range fixed settings on the original
-engine, and we report both. The honest summary is "engine before policy":
-splitting and the timeout semantics mattered more than any controller.
+Not against the best fixed setting on the fixed engine. Our simple drop rule was
+about 7 percent slower than the best fixed setting, and our workload selector was
+about a quarter slower. The earlier gain of about a quarter was against small-piece
+fixed settings on the older engine. We report both. The lesson is "engine before
+policy": the time limit and splitting slow pieces mattered more than any
+controller.
 
 **16. You cite FastBioDL. Did you compare against it?**
 
-We re-implemented its online-tuning idea (aggregate throughput over 2 s
-windows, U = T/K^N, reverse and halve the step on a drop) as a project policy
-and ran it under a frozen protocol, 64 runs. It was 1.212 (cap from 8 s) and
-1.220 (no cap) times the time of the best fixed 1 MiB setting (16 × 1 MiB, the
-same piece size; with 32 MiB pieces the fixed setting is faster still). It reacted to the cap in
-2.1 s but spent 8.1 s climbing from N = 4 to 16 without a cap. We did not use
-FastBioDL's code.
+We rebuilt its idea ourselves, nudging the number of connections up or down based
+on measured speed, and tested it properly. It was about 20 percent slower than a
+fixed setting with the same piece size. It reacted to the throttle within about
+two seconds, but it spent about eight seconds climbing back up when there was no
+throttle. We did not use their code.
 
-**17. You now trained the DQN for the capped server. Isn't that tuning to
-the test?**
+**17. You retrained the agent on the throttling server. Isn't that tuning to the test?**
 
-That is why the study (testdata/rl_cap_train, protocol frozen before any
-training or live run) has two parts:
-- **In-distribution (Stage C):** the live CAP8 and HEALTHY scenarios, which
-  lie inside the training ranges. A win there shows only that the agent
-  learned this server model.
-- **Held out (Stage D):** three live scenarios, each outside the training
-  ranges on one axis: cap C = 16 MiB/s (trained 4–12), 80 ms each way
-  (trained 20–60), and the three-phase d2 schedule (never trained). Each
-  needs a different N after the cap (7, 5, 4, against 3 for CAP8), so a rule
-  memorised for CAP8 does not transfer by accident.
-We say "generalizes within this server family" only if it wins all three.
-Nothing here supports claims about real servers.
-**Results.** In-distribution (CAP8, 10 blocks), it took 0.907 [0.893, 0.921]
-of fixed 16 × 1 MiB's time, close to the simulator's 0.912. Without a cap it
-was slower (1.108). Held out, it was faster than the best fixed 1 MiB setting
-in 0 of 3 scenarios: C = 16 MiB/s slower (1.177), and 80 ms delay (1.016) and
-the d2 schedule (1.015) not distinguishable. So it learned the server it was
-trained on and did not generalize. We say that plainly.
+That is exactly why we tested it two ways. First on the server it trained on, where
+a win only shows it learned that server. Then on conditions it had never trained
+on. On the server it trained on it was about 9 percent faster than the fixed setting
+with the same piece size. On three conditions outside its training range it did not
+win any. So it learned its own server and did not generalise there, and we say that
+plainly.
 
-**18. Why did the first DQN do badly on the capped server?**
+**18. Why did the first agent do badly on the capped server?**
 
-We found two simulator–live mismatches before retraining:
-- The v6 simulator had no arrival-time cap.
-- Its throughput feature did not match what the live runner measures. Live
-  throughput is the bytes of the last 4 attempts over their time span, which
-  barely changes above N = 4. The agent could hardly see the effect of extra
-  connections.
-The new simulator copies the live runner's measurements and was checked
-against fresh live runs, with predictions written down before the runs.
+We found two mismatches between our simulator and the real server. The simulator
+had no cap that applies when a request arrives, and the speed number the agent saw
+did not match what the real runner measures. So the agent could hardly see the
+effect of extra connections. We rebuilt the simulator to copy the real
+measurements, and checked it against fresh real runs, with the predictions written
+down first.
 
-**19. Can the retrained agent beat 16 × 32 MiB?**
+**19. Can the retrained agent beat 32 MiB pieces?**
 
-We said in advance that it cannot. 16 × 32 MiB wins under the cap because all
-16 ranges start before the cap and keep the pre-cap rate. An agent that only
-changes N with 1 MiB ranges cannot do that. Even the perfect switch in our
-simulator (64 s) is slower than 16 × 32 MiB live (52.6 s). The fair test is
-against the best fixed setting with the same 1 MiB range size.
+We said in advance that it cannot. With 16 big pieces, all of them start before
+the throttle and keep the fast speed. An agent that only changes the number of
+connections with small pieces cannot copy that. So the fair test is against the best
+fixed setting with the same small piece size.
 
 **20. Why not IDM, axel or wget2?**
 
-IDM is closed source, runs only on Windows, and cannot be scripted for
-hundreds of randomised runs in our Linux testbed. axel, wget2 and lftp are
-open source. We ran axel and lftp in the same testbed (80 runs, 5 blocks per
-scenario, all valid). wget2 was excluded: it downloads one file over a single
-connection however it is configured (upstream issue #195, which we confirmed
-in its source).
-- **No cap and the paced D2 workload:** ours took 0.345–0.375 of each tool's
-  time. Like aria2, axel and lftp split the file into 16 equal 32 MiB parts at
-  the start, so all of them are stuck at the slow starting rate.
-- **Cap from 8 s:** all four were level, at about 53 s.
-- **Cap from the start:** lftp took 114 s, because it never re-splits a slow
-  part, which is what our engine did without splitting. axel was 2.5 % faster
-  than ours there.
-So the 62.4 % mechanism is not aria2-specific; it applies to every
-segmented tool that splits the file once at the start.
+IDM is closed and Windows-only, so we could not script it for hundreds of random
+runs. We did run axel and lftp. wget2 cannot download one file in parallel (we
+checked its source), so it was left out. axel and lftp behaved like aria2: they
+split the file once at the start, so they also took about three times as long as
+our fixed setting on the speed-up server, and level with everyone under the
+throttle. lftp was much slower when the throttle was on from the start, because it
+never re-splits a slow piece.
 
+**21. Why not let the agent choose the piece size too?**
 
-**21. Why not let the agent choose the range size as well as the number of connections?**
+We tried it, with the plan frozen in advance. In the simulator there was real room
+to gain. The agent did not find it. On the real server it was slower than the best
+fixed setting in every case. A control experiment showed the big-piece advantage
+depends on a rule in our server: a request keeps the speed that was in force when
+it started. So the honest result is that a joint agent trained on a checked
+simulator did not beat the best fixed setting.
 
-We tried that, under a protocol frozen in advance (`testdata/rl_joint`). The
-simulator showed real headroom: a hand-written rule (1 MiB ranges, then
-33 MiB once the rate rises) took 0.352 of the best fixed time under the cap.
-The Double DQN agent did not find it. Live, over 10 blocks, it took 1.471 of
-the time of fixed 16 × 32 MiB under the cap (slower), and it was slower than
-the best fixed setting in all four scenarios. The simulator predicted every
-live arm to within about 5 %, so the problem is the learner, not the model of
-the network. The agent was still on 1 MiB ranges when the cap arrived at 8 s.
+**22. Does the learning agent generalise?**
 
-A control run on a server that re-checks rates during each response showed
-something else. There, fixed 16 × 32 MiB lost most of its advantage (50.9 s
-became 67.4 s), and the agent was level with it (1.029, not distinguishable).
-So the large-range win depends on that server's arrival-time rate rule. Our
-honest conclusion: a joint agent trained on a checked simulator did not beat
-the best fixed setting live.
-
-**22. Does the learned agent generalize?**
-
-Partly, and only within the range it was trained on. The first retrain (v1)
-beat the best fixed 1 MiB setting where it was trained (0.907). It was
-faster in none of three held-out conditions, all outside its training
-ranges. For v2 we froze a new protocol, reviewed adversarially before
-freezing:
-- broader training: cap 4–24 MiB/s, delay 10–120 ms, rate dips;
-- calibration at four delays, checked blind at 80 and 120 ms;
-- four new held-out scenarios inside those ranges.
-
-Live, over 8 blocks:
-- **Held out:** v2 was faster than the best fixed setting in 3 of them
-  (0.882, 0.819, 0.952) and slower in 1, by 0.7 %.
-- **Against v1:** faster in all 6 scenarios.
-- **Without a cap:** it still costs about 5 %.
-
-Three caveats, all stated in advance:
-- **One seed:** it is one seed chosen on validation, and the other seeds
-  were not as good.
-- **Drop rule:** the simple drop rule beat v2 in the scenarios it was tuned
-  for. Two of v2's three wins over it came where the rule's tuning was
-  wrong.
-- **Scope:** "generalizes" here means new combinations inside the training
-  envelope, not new kinds of conditions or real servers.
+Only partly. The first retrained agent did not win on any condition outside its
+training range. The second one, trained more broadly, won on three of four new
+combinations inside its training range, and lost on one by less than one percent.
+But it is one agent chosen on validation, and the simple drop rule still beat it on
+the cases the rule was tuned for. And it costs about 5 percent when there is no
+throttle. "Generalises" here means inside the range it saw, not new kinds of
+conditions or real servers.
 
 **23. Did you run the adaptive agents on real servers?**
 
-Yes, as a frozen no-harm check on three public kernel mirrors. The first
-attempt was lost to an outage on our own link, and we report it rather than
-hide it. On the clean rerun (60 of 60 valid) neither the v2 agent nor the
-drop rule passed the no-harm rule on any of the three mirrors:
-- v2 took 1.2–1.65× the best fixed time (only kcdn clearly);
-- the drop rule took 1.06–1.33×.
+Yes, as a no-harm check on three public mirrors. The first attempt was ruined by an
+outage on our own internet link, and we report that. On the clean rerun neither the
+agent nor the drop rule passed our no-harm test on any of the three mirrors. We think
+they mistook noise for a throttle and cut connections for no reason, though we did
+not analyse that. It is the same lesson as the mobile traces: a network that varies
+is not a network where adapting helps.
 
-The mirrors have no cap, but their throughput is noisy. Both arms cut their
-connections on these uncapped servers (the drop rule switched in 4 of 5
-runs on two mirrors); our reading is that they took noise for a cap, though
-we did not analyse the traces to show it. This is the cost side of
-adaptation: with little headroom to pay for it (3.7 % selection headroom in
-our pilot), adapting carried a cost. It is the same lesson as the cellular
-traces: variability is not opportunity.
+**24. Your first proposal said a joint (N, S) action at a fixed interval, and PPO. What did you build?**
 
-**24. Your first proposal (Review 1) said the action is a joint pair (N, S) chosen at a fixed interval T, and that you would use PPO. What did you build instead, and why?**
+Review 1 described the idea. In the build, we changed how decisions are triggered
+and what one action does, for reasons we recorded: cleaner measurement, clean
+comparisons, and early learning failures. Our reports should have said so.
+- **When it decides:** after each finished request, not on a timer. A finished
+  request is the clean moment to change settings, because a running request is never
+  resized. The cost is that with very large pieces, decisions are rare.
+- **One dial at a time:** this lets us see which dial helped. N did the work: using
+  N alone gave most of the gain, S alone made things worse than doing nothing. When
+  we first let a learner choose piece size, it chopped the file into tiny pieces and
+  took almost twice as long as aria2. We still adapt both dials. The drop rule picks
+  the pair together and applies it in steps, and the joint agent we trained has both
+  dials. We never built one learner that picks the pair as one action. Nothing forced
+  that; it was a design choice, and it is future work.
+- **PPO:** it appears in Review 1 only in the related-work table, not in our plan. We
+  moved from LinUCB to Double DQN after LinUCB kept picking the same action. We did not
+  try PPO, and we say that.
 
-Review 1 described the idea. In the build, we changed how decisions are
-triggered and what one action does, for reasons we recorded: cleaner
-measurement, clean ablations, and early learning failures. Our reports should
-have said so.
+Review 3 marks the joint adaptation as achieved. The accurate reading is "both dials
+adapted, never as one learned pair". Background traffic was screened and showed
+nothing to gain. We did not measure fairness to other users.
 
-Three differences, each with its reason:
-- **Decisions after each finished request, not every T seconds.** The
-  downloader is event-driven, and one request record is the natural
-  measurement. A request boundary is also the clean moment to change N or S,
-  because requests already in flight are never resized. An early DQN (v5) was
-  trained with a decision interval of 4 requests while the live runner decided
-  once per request; the mismatch hurt it, so v6 was trained on the live cadence.
-  Cost: with very large pieces, decisions are rare.
-- **One dial per action, not a pair.** The range manager and the concurrency
-  manager are separate; S only affects future ranges. Single-dial actions let us
-  run the N-only, S-only and joint ablation that Review 1 itself asked for
-  (under the cap: N-only 0.808, joint 0.766, S-only 1.070 of the fixed time).
-  When S was learned, the early DQN versions fragmented the file into
-  32–128 KiB pieces and were 75.7 % slower than aria2 (v2), or learned from a
-  simulator that rewarded larger chunks the server did not reward (v3), so v4
-  onward learned N only. Both dials are still adapted: the causal drop controller
-  and workload selector choose a target pair (N, S) together (N jumps to the
-  target in one decision, then S moves one step at a time; never both in the
-  same decision), the rule-based joint policy alternates, and LinUCB and the
-  joint DQN agent choose among five single-dial actions. A learner that picks
-  the pair as one action was not built; it is listed as future work.
-- **PPO.** Review 1 mentions PPO only in its related-work table (for the
-  Swargo and Arifuzzaman work). Its own plan says "a later reinforcement-learning
-  policy" and that the evaluation does not depend on RL convergence. We moved
-  from LinUCB to Double DQN after a lock-in diagnostic showed a one-step bandit
-  cannot handle credit across time (§22.12 of PROJECT_CONTEXT). We did not try
-  PPO and have no comparison against it; that is a limitation.
+**25. What is your main answer against aria2, in a sentence?**
 
-Two more points on this question. Review 3 marks "joint adaptation of N and S"
-as Achieved; the accurate reading is "both dials adapted, never as one learned
-pair". Review 1 also asked for background-traffic conditions: that was
-screened with iperf3 traffic sharing a bottleneck (no state-dependent best N
-found), and fairness to other users was not measured.
+Against aria2, our adaptive controllers were faster only when the server sped up
+during the download, and even then a fixed setting of ours was faster still. When the
+server got worse, aria2 was faster than every adaptive controller.
 
-**25. What is the main answer, in numbers, against aria2?**
+**26. Why did you pick those thresholds and sizes?**
 
-Against aria2 under changing conditions, our adaptive arms were faster only
-when the server rate rose during the download (time ratios 0.36 to 0.88), and
-there a fixed configuration of the same engine was faster still (0.344 to
-0.376). When the server degraded, aria2 was faster than every adaptive arm
-(1.096 to 1.781). This is the paper's section 9e and its contribution 1.
+Only say what we recorded:
+- **The 10 percent bar for the perfect controller:** our run-to-run noise was about
+  1 to 5 percent, so under 5 percent is too weak to matter and 10 percent is
+  meaningful. We set it before we looked.
+- **A 512 MiB file:** the biggest size that is safe on memory in our container, and
+  it still runs long enough for conditions to change.
+- **The throttling server's settings:** of 27 combinations we screened, exactly one
+  met our rule that the best N and the best S both move.
+- **If she asks why 16 connections, why those numbers of rounds, why a 64 MB file in
+  the live check, or why loopback:** say honestly that we do not have a recorded
+  reason, and do not make one up.
 
-**26. Why did you choose those thresholds and sizes?** (reasons recorded in the repo)
-- **10 % headroom bar:** run-to-run dispersion in our campaigns was about
-  1 to 5 %, so under 5 % counted as too weak, 5 to 10 % as marginal, and 10 % or
-  more as meaningful. The bar was set before the oracle ran.
-- **120 s epochs:** the oracle protocol takes the shortest of 30, 60, 90 and
-  120 s that keeps at least 80 % of epochs valid with at least 3 per trace;
-  that was 120 s.
-- **512 MiB file:** the largest size that is safe on memory in our container,
-  and it keeps the trajectory dynamic for about 90 s (startup is 2.4 % of it).
-- **Cap C = 8 MiB/s, gamma = 0.05:** of 27 screened (schedule, cap) pairs,
-  exactly one passed the predeclared rule that both N and S optima move and
-  that cross-state penalties exceed 10 % both ways.
-- No recorded reason (ask the authors before the viva): why 16 connections is
-  the maximum, why 3, 5, 8 or 10 blocks per study, why a 64 MB file for the live
-  pilot, why loopback was preferred to a real path.
+**27. How does your adaptation actually work?**
 
-**Synonyms used across our documents:** "drop rule" = "causal drop controller" =
-"causal controller" (the paper); "best fixed setting" = "best fixed
-configuration" (the paper also says "best stationary configuration" when the
-comparison set is the three fixed settings tried under one schedule).
+After every finished request, the controller looks at the recent speeds, chooses one
+action (do nothing, more or fewer connections, bigger or smaller pieces), and
+later gets a score. Our simple drop rule remembers the best recent speed. When the
+speed falls below half of that, it switches once. In our timeline, it cuts the
+connections from 16 to 4 about a second and a half after the throttle starts, then
+raises the piece size step by step. That is the picture on the results slide.
 
-**Updates after Review 3 (which the PDFs do not contain):** the checker now
-recomputes 231 numbers (Review 3: 144); axel and lftp were added (section 4.3);
-a delay and loss grid was added (section 4.4); DQNs were retrained for the
-capped server and tested on held-out conditions (sections 9b, 9d), where one
-beat the fixed 1 MiB setting; a joint five-action agent was built (section 9c);
-and a mirror no-harm check was run (section 8a).
+**28. What do the learning controllers see and do?**
 
+The simple one, LinUCB, sees about ten numbers, such as the current settings, the
+speeds, how long the last request took, and counts of failures and retries, and it
+picks one of five actions. The neural network, Double DQN, sees about thirteen
+numbers and picks one of three actions: nothing, more connections or fewer. Its
+reward is minus the time until the next request finishes, so a faster download scores
+higher. We did not tune any reward weights.
+
+**29. What are the limits of your study?**
+
+The servers where adapting helped are ones we built. Everything controlled ran on one
+machine. The mobile traces replay only capacity, not delay or loss, and we never
+changed delay or loss mid-download. The real-server check was small, from one home
+connection. The best agent is one training run. We measured speed, not fairness to
+other users. And we did not correct for running many comparisons.
+
+**30. What is new in your work?**
+
+Not a new algorithm. Others tune the number of connections. In the papers we read, we
+did not find these together: a race against aria2, axel and lftp and the best fixed
+setting; a ceiling measured before building a controller; the engine's effects
+separated from the controller's; and negative results kept. We read abstracts, and
+the full text only for one of them, so we say "in what we read", not "nobody has done
+it".
+
+---
+
+**Words to avoid:** "AI" (say learning controllers), "nobody has done this" (say "in
+the papers we read, we did not find"), "the learner was bad" (say "there was little to
+gain").
+
+**Exact numbers** for any answer above are in `qa_detailed.md` and the paper.

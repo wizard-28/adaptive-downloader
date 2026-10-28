@@ -1,7 +1,7 @@
 # Viva cheat sheet, in simple words
 
-Everything here is checked against the paper (reports/paper_draft.md). Longer
-answers: reports/thursday/qa.md. Slides: https://claude.ai/artifact/RnC4UyEgdPMmsZBPYjcF7J
+Everything here is checked against the paper (reports/paper_draft.md). Spoken-word
+answers to 30 questions: reports/thursday/qa.md; exact numbers: qa_detailed.md. Slides: https://claude.ai/artifact/RnC4UyEgdPMmsZBPYjcF7J
 
 ## The whole project in 30 seconds
 
