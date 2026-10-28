@@ -180,6 +180,19 @@ serves as an analogy for decision rules that need no throughput forecast.
 DeLoad [liu2025deload] (preprint) sizes download tasks for short-video
 preloading. Neither is a range-download concurrency study.
 
+**Prior work at a glance.** What each cited work adapts and how, what it was
+compared against, and whether we found a ceiling measurement or a separation of
+engine effects in what we read (abstracts, and the full text for FastBioDL).
+
+| Prior work | What it adapts, how | Compared against | Ceiling and engine effects |
+|---|---|---|---|
+| Balaprakash et al. [balaprakash2016direct] | Parallel streams: direct search | User default settings | Not found in what we read |
+| Falcon [arifuzzaman2021online, arifuzzaman2023falcon] | Concurrency: utility function, online search | Globus fixed settings, HARP | Not found in what we read |
+| FastBioDL [swargo2025fastbiodl] | Streams: utility function, gradient descent | SRA tools, fixed 3 and 5 streams | Not found in what we read |
+| MDTP [abdollah2025mdtp] | Chunk size per server, many servers | aria2 (multi-server), static chunks | Not found in what we read |
+| DeLoad [liu2025deload] | Task size: deep RL, video preloading | Not named in the abstract | Not found (abstract only) |
+| **This study** | N and S: rules, bandit, deep RL | aria2, axel, lftp, best fixed setting of the same engine | Ceiling measured first; engine effects separated |
+
 **What we did not find in these works.** In the abstracts we read, and the full
 text for FastBioDL, we did not find a comparison that combines stock downloaders
 (aria2, axel, lftp) with the best fixed setting of the same engine; a headroom

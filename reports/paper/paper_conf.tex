@@ -75,6 +75,25 @@ All entries below were checked against an authoritative record; see \texttt{repo
 \textbf{Adaptation in adjacent domains.} BOLA \cite{spiteri2016bola,spiteri2020bola} selects video bitrates by utility maximization without bandwidth prediction and serves as an analogy for decision rules that need no throughput forecast. DeLoad \cite{liu2025deload} (preprint) sizes download tasks for short-video preloading. Neither is a range-download concurrency study.
 
 
+\textbf{Prior work at a glance.} What each cited work adapts and how, what it was compared against, and whether we found a ceiling measurement or a separation of engine effects in what we read (abstracts, and the full text for FastBioDL).
+
+
+\begin{table*}[!t]\centering\footnotesize
+\begin{tabularx}{\textwidth}{@{}LLLL@{}}
+\toprule
+\textbf{Prior work} & \textbf{What it adapts, how} & \textbf{Compared against} & \textbf{Ceiling and engine effects}\\
+\midrule
+Balaprakash et al. \cite{balaprakash2016direct} & Parallel streams: direct search & User default settings & Not found in what we read\\
+Falcon \cite{arifuzzaman2021online,arifuzzaman2023falcon} & Concurrency: utility function, online search & Globus fixed settings, HARP & Not found in what we read\\
+FastBioDL \cite{swargo2025fastbiodl} & Streams: utility function, gradient descent & SRA tools, fixed 3 and 5 streams & Not found in what we read\\
+MDTP \cite{abdollah2025mdtp} & Chunk size per server, many servers & aria2 (multi-server), static chunks & Not found in what we read\\
+DeLoad \cite{liu2025deload} & Task size: deep RL, video preloading & Not named in the abstract & Not found (abstract only)\\
+\textbf{This study} & N and S: rules, bandit, deep RL & aria2, axel, lftp, best fixed setting of the same engine & Ceiling measured first; engine effects separated\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+
 \textbf{What we did not find in these works.} In the abstracts we read, and the full text for FastBioDL, we did not find a comparison that combines stock downloaders (aria2, axel, lftp) with the best fixed setting of the same engine; a headroom ceiling measured before the controller was built; a separation of controller gains from engine effects such as timeouts, splitting and request start times; or cases where adapting gave nothing. FastBioDL compares with other tools and with fixed concurrency levels, and MDTP compares with aria2 in multi-server mode. This is a statement about what we read, not about all prior work.
 
 
