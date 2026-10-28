@@ -105,6 +105,15 @@ func (c *Controller) exec(name string, args ...string) ([]byte, error) {
 
 // Apply replaces the root qdisc on iface with a netem configuration. It never
 // runs unless the caller explicitly invokes it.
+//
+// The command is exactly
+//
+//	tc qdisc replace dev <iface> root netem <delay D [J]> [loss P%] [rate R]
+//
+// "replace" makes it idempotent: applying twice leaves one qdisc, not two. The
+// call reports only what tc reported; it does not verify that shaping took
+// effect, so a caller that depends on the condition must check Show (or measure)
+// and record a failure instead of assuming success.
 func (c *Controller) Apply(iface string, cfg Config) error {
 	if err := validateInterface(iface); err != nil {
 		return err
@@ -123,6 +132,11 @@ func (c *Controller) Apply(iface string, cfg Config) error {
 
 // Clear removes the root qdisc on iface. Removing a qdisc that does not exist
 // returns an error wrapping ErrNoQdisc.
+//
+// That case is not a failure of cleanup: an interface with no root qdisc is
+// already in the desired state. Experiment harnesses therefore treat ErrNoQdisc
+// as success and any other error as "shaping may still be in place" (report it,
+// do not hide it). Clear is safe to call twice.
 func (c *Controller) Clear(iface string) error {
 	if err := validateInterface(iface); err != nil {
 		return err

@@ -78,6 +78,11 @@ func (c *Controller) Decrease() int64 {
 }
 
 // Set clamps target to [min, max], stores it, and returns the stored value.
+//
+// Only the target changes: ranges already allocated, in flight, or completed
+// keep their boundaries, because the tracker remembers them and the pool reads
+// Current() only for the next allocation. The new size applies as soon as the
+// next worker asks for a range.
 func (c *Controller) Set(target int64) int64 {
 	c.mu.Lock()
 	defer c.mu.Unlock()

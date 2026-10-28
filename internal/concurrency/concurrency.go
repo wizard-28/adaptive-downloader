@@ -72,6 +72,12 @@ func (c *Controller) Decrease() int {
 }
 
 // Set clamps target to [min, max], stores it, and returns the stored value.
+//
+// Set exists for explicit-target policies and for tests/tools that need to place
+// the controller directly (the deterministic policies use Increase/Decrease).
+// It never touches in-flight requests: the pool reads Current() only when it
+// allocates, so a smaller target drains by letting workers retire between
+// requests.
 func (c *Controller) Set(target int) int {
 	c.mu.Lock()
 	defer c.mu.Unlock()

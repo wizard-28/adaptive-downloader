@@ -277,6 +277,11 @@ var ErrInvalidConcurrencyCap = errors.New("server: invalid concurrency cap")
 // min(base rate, C/(k*(1+gamma*(k-1)))). It throttles rate only; it never
 // changes status codes, failures, or retry behavior. C must be > 0 and
 // gamma >= 0.
+//
+// The shape is deliberate: gamma = 0 divides the same total C among k requests
+// (aggregate constant), while gamma > 0 makes the aggregate fall as k grows
+// (8 MiB/s at k=1, 7.0 MiB/s at k=4, 4.6 MiB/s at k=16 with C=8 MiB/s,
+// gamma=0.05), i.e. more connections cost everyone something.
 func (s *Server) SetConcurrencyCap(C int64, gamma float64) error {
 	if C <= 0 {
 		return fmt.Errorf("%w: C must be > 0, got %d", ErrInvalidConcurrencyCap, C)
@@ -294,6 +299,14 @@ func (s *Server) SetConcurrencyCap(C int64, gamma float64) error {
 
 // SetLiveRate turns live-rate mode on or off (see Server.liveRate). Off is
 // the default and keeps every existing behaviour.
+//
+// Off: a response is paced at the cap computed from k at its own start, for its
+// whole life. Large ranges allocated before a cap or rate change therefore keep
+// the old (often slower-pre-cap, faster-post-rise) rate.
+// On: the rate is re-read before every 16 KiB chunk, so a response follows the
+// current base rate and the cap at the current k. This is the control that
+// separates "the client exploits the arrival-time rule" from "the client
+// adapts to the current rate".
 func (s *Server) SetLiveRate(on bool) {
 	s.mu.Lock()
 	s.liveRate = on
@@ -505,6 +518,27 @@ func (s *Server) Stats() Stats {
 	}
 }
 
+// ServeHTTP serves one range request (or the whole object when no Range header
+// is sent). The order of the steps is part of the experimental model:
+//
+//  1. parse "Range: bytes=START-END" (only single ranges; END may be omitted);
+//     a malformed or unsatisfiable range answers 416 with "Content-Range:
+//     bytes */SIZE" and is counted as a failure;
+//  2. count the request and match deterministic failure rules (FailNext*,
+//     FailRange, FailHeader), which answer with the configured status;
+//  3. take k = number of requests now being served (including this one) and
+//     choose the response rate: base rate (wall-clock schedule, else
+//     request-count switch, else the fixed rate), lowered to the concurrency cap
+//     when it is active. With live-rate mode OFF this rate is fixed for the whole
+//     response — the "rate in force at arrival" model that drives most results;
+//  4. sleep the fixed delay, then stream the body in 16 KiB chunks, sleeping
+//     chunk/rate before each chunk;
+//  5. count success/failure and, when the request log is on, close its event.
+//
+// Example of the cap: C = 8 MiB/s and gamma = 0.05 give 8 MiB/s at k=1,
+// 8 MiB/s / (4 x 1.15) = 1.74 MiB/s at k=4, and 8 MiB/s / (16 x 1.75) = 293 KiB/s
+// at k=16. That is why a client that opens many connections under this cap does
+// not get more aggregate bandwidth.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	size := s.content.size()
 	reqRange, hasRange, err := parseRangeHeader(r.Header.Get("Range"), size)
@@ -656,6 +690,14 @@ func (s *Server) recordFailure() {
 // parseRangeHeader parses a single "bytes=START-END" header. It returns
 // (range, present, err). A missing header yields present=false. An end beyond
 // the content is clamped to the last byte.
+//
+// Supported forms are "bytes=START-" (to the end) and "bytes=START-END". Suffix
+// ranges ("bytes=-500") and multi-range requests are rejected with
+// ErrInvalidRange, because the downloader always knows the object size and never
+// sends them; accepting them would add a code path no experiment exercises.
+//
+// Examples: with size 100, "bytes=0-31" -> [0,31]; "bytes=64-" -> [64,99];
+// "bytes=90-999" -> [90,99]; "bytes=100-" -> error (start at/after size).
 func parseRangeHeader(header string, size int64) (Range, bool, error) {
 	if header == "" {
 		return Range{}, false, nil

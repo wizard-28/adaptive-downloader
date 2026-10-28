@@ -43,7 +43,8 @@ const (
 )
 
 // Action is a policy decision. Value is only meaningful for the explicit
-// ActionSetConcurrency and ActionSetChunkSize kinds; it is ignored otherwise.
+// ActionSetConcurrency and ActionSetChunkSize kinds and for the step magnitude of
+// the increase/decrease kinds; it is ignored otherwise.
 type Action struct {
 	Kind  ActionKind
 	Value int64
@@ -124,6 +125,14 @@ func (a Action) String() string {
 //
 // Recent* fields describe the latest measurement window (or most recent
 // sample); the counters describe the whole run so far.
+//
+// Example for a policy author: after the 10th attempt of a run with 4 workers,
+// Concurrency is 4, ChunkSize is the target for the NEXT allocation (not the
+// size of the attempt just finished), Throughput is the per-request rate over
+// the last window, AggregateThroughput is the wall-clock rate of that same
+// window, and SuccessfulRequests/FailedRequests/Retries/TotalAttempts are
+// cumulative. A policy that wants to know "did adding a worker help?" must
+// compare AggregateThroughput across decisions, not Throughput.
 type Context struct {
 	// Current configuration.
 	Concurrency int
