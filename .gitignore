@@ -35,3 +35,16 @@ venv/
 /transcript.txt
 /testdata/d2_pacing_sweep/tools/sweep_run
 /testdata/nginx_limit_rate/tools/nginx_run
+
+# ---- LaTeX build output (rebuild with tools/paper_to_pdf.py, tools/paper_to_ieee.py) ----
+/reports/**/*.aux
+/reports/**/*.bbl
+/reports/**/*.blg
+/reports/**/*.fdb_latexmk
+/reports/**/*.fls
+/reports/**/*.lof
+/reports/**/*.lot
+/reports/**/*.toc
+/reports/**/*.out
+/reports/**/*.synctex.gz
+/reports/**/*.log

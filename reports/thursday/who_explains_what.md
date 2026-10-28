@@ -3,7 +3,6 @@
 Source of the roles: the "Team Member Responsibility" table in Review 1 and the
 "Individual Contribution" table in Review 2 (they agree), checked against what is
 actually in the code and the paper today. Not based on commit history.
-Slide numbers are the 15-slide presentation.
 
 ## The roles as submitted
 
@@ -12,35 +11,6 @@ Slide numbers are the 15-slide presentation.
 | **Sourajyoti Basak** (24BCE0774) | Downloader architecture and core implementation; adaptive concurrency and range management; test server and Linux network experiments; system integration and validation |
 | **Shwetank Shrijan** (24BDS0141) | Downloader development and testing of assigned components; monitoring and experiment automation; baseline and heuristic evaluation |
 | **Ayush Konar** (24BDS0107) | LinUCB; RL state, action and reward design; Python/PyTorch models; integration of the learned policy with the Go downloader; ML/RL evaluation |
-
-## Who presents which slide
-
-| Slide | Topic | Presenter |
-|---|---|---|
-| 1 | Title and team | Sourajyoti (introduces all three) |
-| 2 | Problem, objectives, prior-art matrix | Sourajyoti |
-| 3 | Proposed solution | Sourajyoti |
-| 4 | Final architecture (and "how one decision is made") | Sourajyoti |
-| 5 | Methodology (fair races, plans written first, checks) | **Shwetank** |
-| 6 | Implementation: policy interface and invariants, straggler splitting | Sourajyoti |
-| 6 | Implementation: "how the controllers decide": the rule | Shwetank |
-| 6 | Implementation: LinUCB and Double DQN lines | **Ayush** |
-| 7 | Live demo, step 1: download from the public mirror | Sourajyoti |
-| 7 | Live demo, step 2: throttling server with the retrained agent | Ayush |
-| 7 | Live demo, step 3: tests and the number checker | Shwetank |
-| 8 | Testing and results: 62.4 %, 1.071, the timeline | Shwetank |
-| 8 | Testing and results: the 0.907 learning-agent row | Ayush |
-| 9 | Mobile traces and the perfect-controller ceiling | Sourajyoti |
-| 10 | Engine ablation: why aria2 led | Sourajyoti |
-| 11 | Performance and comparison with aria2, axel, lftp | Shwetank |
-| 12 | Innovation and application | Ayush |
-| 13 | Limitations | Shwetank |
-| 14 | Conclusion | Ayush |
-| 15 | Future enhancement, "Thank you. Questions?" | Ayush |
-
-Slide count: Sourajyoti 7 (1 to 4, 6, 9, 10), Shwetank 4 (5, 8, 11, 13), Ayush 3
-(12, 14, 15), plus shared parts of 6, 7 and 8. If you want it more even, move slide
-13 or slide 11 to Ayush.
 
 ## What each student must be able to explain
 
@@ -104,11 +74,3 @@ Q26 (what is new). Whoever is asked answers; the others add one sentence at most
 - Honest answers: we did not try PPO; we never built a learner that picks (N, S) as one
   action; we have no recorded reason for 16 connections, the number of rounds, the 64 MB
   live file or why loopback.
-
-## Hand-offs
-Sourajyoti (1 to 4) hands to Shwetank for the method (5); Shwetank hands the controllers
-line on slide 6 to Ayush, then back to Sourajyoti for the engine; Sourajyoti runs the demo
-and passes steps 2 and 3 to Ayush and Shwetank; Shwetank gives the results (8); Sourajyoti
-shows the mobile traces and the engine ablation (9 and 10); Shwetank gives the comparison
-(11); Ayush closes with innovation, the conclusion and future work (12, 14, 15), with
-Shwetank on limitations (13).
