@@ -9,10 +9,14 @@ download is running:
 
 The repository contains the downloader, a controlled range-serving test server,
 a `tc`/`netem` network-emulation layer, deterministic and learned policies, and
-the experiment harnesses used to evaluate them against aria2c. The research
-state, results, and caveats are documented in
-[`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) (the living handoff
-document). Read [`AGENTS.md`](AGENTS.md) before contributing.
+the experiment harnesses used to evaluate them against aria2, axel and lftp. The
+research state, results, and caveats are documented in
+[`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md), an index to the full text in
+`docs/context/` (find a section with `python3 tools/context_find.py 22.109`).
+Read [`AGENTS.md`](AGENTS.md) before contributing.
+
+Project: BCSE308P (Computer Networks Lab), VIT Vellore. Team: Sourajyoti Basak,
+Shwetank Shrijan, Ayush Konar.
 
 ## Status
 
@@ -23,8 +27,29 @@ document). Read [`AGENTS.md`](AGENTS.md) before contributing.
   30-pair benchmark). Adaptive results are reported with their caveats; the
   Track 2-B gate and the W1–W6 selector claims are documented in
   `docs/PROJECT_CONTEXT.md` §22.97–§22.101.
-- Scope: single server, HTTP/1.1, controlled loopback and emulated networks.
-  No real-network or multi-source claims.
+- Question and answer: does adapting concurrency and range size during a download
+  help when conditions are not optimal, against aria2 and the best fixed setting?
+  Mostly no: adaptive controllers beat aria2 only when the server rate rose, and
+  a fixed setting did better still; engine details mattered more than the
+  controller. Full evidence: `reports/paper_draft.md`.
+- Scope: single server, HTTP/1.1, controlled loopback and emulated networks, plus
+  a small live check on public mirrors. No production or multi-source claims.
+
+## Paper, presentation and viva material
+
+- Paper: `reports/paper_draft.md` (source of truth). Build the PDFs with
+  `python3 tools/paper_to_pdf.py` (plain), `python3 tools/paper_to_ieee.py` (IEEE
+  Access template) and `python3 tools/paper_to_ieee.py --conf` (IEEE conference
+  template); output in `reports/paper/`. Every number is recomputed by
+  `python3 tools/claims_check.py`. LaTeX needs `pdflatex` and `bibtex`.
+- Presentation: `reports/deck12/` (the 15-slide talk) and `reports/deck/` (long
+  deck), source files for Claude Slides decks; each folder's README says how to
+  republish. Charts come from `reports/handbook/make_deck_figs.py`.
+- Viva preparation: `reports/thursday/` (`qa.md` spoken answers, `qa_detailed.md`
+  exact numbers, `viva_cheatsheet.md`, `who_explains_what.md`, `demo.md`).
+- Reviews 1 to 3: `reports/Review2_Project_Review.pdf`,
+  `reports/Review3_Final_Report.pdf`; team handbook: `reports/handbook/`.
+- Third-party files (IEEE templates, traces): see `THIRD_PARTY_NOTICES.md`.
 
 ## Requirements
 
@@ -119,4 +144,6 @@ behaviour changes.
 
 ## License
 
-Not yet specified. Add a `LICENSE` file before publishing.
+Code: MIT (`LICENSE`; the copyright holder line still needs the authors'
+confirmation). Data: `DATA_LICENSE.md`. Citation: `CITATION.cff` (authors to be
+confirmed).
