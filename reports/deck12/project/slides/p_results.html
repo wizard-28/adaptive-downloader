@@ -27,7 +27,7 @@
 62.4 %: on a server that starts slow and then speeds up, our downloader on one fixed setting took 62.4 % less time than aria2. We explain most of that as a timing effect: its requests start after the speed-up, whereas aria2 starts its big pieces while the server is slow. It is not adaptation.
 0.41 %: we replayed five recorded mobile networks, whose speed swings by 6.5 to 25 times. Even a perfect controller that knows the future could save only 0.41 % on average, so there was almost nothing to gain.
 1.071: under a server that throttles when you open too many connections, our simple drop rule, once we fixed two engine weaknesses, was 7 % slower than the best fixed setting.
-0.907: an learning agent retrained on that throttling server was 9 % faster than the fixed 1 MiB setting there. But it did not win on conditions it had not seen, and on three real public mirrors our adaptive controllers failed the no-harm test.
+0.907: a learning agent retrained on that throttling server was 9 % faster than the fixed 1 MiB setting there. But it did not win on conditions it had not seen, and on three real public mirrors our adaptive controllers failed the no-harm test.
 For testing: our automated tests cover every part of the code, the race detector is clean, every downloaded file is checked byte for byte, and a script recomputes all 231 numbers in our paper from the raw data.
 
 IN SIMPLE WORDS: Adapting almost never beat a well-chosen fixed setting. The big wins came from how the downloader is built, not from clever control.

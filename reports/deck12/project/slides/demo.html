@@ -19,7 +19,7 @@
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">07</p>
 <aside>WHAT TO SAY: Now a short live demo in three steps.
 Step 1: we download the Linux kernel source from cdn.kernel.org with 8 connections of 1 MiB. First the program asks the server for a single byte to check it supports range requests. At the end it compares the file’s SHA-256 fingerprint with the one kernel.org publishes; they match, so the file is perfect.
-Step 2: on our test server with the cap switching on at 8 seconds, we run the retrained learning agent. Watch the number of connections drop after 8 seconds as the agent notices requests getting slower.
+Step 2: on our test server with the cap switching on at 8 seconds, we run the retrained learning agent. Watch the number of connections: the agent tends to lower N over the next seconds, gradually and a little differently each run, as it notices requests getting slower.
 Step 3: we run our automated tests, and then the script that recomputes all 231 numbers in our paper from the raw data.
 
 BEFORE THE DEMO: build the programs in advance, and do not run anything heavy on the laptop during it. If the internet is down, skip step 1. If anything fails, say what failed.
