@@ -7408,6 +7408,12 @@ https://claude.ai/artifact/Pny8DjgRgQhfdW1bXEbZjh (30 slides; figures from
 `reports/handbook/make_deck_figs.py`). The handbook still quotes the earlier
 "about 5–27×" (p90/p10 over the 8-trace S-pivot set), which is a different set.
 
+Deck render check (2026-10-28): every slide rendered in headless Chromium and
+checked for text under 24 px, overlaps, overflow and code names. Fixes: demo
+slide "220 numbers" -> 231; "v2" removed from the limitations notes; label
+collisions fixed in five charts (`make_deck_figs.py`: fig1, trace_capacity,
+joint, live, forest). Deck republished; checker still 231/231.
+
 ### 22.110 Team handbook (2026-10-26, COMPLETE)
 
 `reports/handbook/handbook.tex` → `handbook.pdf` (93 pages, LaTeX, pdflatex):

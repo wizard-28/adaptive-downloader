@@ -159,7 +159,8 @@ for i, (lab, r, col) in enumerate(rows):
     ax.scatter([i] * len(r), r, color=col, s=40, alpha=0.6, zorder=2)
     g = math.exp(stats.mean(math.log(x) for x in r))
     ax.plot([i - 0.3, i + 0.3], [g, g], color="#14213d", lw=3, zorder=3)
-    ax.text(i + 0.33, g, f"{g:.2f}", va="center", fontsize=14)
+    ax.text(i, max(r + [g]) + 0.025, f"{g:.2f}", ha="center", va="bottom", fontsize=14, zorder=5,
+            bbox=dict(fc="white", ec="none", pad=1.5))
 ax.axhline(1, color=DARK, ls="--", lw=1.2)
 ax.text(len(rows) - 0.5, 1.02, "parity", ha="right", va="bottom", fontsize=13, color=DARK)
 ax.set_xticks(range(len(rows)), [r[0] for r in rows])
@@ -195,9 +196,8 @@ if os.path.isdir(TR):
         v = full[:300]
         ax.fill_between(range(len(v)), v, color=col, alpha=0.25, lw=0)
         ax.plot(v, color=col, lw=1.6)
-        ax.set_ylim(0, max(v) * 1.25)
-        ax.text(0.99, 0.95, f"{lab} · swing {p9010(full):.0f}×", transform=ax.transAxes, ha="right", va="top",
-                fontsize=14, fontweight="bold", color=DARK)
+        ax.set_ylim(0, max(v) * 1.1)
+        ax.set_title(f"{lab} · swing {p9010(full):.0f}×", loc="right", fontsize=14, fontweight="bold", color=DARK, pad=3)
         ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(3))
     axs[1].set_ylabel("Mbit/s")
     axs[-1].set_xlabel("time (s), first 5 minutes of each drive")
@@ -283,8 +283,8 @@ for i, s in enumerate(best):
 ax.set_xticks(range(4), ["cap from\n8 s", "no cap", "cap from\nstart", "slow,\nthen fast"])
 ax.set_ylabel("time (s)")
 ax.legend(handles=[Patch(color=DARK, label="best fixed"), Patch(color=BLUE, label="agent picking N + piece size")], frameon=False,
-          loc="upper right", ncol=1, fontsize=13)
-ax.set_ylim(0, 128)
+          loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=2, fontsize=13)
+ax.set_ylim(0, 112)
 save(f, "joint.png")
 
 # --- r4c: v2 study (1100 x 520) ----------------------------------------------
@@ -333,12 +333,17 @@ lp = [c for c in load(f"{T}/live_pilot_l1/analysis/summary.json")["conditions"] 
 f, ax = fig(1100, 520)
 xs = range(len(lp))
 ax.axhline(5, color=RED, ls="--", lw=1.5)
-ax.text(len(lp) - 0.5, 5.6, "5 % line", ha="right", fontsize=13, color=RED)
+ax.text(len(lp) - 0.3, 5.7, "5 % line", ha="left", fontsize=14, color=RED)
+ax.set_xlim(-0.7, len(lp) + 1.6)
 ax.scatter(xs, [100 * (c["aria2_over_best_fixed"] - 1) for c in lp], color=GREY, s=70, label="aria2", zorder=2)
 ax.scatter(xs, [100 * (c["time_s"]["ours_N8_S1M"] / c["best_s"] - 1) for c in lp], color=BLUE, s=80,
            label="ours, 8 × 1 MiB everywhere", zorder=3)
 NAMES = {"kcdn": "kernel.org CDN", "kedge": "kernel.org origin", "riken": "RIKEN, Japan", "tuna": "Tsinghua, China"}
-ax.set_xticks(list(xs), [NAMES[c["server"]] for c in lp], rotation=60, fontsize=11, ha="right")
+groups = {}
+for i, c in enumerate(lp):
+    groups.setdefault(c["server"], []).append(i)
+ax.set_xticks([sum(g) / len(g) for g in groups.values()], [NAMES[k].replace(" ", "\n", 1) for k in groups], fontsize=14)
+ax.set_xlabel("one dot per time of day, grouped by server")
 ax.set_ylabel("% slower than the\nbest fixed cell")
 ax.legend(frameon=False, loc="upper left")
 save(f, "live.png")
@@ -402,7 +407,7 @@ for i, (lab, r, lo, hi) in enumerate(reversed(rows)):
     col = GREEN if hi < 1 else RED
     ax.plot([lo, hi], [i, i], color=col, lw=3)
     ax.plot(r, i, "o", color=col, ms=10)
-    ax.text(hi + 0.012, i, f"{r:.3f}", va="center", fontsize=14)
+    ax.text(hi + 0.012, i, f"{r:.3f}", va="center", fontsize=14, zorder=5, bbox=dict(fc="white", ec="none", pad=1))
 ax.axvline(1, color=DARK, ls="--", lw=1.5)
 ax.set_yticks(range(len(rows)), [r[0] for r in reversed(rows)], fontsize=14)
 ax.set_xlabel("adaptive ÷ fixed time (95 % interval)")
