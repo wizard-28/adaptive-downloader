@@ -1,0 +1,337 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {chapter}{How to Use This Handbook}{1}{chapter*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}The Project in One Page}{3}{chapter.1}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:overview}{{1}{3}{The Project in One Page}{chapter.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}The question}{3}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}The answer in ten findings}{3}{section.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}The logic of the project}{4}{section.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces The chain of studies. Blue: instrument and first benchmark; green: the constructed opportunity; red: the engine finding; purple: learned controllers; orange: real servers.}}{5}{figure.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:logic}{{1.1}{5}{The chain of studies. Blue: instrument and first benchmark; green: the constructed opportunity; red: the engine finding; purple: learned controllers; orange: real servers}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}What we built}{5}{section.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}What is novel, in one paragraph}{5}{section.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}The takeaway}{6}{section.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Background You Need}{7}{chapter.2}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:background}{{2}{7}{Background You Need}{chapter.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}HTTP range requests}{7}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Segmented (parallel) downloading}{7}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Why more connections can help}{8}{subsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Why more connections can hurt}{8}{subsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Why range size matters}{8}{subsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Straggler splitting}{8}{subsection.2.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}The tools we compared against}{9}{section.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces External downloaders and how they segment}}{9}{table.caption.6}\protected@file@percent }
+\newlabel{tab:tools}{{2.1}{9}{External downloaders and how they segment}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Network emulation and trace replay}{9}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Reinforcement learning in five minutes}{9}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}The setting}{9}{subsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Q-learning and DQN}{10}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Double DQN}{10}{subsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Contextual bandits and LinUCB}{10}{subsection.2.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Oracles and headroom (project-specific idea)}{10}{section.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.7}Related work in one table}{11}{section.2.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces Prior work we cite and how we used it}}{11}{table.caption.7}\protected@file@percent }
+\newlabel{tab:related}{{2.2}{11}{Prior work we cite and how we used it}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}What We Built: The System}{12}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:system}{{3}{12}{What We Built: The System}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Architecture}{12}{section.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network; policies act only through the controllers.}}{12}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:architecture.png}{{3.1}{12}{System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network; policies act only through the controllers}{figure.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Technology stack}}{13}{table.caption.9}\protected@file@percent }
+\newlabel{tab:stack}{{3.1}{13}{Technology stack}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}The download engine}{14}{section.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Components and responsibilities}}{14}{table.caption.10}\protected@file@percent }
+\newlabel{tab:components}{{3.2}{14}{Components and responsibilities}{table.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces UML class diagram. The Downloader owns its parts; every policy implements the same interface.}}{15}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:classdiagram.png}{{3.2}{15}{UML class diagram. The Downloader owns its parts; every policy implements the same interface}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Design rules (the invariants)}{15}{subsection.3.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces UML state diagram of one byte range in the RangeTracker.}}{16}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:state.png}{{3.3}{16}{UML state diagram of one byte range in the RangeTracker}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}The worker algorithm}{16}{subsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Worker loop (\texttt  {internal/downloader/worker\_\allowbreak  pool.go}).}}{16}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:flowchart.png}{{3.4}{16}{Worker loop (\code {internal/downloader/worker\_pool.go})}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Straggler splitting (added after Review~2's audit)}{16}{subsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}The request deadline}{17}{subsection.3.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Extra bytes re-downloaded under the original 30\,s whole-request timeout (capped server, 32\,MiB ranges).}}{17}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:waste.png}{{3.5}{17}{Extra bytes re-downloaded under the original 30\,s whole-request timeout (capped server, 32\,MiB ranges)}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}The control layer}{17}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}The policy interface}{17}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Rule-based controllers}{18}{subsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Learned controllers}{18}{subsection.3.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces The 13 DQN state features of v6 and the cap-trained agents (\texttt  {python/rl/state\_\allowbreak  v6.py})}}{19}{table.caption.15}\protected@file@percent }
+\newlabel{tab:features}{{3.3}{19}{The 13 DQN state features of v6 and the cap-trained agents (\code {python/rl/state\_v6.py})}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}The test platform}{19}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}The paced test server}{19}{subsection.3.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Reference schedule D2: 640\,KiB/s, a dip to 160\,KiB/s from 2\,s to 4\,s, then 2{,}500\,KiB/s. A request that starts in the first 4\,s keeps its slow rate.}}{19}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:schedule.png}{{3.6}{19}{Reference schedule D2: 640\,KiB/s, a dip to 160\,KiB/s from 2\,s to 4\,s, then 2{,}500\,KiB/s. A request that starts in the first 4\,s keeps its slow rate}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}The soft concurrency cap}{20}{subsection.3.4.2}\protected@file@percent }
+\newlabel{eq:cap}{{3.3}{20}{The soft concurrency cap}{equation.3.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces The soft cap: a new request's rate and the implied total, against the number of active requests.}}{20}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:cap_curve.png}{{3.7}{20}{The soft cap: a new request's rate and the implied total, against the number of active requests}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Schematic of the arrival-time rule under CAP8.}}{21}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:arrival_rule.png}{{3.8}{21}{Schematic of the arrival-time rule under CAP8}{figure.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Server scenarios used throughout}}{21}{table.caption.19}\protected@file@percent }
+\newlabel{tab:scenarios}{{3.4}{21}{Server scenarios used throughout}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Network emulation, trace replay, live runner}{21}{subsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}The simulators}{22}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}The evidence pipeline}{22}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Testing}{22}{section.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Verification commands}}{22}{table.caption.20}\protected@file@percent }
+\newlabel{tab:verify}{{3.5}{22}{Verification commands}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method and Statistics}{24}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:method}{{4}{24}{Method and Statistics}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Run design: arms, blocks, pairs}{24}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}The time ratio and why it is geometric}{24}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Ratios are averaged on the log scale because ``half the time'' and ``twice the time'' should cancel.}}{24}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:geomean.png}{{4.1}{24}{Ratios are averaged on the log scale because ``half the time'' and ``twice the time'' should cancel}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Confidence intervals}{25}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Percentile bootstrap (primary)}{25}{subsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Paired $t$-interval (sensitivity check)}{25}{subsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Verdicts}{25}{subsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Workload-level intervals}{25}{subsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Headroom gates: measure the opportunity before building the learner}{26}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Frozen protocols and amendments}{26}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Independent review before freezing}{27}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}The claims checker}{27}{section.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Metrics}{27}{section.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.9}Validity threats we controlled for}{27}{section.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Timeline, Reviews and Work Division}{29}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:timeline}{{5}{29}{Timeline, Reviews and Work Division}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}From proposal to final results}{29}{section.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Project timeline. Dates from \texttt  {docs/PROJECT\_\allowbreak  CONTEXT.md} and the git log (which begins 2026-10-11); the Review~1 date is not recorded in the repository.}}{29}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:timeline}{{5.1}{29}{Project timeline. Dates from \code {docs/PROJECT\_CONTEXT.md} and the git log (which begins 2026-10-11); the Review~1 date is not recorded in the repository}{figure.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Dated milestones}}{29}{table.caption.23}\protected@file@percent }
+\newlabel{tab:milestones}{{5.1}{29}{Dated milestones}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}What each review covered}{30}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Review 1: the proposal}{30}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Review 2: progress (submitted 24 Oct)}{30}{subsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Review 3: final report (submitted 24 Oct)}{30}{subsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}After the reviews (25 Oct): all planned experiments complete}{30}{subsection.5.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Objectives and deviations}{31}{section.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Review~1 objectives and outcomes (updated with the post-review studies)}}{31}{table.caption.24}\protected@file@percent }
+\newlabel{tab:objectives}{{5.2}{31}{Review~1 objectives and outcomes (updated with the post-review studies)}{table.caption.24}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Deviations from the Review~1 plan and why}}{32}{table.caption.25}\protected@file@percent }
+\newlabel{tab:deviations}{{5.3}{32}{Deviations from the Review~1 plan and why}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Work division}{32}{section.5.4}\protected@file@percent }
+\newlabel{sec:work}{{5.4}{32}{Work division}{section.5.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Team members and contributions (from Review~2)}}{32}{table.caption.26}\protected@file@percent }
+\newlabel{tab:team}{{5.4}{32}{Team members and contributions (from Review~2)}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Sourajyoti Basak\ (24BCE0774): architecture, core engine, server and network experiments}{33}{subsection.5.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Shwetank Shrijan\ (24BDS0141): components, monitoring, automation, baselines and heuristics}{33}{subsection.5.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Ayush Konar\ (24BDS0107): LinUCB, RL design, models and learned-policy evaluation}{34}{subsection.5.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Results I: Fixed Settings Against aria2 and Other Tools}{35}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:aria2}{{6}{35}{Results I: Fixed Settings Against aria2 and Other Tools}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Early aria2 comparisons and the granularity confound}{35}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}The D2 benchmark: 62.4\,\% less time (Confirmed)}{35}{section.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Discovery grid: completion time for all 40 $(N,S)$ settings on D2.}}{35}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:grid.png}{{6.1}{35}{Discovery grid: completion time for all 40 $(N,S)$ settings on D2}{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}The mechanism}{36}{subsection.6.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Data received over time in one paired run, reconstructed from per-request server logs.}}{36}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:progress.png}{{6.2}{36}{Data received over time in one paired run, reconstructed from per-request server logs}{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Controls}{36}{subsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Pacing-schedule sensitivity (screen)}{37}{section.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Pacing sweep, ours ($16\times 4$\,MiB) / aria2}}{37}{table.caption.29}\protected@file@percent }
+\newlabel{tab:sweep}{{6.1}{37}{Pacing sweep, ours ($16\times 4$\,MiB) / aria2}{table.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Mean completion time under the six schedules.}}{37}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:pacing.png}{{6.3}{37}{Mean completion time under the six schedules}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Stock NGINX check (screen)}{37}{section.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Paired ratios ours/aria2: D2 benchmark, six sweep schedules, two NGINX configurations. Sweep and NGINX cells are screens ($n=5$).}}{38}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:fig1_ours_vs_aria2.png}{{6.4}{38}{Paired ratios ours/aria2: D2 benchmark, six sweep schedules, two NGINX configurations. Sweep and NGINX cells are screens ($n=5$)}{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Other segmented downloaders: axel and lftp (screen)}{38}{section.6.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Ours against axel, lftp and aria2 (ratios; 95\,\% bootstrap)}}{38}{table.caption.32}\protected@file@percent }
+\newlabel{tab:baselines}{{6.2}{38}{Ours against axel, lftp and aria2 (ratios; 95\,\% bootstrap)}{table.caption.32}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Delay and loss sweep (screen)}{39}{section.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.7}Goodput with the fixed engine}{39}{section.6.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Goodput in MB/s (geometric mean of 10 runs; ours on the fixed engine)}}{39}{table.caption.33}\protected@file@percent }
+\newlabel{tab:goodput}{{6.3}{39}{Goodput in MB/s (geometric mean of 10 runs; ours on the fixed engine)}{table.caption.33}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Results II: Searching for an Adaptation Opportunity}{40}{chapter.7}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:opportunity}{{7}{40}{Results II: Searching for an Adaptation Opportunity}{chapter.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Rule-based adaptation on D2 (Track 1)}{40}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Mechanism screens}{41}{section.7.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Screens that looked for a state-dependent optimum (all closed before policy work)}}{41}{table.caption.34}\protected@file@percent }
+\newlabel{tab:screens}{{7.1}{41}{Screens that looked for a state-dependent optimum (all closed before policy work)}{table.caption.34}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Recorded cellular traces: the oracle gate (Confirmed; Failed gate)}{41}{section.7.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces Oracle headroom per trace (\texttt  {testdata/final\_\allowbreak  oracle\_\allowbreak  analysis})}}{42}{table.caption.35}\protected@file@percent }
+\newlabel{tab:oracle}{{7.2}{42}{Oracle headroom per trace (\code {testdata/final\_oracle\_analysis})}{table.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Oracle headroom per trace against the 10\,\% bar.}}{42}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:oracle.png}{{7.1}{42}{Oracle headroom per trace against the 10\,\% bar}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Simulated headroom that was not real (L2--L4)}{42}{section.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Results III: The Capped Server, Adaptive Control and the Engine}{44}{chapter.8}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:cap}{{8}{44}{Results III: The Capped Server, Adaptive Control and the Engine}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}The live mechanism gate (Failed gate, 5 of 6 checks passed)}{44}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Workload selection}{44}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Two workloads (P1)}{44}{subsection.8.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Six-workload family W1--W6 (Descriptive)}{44}{subsection.8.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Selector across W1--W6}}{45}{table.caption.37}\protected@file@percent }
+\newlabel{tab:w16}{{8.1}{45}{Selector across W1--W6}{table.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Selector ratios per workload; the shaded band is the workload-level 95\,\% interval.}}{45}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:fig2_six_workload_selector.png}{{8.1}{45}{Selector ratios per workload; the shaded band is the workload-level 95\,\% interval}{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Within-download adaptation (P2): 23.4\,\% less time (Confirmed on the original engine)}{45}{section.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces P2 completion times (10 blocks).}}{46}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:fig3_within_download_controller.png}{{8.2}{46}{P2 completion times (10 blocks)}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}The engine ablation: why aria2 led under the cap (Confirmed)}{46}{section.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Completion time before and after the engine fix, and aria2.}}{46}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:ablation.png}{{8.3}{46}{Completion time before and after the engine fix, and aria2}{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Adaptive controllers against the best fixed setting on the corrected engine.}}{47}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:adaptive.png}{{8.4}{47}{Adaptive controllers against the best fixed setting on the corrected engine}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Online concurrency tuner (prior-work re-implementation)}{47}{section.8.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.2}{\ignorespaces Online tuner (ratios tuner/other)}}{47}{table.caption.42}\protected@file@percent }
+\newlabel{tab:tuner}{{8.2}{47}{Online tuner (ratios tuner/other)}{table.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Online tuner against fixed settings and aria2.}}{48}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:tuner.png}{{8.5}{48}{Online tuner against fixed settings and aria2}{figure.caption.43}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Adaptation speed}{48}{section.8.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.3}{\ignorespaces Adaptation speed (median seconds, range over runs)}}{48}{table.caption.44}\protected@file@percent }
+\newlabel{tab:adapt}{{8.3}{48}{Adaptation speed (median seconds, range over runs)}{table.caption.44}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.7}Why does $16\times 32$\,MiB win under the cap?}{48}{section.8.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Results IV: Every Learned Policy}{49}{chapter.9}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:learned}{{9}{49}{Results IV: Every Learned Policy}{chapter.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}LinUCB}{49}{section.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}DQN versions v1--v6}{49}{section.9.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.1}{\ignorespaces DQN candidates (Double DQN, trained in simulation, run live in Go)}}{49}{table.caption.45}\protected@file@percent }
+\newlabel{tab:dqn}{{9.1}{49}{DQN candidates (Double DQN, trained in simulation, run live in Go)}{table.caption.45}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Frozen v6 on the capped server (screen)}{50}{section.9.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.2}{\ignorespaces Frozen DQN v6 on the capped and uncapped server}}{50}{table.caption.46}\protected@file@percent }
+\newlabel{tab:v6cap}{{9.2}{50}{Frozen DQN v6 on the capped and uncapped server}{table.caption.46}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Cap-trained DQN v1 (\texttt  {rl\_\allowbreak  cap\_\allowbreak  train})}{50}{section.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}Joint concurrency and range-size agent (\texttt  {rl\_\allowbreak  joint})}{51}{section.9.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Joint N + range-size agent against the best fixed setting per scenario (arrival-rule server, 10 blocks).}}{51}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:joint.png}{{9.1}{51}{Joint N + range-size agent against the best fixed setting per scenario (arrival-rule server, 10 blocks)}{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}DQN v2: broader training, held-out scenarios inside the ranges (\texttt  {rl\_\allowbreak  cap\_\allowbreak  train\_\allowbreak  v2})}{51}{section.9.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.3}{\ignorespaces v2 study results (8 blocks; ratios against the better fixed 1\,MiB arm)}}{52}{table.caption.48}\protected@file@percent }
+\newlabel{tab:v2}{{9.3}{52}{v2 study results (8 blocks; ratios against the better fixed 1\,MiB arm)}{table.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces The v2 study: v1, v2 and the drop rule against the best fixed 1\,MiB arm.}}{52}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:v2.png}{{9.2}{52}{The v2 study: v1, v2 and the drop rule against the best fixed 1\,MiB arm}{figure.caption.49}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.7}v2 against aria2 and large ranges (cross-study, not paired)}{53}{section.9.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces CAP8 completion times from the joint and v2 studies.}}{53}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:cap8_times.png}{{9.3}{53}{CAP8 completion times from the joint and v2 studies}{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.8}Model-based controller attempt (Failed gate)}{53}{section.9.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.4}{\ignorespaces Selected adaptive and learned arms (primary CAP8-type comparisons) against their comparison fixed setting. Held-out and no-cap results are in the tables above.}}{54}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:forest.png}{{9.4}{54}{Selected adaptive and learned arms (primary CAP8-type comparisons) against their comparison fixed setting. Held-out and no-cap results are in the tables above}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Results V: Real Networks and Real Servers}{55}{chapter.10}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:real}{{10}{55}{Results V: Real Networks and Real Servers}{chapter.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Live-internet pilot (\texttt  {live\_\allowbreak  pilot\_\allowbreak  l1}, Descriptive)}{55}{section.10.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Live pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}}{56}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:live.png}{{10.1}{56}{Live pilot: how much slower one global fixed setting and aria2 were than the per-condition best}{figure.caption.52}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Adaptive arms on real mirrors (\texttt  {live\_\allowbreak  mirror\_\allowbreak  check}, Descriptive)}{56}{section.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.1}What happened}{56}{subsection.10.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces Mirror check slot M2 (ratios against the better fixed arm, $16\times 1$\,MiB on all three; 95\,\% bootstrap)}}{57}{table.caption.53}\protected@file@percent }
+\newlabel{tab:mirror}{{10.1}{57}{Mirror check slot M2 (ratios against the better fixed arm, $16\times 1$\,MiB on all three; 95\,\% bootstrap)}{table.caption.53}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Real mirrors: both adaptive arms above the 1.05 no-harm line on all three.}}{57}{figure.caption.54}\protected@file@percent }
+\newlabel{fig:mirror.png}{{10.2}{57}{Real mirrors: both adaptive arms above the 1.05 no-harm line on all three}{figure.caption.54}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.2}Why}{57}{subsection.10.2.2}\protected@file@percent }
+\gdef \LT@i {\LT@entry 
+    {1}{336.05214pt}\LT@entry 
+    {1}{119.81102pt}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}Synthesis: What It All Means}{59}{chapter.11}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:synthesis}{{11}{59}{Synthesis: What It All Means}{chapter.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.1}Why reinforcement learning did not win}{59}{section.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.2}What we claim and what we do not}{59}{section.11.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11.1}{\ignorespaces Claim map (from the paper; ``label'' is the evidence strength)}}{59}{table.11.1}\protected@file@percent }
+\newlabel{tab:claims}{{11.1}{59}{Claim map (from the paper; ``label'' is the evidence strength)}{table.11.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.1}{\ignorespaces Claim map (from the paper; ``label'' is the evidence strength)}}{60}{table.11.1}\protected@file@percent }
+\newlabel{tab:claims}{{11.1}{60}{Claim map (from the paper; ``label'' is the evidence strength)}{table.11.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.3}What is novel in this project}{60}{section.11.3}\protected@file@percent }
+\newlabel{sec:novelty}{{11.3}{60}{What is novel in this project}{section.11.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.4}Practical lessons}{62}{section.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.5}Future work}{62}{section.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.6}Publication status}{62}{section.11.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {12}Limitations and Threats to Validity}{63}{chapter.12}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:limits}{{12}{63}{Limitations and Threats to Validity}{chapter.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.1}Incidents we disclose}{64}{section.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {13}Doubt Clearing: Viva Questions and Model Answers}{65}{chapter.13}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:viva}{{13}{65}{Doubt Clearing: Viva Questions and Model Answers}{chapter.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {13.1}The basics}{65}{section.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.2}Method and statistics}{65}{section.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.3}The aria2 result}{66}{section.13.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.4}The search for an opportunity}{67}{section.13.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.5}The capped server and the engine}{67}{section.13.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.6}Reinforcement learning}{68}{section.13.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.7}Real networks}{70}{section.13.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.8}Novelty and value}{70}{section.13.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.9}Design choices examiners like to probe}{71}{section.13.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13.10}Hostile or tricky questions}{72}{section.13.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {14}Presentation and Demo Guide}{73}{chapter.14}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:presentation}{{14}{73}{Presentation and Demo Guide}{chapter.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14.1}Suggested slide flow (about 15 minutes)}{73}{section.14.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14.1}{\ignorespaces Suggested slides, figures and presenter (by area of the work division)}}{73}{table.caption.55}\protected@file@percent }
+\newlabel{tab:slides}{{14.1}{73}{Suggested slides, figures and presenter (by area of the work division)}{table.caption.55}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14.2}Demo script (about 2.5 minutes plus talking)}{73}{section.14.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14.1}{\ignorespaces Terminal capture of step 1.}}{74}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:shot_live.png}{{14.1}{74}{Terminal capture of step 1}{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14.2}{\ignorespaces Terminal capture: the test suite passing.}}{75}{figure.caption.57}\protected@file@percent }
+\newlabel{fig:shot_tests.png}{{14.2}{75}{Terminal capture: the test suite passing}{figure.caption.57}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14.3}Five sentences everyone should be able to say}{75}{section.14.3}\protected@file@percent }
+\gdef \LT@ii {\LT@entry 
+    {1}{108.43008pt}\LT@entry 
+    {1}{353.12354pt}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Glossary of Terms and Internal Labels}{76}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:glossary}{{A}{76}{Glossary of Terms and Internal Labels}{appendix.A}{}}
+\gdef \LT@iii {\LT@entry 
+    {1}{216.55022pt}\LT@entry 
+    {1}{142.88284pt}\LT@entry 
+    {1}{108.43008pt}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Numbers Cheat Sheet}{78}{appendix.B}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:numbers}{{B}{78}{Numbers Cheat Sheet}{appendix.B}{}}
+\gdef \LT@iv {\LT@entry 
+    {1}{114.96556pt}\LT@entry 
+    {1}{144.5733pt}\LT@entry 
+    {1}{144.5733pt}\LT@entry 
+    {1}{60.9055pt}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}Inventory of Every Study Folder}{80}{appendix.C}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:studies}{{C}{80}{Inventory of Every Study Folder}{appendix.C}{}}
+\gdef \LT@v {\LT@entry 
+    {1}{114.12054pt}\LT@entry 
+    {1}{341.7426pt}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {D}Repository Map and How to Reproduce}{83}{appendix.D}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:repo}{{D}{83}{Repository Map and How to Reproduce}{appendix.D}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D.1}Top-level layout}{83}{section.D.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D.2}\texttt  {internal/} packages}{83}{section.D.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D.3}\texttt  {cmd/} programs}{83}{section.D.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D.4}Reproducing}{84}{section.D.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {E}References}{85}{appendix.E}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:refs}{{E}{85}{References}{appendix.E}{}}
+\newlabel{LastPage}{{E}{85}{References}{page.85}{}}
+\gdef\lastpage@lastpage{85}
+\gdef\lastpage@lastpageHy{85}
+\gdef \@abspage@last{93}

@@ -1,0 +1,140 @@
+\contentsline {chapter}{How to Use This Handbook}{1}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}The Project in One Page}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}The question}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The answer in ten findings}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The logic of the project}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}What we built}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}What is novel, in one paragraph}{5}{section.1.5}%
+\contentsline {section}{\numberline {1.6}The takeaway}{6}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Background You Need}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}HTTP range requests}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Segmented (parallel) downloading}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Why more connections can help}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Why more connections can hurt}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Why range size matters}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Straggler splitting}{8}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}The tools we compared against}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Network emulation and trace replay}{9}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Reinforcement learning in five minutes}{9}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}The setting}{9}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Q-learning and DQN}{10}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Double DQN}{10}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Contextual bandits and LinUCB}{10}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}Oracles and headroom (project-specific idea)}{10}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Related work in one table}{11}{section.2.7}%
+\contentsline {chapter}{\numberline {3}What We Built: The System}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Architecture}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The download engine}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Design rules (the invariants)}{15}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The worker algorithm}{16}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Straggler splitting (added after Review~2's audit)}{16}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}The request deadline}{17}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}The control layer}{17}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}The policy interface}{17}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Rule-based controllers}{18}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Learned controllers}{18}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}The test platform}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}The paced test server}{19}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}The soft concurrency cap}{20}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Network emulation, trace replay, live runner}{21}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}The simulators}{22}{section.3.5}%
+\contentsline {section}{\numberline {3.6}The evidence pipeline}{22}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Testing}{22}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Method and Statistics}{24}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Run design: arms, blocks, pairs}{24}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The time ratio and why it is geometric}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Confidence intervals}{25}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Percentile bootstrap (primary)}{25}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Paired $t$-interval (sensitivity check)}{25}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Verdicts}{25}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Workload-level intervals}{25}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Headroom gates: measure the opportunity before building the learner}{26}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Frozen protocols and amendments}{26}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Independent review before freezing}{27}{section.4.6}%
+\contentsline {section}{\numberline {4.7}The claims checker}{27}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Metrics}{27}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Validity threats we controlled for}{27}{section.4.9}%
+\contentsline {chapter}{\numberline {5}Timeline, Reviews and Work Division}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}From proposal to final results}{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}What each review covered}{30}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Review 1: the proposal}{30}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Review 2: progress (submitted 24 Oct)}{30}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Review 3: final report (submitted 24 Oct)}{30}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}After the reviews (25 Oct): all planned experiments complete}{30}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Objectives and deviations}{31}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Work division}{32}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Sourajyoti Basak\ (24BCE0774): architecture, core engine, server and network experiments}{33}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Shwetank Shrijan\ (24BDS0141): components, monitoring, automation, baselines and heuristics}{33}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Ayush Konar\ (24BDS0107): LinUCB, RL design, models and learned-policy evaluation}{34}{subsection.5.4.3}%
+\contentsline {chapter}{\numberline {6}Results I: Fixed Settings Against aria2 and Other Tools}{35}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Early aria2 comparisons and the granularity confound}{35}{section.6.1}%
+\contentsline {section}{\numberline {6.2}The D2 benchmark: 62.4\,\% less time (Confirmed)}{35}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}The mechanism}{36}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Controls}{36}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Pacing-schedule sensitivity (screen)}{37}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Stock NGINX check (screen)}{37}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Other segmented downloaders: axel and lftp (screen)}{38}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Delay and loss sweep (screen)}{39}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Goodput with the fixed engine}{39}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Results II: Searching for an Adaptation Opportunity}{40}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Rule-based adaptation on D2 (Track 1)}{40}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Mechanism screens}{41}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Recorded cellular traces: the oracle gate (Confirmed; Failed gate)}{41}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Simulated headroom that was not real (L2--L4)}{42}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Results III: The Capped Server, Adaptive Control and the Engine}{44}{chapter.8}%
+\contentsline {section}{\numberline {8.1}The live mechanism gate (Failed gate, 5 of 6 checks passed)}{44}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Workload selection}{44}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Two workloads (P1)}{44}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Six-workload family W1--W6 (Descriptive)}{44}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Within-download adaptation (P2): 23.4\,\% less time (Confirmed on the original engine)}{45}{section.8.3}%
+\contentsline {section}{\numberline {8.4}The engine ablation: why aria2 led under the cap (Confirmed)}{46}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Online concurrency tuner (prior-work re-implementation)}{47}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Adaptation speed}{48}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Why does $16\times 32$\,MiB win under the cap?}{48}{section.8.7}%
+\contentsline {chapter}{\numberline {9}Results IV: Every Learned Policy}{49}{chapter.9}%
+\contentsline {section}{\numberline {9.1}LinUCB}{49}{section.9.1}%
+\contentsline {section}{\numberline {9.2}DQN versions v1--v6}{49}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Frozen v6 on the capped server (screen)}{50}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Cap-trained DQN v1 (\texttt {rl\_\allowbreak cap\_\allowbreak train})}{50}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Joint concurrency and range-size agent (\texttt {rl\_\allowbreak joint})}{51}{section.9.5}%
+\contentsline {section}{\numberline {9.6}DQN v2: broader training, held-out scenarios inside the ranges (\texttt {rl\_\allowbreak cap\_\allowbreak train\_\allowbreak v2})}{51}{section.9.6}%
+\contentsline {section}{\numberline {9.7}v2 against aria2 and large ranges (cross-study, not paired)}{53}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Model-based controller attempt (Failed gate)}{53}{section.9.8}%
+\contentsline {chapter}{\numberline {10}Results V: Real Networks and Real Servers}{55}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Live-internet pilot (\texttt {live\_\allowbreak pilot\_\allowbreak l1}, Descriptive)}{55}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Adaptive arms on real mirrors (\texttt {live\_\allowbreak mirror\_\allowbreak check}, Descriptive)}{56}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}What happened}{56}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Why}{57}{subsection.10.2.2}%
+\contentsline {chapter}{\numberline {11}Synthesis: What It All Means}{59}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Why reinforcement learning did not win}{59}{section.11.1}%
+\contentsline {section}{\numberline {11.2}What we claim and what we do not}{59}{section.11.2}%
+\contentsline {section}{\numberline {11.3}What is novel in this project}{60}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Practical lessons}{62}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Future work}{62}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Publication status}{62}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Limitations and Threats to Validity}{63}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Incidents we disclose}{64}{section.12.1}%
+\contentsline {chapter}{\numberline {13}Doubt Clearing: Viva Questions and Model Answers}{65}{chapter.13}%
+\contentsline {section}{\numberline {13.1}The basics}{65}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Method and statistics}{65}{section.13.2}%
+\contentsline {section}{\numberline {13.3}The aria2 result}{66}{section.13.3}%
+\contentsline {section}{\numberline {13.4}The search for an opportunity}{67}{section.13.4}%
+\contentsline {section}{\numberline {13.5}The capped server and the engine}{67}{section.13.5}%
+\contentsline {section}{\numberline {13.6}Reinforcement learning}{68}{section.13.6}%
+\contentsline {section}{\numberline {13.7}Real networks}{70}{section.13.7}%
+\contentsline {section}{\numberline {13.8}Novelty and value}{70}{section.13.8}%
+\contentsline {section}{\numberline {13.9}Design choices examiners like to probe}{71}{section.13.9}%
+\contentsline {section}{\numberline {13.10}Hostile or tricky questions}{72}{section.13.10}%
+\contentsline {chapter}{\numberline {14}Presentation and Demo Guide}{73}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Suggested slide flow (about 15 minutes)}{73}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Demo script (about 2.5 minutes plus talking)}{73}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Five sentences everyone should be able to say}{75}{section.14.3}%
+\contentsline {chapter}{\numberline {A}Glossary of Terms and Internal Labels}{76}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Numbers Cheat Sheet}{78}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Inventory of Every Study Folder}{80}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Repository Map and How to Reproduce}{83}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Top-level layout}{83}{section.D.1}%
+\contentsline {section}{\numberline {D.2}\texttt {internal/} packages}{83}{section.D.2}%
+\contentsline {section}{\numberline {D.3}\texttt {cmd/} programs}{83}{section.D.3}%
+\contentsline {section}{\numberline {D.4}Reproducing}{84}{section.D.4}%
+\contentsline {chapter}{\numberline {E}References}{85}{appendix.E}%

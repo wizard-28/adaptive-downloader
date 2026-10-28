@@ -11,7 +11,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Below 1: faster than the best fixed setting with the same piece size · shaded: conditions it never trained on · 8 rounds each</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">20</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">21</p>
 <aside>WHAT TO SAY: To fix the generalisation problem, we trained a new agent on a much wider range of conditions: weak and strong caps, short and long network delays, and sudden slow-downs. We wrote the test plan first and had it reviewed before running anything.
 Then we tested it on four new conditions it had never seen, all within the range it trained on: a weaker cap of 12 MiB/s, a long 110 ms delay, a cap plus a sudden dip, and a weak 20 MiB/s cap with a short delay. It was faster than the best fixed 1 MiB setting in three of them (12 %, 18 % and 5 % less time) and slightly slower, by 0.7 %, in the fourth. It beat the first retrained agent in all six tests. With no cap at all it cost about 5 %.
 Be honest about the limits: we trained five versions from different random starts and picked the best on practice tests; the others were worse. And the simple drop rule beat it on the scenario the rule was tuned for.

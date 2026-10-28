@@ -1,0 +1,28 @@
+<section id="r1c" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 1 · other download tools</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">axel and lftp split the file once at the start too, so they lose the same way</h2>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Setup:</b> a 512 MiB file; every tool uses 16 connections; ours on one fixed setting; 5 rounds per condition (80 runs, all valid)</p>
+<img src="/_blob/13b32e7f136b004e9c3129d071b26d81" alt="Completion time in seconds for our fixed setting, aria2, axel and lftp under four server conditions: ours 18 and 20 s against 51 to 53 s for the others when there is no cap or the server is slow then fast; all four about 53 s with the cap from 8 s; with the cap from the start ours 68, aria2 68, axel 66 and lftp 114 s" style="width:1100px;height:520px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="position:absolute;left:1268px;top:400px;width:524px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">No cap, or slow then fast:</b> ours took about a third of their time (18 to 20 s against 51 to 53 s)</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Cap from 8 s:</b> all four level, about 53 s</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Cap from the start:</b> lftp 114 s, because it never re-splits a slow piece; axel 2.5 % faster than ours</p>
+<p style="font-size:26px;line-height:1.35;color:#B85A12"><b>Takeaway: the gap to aria2 is not an aria2 quirk. Tools that split once, up front, behave alike.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">wget2 left out: no parallel download of one file · IDM: Windows-only, closed · 40 ms delay each way, 0.4 % loss</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">12</p>
+<aside>WHAT TO SAY: Is the gap to aria2 just an aria2 quirk? We ran two more popular download tools, axel and lftp, on the same four server conditions, all with 16 connections. The chart shows how long each took, in seconds. Shorter is better.
+When the server has no cap, or is slow first and then fast, aria2, axel and lftp all take about 53 seconds. Our fixed setting takes 18 to 20 seconds, about a third of the time. These tools all cut the file into 16 equal parts right at the start, so their big pieces keep the slow speed they started with. Our smaller pieces start later and get the fast speed.
+When the server caps the speed from 8 seconds, everything is level at about 53 seconds. No winner.
+When the cap is on from the very start, ours, aria2 and axel take about 66 to 68 seconds; axel is 2.5 % faster than ours. lftp takes 114 seconds, because it never re-splits a slow piece and so waits for the slowest connection at the end. Our own engine without splitting behaved the same way earlier, which is why we added splitting.
+We left out wget2, because it can only fetch one file over a single connection, and IDM, because it is closed and Windows-only.
+
+IN SIMPLE WORDS: Any tool that cuts the file once at the start suffers on a server that speeds up later. It is not special to aria2.
+
+TERMS ON THIS SLIDE:
+• Cap: a limit the server puts on the total speed when too many connections are open.
+• Fixed setting: the same number of connections and the same piece size for the whole download.
+• Re-splitting (straggler splitting): when one connection is idle at the end, it takes over half of the slowest piece.
+• Round: one run of every tool, in random order.
+• Quick check (“screen”): a small experiment to see a direction, not final proof.</aside>
+</section>

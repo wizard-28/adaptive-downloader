@@ -1,0 +1,48 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The chain of studies. Blue: instrument and first benchmark; green: the constructed opportunity; red: the engine finding; purple: learned controllers; orange: real servers.}}{5}{figure.caption.5}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture. One Downloader coordinates five parts; only the Fetcher talks to the network; policies act only through the controllers.}}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces UML class diagram. The Downloader owns its parts; every policy implements the same interface.}}{15}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces UML state diagram of one byte range in the RangeTracker.}}{16}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Worker loop (\texttt {internal/downloader/worker\_\allowbreak pool.go}).}}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Extra bytes re-downloaded under the original 30\,s whole-request timeout (capped server, 32\,MiB ranges).}}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Reference schedule D2: 640\,KiB/s, a dip to 160\,KiB/s from 2\,s to 4\,s, then 2{,}500\,KiB/s. A request that starts in the first 4\,s keeps its slow rate.}}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The soft cap: a new request's rate and the implied total, against the number of active requests.}}{20}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Schematic of the arrival-time rule under CAP8.}}{21}{figure.caption.18}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ratios are averaged on the log scale because ``half the time'' and ``twice the time'' should cancel.}}{24}{figure.caption.21}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Project timeline. Dates from \texttt {docs/PROJECT\_\allowbreak CONTEXT.md} and the git log (which begins 2026-10-11); the Review~1 date is not recorded in the repository.}}{29}{figure.caption.22}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Discovery grid: completion time for all 40 $(N,S)$ settings on D2.}}{35}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Data received over time in one paired run, reconstructed from per-request server logs.}}{36}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Mean completion time under the six schedules.}}{37}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Paired ratios ours/aria2: D2 benchmark, six sweep schedules, two NGINX configurations. Sweep and NGINX cells are screens ($n=5$).}}{38}{figure.caption.31}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Oracle headroom per trace against the 10\,\% bar.}}{42}{figure.caption.36}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Selector ratios per workload; the shaded band is the workload-level 95\,\% interval.}}{45}{figure.caption.38}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces P2 completion times (10 blocks).}}{46}{figure.caption.39}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Completion time before and after the engine fix, and aria2.}}{46}{figure.caption.40}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Adaptive controllers against the best fixed setting on the corrected engine.}}{47}{figure.caption.41}%
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Online tuner against fixed settings and aria2.}}{48}{figure.caption.43}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Joint N + range-size agent against the best fixed setting per scenario (arrival-rule server, 10 blocks).}}{51}{figure.caption.47}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces The v2 study: v1, v2 and the drop rule against the best fixed 1\,MiB arm.}}{52}{figure.caption.49}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces CAP8 completion times from the joint and v2 studies.}}{53}{figure.caption.50}%
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Selected adaptive and learned arms (primary CAP8-type comparisons) against their comparison fixed setting. Held-out and no-cap results are in the tables above.}}{54}{figure.caption.51}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Live pilot: how much slower one global fixed setting and aria2 were than the per-condition best.}}{56}{figure.caption.52}%
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Real mirrors: both adaptive arms above the 1.05 no-harm line on all three.}}{57}{figure.caption.54}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {14.1}{\ignorespaces Terminal capture of step 1.}}{74}{figure.caption.56}%
+\contentsline {figure}{\numberline {14.2}{\ignorespaces Terminal capture: the test suite passing.}}{75}{figure.caption.57}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

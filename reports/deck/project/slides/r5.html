@@ -12,7 +12,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Each dot: one server at one time of day · 328 of 350 downloads valid · side finding: the Tsinghua server blocks Go’s default client name</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">22</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">23</p>
 <aside>WHAT TO SAY: Everything so far was on our own test setup. So we went to the real internet. From a home broadband connection in India we downloaded the Linux kernel source, about 64 MB, from four public servers: the kernel.org CDN, the kernel.org origin server, and university servers in Japan (RIKEN) and China (Tsinghua). We did this at four different times of day, with eight fixed settings plus aria2 and a single-connection tool, curl.
 The question: does the best setting change between servers and times of day? Mostly not. One setting, 8 connections × 1 MiB, was on average only 3.7 % slower than the best setting for each case. So even knowing the conditions in advance would gain very little. What did matter was using enough connections: on one server, 4 connections were up to 1.7 times slower.
 Side finding: the Tsinghua server in China refuses requests that carry Go’s default client name, so a plain Go downloader cannot use it at all.

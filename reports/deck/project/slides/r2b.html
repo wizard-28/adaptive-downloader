@@ -12,7 +12,7 @@
 </table>
 <p style="font-size:28px;line-height:1.4;color:#14213D;background:#FCFCFA;padding:22px 32px;border-left:8px solid #2F6FD6;border-radius:8px">Adapting can only help if the best setting changes during the download. None of these did, so we built a server where it does.</p>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Each check stopped by a pass/fail rule written before it ran · mix of live runs on our test setup and simulations</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">14</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">15</p>
 <aside>WHAT TO SAY: We did not stop at mobile networks. We looked at many other kinds of bad conditions, to find one where the best setting really changes during a download.
 Simple adaptive rules on the slow-then-fast server did change settings, but took 2.3 times as long as the best fixed setting. Competing traffic on a shared link, bursty packet loss, servers that throttle each request, changing piece sizes on a steady server: none of them gave a meaningful gain, because the best setting stayed the same throughout.
 One warning story: one simulator design showed 17.6 % to gain, but when we checked on the real test setup, it was not there. The simulator had invented a penalty that the real system does not have. After that, we always checked simulators against real runs before trusting them.

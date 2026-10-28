@@ -1,0 +1,45 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces External downloaders and how they segment}}{9}{table.caption.6}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Prior work we cite and how we used it}}{11}{table.caption.7}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Technology stack}}{13}{table.caption.9}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Components and responsibilities}}{14}{table.caption.10}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces The 13 DQN state features of v6 and the cap-trained agents (\texttt {python/rl/state\_\allowbreak v6.py})}}{19}{table.caption.15}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Server scenarios used throughout}}{21}{table.caption.19}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Verification commands}}{22}{table.caption.20}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Dated milestones}}{29}{table.caption.23}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Review~1 objectives and outcomes (updated with the post-review studies)}}{31}{table.caption.24}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Deviations from the Review~1 plan and why}}{32}{table.caption.25}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Team members and contributions (from Review~2)}}{32}{table.caption.26}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Pacing sweep, ours ($16\times 4$\,MiB) / aria2}}{37}{table.caption.29}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Ours against axel, lftp and aria2 (ratios; 95\,\% bootstrap)}}{38}{table.caption.32}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Goodput in MB/s (geometric mean of 10 runs; ours on the fixed engine)}}{39}{table.caption.33}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Screens that looked for a state-dependent optimum (all closed before policy work)}}{41}{table.caption.34}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Oracle headroom per trace (\texttt {testdata/final\_\allowbreak oracle\_\allowbreak analysis})}}{42}{table.caption.35}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Selector across W1--W6}}{45}{table.caption.37}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Online tuner (ratios tuner/other)}}{47}{table.caption.42}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Adaptation speed (median seconds, range over runs)}}{48}{table.caption.44}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces DQN candidates (Double DQN, trained in simulation, run live in Go)}}{49}{table.caption.45}%
+\contentsline {table}{\numberline {9.2}{\ignorespaces Frozen DQN v6 on the capped and uncapped server}}{50}{table.caption.46}%
+\contentsline {table}{\numberline {9.3}{\ignorespaces v2 study results (8 blocks; ratios against the better fixed 1\,MiB arm)}}{52}{table.caption.48}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {10.1}{\ignorespaces Mirror check slot M2 (ratios against the better fixed arm, $16\times 1$\,MiB on all three; 95\,\% bootstrap)}}{57}{table.caption.53}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {11.1}{\ignorespaces Claim map (from the paper; ``label'' is the evidence strength)}}{59}{table.11.1}%
+\contentsline {table}{\numberline {11.1}{\ignorespaces Claim map (from the paper; ``label'' is the evidence strength)}}{60}{table.11.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {14.1}{\ignorespaces Suggested slides, figures and presenter (by area of the work division)}}{73}{table.caption.55}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

@@ -20,7 +20,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Neural agents: Double DQN · the comparisons used different files and aria2 settings, so the rows are not comparable with each other</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">18</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">19</p>
 <aside>WHAT TO SAY: Now the machine-learning part. We tried two kinds of learning controllers. First a simple learner called LinUCB; it quickly got stuck always choosing the same action. Then neural-network agents of a kind called Double DQN, through several versions: one that turned both dials, one allowed up to 4 connections, one allowed up to 16. All of them took longer than aria2, between 1.5 and 2.3 times as long.
 Part of that was unfair to them: the test files were small, so the agent had little time to act, and one version started with a single connection while aria2 opens 16 at once. So we gave the 16-connection agent a long file and a start at 16 connections on the throttling server; it still took 1.36 times the best fixed time. A different approach, which first tries to work out the server’s rules and then picks a setting, failed its own test in simulation, so we never ran it for real.
 How the neural agent works: after each piece finishes, it looks at 13 measurements of the download, then chooses to do nothing, add a connection, or remove one. It is rewarded for finishing sooner. It learns in a simulator, and the trained network then runs inside our downloader.

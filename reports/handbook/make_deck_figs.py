@@ -168,6 +168,25 @@ ax.set_ylabel("ours ÷ aria2 time")
 ax.set_ylim(0.3, 1.1)
 save(f, "fig1_ours_vs_aria2.png")
 
+# --- r1c: other tools, axel and lftp (1100 x 520) -----------------------------
+be = load(f"{T}/baselines_ext/analysis/E.json")["scenarios"]
+rows = [("no cap", "HEALTHY", "ours_16_1M", "16×1 MiB"), ("slow,\nthen fast", "D2", "ours_16_4M", "16×4 MiB"),
+        ("cap from\n8 s", "CAP8", "ours_16_32M", "16×32 MiB"), ("cap from\nstart", "CAP0", "ours_16_32M", "16×32 MiB")]
+f, ax = fig(1100, 520)
+w = 0.2
+arms = [("ours_arm", BLUE, "ours, fixed setting"), ("aria2", DARK, "aria2"), ("axel", GREY, "axel"), ("lftp", ORANGE, "lftp")]
+for i, (lab, sc, oarm, osz) in enumerate(rows):
+    g = be[sc]["geo_mean_s"]
+    for j, (arm, col, _) in enumerate(arms):
+        v = g[oarm if arm == "ours_arm" else arm]
+        ax.bar(i + (j - 1.5) * w, v, w * 0.92, color=col)
+        ax.text(i + (j - 1.5) * w, v + 2, f"{v:.0f}", ha="center", fontsize=13)
+ax.set_xticks(range(len(rows)), [f"{r[0]}\nours: {r[3]}" for r in rows], fontsize=12)
+ax.set_ylabel("completion time (s)")
+ax.set_ylim(0, 135)
+ax.legend(handles=[Patch(color=c, label=l) for _, c, l in arms], frameon=False, loc="upper left", ncol=2)
+save(f, "tools.png")
+
 # --- r2a: trace capacity (1100 x 590) ----------------------------------------
 TR = "mahimahi-clone-dir/mahimahi/traces"
 
