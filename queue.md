@@ -175,7 +175,7 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   code names, chart readability). Fixed: demo slide said 220 numbers (now 231);
   "v2" in the limitations notes; label collisions in five charts (r1b, r2a,
   r4b, r5, summary), live chart now grouped by server. Republished.
-- [ ] IEEE Access template conversion (see section 5).
+- [x] IEEE Access template conversion: `tools/paper_to_ieee.py` builds `reports/paper/paper_access.pdf` (13 pp.) with the official class in `reports/ieee_access/template/`. Open: author ORCID/funding/COI, corresponding author, DOI.
 
 ## 7. Last: only when the user asks explicitly
 
