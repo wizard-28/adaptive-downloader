@@ -157,6 +157,12 @@ func (c *RewardCalculator) Config() RewardConfig { return c.cfg }
 //
 // Invalid inputs (non-finite contexts) yield Reward{Value: 0} rather than a
 // corrupted reward.
+//
+// Worked example with the default config (scale 1 MiB/s, latency scale 1 s,
+// weights all 1 except latency 0.5): previous aggregate 1 MiB/s, current
+// aggregate 3 MiB/s, current request duration 0.4 s, no retries or failures, and
+// a real controller change. Then throughput = 3, improvement = 2, latency cost
+// = 0.4, action cost = 0.05, so Value = 3 + 2 - 0.5*0.4 - 0.05 = 4.75.
 func (c *RewardCalculator) Calculate(previous, current State, action ActionIndex, havePrevious bool) Reward {
 	if err := current.Validate(); err != nil {
 		return Reward{}

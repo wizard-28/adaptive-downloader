@@ -25,6 +25,11 @@ var ErrUnsupportedAction = errors.New("rl: unsupported action")
 //
 // The reserved explicit-target actions (ActionSetConcurrency, ActionSetChunkSize)
 // are NOT part of the action space.
+//
+// The mapping is intentionally one-way per element and lossless in both
+// directions: ActionFromIndex and ActionIndexFromAction are exact inverses for
+// these five values (a round-trip test pins it), which is what lets the learner
+// reason in indices while the downloader only ever sees generic Actions.
 type ActionIndex uint8
 
 const (

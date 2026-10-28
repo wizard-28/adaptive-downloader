@@ -161,6 +161,11 @@ func NewLiveConcurrencyPolicyV6(m *Model, totalBytes int64) (*LivePolicy, error)
 
 // SelectAction builds the DQN observation, runs greedy inference, records the
 // decision, and returns the existing policy.Action for the runner to apply.
+//
+// The three state layouts (v1, v5, v6) share the same action decoding: an index
+// becomes a generic policy.Action, and the downloader decides what it means. A
+// model error falls back to NoChange so a malformed observation can never crash
+// a live run; the fallback is visible in the decision log as a "none" action.
 func (p *LivePolicy) SelectAction(ctx policy.Context) policy.Action {
 	p.mu.Lock()
 	defer p.mu.Unlock()
@@ -253,10 +258,35 @@ func (p *LivePolicy) actionName(idx int) string {
 // Update applies the runner's scalar reward to the previous decision and
 // updates the staleness/window trackers for the resolved action effect. The
 // reward is informational here (inference-only); it is recorded for analysis.
+//
+// A frozen model is not trained live, so there is nothing to learn from the
+// reward: this method exists to satisfy policy.Policy and to document that
+// absence explicitly. Training happens offline in python/ and the result is
+// loaded as a fixed artifact.
 func (p *LivePolicy) Update(ctx policy.Context, action policy.Action, reward float64) {}
 
 // observe builds a DQN Observation from the downloader context and advances the
 // temporal trackers. It must be called under p.mu.
+//
+// This is where the live v6 (state version 3) input is assembled: thirteen
+// features, all from the downloader's own measurements.
+//
+//	concurrency_norm            N / 16
+//	remaining_bytes_frac        1 - bytes written / file size
+//	aggregate_throughput_norm   wall-clock rate / 8 MiB/s
+//	throughput EWMA, slope       smoothed rate and its change
+//	throughput volatility        EWMA of |rate - previous rate|
+//	request_duration_*           last duration and its change
+//	recent_failure/retry rate    share of the last 8 decisions/attempts with a
+//	                             failure or a retry
+//	since_concurrency_change    staleness of the N target
+//	recent_completed            completions in the window
+//	throughput_improvement      current rate - previous rate
+//
+// Progress uses doneBytesAccum (bytes of successful attempts), not
+// successes x last-bytes, so a mixed-size run cannot report false progress.
+// The trackers advance after the snapshot, so one observation never sees its own
+// update.
 func (p *LivePolicy) observe(ctx policy.Context) Observation {
 	thr := ctx.AggregateThroughput
 

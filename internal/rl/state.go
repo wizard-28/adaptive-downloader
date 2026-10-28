@@ -184,6 +184,12 @@ func FeatureNames() []string {
 // requests overlap, in which case it clamps to 1.
 //
 // When a denominator is zero (e.g. Min == Max) the corresponding feature is 0.
+//
+// Example: with bounds Concurrency [1,16] and ChunkSize [1, 33 MiB],
+// Concurrency 4 gives 3/15 = 0.2, ChunkSize 1 MiB gives 1048575/34603007 =
+// 0.030, aggregate throughput 2 MiB/s against MaxThroughput 8 MiB/s gives
+// 0.25, and 10 successful requests against CounterScale 1000 gives 0.01. The
+// vector order is the one listed in FeatureNames.
 func (s State) Features(cfg Config) ([]float64, error) {
 	if err := cfg.Validate(); err != nil {
 		return nil, err

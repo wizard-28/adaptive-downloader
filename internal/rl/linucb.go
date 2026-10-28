@@ -345,6 +345,12 @@ func (l *LinUCB) features(state State) ([]float64, bool) {
 
 // score computes p_a = θ_aᵀx + alpha*sqrt(xᵀ A_a⁻¹ x), where θ_a solves
 // A_a θ_a = b_a. The quadratic form is evaluated as xᵀ (A_a⁻¹ x) via Cholesky.
+//
+// Worked example for one arm before any update (A_a = I, b_a = 0, so θ_a = 0)
+// with two features x = [0.5, 0.25] and alpha = 0.2: the mean term is 0 and
+// xᵀ A⁻¹ x = 0.25 + 0.0625 = 0.3125, so p_a = 0.2 * sqrt(0.3125) = 0.112. Every
+// unseen arm starts with that pure exploration bonus, which is why the warm-up
+// pass matters: without it the first tie would be broken by index alone.
 func (l *LinUCB) score(action int, x []float64) float64 {
 	xv := mat.NewVecDense(l.dim, x)
 
@@ -387,6 +393,11 @@ func (l *LinUCB) score(action int, x []float64) float64 {
 // The update is applied to the stored sufficient statistics; the score method
 // re-factorises A_a on each decision (d is small). This avoids maintaining a
 // hand-rolled matrix inverse and keeps the numerics delegated to Gonum.
+//
+// Worked example with x = [1, 0] and reward r = 2: b_a becomes [2, 0] and A_a
+// becomes [[2,0],[0,1]], so θ_a = [1, 0]; scoring that same context again gives a
+// mean term of 1 instead of 0 (it approaches r = 2 as identical updates
+// accumulate) and a smaller exploration bonus, because A_a grew.
 func (l *LinUCB) updateArm(action int, x []float64, r float64) {
 	xv := mat.NewVecDense(l.dim, x)
 

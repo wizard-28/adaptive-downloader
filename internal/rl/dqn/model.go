@@ -192,6 +192,10 @@ func (m *Model) SelectActionV6(obs ObservationV6) (int, error) {
 	return m.greedyFromFeatures(x)
 }
 
+// greedyFromFeatures returns argmax_a Q(x, a), breaking exact ties by the lowest
+// index (strict >). Inference is deterministic and epsilon-free: the frozen model
+// is only ever used greedily in live runs, so a repeated observation always maps
+// to the same action.
 func (m *Model) greedyFromFeatures(x []float64) (int, error) {
 	q, err := m.Forward(x)
 	if err != nil {
