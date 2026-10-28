@@ -218,8 +218,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 
 - Scope note (2026-10-28): the long 34-slide deck (`reports/deck/`) is no longer
   required; work only on the 12-slide deck (`reports/deck12/`).
-- [~] Cross-document consistency audit (Sonnet subagent, read-only): qa, viva
-  notes, 12 slides, paper, Reviews 1-3. Fix what it finds, verified.
+- [x] Cross-document consistency audit (Sonnet subagent) and design-decision
+  audit: verified findings fixed in qa.md (Q12 wording, Q1 oracle scope, Q16,
+  Q24 extras, new Q25-26, synonyms, post-Review-3 updates), project_summary.md,
+  demo.md, and slides 5, 6, 8, 9, 11 of the 12-slide deck.
+- [ ] No recorded reason (ask the authors): max 16 connections; 3/5/8/10 blocks
+  per study; 64 MB live-pilot file; why loopback over a real path; request-start
+  pacing as a design choice; why t-interval vs bootstrap; no multiplicity correction.
 
 ## 7. Last: only when the user asks explicitly
 
