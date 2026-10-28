@@ -198,6 +198,15 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 
 - [x] IEEE conference-format PDF `reports/paper/paper_conf.pdf` (teacher's request); open: page limit.
 
+- [x] Deck restructured to the official 12-slide structure (title and team,
+  problem and objectives, proposed solution, final architecture, methodology,
+  implementation, live demonstration, testing and results, performance and
+  comparison, innovation and application, conclusion, future enhancement);
+  the detailed slides follow as backup (41 slides in all).
+- [ ] Awaiting the user's go-ahead: joint-action deviation sentence in the paper
+  (§3, §10), limitations-slide bullet and viva Q&A answer (the engine slide
+  wording is already fixed).
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
