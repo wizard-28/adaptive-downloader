@@ -4,5 +4,5 @@
 # CPU-only PyTorch (no CUDA/nvidia packages). Install with:
 #   pip install --index-url https://download.pytorch.org/whl/cpu torch==2.9.0+cpu
 #   pip install --only-binary=:all: numpy==2.5.3
-torch==2.9.0+cpu
+torch==2.13.0
 numpy==2.5.3
