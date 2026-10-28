@@ -10,7 +10,7 @@
 <p style="font-size:26px;line-height:1.35;color:#B85A12"><b>Takeaway: the gap to aria2 is not an aria2 quirk. Tools that split once, up front, behave alike.</b></p>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">wget2 left out: no parallel download of one file · IDM: Windows-only, closed · 40 ms delay each way, 0.4 % loss</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">22</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">14</p>
 <aside>WHAT TO SAY: Is the gap to aria2 just an aria2 quirk? We ran two more popular download tools, axel and lftp, on the same four server conditions, all with 16 connections. The chart shows how long each took, in seconds. Shorter is better.
 When the server has no cap, or is slow first and then fast, aria2, axel and lftp all take about 53 seconds. Our fixed setting takes 18 to 20 seconds, about a third of the time. These tools all cut the file into 16 equal parts right at the start, so their big pieces keep the slow speed they started with. Our smaller pieces start later and get the fast speed.
 When the server caps the speed from 8 seconds, everything is level at about 53 seconds. No winner.

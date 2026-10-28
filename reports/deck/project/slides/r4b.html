@@ -1,5 +1,5 @@
 <section id="r4b" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · AI trained on the throttling server itself</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · a learning controller trained on the throttling server itself</p>
 <h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Retrained, the agent won narrowly, but only where it practised</h2>
 <div style="display:flex;gap:40px;align-items:start">
 <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
@@ -15,12 +15,12 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The simulator was checked against blind live runs first (within 1.5 to 7.0 %, optimistic for long pieces); the agent still did not learn the big-piece behaviour</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">31</p>
-<aside>WHAT TO SAY: After our formal reviews we gave the AI a fairer chance. The old simulator did not model the throttling server correctly, so we built a new simulator of it, tuned from real request logs, and checked it: its predictions were within 1.4 % of real runs.
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">23</p>
+<aside>WHAT TO SAY: After our formal reviews we gave the learning agent a fairer chance. The old simulator did not model the throttling server correctly, so we built a new simulator of it, tuned from real request logs, and checked it: its predictions were within 1.4 % of real runs.
 The retrained agent was 9 % faster than the fixed setting with the same 1 MiB pieces, on the server it was trained for. But on three new test conditions it had not practised on, it was faster in none. It had learned that one server, not a general skill. And it was still slower than big 32 MiB pieces and aria2.
 So we also tried an agent that can change piece size as well as connections. In the simulator, a simple hand-written rule showed there was a lot to gain, about 65 % less time. The trained agent did not find that behaviour: live it was slower than the best fixed setting in all four scenarios, up to 1.47 times. Because the simulator was accurate, the learning itself failed.
 
-IN SIMPLE WORDS: The AI could learn the exact server it practised on, but not generalise, and when we gave it more freedom it did not find the good strategy.
+IN SIMPLE WORDS: The agent could learn the exact server it practised on, but not generalise, and when we gave it more freedom it did not find the good strategy.
 
 THE CHART: dark bars = best fixed setting, blue bars = the agent that picks both dials; the label on each blue bar is how many times slower it was.
 

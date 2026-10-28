@@ -1,0 +1,53 @@
+<section id="engine" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">What we built · engine and control</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">One policy interface for every controller</h2>
+<div style="display:flex;gap:48px">
+<div style="flex:1.05;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#E4E8F0;background:#14213D;padding:32px;border-radius:16px">type Policy interface {<br>  SelectAction(ctx Context) Action<br>  Update(ctx Context, a Action, r float64)<br>}<br><span style="color:#8FA3C7">// none, ±concurrency, ±chunk size</span></p>
+<div style="display:flex;flex-direction:column;gap:14px;background:#EEF1F6;padding:24px;border-radius:16px">
+<p style="font-size:24px;color:#14213D"><b>Straggler splitting</b>, at the end of a download</p>
+<div style="display:flex;gap:12px;align-items:center">
+<p style="font-size:24px;color:#4A5568;width:96px">Before</p>
+<div style="flex:3;height:48px;background:#2F6FD6;border-radius:6px 0px 0px 6px;display:flex;align-items:center;padding:0px 12px"><p style="font-size:24px;color:#F6F5F1">A: received</p></div>
+<div style="flex:4;height:48px;background:#FBEDE2;border:2px dashed #E07B28;border-radius:0px 6px 6px 0px;display:flex;align-items:center;padding:0px 12px"><p style="font-size:24px;color:#B85A12">still to come, r</p></div>
+<p style="font-size:24px;color:#4A5568;background:#DEDCD4;padding:6px 14px;border-radius:999px">B idle</p>
+</div>
+<div style="display:flex;gap:12px;align-items:center">
+<p style="font-size:24px;color:#4A5568;width:96px">After</p>
+<div style="flex:3;height:48px;background:#2F6FD6;border-radius:6px 0px 0px 6px;display:flex;align-items:center;padding:0px 12px"><p style="font-size:24px;color:#F6F5F1">A: received</p></div>
+<div style="flex:2;height:48px;background:#8FB3EE;display:flex;align-items:center;padding:0px 12px"><p style="font-size:24px;color:#14213D">A keeps</p></div>
+<div style="flex:2;height:48px;background:#E07B28;border-radius:0px 6px 6px 0px;display:flex;align-items:center;padding:0px 12px"><p style="font-size:24px;color:#14213D">B takes</p></div>
+<div style="width:118px"></div>
+</div>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#14213D">only if r ≥ 2 MiB · m = s + b + ⌊r/2⌋</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#14213D">Five invariants</h3>
+<ol style="font-size:28px;line-height:1.45;color:#4A5568">
+<li>One request fetches one contiguous range</li>
+<li>Ranges never resize in flight (except an opt-in split)</li>
+<li>A failed range retries with the same bounds</li>
+<li>Lowering N never cancels a request</li>
+<li>One decision at a time, each changing N or S, not both at once</li>
+</ol>
+<p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Controllers:</b> fixed settings, simple rules (such as “drop rule”), a workload selector, an online tuner, and learning agents (LinUCB, Double DQN)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">549 Go test functions in 29 packages at Review 2 · race detector clean · no test needs internet</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">06</p>
+<aside>WHAT TO SAY: Every controller, from the simplest fixed setting to the neural-network agent, plugs into the same small interface. It has two functions: choose an action, and learn from the result. Because they all use the same engine, comparisons between them are fair.
+The engine follows five rules. For example: a failed piece is retried with exactly the same byte range, and lowering N never kills a download that is already running; the extra worker just stops after its current piece.
+Two engine options matter later. Straggler splitting, shown in the diagram: near the end, connection A is still working on a big piece while connection B has nothing to do. B takes over the second half of what A has not yet received, so both finish sooner. We only split if at least 2 MiB remain, so each half is worth a new request. And we can switch off the old 30-second time limit per request.
+ON JOINT CONTROL (if asked): both N and S are adapted, but one dial per decision. The rule-based joint policy alternates between N and S; the causal drop controller and workload selector choose a target pair (N, S) together and reach it one step at a time; LinUCB and the DQN agents pick one of five single-dial actions. A learner that picks the pair (N, S) as one action at a fixed interval, as in our first proposal, was not built.
+
+IN SIMPLE WORDS: One plug for every brain, and a few strict rules so the file always comes out correct.
+
+TERMS ON THIS SLIDE:
+• Interface: a contract in code; any controller that has these two functions can be plugged in.
+• Invariant: a rule the code always keeps true.
+• Half-open range [s, e): bytes from s up to but not including e. HTTP uses inclusive ranges, so we convert in exactly one place to avoid off-by-one bugs.
+• Straggler: a slow piece still downloading when everything else is done. Splitting it shares the remaining work.
+• Deadline / timeout: the maximum time a request may run before it is cancelled.
+• Race detector: Go’s tool that checks for bugs when many things run at once.</aside>
+</section>

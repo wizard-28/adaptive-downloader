@@ -5,7 +5,7 @@
 <div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#2F6FD6">Our downloader</h3>
 <p style="font-size:26px;line-height:1.38;color:#14213D">Written in Go, with <b>one policy interface</b></p>
-<p style="font-size:26px;line-height:1.38;color:#14213D">Policies: fixed settings, simple rules (drop rule), workload selector, online tuner, LinUCB, Double DQN</p>
+<p style="font-size:26px;line-height:1.38;color:#14213D">Policies: fixed settings, simple rules (drop rule), workload selector, online tuner, and two <b>learning controllers</b>: LinUCB and Double DQN</p>
 </div>
 <div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#E07B28">A controlled test bench</h3>
@@ -25,7 +25,7 @@
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">03</p>
 <aside>WHAT TO SAY: Our solution has three parts. First, a downloader we wrote in Go. Every controller plugs into one policy interface, from a simple fixed setting to simple rules, a workload selector that guesses the kind of server, an online tuner modelled on a published method, a contextual bandit called LinUCB, and a neural-network agent called Double DQN.
 Second, a controlled test bench. Our own test server lets us set exactly how fast it answers, switch on a cap that punishes too many connections, and inject faults. We add network delay and packet loss with Linux netem, replay recorded mobile networks with Mahimahi, and finally check on real public mirrors.
-Third, fair measurement. We run every option back to back in random order, we write each experiment plan with its pass or fail rules before running it, we measure how much a perfect controller could gain before building any AI, and a script recomputes every number in our paper. We compare against aria2, axel, lftp and our own best fixed setting.
+Third, fair measurement. We run every option back to back in random order, we write each experiment plan with its pass or fail rules before running it, we measure how much a perfect controller could gain before building any learning controller, and a script recomputes every number in our paper. We compare against aria2, axel, lftp and our own best fixed setting.
 
 IN SIMPLE WORDS: A downloader that can turn the two dials mid-download, a lab where we control the conditions, and a fair way to score it.
 
@@ -34,6 +34,6 @@ TERMS ON THIS SLIDE:
 • Drop rule: a simple rule that switches once to fewer connections when the speed halves.
 • Workload selector: watches the first seconds, guesses the kind of server, and picks a preset setting.
 • Online tuner: keeps nudging N up or down based on measured speed.
-• LinUCB: a simple learner that favours actions that paid off. Double DQN: a neural network that learns which action is best.
+• Learning controller: one that learns by trial and error, from a reward (reinforcement learning), which action to take. LinUCB is a contextual bandit, a simple reinforcement-learning method. Double DQN is deep reinforcement learning: a neural network that learns which action is best.
 • netem: a Linux tool that adds delay and packet loss. Mahimahi: a tool that replays recorded network speeds.</aside>
 </section>

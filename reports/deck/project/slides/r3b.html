@@ -10,7 +10,7 @@
 </div>
 <div style="display:flex;flex-direction:column;gap:6px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">2 · No straggler splitting</h3>
-<p style="font-size:26px;line-height:1.4;color:#D7DDE8">aria2 lets an idle connection take half of a slow piece; we did not (slide 6)</p>
+<p style="font-size:26px;line-height:1.4;color:#D7DDE8">aria2 lets an idle connection take half of a slow piece; we did not (slide 9)</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:6px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">After fixing both</h3>
@@ -19,7 +19,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#BFC8D9">230 test downloads, every one valid, with no failed requests or wasted data · we call this “engine before policy”</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#BFC8D9;text-align:right">27</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#BFC8D9;text-align:right">19</p>
 <aside>WHAT TO SAY: Why was aria2 faster under the cap? We compared the two engines carefully and found two differences in our own downloader, not in the controller.
 First, our engine cancelled any request that ran longer than 30 seconds, even if it was still making progress, and started that piece again from zero. With big pieces under the cap this wasted a lot of work; in one run we downloaded 112 % of the file again.
 Second, we had no straggler splitting. aria2 lets a free connection take over half of a slow piece near the end; we did not.

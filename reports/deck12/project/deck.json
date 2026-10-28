@@ -1,0 +1,16 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-28T13:00:00Z"},
+  "lists": "css",
+  "title": "When Does Adapting N and S Help? (12-slide presentation)",
+  "order": ["cover", "p_problem", "p_solution", "architecture", "method", "engine", "demo", "p_results", "vsaria2", "p_innovation", "p_conclusion", "p_future"],
+  "sections": {
+    "talk": {"description": "The 12-slide presentation: title, problem, solution, architecture, method, implementation, demo, results, comparison, innovation, conclusion, future work", "start": "cover"}
+  },
+  "faces": {
+    "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"},
+    "ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

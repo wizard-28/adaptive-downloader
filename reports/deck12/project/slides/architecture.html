@@ -1,0 +1,50 @@
+<section id="architecture" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">What we built · the instrument</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">A Go downloader whose N and S a policy can change mid-download</h2>
+<div style="display:flex;gap:20px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#14213D;padding:32px;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">Control layer</h3>
+<p style="font-size:24px;line-height:1.35;color:#E4E8F0"><b>Policy:</b> fixed, rules, tuner, LinUCB or DQN</p>
+<p style="font-size:24px;line-height:1.35;color:#E4E8F0"><b>Policy runner:</b> one decision at a time</p>
+<p style="font-size:24px;line-height:1.35;color:#E4E8F0"><b>Controllers:</b> hold the target N and S within bounds</p>
+</div>
+<div style="display:flex;flex-direction:column;justify-content:center;gap:8px;width:64px">
+<x-shape kind="arrow-right" style="background:#2F6FD6;width:64px;height:32px"></x-shape>
+<x-shape kind="arrow-left" style="background:#B9B8B0;width:64px;height:32px"></x-shape>
+</div>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:32px;border:2px solid #2F6FD6;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#2F6FD6">Download engine</h3>
+<p style="font-size:24px;line-height:1.35;color:#14213D"><b>Worker pool:</b> N downloads at once</p>
+<p style="font-size:24px;line-height:1.35;color:#14213D"><b>RangeTracker:</b> which bytes are done, in flight, waiting</p>
+<p style="font-size:24px;line-height:1.35;color:#14213D"><b>Fetcher:</b> one Range request, checks the 206</p>
+<p style="font-size:24px;line-height:1.35;color:#14213D"><b>Assembler:</b> writes each piece at its offset</p>
+<p style="font-size:24px;line-height:1.35;color:#14213D"><b>Metrics:</b> one record per request</p>
+</div>
+<div style="display:flex;flex-direction:column;justify-content:center;gap:8px;width:64px">
+<x-shape kind="arrow-right" style="background:#2F6FD6;width:64px;height:32px"></x-shape>
+<x-shape kind="arrow-left" style="background:#B9B8B0;width:64px;height:32px"></x-shape>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:32px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#14213D">Environment</h3>
+<p style="font-size:24px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Our test server:</b> pacing, cap, faults</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568"><b style="color:#14213D">tc netem:</b> delay and loss</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Mahimahi:</b> recorded mobile traces</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Or a public mirror</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Blue arrows: actions and requests · grey arrows: measurements back after every request · Go 1.27.1, one dependency (Gonum)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">04</p>
+<aside>WHAT TO SAY: This is our system. It is written in Go. One Downloader object coordinates a few small parts, and each part has one job. The RangeTracker remembers which bytes are done, in progress or waiting. The Fetcher sends one HTTP range request and checks the answer is correct. The Assembler writes each piece into the right place in the output file. The worker pool runs N downloads at once. On top sits the control layer: a policy that can decide to change N or S.
+Only the Fetcher talks to the network, which keeps the design clean and testable. The machine-learning agents are trained in Python, but the trained model runs inside Go during a download.
+
+IN SIMPLE WORDS: The engine does the downloading; the policy is the “brain” that can turn the two dials. After every request, measurements flow back to the brain, and it can turn the dials again.
+
+TERMS ON THIS SLIDE:
+• Go: the programming language we used; good at running many things at once.
+• Policy: the decision-maker that looks at measurements and says “add a connection”, “remove one”, or “do nothing”.
+• Policy runner: makes sure only one decision happens at a time, even when many requests finish together.
+• Controllers: hold the current target N and S and keep them within allowed limits.
+• 206: the server’s “here is the part you asked for” reply.
+• Gonum: a maths library, our only external Go dependency (used by LinUCB).
+• PyTorch: the Python machine-learning library we used to train the DQN agents.</aside>
+</section>

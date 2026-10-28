@@ -1,15 +1,15 @@
 <section id="r4a" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:30px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · AI controllers that learn when to turn the dials</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">Inputs, actions and reward of the AI controllers</h2>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · controllers that learn when to turn the dials</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">Inputs, actions and reward of the learning controllers</h2>
 <div style="display:flex;gap:28px">
 <div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
-<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#14213D">LinUCB <span style="font-size:26px;font-weight:400;color:#4A5568">· a simple learner</span></h3>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#14213D">LinUCB <span style="font-size:26px;font-weight:400;color:#4A5568">· a contextual bandit</span></h3>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Sees</b> 10 numbers: N, S, speed per request, total speed, request time, bytes done, counts of successes, failures, retries</p>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Can do</b> 5 actions: nothing, N up or down, S up or down</p>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Reward</b> more total speed, fewer retries and failures, a small cost for changing anything</p>
 </div>
 <div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
-<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#14213D">Double DQN <span style="font-size:26px;font-weight:400;color:#4A5568">· a neural network</span></h3>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#14213D">Double DQN <span style="font-size:26px;font-weight:400;color:#4A5568">· deep reinforcement learning</span></h3>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#E07B28">Sees</b> 13 numbers: N, bytes left, total speed (now, smoothed, trend, jumpiness), request time and its trend, recent failures and retries, time since the last change</p>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#E07B28">Can do</b> 3 actions: nothing, add or remove a connection (the joint agent also changes S)</p>
 <p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#E07B28">Reward</b> minus the seconds until the next request finishes, so a faster download scores higher</p>
@@ -17,8 +17,8 @@
 </div>
 <p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Total speed is an input because</b> speed per request does not change with N, so an agent could not learn from it. One decision after each finished request; a running request is never cancelled.</p>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">N: connections · S: piece size · DQN agents train in a simulator of the server and run inside our downloader</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">29</p>
-<aside>WHAT TO SAY: Before the AI results, here is exactly what these controllers are given. Both work the same way: after every finished request, the controller looks at some numbers, picks one action, and later gets a score.
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">21</p>
+<aside>WHAT TO SAY: Before the learning-controller results, here is exactly what these controllers are given. Both work the same way: after every finished request, the controller looks at some numbers, picks one action, and later gets a score.
 LinUCB sees 10 numbers: how many connections (N) and how big the pieces (S) are right now, the speed of one request, the total speed of all requests together, how long the last request took, how many bytes are done, and how many requests succeeded, failed or were retried. It can do five things: nothing, more or fewer connections, bigger or smaller pieces. Its score is higher for more total speed, lower for retries and failures, and there is a small charge for changing something.
 The neural network, called Double DQN, sees 13 numbers. They include the current N, how much of the file is left, the total speed now, a smoothed version of it, its trend and how jumpy it is, the request time and its trend, recent failures and retries, and the time since it last changed anything. Our main agents can only add or remove one connection, or do nothing; the piece size stays at 1 MiB. The joint agent can also change the piece size. Its score is simply minus the seconds until the next request finishes, so over a whole download the score is about minus the download time. We did not tune any reward weights.
 We use the total speed because speed per request does not change when you add a connection, so an agent cannot learn what its action did from that number. We checked this before testing any agent.
@@ -27,7 +27,8 @@ IN SIMPLE WORDS: The controller is told how the download is going, chooses one s
 
 TERMS ON THIS SLIDE:
 • N: how many connections run at once. S: the size of each piece.
-• LinUCB: a learner that keeps a running estimate of how good each action is and tries ones it is unsure about.
+• Reinforcement learning (RL): learning by trial and error which action to take, from a reward.
+• LinUCB: a contextual bandit, a simple RL method that keeps a running estimate of how good each action is, from the current numbers, and tries ones it is unsure about. It decides one step at a time and does not plan ahead.
 • Double DQN (deep Q-network): a neural network that learns to predict how good each action is; “double” is a trick that makes the prediction less over-optimistic.
 • Reward: the score the learner gets after an action; learners try to make it large.
 • Smoothed, trend, jumpiness: a running average of the speed, how fast it is rising or falling, and how much it bounces.

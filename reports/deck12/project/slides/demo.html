@@ -1,0 +1,31 @@
+<section id="demo" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Live demo · about 3 minutes</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Three steps, all real</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:32px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#2F6FD6">1 · Public mirror</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">Download linux-3.0.tar.xz from cdn.kernel.org with 8 × 1 MiB; probe, then SHA-256 check</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:32px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#2F6FD6">2 · Throttling server</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">The retrained agent watches the cap switch on at 8 s and lowers N</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:32px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#2F6FD6">3 · Tests and checker</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">Go test suite, then the checker recomputes all 231 paper numbers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Commands in reports/thursday/demo.md · no internet: skip step 1</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">07</p>
+<aside>WHAT TO SAY: Now a short live demo in three steps.
+Step 1: we download the Linux kernel source from cdn.kernel.org with 8 connections of 1 MiB. First the program asks the server for a single byte to check it supports range requests. At the end it compares the file’s SHA-256 fingerprint with the one kernel.org publishes; they match, so the file is perfect.
+Step 2: on our test server with the cap switching on at 8 seconds, we run the retrained learning agent. Watch the number of connections drop after 8 seconds as the agent notices requests getting slower.
+Step 3: we run our automated tests, and then the script that recomputes all 231 numbers in our paper from the raw data.
+
+BEFORE THE DEMO: build the programs in advance, and do not run anything heavy on the laptop during it. If the internet is down, skip step 1. If anything fails, say what failed.
+
+TERMS ON THIS SLIDE:
+• CLI: command-line interface, a program run from the terminal.
+• Probe (bytes=0-0): asking for just the first byte to check the server supports range requests and to learn the file size.
+• Test suite: the automated checks that every part of the code works.</aside>
+</section>

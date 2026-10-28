@@ -11,8 +11,8 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Bars: the ceiling for any controller that changes the number of connections, per recording · Verizon, AT&amp;T, T-Mobile drives</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">24</p>
-<aside>WHAT TO SAY: So, on those wildly swinging networks, does adapting help? Instead of building an AI first, we asked: what is the most any controller could gain? We computed a perfect controller that knows the future and picks the best number of connections for each 120-second stretch, paying the real cost of each switch. Even it was only 0.41 % faster on average than simply keeping the best fixed number. We had decided in advance that adaptation would only be worth pursuing if this ceiling was at least 10 %. Even the cautious lower estimate was below zero, so the answer is no.
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">16</p>
+<aside>WHAT TO SAY: So, on those wildly swinging networks, does adapting help? Instead of building a learning controller first, we asked: what is the most any controller could gain? We computed a perfect controller that knows the future and picks the best number of connections for each 120-second stretch, paying the real cost of each switch. Even it was only 0.41 % faster on average than simply keeping the best fixed number. We had decided in advance that adaptation would only be worth pursuing if this ceiling was at least 10 %. Even the cautious lower estimate was below zero, so the answer is no.
 The reason: when the network gets slower, every setting gets slower together. The best number of connections stays about the same, roughly “enough to fill the pipe”.
 
 IN SIMPLE WORDS: The network changing a lot does not mean there is anything to gain by changing settings. Variability is not opportunity.

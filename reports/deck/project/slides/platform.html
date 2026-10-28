@@ -20,7 +20,7 @@
 <img src="/_blob/1b29797e7f6e51e120efab504ebf2ee5" alt="Soft cap: the rate of one new request falls with k; the total for k requests peaks near 3 then falls to about 4.6 MiB/s at 16" style="width:800px;height:400px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">C = 8 MiB/s, γ = 0.05 · plus tc netem (40 ms each way, 0.4 % loss), Mahimahi trace replay, SHA-256 on every output</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">19</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">10</p>
 <aside>WHAT TO SAY: To test fairly we wrote our own test server, so we know exactly how it behaves. It follows three rules.
 One: each response is sent at the speed that was in force when its request arrived, and keeps that speed.
 Two: the speed can change on a timetable. The left chart is our reference timetable: 640 KiB/s, a dip to 160 KiB/s between 2 and 4 seconds, then fast at 2,500 KiB/s.

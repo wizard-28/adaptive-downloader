@@ -1,10 +1,10 @@
 <section id="r4" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · AI controllers that learn when to turn the dials</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Our first AI controllers all lost to aria2</h2>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · controllers that learn when to turn the dials</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Our first learning controllers all lost to aria2</h2>
 <div style="display:flex;gap:48px;align-items:start">
 <table style="flex:1.6;font-size:26px;color:#14213D">
-<tr><th style="width:44%">AI controller</th><th style="width:56%">Result</th></tr>
-<tr><td>Simple learner (LinUCB)</td><td>got stuck always picking the same action</td></tr>
+<tr><th style="width:44%">Learning controller</th><th style="width:56%">Result</th></tr>
+<tr><td>LinUCB (contextual bandit)</td><td>got stuck always picking the same action</td></tr>
 <tr><td>Neural agent, both dials</td><td>took 1.76× aria2’s time; cut the file into tiny pieces</td></tr>
 <tr><td>Neural agent, up to 4 connections</td><td>2.32× aria2’s time</td></tr>
 <tr><td>Neural agent, up to 16 connections</td><td>1.46× aria2’s time</td></tr>
@@ -20,12 +20,12 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Neural agents: Double DQN · the comparisons used different files and aria2 settings, so the rows are not comparable with each other</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">30</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">22</p>
 <aside>WHAT TO SAY: Now the machine-learning part. We tried two kinds of learning controllers. First a simple learner called LinUCB; it quickly got stuck always choosing the same action. Then neural-network agents of a kind called Double DQN, through several versions: one that turned both dials, one allowed up to 4 connections, one allowed up to 16. All of them took longer than aria2, between 1.5 and 2.3 times as long.
 Part of that was unfair to them: the test files were small, so the agent had little time to act, and one version started with a single connection while aria2 opens 16 at once. So we gave the 16-connection agent a long file and a start at 16 connections on the throttling server; it still took 1.36 times the best fixed time. A different approach, which first tries to work out the server’s rules and then picks a setting, failed its own test in simulation, so we never ran it for real.
 How the neural agent works: after each piece finishes, it looks at 13 measurements of the download, then chooses to do nothing, add a connection, or remove one. It is rewarded for finishing sooner. It learns in a simulator, and the trained network then runs inside our downloader.
 
-IN SIMPLE WORDS: Our first AI controllers learned, but what they learned did not beat a sensible fixed choice.
+IN SIMPLE WORDS: Our first learning controllers learned, but what they learned did not beat a sensible fixed choice.
 
 TERMS ON THIS SLIDE:
 • Reinforcement learning: learning by trial and error; the agent tries actions and gets a reward.

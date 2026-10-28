@@ -1,0 +1,36 @@
+<section id="method" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">How we measured, and how to read our charts</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Most results are a time ratio: below 1 means faster</h2>
+<div style="display:flex;gap:28px;align-items:center;background:#14213D;padding:28px 36px;border-radius:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#F0A35E;width:520px">our time ÷ their time</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#E4E8F0"><b>0.80</b> = we took 80 % of their time (20 % less) · <b>1.00</b> = equal · <b>1.25</b> = 25 % slower. Brackets like [0.84, 0.85] show the uncertainty range.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:10px;background:#FCFCFA;padding:28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#2F6FD6">Fair races</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">every option run back to back, in random order, many rounds</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FCFCFA;padding:28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#2F6FD6">Rules written first</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">each experiment plan, with its pass/fail rules, fixed before running</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FCFCFA;padding:28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#2F6FD6">Ceiling measured first</h3>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">how much a perfect controller could gain, before building any learning controller</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Every downloaded file checked byte for byte · failed runs kept and reported · all 231 numbers in our paper recomputed from raw data by a script</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">05</p>
+<aside>WHAT TO SAY: Before the results, how to read them. Almost every result is a time ratio: our time divided by the other option’s time. Below 1 means we were faster: 0.80 means we took 80 % of their time, so 20 % less. Above 1 means slower. The numbers in brackets are the uncertainty range; if the whole range is below 1, we are confident we were faster.
+How we kept it fair: we run every option back to back in a random order, round after round, so if the laptop is a bit slower at some moment, every option is affected equally. We wrote down each experiment plan, including the pass/fail rules, before running it. And before building any learning controller, we measured the ceiling: how much a perfect controller could possibly gain. Finally, every downloaded file is checked byte for byte, and a script recomputes every number in our paper from the raw data.
+
+IN SIMPLE WORDS: Fair races, rules written before we saw the results, and numbers anyone can recheck.
+
+TERMS ON THIS SLIDE:
+• Round (“block”): one run of every option, in random order.
+• Uncertainty range (“95 % interval”): where the true value very likely lies, worked out by resampling our rounds (“bootstrap”) or, for some headline results, by a t-interval on the log ratio.
+• Geometric mean: the average we use for ratios; it treats “half the time” and “twice the time” as equal and opposite.
+• Experiment plan (“protocol”): written and fingerprinted before the first run; any later change is added as a dated note.
+• Perfect controller (“oracle”) and ceiling (“headroom”): see slide 2.
+• Claims checker: our script, tools/claims_check.py.</aside>
+</section>

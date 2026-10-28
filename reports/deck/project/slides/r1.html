@@ -8,7 +8,7 @@
 </div>
 <p style="font-size:26px;line-height:1.4;color:#14213D"><b style="color:#2F6FD6">Faster in 30 of 30 runs.</b> aria2 starts 16 big 32 MiB pieces while the server is slow, and they stay slow. Most of our smaller pieces start after the speed-up. Neither tool adapts here.</p>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Left: share of the file received · right: each bar is one request, from the server’s log · network: 40 ms delay each way, 0.4 % loss</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">20</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">12</p>
 <aside>WHAT TO SAY: Our first big result. The server starts slow and speeds up after 4 seconds. Our downloader, with a fixed 16 connections and 4 MiB pieces, took about 20 seconds; aria2 took about 54. That is 62.4 % less time, and we won all 30 paired runs.
 Why? This server keeps each request at the speed it had when it started. aria2 cuts the 512 MiB file into 16 big pieces of 32 MiB and starts them all in the first 2 seconds, while the server is slow, so they stay slow until they finish. Our smaller 4 MiB pieces keep starting new requests, and 112 of our 128 pieces start after the server has sped up.
 Important: neither tool adapts here. This is a fixed setting winning because of timing. When we gave our downloader aria2-sized pieces, most of the gap disappeared (our time became 86 % of aria2’s). A small part of the gap we could not explain, and we say so.

@@ -31,11 +31,11 @@
 <li>Lowering N never cancels a request</li>
 <li>One decision at a time, each changing N or S, not both at once</li>
 </ol>
-<p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Controllers:</b> fixed settings, simple rules (such as “drop rule”), a workload selector, an online tuner, and AI agents (LinUCB, Double DQN)</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Controllers:</b> fixed settings, simple rules (such as “drop rule”), a workload selector, an online tuner, and learning agents (LinUCB, Double DQN)</p>
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">549 Go test functions in 29 packages at Review 2 · race detector clean · no test needs internet</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">06</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">09</p>
 <aside>WHAT TO SAY: Every controller, from the simplest fixed setting to the neural-network agent, plugs into the same small interface. It has two functions: choose an action, and learn from the result. Because they all use the same engine, comparisons between them are fair.
 The engine follows five rules. For example: a failed piece is retried with exactly the same byte range, and lowering N never kills a download that is already running; the extra worker just stops after its current piece.
 Two engine options matter later. Straggler splitting, shown in the diagram: near the end, connection A is still working on a big piece while connection B has nothing to do. B takes over the second half of what A has not yet received, so both finish sooner. We only split if at least 2 MiB remain, so each half is worth a new request. And we can switch off the old 30-second time limit per request.

@@ -33,7 +33,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">BCSE308P · When does adapting N and S help?</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">18</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">07</p>
 <aside>WHAT TO SAY: This is how segmented downloading works. The file is cut into ranges. Some are done, some are downloading right now, and the rest are waiting. Each range is fetched with one HTTP request, and the server answers “206 Partial Content”.
 More connections usually help, because many servers limit the speed of each connection: four connections get four times the speed. But they stop helping once your internet link is full, and some servers punish you for opening too many.
 The range size is a trade-off. Small pieces mean more requests but you can react quickly. Big pieces mean fewer requests, but one slow big piece can hold up the end of the download.

@@ -4,7 +4,7 @@
 <div style="display:flex;gap:28px">
 <div style="flex:1.15;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#2F6FD6">Innovation</h3>
-<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Ceiling first:</b> how much a perfect controller could gain, measured before building any AI</p>
+<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Ceiling first:</b> how much a perfect controller could gain, measured before building any learning controller</p>
 <p style="font-size:26px;line-height:1.38;color:#14213D"><b>Fair race:</b> adaptive arms against aria2, axel, lftp and the best fixed setting of the same engine</p>
 <p style="font-size:26px;line-height:1.38;color:#14213D"><b>Adapting or splitting?</b> engine effects separated from the controller</p>
 <p style="font-size:26px;line-height:1.38;color:#14213D"><b>Hidden server rule:</b> a request keeps its starting speed; tested with a control server</p>
@@ -13,14 +13,14 @@
 <div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
 <h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#E07B28">Application</h3>
 <p style="font-size:26px;line-height:1.38;color:#14213D"><b>Pick settings for big downloads:</b> on four real mirrors, 8 connections × 1 MiB was on average 3.7 % slower than the best fixed setting</p>
-<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Check the ceiling</b> before building an adaptive or AI controller: it may save the effort</p>
+<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Check the ceiling</b> before building an adaptive or learning controller: it may save the effort</p>
 <p style="font-size:26px;line-height:1.38;color:#14213D"><b>Fix engine details first:</b> a request timeout and splitting slow pieces mattered more than any controller</p>
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Not new: online tuning of connections (FastBioDL, Falcon), deep RL for transfers, splitting slow pieces (aria2, IDM)</p>
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">10</p>
 <aside>WHAT TO SAY: What is new, and what is it good for? First, what is not new: other people have built downloaders that tune the number of connections, and download managers already split slow pieces. We do not claim a new algorithm.
-Our innovation is the way we answer the question. We measure the ceiling first: how much a perfect controller could gain, before we build any AI. We race every adaptive controller against aria2, axel, lftp and the best fixed setting of the same program. We separate engine effects from the controller, which showed that our big win over aria2 was mostly about when requests start, and that a request timeout and missing splitting of slow pieces explained aria2’s lead under the cap. We found a hidden server rule, that a request keeps the speed it started with, and tested it with a control server. And we kept our negative results, including tests on real servers.
+Our innovation is the way we answer the question. We measure the ceiling first: how much a perfect controller could gain, before we build any learning controller. We race every adaptive controller against aria2, axel, lftp and the best fixed setting of the same program. We separate engine effects from the controller, which showed that our big win over aria2 was mostly about when requests start, and that a request timeout and missing splitting of slow pieces explained aria2’s lead under the cap. We found a hidden server rule, that a request keeps the speed it started with, and tested it with a control server. And we kept our negative results, including tests on real servers.
 Applications: if you only want fast downloads from public mirrors, a simple fixed setting such as 8 connections of 1 MiB was on average 3.7 % slower than the best fixed setting for each case, so it is a strong default. If you plan to build an adaptive or learned controller, measure the ceiling first; on the mobile traces it would have saved only 0.41 %. And fix the downloader’s basics before adding intelligence.
 
 IN SIMPLE WORDS: Others asked how to tune it. We asked whether there is anything to tune, measured it carefully, and explained the answer.
