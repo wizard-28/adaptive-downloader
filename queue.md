@@ -202,10 +202,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   problem and objectives, proposed solution, final architecture, methodology,
   implementation, live demonstration, testing and results, performance and
   comparison, innovation and application, conclusion, future enhancement);
-  the detailed slides follow as backup (41 slides in all).
+  published as its own artifact (`reports/deck12/`); the long deck (34 slides) is a separate artifact.
 - [ ] Awaiting the user's go-ahead: joint-action deviation sentence in the paper
   (§3, §10), limitations-slide bullet and viva Q&A answer (the engine slide
   wording is already fixed).
+
+- [x] Terminology: "AI" -> "learning controllers" (LinUCB = contextual bandit,
+  Double DQN = deep reinforcement learning) across both decks.
 
 ## 7. Last: only when the user asks explicitly
 
