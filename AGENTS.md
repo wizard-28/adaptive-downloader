@@ -27,7 +27,9 @@ results, RL design, known caveats, and the immediate next step live in:
 Before beginning any substantive work:
 
 1. Read `AGENTS.md` (this file).
-2. Read `docs/PROJECT_CONTEXT.md`.
+2. Read `docs/PROJECT_CONTEXT.md`. It is an index: the text lives in
+   `docs/context/*.md`; locate a section with `python3 tools/context_find.py`
+   (for example `22.109`) and read only that part.
 3. Inspect the relevant source files and tests.
 4. Treat source code and tests as authoritative if documentation conflicts with
    implementation.
@@ -64,6 +66,10 @@ Update it whenever any of the following changes:
 - immediate next step
 
 Do not let `PROJECT_CONTEXT.md` become stale.
+
+Where to write: update the `docs/context/` file that holds the section you
+change (new status entries go at the end of the last `05*` file; start a new one
+at about 60 KB) and keep the index table in `docs/PROJECT_CONTEXT.md` current.
 
 Exception: trivial changes (formatting-only, or a temporary debugging change
 that is fully removed) do not require an update.

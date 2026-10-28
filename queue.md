@@ -210,6 +210,12 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] Terminology: "AI" -> "learning controllers" (LinUCB = contextual bandit,
   Double DQN = deep reinforcement learning) across both decks.
 
+- [x] `docs/PROJECT_CONTEXT.md` split into `docs/context/*.md` (verified
+  byte-for-byte on reassembly); the old path is now an index; finder
+  `tools/context_find.py`; AGENTS.md updated to match.
+- [x] Deviation from Review 1 answered: viva Q&A 24, paper limitation, engine
+  slide notes; adaptation timeline on slide 8 of the 12-slide deck.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
