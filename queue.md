@@ -216,6 +216,11 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] Deviation from Review 1 answered: viva Q&A 24, paper limitation, engine
   slide notes; adaptation timeline on slide 8 of the 12-slide deck.
 
+- Scope note (2026-10-28): the long 34-slide deck (`reports/deck/`) is no longer
+  required; work only on the 12-slide deck (`reports/deck12/`).
+- [~] Cross-document consistency audit (Sonnet subagent, read-only): qa, viva
+  notes, 12 slides, paper, Reviews 1-3. Fix what it finds, verified.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
