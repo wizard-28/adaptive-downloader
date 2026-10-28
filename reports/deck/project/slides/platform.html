@@ -20,12 +20,13 @@
 <img src="/_blob/1b29797e7f6e51e120efab504ebf2ee5" alt="Soft cap: the rate of one new request falls with k; the total for k requests peaks near 3 then falls to about 4.6 MiB/s at 16" style="width:800px;height:400px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">C = 8 MiB/s, γ = 0.05 · plus tc netem (40 ms each way, 0.4 % loss), Mahimahi trace replay, SHA-256 on every output</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">08</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">10</p>
 <aside>WHAT TO SAY: To test fairly we wrote our own test server, so we know exactly how it behaves. It follows three rules.
 One: each response is sent at the speed that was in force when its request arrived, and keeps that speed.
 Two: the speed can change on a timetable. The left chart is our reference timetable: 640 KiB/s, a dip to 160 KiB/s between 2 and 4 seconds, then fast at 2,500 KiB/s.
 Three: we can switch on a “soft cap”, which gives each new connection less speed the more connections you already have. The right chart shows that past about three connections, the total speed actually goes down. So under the cap, too many connections hurts.
 We also add delay and packet loss with Linux tools, replay real mobile-network recordings, and check every downloaded file with SHA-256.
+SETUP DETAILS (if asked): client and server share one machine over loopback, left at the default MTU (65,536 bytes) with the default TCP congestion control (CUBIC); delay and loss are added with netem. The server’s pacing, not TCP, is the bottleneck here, and a loopback path is not a real path, which is why we added the real-server checks. “No cap” is the server without the connection throttle; its base schedule is 640 KiB/s for the first second, then 2500 KiB/s.
 
 IN SIMPLE WORDS: We built a “test track” where we control the weather, so we can see exactly why each result happens. The cap is the one place we deliberately created a reason to adapt.
 

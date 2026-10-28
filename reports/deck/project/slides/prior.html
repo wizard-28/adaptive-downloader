@@ -1,0 +1,35 @@
+<section id="prior" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Before our work · what others did</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">Earlier work shows tuning can help. Four questions stay open.</h2>
+<div style="display:flex;gap:28px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#2F6FD6">What earlier work did</h3>
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Tune the number of connections</b> while transferring: direct search, a utility function, gradient descent (Balaprakash, Falcon, FastBioDL)</p>
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Share a download across servers</b> and size the pieces for each server (MDTP)</p>
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b style="color:#2F6FD6">Adapt task size with deep learning</b> for short-video preloading (DeLoad)</p>
+</div>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:16px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#B85A12">What we did not find in the papers we read</h3>
+<ol style="font-size:26px;line-height:1.4;color:#14213D;display:flex;flex-direction:column;gap:12px">
+<li>A race against aria2, axel and lftp <b>and</b> the best fixed setting of the same engine</li>
+<li>How much a perfect controller could gain, measured <b>before</b> building one</li>
+<li>Controller gains separated from engine effects: timeouts, splitting, when requests start</li>
+<li>Cases where adapting gave nothing, or lost</li>
+</ol>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Based on abstracts, and the full text for FastBioDL · a statement about what we read, not about all prior work</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">03</p>
+<aside>WHAT TO SAY: Before our own work, what had others done? Several groups tune how many connections a transfer uses while it runs. Balaprakash and colleagues used a search method on production scientific links. Falcon uses a score that balances speed and cost. FastBioDL, aimed at genome downloads, nudges the number of connections up or down using gradients. MDTP shares one download across several servers and sizes the pieces for each server. DeLoad uses deep learning to size download tasks for short-video preloading.
+These works show that tuning can help. But in the papers we read, we did not find four things. First, a race against several stock tools such as aria2, axel and lftp together with the best fixed setting of the same program. Some compare with fixed settings or with other tools, but not both on one engine. Second, a measurement of how much a perfect controller could gain, made before building the controller. Third, a separation of the controller’s gain from engine effects, such as request timeouts, splitting slow pieces, or when requests start. Fourth, cases where adapting gave nothing or lost.
+We are careful: we read abstracts, and the full text only for FastBioDL, so this says what we found in what we read, not that nobody has ever done it.
+
+IN SIMPLE WORDS: Others asked how to tune the number of connections. We ask whether there is anything to tune, and where the gain really comes from.
+
+TERMS ON THIS SLIDE:
+• Concurrency (N): how many connections run at once.
+• Fixed setting: the same N and piece size for the whole download.
+• Perfect controller (“oracle”): an imaginary controller that knows the future; it shows the most any real controller could gain.
+• Engine effects: behaviour of the downloading machinery itself, such as timeouts and splitting, as opposed to the controller that picks N and S.
+• Direct search, gradient descent, utility function: three ways of improving a setting by trying changes and keeping the better ones.</aside>
+</section>

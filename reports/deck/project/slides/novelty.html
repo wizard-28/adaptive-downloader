@@ -4,11 +4,11 @@
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
 <div style="display:flex;gap:20px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-radius:16px">
 <x-icon name="Search" style="color:#2F6FD6;width:48px;height:48px"></x-icon>
-<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Measure the ceiling first:</b> how much any controller could gain, before building one</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Ceiling first:</b> how much a perfect controller could gain, measured before building any AI</p>
 </div>
 <div style="display:flex;gap:20px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-radius:16px">
 <x-icon name="Lightbulb" style="color:#2F6FD6;width:48px;height:48px"></x-icon>
-<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Why we beat aria2:</b> when requests start, not adaptation; what we could not explain is stated</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Adapting or splitting?</b> our win over aria2 came from when requests start, not adaptation; what we could not explain is stated</p>
 </div>
 <div style="display:flex;gap:20px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-radius:16px">
 <x-icon name="Wrench" style="color:#2F6FD6;width:48px;height:48px"></x-icon>
@@ -20,15 +20,15 @@
 </div>
 <div style="display:flex;gap:20px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-radius:16px">
 <x-icon name="Chart" style="color:#2F6FD6;width:48px;height:48px"></x-icon>
-<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Honest AI testing:</b> unseen conditions, a simple rule to beat, and real-server checks</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Honest AI testing, negative results kept:</b> unseen conditions, a simple rule to beat, real-server checks</p>
 </div>
 <div style="display:flex;gap:20px;background:#FCFCFA;padding:28px 32px;border:1px solid #DEDCD4;border-radius:16px">
 <x-icon name="Verified" style="color:#2F6FD6;width:48px;height:48px"></x-icon>
 <p style="flex:1;font-size:28px;line-height:1.4;color:#14213D"><b>Checkable:</b> plans fixed before running; all 231 paper numbers recomputed from raw data</p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Earlier work tunes connections while downloading (FastBioDL, Falcon); we measure when there is anything to tune</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">29</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Not new: tuning connections online (FastBioDL, Falcon), deep RL for transfers, splitting slow pieces (aria2, IDM)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">04</p>
 <aside>WHAT TO SAY: What is new? First, what is not new: other people have built downloaders that tune the number of connections, and download managers already split slow pieces. We do not claim a new algorithm.
 Our contribution is answering when adapting is worth it at all, and explaining why. We measured the most any controller could gain before training any AI. We explained most of a 62 % gap against aria2 as a timing effect, and we say what we could not explain. We showed that two engine details mattered more than any controller; to our knowledge, earlier download-tuning work does not separate engine from controller like this. We found that a hidden server rule (a request keeps its starting speed) drives the big-piece wins, and tested it with a control server. And we report every AI agent honestly, with its limits, including tests on real servers.
 

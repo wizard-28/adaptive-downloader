@@ -1,6 +1,6 @@
 <section id="r5b" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 5 · our adaptive controllers on real servers</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">On real servers, adapting cost time on all three</h2>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">On real servers, adapting failed the no-harm test on all three</h2>
 <p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Rule set in advance:</b> an adaptive controller “does no harm” if it is at most 5 % slower than the best fixed setting</p>
 <div style="display:flex;gap:48px;align-items:start">
 <img src="/_blob/f298a8386b24f18854889e3229139376" alt="Broadly trained agent and drop rule divided by the best fixed setting on three real servers: kernel.org CDN, kernel.org origin and RIKEN in Japan; all averages above the 5 percent no-harm line" style="width:1100px;height:480px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
@@ -11,7 +11,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Dots: averages; lines: uncertainty ranges (wide, 5 rounds) · first attempt lost to an outage on our own link, reported, then rerun: 60 of 60 valid</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">25</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">27</p>
 <aside>WHAT TO SAY: Finally, we ran two adaptive controllers, the broadly trained AI agent and the simple drop rule, on three of those real servers. Our goal here was modest: check that adapting does no harm. We set the rule in advance: a controller passes if it is at most 5 % slower than the best fixed setting and not clearly slower.
 The first attempt was ruined by an outage on our own internet connection; we reported it and added a check that the connection was healthy before the second attempt. On the second attempt all 60 downloads worked. Both adaptive controllers failed the no-harm rule on all three servers: the agent took 1.2 to 1.65 times as long, the drop rule 1.06 to 1.33 times. Only one of these was clearly slower statistically; the uncertainty ranges are wide because the internet is noisy.
 What we saw: both cut their number of connections even though these servers have no cap. Our explanation, which we did not prove, is that normal ups and downs in internet speed looked like a cap to them.

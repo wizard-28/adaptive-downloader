@@ -14,8 +14,8 @@
 <p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Agent picking N and piece size:</b> slower than the best fixed setting in all 4 scenarios</p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The new simulator was checked first: it predicted real runs within 1.4 %, so the agent, not the simulator, was the weak link</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">21</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The simulator was checked against blind live runs first (within 1.5 to 7.0 %, optimistic for long pieces); the agent still did not learn the big-piece behaviour</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">23</p>
 <aside>WHAT TO SAY: After our formal reviews we gave the AI a fairer chance. The old simulator did not model the throttling server correctly, so we built a new simulator of it, tuned from real request logs, and checked it: its predictions were within 1.4 % of real runs.
 The retrained agent was 9 % faster than the fixed setting with the same 1 MiB pieces, on the server it was trained for. But on three new test conditions it had not practised on, it was faster in none. It had learned that one server, not a general skill. And it was still slower than big 32 MiB pieces and aria2.
 So we also tried an agent that can change piece size as well as connections. In the simulator, a simple hand-written rule showed there was a lot to gain, about 65 % less time. The trained agent did not find that behaviour: live it was slower than the best fixed setting in all four scenarios, up to 1.47 times. Because the simulator was accurate, the learning itself failed.

@@ -184,8 +184,17 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 
 - [x] Learner inputs/actions/reward: paper section in §9 (table) and deck slide
   r4a (slide 19; deck now 33 slides).
-- [~] Gap review for viva questions (read-only subagent, started 2026-10-28):
-  fold its findings into the paper and speaker notes; no slide bloat.
+- [x] Opening slides "prior" (what earlier work did / did not report; literature
+  check by a Sonnet subagent, hedged to what was read) and "novelty" (moved from
+  the end); deck 34 slides.
+- [x] Viva gap review (Opus subagent, read-only): fixed in the paper (test setup,
+  statistical analysis, oracle epochs, mirror etiquette, related-work gap
+  paragraph, Fig. 8 caption) and in slides/notes (overclaims, HTTP/1.1,
+  loopback, AI use, interval method) and in qa.md / project_summary.md numbers.
+- [ ] Still open from that review: slide 4 "keep the fast speed" wording
+  (big pieces keep the 640 KiB/s start rate); learner-vs-opportunity wording on
+  the "whyrl" slide; check the 16x32 MiB vs aria2 times on slide 24 against the
+  paper (they come from two studies).
 
 - [x] IEEE conference-format PDF `reports/paper/paper_conf.pdf` (teacher's request); open: page limit.
 

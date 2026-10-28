@@ -27,7 +27,7 @@ actually something for adaptation to exploit?**
   output.
 - **Method.** Preregistered gates and stop rules, frozen hashed artifacts, an
   oracle headroom bound computed before training any learner, and a claims
-  checker that recomputes all 220 checked paper numbers from raw runs.
+  checker that recomputes all 231 checked paper numbers from raw runs.
 
 ## Findings
 
@@ -46,7 +46,7 @@ actually something for adaptation to exploit?**
      one-way delay, 0–2 % loss; 0.36–0.46). Under the cap, ours and aria2
      were near parity, and the sign varied by cell.
 2. **Variability is not opportunity.** The Mahimahi cellular traces swing
-   5–27× in capacity. Even so, an oracle that knows the future and switches
+   6.5–25.3× in capacity (p90/p10 per trace). Even so, an oracle that knows the future and switches
    concurrency optimally gains only 0.41 % on average over five traces. The
    one-sided 95 % lower bound was −0.26 % against a predeclared 10 % bar, so
    the gate failed. This bound holds for *any* concurrency-switching policy.

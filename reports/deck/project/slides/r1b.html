@@ -14,7 +14,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Dots: single runs · lines: averages · below 1: ours faster · NGINX: a standard web server we did not write · quick checks, 3–5 runs each</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">11</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">13</p>
 <aside>WHAT TO SAY: Is this just an aria2 quirk, or a quirk of one server timetable? We checked. The chart shows every paired run against aria2: the main benchmark, six different server speed timetables (slow then fast, a long slow dip, partial recovery, always fast, always slow), and a standard NGINX web server that we did not write, with two rate-limit settings. Below 1 means ours was faster. We were faster everywhere except the always-slow timetable, where the two were equal, which is exactly what you would expect when there is no speed change to exploit.
 We also tested two other popular tools, axel and lftp; the next slide shows them. And on the slow-then-fast server, ours was faster than aria2 in all nine combinations of network delay and packet loss we tried.
 But on a server that throttles connections (next section), all four tools finished in about 53 seconds: no winner.

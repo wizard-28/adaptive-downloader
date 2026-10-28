@@ -19,6 +19,7 @@
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">02</p>
 <aside>WHAT TO SAY: Every parallel downloader has two dials. N is how many pieces it downloads at the same time. S is how big each piece is. Tools like aria2 set both dials once, at the start, and never touch them again. Our idea: if conditions change during the download, a downloader that turns the dials as it goes should do better.
 We tested that against aria2 and similar tools. We also compared against our own downloader with the best fixed setting, so we can tell whether a win comes from adapting, or just from choosing the dials better at the start.
+NOTE: delay and loss were tested as fixed settings in each run; we did not change them while a download was running.
 
 IN SIMPLE WORDS: Imagine the server suddenly slows you down halfway through. Should you open more connections, fewer, or change piece sizes? And does doing that beat a tool that never changes anything?
 

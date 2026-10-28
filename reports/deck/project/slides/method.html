@@ -20,7 +20,7 @@
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Every downloaded file checked byte for byte · failed runs kept and reported · all 231 numbers in our paper recomputed from raw data by a script</p>
-<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">09</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">11</p>
 <aside>WHAT TO SAY: Before the results, how to read them. Almost every result is a time ratio: our time divided by the other option’s time. Below 1 means we were faster: 0.80 means we took 80 % of their time, so 20 % less. Above 1 means slower. The numbers in brackets are the uncertainty range; if the whole range is below 1, we are confident we were faster.
 How we kept it fair: we run every option back to back in a random order, round after round, so if the laptop is a bit slower at some moment, every option is affected equally. We wrote down each experiment plan, including the pass/fail rules, before running it. And before building any AI controller, we measured the ceiling: how much a perfect controller could possibly gain. Finally, every downloaded file is checked byte for byte, and a script recomputes every number in our paper from the raw data.
 
@@ -28,9 +28,9 @@ IN SIMPLE WORDS: Fair races, rules written before we saw the results, and number
 
 TERMS ON THIS SLIDE:
 • Round (“block”): one run of every option, in random order.
-• Uncertainty range (“95 % interval”): where the true value very likely lies, worked out by resampling our rounds 10,000 times (“bootstrap”).
+• Uncertainty range (“95 % interval”): where the true value very likely lies, worked out by resampling our rounds (“bootstrap”) or, for some headline results, by a t-interval on the log ratio.
 • Geometric mean: the average we use for ratios; it treats “half the time” and “twice the time” as equal and opposite.
 • Experiment plan (“protocol”): written and fingerprinted before the first run; any later change is added as a dated note.
-• Perfect controller (“oracle”) and ceiling (“headroom”): see slide 3.
+• Perfect controller (“oracle”) and ceiling (“headroom”): see slide 5.
 • Claims checker: our script, tools/claims_check.py.</aside>
 </section>

@@ -48,7 +48,7 @@ computed before training, not on exhausting learners.
 
 The framework is intuitive: adaptation needs a moving optimum, and a single
 flow gains little from extra connections. These findings were not obvious:
-- capacity varied 5–27× but the oracle headroom stayed under 1 %;
+- capacity varied 6.5–25.3× (p90/p10 per trace) but the oracle headroom stayed under 1 %;
 - request-start rate locking created a 62.4 % benchmark gap;
 - aria2's lead under the cap came from two engine details (a whole-request
   timeout and no straggler splitting), not from smarter control;
@@ -112,7 +112,7 @@ includes 1.
 
 **11. How do we know the numbers are right?**
 
-`tools/claims_check.py` recomputes all 144 numbers in the existing paper
+`tools/claims_check.py` recomputes all 231 numbers in the paper
 sections from the raw runs and
 fails on any number it cannot reproduce. It caught real errors in our own
 frozen scripts, such as a fixed t value used for every n. Those were corrected
