@@ -1,29 +1,37 @@
-<section id="p_problem" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:30px">
+<section id="p_problem" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:22px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Problem & objectives</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">Tools set the dials once, but conditions change during a download</h2>
-<div style="display:flex;gap:28px">
-<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #B85A12;border-radius:16px">
-<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#B85A12">The problem</h3>
-<p style="font-size:26px;line-height:1.38;color:#14213D"><b>aria2, axel and lftp</b> fix N (connections) and S (piece size) at the start</p>
-<p style="font-size:26px;line-height:1.38;color:#14213D"><b>Conditions change:</b> server speed, throttling, delay, loss, mobile links</p>
-<p style="font-size:26px;line-height:1.38;color:#14213D">Earlier work tunes N online, but in the papers we read it does not report a race against stock tools <i>and</i> the best fixed setting, or a ceiling measured first</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15;color:#14213D">Prior work tunes the dials; four questions stay open</h2>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Problem:</b> aria2, axel and lftp fix N (connections) and S (piece size) at the start, but conditions change during a download.</p>
+<div style="display:flex;gap:20px">
+<div style="flex:1;background:#FCFCFA;padding:16px 22px;border:1px solid #DEDCD4;border-top:6px solid #2F6FD6;border-radius:12px"><p style="font-size:24px;line-height:1.3;color:#14213D"><b style="color:#2F6FD6">1</b> Does adapting N and S beat aria2 and a good fixed setting?</p></div>
+<div style="flex:1;background:#FCFCFA;padding:16px 22px;border:1px solid #DEDCD4;border-top:6px solid #2F6FD6;border-radius:12px"><p style="font-size:24px;line-height:1.3;color:#14213D"><b style="color:#2F6FD6">2</b> Is any gain from adapting, or from how the file is split?</p></div>
+<div style="flex:1;background:#FCFCFA;padding:16px 22px;border:1px solid #DEDCD4;border-top:6px solid #2F6FD6;border-radius:12px"><p style="font-size:24px;line-height:1.3;color:#14213D"><b style="color:#2F6FD6">3</b> How much could a perfect controller gain, measured first?</p></div>
+<div style="flex:1;background:#FCFCFA;padding:16px 22px;border:1px solid #DEDCD4;border-top:6px solid #2F6FD6;border-radius:12px"><p style="font-size:24px;line-height:1.3;color:#14213D"><b style="color:#2F6FD6">4</b> Do rule-based and learning controllers hold up, also on real servers?</p></div>
 </div>
-<div style="flex:1.1;display:flex;flex-direction:column;gap:14px;background:#FCFCFA;padding:26px 32px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
-<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:700;color:#2F6FD6">Our objectives</h3>
-<ol style="font-size:26px;line-height:1.38;color:#14213D;display:flex;flex-direction:column;gap:10px"><li>Does adapting N and S mid-download beat aria2 and a good fixed setting when conditions are not optimal?</li><li>Is any gain from adapting, or from how the file is split?</li><li>How much could a perfect controller gain, measured before building any learning controller?</li><li>Do rule-based and learning controllers hold up in tests and on real servers?</li></ol>
-</div>
-</div>
-<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">N: number of connections · S: size of each piece · fixed setting: the same N and S for the whole download</p>
+<table style="font-size:26px;color:#14213D">
+<tr><th style="width:17%">Prior work</th><th style="width:27%">What it adapts, how</th><th style="width:27%">Compared against</th><th style="width:29%">Ceiling and engine effects</th></tr>
+<tr><td>Balaprakash ’16</td><td>Parallel streams: direct search</td><td>User default settings</td><td>Not found in what we read</td></tr>
+<tr><td>Falcon ’21, ’23</td><td>Concurrency: utility, online search</td><td>Globus fixed settings, HARP</td><td>Not found in what we read</td></tr>
+<tr><td>FastBioDL ’25</td><td>Streams: utility, gradient descent</td><td>SRA tools, fixed 3 and 5 streams</td><td>Not found in what we read</td></tr>
+<tr><td>MDTP ’25</td><td>Chunk size per server, many servers</td><td>aria2 (multi-server), static chunks</td><td>Not found in what we read</td></tr>
+<tr><td>DeLoad ’25</td><td>Task size: deep RL, video preloading</td><td>Not named in the abstract</td><td>Not found (abstract only)</td></tr>
+<tr style="background:#E4ECFA"><td><b>This study</b></td><td><b>N and S: rules, bandit, deep RL</b></td><td><b>aria2, axel, lftp, best fixed setting</b></td><td><b>Ceiling first; engine effects separated</b></td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Sources: Balaprakash et al., ICPP 2016 · Arifuzzaman &amp; Arslan, SC ’21; Arifuzzaman et al., TPDS 2023 · Swargo et al., arXiv:2508.05511 · Abdollah et al., ICCCN 2025 · Liu et al., arXiv:2510.18459</p>
 <p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">02</p>
 <aside>WHAT TO SAY: Every parallel downloader has two dials. N is how many connections it opens at once. S is how big each piece of the file is. Tools like aria2, axel and lftp set both once, at the start, and never touch them again. But a real download meets changing conditions: the server speeds up or slows down, throttles you if you open too many connections, the network adds delay or loses packets, or a mobile link swings.
-Earlier research tunes the number of connections while a transfer runs. In the papers we read, we did not find a race against the stock tools together with the best fixed setting of the same program, a measurement of how much a perfect controller could gain before building one, or a separation of the controller’s gain from engine effects. That is our problem statement.
+The table shows what was done before, with sources, and what this study does. Balaprakash and colleagues (ICPP 2016) tuned the number of parallel streams on production science links with a direct-search method, against user default settings. Falcon (Arifuzzaman and Arslan, SC 2021; Arifuzzaman and colleagues, TPDS 2023) tunes concurrency with a utility score and online search, against Globus’s fixed settings and a tuner called HARP. FastBioDL (Swargo and colleagues, arXiv 2025) tunes the number of streams for genome downloads with a utility score and gradient descent, against the SRA tools and fixed settings of 3 and 5 streams. MDTP (Abdollah and colleagues, ICCCN 2025) shares one download across several servers and sizes the pieces per server, against aria2 in multi-server mode. DeLoad (Liu and colleagues, arXiv 2025) sizes download tasks for short-video preloading with deep reinforcement learning.
+In the papers we read, we did not find, together: a race against stock tools and the best fixed setting of the same program; a measurement of how much a perfect controller could gain before building one; a separation of the controller’s gain from engine effects such as request timeouts, splitting slow pieces and when requests start; or cases where adapting gave nothing. We read abstracts, and the full text only for FastBioDL, so this says what we found in what we read, not that nobody has done it. This study adapts both N and S, compares rule-based, bandit and deep-reinforcement-learning controllers with aria2, axel, lftp and the best fixed setting of our own engine, measures the ceiling first, separates engine effects, and keeps its negative results.
 Our objectives: first, does adapting N and S during the download beat aria2 and a well-chosen fixed setting when conditions are not ideal? Second, if there is a gain, does it come from adapting, or just from how the file is cut into pieces? Third, how much could a perfect controller gain, measured before we build any learning controller? Fourth, do our rule-based and learning controllers hold up, in controlled tests and on real servers?
 
-IN SIMPLE WORDS: We ask whether changing the settings while a download runs actually makes it faster, and where any gain really comes from.
+IN SIMPLE WORDS: Others asked how to tune the number of connections. We ask whether there is anything to tune, and where any gain really comes from.
 
 TERMS ON THIS SLIDE:
 • N: how many connections run at once. S: the size of each piece (a range of bytes).
 • aria2, axel, lftp: popular open-source download tools.
 • Fixed setting: the same N and S for the whole download.
-• Perfect controller (“oracle”): an imaginary controller that knows the future; it shows the most any real controller could gain.</aside>
+• Perfect controller (“oracle”): an imaginary controller that knows the future; it shows the most any real controller could gain.
+• Engine effects: behaviour of the downloading machinery itself, such as request timeouts and splitting slow pieces, as opposed to the controller that picks N and S.
+• Bandit and deep reinforcement learning: two ways for a controller to learn from a reward which action to take.
+• Utility, direct search, gradient descent: ways of improving a setting by trying changes and keeping the better ones.</aside>
 </section>
