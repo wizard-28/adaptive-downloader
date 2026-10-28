@@ -1,7 +1,6 @@
 # Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25; baselines, sweep, joint agent and DQN v2 added 2026-10-26; framing, the adaptive-versus-aria2 synthesis, trace scope, authors and naming added 2026-10-28)
 
-**Working title:** *Request granularity and concurrency adaptation for HTTP range
-downloads under controlled server-side pacing: a mechanism-first evaluation.*
+**Working title:** *When does adapting concurrency and range size help? Adaptive downloading versus aria2 and fixed settings under non-optimal conditions.*
 
 **Evidence labels used throughout.** **Confirmed** = reproduced from raw run files
 with the stated n; **Descriptive** = point estimate without an inferential claim;
@@ -124,33 +123,33 @@ controlled mechanisms; none is a validation on live networks or production serve
   direct search), deep RL for transfer parameters, and splitting slow
   segments (aria2, IDM) are established; we propose no new tuning algorithm.
 - Contributions (each with its evidence label):
-  1. A controlled, instrumented platform (downloader, server with explicit
+  1. The answer to the central question: a synthesis against aria2 and the best fixed setting under changing conditions (§9e, §10); adaptive arms won only when the server rate rose, where a fixed setting of ours won by more, and lost whenever the server degraded.
+  2. A controlled, instrumented platform (downloader, server with explicit
      rate rules, policies, harness) and a claims checker that recomputes every
      number in this paper from raw artifacts.
-  2. A partly mechanism-explained comparison with aria2 on one characterised workload
+  3. A partly mechanism-explained comparison with aria2 on one characterised workload
      (**Confirmed**, single workload; sensitivity screen in §4.1), whose
      direction also held against axel and lftp and across a delay × loss grid
      (screens, §4.3, §4.4).
-  3. A replay-based negative result on recorded cellular traces, with the
+  4. A replay-based negative result on recorded cellular traces, with the
      oracle headroom bounded before any learner was trained (**Confirmed**
      under the frozen counterfactual model; not a live-network validation).
-  4. Existence results for adaptive (N,S) selection/control **under an explicitly
+  5. Existence results for adaptive (N,S) selection/control **under an explicitly
      constructed N-dependent server model** (§6, §7): within-download improvement
      over the best stationary configuration (**Confirmed**, n=10 blocks);
      cross-workload selection (**Descriptive**; consistency across the family not
      established).
-  5. An engine ablation showing that a whole-request timeout and missing
+  6. An engine ablation showing that a whole-request timeout and missing
      straggler splitting, not control, explained aria2's lead under the cap,
      after which the best fixed configuration beat the adaptive controllers
      (**Confirmed**, §7a); and a live-rate control server showing that the
      large-range advantage depends on the server fixing a response's rate on
      arrival (§9c).
-  6. An inventory of learned-policy experiments (§9): the early candidates are
+  7. An inventory of learned-policy experiments (§9): the early candidates are
      negative or descriptive; agents retrained for the capped server beat the
      fixed configuration with their own range size where trained, generalized
      partially inside a broadened training envelope, and failed a no-harm
      check on public mirrors (§8a).
-  7. A synthesis against aria2 under changing conditions (§9e).
 - Scope: controlled server/network mechanisms; not claims about production servers.
 
 ## 2. Related work
@@ -486,6 +485,8 @@ when the client closes them; the client discards no bytes it received.)
   This is a property of our server model; a server that re-evaluates rates
   during a response could change it.
 
+![Engine ablation (§7a): completion time (geometric mean) of a fixed configuration on the original engine, on the engine with the whole-request timeout removed and straggler splitting added, and of aria2, under four server conditions. With both fixes our fixed configuration is level with aria2 or close to it under the cap.](ieee_access/figures/fig4_engine_ablation.png)
+
 ## 7b. Online concurrency tuning (prior-work re-implementation)
 
 FastBioDL-style online tuning [swargo2025fastbiodl] was re-implemented as a project
@@ -530,6 +531,8 @@ whose capacity varies, the best N stays roughly "enough to fill the pipe",
 because every setting slows down together. A capacity trace cannot express a
 per-connection cost that changes over time, which is the mechanism §6–§7
 construct.
+
+![Counterfactual oracle headroom on the five replayed cellular traces (§8). Every trace is far below the 10 % bar set in advance.](ieee_access/figures/fig5_oracle_headroom.png)
 
 ### 8a. Live-internet pilot (Descriptive)
 
@@ -864,6 +867,8 @@ oracle.
   from a procedure that is not reliably good across seeds. It costs about
   5 % when nothing changes.
 
+![Broadly trained agent (v2), the first retrained agent (v1) and the drop rule against the best fixed 1 MiB configuration (§9d); below 1 is faster. Bars: geometric-mean ratio; lines: 95 % intervals; shaded: conditions outside the training set.](ieee_access/figures/fig6_broad_training.png)
+
 ### 9e. Synthesis: adaptive arms against aria2 under changing conditions
 
 This section answers the question of §1 directly, from results reported
@@ -895,7 +900,11 @@ Ratios are time ÷ aria2's time; below 1, ours was faster.
   deadline, S* = 16 MiB in all variants), so by the headroom-first method
   there was nothing for a controller to track; a live test is future work.
 
+![Our adaptive arms (circles) and our best fixed setting (diamonds) against aria2 under changing conditions (§9e); left of 1 is faster than aria2. Each row is a separate experiment.](ieee_access/figures/fig7_vs_aria2.png)
+
 ## 10. Discussion, limitations, and threats to validity
+
+![Every adaptive controller against the fixed setting named in its row, with 95 % intervals. Green: adaptive faster. Red: adaptive slower. Against the best fixed setting on the fixed engine, every adaptive controller was slower.](ieee_access/figures/fig8_all_controllers.png)
 
 - **Constructed environment.** The positive adaptive results hold under a server
   model we designed and selected (72-candidate search). They show conditions under

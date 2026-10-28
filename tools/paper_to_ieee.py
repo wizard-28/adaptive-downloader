@@ -30,8 +30,8 @@ OUTDIR = "reports/paper"
 NAME = "paper_access"
 KEYS = set(re.findall(r"^@\w+\{([^,]+),", open(BIB).read(), re.M))
 
-TITLE = ("Request Granularity and Concurrency Adaptation for HTTP Range Downloads "
-         "under Controlled Server-Side Pacing: A Mechanism-First Evaluation")
+TITLE = ("When Does Adapting Concurrency and Range Size Help? Adaptive Downloading versus "
+         "aria2 and Fixed Settings under Non-Optimal Conditions")
 KEYWORDS = ("HTTP range requests, segmented downloading, concurrency adaptation, aria2, "
             "reinforcement learning, network measurement")
 
@@ -67,8 +67,8 @@ PRE = r"""\documentclass{ieeeaccess}
 \uppercase{Shwetank Shrijan}\authorrefmark{1}, and
 \uppercase{Ayush Konar}\authorrefmark{1}}
 \address[1]{Vellore Institute of Technology, Vellore, India (Computer Networks Lab, BCSE308P)}
-\markboth{Basak \headeretal: Request granularity and concurrency adaptation for HTTP range downloads}
-{Basak \headeretal: Request granularity and concurrency adaptation for HTTP range downloads}
+\markboth{Basak \headeretal: When does adapting concurrency and range size help?}
+{Basak \headeretal: When does adapting concurrency and range size help?}
 \corresp{Corresponding author: Sourajyoti Basak (contact details to be confirmed).}
 """
 

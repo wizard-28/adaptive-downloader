@@ -29,7 +29,7 @@
 
 {\sffamily\large\bfseries Paper draft — working manuscript (claims corrected against raw data, 2026-10-11; engine ablation, online tuner and capped-server agent added 2026-10-25; baselines, sweep, joint agent and DQN v2 added 2026-10-26; framing, the adaptive-versus-aria2 synthesis, trace scope, authors and naming added 2026-10-28)\par}\medskip
 
-\textbf{Working title:} \emph{Request granularity and concurrency adaptation for HTTP range downloads under controlled server-side pacing: a mechanism-first evaluation.}
+\textbf{Working title:} \emph{When does adapting concurrency and range size help? Adaptive downloading versus aria2 and fixed settings under non-optimal conditions.}
 
 
 \textbf{Evidence labels used throughout.} \textbf{Confirmed} = reproduced from raw run files with the stated n; \textbf{Descriptive} = point estimate without an inferential claim; \textbf{Failed gate} = a predeclared criterion that was not met; \textbf{Limitation} = scope or validity caveat. Every number in this draft is recomputed from raw artifacts by \texttt{tools/\allowbreak{}claims\_check.py}.
@@ -59,13 +59,13 @@ Adaptive HTTP range downloaders choose concurrency (N) and range size (S), but i
 \item \textbf{What is not new.} Online tuning of parallel streams (FastBioDL, Falcon, direct search), deep RL for transfer parameters, and splitting slow segments (aria2, IDM) are established; we propose no new tuning algorithm.
 \item Contributions (each with its evidence label):
 \begin{enumerate}
+\item The answer to the central question: a synthesis against aria2 and the best fixed setting under changing conditions (§9e, §10); adaptive arms won only when the server rate rose, where a fixed setting of ours won by more, and lost whenever the server degraded.
 \item A controlled, instrumented platform (downloader, server with explicit rate rules, policies, harness) and a claims checker that recomputes every number in this paper from raw artifacts.
 \item A partly mechanism-explained comparison with aria2 on one characterised workload (\textbf{Confirmed}, single workload; sensitivity screen in §4.1), whose direction also held against axel and lftp and across a delay × loss grid (screens, §4.3, §4.4).
 \item A replay-based negative result on recorded cellular traces, with the oracle headroom bounded before any learner was trained (\textbf{Confirmed} under the frozen counterfactual model; not a live-network validation).
 \item Existence results for adaptive (N,S) selection/control \textbf{under an explicitly constructed N-dependent server model} (§6, §7): within-download improvement over the best stationary configuration (\textbf{Confirmed}, n=10 blocks); cross-workload selection (\textbf{Descriptive}; consistency across the family not established).
 \item An engine ablation showing that a whole-request timeout and missing straggler splitting, not control, explained aria2's lead under the cap, after which the best fixed configuration beat the adaptive controllers (\textbf{Confirmed}, §7a); and a live-rate control server showing that the large-range advantage depends on the server fixing a response's rate on arrival (§9c).
 \item An inventory of learned-policy experiments (§9): the early candidates are negative or descriptive; agents retrained for the capped server beat the fixed configuration with their own range size where trained, generalized partially inside a broadened training envelope, and failed a no-harm check on public mirrors (§8a).
-\item A synthesis against aria2 under changing conditions (§9e).
 \end{enumerate}
 \item Scope: controlled server/network mechanisms; not claims about production servers.
 \end{itemize}
@@ -270,6 +270,8 @@ An audit found two engine differences between our downloader and aria2: (a) ever
 \item \textbf{Mechanism.} The server fixes a response's rate when the request arrives. Under CAP8, 16 × 32 MiB starts all 16 ranges before the cap, so every range keeps the pre-cap rate; splitting then hands the tail to idle connections. This is a property of our server model; a server that re-evaluates rates during a response could change it.
 \end{itemize}
 
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{../ieee_access/figures/fig4_engine_ablation.png}\caption*{\small Engine ablation (§7a): completion time (geometric mean) of a fixed configuration on the original engine, on the engine with the whole-request timeout removed and straggler splitting added, and of aria2, under four server conditions. With both fixes our fixed configuration is level with aria2 or close to it under the cap.}\end{figure}
+
 \section*{7b. Online concurrency tuning (prior-work re-implementation)}
 
 FastBioDL-style online tuning [swargo2025fastbiodl] was re-implemented as a project policy (not their code): aggregate throughput T over 2 s windows, utility U = T/K\textasciicircum{}N, keep the step direction while U improves, reverse and halve on a drop above 5 \%, clamp at N in 1–16, S untouched. Predeclared protocol (\texttt{testdata/\allowbreak{}online\_tuner/\allowbreak{}protocol.md}): CAP8 and no cap, 8 shuffled blocks, 64 runs, all valid, corrected engine.
@@ -287,6 +289,8 @@ Five recorded driving traces (Verizon EVDO and LTE, AT\&T LTE, T-Mobile LTE and 
 
 \textbf{What the traces vary.} Each trace lists the times at which the recorded link could deliver one 1500-byte packet. In 1 s bins, downlink capacity swings by a 90th/10th percentile ratio of 6.5 to 25.3 across the five traces (Verizon EVDO 24.2, Verizon LTE 14.1, AT\&T LTE 6.6, T-Mobile LTE 6.5, T-Mobile UMTS 25.3; \texttt{tools/\allowbreak{}trace\_swing.py}). The replay ran \texttt{mm-link} with the trace alone, without \texttt{mm-delay} or \texttt{mm-loss}, so it varied capacity only: no added propagation delay, no random loss, and no server behaviour. Loss and delay were studied separately with netem (§4.4, §5). On one shared bottleneck whose capacity varies, the best N stays roughly "enough to fill the pipe", because every setting slows down together. A capacity trace cannot express a per-connection cost that changes over time, which is the mechanism §6–§7 construct.
 
+
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{../ieee_access/figures/fig5_oracle_headroom.png}\caption*{\small Counterfactual oracle headroom on the five replayed cellular traces (§8). Every trace is far below the 10 \% bar set in advance.}\end{figure}
 
 \subsection*{8a. Live-internet pilot (Descriptive)}
 
@@ -501,6 +505,8 @@ Each had 10–17 \% simulator headroom between the best fixed N and a 16 → n o
 \item \textbf{Scope.} The comparison is with the best fixed setting at the same 1 MiB range size, under server-side changes, on one server model. It is not with 16 × 32 MiB, aria2 or real servers. This is one selected seed from a procedure that is not reliably good across seeds. It costs about 5 \% when nothing changes.
 \end{itemize}
 
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{../ieee_access/figures/fig6_broad_training.png}\caption*{\small Broadly trained agent (v2), the first retrained agent (v1) and the drop rule against the best fixed 1 MiB configuration (§9d); below 1 is faster. Bars: geometric-mean ratio; lines: 95 \% intervals; shaded: conditions outside the training set.}\end{figure}
+
 \subsection*{9e. Synthesis: adaptive arms against aria2 under changing conditions}
 
 This section answers the question of §1 directly, from results reported above. Each row is a scenario in which conditions change during the download. Ratios are time ÷ aria2's time; below 1, ours was faster.
@@ -526,7 +532,11 @@ Six capped workloads (W1–W6) & workload selector 1.660 & not run\\
 \item \textbf{Not tested.} No study changed loss or delay during a download on a real path with adaptive arms running. In the correlated-loss screen the best configuration did not move with loss (N* = 16 and, without the 30 s deadline, S* = 16 MiB in all variants), so by the headroom-first method there was nothing for a controller to track; a live test is future work.
 \end{itemize}
 
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{../ieee_access/figures/fig7_vs_aria2.png}\caption*{\small Our adaptive arms (circles) and our best fixed setting (diamonds) against aria2 under changing conditions (§9e); left of 1 is faster than aria2. Each row is a separate experiment.}\end{figure}
+
 \section*{10. Discussion, limitations, and threats to validity}
+
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{../ieee_access/figures/fig8_all_controllers.png}\caption*{\small Every adaptive controller against the fixed setting named in its row, with 95 \% intervals. Green: adaptive faster. Red: adaptive slower. Against the best fixed setting on the fixed engine, every adaptive controller was slower.}\end{figure}
 
 \begin{itemize}
 \item \textbf{Constructed environment.} The positive adaptive results hold under a server model we designed and selected (72-candidate search). They show conditions under which adaptation can help, not that real servers behave this way.
