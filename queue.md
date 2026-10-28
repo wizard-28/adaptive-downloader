@@ -169,6 +169,15 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   formatted"; the template conversion is still open in
   `reports/ieee_access/README.md`.
 
+## 6. Presentation deck (viva 2026-10-29)
+
+- [x] Render check of all 31 slides in headless Chromium (text <24 px, overlaps,
+  code names, chart readability). Fixed: demo slide said 220 numbers (now 231);
+  "v2" in the limitations notes; label collisions in five charts (r1b, r2a,
+  r4b, r5, summary), live chart now grouped by server. Republished.
+- [ ] Open: handbook still says "about 5-27x" (ask the user first); IEEE Access
+  template conversion.
+
 ## Housekeeping (on every completed step)
 
 - Update `docs/PROJECT_CONTEXT.md` §22.109 and this file.
