@@ -139,20 +139,22 @@ for i in range(60):
     po, pa = f"{FR}/final-p{i:02d}-ours.json", f"{FR}/final-p{i:02d}-aria2.json"
     if os.path.exists(po) and os.path.exists(pa):
         r.append(load(po)["completion_ms"] / load(pa)["completion_ms"])
-rows.append(("D2\n(30 pairs)", r, BLUE))
+rows.append(("benchmark\n(30 pairs)", r, BLUE))
 m = load(f"{T}/d2_pacing_sweep/manifest/sweep_manifest.json")
 for s in m["schedules_kib_per_s"]:
     r = [load(f"{T}/d2_pacing_sweep/runs/sw-{s[:2]}-p{p:02d}-ours.json")["completion_ms"] /
          load(f"{T}/d2_pacing_sweep/runs/sw-{s[:2]}-p{p:02d}-aria2.json")["completion_ms"]
          for p in range(m["pairs_per_schedule"])]
-    rows.append((s.split("_", 1)[0], r, GREEN))
+    SCHED = {"S0": "slow, dip,\nthen fast", "S1": "slow,\nthen fast", "S2": "long\nslow dip",
+             "S3": "partial\nrecovery", "S4": "always\nfast", "S5": "always\nslow"}
+    rows.append((SCHED[s.split("_", 1)[0]], r, GREEN))
 m = load(f"{T}/nginx_limit_rate/manifest/nginx_manifest.json")
 for c in m["configs"]:
     r = [load(f"{T}/nginx_limit_rate/runs/ng-{c[:2]}-p{p:02d}-ours.json")["completion_ms"] /
          load(f"{T}/nginx_limit_rate/runs/ng-{c[:2]}-p{p:02d}-aria2.json")["completion_ms"]
          for p in range(m["pairs_per_config"])]
-    rows.append(("NGINX\n" + c[:2], r, RED))
-f, ax = fig(1664, 400)
+    rows.append(({"N1": "NGINX\nrate limit", "N2": "NGINX, first\n1 MiB free"}[c[:2]], r, RED))
+f, ax = fig(1664, 430)
 for i, (lab, r, col) in enumerate(rows):
     ax.scatter([i] * len(r), r, color=col, s=40, alpha=0.6, zorder=2)
     g = math.exp(stats.mean(math.log(x) for x in r))
@@ -219,16 +221,16 @@ R = {}
 for fp in glob.glob(f"{T}/n_dependent_server_joint_ns/adaptive/p2_*.json"):
     n = os.path.basename(fp)[:-5].rsplit("_r", 1)[0]
     R.setdefault(n, []).append(load(fp)["completion_ms"] / 1000)
-order = [("p2_aria2", "aria2", DARK), ("p2_causal_joint", "causal\njoint", BLUE), ("p2_causal_n_only", "causal\nN-only", BLUE),
-         ("p2_fixed_16_1M", "fixed\n16×1M", GREY), ("p2_fixed_4_1M", "fixed\n4×1M", GREY),
-         ("p2_fixed_4_4M", "fixed\n4×4M", GREY), ("p2_causal_s_only", "causal\nS-only", ORANGE)]
+order = [("p2_aria2", "aria2", DARK), ("p2_causal_joint", "drop rule\nN and S", BLUE), ("p2_causal_n_only", "drop rule\nN only", BLUE),
+         ("p2_fixed_16_1M", "fixed\n16×1 MiB", GREY), ("p2_fixed_4_1M", "fixed\n4×1 MiB", GREY),
+         ("p2_fixed_4_4M", "fixed\n4×4 MiB", GREY), ("p2_causal_s_only", "drop rule\nS only", ORANGE)]
 order = [o for o in order if o[0] in R]
 f, ax = fig(1100, 480)
 for i, (n, lab, col) in enumerate(order):
     g = math.exp(stats.mean(math.log(x) for x in R[n]))
     ax.bar(i, g, color=col, width=0.62)
     ax.text(i, g + 1.5, f"{g:.1f}", ha="center", fontsize=15)
-ax.set_xticks(range(len(order)), [o[1] for o in order])
+ax.set_xticks(range(len(order)), [o[1] for o in order], fontsize=12)
 ax.set_ylabel("completion time (s)")
 ax.set_ylim(0, max(math.exp(stats.mean(math.log(x) for x in R[o[0]])) for o in order) * 1.18)
 save(f, "fig3_within_download_controller.png")
@@ -238,7 +240,7 @@ abl = load(f"{T}/split_ablation/analysis/summary.json")["scenarios"]
 rows = [("cap from start", "CAP0", "fixed_16_1M_T30", "fixed_16_32M_NT_split"),
         ("cap from 8 s", "CAP8", "fixed_16_1M_T30", "fixed_16_32M_NT_split"),
         ("no cap", "HEALTHY", "fixed_16_1M_T30", "fixed_16_1M_NT_split"),
-        ("paced D2", "D2", "fixed_16_4M_T30", "fixed_16_4M_NT_split")]
+        ("slow, then fast", "D2", "fixed_16_4M_T30", "fixed_16_4M_NT_split")]
 f, ax = fig(1100, 500)
 w = 0.27
 for i, (lab, sc, old, new) in enumerate(rows):
@@ -257,7 +259,7 @@ save(f, "ablation.png")
 items = [("online tuner, no cap\n(vs 16 × 1 MiB)", 1.220, 1.203, 1.232),
          ("online tuner, cap from 8 s\n(vs 16 × 1 MiB)", 1.212, 1.180, 1.248),
          ("workload selector, cap from start\n(vs 16 × 32 MiB)", 1.229, 1.223, 1.234),
-         ("causal controller, cap from 8 s\n(vs 16 × 32 MiB)", 1.071, 1.054, 1.085)]
+         ("drop-rule controller, cap from 8 s\n(vs 16 × 32 MiB)", 1.071, 1.054, 1.085)]
 f, ax = fig(1300, 520)
 for i, (lab, r, lo, hi) in enumerate(items):
     ax.barh(i, r - 1, left=1, color=RED, height=0.55)
@@ -278,10 +280,10 @@ for i, s in enumerate(best):
     ax.bar(i - 0.2, g[best[s]], 0.38, color=DARK)
     ax.bar(i + 0.2, g["dqnj"], 0.38, color=BLUE)
     ax.text(i + 0.2, g["dqnj"] + 2, f"×{g['dqnj'] / g[best[s]]:.2f}", ha="center", fontsize=14)
-ax.set_xticks(range(4), list(best))
+ax.set_xticks(range(4), ["cap from\n8 s", "no cap", "cap from\nstart", "slow,\nthen fast"])
 ax.set_ylabel("time (s)")
-ax.legend(handles=[Patch(color=DARK, label="best fixed"), Patch(color=BLUE, label="joint agent")], frameon=False,
-          loc="upper left", ncol=2, fontsize=13)
+ax.legend(handles=[Patch(color=DARK, label="best fixed"), Patch(color=BLUE, label="agent picking N + piece size")], frameon=False,
+          loc="upper right", ncol=1, fontsize=13)
 ax.set_ylim(0, 128)
 save(f, "joint.png")
 
@@ -289,8 +291,8 @@ save(f, "joint.png")
 c2 = load(f"{T}/rl_cap_train_v2/analysis/C.json")["scenarios"]
 d2 = load(f"{T}/rl_cap_train_v2/analysis/D.json")["scenarios"]
 sc = {**c2, **d2}
-order = [("CAP8", "CAP8\n(trained)"), ("HEALTHY", "no cap"), ("H_C12", "H_C12"), ("H_RTT110", "H_RTT110"),
-         ("H_DIP", "H_DIP"), ("H_C20", "H_C20")]
+order = [("CAP8", "cap at 8 s\n(trained)"), ("HEALTHY", "no cap"), ("H_C12", "cap\n12 MiB/s"),
+         ("H_RTT110", "delay\n110 ms"), ("H_DIP", "cap +\ndip"), ("H_C20", "cap\n20 MiB/s")]
 f, ax = fig(1100, 520)
 w = 0.27
 for j, (arm, col) in enumerate([("v1", GREY), ("v2", BLUE), ("drop", ORANGE)]):
@@ -305,15 +307,17 @@ ax.text(3.5, 1.40, "held out (never trained on)", ha="center", fontsize=14, colo
 ax.set_xticks(range(len(order)), [o[1] for o in order])
 ax.set_ylabel("time ÷ best fixed 1 MiB")
 ax.set_ylim(0.72, 1.44)
-ax.legend(handles=[Patch(color=GREY, label="v1"), Patch(color=BLUE, label="v2"), Patch(color=ORANGE, label="drop rule")],
-          frameon=False, loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=3)
+ax.legend(handles=[Patch(color=GREY, label="first retrained"), Patch(color=BLUE, label="broadly trained"),
+                   Patch(color=ORANGE, label="drop rule")],
+          frameon=False, loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=3, fontsize=13)
 save(f, "v2.png")
 
 # --- r4d: CAP8 times (1100 x 540) --------------------------------------------
 j8 = jc["CAP8"]["geo_mean_s"]
 v8 = c2["CAP8"]["geo_mean_s"]
 bars = [("fixed 16 × 32 MiB", j8["fixed_16_32M"], DARK), ("aria2", j8["aria2"], DARK), ("drop rule", v8["drop"], ORANGE),
-        ("DQN v2", v8["v2"], BLUE), ("DQN v1", v8["v1"], GREY), ("joint N+S agent", j8["dqnj"], GREY),
+        ("broadly trained agent", v8["v2"], BLUE), ("first retrained agent", v8["v1"], GREY),
+        ("agent picking N and piece size", j8["dqnj"], GREY),
         ("fixed 16 × 1 MiB", v8["fixed_16_1M"], DARK)]
 f, ax = fig(1100, 540)
 for i, (lab, t, col) in enumerate(reversed(bars)):
@@ -326,14 +330,15 @@ save(f, "cap8_times.png")
 
 # --- r5: live pilot (1100 x 480) ----------------------------------------------
 lp = [c for c in load(f"{T}/live_pilot_l1/analysis/summary.json")["conditions"] if c["status"] == "OK"]
-f, ax = fig(1100, 480)
+f, ax = fig(1100, 520)
 xs = range(len(lp))
 ax.axhline(5, color=RED, ls="--", lw=1.5)
 ax.text(len(lp) - 0.5, 5.6, "5 % line", ha="right", fontsize=13, color=RED)
 ax.scatter(xs, [100 * (c["aria2_over_best_fixed"] - 1) for c in lp], color=GREY, s=70, label="aria2", zorder=2)
 ax.scatter(xs, [100 * (c["time_s"]["ours_N8_S1M"] / c["best_s"] - 1) for c in lp], color=BLUE, s=80,
            label="ours, 8 × 1 MiB everywhere", zorder=3)
-ax.set_xticks(list(xs), [c["server"] for c in lp], rotation=60, fontsize=12)
+NAMES = {"kcdn": "kernel.org CDN", "kedge": "kernel.org origin", "riken": "RIKEN, Japan", "tuna": "Tsinghua, China"}
+ax.set_xticks(list(xs), [NAMES[c["server"]] for c in lp], rotation=60, fontsize=11, ha="right")
 ax.set_ylabel("% slower than the\nbest fixed cell")
 ax.legend(frameon=False, loc="upper left")
 save(f, "live.png")
@@ -342,7 +347,7 @@ save(f, "live.png")
 mm = load(f"{T}/live_mirror_check/analysis/M2.json")["servers"]
 f, ax = fig(1100, 480)
 for i, s in enumerate(["kcdn", "kedge", "riken"]):
-    for k, (key, col, lab) in enumerate([("v2_vs_best_fixed", BLUE, "DQN v2"), ("drop_vs_best_fixed", ORANGE, "drop rule")]):
+    for k, (key, col, lab) in enumerate([("v2_vs_best_fixed", BLUE, "broadly trained agent"), ("drop_vs_best_fixed", ORANGE, "drop rule")]):
         b = mm[s][key]
         y = i + (k - 0.5) * 0.34
         ax.plot(b["ci95"], [y, y], color=col, lw=3)
@@ -350,18 +355,18 @@ for i, s in enumerate(["kcdn", "kedge", "riken"]):
         ax.text(b["ci95"][1] + 0.04, y, f"{b['geo_ratio']:.2f}", va="center", fontsize=14)
 ax.axvline(1, color=DARK, ls="--", lw=1.2)
 ax.axvline(1.05, color=RED, ls=":", lw=1.5)
-ax.set_yticks(range(3), ["kcdn", "kedge", "riken"])
+ax.set_yticks(range(3), ["kernel.org\nCDN", "kernel.org\norigin", "RIKEN,\nJapan"])
 ax.set_xlabel("time ÷ best fixed 1 MiB (95 % interval)")
 ax.set_xlim(0.6, 3.1)
 ax.legend(frameon=False, loc="lower right")
 save(f, "mirror.png")
 
 # --- vsaria2 (1100 x 560) ------------------------------------------------------
-rows = [("D2: rate dips, then rises", [0.876], 0.376),
-        ("rate rises at 1 s, no cap", [0.359, 0.432], 0.344),
-        ("cap switches on at 8 s", [1.096, 1.310, 1.367, 1.422, 1.781], 1.016),
-        ("collapse, spike, loss, throttle", [1.456], None),
-        ("six capped workloads", [1.660], None)]
+rows = [("server slow, then fast", [0.876], 0.376),
+        ("server speeds up at 1 s", [0.359, 0.432], 0.344),
+        ("server cap switches on at 8 s", [1.096, 1.310, 1.367, 1.422, 1.781], 1.016),
+        ("collapse, delay, loss, throttle", [1.456], None),
+        ("six capped server variants", [1.660], None)]
 f, ax = fig(1100, 560)
 ax.axvspan(0.28, 1.0, color="#e8f0fb", lw=0)
 ax.axvspan(1.0, 2.1, color="#fbeee4", lw=0)
@@ -383,15 +388,15 @@ ax.legend(frameon=False, loc="lower left")
 save(f, "vsaria2.png")
 
 # --- summary forest (1664 x 600) ----------------------------------------------
-rows = [("causal controller vs small-range fixed, original engine", 0.766, 0.762, 0.769),
-        ("causal controller vs 16 × 32 MiB, fixed engine", 1.071, 1.054, 1.085),
+rows = [("drop-rule controller vs small-piece fixed, original engine", 0.766, 0.762, 0.769),
+        ("drop-rule controller vs 16 × 32 MiB, fixed engine", 1.071, 1.054, 1.085),
         ("workload selector vs 16 × 32 MiB, cap from start", 1.229, 1.223, 1.234),
         ("online tuner vs 16 × 1 MiB, cap from 8 s", 1.212, 1.180, 1.248),
-        ("frozen DQN v6 vs 16 × 32 MiB", 1.356, 1.252, 1.472),
-        ("cap-trained DQN v1 vs 16 × 1 MiB", 0.907, 0.893, 0.921),
-        ("cap-trained DQN v1 vs 16 × 32 MiB", 1.298, 1.274, 1.321),
-        ("joint N + range agent vs 16 × 32 MiB", 1.471, 1.405, 1.546),
-        ("DQN v2 vs 16 × 1 MiB", 0.845, 0.840, 0.850)]
+        ("first DQN agent, not retrained, vs 16 × 32 MiB", 1.356, 1.252, 1.472),
+        ("first retrained agent vs 16 × 1 MiB", 0.907, 0.893, 0.921),
+        ("first retrained agent vs 16 × 32 MiB", 1.298, 1.274, 1.321),
+        ("agent picking N and piece size vs 16 × 32 MiB", 1.471, 1.405, 1.546),
+        ("broadly trained agent vs 16 × 1 MiB", 0.845, 0.840, 0.850)]
 f, ax = fig(1664, 600)
 for i, (lab, r, lo, hi) in enumerate(reversed(rows)):
     col = GREEN if hi < 1 else RED
@@ -400,7 +405,7 @@ for i, (lab, r, lo, hi) in enumerate(reversed(rows)):
     ax.text(hi + 0.012, i, f"{r:.3f}", va="center", fontsize=14)
 ax.axvline(1, color=DARK, ls="--", lw=1.5)
 ax.set_yticks(range(len(rows)), [r[0] for r in reversed(rows)], fontsize=14)
-ax.set_xlabel("arm ÷ fixed setting (95 % interval) · left of 1: adaptive faster")
+ax.set_xlabel("adaptive ÷ fixed time (95 % interval)")
 ax.set_xlim(0.72, 1.62)
 save(f, "forest.png")
 

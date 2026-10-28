@@ -1,0 +1,31 @@
+<section id="limits" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Limitations</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">What these results do not show</h2>
+<div style="display:flex;gap:48px">
+<ul style="flex:1;font-size:28px;line-height:1.5;color:#4A5568">
+<li><b style="color:#14213D">Constructed servers:</b> the positive adaptive results hold on a server model we designed</li>
+<li><b style="color:#14213D">One machine:</b> loopback with netem, one aria2 version (1.37.0)</li>
+<li><b style="color:#14213D">Small real-network studies:</b> one client, one primary network</li>
+<li><b style="color:#14213D">Replayed traces,</b> not live mobile networks</li>
+</ul>
+<ul style="flex:1;font-size:28px;line-height:1.5;color:#4A5568">
+<li><b style="color:#14213D">Narrow AI tests:</b> two kinds of learner; our best agent is one chosen training run</li>
+<li><b style="color:#14213D">Testbed noise:</b> tight intervals measure the emulator, not the world</li>
+<li><b style="color:#14213D">No stall timeout yet</b> in the fixed engine</li>
+<li><b style="color:#14213D">Speed, not fairness:</b> 16 connections take more of a shared link</li>
+</ul>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Protocols predeclared and hashed, not independently timestamped · failed gates reported as failed</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">28</p>
+<aside>WHAT TO SAY: Every study has limits, and it is better that we say them first.
+The servers where adapting helped are models we built; real servers may behave differently. All the controlled tests ran on one laptop, with the client and server on the same machine. Our real-internet tests were small: one home connection. The mobile tests replayed recordings rather than using a live phone network. We tried two families of learning methods, and v2 is one chosen version. Because our test server is very consistent, our uncertainty ranges are narrow; they show the noise of the test setup, not of the real world. With the 30-second limit removed, a completely stuck connection would wait forever; a smarter “no progress” timeout is future work. And we measured speed, not fairness: 16 connections take a bigger share of a shared link from other users.
+
+IN SIMPLE WORDS: Our results are careful and honest, but they come from a controlled lab plus small real-world checks.
+
+TERMS ON THIS SLIDE:
+• Loopback: client and server on the same computer.
+• Seed: the random starting point of training.
+• Stall timeout: cancelling a request only when it stops making progress, instead of after a fixed time.
+• Fairness: how evenly bandwidth is shared between different users on the same link.
+• Predeclared: plans written and fingerprinted before running, though not registered with an outside service.</aside>
+</section>

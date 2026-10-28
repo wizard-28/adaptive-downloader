@@ -1,0 +1,28 @@
+<section id="r3" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 3 · a server that punishes too many connections</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15;color:#14213D">When the server starts throttling, a one-line rule saved 23 %</h2>
+<p style="font-size:26px;line-height:1.4;color:#4A5568"><b style="color:#14213D">Setup:</b> the server is normal for 8 s, then switches on its connection cap, so the best setting really changes mid-download</p>
+<div style="display:flex;gap:48px;align-items:start">
+<img src="/_blob/fa2b9f5a34c2646ce7224cb395ad4264" alt="Completion times: aria2 53.6 s, drop rule changing N and S 58.7 s, drop rule changing N only 62.0 s, fixed settings 76.7 to 88.4 s, drop rule changing S only 82.1 s" style="width:1100px;height:480px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.4;color:#14213D"><b style="color:#2F6FD6">Drop rule:</b> when request speed halves, switch once to fewer connections</p>
+<p style="font-size:26px;line-height:1.4;color:#14213D">58.7 s vs 76.7 s for the best fixed setting we ran: <b>23.4 % less time</b>, 10 of 10 rounds</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">Cutting connections did the work; changing only piece size was worse than doing nothing</p>
+<p style="font-size:26px;line-height:1.4;color:#B85A12"><b>But aria2 was faster still: 53.6 s</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">The cap: past about 3 connections, the server’s total speed falls (slide 8) · our engine as it was before the fixes on the next slide</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">15</p>
+<aside>WHAT TO SAY: Since no natural condition gave adaptation a reason to exist, we built one: a server that is normal for 8 seconds, then switches on a cap, where too many connections hurts. Now the best setting really changes in the middle of the download.
+A very simple controller handled it well. We call it the drop rule: it watches how fast each request goes, and the first time that speed falls below half of its best, it switches once to fewer connections. It took 58.7 seconds against 76.7 for the best of the fixed settings we ran: 23.4 % less time, in all 10 rounds. Reducing the number of connections did almost all the work; changing piece size alone made it worse.
+But aria2, which does not adapt at all, was still faster: 53.6 seconds. Finding out why changed our whole conclusion.
+We also tried a “workload selector” that watches the first seconds, guesses the kind of server, and picks a preset; across six server variants it matched the best fixed setting for each on average.
+
+IN SIMPLE WORDS: When there is a real reason to adapt, one simple rule is enough. But a tool that does not adapt still won.
+
+TERMS ON THIS SLIDE:
+• Connection cap: our server rule that gives each new connection less speed the more you already have.
+• Drop rule: “if request speed drops below half its best, switch once to a preset setting”. It only uses what it has seen so far.
+• N and S / N only / S only: versions that change both dials, only the number of connections, or only the piece size.
+• Round: one run of every option, in random order.</aside>
+</section>

@@ -1,0 +1,40 @@
+<section id="platform" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">What we built · the test platform</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">A server whose rate rules are explicit</h2>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FCFCFA;padding:24px 28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#14213D">1 · Request-start rule</h3>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">A response keeps the rate in force when its request arrived</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FCFCFA;padding:24px 28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#14213D">2 · Schedules (left)</h3>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">Reference: slow, slower, then fast after 4 s</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FCFCFA;padding:24px 28px;border:1px solid #DEDCD4;border-radius:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:30px;font-weight:700;color:#14213D">3 · Soft cap (right)</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.35;color:#14213D">min(base, C/(k(1+γ(k−1))))</p>
+</div>
+</div>
+<div style="display:flex;gap:64px">
+<img src="/_blob/40933ba7ae8340ce4f532fb91f897338" alt="Reference speed timetable: 640 KiB/s, a dip to 160 KiB/s from 2 to 4 s, then 2,500 KiB/s; requests started in the shaded slow phase keep the slow rate" style="width:800px;height:400px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<img src="/_blob/1b29797e7f6e51e120efab504ebf2ee5" alt="Soft cap: the rate of one new request falls with k; the total for k requests peaks near 3 then falls to about 4.6 MiB/s at 16" style="width:800px;height:400px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">C = 8 MiB/s, γ = 0.05 · plus tc netem (40 ms each way, 0.4 % loss), Mahimahi trace replay, SHA-256 on every output</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">08</p>
+<aside>WHAT TO SAY: To test fairly we wrote our own test server, so we know exactly how it behaves. It follows three rules.
+One: each response is sent at the speed that was in force when its request arrived, and keeps that speed.
+Two: the speed can change on a timetable. The left chart is our reference timetable: 640 KiB/s, a dip to 160 KiB/s between 2 and 4 seconds, then fast at 2,500 KiB/s.
+Three: we can switch on a “soft cap”, which gives each new connection less speed the more connections you already have. The right chart shows that past about three connections, the total speed actually goes down. So under the cap, too many connections hurts.
+We also add delay and packet loss with Linux tools, replay real mobile-network recordings, and check every downloaded file with SHA-256.
+
+IN SIMPLE WORDS: We built a “test track” where we control the weather, so we can see exactly why each result happens. The cap is the one place we deliberately created a reason to adapt.
+
+TERMS ON THIS SLIDE:
+• Paced server / timetable: a server that sends data at set speeds that change at set times. The “slow, then fast” timetable is our reference.
+• KiB/s, MiB/s: kibibytes or mebibytes per second; 1 MiB = 1,048,576 bytes.
+• Soft cap: our rule rate = min(base, C / (k(1 + γ(k − 1)))). C is the total budget (8 MiB/s), k the number of active requests including the new one, γ a small penalty for each extra connection.
+• Test scenarios used later: “no cap”, “cap from the start”, and “cap switching on at 8 seconds”.
+• tc netem: a Linux tool that adds delay and packet loss to a network link. Ours: 40 ms each way (80 ms round trip), 0.4 % loss.
+• Mahimahi: a tool that replays recorded mobile-network traces.
+• SHA-256: a fingerprint of a file; if it matches, the file is byte-for-byte correct.</aside>
+</section>

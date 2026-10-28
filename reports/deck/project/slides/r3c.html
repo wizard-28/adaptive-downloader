@@ -1,0 +1,22 @@
+<section id="r3c" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 3 · after fixing the engine</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">With a sound engine, a fixed setting beat every adaptive controller</h2>
+<img src="/_blob/8d2f8303003123735580caeb8ddaa4c7" alt="Adaptive controllers divided by the fixed setting: drop-rule controller 1.071, workload selector 1.229, online tuner 1.212 and 1.220, all slower" style="width:1300px;height:520px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="position:absolute;left:1468px;top:420px;width:324px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.35;color:#14213D"><b>Best fixed:</b> 16 connections × 32 MiB pieces</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Its big pieces all start before the cap and keep the fast speed</p>
+<p style="font-size:26px;line-height:1.35;color:#4A5568"><b style="color:#14213D">Online tuner:</b> our version of a published method, FastBioDL</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Right of 1: the adaptive controller was slower · each controller reacted within a few seconds, so slow reaction was not the problem</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">17</p>
+<aside>WHAT TO SAY: Once the engine was fixed, a fixed setting of 16 connections with big 32 MiB pieces became the best under the cap. It beat every adaptive controller: the drop-rule controller was 7 % slower, and the workload selector 23 % slower.
+We also rebuilt the idea of a recent published downloader, FastBioDL, which nudges the number of connections up or down every 2 seconds. It was about 21 % slower than even a fixed setting with the same 1 MiB pieces. It reacted to the cap quickly, in about 2 seconds, but it starts with 4 connections and needed 8 seconds to climb to 16 when there was no cap.
+Why does the big-piece setting win? It starts all 16 big pieces before the cap arrives at 8 seconds, and each piece keeps the fast speed it started with.
+
+IN SIMPLE WORDS: The earlier 23 % win was only against small-piece settings on our old engine. With a sound engine and a good fixed setting, adapting lost. Speed of reaction was not the problem; there was little to gain.
+
+TERMS ON THIS SLIDE:
+• Best fixed setting: the fastest fixed N and S we measured in that test. It is chosen after the runs, so it is a strong comparison.
+• Online tuner: a controller that keeps nudging N up or down based on measured speed. We wrote our own version of FastBioDL’s idea, not their code.
+• Workload selector: watches the first seconds, guesses the kind of server, then picks a preset setting.</aside>
+</section>

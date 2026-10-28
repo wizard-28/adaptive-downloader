@@ -1,0 +1,26 @@
+<section id="r2a" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 2 · unstable mobile networks</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Real mobile links swing wildly…</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<img src="/_blob/5ca053238923d14425b7d2c25b781023" alt="Capacity over time for three recorded drives: Verizon LTE, T-Mobile UMTS and AT&amp;T LTE, swinging between near zero and peaks of 7 to 43 Mbit/s" style="width:1100px;height:590px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1;color:#2F6FD6">6.5–25×</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">a typical fast second carries this many times more data than a typical slow one</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">Dead spots at zero, bursts to full speed, within seconds</p>
+<p style="font-size:26px;line-height:1.4;color:#14213D"><b>If adaptation ever pays, it should be here</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Five real recordings of US mobile networks made while driving, played back with the Mahimahi tool · they vary speed only</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">12</p>
+<aside>WHAT TO SAY: These are real recordings of mobile networks, made while driving. Each chart shows how much data the link could carry, second by second, for the first five minutes. Look at how wild it is: the speed drops to zero in dead spots, then shoots up to full speed seconds later. In our five traces, a fast second carries between 6.5 and 25 times as much as a slow second.
+If changing settings during a download is ever going to pay off, you would expect it to be on a network like this. So this is where we tested it first.
+
+IN SIMPLE WORDS: This is the “bad network” everyone has in mind when they say a downloader should adapt.
+
+TERMS ON THIS SLIDE:
+• Capacity: how many bytes per second the link can carry at that moment (its bandwidth). Mbit/s = million bits per second.
+• Trace: a recording of when the real network could deliver each packet. Replaying it makes our download see that network.
+• Mahimahi: the tool that replays these traces. The five traces (Verizon EVDO and LTE, AT&amp;T LTE, T-Mobile LTE and UMTS) come with it.
+• 90th / 10th percentile: the speed that 90 % (or 10 %) of seconds are below. Their ratio, p90/p10, measures how much the speed swings.
+• Capacity only: these replays change bandwidth only. Packet loss and fixed delay were tested separately, with netem.</aside>
+</section>

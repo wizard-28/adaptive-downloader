@@ -1,0 +1,36 @@
+<section id="r3b" data-transition="fade" style="background:#14213D;color:#F6F5F1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F0A35E">Test 3 · why was aria2 faster?</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#F6F5F1">Not smarter control: two weaknesses in our own engine</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<img src="/_blob/ff9d804a338794acd19102d5b0c5811f" alt="Completion time with our original engine, our fixed engine, and aria2, in four server scenarios; with the fix ours matches aria2 when the server throttles and is unchanged elsewhere" style="width:1100px;height:500px;object-fit:contain;background:#FFFFFF;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">1 · A 30-second time limit</h3>
+<p style="font-size:26px;line-height:1.4;color:#D7DDE8">cancelled big pieces that were slow but still progressing, and restarted them</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">2 · No straggler splitting</h3>
+<p style="font-size:26px;line-height:1.4;color:#D7DDE8">aria2 lets an idle connection take half of a slow piece; we did not (slide 7)</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:700;color:#F0A35E">After fixing both</h3>
+<p style="font-size:26px;line-height:1.4;color:#D7DDE8">level with aria2, or within 1.6 %, under the cap; no change elsewhere</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#BFC8D9">230 test downloads, every one valid, with no failed requests or wasted data · we call this “engine before policy”</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#BFC8D9;text-align:right">16</p>
+<aside>WHAT TO SAY: Why was aria2 faster under the cap? We compared the two engines carefully and found two differences in our own downloader, not in the controller.
+First, our engine cancelled any request that ran longer than 30 seconds, even if it was still making progress, and started that piece again from zero. With big pieces under the cap this wasted a lot of work; in one run we downloaded 112 % of the file again.
+Second, we had no straggler splitting. aria2 lets a free connection take over half of a slow piece near the end; we did not.
+We made both fixes optional, and tested them one at a time over 230 test downloads. With splitting, our best setting took 40 % less time with the cap on from the start and matched aria2. Without the 30-second limit, we came within 1.6 % of aria2 with the cap from 8 seconds. Nothing got worse in the other scenarios.
+
+IN SIMPLE WORDS: aria2 was not winning because it was smarter; our engine had two weaknesses. Fixing the engine mattered more than any clever controller.
+
+THE CHART: grey = our engine before the fixes, blue = after the fixes, dark = aria2, in four server scenarios.
+
+TERMS ON THIS SLIDE:
+• Engine: the basic downloading machinery, as opposed to the controller that chooses N and S.
+• Straggler: a slow piece still downloading when the rest is done.
+• Testing one feature at a time (“ablation”): switching each fix on and off to see which one causes the effect.</aside>
+</section>

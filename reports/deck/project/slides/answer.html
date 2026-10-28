@@ -1,0 +1,33 @@
+<section id="answer" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">The short answer</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Adapting rarely paid off. Choosing the dials well mattered more.</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FCFCFA;padding:40px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:112px;font-weight:700;line-height:1;color:#2F6FD6">62.4%</p>
+<p style="font-size:30px;line-height:1.35;color:#14213D"><b>less time than aria2</b>, with our downloader on a <i>fixed</i> setting</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">because of when its requests start, not because it adapts</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FCFCFA;padding:40px;border:1px solid #DEDCD4;border-top:8px solid #2F6FD6;border-radius:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:112px;font-weight:700;line-height:1;color:#2F6FD6">0.41%</p>
+<p style="font-size:30px;line-height:1.35;color:#14213D"><b>the most a perfect controller could gain</b> on real mobile networks</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">even though their speed swings 6.5–25×</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FCFCFA;padding:40px;border:1px solid #DEDCD4;border-top:8px solid #E07B28;border-radius:16px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:112px;font-weight:700;line-height:1;color:#B85A12">0 of 3</p>
+<p style="font-size:30px;line-height:1.35;color:#14213D"><b>real public servers</b> where our adaptive controllers did no harm</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">AI controllers won only on the server they trained on</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">Each number is explained on its own slide later</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">03</p>
+<aside>WHAT TO SAY: Here is the answer before the details, in three numbers.
+62.4 %: on a server whose speed changes, our downloader with one fixed setting took 62.4 % less time than aria2. But this was not adaptation; it won because of when its requests started.
+0.41 %: on real recorded mobile networks, even a perfect controller that knows the future could save only 0.41 % on average. There was almost nothing to gain, even though the speed swings wildly.
+0 of 3: when we ran our adaptive controllers on three real public download servers, they were slower than a good fixed setting on all three.
+
+IN SIMPLE WORDS: Adapting beat aria2 only when the server sped up during the download, and even then a fixed setting of ours beat aria2 by more. Against a well-chosen fixed setting, adapting almost never won.
+
+TERMS ON THIS SLIDE:
+• Perfect controller (“oracle”): an imaginary controller that knows the future and always picks the best setting. Nobody can build one; we use it as a ceiling. If even it gains nothing, no real controller can.
+• Public server (“mirror”): a server that hosts copies of files for anyone to download, here the Linux kernel downloads.</aside>
+</section>

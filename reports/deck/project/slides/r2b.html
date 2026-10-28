@@ -1,0 +1,26 @@
+<section id="r2b" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 2 · other bad conditions we checked</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">In every other condition we tried, the best setting never moved</h2>
+<table style="font-size:26px;color:#14213D">
+<tr><th style="width:44%">Condition tested</th><th style="width:56%">What we found</th></tr>
+<tr><td>Simple adaptive rules on the slow-then-fast server</td><td>they adapted, but took 2.3× as long as the best fixed setting</td></tr>
+<tr><td>Sharing the link with other heavy traffic</td><td>more connections was always best; nothing to switch to</td></tr>
+<tr><td>Packet loss in bursts, with retries</td><td>16 connections best in all 9 variants</td></tr>
+<tr><td>Changing piece size on a steady server</td><td>piece size matters, but switching gained at most 0.35 %</td></tr>
+<tr><td>Servers that throttle each request</td><td>no point where a different setting starts to win</td></tr>
+<tr><td>A simulator design that promised 17.6 %</td><td>the gain disappeared when checked on the real setup</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.4;color:#14213D;background:#FCFCFA;padding:22px 32px;border-left:8px solid #2F6FD6;border-radius:8px">Adapting can only help if the best setting changes during the download. None of these did, so we built a server where it does.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Each check stopped by a pass/fail rule written before it ran · mix of live runs on our test setup and simulations</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">14</p>
+<aside>WHAT TO SAY: We did not stop at mobile networks. We looked at many other kinds of bad conditions, to find one where the best setting really changes during a download.
+Simple adaptive rules on the slow-then-fast server did change settings, but took 2.3 times as long as the best fixed setting. Competing traffic on a shared link, bursty packet loss, servers that throttle each request, changing piece sizes on a steady server: none of them gave a meaningful gain, because the best setting stayed the same throughout.
+One warning story: one simulator design showed 17.6 % to gain, but when we checked on the real test setup, it was not there. The simulator had invented a penalty that the real system does not have. After that, we always checked simulators against real runs before trusting them.
+
+IN SIMPLE WORDS: We searched hard for a situation where adapting pays. We could not find a natural one, so next we built one.
+
+TERMS ON THIS SLIDE:
+• Heavy traffic on a shared link: we ran a traffic generator (iperf3) alongside the download to imitate other users.
+• Burst loss: packets lost in bunches rather than randomly.
+• Simulator: a program that imitates the download so we can test or train quickly without real downloads.</aside>
+</section>

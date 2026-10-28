@@ -1,0 +1,49 @@
+<section id="background" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Background</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Segmented downloading in one picture</h2>
+<div style="display:flex;gap:56px;flex:1">
+<div style="flex:1.1;display:flex;flex-direction:column;gap:20px;background:#FCFCFA;padding:40px;border:1px solid #DEDCD4;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#4A5568">file: 512 MiB, split into ranges of size S</p>
+<div style="display:flex;gap:8px">
+<div style="flex:1;height:56px;background:#2F6FD6;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#2F6FD6;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#2F6FD6;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#E07B28;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#E07B28;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#E07B28;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#DEDCD4;border-radius:6px"></div>
+<div style="flex:1;height:56px;background:#DEDCD4;border-radius:6px"></div>
+</div>
+<p style="font-size:24px;color:#4A5568"><span style="color:#2F6FD6"><b>done</b></span> · <span style="color:#B85A12"><b>in flight (N = 3)</b></span> · pending</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#14213D;background:#EEF1F6;padding:24px;border-radius:12px">GET /linux-3.0.tar.xz<br>Range: bytes=0-1048575<br>→ 206 Partial Content</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#14213D">More connections help…</h3>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">until the bottleneck is full; servers that limit each connection give N times the rate</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#14213D">…and can hurt</h3>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">when a server shares a budget or penalises parallel connections</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#14213D">Range size is a trade-off</h3>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">small S: more requests, quick to react; large S: fewer requests, long tails, and a request may keep its starting rate</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:#6B7280">BCSE308P · When does adapting N and S help?</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">05</p>
+<aside>WHAT TO SAY: This is how segmented downloading works. The file is cut into ranges. Some are done, some are downloading right now, and the rest are waiting. Each range is fetched with one HTTP request, and the server answers “206 Partial Content”.
+More connections usually help, because many servers limit the speed of each connection: four connections get four times the speed. But they stop helping once your internet link is full, and some servers punish you for opening too many.
+The range size is a trade-off. Small pieces mean more requests but you can react quickly. Big pieces mean fewer requests, but one slow big piece can hold up the end of the download.
+
+IN SIMPLE WORDS: N is how many lanes you open on the road; S is how big each truck is.
+
+TERMS ON THIS SLIDE:
+• 206 Partial Content: the server’s reply when it sends only the part of the file you asked for.
+• TCP connection: one network “pipe” between our computer and the server.
+• Bottleneck: the slowest link on the path, which limits the total speed.
+• Long tail: the end of a download where only one or two slow pieces are still running.
+• A request keeping its starting rate: on some servers, a request runs at whatever speed was in force when it started. Remember this; it explains two big results later.</aside>
+</section>

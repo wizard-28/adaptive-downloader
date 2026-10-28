@@ -1,0 +1,27 @@
+<section id="r4c" data-transition="fade" style="background:#F6F5F1;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B85A12">Test 4 · an agent trained on many server conditions</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.15;color:#14213D">Broader training helped: faster on 3 of 4 unseen conditions</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<img src="/_blob/18dc9c34597d0d45a20a769ec17cbd4d" alt="First retrained agent, broadly trained agent and drop rule, each divided by the best fixed 1 MiB setting, in six conditions; the broadly trained agent is below 1 in the trained condition and three of the four unseen ones" style="width:1100px;height:520px;object-fit:contain;background:#FFFFFF;border:1px solid #DEDCD4;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.4;color:#14213D"><b style="color:#2F6FD6">Unseen conditions:</b> 12 %, 18 % and 5 % less time; 0.7 % more in one</p>
+<p style="font-size:26px;line-height:1.4;color:#14213D">Better than the first retrained agent in all 6</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">About 5 % slower when there is no cap</p>
+<p style="font-size:26px;line-height:1.4;color:#B85A12"><b>The simple drop rule still beat it where the rule was tuned</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:#6B7280">Below 1: faster than the best fixed setting with the same piece size · shaded: conditions it never trained on · 8 rounds each</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B7280;text-align:right">20</p>
+<aside>WHAT TO SAY: To fix the generalisation problem, we trained a new agent on a much wider range of conditions: weak and strong caps, short and long network delays, and sudden slow-downs. We wrote the test plan first and had it reviewed before running anything.
+Then we tested it on four new conditions it had never seen, all within the range it trained on: a weaker cap of 12 MiB/s, a long 110 ms delay, a cap plus a sudden dip, and a weak 20 MiB/s cap with a short delay. It was faster than the best fixed 1 MiB setting in three of them (12 %, 18 % and 5 % less time) and slightly slower, by 0.7 %, in the fourth. It beat the first retrained agent in all six tests. With no cap at all it cost about 5 %.
+Be honest about the limits: we trained five versions from different random starts and picked the best on practice tests; the others were worse. And the simple drop rule beat it on the scenario the rule was tuned for.
+
+IN SIMPLE WORDS: Broader practice made the agent handle new situations partly, but only situations similar to its practice, and a simple rule was still competitive.
+
+THE CHART: each group of bars is one condition. Grey = first retrained agent, blue = broadly trained agent, orange = drop rule. Bars below the line at 1 were faster than the best fixed setting.
+
+TERMS ON THIS SLIDE:
+• Unseen (“held-out”) conditions: test cases kept out of training.
+• Random start (“seed”): training from different starting points gives different agents.
+• Practice tests (“validation”): used to choose among the five trained versions, separate from the final tests.</aside>
+</section>
