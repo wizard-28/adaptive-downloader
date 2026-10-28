@@ -12,7 +12,9 @@ live_pilot_l1, rl_cap_train). Updated 2026-10-25 to match Review 3.
 The question was never "can RL win?" It was "when is there anything for any
 adaptive controller to exploit?" The strongest negative results are
 learner-independent. On the cellular traces, even an oracle that knows the
-future gained 0.41 % on average, with a lower bound of −0.26 %. That says the
+future gained 0.41 % on average, with a lower bound of −0.26 %. That oracle
+switches only N (1 to 16), between 120 s stretches of each trace, with S fixed at
+1 MiB, under our replay model. That says the
 environment offered almost nothing, which is useful for anyone designing
 adaptive downloaders.
 
@@ -120,7 +122,8 @@ in the paper, and the frozen artifacts were left untouched.
 
 **12. Is a negative result publishable?**
 
-Yes, especially with this level of rigour: preregistration, failed gates
+Yes, especially with this level of rigour: predeclared hashed protocols (not an
+independent preregistration; one family of workloads was amended twice, and the paper says so), failed gates
 reported as failed, and reproducible numbers. It fits venues that judge
 soundness over novelty, such as measurement or reproducibility tracks,
 workshops, or journals like IEEE Access. The framing is "when does adaptive
@@ -159,7 +162,8 @@ splitting and the timeout semantics mattered more than any controller.
 We re-implemented its online-tuning idea (aggregate throughput over 2 s
 windows, U = T/K^N, reverse and halve the step on a drop) as a project policy
 and ran it under a frozen protocol, 64 runs. It was 1.212 (cap from 8 s) and
-1.220 (no cap) times the best fixed setting's time. It reacted to the cap in
+1.220 (no cap) times the time of the best fixed 1 MiB setting (16 × 1 MiB, the
+same piece size; with 32 MiB pieces the fixed setting is faster still). It reacted to the cap in
 2.1 s but spent 8.1 s climbing from N = 4 to 16 without a cap. We did not use
 FastBioDL's code.
 
@@ -318,3 +322,46 @@ Three differences, each with its reason:
   from LinUCB to Double DQN after a lock-in diagnostic showed a one-step bandit
   cannot handle credit across time (§22.12 of PROJECT_CONTEXT). We did not try
   PPO and have no comparison against it; that is a limitation.
+
+Two more points on this question. Review 3 marks "joint adaptation of N and S"
+as Achieved; the accurate reading is "both dials adapted, never as one learned
+pair". Review 1 also asked for background-traffic conditions: that was
+screened with iperf3 traffic sharing a bottleneck (no state-dependent best N
+found), and fairness to other users was not measured.
+
+**25. What is the main answer, in numbers, against aria2?**
+
+Against aria2 under changing conditions, our adaptive arms were faster only
+when the server rate rose during the download (time ratios 0.36 to 0.88), and
+there a fixed configuration of the same engine was faster still (0.344 to
+0.376). When the server degraded, aria2 was faster than every adaptive arm
+(1.096 to 1.781). This is the paper's section 9e and its contribution 1.
+
+**26. Why did you choose those thresholds and sizes?** (reasons recorded in the repo)
+- **10 % headroom bar:** run-to-run dispersion in our campaigns was about
+  1 to 5 %, so under 5 % counted as too weak, 5 to 10 % as marginal, and 10 % or
+  more as meaningful. The bar was set before the oracle ran.
+- **120 s epochs:** the oracle protocol takes the shortest of 30, 60, 90 and
+  120 s that keeps at least 80 % of epochs valid with at least 3 per trace;
+  that was 120 s.
+- **512 MiB file:** the largest size that is safe on memory in our container,
+  and it keeps the trajectory dynamic for about 90 s (startup is 2.4 % of it).
+- **Cap C = 8 MiB/s, gamma = 0.05:** of 27 screened (schedule, cap) pairs,
+  exactly one passed the predeclared rule that both N and S optima move and
+  that cross-state penalties exceed 10 % both ways.
+- No recorded reason (ask the authors before the viva): why 16 connections is
+  the maximum, why 3, 5, 8 or 10 blocks per study, why a 64 MB file for the live
+  pilot, why loopback was preferred to a real path.
+
+**Synonyms used across our documents:** "drop rule" = "causal drop controller" =
+"causal controller" (the paper); "best fixed setting" = "best fixed
+configuration" (the paper also says "best stationary configuration" when the
+comparison set is the three fixed settings tried under one schedule).
+
+**Updates after Review 3 (which the PDFs do not contain):** the checker now
+recomputes 231 numbers (Review 3: 144); axel and lftp were added (section 4.3);
+a delay and loss grid was added (section 4.4); DQNs were retrained for the
+capped server and tested on held-out conditions (sections 9b, 9d), where one
+beat the fixed 1 MiB setting; a joint five-action agent was built (section 9c);
+and a mirror no-harm check was run (section 8a).
+

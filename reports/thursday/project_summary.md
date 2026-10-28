@@ -25,7 +25,7 @@ actually something for adaptation to exploit?**
 - **Harness.** tc/netem delay and loss, Mahimahi replay of recorded cellular
   traces, aria2, curl and NGINX baselines, and a SHA-256 check of every
   output.
-- **Method.** Preregistered gates and stop rules, frozen hashed artifacts, an
+- **Method.** Predeclared gates and stop rules (in logged, hashed protocols), frozen hashed artifacts, an
   oracle headroom bound computed before training any learner, and a claims
   checker that recomputes all 231 checked paper numbers from raw runs.
 
@@ -60,8 +60,8 @@ actually something for adaptation to exploit?**
 
    Across six predeclared workloads, a frozen selector matched the
    per-workload best fixed setting on average (0.999).
-4. **Every learned policy lost.**
-   - Double DQN v2, v5 and v6 were 1.757×, 2.322× and 1.456× slower than
+4. **The early learned policies lost to aria2.**
+   - Early Double DQN v2, v5 and v6 were 1.757×, 2.322× and 1.456× slower than
      aria2 in their head-to-heads.
    - LinUCB locked onto a single arm.
    - Several later environment designs failed their headroom gates before
@@ -114,6 +114,12 @@ actually something for adaptation to exploit?**
    slower than the best fixed setting. They read throughput noise as a
    cap.
 
+10. **The answer against aria2.** Under changing conditions our adaptive arms
+    were faster than aria2 only when the server rate rose (0.36 to 0.88), where a
+    fixed configuration of our engine was faster still (0.344 to 0.376); when
+    the server degraded, aria2 was faster than every adaptive arm (1.096 to
+    1.781). (Paper section 9e.)
+
 ## Why reinforcement learning did not win
 
 The learner was not the bottleneck; the opportunity was. On one bottleneck
@@ -157,9 +163,9 @@ headroom existed, a simple rule that detects one change captured it.
 > Fixed configurations cannot adapt. On the conditions we tested, they mostly
 > did not need to. Adaptation pays when concurrency has a cost that changes
 > over time, and even there engine details (timeouts, straggler splitting)
-> mattered more than the controller. A learned agent can win only on the
-> server model it was trained for, and only against fixed settings that share
-> its range size.
+> mattered more than the controller. A learned agent won on the server model
+> it was trained for and, with broader training, on 3 of 4 new conditions inside
+> its training ranges, but only against fixed settings that share its range size.
 
 **Future work:** action spaces with delayed, changing costs, such as
 multi-mirror scheduling, restarting slow requests, straggler hedging, and live

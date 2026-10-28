@@ -43,7 +43,7 @@ python3 -c "import json;r=json.load(open('/tmp/demo.json'));d=r['decisions'];pri
 
 Point out:
 - The server switches its concurrency cap on at 8 s. The agent sees request
-  times jump and lowers N, settling around 7.
+  times jump and lowers N, settling around 6 to 7.
 - In Stage C, over 10 blocks, this was 0.907 of the time of fixed
   16 × 1 MiB, but slower than 16 × 32 MiB and aria2. Explain why: large ranges
   started before the cap keep the faster rate.
@@ -53,11 +53,11 @@ Point out:
 Shorter fallback (about 18 s): drop `-policy`, `-dqn-model`, `-window` and
 the `-cap-*` flags to run fixed 16 × 1 MiB on the uncapped server.
 
-## 3. Tests and the number checker (about 2 min)
+## 3. Tests and the number checker (about 40 s)
 
 ```bash
 go test -count=1 ./internal/... 2>&1 | tail -15   # -count=1: run for real, not cached
-python3 tools/claims_check.py | tail -2   # 199 numbers recomputed from raw runs
+python3 tools/claims_check.py | tail -2   # 231 numbers recomputed from raw runs
 ```
 
 Point out:
@@ -76,6 +76,6 @@ Measured on 2026-10-25 (devcontainer, home broadband):
   verified, and the final N was 6. N held at 14–16 before the cap and fell
   to 6 by 15.8 s, after the cap at 8 s.
 - **Step 3:** about 30 s for the uncached internal tests (18 packages OK),
-  plus 8 s for the checker (183/183, 0 unverified, on 2026-10-25; now 199).
+  plus 8 s for the checker (231/231, 0 unverified).
 - **Total:** about 2.5 min plus talking. Afterwards `sudo -n tc qdisc show
   dev lo` showed `noqueue` (clean).

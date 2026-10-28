@@ -213,9 +213,9 @@ a new tuning algorithm.
   trace replay [netravali2015mahimahi].
 
 **Test setup.** The downloader speaks HTTP/1.1 only, with keep-alive and a pool
-of up to 16 connections; HTTP/2 and HTTP/3 are not used, because aria2, axel and
-lftp also open one HTTP/1.1 connection per segment, so N counts TCP connections
-for every tool. Client and server run on one machine over loopback, left at the
+of up to 16 connections; HTTP/2 and HTTP/3 are not used; aria2, axel and lftp also
+open one HTTP/1.1 connection per segment, so N counts TCP connections for every
+tool. Client and server run on one machine over loopback, left at the
 default MTU (65,536 bytes) and the host's default congestion control (CUBIC),
 with delay and loss added by netem. The server's pacing, not TCP congestion
 control, is the bottleneck in these runs, and a loopback path with netem is not a
