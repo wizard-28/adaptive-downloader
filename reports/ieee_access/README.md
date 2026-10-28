@@ -6,6 +6,7 @@
 | Figures (from raw data) | `figures/fig1..3_*.png`, `make_figures.py` | generated; captions in manuscript |
 | Verified references | `../references.bib`, `../references.md` | 10 verified; unresolved candidates listed, not cited |
 | Claim map | `../claims_map.md` | matches manuscript |
+| IEEE conference format | `../paper/paper_conf.tex` / `.pdf` (`python3 tools/paper_to_ieee.py --conf`; template in `../ieee_conf/template/`) | built 2026-10-28 for the teacher's request; 14 pages, over typical conference limits: **HUMAN: confirm the page limit** |
 | Author block, affiliations, ORCID, funding, COI | — | **HUMAN: not provided** |
 | AI-use disclosure | manuscript "Declarations" | **HUMAN: confirm wording against publisher policy** |
 | Data DOI | `docs/ARCHIVE_PLAN.md` | **HUMAN/archive: not issued** |

@@ -187,6 +187,8 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [~] Gap review for viva questions (read-only subagent, started 2026-10-28):
   fold its findings into the paper and speaker notes; no slide bloat.
 
+- [x] IEEE conference-format PDF `reports/paper/paper_conf.pdf` (teacher's request); open: page limit.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older

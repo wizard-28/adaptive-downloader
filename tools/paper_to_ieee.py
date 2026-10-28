@@ -14,7 +14,8 @@ refers to them, so headings are unnumbered LaTeX headings that carry the number.
 The .tex follows IEEE's ieeeaccess template and is built with the official
 ieeeaccess.cls unpacked in reports/ieee_access/template/.
 
-Usage: python3 tools/paper_to_ieee.py
+Usage: python3 tools/paper_to_ieee.py          (IEEE Access template -> paper_access.pdf)
+       python3 tools/paper_to_ieee.py --conf   (IEEE conference template -> paper_conf.pdf)
 """
 import os
 import re
@@ -27,7 +28,8 @@ from paper_to_pdf import esc, inline as _inline  # noqa: E402
 SRC = "reports/paper_draft.md"
 BIB = "reports/references.bib"
 OUTDIR = "reports/paper"
-NAME = "paper_access"
+CONF = "--conf" in sys.argv
+NAME = "paper_conf" if CONF else "paper_access"
 KEYS = set(re.findall(r"^@\w+\{([^,]+),", open(BIB).read(), re.M))
 
 TITLE = ("When Does Adapting Concurrency and Range Size Help? Adaptive Downloading versus "
@@ -70,6 +72,48 @@ PRE = r"""\documentclass{ieeeaccess}
 \markboth{Basak \headeretal: When does adapting concurrency and range size help?}
 {Basak \headeretal: When does adapting concurrency and range size help?}
 \corresp{Corresponding author: Sourajyoti Basak (contact details to be confirmed).}
+"""
+
+
+PRE_CONF = r"""\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newunicodechar,booktabs,tabularx,array,enumitem,url}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{÷}{\ensuremath{\div}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{…}{\ldots}
+\newunicodechar{§}{\S}
+\setlist{itemsep=0pt,topsep=2pt,parsep=0pt,leftmargin=*}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\emergencystretch}{3em}
+\hbadness=10000 \hfuzz=3pt
+\urlstyle{same}
+\begin{document}
+\title{%s}
+\author{\IEEEauthorblockN{Sourajyoti Basak}
+\IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
+Vellore, India}
+\and
+\IEEEauthorblockN{Shwetank Shrijan}
+\IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
+Vellore, India}
+\and
+\IEEEauthorblockN{Ayush Konar}
+\IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
+Vellore, India}}
+\maketitle
 """
 
 
@@ -124,10 +168,15 @@ def convert(md):
     s3 = next(i for i, l in enumerate(body) if l.startswith("## 3."))
     body[s3:s3] = ["### 3.0 Reporting conventions", ""] + front + [""]
 
-    out = [PRE % esc(TITLE).replace(r"\_", "_"),
-           r"\begin{abstract}" + inline(abstract) + r"\end{abstract}",
-           r"\begin{keywords}" + KEYWORDS + r"\end{keywords}",
-           r"\titlepgskip=-15pt", r"\maketitle", ""]
+    if CONF:
+        out = [PRE_CONF % esc(TITLE).replace(r"\_", "_"),
+               r"\begin{abstract}" + inline(abstract) + r"\end{abstract}",
+               r"\begin{IEEEkeywords}" + KEYWORDS + r"\end{IEEEkeywords}", ""]
+    else:
+        out = [PRE % esc(TITLE).replace(r"\_", "_"),
+               r"\begin{abstract}" + inline(abstract) + r"\end{abstract}",
+               r"\begin{keywords}" + KEYWORDS + r"\end{keywords}",
+               r"\titlepgskip=-15pt", r"\maketitle", ""]
     stack, i = [], 0
 
     def close_lists(to=0):
@@ -156,8 +205,14 @@ def convert(md):
         if m:
             close_lists()
             rel = os.path.relpath(os.path.normpath(os.path.join("reports", m.group(2))), OUTDIR)
-            out.append(r"\Figure[t!](topskip=0pt, botskip=0pt, midskip=0pt)[width=\columnwidth]{" + rel + r"}"
-                       r"{" + inline(m.group(1)) + r"}")
+            if CONF:
+                wide = "fig8_all_controllers" in rel
+                env, wd = ("figure*", r"\textwidth") if wide else ("figure", r"\columnwidth")
+                out.append(r"\begin{%s}[!t]\centering\includegraphics[width=%s]{" % (env, wd) + rel + r"}"
+                           r"\caption{" + inline(m.group(1)) + r"}\end{%s}" % env)
+            else:
+                out.append(r"\Figure[t!](topskip=0pt, botskip=0pt, midskip=0pt)[width=\columnwidth]{" + rel + r"}"
+                           r"{" + inline(m.group(1)) + r"}")
             i += 1; continue
         m = re.match(r"^(\s*)([-*]|\d+\.) (.*)$", ln)
         if m:
@@ -183,7 +238,7 @@ def convert(md):
             para.append(body[i].strip()); i += 1
         out.append(inline(" ".join(para)) + "\n")
     close_lists()
-    out += [r"\bibliographystyle{IEEEtran}", r"\bibliography{../references}", r"\EOD", r"\end{document}"]
+    out += [r"\bibliographystyle{IEEEtran}", r"\bibliography{../references}"] + ([] if CONF else [r"\EOD"]) + [r"\end{document}"]
     return "\n".join(out)
 
 
@@ -193,10 +248,14 @@ def main():
         tex = convert(f.read())
     with open(os.path.join(OUTDIR, NAME + ".tex"), "w") as f:
         f.write(tex)
-    official = os.path.abspath("reports/ieee_access/template")
-    cls = official
-    if not os.path.exists(os.path.join(official, "ieeeaccess.cls")):
-        sys.exit("missing reports/ieee_access/template/ieeeaccess.cls (unzip IEEE's template there)")
+    if CONF:
+        cls = os.path.abspath("reports/ieee_conf/template/IEEE-conference-template-062824")
+        if not os.path.exists(os.path.join(cls, "IEEEtran.cls")):
+            sys.exit("missing reports/ieee_conf/template/ (unzip IEEE's conference template there)")
+    else:
+        cls = os.path.abspath("reports/ieee_access/template")
+        if not os.path.exists(os.path.join(cls, "ieeeaccess.cls")):
+            sys.exit("missing reports/ieee_access/template/ieeeaccess.cls (unzip IEEE's template there)")
     env = dict(os.environ, TEXINPUTS=cls + os.pathsep + os.environ.get("TEXINPUTS", ""))
     run = lambda c: subprocess.run(c, cwd=OUTDIR, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     tx = ["pdflatex", "-interaction=nonstopmode", NAME + ".tex"]
