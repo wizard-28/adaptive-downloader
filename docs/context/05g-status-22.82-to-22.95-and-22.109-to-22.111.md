@@ -790,8 +790,8 @@ novelty, limitations, ~70 viva Q&As, the demo, a glossary, a numbers cheat
 sheet and an inventory of every `testdata/` folder. New figures are drawn by
 `reports/handbook/make_figs.py` from committed analysis JSON; others are
 copied from reports/review2, review3 and ieee_access. Work division is the
-Review 2 "Individual Contribution" table (the Review 1 docx has no
-per-member table). Three independent fact-check passes (~810 claims) found
+Review 2 "Individual Contribution" table (the Review 1 docx also has a
+"Team Member Responsibility" table with the same three roles; corrected 2026-10-28). Three independent fact-check passes (~810 claims) found
 wrong facts and overclaims that were fixed before commit; notable
 corrections also relevant elsewhere:
 - `reports/thursday/demo.md` says 8×1 MiB was "within 3.7 %" of the best:
