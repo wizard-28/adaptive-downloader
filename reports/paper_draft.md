@@ -966,6 +966,19 @@ Ratios are time ÷ aria2's time; below 1, ours was faster.
   held-out scenarios inside the training ranges, for one seed selected on
   validation from a procedure that was not reliably good across seeds, and
   against the best fixed setting at the same range size only.
+- **Action form and decision cadence.** The original proposal described a joint
+  action (N, S) chosen at a fixed control interval. What was built: one decision
+  after each completed request, and one dial per action (nothing, N up or down,
+  S up or down). The causal drop controller and the workload selector choose a
+  target pair (N, S) together, N jumps to its target in one decision and S moves
+  one step at a time, and N and S never change in the same decision; the
+  rule-based joint policy alternates between them. The reasons are recorded:
+  one request is the natural measurement and the clean moment to change a
+  setting; independent actions allow the N-only, S-only and joint ablation (§7);
+  and early agents that learned S failed (fragmented ranges, a simulator that
+  rewarded chunk sizes the server did not). A learner choosing (N, S) as one
+  action, and learning algorithms other than LinUCB and Double DQN (for example
+  PPO), were not evaluated.
 - **Engine before policy.** On our server models, the request deadline and
   straggler splitting mattered more than any adaptive policy (§7a). Earlier
   adaptive results measured against the original engine (§6, §7) should be

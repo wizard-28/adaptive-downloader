@@ -283,3 +283,38 @@ we did not analyse the traces to show it. This is the cost side of
 adaptation: with little headroom to pay for it (3.7 % selection headroom in
 our pilot), adapting carried a cost. It is the same lesson as the cellular
 traces: variability is not opportunity.
+
+**24. Your first proposal (Review 1) said the action is a joint pair (N, S) chosen at a fixed interval T, and that you would use PPO. What did you build instead, and why?**
+
+Review 1 described the idea. In the build, we changed how decisions are
+triggered and what one action does, for reasons we recorded: cleaner
+measurement, clean ablations, and early learning failures. Our reports should
+have said so.
+
+Three differences, each with its reason:
+- **Decisions after each finished request, not every T seconds.** The
+  downloader is event-driven, and one request record is the natural
+  measurement. A request boundary is also the clean moment to change N or S,
+  because requests already in flight are never resized. An early DQN (v5) was
+  trained with a decision interval of 4 requests while the live runner decided
+  once per request; the mismatch hurt it, so v6 was trained on the live cadence.
+  Cost: with very large pieces, decisions are rare.
+- **One dial per action, not a pair.** The range manager and the concurrency
+  manager are separate; S only affects future ranges. Single-dial actions let us
+  run the N-only, S-only and joint ablation that Review 1 itself asked for
+  (under the cap: N-only 0.808, joint 0.766, S-only 1.070 of the fixed time).
+  When S was learned, the early DQN versions fragmented the file into
+  32–128 KiB pieces and were 75.7 % slower than aria2 (v2), or learned from a
+  simulator that rewarded larger chunks the server did not reward (v3), so v4
+  onward learned N only. Both dials are still adapted: the causal drop controller
+  and workload selector choose a target pair (N, S) together (N jumps to the
+  target in one decision, then S moves one step at a time; never both in the
+  same decision), the rule-based joint policy alternates, and LinUCB and the
+  joint DQN agent choose among five single-dial actions. A learner that picks
+  the pair as one action was not built; it is listed as future work.
+- **PPO.** Review 1 mentions PPO only in its related-work table (for the
+  Swargo and Arifuzzaman work). Its own plan says "a later reinforcement-learning
+  policy" and that the evaluation does not depend on RL convergence. We moved
+  from LinUCB to Double DQN after a lock-in diagnostic showed a one-step bandit
+  cannot handle credit across time (§22.12 of PROJECT_CONTEXT). We did not try
+  PPO and have no comparison against it; that is a limitation.
