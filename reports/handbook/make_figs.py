@@ -10,6 +10,7 @@ import math
 import os
 
 import matplotlib
+import matplotlib.ticker
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -220,3 +221,130 @@ ax.set_title("Why ratios are averaged geometrically")
 save(fig, "geomean.png")
 
 print("figures written to", OUT)
+
+
+# 10. Mahimahi trace capacity over time (downlink, 1 s bins) -------------------
+TR = "mahimahi-clone-dir/mahimahi/traces"
+
+
+def trace_mbps(name):
+    with open(os.path.join(TR, name + ".down")) as f:
+        ts = [int(x) for x in f if x.strip()]
+    secs = ts[-1] // 1000 + 1
+    bins = [0] * secs
+    for t in ts:
+        bins[t // 1000] += 1
+    return [b * 1500 * 8 / 1e6 for b in bins]  # each opportunity = one 1500-byte packet
+
+
+def pct(v, q):
+    s = sorted(v)
+    return s[min(len(s) - 1, int(q * len(s)))]
+
+
+if os.path.isdir(TR):
+    names = ["Verizon-EVDO-driving", "Verizon-LTE-driving", "ATT-LTE-driving", "TMobile-LTE-driving",
+             "TMobile-UMTS-driving"]
+    swing = {}
+    for n in names:
+        v = trace_mbps(n)
+        lo = pct(v, 0.10)
+        swing[n] = (pct(v, 0.90) / lo) if lo > 0 else float("inf")
+    print("p90/p10 per trace:", {k: round(x, 1) for k, x in swing.items()})
+    show = [("Verizon-LTE-driving", "Verizon LTE", BLUE), ("TMobile-UMTS-driving", "T-Mobile UMTS", ORANGE),
+            ("ATT-LTE-driving", "AT&T LTE", GREEN)]
+    fig, axs = plt.subplots(len(show), 1, figsize=(7.6, 4.6), sharex=True)
+    for ax, (n, lab, col) in zip(axs, show):
+        v = trace_mbps(n)[:300]
+        ax.fill_between(range(len(v)), v, color=col, alpha=0.25, lw=0)
+        ax.plot(v, color=col, lw=1.1)
+        ax.set_ylabel("Mbit/s", fontsize=8.5)
+        ax.text(0.99, 0.82, f"{lab}: p90/p10 = {swing[n]:.1f}×", transform=ax.transAxes, ha="right",
+                fontsize=9, fontweight="bold", color=DARK)
+        ax.set_ylim(0, max(v) * 1.15)
+    axs[-1].set_xlabel("time (s), first 5 minutes of each recorded drive")
+    axs[0].set_title("Recorded cellular link capacity, 1 s bins (Mahimahi traces)")
+    save(fig, "trace_capacity.png")
+
+# 11. Adaptive arms and our fixed setting against aria2 ------------------------
+rows = [("Rate dips, then rises (D2)", [("rule-based joint", 0.876)], 0.376),
+        ("Rate rises at 1 s, no cap", [("DQN v6", 0.359), ("online tuner", 0.432)], 0.344),
+        ("Cap switches on at 8 s", [("causal", 1.096), ("cap-trained v1", 1.310), ("DQN v6", 1.367),
+                                    ("joint agent", 1.422), ("online tuner", 1.781)], 1.016),
+        ("Collapse, spike, loss, throttle", [("DQN v6", 1.456)], None),
+        ("Six capped workloads", [("selector", 1.660)], None)]
+LABELS = {"Rate dips, then rises (D2)": "rule-based joint 0.876",
+          "Rate rises at 1 s, no cap": "DQN v6 0.359, online tuner 0.432",
+          "Cap switches on at 8 s": "causal 1.096 · learned agents 1.31–1.42 · tuner 1.78",
+          "Collapse, spike, loss, throttle": "DQN v6 1.456",
+          "Six capped workloads": "selector 1.660"}
+fig, ax = plt.subplots(figsize=(8.2, 4.4))
+ax.axvspan(0.25, 1.0, color="#e8f0fb", lw=0)
+ax.axvspan(1.0, 2.2, color="#fbeee4", lw=0)
+for i, (lab, arms, fixed) in enumerate(reversed(rows)):
+    y = i
+    for j, (name, r) in enumerate(arms):
+        ax.plot(r, y, "o", color=ORANGE, ms=8, zorder=3)
+    hi = max(r for _, r in arms)
+    ax.text(hi if hi > 1 else min(r for _, r in arms), y - 0.2, LABELS[lab], ha="right" if hi > 1 else "left",
+            va="top", fontsize=8, color=DARK)
+    if fixed:
+        ax.text(fixed, y + 0.16, f"fixed {fixed:.3f}", ha="center", va="bottom", fontsize=8, color=BLUE)
+    if fixed:
+        ax.plot(fixed, y, "D", color=BLUE, ms=8, zorder=3)
+ax.axvline(1, color=DARK, ls="--", lw=1)
+ax.set_xscale("log")
+ax.set_xticks([0.3, 0.5, 0.7, 1, 1.5, 2])
+ax.set_xticklabels(["0.3", "0.5", "0.7", "1", "1.5", "2"])
+ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+ax.set_xlim(0.28, 2.1)
+ax.set_yticks(range(len(rows)), [r[0] for r in reversed(rows)])
+ax.set_ylim(-0.6, len(rows) - 0.3)
+ax.text(0.30, len(rows) - 0.45, "faster than aria2", fontsize=8.5, color=BLUE)
+ax.text(2.05, len(rows) - 0.45, "slower than aria2", fontsize=8.5, color="#a0521d", ha="right")
+ax.set_xlabel("time ÷ aria2’s time (log scale)")
+ax.plot([], [], "o", color=ORANGE, label="our adaptive arms")
+ax.plot([], [], "D", color=BLUE, label="our best fixed setting")
+ax.legend(frameon=False, fontsize=8.5, loc="lower left")
+ax.set_title("When conditions change mid-download: ours against aria2")
+save(fig, "vsaria2.png")
+
+# 12. D2 request timeline from per-request server logs (pair p00) -------------
+FR = "testdata/aria2_competitive_benchmark/final_reproduction"
+
+
+def lanes(reqs):
+    ends, out = [], []
+    for r in sorted(reqs, key=lambda r: r["start_ms"]):
+        for k, e in enumerate(ends):
+            if e <= r["start_ms"]:
+                ends[k] = r["end_ms"]
+                out.append((k, r))
+                break
+        else:
+            ends.append(r["end_ms"])
+            out.append((len(ends) - 1, r))
+    return out
+
+
+if os.path.isdir(FR):
+    fig, axs = plt.subplots(2, 1, figsize=(7.8, 4.4), sharex=True)
+    for ax, sysname, title in [(axs[0], "aria2", "aria2: 16 big pieces, all started in the slow phase"),
+                               (axs[1], "ours", "ours (16 × 4 MiB): most pieces start after the speed-up")]:
+        reqs = [r for r in load(f"{FR}/final-p00-{sysname}.json")["server_requests"] if r["end_ms"] > r["start_ms"]]
+        for k, r in lanes(reqs):
+            fast = r["rate_bytes_per_second"] >= 2000 * 1024
+            ax.barh(k, (r["end_ms"] - r["start_ms"]) / 1000, left=r["start_ms"] / 1000, height=0.75,
+                    color=BLUE if fast else ORANGE, edgecolor="white", lw=0.3)
+        ax.axvspan(0, 4, color="#fbeee4", lw=0, zorder=0)
+        ax.set_title(title, fontsize=9.5)
+        ax.set_yticks([])
+        ax.set_ylabel("connection", fontsize=8.5)
+    axs[1].set_xlabel("time (s) · shaded: slow phase (640 then 160 KiB/s) · after 4 s: 2,500 KiB/s")
+    from matplotlib.patches import Patch
+    axs[1].legend(handles=[Patch(color=ORANGE, label="request started in the slow phase"),
+                           Patch(color=BLUE, label="request started after the speed-up")],
+                  frameon=False, fontsize=8.5, loc="center right")
+    fig.suptitle("D2, one paired run: each bar is one request, from the server's log", x=0.02, ha="left",
+                 fontweight="bold", fontsize=11)
+    save(fig, "d2_requests.png")
