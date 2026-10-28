@@ -175,8 +175,13 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   code names, chart readability). Fixed: demo slide said 220 numbers (now 231);
   "v2" in the limitations notes; label collisions in five charts (r1b, r2a,
   r4b, r5, summary), live chart now grouped by server. Republished.
-- [ ] Open: handbook still says "about 5-27x" (ask the user first); IEEE Access
-  template conversion.
+- [ ] IEEE Access template conversion (see section 5).
+
+## 7. Last: only when the user asks explicitly
+
+- [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
+  8-trace set) with the paper's 6.5-25.3x for the five replayed traces. Leave
+  the handbook alone until the user says so.
 
 ## Housekeeping (on every completed step)
 
