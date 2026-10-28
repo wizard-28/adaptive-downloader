@@ -20,7 +20,31 @@ See `docs/PREREGISTRATION_NOTE.md`.
 
 ---
 
-## Abstract (draft)
+## Abstract
+
+Adaptive HTTP range downloaders choose concurrency (N) and range size (S), but it
+is rarely clear when adaptation has anything to exploit. We ask whether adapting N
+and S during a download helps when network or server conditions are not optimal,
+compared with aria2 and other segmented downloaders, and whether any gain comes
+from adapting or from how the file is split. On a controlled platform, a fixed
+configuration of our downloader (16 connections, 4 MiB ranges) completed
+**62.4 % faster than aria2 1.37** on one characterised workload (30/30 paired
+runs), a gap that controls attribute largely to request granularity and
+request-start timing rather than to adaptation. On five replayed cellular traces a
+counterfactual oracle found no exploitable concurrency headroom (one-sided 95 %
+lower bound −0.26 % against a predeclared 10 % bar). Under a constructed server
+whose per-request rate falls with concurrency, a causal controller was 23.4 %
+faster than the best of three stationary configurations, but a 230-run ablation
+showed that aria2's lead there came from two engine differences; with both fixed,
+the best fixed configuration was faster than the controller (1.071 [1.054, 1.085]).
+Learned policies were slower than aria2 overall, and a retrained DQN beat the best
+fixed configuration only where it was trained (0.907 [0.893, 0.921]). Against aria2
+under changing conditions, adaptive arms were faster only when the server rate rose
+(0.36–0.88), where a fixed configuration of the same engine was faster still
+(0.344–0.376), and slower whenever the server degraded (1.096–1.781). All results
+are scoped to controlled mechanisms, not live networks or production servers.
+
+## Extended abstract
 
 Adaptive HTTP range downloaders choose concurrency (N) and range size (S), but it
 is rarely clear when adaptation has anything causal to exploit. We ask
@@ -576,8 +600,8 @@ screening evidence that a fixed configuration with enough connections was
 near-best on the observed paths. It does not validate the findings across
 networks.
 
-**Adaptive arms on the same mirrors (descriptive no-harm check,
-`testdata/live_mirror_check/protocol.md`).** After the loopback studies, the
+**Adaptive arms on the same mirrors (descriptive no-harm check,**
+`testdata/live_mirror_check/protocol.md`**).** After the loopback studies, the
 v2 agent of §9d and the C=8-tuned drop rule ran on three of these mirrors
 (kcdn, kedge, riken). Each was compared with fixed 16 × 1 MiB and 8 × 1 MiB:
 the same corrected engine, 5 blocks, 64 MB.
