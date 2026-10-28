@@ -229,6 +229,10 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
 - [x] 12-slide deck extended to 15 (allowed maximum): added mobile-trace ceiling,
   engine ablation and limitations slides; prior-art matrix on slide 2.
 
+- [ ] OPTIONAL, awaiting go: pair-action study on branch `exp/joint-pair`; plan in
+  `docs/plans/joint_pair_plan.md` (4 phases, gates, safeguards). Review moved to
+  Friday 5 PM; no changes after Friday 12:00.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
