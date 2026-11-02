@@ -106,6 +106,18 @@ and the claim map in the paper draft.
 
 ## 7. Data
 
-The raw archive is large (hundreds of MB). It is distributed separately with a
-DOI and `SHA256SUMS`; verify with `sha256sum -c SHA256SUMS`. Data terms are in
-`DATA_LICENSE.md`.
+The raw runs, manifests and analysis outputs are committed in this repository
+under `testdata/` (about 450 MB, all in git history; no separate archive). A
+clone is therefore enough for the offline checks in section 2. No DOI has been
+assigned yet.
+
+Integrity: `testdata/` contains 30 per-directory checksum files named `*.sha256`
+(for example `testdata/d2_pacing_sweep/manifest/sweep_manifest.sha256`). They do
+not share one format. Some are `sha256sum` lists that can be checked with
+`sha256sum -c` from their own directory; others hold a single digest for one
+named file. Read each file's header or content before checking it. There is no
+repository-wide `SHA256SUMS` file.
+
+Data terms are in `DATA_LICENSE.md`. They are proposed and not yet confirmed by
+the data owners. Third-party recorded traces are not covered by them and are
+excluded from the proposed release.
