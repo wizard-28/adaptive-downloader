@@ -71,5 +71,6 @@ paragraphs close on a verdict. All numbers and caveats are unchanged, and
    paper (`arifuzzaman2021online`) are known from abstracts only; the text says so.
 4. Re-run `python3 tools/claims_check.py` after any number change; it reports
    233/233.
-5. Style: a subagent review against a fixed rubric scores the text about 22 %
-   AI-like (single-model judgement, not a commercial detector).
+5. Style: two Haiku subagent reviews against a fixed rubric scored the text
+   20 % and 18 % AI-like (mean 19 %; single-model judgements, not a commercial
+   detector, and they vary by about 12 points between runs).
