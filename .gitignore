@@ -48,3 +48,6 @@ venv/
 /reports/**/*.out
 /reports/**/*.synctex.gz
 /reports/**/*.log
+
+# Raw run output written by the attempt drivers (large, regenerable; none tracked)
+**/out.bin
