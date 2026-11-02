@@ -51,3 +51,13 @@ venv/
 
 # Raw run output written by the attempt drivers (large, regenerable; none tracked)
 **/out.bin
+
+# Internal, personal and third-party material: kept on disk, not in the repository
+/AGENTS.md
+/CLAUDE.md
+/queue.md
+/docs/context/
+/docs/team_status_2026-09-29.md
+/reports/thursday/
+/reports/**/template/*.zip
+*.pdf
