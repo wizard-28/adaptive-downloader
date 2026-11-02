@@ -85,7 +85,7 @@ for ax, base, title in ((axs[0], "per_workload_best_fixed", "vs per-workload bes
     ax.legend(fontsize=7, loc="upper right"); ax.set_yscale("log")
 axs[0].set_ylabel("paired ratio selector / baseline (< 1: selector faster)")
 fig.suptitle("Six-workload selector: dots = blocks (n=10), bar = workload geo-mean", fontsize=9)
-fig.tight_layout(); fig.savefig(os.path.join(OUT, "fig2_six_workload_selector.png"), dpi=200); plt.close(fig)
+fig.tight_layout(); fig.savefig(os.path.join(OUT, "fig2_six_workload_selector.png"), dpi=200, bbox_inches="tight"); plt.close(fig)
 
 # ---- Fig 3: within-download controller vs fixed vs aria2 (P2) ---------------
 R = {}

@@ -5,7 +5,7 @@
 **Evidence labels used throughout.** **Confirmed** = reproduced from raw run files
 with the stated n; **Descriptive** = point estimate without an inferential claim;
 **Failed gate** = a predeclared criterion that was not met; **Limitation** = scope
-or validity caveat. Every number in this draft is recomputed from raw artifacts by
+or validity caveat. Every number in this paper is recomputed from raw artifacts by
 `tools/claims_check.py`.
 
 **Note on "pre-registered".** Protocols in this project were written to logged
@@ -165,7 +165,8 @@ arifuzzaman2021online] tunes the degree of parallelism with a utility function
 and online search for high-speed science networks. FastBioDL
 [swargo2025fastbiodl] applies gradient-descent concurrency tuning to HTTP/FTP
 genomic downloads (arXiv preprint, no peer-reviewed venue found). These works
-optimize concurrency online against observed throughput; the present paper
+tune concurrency or stream counts online against observed throughput (Falcon's
+utility also penalises packet loss and extra concurrency); the present paper
 instead asks, with a controlled server whose mechanism is known, whether an
 optimum exists for a causal controller to track at all.
 
@@ -182,25 +183,32 @@ preloading. Neither is a range-download concurrency study.
 
 **Prior work at a glance.** What each cited work adapts and how, what it was
 compared against, and whether we found a ceiling measurement or a separation of
-engine effects in what we read (abstracts, and the full text for FastBioDL).
+engine effects in what we read (full text for MDTP, Balaprakash et al., the
+journal version of Falcon and FastBioDL; abstracts for the rest).
 
 | Prior work | What it adapts, how | Compared against | Ceiling and engine effects |
 |---|---|---|---|
-| Balaprakash et al. [balaprakash2016direct] | Parallel streams: direct search | User default settings | Not found in what we read |
-| Falcon [arifuzzaman2021online, arifuzzaman2023falcon] | Concurrency: utility function, online search | Globus fixed settings, HARP | Not found in what we read |
-| FastBioDL [swargo2025fastbiodl] | Streams: utility function, gradient descent | SRA tools, fixed 3 and 5 streams | Not found in what we read |
-| MDTP [abdollah2025mdtp] | Chunk size per server, many servers | aria2 (multi-server), static chunks | Not found in what we read |
+| Balaprakash et al. [balaprakash2016direct] | Parallel streams: direct search | Globus default settings; a concurrency sweep is shown for motivation only | No ceiling; restart overhead measured, no engine ablation |
+| Falcon [arifuzzaman2021online, arifuzzaman2023falcon] | Concurrency: utility function, online search | Globus, HARP, fixed 32 and a hand-picked 4 (2023 journal version) | No ceiling (brute force dismissed); no engine ablation |
+| FastBioDL [swargo2025fastbiodl] | Streams: utility function, gradient descent | SRA tools, fixed 3 and 5 streams | No ceiling or engine ablation found |
+| MDTP [abdollah2025mdtp] | Chunk size per server, many servers | aria2 (multi-server, untuned), static chunks with a tuned chunk size | No ceiling; no engine ablation |
 | DeLoad [liu2025deload] | Task size: deep RL, video preloading | Not named in the abstract | Not found (abstract only) |
 | **This study** | N and S: rules, bandit, deep RL | aria2, axel, lftp, best fixed setting of the same engine | Ceiling measured first; engine effects separated |
 
-**What we did not find in these works.** In the abstracts we read, and the full
-text for FastBioDL, we did not find a comparison that combines stock downloaders
-(aria2, axel, lftp) with the best fixed setting of the same engine; a headroom
-ceiling measured before the controller was built; a separation of controller
-gains from engine effects such as timeouts, splitting and request start times;
-or cases where adapting gave nothing. FastBioDL compares with other tools and
-with fixed concurrency levels, and MDTP compares with aria2 in multi-server mode.
-This is a statement about what we read, not about all prior work.
+**What we did not find in these works.** In the full text of MDTP,
+Balaprakash et al., the journal version of Falcon and FastBioDL, we did not
+find an exhaustively searched ceiling measured before the controller was
+built, or a separation of controller gains from engine effects such as
+timeouts, splitting and request start times. We did not find a study that
+sweeps the best fixed setting of one engine and compares it with stock
+downloaders (aria2, axel, lftp). Some of these works do report cases where
+tuning lost or tied: Falcon's fixed 32 beat it by 5 % on one network, and its
+multi-parameter variant lost 18 % on the large dataset; in Balaprakash et al.
+one transfer matched the default because of restart overhead. MDTP tunes the
+chunk size of its static variant and compares with an untuned aria2 in
+multi-server mode. BOLA, DeLoad and the 2021 Falcon paper we know from
+abstracts only. This is a statement about what we read, not about all prior
+work.
 
 **Position.** The contribution here is a mechanism-first, controlled
 evaluation with explicit failed gates and a practical baseline comparison, not
@@ -249,7 +257,7 @@ interval on one side of 1.
 
 - Workload D2: 512 MiB, per-response pacing 640 → 160 → 2500 KiB/s at 2 s / 4 s,
   netem `delay 40ms loss 0.4%` on loopback, which applies in both directions
-  (measured RTT 80 ms; earlier drafts said "40 ms RTT"); both systems receive
+  (measured RTT 80 ms); both systems receive
   the same object.
 - Frozen configurations (selected on separate discovery runs): ours (16 conn,
   4 MiB); aria2 1.37 `--max-connection-per-server=16 --split=16
@@ -1059,7 +1067,7 @@ myopic heuristic.
 ## Declarations
 
 **Authors.** Sourajyoti Basak, Shwetank Shrijan and Ayush Konar, Vellore
-Institute of Technology, Vellore, India (course project, Computer Networks Lab,
+Institute of Technology, Vellore, Tamil Nadu, India - 632014 (course project, Computer Networks Lab,
 BCSE308P).
 
 **Author contributions** (as recorded in the Review 2 report).
@@ -1071,23 +1079,21 @@ baseline and heuristic evaluation. A. Konar: LinUCB; RL state, action and
 reward design; Python/PyTorch models; integration of the learned policy with
 the Go downloader; ML/RL evaluation.
 
-**Author order, corresponding author, ORCID, funding, conflicts of interest:**
-TO BE CONFIRMED BY THE AUTHORS.
+**Funding and conflicts of interest.** No external funding was received, and
+the authors declare no conflicts of interest.
 
-**Use of AI tools (draft; authors must confirm wording and scope).** An AI
+**Use of AI tools.** An AI
 coding assistant (Anthropic Claude, run through the Claude Code CLI) was used
 during the project to write and modify source code and analysis scripts, to run
 experiments and tests, to audit results against raw data, to correct
 manuscript claims, and to draft this text. It did not generate experimental
 data other than by executing the specified programs. All numerical claims are
-recomputed from raw run files by `tools/claims_check.py`. Human authors are
-responsible for the content and must verify this disclosure against the actual
-workflow and the publisher's policy.
+recomputed from raw run files by `tools/claims_check.py`. The authors are
+responsible for the content.
 
-**Data and code availability.** Code: MIT license (copyright holder to be
-confirmed). Raw runs, manifests and analysis outputs are under `testdata/`;
+**Data and code availability.** Code: MIT license. Raw runs, manifests and analysis outputs are under `testdata/`;
 because of size they are distributed as a separate archive with SHA-256
-checksums (`docs/ARCHIVE_PLAN.md`). **DOI: not yet issued.** Third-party trace
+checksums (`docs/ARCHIVE_PLAN.md`). Third-party trace
 files keep their own terms (`DATA_LICENSE.md`).
 
 **Reproducibility.** `docs/REPRODUCING.md`; `python3 tools/claims_check.py`

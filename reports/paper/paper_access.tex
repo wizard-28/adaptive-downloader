@@ -2,6 +2,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
+\usepackage{balance}
 \usepackage{textcomp}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -20,19 +21,17 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \renewcommand{\arraystretch}{1.15}
 \setlength{\emergencystretch}{3em}
-\hbadness=10000 \hfuzz=3pt
+\hbadness=10000 \hfuzz=3pt \vfuzz=2pt
 \urlstyle{same}
 \begin{document}
-\history{Manuscript prepared October 28, 2026 (draft; not submitted).}
-\doi{10.1109/ACCESS.2026.DOI}
+\history{Manuscript prepared November 2, 2026.}
 \title{When Does Adapting Concurrency and Range Size Help? Adaptive Downloading versus aria2 and Fixed Settings under Non-Optimal Conditions}
 \author{\uppercase{Sourajyoti Basak}\authorrefmark{1},
 \uppercase{Shwetank Shrijan}\authorrefmark{1}, and
 \uppercase{Ayush Konar}\authorrefmark{1}}
-\address[1]{Vellore Institute of Technology, Vellore, India (Computer Networks Lab, BCSE308P)}
+\address[1]{Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014 (Computer Networks Lab, BCSE308P)}
 \markboth{Basak \headeretal: When does adapting concurrency and range size help?}
 {Basak \headeretal: When does adapting concurrency and range size help?}
-\corresp{Corresponding author: Sourajyoti Basak (contact details to be confirmed).}
 
 \begin{abstract}Adaptive HTTP range downloaders choose concurrency (N) and range size (S), but it is rarely clear when adaptation has anything to exploit. We ask whether adapting N and S during a download helps when network or server conditions are not optimal, compared with aria2 and other segmented downloaders, and whether any gain comes from adapting or from how the file is split. On a controlled platform, a fixed configuration of our downloader (16 connections, 4 MiB ranges) completed \textbf{62.4 \% faster than aria2 1.37} on one characterised workload (30/30 paired runs), a gap that controls attribute largely to request granularity and request-start timing rather than to adaptation. On five replayed cellular traces a counterfactual oracle found no exploitable concurrency headroom (one-sided 95 \% lower bound −0.26 \% against a predeclared 10 \% bar). Under a constructed server whose per-request rate falls with concurrency, a causal controller was 23.4 \% faster than the best of three stationary configurations, but a 230-run ablation showed that aria2's lead there came from two engine differences; with both fixed, the best fixed configuration was faster than the controller (1.071 [1.054, 1.085]). Learned policies were slower than aria2 overall, and a retrained DQN beat the best fixed configuration only where it was trained (0.907 [0.893, 0.921]). Against aria2 under changing conditions, adaptive arms were faster only when the server rate rose (0.36–0.88), where a fixed configuration of the same engine was faster still (0.344–0.376), and slower whenever the server degraded (1.096–1.781). All results are scoped to controlled mechanisms, not live networks or production servers.\end{abstract}
 \begin{keywords}HTTP range requests, segmented downloading, concurrency adaptation, aria2, reinforcement learning, network measurement\end{keywords}
@@ -64,7 +63,7 @@
 All entries below were checked against an authoritative record; see \texttt{reports/\allowbreak{}references.md} for the verification log and the list of unresolved candidates, which are deliberately not cited.
 
 
-\textbf{Online tuning of transfer parallelism.} Balaprakash et al. \cite{balaprakash2016direct} treat the number of parallel streams as an online optimization problem solved by direct search on production GridFTP/Globus links. Falcon \cite{arifuzzaman2023falcon,arifuzzaman2021online} tunes the degree of parallelism with a utility function and online search for high-speed science networks. FastBioDL \cite{swargo2025fastbiodl} applies gradient-descent concurrency tuning to HTTP/FTP genomic downloads (arXiv preprint, no peer-reviewed venue found). These works optimize concurrency online against observed throughput; the present paper instead asks, with a controlled server whose mechanism is known, whether an optimum exists for a causal controller to track at all.
+\textbf{Online tuning of transfer parallelism.} Balaprakash et al. \cite{balaprakash2016direct} treat the number of parallel streams as an online optimization problem solved by direct search on production GridFTP/Globus links. Falcon \cite{arifuzzaman2023falcon,arifuzzaman2021online} tunes the degree of parallelism with a utility function and online search for high-speed science networks. FastBioDL \cite{swargo2025fastbiodl} applies gradient-descent concurrency tuning to HTTP/FTP genomic downloads (arXiv preprint, no peer-reviewed venue found). These works tune concurrency or stream counts online against observed throughput (Falcon's utility also penalises packet loss and extra concurrency); the present paper instead asks, with a controlled server whose mechanism is known, whether an optimum exists for a causal controller to track at all.
 
 
 \textbf{Multi-source and range-based downloading.} MDTP \cite{abdollah2025mdtp} splits a request into chunk requests across replica servers and sizes chunks to measured per-server throughput, comparing against aria2 \cite{aria2manual}. HTTP range requests are specified in RFC 9110 \cite{rfc9110}. Our setting is single-source.
@@ -73,7 +72,7 @@ All entries below were checked against an authoritative record; see \texttt{repo
 \textbf{Adaptation in adjacent domains.} BOLA \cite{spiteri2016bola,spiteri2020bola} selects video bitrates by utility maximization without bandwidth prediction and serves as an analogy for decision rules that need no throughput forecast. DeLoad \cite{liu2025deload} (preprint) sizes download tasks for short-video preloading. Neither is a range-download concurrency study.
 
 
-\textbf{Prior work at a glance.} What each cited work adapts and how, what it was compared against, and whether we found a ceiling measurement or a separation of engine effects in what we read (abstracts, and the full text for FastBioDL).
+\textbf{Prior work at a glance.} What each cited work adapts and how, what it was compared against, and whether we found a ceiling measurement or a separation of engine effects in what we read (full text for MDTP, Balaprakash et al., the journal version of Falcon and FastBioDL; abstracts for the rest).
 
 
 \begin{table*}[!t]\centering\footnotesize
@@ -81,10 +80,10 @@ All entries below were checked against an authoritative record; see \texttt{repo
 \toprule
 \textbf{Prior work} & \textbf{What it adapts, how} & \textbf{Compared against} & \textbf{Ceiling and engine effects}\\
 \midrule
-Balaprakash et al. \cite{balaprakash2016direct} & Parallel streams: direct search & User default settings & Not found in what we read\\
-Falcon \cite{arifuzzaman2021online,arifuzzaman2023falcon} & Concurrency: utility function, online search & Globus fixed settings, HARP & Not found in what we read\\
-FastBioDL \cite{swargo2025fastbiodl} & Streams: utility function, gradient descent & SRA tools, fixed 3 and 5 streams & Not found in what we read\\
-MDTP \cite{abdollah2025mdtp} & Chunk size per server, many servers & aria2 (multi-server), static chunks & Not found in what we read\\
+Balaprakash et al. \cite{balaprakash2016direct} & Parallel streams: direct search & Globus default settings; a concurrency sweep is shown for motivation only & No ceiling; restart overhead measured, no engine ablation\\
+Falcon \cite{arifuzzaman2021online,arifuzzaman2023falcon} & Concurrency: utility function, online search & Globus, HARP, fixed 32 and a hand-picked 4 (2023 journal version) & No ceiling (brute force dismissed); no engine ablation\\
+FastBioDL \cite{swargo2025fastbiodl} & Streams: utility function, gradient descent & SRA tools, fixed 3 and 5 streams & No ceiling or engine ablation found\\
+MDTP \cite{abdollah2025mdtp} & Chunk size per server, many servers & aria2 (multi-server, untuned), static chunks with a tuned chunk size & No ceiling; no engine ablation\\
 DeLoad \cite{liu2025deload} & Task size: deep RL, video preloading & Not named in the abstract & Not found (abstract only)\\
 \textbf{This study} & N and S: rules, bandit, deep RL & aria2, axel, lftp, best fixed setting of the same engine & Ceiling measured first; engine effects separated\\
 \bottomrule
@@ -92,24 +91,23 @@ DeLoad \cite{liu2025deload} & Task size: deep RL, video preloading & Not named i
 \end{table*}
 
 
-\textbf{What we did not find in these works.} In the abstracts we read, and the full text for FastBioDL, we did not find a comparison that combines stock downloaders (aria2, axel, lftp) with the best fixed setting of the same engine; a headroom ceiling measured before the controller was built; a separation of controller gains from engine effects such as timeouts, splitting and request start times; or cases where adapting gave nothing. FastBioDL compares with other tools and with fixed concurrency levels, and MDTP compares with aria2 in multi-server mode. This is a statement about what we read, not about all prior work.
+\textbf{What we did not find in these works.} In the full text of MDTP, Balaprakash et al., the journal version of Falcon and FastBioDL, we did not find an exhaustively searched ceiling measured before the controller was built, or a separation of controller gains from engine effects such as timeouts, splitting and request start times. We did not find a study that sweeps the best fixed setting of one engine and compares it with stock downloaders (aria2, axel, lftp). Some of these works do report cases where tuning lost or tied: Falcon's fixed 32 beat it by 5 \% on one network, and its multi-parameter variant lost 18 \% on the large dataset; in Balaprakash et al. one transfer matched the default because of restart overhead. MDTP tunes the chunk size of its static variant and compares with an untuned aria2 in multi-server mode. BOLA, DeLoad and the 2021 Falcon paper we know from abstracts only. This is a statement about what we read, not about all prior work.
 
 
 \textbf{Position.} The contribution here is a mechanism-first, controlled evaluation with explicit failed gates and a practical baseline comparison, not a new tuning algorithm.
 
 
-\subsection*{3.0 Reporting conventions}
+\section*{3. System and experimental platform}
 
 
 
-\textbf{Evidence labels used throughout.} \textbf{Confirmed} = reproduced from raw run files with the stated n; \textbf{Descriptive} = point estimate without an inferential claim; \textbf{Failed gate} = a predeclared criterion that was not met; \textbf{Limitation} = scope or validity caveat. Every number in this draft is recomputed from raw artifacts by \texttt{tools/\allowbreak{}claims\_check.py}.
+\textbf{Evidence labels used throughout.} \textbf{Confirmed} = reproduced from raw run files with the stated n; \textbf{Descriptive} = point estimate without an inferential claim; \textbf{Failed gate} = a predeclared criterion that was not met; \textbf{Limitation} = scope or validity caveat. Every number in this paper is recomputed from raw artifacts by \texttt{tools/\allowbreak{}claims\_check.py}.
 
 
 \textbf{Note on "pre-registered".} Protocols in this project were written to logged documents with recorded SHA-256 hashes before the corresponding runs. They were not deposited with an independent timestamping service, the repository history begins with a single import commit, and one manifest was amended twice after design output had been seen (W1–W6, §6.1; the first version was overwritten). Wording such as "pre-registered" in older internal documents therefore means \emph{predeclared in a logged protocol}, not independently verifiable pre-registration. See \texttt{docs/\allowbreak{}PREREGISTRATION\_NOTE.md}.
 
 
 
-\section*{3. System and experimental platform}
 
 \begin{itemize}
 \item Go downloader: RangeTracker (half-open), fetcher (inclusive), assembler, metrics, worker pool (dynamic N, in-flight ranges immutable), concurrency and chunk-size controllers, policy interface, serialized policy runner.
@@ -126,7 +124,7 @@ DeLoad \cite{liu2025deload} & Task size: deep RL, video preloading & Not named i
 \section*{4. Phase-locked pacing and the aria2 comparison}
 
 \begin{itemize}
-\item Workload D2: 512 MiB, per-response pacing 640 → 160 → 2500 KiB/s at 2 s / 4 s, netem \texttt{delay 40ms loss 0.4\%} on loopback, which applies in both directions (measured RTT 80 ms; earlier drafts said "40 ms RTT"); both systems receive the same object.
+\item Workload D2: 512 MiB, per-response pacing 640 → 160 → 2500 KiB/s at 2 s / 4 s, netem \texttt{delay 40ms loss 0.4\%} on loopback, which applies in both directions (measured RTT 80 ms); both systems receive the same object.
 \item Frozen configurations (selected on separate discovery runs): ours (16 conn, 4 MiB); aria2 1.37 \texttt{--max-connection-per-server=16 --split=16 --min-split-size=1M}. The full aria2 split frontier (1/2/4/8/16) and a 40-configuration grid for ours were run in discovery.
 \item \textbf{Confirmed (30 fresh pairs):} ours 20.12 s vs aria2 53.56 s mean; geometric ratio 0.3756, 95 \% CI [0.3726, 0.3787], 30/30 wins; all runs content-verified.
 \item \textbf{Mechanism (per-request server logs, per run):} aria2 issues 16 requests (one unranged probe plus 15 × 32 MiB ranges), all starting before 2 s and held at 640 KiB/s; ours issues 128 × 4 MiB ranges, of which 16 start before 2 s and 112 start after 4 s in the recovered phase (3840 ranged requests, 480 early / 3360 late, over 30 runs). aria2 cannot be configured to finer initial pieces: with \texttt{-x16}, \texttt{--split} of 16/64/256 gave the same range-size distribution in a local probe.
@@ -621,19 +619,19 @@ A fixed 16×4 MiB configuration beats aria2 by a large margin on one phase-locke
 
 \section*{Declarations}
 
-\textbf{Authors.} Sourajyoti Basak, Shwetank Shrijan and Ayush Konar, Vellore Institute of Technology, Vellore, India (course project, Computer Networks Lab, BCSE308P).
+\textbf{Authors.} Sourajyoti Basak, Shwetank Shrijan and Ayush Konar, Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014 (course project, Computer Networks Lab, BCSE308P).
 
 
 \textbf{Author contributions} (as recorded in the Review 2 report). S. Basak: downloader architecture and core implementation; adaptive concurrency and range management; test server and Linux network experiments; system integration and validation. S. Shrijan: downloader development and testing of assigned components; monitoring and experiment automation; baseline and heuristic evaluation. A. Konar: LinUCB; RL state, action and reward design; Python/PyTorch models; integration of the learned policy with the Go downloader; ML/RL evaluation.
 
 
-\textbf{Author order, corresponding author, ORCID, funding, conflicts of interest:} TO BE CONFIRMED BY THE AUTHORS.
+\textbf{Funding and conflicts of interest.} No external funding was received, and the authors declare no conflicts of interest.
 
 
-\textbf{Use of AI tools (draft; authors must confirm wording and scope).} An AI coding assistant (Anthropic Claude, run through the Claude Code CLI) was used during the project to write and modify source code and analysis scripts, to run experiments and tests, to audit results against raw data, to correct manuscript claims, and to draft this text. It did not generate experimental data other than by executing the specified programs. All numerical claims are recomputed from raw run files by \texttt{tools/\allowbreak{}claims\_check.py}. Human authors are responsible for the content and must verify this disclosure against the actual workflow and the publisher's policy.
+\textbf{Use of AI tools.} An AI coding assistant (Anthropic Claude, run through the Claude Code CLI) was used during the project to write and modify source code and analysis scripts, to run experiments and tests, to audit results against raw data, to correct manuscript claims, and to draft this text. It did not generate experimental data other than by executing the specified programs. All numerical claims are recomputed from raw run files by \texttt{tools/\allowbreak{}claims\_check.py}. The authors are responsible for the content.
 
 
-\textbf{Data and code availability.} Code: MIT license (copyright holder to be confirmed). Raw runs, manifests and analysis outputs are under \texttt{testdata/\allowbreak{}}; because of size they are distributed as a separate archive with SHA-256 checksums (\texttt{docs/\allowbreak{}ARCHIVE\_PLAN.md}). \textbf{DOI: not yet issued.} Third-party trace files keep their own terms (\texttt{DATA\_\allowbreak{}LICENSE.md}).
+\textbf{Data and code availability.} Code: MIT license. Raw runs, manifests and analysis outputs are under \texttt{testdata/\allowbreak{}}; because of size they are distributed as a separate archive with SHA-256 checksums (\texttt{docs/\allowbreak{}ARCHIVE\_PLAN.md}). Third-party trace files keep their own terms (\texttt{DATA\_\allowbreak{}LICENSE.md}).
 
 
 \textbf{Reproducibility.} \texttt{docs/\allowbreak{}REPRODUCING.md}; \texttt{python3 tools/\allowbreak{}claims\_check.py} recomputes every quoted number; protocols and hashes for the pacing sweep and the NGINX check are committed before their runs.

@@ -238,6 +238,12 @@ started. Details live in `docs/PROJECT_CONTEXT.md` §22.109.
   `docs/plans/joint_pair_plan.md` (4 phases, gates, safeguards). Review moved to
   Friday 5 PM; no changes after Friday 12:00.
 
+- [x] Paper pass (2026-11-02): conference architecture figure redrawn to match the
+  handbook (one column); related work re-grounded on full-text reads of MDTP,
+  Balaprakash 2016, Falcon 2023 and FastBioDL (claims narrowed); Access
+  placeholders (DOI, corresponding author, TBC lines) removed; checker 231/231.
+  Open: verify the MDTP venue in `references.bib`; page limit of the venue.
+
 ## 7. Last: only when the user asks explicitly
 
 - [ ] Handbook (`reports/handbook/handbook.tex`): replace "about 5-27x" (older
