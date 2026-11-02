@@ -35,15 +35,18 @@
 \title{When Does Adapting Concurrency and Range Size Help? Adaptive Downloading versus aria2 and Fixed Settings under Non-Optimal Conditions}
 \author{\IEEEauthorblockN{Sourajyoti Basak}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}
+Vellore, Tamil Nadu, India - 632014\\
+sourajyoti.basak2024@vitstudent.ac.in}
 \and
 \IEEEauthorblockN{Shwetank Shrijan}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}
+Vellore, Tamil Nadu, India - 632014\\
+shwetank.shrijan2024@vitstudent.ac.in}
 \and
 \IEEEauthorblockN{Ayush Konar}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}}
+Vellore, Tamil Nadu, India - 632014\\
+ayush.konar2024@vitstudent.ac.in}}
 \maketitle
 
 \begin{abstract}We tested when adapting the number of connections (N) and the range size (S) during a download pays, compared with aria2 and with the best fixed setting of the same engine, and whether any gain comes from the controller or from the way the file is split. On one characterised workload, a fixed 16-connection, 4 MiB-range run finished in 20.12 s; aria2 needed 53.56 s (30/30 paired runs, time ratio 0.3756). That is 62.4 \% less time (2.66× throughput). Most of the gap comes from request granularity and from when requests start: forcing our engine to use 32 MiB ranges moves the ratio to 0.862. On five replayed cellular traces, the answer changed. A counterfactual oracle, limited to 120 s epochs and adjacent moves, found a mean switching gain of 0.41 \% (1.64 \% at most); the one-sided 95 \% lower bound was −0.26 \% against a predeclared 10 \% bar. We then built a server whose per-request rate falls with concurrency. On the original engine, a one-threshold drop rule beat the best of three fixed settings by 23.4 \%, but aria2 was still faster. A 230-run ablation pointed to a 30 s request timeout and the absence of straggler splitting as the main reasons for aria2's lead; with both fixed, the best fixed setting beat the controller (1.071 [1.054, 1.085]) and the four-connection optimum disappeared. Learned policies were slower than aria2 in their early form. Agents retrained for the capped server beat a same-size 1 MiB fixed baseline where they were trained (0.907 [0.893, 0.921]), but were 1.298 against 16 × 32 MiB and 1.310 against aria2. Under changing conditions, adaptive arms beat aria2 only while the server rate was rising, and a fixed setting of the same engine did better even there. We did not test any of this on a production network.\end{abstract}
@@ -241,6 +244,14 @@ Measuring the opportunity and comparing against the same engine's best fixed set
 \section*{9. Conclusion}
 
 The engine audit changed our reading of the earlier win. A 30 s request timeout and missing straggler splitting made aria2 look better than it was under the cap; once both were fixed, a fixed 16 × 32 MiB setting matched aria2 and beat the controller. The trace replay found no comparable headroom, and future comparisons should report the engine and the measured opportunity alongside the controller. The 14 \% difference on N1 is still unexplained, and a timed open-loop schedule would separate feedback from timing.
+
+
+\section*{Availability and AI use}
+
+The code, experiment protocols, run manifests and the script that recomputes every quoted number (\texttt{tools/\allowbreak{}claims\_check.py}) are in the project repository, https://github.com/wizard-28/adaptive-downloader. Raw run files are distributed as a separate archive with SHA-256 checksums.
+
+
+An AI coding assistant (Anthropic Claude, run through the Claude Code command-line tool) was used during the project to write and modify source code and analysis scripts, to run experiments and tests, to audit results against the raw data, and to draft and edit this text. It produced no experimental data except by executing the specified programs. The authors designed the study, reviewed the results and are responsible for the content.
 
 
 \footnotesize

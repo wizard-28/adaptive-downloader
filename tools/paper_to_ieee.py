@@ -72,7 +72,7 @@ PRE = r"""\documentclass{ieeeaccess}
 \author{\uppercase{Sourajyoti Basak}\authorrefmark{1},
 \uppercase{Shwetank Shrijan}\authorrefmark{1}, and
 \uppercase{Ayush Konar}\authorrefmark{1}}
-\address[1]{Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014 (Computer Networks Lab, BCSE308P)}
+\address[1]{Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014 (Computer Networks Lab, BCSE308P). Emails: sourajyoti.basak2024@vitstudent.ac.in, shwetank.shrijan2024@vitstudent.ac.in, ayush.konar2024@vitstudent.ac.in}
 \markboth{Basak \headeretal: When does adapting concurrency and range size help?}
 {Basak \headeretal: When does adapting concurrency and range size help?}
 """
@@ -115,15 +115,18 @@ PRE_CONF = r"""\documentclass[conference]{IEEEtran}
 \title{%s}
 \author{\IEEEauthorblockN{Sourajyoti Basak}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}
+Vellore, Tamil Nadu, India - 632014\\
+sourajyoti.basak2024@vitstudent.ac.in}
 \and
 \IEEEauthorblockN{Shwetank Shrijan}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}
+Vellore, Tamil Nadu, India - 632014\\
+shwetank.shrijan2024@vitstudent.ac.in}
 \and
 \IEEEauthorblockN{Ayush Konar}
 \IEEEauthorblockA{\textit{Vellore Institute of Technology}\\
-Vellore, Tamil Nadu, India - 632014}}
+Vellore, Tamil Nadu, India - 632014\\
+ayush.konar2024@vitstudent.ac.in}}
 \maketitle
 """
 

@@ -143,6 +143,12 @@ Measuring the opportunity and comparing against the same engine's best fixed set
 
 The engine audit changed our reading of the earlier win. A 30 s request timeout and missing straggler splitting made aria2 look better than it was under the cap; once both were fixed, a fixed 16 × 32 MiB setting matched aria2 and beat the controller. The trace replay found no comparable headroom, and future comparisons should report the engine and the measured opportunity alongside the controller. The 14 % difference on N1 is still unexplained, and a timed open-loop schedule would separate feedback from timing.
 
+## Availability and AI use
+
+The code, experiment protocols, run manifests and the script that recomputes every quoted number (`tools/claims_check.py`) are in the project repository, https://github.com/wizard-28/adaptive-downloader. Raw run files are distributed as a separate archive with SHA-256 checksums.
+
+An AI coding assistant (Anthropic Claude, run through the Claude Code command-line tool) was used during the project to write and modify source code and analysis scripts, to run experiments and tests, to audit results against the raw data, and to draft and edit this text. It produced no experimental data except by executing the specified programs. The authors designed the study, reviewed the results and are responsible for the content.
+
 ## Claim → evidence map
 
 The claim-to-evidence map and the checker that recomputes every quoted number (`tools/claims_check.py`) are distributed with the code.
