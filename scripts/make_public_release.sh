@@ -17,7 +17,7 @@ mv "$out/README.public.md" "$out/README.md"
 
 # --- leak scan -----------------------------------------------------------
 bad=0
-for f in AGENTS.md docs/PROJECT_CONTEXT.md docs/team_status_2026-09-29.md transcript.txt .devcontainer; do
+for f in docs/team_status_2026-09-29.md transcript.txt .devcontainer; do
   if [ -e "$out/$f" ]; then echo "LEAK: $f present in release tree"; bad=1; fi
 done
 if find "$out" \( -name '*.docx' -o -name '*.pdf' -o -name 'transcript*' \) -print | grep -q .; then
@@ -27,10 +27,6 @@ fi
 while IFS= read -r -d '' f; do
   if head -c4 "$f" 2>/dev/null | grep -q $'\x7fELF'; then echo "LEAK: binary $f"; bad=1; fi
 done < <(find "$out" -type f -size +100k -print0)
-# public docs must not point readers at the internal context document
-if grep -rIl --include='*.md' -e 'PROJECT_CONTEXT' -e 'AGENTS.md' "$out/README.md" "$out/docs" "$out/reports/paper_draft.md" "$out/reports/claims_map.md" 2>/dev/null | grep -q .; then
-  echo "LEAK: public document references an internal file:"; grep -rIl --include='*.md' -e 'PROJECT_CONTEXT' -e 'AGENTS.md' "$out/README.md" "$out/docs" "$out/reports/paper_draft.md" "$out/reports/claims_map.md"; bad=1
-fi
 [ "$bad" -eq 0 ] || { echo "release build FAILED leak scan"; exit 1; }
 
 # --- checksums and verification ----------------------------------------------

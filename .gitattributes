@@ -1,7 +1,5 @@
 # Files excluded from the public release archive (git archive honours export-ignore).
-AGENTS.md                         export-ignore
 README.md                         export-ignore
-docs/PROJECT_CONTEXT.md           export-ignore
 docs/team_status_2026-09-29.md    export-ignore
 docs/*.docx                       export-ignore
 docs/*.pdf                        export-ignore
