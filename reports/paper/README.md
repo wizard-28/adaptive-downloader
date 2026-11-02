@@ -59,7 +59,7 @@ three sentences; the extended-abstract boilerplate was removed; the conclusion
 became an argument rather than a recap; a duplicated pilot result was fixed;
 bold emphasis was cut back; and paragraph endings were varied so that fewer
 paragraphs close on a verdict. All numbers and caveats are unchanged, and
-`tools/claims_check.py` still reports 231/231.
+`tools/claims_check.py` still reports 233/233.
 
 ## What is left
 
@@ -74,6 +74,6 @@ paragraphs close on a verdict. All numbers and caveats are unchanged, and
    al., the journal version of Falcon and FastBioDL. Still abstract-only: BOLA,
    DeLoad and the SC21 Falcon paper (`arifuzzaman2021online`); the text says so.
 4. Re-run `python3 tools/claims_check.py` after any number change; it reports
-   231/231.
+   233/233.
 5. Optional: restore the dropped selector figure, prior-work table or threats
    table (removed to keep floats from stranding pages).

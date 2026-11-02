@@ -1145,6 +1145,17 @@
    "where": "\u00a79e",
    "text": "rule-based joint (Track 1) 0.876"
   },
+  "t1.joint_vs_fixed.geo": {
+   "value": 2.316,
+   "tol": 0.0005,
+   "where": "\u00a75",
+   "text": "joint 2.32\u00d7 slower"
+  },
+  "t1.joint_vs_fixed.wins": {
+   "value": 0,
+   "tol": 0,
+   "where": "\u00a75"
+  },
   "rlc.HEALTHY.dqn6_start16.vs_aria2.geo": {
    "value": 0.359,
    "tol": 0.0005,
