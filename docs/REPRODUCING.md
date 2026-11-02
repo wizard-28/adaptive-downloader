@@ -111,12 +111,11 @@ under `testdata/` (about 450 MB, all in git history; no separate archive). A
 clone is therefore enough for the offline checks in section 2. No DOI has been
 assigned yet.
 
-Integrity: `testdata/` contains 30 per-directory checksum files named `*.sha256`
+Integrity: the root `SHA256SUMS` lists the SHA-256 digest of every tracked file.
+Check the whole tree from the repository root with `sha256sum -c SHA256SUMS`.
+`testdata/` also contains 30 older per-directory `*.sha256` files
 (for example `testdata/d2_pacing_sweep/manifest/sweep_manifest.sha256`). They do
-not share one format. Some are `sha256sum` lists that can be checked with
-`sha256sum -c` from their own directory; others hold a single digest for one
-named file. Read each file's header or content before checking it. There is no
-repository-wide `SHA256SUMS` file.
+not share one format, so read each one before checking it.
 
 Data terms are in `DATA_LICENSE.md`. They are proposed and not yet confirmed by
 the data owners. Third-party recorded traces are not covered by them and are
