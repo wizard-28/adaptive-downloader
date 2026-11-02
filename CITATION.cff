@@ -2,13 +2,15 @@ cff-version: 1.2.0
 message: "If you use this software or data, please cite it as below."
 title: "Adaptive HTTP range downloader and controlled-mechanism evaluation platform"
 version: "0.0.0-paper-candidate"
-# Authors, order, affiliations and ORCID are to be confirmed by the human authors.
 authors:
-  - family-names: "TO-BE-CONFIRMED"
-    given-names: "TO-BE-CONFIRMED"
+  - family-names: "Basak"
+    given-names: "Sourajyoti"
+  - family-names: "Shrijan"
+    given-names: "Shwetank"
+  - family-names: "Konar"
+    given-names: "Ayush"
 license: MIT
-repository-code: "TO-BE-CONFIRMED"
-doi: "TO-BE-CONFIRMED (archive DOI for the data release)"
+repository-code: "https://github.com/wizard-28/adaptive-downloader"
 keywords:
   - HTTP range requests
   - adaptive concurrency
