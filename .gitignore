@@ -53,12 +53,12 @@ venv/
 **/out.bin
 
 # Internal, personal and third-party material: kept on disk, not in the repository
-/AGENTS.md
-/CLAUDE.md
-/queue.md
-/docs/context/
 /docs/team_status_2026-09-29.md
 /reports/thursday/
+/reports/review2/
+/reports/review3/
+/reports/deck/
+/reports/deck12/
 /reports/**/template/*.zip
 *.pdf
 /reports/handbook/
