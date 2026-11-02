@@ -61,3 +61,4 @@ venv/
 /reports/thursday/
 /reports/**/template/*.zip
 *.pdf
+/reports/handbook/
