@@ -117,6 +117,5 @@ Check the whole tree from the repository root with `sha256sum -c SHA256SUMS`.
 (for example `testdata/d2_pacing_sweep/manifest/sweep_manifest.sha256`). They do
 not share one format, so read each one before checking it.
 
-Data terms are in `DATA_LICENSE.md`. They are proposed and not yet confirmed by
-the data owners. Third-party recorded traces are not covered by them and are
-excluded from the proposed release.
+The data is not licensed for reuse yet; see `DATA_LICENSE.md`. To reuse it,
+contact the authors.

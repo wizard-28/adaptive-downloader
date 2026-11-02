@@ -33,6 +33,6 @@ tools/      claims_check.py and paper_numbers.json
 
 ## Licenses
 
-Code: MIT (`LICENSE`). Data: see `DATA_LICENSE.md` (proposed CC BY 4.0, subject to
-ownership verification; third-party traces keep their own terms). Citation:
+Code: MIT (`LICENSE`). Data: not licensed for reuse yet; the authors retain all rights.
+See `DATA_LICENSE.md`. Citation:
 `CITATION.cff` (authors to be confirmed).
