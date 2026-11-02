@@ -38,10 +38,10 @@ caveats. `paper_conf_8.md` is the source to edit for the short version.
 
 ## Formulas
 
-The 6-page cut has four numbered display equations: the concurrency cap
-(`eq:cap`), the paired geometric-mean ratio (`eq:ratio`), the oracle objective
-and headroom definition (`eq:oracle`), and the online-tuner utility
-(`eq:utility`). All are cited in the text as Eq. (1)–(4). The Markdown source
+The 6-page cut has three numbered display equations: the concurrency cap
+(`eq:cap`), the paired geometric-mean ratio (`eq:ratio`) and the oracle
+objective and headroom definition (`eq:oracle`), cited as Eq. (1)–(3). The
+online-tuner utility is described inline. The Markdown source
 uses `$$ ... $$ {#label}`; `tools/paper_to_ieee.py` turns that into a numbered
 `equation` environment and resolves `{{eq:label}}` references.
 
@@ -63,17 +63,13 @@ paragraphs close on a verdict. All numbers and caveats are unchanged, and
 
 ## What is left
 
-1. Confirm the target venue's exact page limit; the cut is 6 pages including
-   references. The ORCID, funding, DOI and corresponding-author items do not
-   apply: those lines were removed from `paper_access` (funding and conflicts
-   are stated as none).
-2. `abdollah2025mdtp` is listed as an ICCCN 2025 paper in `references.bib`, but
-   the PDF read for the related-work check (arXiv:2505.09597v1) names no venue.
-   Verify the venue before submission.
-3. Related work was re-grounded on full-text readings of MDTP, Balaprakash et
-   al., the journal version of Falcon and FastBioDL. Still abstract-only: BOLA,
-   DeLoad and the SC21 Falcon paper (`arifuzzaman2021online`); the text says so.
+1. The repository link in the paper (https://github.com/wizard-28/adaptive-downloader)
+   must be public before the paper is sent; it returns 404 when signed out.
+2. Page limit of the venue not checked (the cut is 6 pages with references).
+3. Related work rests on full-text reads of MDTP, Balaprakash et al., the
+   journal version of Falcon and FastBioDL. BOLA, DeLoad and the SC21 Falcon
+   paper (`arifuzzaman2021online`) are known from abstracts only; the text says so.
 4. Re-run `python3 tools/claims_check.py` after any number change; it reports
    233/233.
-5. Optional: restore the dropped selector figure, prior-work table or threats
-   table (removed to keep floats from stranding pages).
+5. Style: a subagent review against a fixed rubric scores the text about 22 %
+   AI-like (single-model judgement, not a commercial detector).

@@ -247,6 +247,14 @@ def convert(md):
             lvl, txt = len(m.group(1)), inline(m.group(2))
             if lvl == 2 and txt.startswith("Extended abstract"):
                 txt = "Summary of Results"
+            if CONF:
+                _rom = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+                _m1 = re.match(r"^(\d+)\.(\d+) (.*)$", txt)
+                _m2 = re.match(r"^(\d+)\. (.*)$", txt)
+                if _m1:
+                    txt = chr(ord("A") + int(_m1.group(2)) - 1) + ". " + _m1.group(3)
+                elif _m2:
+                    txt = _rom[int(_m2.group(1))] + ". " + _m2.group(2)
             out.append([None, None, r"\section*{", r"\subsection*{", r"\subsubsection*{"][lvl] + txt + "}")
             i += 1; continue
         if ln.startswith("Table:"):
