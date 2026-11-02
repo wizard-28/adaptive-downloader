@@ -5,10 +5,13 @@ version: "0.0.0-paper-candidate"
 authors:
   - family-names: "Basak"
     given-names: "Sourajyoti"
+    affiliation: "Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014"
   - family-names: "Shrijan"
     given-names: "Shwetank"
+    affiliation: "Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014"
   - family-names: "Konar"
     given-names: "Ayush"
+    affiliation: "Vellore Institute of Technology, Vellore, Tamil Nadu, India - 632014"
 license: MIT
 repository-code: "https://github.com/wizard-28/adaptive-downloader"
 keywords:
